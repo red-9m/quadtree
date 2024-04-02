@@ -39,9 +39,9 @@ struct Item
 
 ...
 
-auto getRect = [](Item* item) -> const QuadTree::Rect&
+auto getRect = [](Item* item) -> QuadTree::Rect
 {
-    return *(QuadTree::Rect*)&item->rect;
+    return std::bit_cast<QuadTree::Rect>(item->rect);
 };
 
 constexpr std::size_t node_items = 1;
