@@ -4,7 +4,7 @@
 #include <random>
 #include <functional>
 
-#include "types.h"
+#include "test-types.h"
 #include "quadtree.h"
 
 #ifdef _DEBUG
@@ -18,7 +18,6 @@ bool rectIntersects(const RectLocal* rect1, const RectLocal* rect2)
         rect1->x1 >= rect2->x1 + rect2->w1 || rect1->x1 + rect1->w1 <= rect2->x1 ||
         rect1->y1 >= rect2->y1 + rect2->h1 || rect1->y1 + rect1->h1 <= rect2->y1);
 }
-
 
 std::vector<Item> generateRandomNodes(std::size_t n)
 {
@@ -40,9 +39,9 @@ std::vector<Item> generateRandomNodes(std::size_t n)
 template<typename ItemT>
 void quadTree(std::function<ItemT(Item&)> addFunc, const std::string& runName)
 {
-    auto getRect = [](ItemT item) -> const QuadTree::Rect&
+    auto getRect = [](ItemT item) -> QuadTree::Rect
     {
-        return *(QuadTree::Rect*)&item->rect;
+        return std::bit_cast<QuadTree::Rect>(item->rect);
     };
 
 #ifdef _DEBUG
@@ -93,9 +92,9 @@ void quadTree(std::function<ItemT(Item&)> addFunc, const std::string& runName)
 
 void quadTreeSimple(const std::string& runName)
 {
-    auto getRect = [](Item* item) -> const QuadTree::Rect&
+    auto getRect = [](Item* item) -> QuadTree::Rect
     {
-        return *(QuadTree::Rect*)&item->rect;
+        return std::bit_cast<QuadTree::Rect>(item->rect);
     };
 
     constexpr std::size_t node_items = 1;
@@ -143,9 +142,13 @@ int main()
         return std::make_shared<Item>(std::move(item));
     };
 
+    std::cout << std::endl;
     quadTree<Item*>(addFuncPtr, "quadTree with pointers");
+
+    std::cout << std::endl;
     quadTree<std::shared_ptr<Item>>(addFuncSmartPtr, "quadTree with smart pointers");
 
+    std::cout << std::endl;
     quadTreeSimple("quadTree simple");
 
     return 0;

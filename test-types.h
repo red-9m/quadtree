@@ -1,5 +1,7 @@
 #pragma once
 
+#include <cstddef>
+
 struct RectLocal
 {
     int x1, y1, w1, h1;

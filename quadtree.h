@@ -12,7 +12,7 @@ template<typename ItemT>
 class Tree
 {
 public:
-    using ItemRectFunc = const Rect& (*)(ItemT);
+    using ItemRectFunc = Rect (*)(ItemT);
 
     Tree(const Rect& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
         mGetRect(getRect), mRoot(rect, nodeItems), mNodeItems(nodeItems), mDepth(depth)

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "types.h"
+#include "test-types.h"
 #include "quadtree.h"
 
 constexpr auto debugDelim = "-----------------";

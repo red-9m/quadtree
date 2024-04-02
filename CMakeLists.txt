@@ -1,20 +1,34 @@
 cmake_minimum_required(VERSION 3.5)
 project (quadtree CXX)
 
+# Project properties
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 # Sources
-file(GLOB quadtree-src quadtree-test.cpp)
-if (CMAKE_BUILD_TYPE MATCHES Debug)
-    file(GLOB quadtree-src ${quadtree-src} quadtree-debug.cpp)
-endif()
+set(quadtree-src quadtree-test.cpp)
 
 # Targets
 add_executable(quadtree-test ${quadtree-src})
-set_target_properties(quadtree-test PROPERTIES CXX_STANDARD 20)
 
+# Options
 if (CMAKE_BUILD_TYPE MATCHES Debug)
+    list(APPEND quadtree-src quadtree-debug.cpp)
     target_compile_definitions(quadtree-test PRIVATE -D_DEBUG)
     target_compile_options(quadtree-test PRIVATE -O1)
 else()
-    target_compile_options(quadtree-test PRIVATE -flto -Wall -Wextra -Wpedantic -ffast-math -Ofast)
-    target_link_options(quadtree-test PRIVATE -flto -fuse-ld=gold)
+    set(COMPILE_OPT -flto -Wall -Wextra -Wpedantic -ffast-math -Ofast)
+    set(LINK_OPT -flto)
+
+    if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+        list(APPEND COMPILE_OPT -stdlib=libc++)
+        list(APPEND LINK_OPT -stdlib=libc++ -fuse-ld=lld)
+    else()
+        # Can be enabled if Modern Linker (mold) is installed
+        # list(APPEND LINK_OPT -fuse-ld=mold)
+    endif()
+
+    target_compile_options(quadtree-test PRIVATE ${COMPILE_OPT})
+    target_link_options(quadtree-test PRIVATE ${LINK_OPT})
 endif()
