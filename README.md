@@ -10,7 +10,7 @@ This C++ header library implements QuadTree for rectangular items. The QuadTree 
 * Implementation takes single header file only: quadtree.h
 * Tries to be as fast as possible
 * Should fit nice for game object intersection task
-* Rectangle coordinates could be integers or floats (int, float)
+* Supported integral and floating point rectangle coordinates
 * Static tree nodes for maximum performance when adding an item
 * The QuadTree can contain any class of your item. You must provide a callback to get the item's rectangle
 * Two classes to deal with: QuadTree::Tree and QuadTree::Rect. Any compatible class can be used instead of QuadTree::Rect in your item to represent a rectangle (ex. SDL_Rect)
@@ -30,7 +30,7 @@ See quadtree-test.cpp:
 
 ```c++
 // Most simple implementation in quadtree-test.cpp
-void quadTreeSimple(const std::string& runName);
+void quadTreeSimple();
 ```
 
 # Inspiration code

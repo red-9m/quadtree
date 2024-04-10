@@ -2,9 +2,15 @@
 
 #include <vector>
 #include <algorithm>
+#include <type_traits>
 
 namespace QuadTree
 {
+template<typename T>
+concept IntType = std::is_integral_v<T>;
+
+template<typename T>
+concept FloatType = std::is_floating_point_v<T>;
 
 template<typename RectT>
 struct Rect { RectT x, y, w, h; };
@@ -59,7 +65,7 @@ protected:
 
     struct Node
     {
-        Node(const Rect<int>& aRect, std::size_t reserve): rect(aRect)
+        Node(const Rect<RectT>& aRect, std::size_t reserve) requires IntType<RectT>: rect(aRect) 
         {
             centerX = (aRect.x + aRect.w / 2) + (aRect.w % 2);
             centerY = (aRect.y + aRect.h / 2) + (aRect.h % 2);
@@ -67,7 +73,7 @@ protected:
             items.reserve(reserve);
         }
 
-        Node(const Rect<float>& aRect, std::size_t reserve): rect(aRect)
+        Node(const Rect<RectT>& aRect, std::size_t reserve) requires FloatType<RectT>: rect(aRect)
         {
             centerX = (aRect.x + aRect.w / 2);
             centerY = (aRect.y + aRect.h / 2);
@@ -207,7 +213,7 @@ protected:
             return 0; // None
     }
 
-    Rect<int> computeBox(const Rect<int>& rect, std::size_t direction) const noexcept
+    Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires IntType<RectT>
     {
         auto child_size_w = rect.w / 2;
         auto w_rest = rect.w % 2;
@@ -218,22 +224,22 @@ protected:
         {
             // NW
             case 1:
-                return Rect<int>{rect.x, rect.y, child_size_w + w_rest, child_size_h + h_rest};
+                return Rect<RectT>{rect.x, rect.y, child_size_w + w_rest, child_size_h + h_rest};
             // NE
             case 2:
-                return Rect<int>{rect.x + child_size_w + w_rest, rect.y, child_size_w, child_size_h + h_rest};
+                return Rect<RectT>{rect.x + child_size_w + w_rest, rect.y, child_size_w, child_size_h + h_rest};
             // SW
             case 3:
-                return Rect<int>{rect.x, rect.y + child_size_h + h_rest, child_size_w + w_rest, child_size_h};
+                return Rect<RectT>{rect.x, rect.y + child_size_h + h_rest, child_size_w + w_rest, child_size_h};
             // SE
             case 4:
-                return Rect<int>{rect.x + child_size_w + w_rest, rect.y + child_size_h + h_rest, child_size_w, child_size_h};
+                return Rect<RectT>{rect.x + child_size_w + w_rest, rect.y + child_size_h + h_rest, child_size_w, child_size_h};
             default:
-                return Rect<int>{0, 0, 0, 0};
+                return Rect<RectT>{0, 0, 0, 0};
         }
     }
 
-    Rect<float> computeBox(const Rect<float>& rect, std::size_t direction) const noexcept
+    Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires FloatType<RectT>
     {
         auto child_size_w = rect.w / 2;
         auto child_size_h = rect.h / 2;
@@ -242,18 +248,18 @@ protected:
         {
             // NW
             case 1:
-                return Rect<float>{rect.x, rect.y, child_size_w, child_size_h};
+                return Rect<RectT>{rect.x, rect.y, child_size_w, child_size_h};
             // NE
             case 2:
-                return Rect<float>{rect.x + child_size_w, rect.y, child_size_w, child_size_h};
+                return Rect<RectT>{rect.x + child_size_w, rect.y, child_size_w, child_size_h};
             // SW
             case 3:
-                return Rect<float>{rect.x, rect.y + child_size_h, child_size_w, child_size_h};
+                return Rect<RectT>{rect.x, rect.y + child_size_h, child_size_w, child_size_h};
             // SE
             case 4:
-                return Rect<float>{rect.x + child_size_w, rect.y + child_size_h, child_size_w, child_size_h};
+                return Rect<RectT>{rect.x + child_size_w, rect.y + child_size_h, child_size_w, child_size_h};
             default:
-                return Rect<float>{0, 0, 0, 0};
+                return Rect<RectT>{0, 0, 0, 0};
         }
     }
 

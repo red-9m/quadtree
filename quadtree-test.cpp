@@ -104,9 +104,9 @@ void quadTreeSimple(const std::string& runName)
 
     auto tree = QuadTree::Tree<Item<int>*, int>({0, 0, 100, 100}, getRect, node_items, depth);
     std::vector<Item<int>> items{
-        {{0, 1, 8, 13},1},
-        {{2, 1, 2, 2},2},
-        {{3, 3, 4, 0},3}
+        {{0, 1, 8, 13}, 1},
+        {{2, 1, 2, 2}, 2},
+        {{3, 3, 4, 0}, 3}
     };
 
     for (auto& item : items)
@@ -126,7 +126,7 @@ void quadTreeSimple(const std::string& runName)
     debugPrintTree<Item<int>*, int>(tree);
 #endif
 
-    tree.query({0,0,3,3}, query_res);
+    tree.query({0, 0, 3, 3}, query_res);
 
     std::cout << "Running    : " << runName << std::endl;
     std::cout << "query items: " << query_res.size() << std::endl;
