@@ -5,5 +5,5 @@
 
 constexpr auto debugDelim = "-----------------";
 
-template<typename ItemT>
-void debugPrintTree(QuadTree::Tree<ItemT>& tree);
+template<typename ItemT, typename RectT>
+void debugPrintTree(QuadTree::Tree<ItemT, RectT>& tree);

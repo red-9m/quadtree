@@ -2,13 +2,15 @@
 
 #include <cstddef>
 
+template<typename RectT>
 struct RectLocal
 {
-    int x1, y1, w1, h1;
+    RectT x1, y1, w1, h1;
 };
 
+template<typename RectT>
 struct Item
 {
-    RectLocal rect;
+    RectLocal<RectT> rect;
     std::size_t id;
 };

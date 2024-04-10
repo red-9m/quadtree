@@ -6,15 +6,16 @@
 namespace QuadTree
 {
 
-struct Rect { int x, y, w, h; };
+template<typename RectT>
+struct Rect { RectT x, y, w, h; };
 
-template<typename ItemT>
+template<typename ItemT, typename RectT>
 class Tree
 {
 public:
-    using ItemRectFunc = Rect (*)(ItemT);
+    using ItemRectFunc = Rect<RectT> (*)(ItemT);
 
-    Tree(const Rect& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
+    Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
         mGetRect(getRect), mRoot(rect, nodeItems), mNodeItems(nodeItems), mDepth(depth)
     {
         constexpr std::size_t root_depth = 0;
@@ -38,13 +39,13 @@ public:
         removeItem(mRoot, item, mGetRect(item));
     }
 
-    void query(const Rect& rect, std::vector<ItemT>& items) const
+    void query(const Rect<RectT>& rect, std::vector<ItemT>& items) const
     {
         queryNode(mRoot, rect, items);
     }
 
 #ifdef _DEBUG
-    using EnumCallbackT = void (*)(int type, int level, int quadrant, const Rect& rect, bool hasChildren, const ItemT*);
+    using EnumCallbackT = void (*)(int type, int level, int quadrant, const Rect<RectT>& rect, bool hasChildren, const ItemT*);
 
     void enumerateNodes(EnumCallbackT enumCallback)
     {
@@ -58,10 +59,18 @@ protected:
 
     struct Node
     {
-        Node(const Rect& aRect, std::size_t reserve): rect(aRect)
+        Node(const Rect<int>& aRect, std::size_t reserve): rect(aRect)
         {
             centerX = (aRect.x + aRect.w / 2) + (aRect.w % 2);
             centerY = (aRect.y + aRect.h / 2) + (aRect.h % 2);
+
+            items.reserve(reserve);
+        }
+
+        Node(const Rect<float>& aRect, std::size_t reserve): rect(aRect)
+        {
+            centerX = (aRect.x + aRect.w / 2);
+            centerY = (aRect.y + aRect.h / 2);
 
             items.reserve(reserve);
         }
@@ -70,9 +79,9 @@ protected:
 
         Node* children[QUAD_CHILDREN];
         std::vector<ItemT> items;
-        const Rect rect;
-        int centerX;
-        int centerY;
+        const Rect<RectT> rect;
+        RectT centerX;
+        RectT centerY;
     };
 
     ItemRectFunc mGetRect;
@@ -102,7 +111,7 @@ protected:
         }
     }
 
-    void queryNode(const Node& node, const Rect& queryRect, std::vector<ItemT>& items) const
+    void queryNode(const Node& node, const Rect<RectT>& queryRect, std::vector<ItemT>& items) const
     {
         for (const auto& item : node.items)
             if (rectIntersects(queryRect, mGetRect(item)))
@@ -114,7 +123,7 @@ protected:
                     queryNode(*child, queryRect, items);
     }
 
-    void addItem(Node& node, std::size_t depth, const ItemT& item, const Rect& itemRect)
+    void addItem(Node& node, std::size_t depth, const ItemT& item, const Rect<RectT>& itemRect)
     {
         Node* roll_node = &node;
 
@@ -136,7 +145,7 @@ protected:
         }
     }
 
-    bool removeItem(Node& node, const ItemT& item, const Rect& itemRect)
+    bool removeItem(Node& node, const ItemT& item, const Rect<RectT>& itemRect)
     {
         if (!node.hasChildren)
             doRemoveItem(node, item);
@@ -174,7 +183,7 @@ protected:
         node.items.erase(it);
     }
 
-    std::size_t getQuadrant(int center_x, int center_y, const Rect& itemRect) const noexcept
+    std::size_t getQuadrant(int center_x, int center_y, const Rect<RectT>& itemRect) const noexcept
     {
         if (itemRect.x + itemRect.w <= center_x)
         {
@@ -198,7 +207,7 @@ protected:
             return 0; // None
     }
 
-    Rect computeBox(const Rect& rect, std::size_t direction) const noexcept
+    Rect<int> computeBox(const Rect<int>& rect, std::size_t direction) const noexcept
     {
         auto child_size_w = rect.w / 2;
         auto w_rest = rect.w % 2;
@@ -209,22 +218,46 @@ protected:
         {
             // NW
             case 1:
-                return Rect{rect.x, rect.y, child_size_w + w_rest, child_size_h + h_rest};
+                return Rect<int>{rect.x, rect.y, child_size_w + w_rest, child_size_h + h_rest};
             // NE
             case 2:
-                return Rect{rect.x + child_size_w + w_rest, rect.y, child_size_w, child_size_h + h_rest};
+                return Rect<int>{rect.x + child_size_w + w_rest, rect.y, child_size_w, child_size_h + h_rest};
             // SW
             case 3:
-                return Rect{rect.x, rect.y + child_size_h + h_rest, child_size_w + w_rest, child_size_h};
+                return Rect<int>{rect.x, rect.y + child_size_h + h_rest, child_size_w + w_rest, child_size_h};
             // SE
             case 4:
-                return Rect{rect.x + child_size_w + w_rest, rect.y + child_size_h + h_rest, child_size_w, child_size_h};
+                return Rect<int>{rect.x + child_size_w + w_rest, rect.y + child_size_h + h_rest, child_size_w, child_size_h};
             default:
-                return Rect{0, 0, 0, 0};
+                return Rect<int>{0, 0, 0, 0};
         }
     }
 
-    inline bool rectIntersects(const Rect& rect1, const Rect& rect2) const noexcept
+    Rect<float> computeBox(const Rect<float>& rect, std::size_t direction) const noexcept
+    {
+        auto child_size_w = rect.w / 2;
+        auto child_size_h = rect.h / 2;
+
+        switch (direction)
+        {
+            // NW
+            case 1:
+                return Rect<float>{rect.x, rect.y, child_size_w, child_size_h};
+            // NE
+            case 2:
+                return Rect<float>{rect.x + child_size_w, rect.y, child_size_w, child_size_h};
+            // SW
+            case 3:
+                return Rect<float>{rect.x, rect.y + child_size_h, child_size_w, child_size_h};
+            // SE
+            case 4:
+                return Rect<float>{rect.x + child_size_w, rect.y + child_size_h, child_size_w, child_size_h};
+            default:
+                return Rect<float>{0, 0, 0, 0};
+        }
+    }
+
+    inline bool rectIntersects(const Rect<RectT>& rect1, const Rect<RectT>& rect2) const noexcept
     {
         return !(
             rect1.w == 0 || rect1.h == 0 || rect2.w == 0 || rect2.h == 0 ||

@@ -9,6 +9,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Sources
 set(quadtree-src quadtree-test.cpp)
 
+if (CMAKE_BUILD_TYPE MATCHES Debug)
+    list(APPEND quadtree-src quadtree-debug.cpp)
+endif()
+
 # Targets
 add_executable(quadtree-test ${quadtree-src})
 
