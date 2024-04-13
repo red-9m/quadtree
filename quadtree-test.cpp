@@ -11,8 +11,10 @@
 #include "quadtree-debug.h"
 #endif
 
+constexpr auto testDelim = "-----------------------------------------------------";
+
 template<typename RectT>
-bool rectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* rect2)
+bool altRectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* rect2)
 {
     return !(
         rect1->w1 == 0 || rect1->h1 == 0 || rect2->w1 == 0 || rect2->h1 == 0 ||
@@ -35,74 +37,79 @@ std::vector<Item<RectT>> generateRandomNodes(std::size_t n)
         items[i].rect.h1 = std::min(100.0f - items[i].rect.y1, 100.0f * sizeDistribution(generator));
         items[i].id = i;
     }
+
     return items;
 }
 
 template<typename ItemT, typename RectT>
 void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& runName)
 {
-    auto getRect = [](ItemT item) -> QuadTree::Rect<RectT>
+    auto getRect = [](const ItemT& item) -> QuadTree::Rect<RectT>
     {
         return std::bit_cast<QuadTree::Rect<RectT>>(item->rect);
     };
 
 #ifdef _DEBUG
-    constexpr std::size_t node_items = 2;
+    constexpr std::size_t node_items = 4;
     constexpr std::size_t depth = 2;
     constexpr std::size_t gen_nodes = 32;
 #else
-    constexpr std::size_t node_items = 80;
-    constexpr std::size_t depth = 4;
-    constexpr std::size_t gen_nodes = 10000;
+    constexpr std::size_t node_items = 700;
+    constexpr std::size_t depth = 3;
+    constexpr std::size_t gen_nodes = 50000;
 #endif
 
     auto tree = QuadTree::Tree<ItemT, RectT>({0, 0, 100, 100}, getRect, node_items, depth);
     auto items = generateRandomNodes<RectT>(gen_nodes);
     std::vector<ItemT> query_res;
-    query_res.reserve(gen_nodes / 20 + 10);
+    query_res.reserve(gen_nodes / 8);
 
     auto start1 = std::chrono::steady_clock::now();
     for (auto& item : items)
         tree.add(addFunc(item));
 
 #ifdef _DEBUG
+    std::cout << testDelim << std::endl;
     debugPrintTree<ItemT, RectT>(tree);
 #endif
 
+    QuadTree::Rect<RectT> query_rect{11, 10, 28, 29};
     auto start2 = std::chrono::steady_clock::now();
-    QuadTree::Rect<RectT> query_rect{11,10,28,29};
     tree.query(query_rect, query_res);
     auto stop = std::chrono::steady_clock::now();
 
     auto duration1 = stop - start1;
     auto duration2 = stop - start2;
 
-    std::cout << "Running    : " << runName << std::endl;
-    std::cout << "full time  : " << std::chrono::duration_cast<std::chrono::microseconds>(duration1).count() << "µs" << std::endl;
-    std::cout << "query only : " << std::chrono::duration_cast<std::chrono::microseconds>(duration2).count() << "µs" << std::endl;
-    std::cout << "query items: " << query_res.size() << std::endl;
+    std::cout << testDelim << std::endl;
+    std::cout << "Test                : " << runName << std::endl;
+    std::cout << "Total items         : " << gen_nodes << std::endl;
+    std::cout << "quadtree full time  : " << std::chrono::duration_cast<std::chrono::microseconds>(duration1).count() << "(µs)" << std::endl;
+    std::cout << "quadtree query time : " << std::chrono::duration_cast<std::chrono::microseconds>(duration2).count() << "(µs)" << std::endl;
+    std::cout << "quadtree query items: " << query_res.size() << std::endl;
 
     query_res.clear();
     auto start3 = std::chrono::steady_clock::now();
     for (auto& item : items)
-        if (rectIntersects(&item.rect, (RectLocal<RectT>*)&query_rect))
+        if (altRectIntersects(&item.rect, (RectLocal<RectT>*)&query_rect))
             query_res.push_back(addFunc(item));
     auto duration3 = std::chrono::steady_clock::now() - start3;
-    std::cout << "local rectIntersects result: " << query_res.size() << std::endl;
-    std::cout << "local rectIntersects time  : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "µs" << std::endl;
+    std::cout << "alt. query time     : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "(µs)" << std::endl;
+    std::cout << "alt. query items    : " << query_res.size() << std::endl;
 }
 
 void quadTreeSimple(const std::string& runName)
 {
-    auto getRect = [](Item<int>* item) -> QuadTree::Rect<int>
+    typedef Item<int>* TreeItemT;
+    auto getRect = [](const TreeItemT& item) -> QuadTree::Rect<int>
     {
         return std::bit_cast<QuadTree::Rect<int>>(item->rect);
     };
 
     constexpr std::size_t node_items = 1;
-    constexpr std::size_t depth = 3;
+    constexpr std::size_t depth = 1;
 
-    auto tree = QuadTree::Tree<Item<int>*, int>({0, 0, 100, 100}, getRect, node_items, depth);
+    auto tree = QuadTree::Tree<TreeItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
     std::vector<Item<int>> items{
         {{0, 1, 8, 13}, 1},
         {{2, 1, 2, 2}, 2},
@@ -112,24 +119,28 @@ void quadTreeSimple(const std::string& runName)
     for (auto& item : items)
         tree.add(&item);
 
-    std::vector<Item<int>*> query_res;
-    query_res.reserve(items.size() / 10 + 5);
+    std::vector<TreeItemT> query_res;
+    query_res.reserve(2);
 
 #ifdef _DEBUG
-    debugPrintTree<Item<int>*, int>(tree);
+    std::cout << testDelim << std::endl;
+    debugPrintTree<TreeItemT, int>(tree);
 #endif
 
     tree.remove(&items[1]);
     tree.remove(&items[2]);
 
 #ifdef _DEBUG
-    debugPrintTree<Item<int>*, int>(tree);
+    std::cout << testDelim << std::endl;
+    debugPrintTree<TreeItemT, int>(tree);
 #endif
 
     tree.query({0, 0, 3, 3}, query_res);
 
-    std::cout << "Running    : " << runName << std::endl;
-    std::cout << "query items: " << query_res.size() << std::endl;
+    std::cout << testDelim << std::endl;
+    std::cout << "Test                : " << runName << std::endl;
+    std::cout << "query items         : " << query_res.size() << std::endl;
+    std::cout << testDelim << std::endl;
 }
 
 int main()
@@ -144,14 +155,9 @@ int main()
         return std::make_shared<Item<float>>(std::move(item));
     };
 
-    std::cout << std::endl;
-    quadTree<Item<int>*, int>(addFuncPtr, "quadTree with pointers");
-
-    std::cout << std::endl;
-    quadTree<std::shared_ptr<Item<float>>, float>(addFuncSmartPtr, "quadTree with smart pointers");
-
-    std::cout << std::endl;
-    quadTreeSimple("quadTree simple");
+    quadTree<Item<int>*, int>(addFuncPtr, "QuadTree with pointers");
+    quadTree<std::shared_ptr<Item<float>>, float>(addFuncSmartPtr, "QuadTree with smart pointers");
+    quadTreeSimple("QuadTree simple");
 
     return 0;
 }

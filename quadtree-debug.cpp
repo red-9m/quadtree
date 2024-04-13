@@ -38,7 +38,6 @@ void debugPrintTree(QuadTree::Tree<ItemT, RectT>& tree)
         }
     };
 
-    std::cout << debugDelim << std::endl;
     tree.enumerateNodes(printEnum);
 }
 

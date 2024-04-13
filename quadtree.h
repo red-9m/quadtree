@@ -19,7 +19,7 @@ template<typename ItemT, typename RectT>
 class Tree
 {
 public:
-    using ItemRectFunc = Rect<RectT> (*)(ItemT);
+    using ItemRectFunc = Rect<RectT> (*)(const ItemT&);
 
     Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
         mGetRect(getRect), mRoot(rect, nodeItems), mNodeItems(nodeItems), mDepth(depth)
