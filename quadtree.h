@@ -21,31 +21,31 @@ class Tree
 public:
     using ItemRectFunc = Rect<RectT> (*)(const ItemT&);
 
-    Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
+    constexpr Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
         mGetRect(getRect), mRoot(rect, nodeItems), mNodeItems(nodeItems), mDepth(depth)
     {
         constexpr std::size_t root_depth = 0;
         init(mRoot, root_depth + 1);
     }
 
-    virtual ~Tree()
+    constexpr virtual ~Tree()
     {
         constexpr std::size_t root_depth = 0;
         cleanup(mRoot, root_depth + 1);
     }
 
-    void add(const ItemT& item)
+    constexpr void add(const ItemT& item)
     {
         constexpr std::size_t root_depth = 0;
         addItem(mRoot, root_depth, item, mGetRect(item));
     }
 
-    void remove(const ItemT& item)
+    constexpr void remove(const ItemT& item)
     {
         removeItem(mRoot, item, mGetRect(item));
     }
 
-    void query(const Rect<RectT>& rect, std::vector<ItemT>& items) const
+    constexpr void query(const Rect<RectT>& rect, std::vector<ItemT>& items) const
     {
         queryNode(mRoot, rect, items);
     }
@@ -53,7 +53,7 @@ public:
 #ifdef _DEBUG
     using EnumCallbackT = void (*)(int type, int level, int quadrant, const Rect<RectT>& rect, bool hasChildren, const ItemT*);
 
-    void enumerateNodes(EnumCallbackT enumCallback)
+    constexpr void enumerateNodes(EnumCallbackT enumCallback)
     {
         enumerateNode(mRoot, 0, 0, enumCallback);
     }
@@ -65,7 +65,7 @@ protected:
 
     struct Node
     {
-        Node(const Rect<RectT>& aRect, std::size_t reserve) requires IntType<RectT>: rect(aRect) 
+        constexpr Node(const Rect<RectT>& aRect, std::size_t reserve) requires IntType<RectT>: rect(aRect) 
         {
             centerX = (aRect.x + aRect.w / 2) + (aRect.w % 2);
             centerY = (aRect.y + aRect.h / 2) + (aRect.h % 2);
@@ -73,7 +73,7 @@ protected:
             items.reserve(reserve);
         }
 
-        Node(const Rect<RectT>& aRect, std::size_t reserve) requires FloatType<RectT>: rect(aRect)
+        constexpr Node(const Rect<RectT>& aRect, std::size_t reserve) requires FloatType<RectT>: rect(aRect)
         {
             centerX = (aRect.x + aRect.w / 2);
             centerY = (aRect.y + aRect.h / 2);
@@ -96,7 +96,7 @@ protected:
     const std::size_t mDepth;
     std::equal_to<ItemT> mItemEqual;
 
-    void init(Node& node, std::size_t depth)
+    constexpr void init(Node& node, std::size_t depth)
     {
         std::size_t i = 1;
         for (auto& child : node.children)
@@ -107,7 +107,7 @@ protected:
         }
     }
 
-    void cleanup(Node& node, std::size_t depth)
+    constexpr void cleanup(Node& node, std::size_t depth)
     {
         for (auto& child : node.children)
         {
@@ -117,7 +117,7 @@ protected:
         }
     }
 
-    void queryNode(const Node& node, const Rect<RectT>& queryRect, std::vector<ItemT>& items) const
+    constexpr void queryNode(const Node& node, const Rect<RectT>& queryRect, std::vector<ItemT>& items) const
     {
         for (const auto& item : node.items)
             if (rectIntersects(queryRect, mGetRect(item)))
@@ -129,7 +129,7 @@ protected:
                     queryNode(*child, queryRect, items);
     }
 
-    void addItem(Node& node, std::size_t depth, const ItemT& item, const Rect<RectT>& itemRect)
+    constexpr void addItem(Node& node, std::size_t depth, const ItemT& item, const Rect<RectT>& itemRect)
     {
         Node* roll_node = &node;
 
@@ -151,7 +151,7 @@ protected:
         }
     }
 
-    bool removeItem(Node& node, const ItemT& item, const Rect<RectT>& itemRect)
+    constexpr bool removeItem(Node& node, const ItemT& item, const Rect<RectT>& itemRect)
     {
         if (!node.hasChildren)
             doRemoveItem(node, item);
@@ -181,7 +181,7 @@ protected:
         return (!node.hasChildren)&&(!node.items.size());
     }
 
-    void doRemoveItem(Node& node, const ItemT& item)
+    constexpr void doRemoveItem(Node& node, const ItemT& item)
     {
         // Find the item
         auto it = std::find_if(std::begin(node.items), std::end(node.items),
@@ -189,7 +189,7 @@ protected:
         node.items.erase(it);
     }
 
-    std::size_t getQuadrant(int center_x, int center_y, const Rect<RectT>& itemRect) const noexcept
+    constexpr std::size_t getQuadrant(int center_x, int center_y, const Rect<RectT>& itemRect) const noexcept
     {
         if (itemRect.x + itemRect.w <= center_x)
         {
@@ -213,7 +213,7 @@ protected:
             return 0; // None
     }
 
-    Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires IntType<RectT>
+    constexpr Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires IntType<RectT>
     {
         auto child_size_w = rect.w / 2;
         auto w_rest = rect.w % 2;
@@ -239,7 +239,7 @@ protected:
         }
     }
 
-    Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires FloatType<RectT>
+    constexpr Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires FloatType<RectT>
     {
         auto child_size_w = rect.w / 2;
         auto child_size_h = rect.h / 2;
@@ -263,7 +263,7 @@ protected:
         }
     }
 
-    inline bool rectIntersects(const Rect<RectT>& rect1, const Rect<RectT>& rect2) const noexcept
+    inline constexpr bool rectIntersects(const Rect<RectT>& rect1, const Rect<RectT>& rect2) const noexcept
     {
         return !(
             rect1.w == 0 || rect1.h == 0 || rect2.w == 0 || rect2.h == 0 ||
@@ -272,7 +272,7 @@ protected:
     }
 
 #ifdef _DEBUG
-    void enumerateNode(Node& node, int level, int quadrant, EnumCallbackT enumCallback)
+    constexpr void enumerateNode(Node& node, int level, int quadrant, EnumCallbackT enumCallback)
     {
         enumCallback(0, level, quadrant, node.rect, node.hasChildren, NULL);
         for (const auto &item: node.items)

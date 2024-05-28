@@ -84,9 +84,9 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
     std::cout << testDelim << std::endl;
     std::cout << "Test                : " << runName << std::endl;
     std::cout << "Total items         : " << gen_nodes << std::endl;
-    std::cout << "quadtree full time  : " << std::chrono::duration_cast<std::chrono::microseconds>(duration1).count() << "(µs)" << std::endl;
-    std::cout << "quadtree query time : " << std::chrono::duration_cast<std::chrono::microseconds>(duration2).count() << "(µs)" << std::endl;
-    std::cout << "quadtree query items: " << query_res.size() << std::endl;
+    std::cout << "QuadTree full time  : " << std::chrono::duration_cast<std::chrono::microseconds>(duration1).count() << "(µs)" << std::endl;
+    std::cout << "QuadTree query time : " << std::chrono::duration_cast<std::chrono::microseconds>(duration2).count() << "(µs)" << std::endl;
+    std::cout << "QuadTree query items: " << query_res.size() << std::endl;
 
     query_res.clear();
     auto start3 = std::chrono::steady_clock::now();
@@ -94,8 +94,8 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
         if (altRectIntersects(&item.rect, (RectLocal<RectT>*)&query_rect))
             query_res.push_back(addFunc(item));
     auto duration3 = std::chrono::steady_clock::now() - start3;
-    std::cout << "alt. query time     : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "(µs)" << std::endl;
-    std::cout << "alt. query items    : " << query_res.size() << std::endl;
+    std::cout << "Alt. query time     : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "(µs)" << std::endl;
+    std::cout << "Alt. query items    : " << query_res.size() << std::endl;
 }
 
 void quadTreeSimple(const std::string& runName)
@@ -139,7 +139,7 @@ void quadTreeSimple(const std::string& runName)
 
     std::cout << testDelim << std::endl;
     std::cout << "Test                : " << runName << std::endl;
-    std::cout << "query items         : " << query_res.size() << std::endl;
+    std::cout << "QuadTree query items: " << query_res.size() << std::endl;
     std::cout << testDelim << std::endl;
 }
 
