@@ -2,6 +2,8 @@
 
 #include <cstddef>
 
+// This structure must be castable to QuadTree::Rect by reinterpret_cast
+// Or you need to use QuadTree::Rect directly in item
 template<typename RectT>
 struct RectLocal
 {

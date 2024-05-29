@@ -44,9 +44,9 @@ std::vector<Item<RectT>> generateRandomNodes(std::size_t n)
 template<typename ItemT, typename RectT>
 void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& runName)
 {
-    auto getRect = [](const ItemT& item) -> QuadTree::Rect<RectT>
+    auto getRect = [](const ItemT& item) -> const QuadTree::Rect<RectT>&
     {
-        return std::bit_cast<QuadTree::Rect<RectT>>(item->rect);
+        return reinterpret_cast<QuadTree::Rect<RectT>&>(item->rect);
     };
 
 #ifdef _DEBUG
@@ -101,9 +101,9 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
 void quadTreeSimple(const std::string& runName)
 {
     typedef Item<int>* TreeItemT;
-    auto getRect = [](const TreeItemT& item) -> QuadTree::Rect<int>
+    auto getRect = [](const TreeItemT& item) -> const QuadTree::Rect<int>&
     {
-        return std::bit_cast<QuadTree::Rect<int>>(item->rect);
+        return reinterpret_cast<QuadTree::Rect<int>&>(item->rect);
     };
 
     constexpr std::size_t node_items = 1;
