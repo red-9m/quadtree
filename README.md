@@ -17,7 +17,7 @@ This C++ header library implements QuadTree for rectangular items. The QuadTree 
 
 # Constructor
 ```c++
-Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4);
+constexpr Tree(Rect<RectT> rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4)
 ```
 
 * rect      - Represents your initial rectangle (screen/space)
@@ -26,11 +26,32 @@ Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, 
 * depth     - Depth of QuadTree (1 - means 5 nodes: root node and 4 children)
 
 # Example
-See quadtree-test.cpp:
+See details in quadtree-test.cpp
 
 ```c++
-// Most simple implementation in quadtree-test.cpp
-void quadTreeSimple();
+void quadTreeSimple()
+{
+    // Prepare your Item type and getRect() function to extract Rect from Item
+    // ....
+
+    // QuadTree Constructor: Use integral(int) rectangle coordinates
+    auto tree = QuadTree::Tree<ItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
+
+    // Prepare items
+    std::vector<Item<int>> items{
+        {{0, 1, 8, 13}, 1},
+        {{2, 1, 2, 2}, 2},
+        {{3, 3, 4, 0}, 3}
+    };
+
+    // Add items
+    for (auto& item : items)
+        tree.add(&item);
+
+    // Make a Query to find intersections
+    std::vector<ItemT> query_res;
+    tree.query({0, 0, 3, 3}, query_res);
+}
 ```
 
 # Inspiration code

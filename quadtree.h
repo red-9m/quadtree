@@ -21,8 +21,8 @@ class Tree
 public:
     using ItemRectFunc = Rect<RectT> (*)(const ItemT&);
 
-    constexpr Tree(const Rect<RectT>& rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
-        mGetRect(getRect), mRoot(rect, nodeItems), mNodeItems(nodeItems), mDepth(depth)
+    constexpr Tree(Rect<RectT> rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4):
+        mGetRect(getRect), mRoot(std::move(rect), nodeItems), mNodeItems(nodeItems), mDepth(depth)
     {
         constexpr std::size_t root_depth = 0;
         init(mRoot, root_depth + 1);
@@ -65,18 +65,18 @@ protected:
 
     struct Node
     {
-        constexpr Node(const Rect<RectT>& aRect, std::size_t reserve) requires IntType<RectT>: rect(aRect) 
+        constexpr Node(Rect<RectT> aRect, std::size_t reserve) requires IntType<RectT>: rect(std::move(aRect)) 
         {
-            centerX = (aRect.x + aRect.w / 2) + (aRect.w % 2);
-            centerY = (aRect.y + aRect.h / 2) + (aRect.h % 2);
+            centerX = (rect.x + rect.w / 2) + (rect.w % 2);
+            centerY = (rect.y + rect.h / 2) + (rect.h % 2);
 
             items.reserve(reserve);
         }
 
-        constexpr Node(const Rect<RectT>& aRect, std::size_t reserve) requires FloatType<RectT>: rect(aRect)
+        constexpr Node(Rect<RectT> aRect, std::size_t reserve) requires FloatType<RectT>: rect(std::move(aRect))
         {
-            centerX = (aRect.x + aRect.w / 2);
-            centerY = (aRect.y + aRect.h / 2);
+            centerX = (rect.x + rect.w / 2);
+            centerY = (rect.y + rect.h / 2);
 
             items.reserve(reserve);
         }

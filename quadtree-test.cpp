@@ -25,7 +25,7 @@ bool altRectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* re
 template<typename RectT>
 std::vector<Item<RectT>> generateRandomNodes(std::size_t n)
 {
-    auto generator = std::default_random_engine();
+    auto generator = std::default_random_engine(12345u);
     auto originDistribution = std::uniform_real_distribution(0.0f, 1.0f);
     auto sizeDistribution = std::uniform_real_distribution(0.1f, 0.04f);
     auto items = std::vector<Item<RectT>>(n);
@@ -155,8 +155,8 @@ int main()
         return std::make_shared<Item<float>>(std::move(item));
     };
 
-    quadTree<Item<int>*, int>(addFuncPtr, "QuadTree with pointers");
-    quadTree<std::shared_ptr<Item<float>>, float>(addFuncSmartPtr, "QuadTree with smart pointers");
+    quadTree<Item<int>*, int>(addFuncPtr, "QuadTree with pointers (int)");
+    quadTree<std::shared_ptr<Item<float>>, float>(addFuncSmartPtr, "QuadTree with smart pointers (float)");
     quadTreeSimple("QuadTree simple");
 
     return 0;
