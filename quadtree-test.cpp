@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
+#include <memory>
 #include <functional>
 
 #include "test-types.h"
@@ -11,7 +12,7 @@
 #include "quadtree-debug.h"
 #endif
 
-constexpr auto testDelim = "-----------------------------------------------------";
+constexpr auto testDelim = "----------------------------------------------------------";
 
 template<typename RectT>
 bool altRectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* rect2)
@@ -26,15 +27,15 @@ template<typename RectT>
 std::vector<Item<RectT>> generateRandomNodes(std::size_t n)
 {
     auto generator = std::default_random_engine(12345u);
-    auto originDistribution = std::uniform_real_distribution(0.0f, 1.0f);
-    auto sizeDistribution = std::uniform_real_distribution(0.1f, 0.04f);
+    auto originDistribution = std::uniform_real_distribution(0.1f, 1.0f);
+    auto sizeDistribution = std::uniform_real_distribution(0.1f, 0.14f);
     auto items = std::vector<Item<RectT>>(n);
     for (auto i = std::size_t(0); i < n; ++i)
     {
-        items[i].rect.x1 = 100 * originDistribution(generator);
-        items[i].rect.y1 = 100 * originDistribution(generator);
-        items[i].rect.w1 = std::min(100.0f - items[i].rect.x1, 100.0f * sizeDistribution(generator));
-        items[i].rect.h1 = std::min(100.0f - items[i].rect.y1, 100.0f * sizeDistribution(generator));
+        items[i].rect.localRect.x1 = static_cast<RectT>(100 * originDistribution(generator));
+        items[i].rect.localRect.y1 =  static_cast<RectT>(100 * originDistribution(generator));
+        items[i].rect.localRect.w1 =  static_cast<RectT>(std::min(100.0f - items[i].rect.localRect.x1, 100.0f * sizeDistribution(generator)));
+        items[i].rect.localRect.h1 =  static_cast<RectT>(std::min(100.0f - items[i].rect.localRect.y1, 100.0f * sizeDistribution(generator)));
         items[i].id = i;
     }
 
@@ -46,7 +47,7 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
 {
     auto getRect = [](const ItemT& item) -> const QuadTree::Rect<RectT>&
     {
-        return reinterpret_cast<QuadTree::Rect<RectT>&>(item->rect);
+        return item->rect.quadRect;
     };
 
 #ifdef _DEBUG
@@ -91,7 +92,7 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
     query_res.clear();
     auto start3 = std::chrono::steady_clock::now();
     for (auto& item : items)
-        if (altRectIntersects(&item.rect, (RectLocal<RectT>*)&query_rect))
+        if (altRectIntersects(&item.rect.localRect, (RectLocal<RectT>*)&query_rect))
             query_res.push_back(addFunc(item));
     auto duration3 = std::chrono::steady_clock::now() - start3;
     std::cout << "Alt. query time     : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "(µs)" << std::endl;
@@ -103,7 +104,7 @@ void quadTreeSimple(const std::string& runName)
     typedef Item<int>* TreeItemT;
     auto getRect = [](const TreeItemT& item) -> const QuadTree::Rect<int>&
     {
-        return reinterpret_cast<QuadTree::Rect<int>&>(item->rect);
+        return item->rect.quadRect;
     };
 
     constexpr std::size_t node_items = 1;
@@ -111,9 +112,9 @@ void quadTreeSimple(const std::string& runName)
 
     auto tree = QuadTree::Tree<TreeItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
     std::vector<Item<int>> items{
-        {{0, 1, 8, 13}, 1},
-        {{2, 1, 2, 2}, 2},
-        {{3, 3, 4, 0}, 3}
+        {{{0, 1, 8, 13}}, 1},
+        {{{2, 1, 2, 2}}, 2},
+        {{{3, 3, 4, 0}}, 3}
     };
 
     for (auto& item : items)

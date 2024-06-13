@@ -189,7 +189,7 @@ protected:
         node.items.erase(it);
     }
 
-    constexpr std::size_t getQuadrant(int center_x, int center_y, const Rect<RectT>& itemRect) const noexcept
+    constexpr std::size_t getQuadrant(RectT center_x, RectT center_y, const Rect<RectT>& itemRect) const noexcept
     {
         if (itemRect.x + itemRect.w <= center_x)
         {
@@ -282,7 +282,7 @@ protected:
 
         if (node.hasChildren)
         {
-            for (std::size_t i = 0; i < QUAD_CHILDREN; i++)
+            for (int i = 0; i < QUAD_CHILDREN; i++)
                 enumerateNode(*node.children[i], level+1, i, enumCallback);
         }
     }
