@@ -12,8 +12,8 @@ This C++ header library implements QuadTree for rectangular items. The QuadTree 
 * Should fit nice for game object intersection task
 * Supported integral and floating point rectangle coordinates
 * The QuadTree can work with any class of your item. You just need to provide a callback to get the item's rectangle
-* Two classes to deal with: QuadTree::Tree and QuadTree::Rect
-* Any compatible class can be used instead of QuadTree::Rect in your item to represent a rectangle (ex. SDL_Rect)
+* Two classes to deal with: QuadTree::Tree and QuadTree::Rect. In fact one, as any compatible class can be used instead of QuadTree::Rect in your item to represent a rectangle (ex. SDL_Rect)
+* Supported compilers: Linux: Clang, GNU(GCC); Windows: MSCV(Microsoft Visual Studio)
 
 # Constructor
 ```c++
@@ -35,13 +35,13 @@ void quadTreeSimple()
     // ....
 
     // QuadTree Constructor: Use integral(int) rectangle coordinates
-    auto tree = QuadTree::Tree<ItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
+    auto tree = QuadTree::Tree<TreeItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
 
     // Prepare items
     std::vector<Item<int>> items{
-        {{0, 1, 8, 13}, 1},
-        {{2, 1, 2, 2}, 2},
-        {{3, 3, 4, 0}, 3}
+        {{{0, 1, 8, 13}}, 1},
+        {{{2, 1, 2, 2}}, 2},
+        {{{3, 3, 4, 0}}, 3}
     };
 
     // Add items
@@ -49,7 +49,7 @@ void quadTreeSimple()
         tree.add(&item);
 
     // Make a Query to find intersections
-    std::vector<ItemT> query_res;
+    std::vector<TreeItemT> query_res;
     tree.query({0, 0, 3, 3}, query_res);
 }
 ```
