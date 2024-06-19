@@ -12,7 +12,7 @@
 #include "quadtree-debug.h"
 #endif
 
-constexpr auto testDelim = "----------------------------------------------------------";
+constexpr auto testDelim = "-------------------------------------------------------------";
 
 template<typename RectT>
 bool altRectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* rect2)
@@ -55,19 +55,20 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
     constexpr std::size_t depth = 2;
     constexpr std::size_t gen_nodes = 32;
 #else
-    constexpr std::size_t node_items = 700;
+    constexpr std::size_t node_items = 250;
     constexpr std::size_t depth = 3;
-    constexpr std::size_t gen_nodes = 50000;
+    constexpr std::size_t gen_nodes = 5000;
 #endif
 
     auto tree = QuadTree::Tree<ItemT, RectT>({0, 0, 100, 100}, getRect, node_items, depth);
     auto items = generateRandomNodes<RectT>(gen_nodes);
     std::vector<ItemT> query_res;
-    query_res.reserve(gen_nodes / 8);
+    query_res.reserve(gen_nodes / 5);
 
-    auto start1 = std::chrono::steady_clock::now();
+    auto start = std::chrono::steady_clock::now();
     for (auto& item : items)
         tree.add(addFunc(item));
+    auto duration1 = std::chrono::steady_clock::now() - start;
 
 #ifdef _DEBUG
     std::cout << testDelim << std::endl;
@@ -75,28 +76,33 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
 #endif
 
     QuadTree::Rect<RectT> query_rect{11, 10, 28, 29};
-    auto start2 = std::chrono::steady_clock::now();
+    start = std::chrono::steady_clock::now();
     tree.query(query_rect, query_res);
-    auto stop = std::chrono::steady_clock::now();
+    auto duration2 = std::chrono::steady_clock::now() - start;
 
-    auto duration1 = stop - start1;
-    auto duration2 = stop - start2;
+    start = std::chrono::steady_clock::now();
+    std::vector<std::pair<ItemT, ItemT>> query_all_res;
+    query_all_res.reserve(gen_nodes * 200);
+    tree.queryAll(query_all_res);
+    auto duration3 = std::chrono::steady_clock::now() - start;
 
     std::cout << testDelim << std::endl;
-    std::cout << "Test                : " << runName << std::endl;
-    std::cout << "Total items         : " << gen_nodes << std::endl;
-    std::cout << "QuadTree full time  : " << std::chrono::duration_cast<std::chrono::microseconds>(duration1).count() << "(µs)" << std::endl;
-    std::cout << "QuadTree query time : " << std::chrono::duration_cast<std::chrono::microseconds>(duration2).count() << "(µs)" << std::endl;
-    std::cout << "QuadTree query items: " << query_res.size() << std::endl;
+    std::cout << "Test                   : " << runName << std::endl;
+    std::cout << "Total items            : " << gen_nodes << std::endl;
+    std::cout << "QuadTree add time      : " << std::chrono::duration_cast<std::chrono::microseconds>(duration1).count() << "(µs)" << std::endl;
+    std::cout << "QuadTree query time    : " << std::chrono::duration_cast<std::chrono::microseconds>(duration2).count() << "(µs)" << std::endl;
+    std::cout << "QuadTree queryAll time : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "(µs)" << std::endl;
+    std::cout << "QuadTree query items   : " << query_res.size() << std::endl;
+    std::cout << "QuadTree queryAll items: " << query_all_res.size() << std::endl;
 
     query_res.clear();
-    auto start3 = std::chrono::steady_clock::now();
+    start = std::chrono::steady_clock::now();
     for (auto& item : items)
         if (altRectIntersects(&item.rect.localRect, (RectLocal<RectT>*)&query_rect))
             query_res.push_back(addFunc(item));
-    auto duration3 = std::chrono::steady_clock::now() - start3;
-    std::cout << "Alt. query time     : " << std::chrono::duration_cast<std::chrono::microseconds>(duration3).count() << "(µs)" << std::endl;
-    std::cout << "Alt. query items    : " << query_res.size() << std::endl;
+    auto duration4 = std::chrono::steady_clock::now() - start;
+    std::cout << "Alt. query time        : " << std::chrono::duration_cast<std::chrono::microseconds>(duration4).count() << "(µs)" << std::endl;
+    std::cout << "Alt. query items       : " << query_res.size() << std::endl;
 }
 
 void quadTreeSimple(const std::string& runName)
@@ -112,21 +118,35 @@ void quadTreeSimple(const std::string& runName)
 
     auto tree = QuadTree::Tree<TreeItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
     std::vector<Item<int>> items{
-        {{{0, 1, 8, 13}}, 1},
-        {{{2, 1, 2, 2}}, 2},
-        {{{3, 3, 4, 0}}, 3}
+        {{{10, 10, 3, 3}}, 1},
+        {{{60, 10, 3, 3}}, 2},
+        {{{10, 60, 3, 3}}, 3},
+        {{{60, 60, 3, 3}}, 4},
+        {{{11, 11, 50, 50}}, 5},
+        {{{11, 11, 50, 3}}, 6},
+        {{{11, 11, 3, 50}}, 7},
     };
 
     for (auto& item : items)
         tree.add(&item);
 
-    std::vector<TreeItemT> query_res;
-    query_res.reserve(2);
-
 #ifdef _DEBUG
     std::cout << testDelim << std::endl;
     debugPrintTree<TreeItemT, int>(tree);
 #endif
+
+    std::string str_res;
+    std::vector<std::pair<TreeItemT, TreeItemT>> query_all_res;
+    query_all_res.reserve(10);
+    tree.queryAll(query_all_res);
+    for (const auto& pair : query_all_res)
+    {
+        str_res.append("|");
+        str_res.append(std::to_string(pair.first->id));
+        str_res.append("x");
+        str_res.append(std::to_string(pair.second->id));
+        str_res.append("|");
+    }
 
     tree.remove(&items[1]);
     tree.remove(&items[2]);
@@ -136,11 +156,14 @@ void quadTreeSimple(const std::string& runName)
     debugPrintTree<TreeItemT, int>(tree);
 #endif
 
-    tree.query({0, 0, 3, 3}, query_res);
+    std::vector<TreeItemT> query_res;
+    query_res.reserve(2);
+    tree.query({11, 11, 3, 3}, query_res);
 
     std::cout << testDelim << std::endl;
-    std::cout << "Test                : " << runName << std::endl;
-    std::cout << "QuadTree query items: " << query_res.size() << std::endl;
+    std::cout << "Test                   : " << runName << std::endl;
+    std::cout << "QuadTree query items   : " << query_res.size() << std::endl;
+    std::cout << "QuadTree queryAll items: " << query_all_res.size() << " : " << str_res << std::endl;
     std::cout << testDelim << std::endl;
 }
 

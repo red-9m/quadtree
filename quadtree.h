@@ -50,6 +50,11 @@ public:
         queryNode(mRoot, rect, items);
     }
 
+    constexpr void queryAll(std::vector<std::pair<ItemT, ItemT>>& itemPairs) const
+    {
+        queryNodeAll(mRoot, itemPairs);
+    }
+
 #ifdef _DEBUG
     using EnumCallbackT = void (*)(int type, int level, int quadrant, const Rect<RectT>& rect, bool hasChildren, const ItemT*);
 
@@ -124,9 +129,51 @@ protected:
                 items.push_back(item);
 
         if (node.hasChildren)
-            for (auto& child : node.children)
+            for (const auto& child : node.children)
                 if (rectIntersects(queryRect, child->rect))
                     queryNode(*child, queryRect, items);
+    }
+
+    constexpr void queryNodeAll(const Node& node, std::vector<std::pair<ItemT, ItemT>>& itemPairs) const
+    {   
+        // Check for intersection between items in current node
+        for (auto item_a = node.items.cbegin(); item_a != node.items.cend(); item_a++)
+        {
+            const Rect<RectT>& item_rect = mGetRect(*item_a);
+            for (auto item_b = std::next(item_a, 1); item_b != node.items.cend(); item_b++)
+                if (rectIntersects(item_rect, mGetRect(*item_b)))
+                    itemPairs.emplace_back(*item_a, *item_b);
+        }
+    
+        if (node.hasChildren)
+        {
+            // Check for intersection between items and sub-items
+            for (const auto& child : node.children)
+            {
+                for (const auto& item : node.items)
+                    queryNodeItems(*child, item, itemPairs);
+            }
+
+            // Do the same for all other children
+            for (const auto& child : node.children)
+                queryNodeAll(*child, itemPairs);
+        }
+    }
+
+    constexpr void queryNodeItems(const Node& node, const ItemT& item, std::vector<std::pair<ItemT, ItemT>>& itemPairs) const
+    {
+        const Rect<RectT>& item_rect = mGetRect(item);
+        for (const auto& sub_item : node.items)
+        {
+            if (rectIntersects(mGetRect(sub_item), item_rect))
+                itemPairs.emplace_back(item, sub_item);
+        }
+
+        if (node.hasChildren)
+        {
+            for (const auto& child : node.children)
+                queryNodeItems(*child, item, itemPairs);
+        }
     }
 
     constexpr void addItem(Node& node, std::size_t depth, const ItemT& item, const Rect<RectT>& itemRect)
@@ -184,7 +231,7 @@ protected:
     constexpr void doRemoveItem(Node& node, const ItemT& item)
     {
         // Find the item
-        auto it = std::find_if(std::begin(node.items), std::end(node.items),
+        auto it = std::find_if(std::cbegin(node.items), std::cend(node.items),
             [this, &item](const auto& rhs){ return mItemEqual(item, rhs); });
         node.items.erase(it);
     }
@@ -198,8 +245,6 @@ protected:
                 return 1; // NW
             else if (itemRect.y >= center_y)
                 return 3; // SW
-            else
-                return 0; // None
         } else if (itemRect.x >= center_x)
         {
             // East
@@ -207,10 +252,9 @@ protected:
                 return 2; // NE
             else if (itemRect.y >= center_y)
                 return 4; // SE
-            else
-                return 0; // None
-        } else
-            return 0; // None
+        }
+
+        return 0; // None
     }
 
     constexpr Rect<RectT> computeBox(const Rect<RectT>& rect, std::size_t direction) const noexcept requires IntType<RectT>
