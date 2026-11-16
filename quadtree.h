@@ -213,7 +213,7 @@ protected:
                     bool has_children = false;
                     for (const auto& child : node.children)
                     {
-                        if (child->items.size())
+                        if (child->items.size() || child->hasChildren)
                         {
                             has_children = true;
                             break;
