@@ -238,7 +238,8 @@ protected:
         // Find the item
         auto it = std::find_if(std::cbegin(node.items), std::cend(node.items),
             [this, &item](const auto& rhs){ return mItemEqual(item, rhs); });
-        node.items.erase(it);
+        if (it != std::cend(node.items))
+            node.items.erase(it);
     }
 
     constexpr std::size_t getQuadrant(RectT center_x, RectT center_y, const Rect<RectT>& itemRect) const noexcept
