@@ -16,7 +16,7 @@ A QuadTree distributes rectangles to quadrants by recursively subdividing a regi
 ```
 
 # API
-* add()      - Adds an item containing a rectangle (like a Bounding Box for game item) to the QuadTree
+* add()      - Adds an item containing a rectangle (like a Bounding Box for game item) to the QuadTree. Returns true on success, or false without inserting if the rectangle is not fully contained in the root (matching root edges is allowed)
 * remove()   - Removes one of the previously added items from the QuadTree
 * query()    - Returns a list of items that intersect with given rectangle
 * queryAll() - Returns a list of item pairs that contain all intersections between tree items

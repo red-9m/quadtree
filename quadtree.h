@@ -39,10 +39,17 @@ public:
         cleanup(mRoot, root_depth + 1);
     }
 
-    constexpr void add(const ItemT& item)
+    constexpr bool add(const ItemT& item)
     {
+        const Rect<RectT>& item_rect = mGetRect(item);
+        if (!(item_rect.x >= mRoot.rect.x && item_rect.y >= mRoot.rect.y &&
+              item_rect.x + item_rect.w <= mRoot.rect.x + mRoot.rect.w &&
+              item_rect.y + item_rect.h <= mRoot.rect.y + mRoot.rect.h))
+            return false;
+
         constexpr std::size_t root_depth = 0;
-        addItem(mRoot, root_depth, item, mGetRect(item));
+        addItem(mRoot, root_depth, item, item_rect);
+        return true;
     }
 
     constexpr void remove(const ItemT& item)
