@@ -149,7 +149,7 @@ protected:
 
         if (node.hasChildren)
             for (const auto& child : node.children)
-                if (rectIntersects(queryRect, child->rect))
+                if (rectIntersects(queryRect, child->rect, true))
                     queryNode(*child, queryRect, items);
     }
 
@@ -258,6 +258,12 @@ protected:
 
     constexpr std::size_t getQuadrant(RectT center_x, RectT center_y, const Rect<RectT>& itemRect) const noexcept
     {
+        // Points and lines touching the center lines can intersect items of several quadrants
+        if ((itemRect.w == 0 || itemRect.h == 0) &&
+            ((itemRect.x <= center_x && itemRect.x + itemRect.w >= center_x) ||
+             (itemRect.y <= center_y && itemRect.y + itemRect.h >= center_y)))
+            return 0; // None
+
         if (itemRect.x + itemRect.w <= center_x)
         {
             // West
@@ -327,10 +333,15 @@ protected:
         }
     }
 
-    inline constexpr bool rectIntersects(const Rect<RectT>& rect1, const Rect<RectT>& rect2) const noexcept
+    inline constexpr bool rectIntersects(const Rect<RectT>& rect1, const Rect<RectT>& rect2, bool closed = false) const noexcept
     {
+        // Points and lines (w == 0 || h == 0) are checked as closed rectangles
+        if (closed || rect1.w == 0 || rect1.h == 0 || rect2.w == 0 || rect2.h == 0)
+            return !(
+                rect1.x > rect2.x + rect2.w || rect1.x + rect1.w < rect2.x ||
+                rect1.y > rect2.y + rect2.h || rect1.y + rect1.h < rect2.y);
+
         return !(
-            rect1.w == 0 || rect1.h == 0 || rect2.w == 0 || rect2.h == 0 ||
             rect1.x >= rect2.x + rect2.w || rect1.x + rect1.w <= rect2.x ||
             rect1.y >= rect2.y + rect2.h || rect1.y + rect1.h <= rect2.y);
     }
