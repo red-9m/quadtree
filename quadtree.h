@@ -28,6 +28,11 @@ public:
         init(mRoot, root_depth + 1);
     }
 
+    Tree(const Tree&) = delete;
+    Tree& operator=(const Tree&) = delete;
+    Tree(Tree&&) = delete;
+    Tree& operator=(Tree&&) = delete;
+
     constexpr virtual ~Tree()
     {
         constexpr std::size_t root_depth = 0;
