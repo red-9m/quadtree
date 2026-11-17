@@ -170,7 +170,8 @@ protected:
             for (const auto& child : node.children)
             {
                 for (const auto& item : node.items)
-                    queryNodeItems(*child, item, itemPairs);
+                    if (rectIntersects(mGetRect(item), child->rect, true))
+                        queryNodeItems(*child, item, itemPairs);
             }
 
             // Do the same for all other children
@@ -191,7 +192,8 @@ protected:
         if (node.hasChildren)
         {
             for (const auto& child : node.children)
-                queryNodeItems(*child, item, itemPairs);
+                if (rectIntersects(item_rect, child->rect, true))
+                    queryNodeItems(*child, item, itemPairs);
         }
     }
 
