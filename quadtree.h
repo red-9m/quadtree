@@ -25,7 +25,14 @@ public:
         mGetRect(getRect), mRoot(std::move(rect), nodeItems), mNodeItems(nodeItems), mDepth(depth)
     {
         constexpr std::size_t root_depth = 0;
-        init(mRoot, root_depth + 1);
+        try
+        {
+            init(mRoot, root_depth + 1);
+        } catch (...)
+        {
+            cleanup(mRoot, root_depth + 1);
+            throw;
+        }
     }
 
     Tree(const Tree&) = delete;
@@ -100,7 +107,7 @@ protected:
 
         bool hasChildren = false;
 
-        Node* children[QUAD_CHILDREN];
+        Node* children[QUAD_CHILDREN] = {};
         std::vector<ItemT> items;
         const Rect<RectT> rect;
         RectT centerX;
@@ -128,7 +135,7 @@ protected:
     {
         for (auto& child : node.children)
         {
-            if (depth < mDepth)
+            if (child && depth < mDepth)
                 cleanup(*child, depth + 1);
             delete child;
         }
