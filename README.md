@@ -21,6 +21,17 @@ A QuadTree distributes rectangles to quadrants by recursively subdividing a regi
 * query()    - Returns a list of items that intersect with given rectangle
 * queryAll() - Returns a list of item pairs that contain all intersections between tree items
 
+# Updating item geometry
+The rectangle returned by `getRect()` must remain unchanged while the item is in the tree. To move or resize an item, remove it using its old bounds, change its rectangle, then add it again:
+
+```c++
+tree.remove(&item);             // Uses old bounds
+item.rect.quadRect = newRect;
+tree.add(&item);                // Uses new bounds
+```
+
+Changing bounds before `remove()` can make removal search the wrong node and cause queries to miss intersections.
+
 # Features
 * Template based implementation takes single header file only
 * Tries to provide maximum performance that should fit nice for game object intersection task
