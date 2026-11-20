@@ -1,0 +1,136 @@
+run,pc,bucket,samples,period,pct_commit,caller_pc,inline_location
+1-uniform-100000,0x13d00f,after_payload_load,278,423951627,72.61,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-uniform-100000,0xe3795,after_rank_flag_load,67,102568388,17.57,0xe5660,quadtree-index-impl.h:1981
+1-uniform-100000,0x13d01e,loop_helper_overhead,8,12200058,2.09,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-uniform-100000,0x13d02b,descriptor_load,5,7655206,1.31,0xe379f,quadtree-index-impl.h:2116
+1-uniform-100000,0x13d00c,payload_load,5,7485223,1.28,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-uniform-100000,0x13d000,loop_helper_overhead,4,5924896,1.01,0xe379f,quadtree-index-impl.h:2108
+1-uniform-100000,0x13d04f,dense_store,2,3069094,0.53,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-uniform-100000,0xe377c,loop_helper_overhead,2,3063634,0.52,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+1-uniform-100000,0x13d017,loop_helper_overhead,2,3057866,0.52,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-uniform-100000,0x13d061,loop_helper_overhead,2,3009586,0.52,0xe379f,quadtree-index-impl.h:2119
+1-uniform-100000,0x13d04b,dense_store,1,1539355,0.26,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-uniform-100000,0xe37da,loop_helper_overhead,1,1532396,0.26,0xe5660,quadtree-index-impl.h:1975
+1-uniform-100000,0xe37aa,loop_helper_overhead,1,1527813,0.26,0xe5660,quadtree-index-impl.h:1984
+1-uniform-100000,0xe379c,loop_helper_overhead,1,1527707,0.26,0xe5660,quadtree-index-impl.h:1981
+1-uniform-100000,0x13d030,loop_helper_overhead,1,1524335,0.26,0xe379f,quadtree-index-impl.h:2117
+1-uniform-100000,0xe37c4,counts_rank_test_key_rewrite,1,1521754,0.26,0xe5660,quadtree-index-impl.h:1984
+1-uniform-100000,0x13d013,dense_store,1,1360672,0.23,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-uniform-100000,0x13d044,dense_store,1,1339641,0.23,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-split-line-100000,0x13d00f,after_payload_load,263,400504322,73.70,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-split-line-100000,0xe3795,after_rank_flag_load,59,89883217,16.54,0xe5660,quadtree-index-impl.h:1981
+1-split-line-100000,0x13d01e,loop_helper_overhead,10,15353553,2.83,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-split-line-100000,0x13d00c,payload_load,7,10749324,1.98,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-split-line-100000,0xe37cf,counts_rank_test_key_rewrite,2,3072098,0.57,0xe5660,quadtree-index-impl.h:1992
+1-split-line-100000,0x13d000,loop_helper_overhead,2,3071465,0.57,0xe379f,quadtree-index-impl.h:2108
+1-split-line-100000,0xe3780,key_load,2,3053958,0.56,0xe5660,quadtree-index-impl.h:1979
+1-split-line-100000,0x13d02b,descriptor_load,2,2874477,0.53,0xe379f,quadtree-index-impl.h:2116
+1-split-line-100000,0x13d013,dense_store,2,2859087,0.53,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-split-line-100000,0xe379c,loop_helper_overhead,1,1540709,0.28,0xe5660,quadtree-index-impl.h:1981
+1-split-line-100000,0x13d04b,dense_store,1,1539542,0.28,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-split-line-100000,0xe37bc,counts_rank_test_key_rewrite,1,1539210,0.28,0xe5660,quadtree-index-impl.h:1983
+1-split-line-100000,0x13d04f,dense_store,1,1536745,0.28,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-split-line-100000,0xe37aa,loop_helper_overhead,1,1535493,0.28,0xe5660,quadtree-index-impl.h:1984
+1-split-line-100000,0xe37c4,counts_rank_test_key_rewrite,1,1526272,0.28,0xe5660,quadtree-index-impl.h:1984
+1-split-line-100000,0xe3767,loop_helper_overhead,1,1501436,0.28,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+1-split-line-100000,0x13d026,dense_store,1,1270285,0.23,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-split-line-translated-100000,0x13d00f,after_payload_load,270,411494940,73.61,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-split-line-translated-100000,0xe3795,after_rank_flag_load,61,92785091,16.60,0xe5660,quadtree-index-impl.h:1981
+1-split-line-translated-100000,0x13d04f,dense_store,4,6113425,1.09,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-split-line-translated-100000,0x13d01e,loop_helper_overhead,4,6094594,1.09,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-split-line-translated-100000,0x13d000,loop_helper_overhead,3,4608822,0.82,0xe379f,quadtree-index-impl.h:2108
+1-split-line-translated-100000,0x13d030,loop_helper_overhead,3,4604382,0.82,0xe379f,quadtree-index-impl.h:2117
+1-split-line-translated-100000,0x13d052,loop_helper_overhead,3,4572854,0.82,0xe379f,quadtree-index-impl.h:2118
+1-split-line-translated-100000,0x13d00c,payload_load,3,4566336,0.82,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-split-line-translated-100000,0x13d044,dense_store,3,4241720,0.76,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-split-line-translated-100000,0xe379c,loop_helper_overhead,2,3074461,0.55,0xe5660,quadtree-index-impl.h:1981
+1-split-line-translated-100000,0x13d033,loop_helper_overhead,2,3074110,0.55,0xe379f,quadtree-index-impl.h:2117
+1-split-line-translated-100000,0xe37d7,loop_helper_overhead,2,3071832,0.55,0xe5660,quadtree-index-impl.h:1975
+1-split-line-translated-100000,0xe37bc,counts_rank_test_key_rewrite,2,3067388,0.55,0xe5660,quadtree-index-impl.h:1983
+1-split-line-translated-100000,0xe37aa,loop_helper_overhead,2,3054193,0.55,0xe5660,quadtree-index-impl.h:1984
+1-split-line-translated-100000,0xe37c4,counts_rank_test_key_rewrite,1,1537769,0.28,0xe5660,quadtree-index-impl.h:1984
+1-split-line-translated-100000,0xe377c,loop_helper_overhead,1,1531133,0.27,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+1-split-line-translated-100000,0x13d017,loop_helper_overhead,1,1524852,0.27,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-clustered-100000,0x13d00f,after_payload_load,220,335591926,73.62,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-clustered-100000,0xe3795,after_rank_flag_load,59,89904485,19.72,0xe5660,quadtree-index-impl.h:1981
+1-clustered-100000,0x13d01e,loop_helper_overhead,6,9216650,2.02,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-clustered-100000,0x13d00c,payload_load,3,4604965,1.01,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+1-clustered-100000,0xe37aa,loop_helper_overhead,3,4584892,1.01,0xe5660,quadtree-index-impl.h:1984
+1-clustered-100000,0x13d026,dense_store,2,2760739,0.61,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+1-clustered-100000,0xe37c4,counts_rank_test_key_rewrite,1,1540536,0.34,0xe5660,quadtree-index-impl.h:1984
+1-clustered-100000,0x13d030,loop_helper_overhead,1,1534997,0.34,0xe379f,quadtree-index-impl.h:2117
+1-clustered-100000,0x13d033,loop_helper_overhead,1,1533945,0.34,0xe379f,quadtree-index-impl.h:2117
+1-clustered-100000,0xe37cf,counts_rank_test_key_rewrite,1,1528992,0.34,0xe5660,quadtree-index-impl.h:1992
+1-clustered-100000,0x13d04f,dense_store,1,1527459,0.34,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+1-clustered-100000,0xe3791,descriptor_load,1,1495231,0.33,0xe5660,optional:586 <- optional:1273 <- quadtree-index-impl.h:1981
+2-uniform-100000,0x13d00f,after_payload_load,321,422813829,67.77,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-uniform-100000,0xe3795,after_rank_flag_load,100,131848991,21.13,0xe5660,quadtree-index-impl.h:1981
+2-uniform-100000,0x13d00c,payload_load,11,14582960,2.34,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-uniform-100000,0x13d01e,loop_helper_overhead,11,14358206,2.30,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-uniform-100000,0xe377c,loop_helper_overhead,6,7935088,1.27,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+2-uniform-100000,0xe37da,loop_helper_overhead,4,5284534,0.85,0xe5660,quadtree-index-impl.h:1975
+2-uniform-100000,0xe379c,loop_helper_overhead,3,3967808,0.64,0xe5660,quadtree-index-impl.h:1981
+2-uniform-100000,0x13d013,dense_store,3,3800421,0.61,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-uniform-100000,0x13d04f,dense_store,2,2655653,0.43,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+2-uniform-100000,0xe37a5,loop_helper_overhead,2,2653252,0.43,0xe5660,quadtree-index-impl.h:1984
+2-uniform-100000,0xe3780,key_load,2,2651644,0.42,0xe5660,quadtree-index-impl.h:1979
+2-uniform-100000,0xe37af,loop_helper_overhead,2,2466088,0.40,0xe5660,quadtree-index-impl.h:1984
+2-uniform-100000,0x13d056,dense_store,1,1331807,0.21,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2118
+2-uniform-100000,0xe37bc,counts_rank_test_key_rewrite,1,1325217,0.21,0xe5660,quadtree-index-impl.h:1983
+2-uniform-100000,0x13d061,loop_helper_overhead,1,1324993,0.21,0xe379f,quadtree-index-impl.h:2119
+2-uniform-100000,0x13d052,loop_helper_overhead,1,1322502,0.21,0xe379f,quadtree-index-impl.h:2118
+2-uniform-100000,0x13d000,loop_helper_overhead,1,1308482,0.21,0xe379f,quadtree-index-impl.h:2108
+2-uniform-100000,0x13d026,dense_store,1,1163196,0.19,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-uniform-100000,0x13d044,dense_store,1,1139633,0.18,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+2-split-line-100000,0x13d00f,after_payload_load,311,409295504,76.27,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-split-line-100000,0xe3795,after_rank_flag_load,54,70934584,13.22,0xe5660,quadtree-index-impl.h:1981
+2-split-line-100000,0x13d01e,loop_helper_overhead,11,14579485,2.72,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-split-line-100000,0x13d00c,payload_load,8,10537431,1.96,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-split-line-100000,0xe37af,loop_helper_overhead,5,6562140,1.22,0xe5660,quadtree-index-impl.h:1984
+2-split-line-100000,0x13d04f,dense_store,4,5291592,0.99,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+2-split-line-100000,0x13d056,dense_store,2,2635925,0.49,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2118
+2-split-line-100000,0x13d029,loop_helper_overhead,2,2633091,0.49,0xe379f,quadtree-index-impl.h:2117
+2-split-line-100000,0x13d026,dense_store,2,2245646,0.42,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-split-line-100000,0xe3784,loop_helper_overhead,1,1330260,0.25,0xe5660,quadtree-index-impl.h:1979
+2-split-line-100000,0x13d052,loop_helper_overhead,1,1330228,0.25,0xe379f,quadtree-index-impl.h:2118
+2-split-line-100000,0xe37d7,loop_helper_overhead,1,1328786,0.25,0xe5660,quadtree-index-impl.h:1975
+2-split-line-100000,0xe37aa,loop_helper_overhead,1,1328305,0.25,0xe5660,quadtree-index-impl.h:1984
+2-split-line-100000,0x13d044,dense_store,1,1324947,0.25,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+2-split-line-100000,0xe3789,loop_helper_overhead,1,1321270,0.25,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1979
+2-split-line-100000,0x13d030,loop_helper_overhead,1,1319543,0.25,0xe379f,quadtree-index-impl.h:2117
+2-split-line-100000,0x13d003,loop_helper_overhead,1,1317301,0.25,0xe379f,quadtree-index-impl.h:2108
+2-split-line-100000,0xe377c,loop_helper_overhead,1,1308481,0.24,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+2-split-line-translated-100000,0x13d00f,after_payload_load,324,426049366,76.28,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-split-line-translated-100000,0xe3795,after_rank_flag_load,68,89193758,15.97,0xe5660,quadtree-index-impl.h:1981
+2-split-line-translated-100000,0x13d01e,loop_helper_overhead,8,10613484,1.90,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-split-line-translated-100000,0x13d030,loop_helper_overhead,3,3977299,0.71,0xe379f,quadtree-index-impl.h:2117
+2-split-line-translated-100000,0xe37bc,counts_rank_test_key_rewrite,2,2656887,0.48,0xe5660,quadtree-index-impl.h:1983
+2-split-line-translated-100000,0x13d052,loop_helper_overhead,2,2656782,0.48,0xe379f,quadtree-index-impl.h:2118
+2-split-line-translated-100000,0x13d013,dense_store,2,2654435,0.48,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-split-line-translated-100000,0xe37c4,counts_rank_test_key_rewrite,2,2647985,0.47,0xe5660,quadtree-index-impl.h:1984
+2-split-line-translated-100000,0x13d017,loop_helper_overhead,2,2640057,0.47,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-split-line-translated-100000,0xe37d7,loop_helper_overhead,2,2633110,0.47,0xe5660,quadtree-index-impl.h:1975
+2-split-line-translated-100000,0x13d04f,dense_store,2,2474105,0.44,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+2-split-line-translated-100000,0x13d00c,payload_load,2,2439738,0.44,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-split-line-translated-100000,0x13d02b,descriptor_load,1,1330584,0.24,0xe379f,quadtree-index-impl.h:2116
+2-split-line-translated-100000,0xe3784,loop_helper_overhead,1,1327234,0.24,0xe5660,quadtree-index-impl.h:1979
+2-split-line-translated-100000,0xe378d,loop_helper_overhead,1,1326573,0.24,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1979
+2-split-line-translated-100000,0xe3773,loop_helper_overhead,1,1325045,0.24,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+2-split-line-translated-100000,0xe37af,loop_helper_overhead,1,1320768,0.24,0xe5660,quadtree-index-impl.h:1984
+2-split-line-translated-100000,0xe3791,descriptor_load,1,1286888,0.23,0xe5660,optional:586 <- optional:1273 <- quadtree-index-impl.h:1981
+2-clustered-100000,0x13d00f,after_payload_load,237,312040683,71.69,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-clustered-100000,0xe3795,after_rank_flag_load,64,84187910,19.34,0xe5660,quadtree-index-impl.h:1981
+2-clustered-100000,0x13d01e,loop_helper_overhead,6,7955168,1.83,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-clustered-100000,0xe37d7,loop_helper_overhead,5,6464023,1.49,0xe5660,quadtree-index-impl.h:1975
+2-clustered-100000,0x13d00c,payload_load,5,6434330,1.48,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2114
+2-clustered-100000,0xe379c,loop_helper_overhead,3,3953906,0.91,0xe5660,quadtree-index-impl.h:1981
+2-clustered-100000,0xe37cf,counts_rank_test_key_rewrite,2,2651159,0.61,0xe5660,quadtree-index-impl.h:1992
+2-clustered-100000,0xe377c,loop_helper_overhead,1,1330236,0.31,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1978
+2-clustered-100000,0x13d04f,dense_store,1,1327077,0.30,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116
+2-clustered-100000,0xe3789,loop_helper_overhead,1,1326269,0.30,0xe5660,quadtree-index-impl.h:120 <- quadtree-index-impl.h:1979
+2-clustered-100000,0xe37af,loop_helper_overhead,1,1325506,0.30,0xe5660,quadtree-index-impl.h:1984
+2-clustered-100000,0x13d017,loop_helper_overhead,1,1316930,0.30,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-clustered-100000,0xe37bc,counts_rank_test_key_rewrite,1,1313299,0.30,0xe5660,quadtree-index-impl.h:1983
+2-clustered-100000,0xe37c4,counts_rank_test_key_rewrite,1,1301601,0.30,0xe5660,quadtree-index-impl.h:1984
+2-clustered-100000,0x13d026,dense_store,1,1180107,0.27,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2115
+2-clustered-100000,0x13d044,dense_store,1,1156357,0.27,0xe379f,stl_construct.h:110 <- quadtree-index-impl.h:2116

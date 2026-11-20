@@ -1,0 +1,14 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2323,6 +2323,11 @@
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;
+         const auto* meta = mEntries.mMeta;
++        if (count == 2)
++        {
++            testPair(0, 1, false, context, visitor, predicate);
++            return;
++        }
+         for (std::uint32_t a = 0; a + 1 < count; ++a)
+             for (std::uint32_t b = a + 1; b < count; ++b)
+             {

@@ -1,0 +1,37 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot int32 clustered n=0 vs brute force (brute)                                     2.118 [2.047-2.191]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=1 vs brute force (brute)                                     3.323 [3.206-3.444]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=16 vs brute force (brute)                                    1.349 [1.309-1.390]     <= 2 pass
+G1   hard snapshot int32 clustered n=2 vs brute force (brute)                                     2.617 [2.545-2.691]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=32 vs brute force (brute)                                    1.231 [1.196-1.266]     <= 2 pass
+G1   hard snapshot int32 clustered n=4 vs brute force (brute)                                     2.676 [2.593-2.763]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=64 vs brute force (brute)                                    1.269 [1.233-1.306]     <= 2 pass
+G1   hard snapshot int32 clustered n=8 vs brute force (brute)                                     1.740 [1.688-1.794]     <= 2 pass
+G1   hard snapshot int32 uniform n=0 vs brute force (brute)                                       2.160 [2.087-2.235]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=1 vs brute force (brute)                                       2.953 [2.876-3.032]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=16 vs brute force (brute)                                      1.110 [1.079-1.142]     <= 2 pass
+G1   hard snapshot int32 uniform n=2 vs brute force (brute)                                       2.607 [2.522-2.694]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=32 vs brute force (brute)                                      1.076 [1.045-1.107]     <= 2 pass
+G1   hard snapshot int32 uniform n=4 vs brute force (brute)                                       2.738 [2.655-2.825]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=64 vs brute force (brute)                                      1.195 [1.161-1.229]     <= 2 pass
+G1   hard snapshot int32 uniform n=8 vs brute force (brute)                                       1.586 [1.539-1.635]     <= 2 pass
+G6   hard snapshot int32 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=16 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=32 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=4 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=64 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=8 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=16 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=32 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=4 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=64 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=8 allocations per warm step                                                  0.000     <= 0 pass
+summary (pass / fail / inconclusive):
+  G1 hard      8     8     0
+  G6 hard     16     0     0
+gates: FAIL (candidates: snapshot index, persistent index, ordered index-ordered vs index)

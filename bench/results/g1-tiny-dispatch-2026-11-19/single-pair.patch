@@ -1,0 +1,147 @@
+--- a/quadtree-index.h
++++ b/quadtree-index.h
+@@ -775,13 +775,9 @@
+     void clear() noexcept
+     {
+         std::destroy_n(mPayloads, mSize);
+-        if (mRankCapacity != 0)
+-            clearRanks();
++        resetSlots();
+         mSize = 0;
+         mSlotsUsed = 0;
+-        mFreeHead = kNone;
+-        mRetired = 0;
+-        mFreshGeneration = 0;
+         mOwner = 0;
+     }
+ 
+@@ -1079,6 +1075,15 @@
+     }
+ 
+     // Empties the set in O(1); a wrapped epoch resets every bucket.
++    void resetSlots() noexcept
++    {
++        if (mRankCapacity != 0)
++            clearRanks();
++        mFreeHead = kNone;
++        mRetired = 0;
++        mFreshGeneration = 0;
++    }
++
+     void clearRanks() noexcept
+     {
+         mRankCount = 0;
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1075,6 +1075,10 @@
+         }
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
++        else if (size() == 2)
++            testPair(0, 1, false, context, visitor, predicate);
++        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
++            tinyPairs(context, visitor, predicate);
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+@@ -1998,7 +2002,11 @@
+         std::optional<std::span<HandleType>> handles) noexcept
+     {
+         auto extent = input[0].rect;
+-        for (std::uint32_t i = 0; i < count; ++i)
++        if (input[0].rank)
++            return std::nullopt;
++        if (!detail::canonicalize(extent))
++            return Status::InvalidGeometry;
++        for (std::uint32_t i = 1; i < count; ++i)
+         {
+             auto box = input[i].rect;
+             if (input[i].rank)
+@@ -2010,19 +2018,31 @@
+         const auto owner = Traits::acquireIdentity();
+         if (owner == 0)
+             return Status::IdentityExhausted;
+-        mEntries.clear();
+-        mEntries.mOwner = owner;
++        // Payload destruction is trivial. Reset the slot/rank bookkeeping,
++        // then publish the new identity and counts without clearing them first.
++        mEntries.resetSlots();
+         if (mRoot != none)
+             resetTopology();
+         mExtent = extent;
+-        for (std::size_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mBoxes + i, input[i].rect);
+-        for (std::size_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mPayloads + i, input[i].payload);
+-        for (std::uint32_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mMeta + i, typename Store::Meta{input[i].filter, 0, i, false});
+-        for (std::uint32_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
++        if (count == 1)
++        {
++            std::construct_at(mEntries.mBoxes, extent);
++            std::construct_at(mEntries.mPayloads, input[0].payload);
++            std::construct_at(mEntries.mMeta, typename Store::Meta{input[0].filter, 0, 0, false});
++            std::construct_at(mEntries.mSlots, typename Store::Slot{0, 0});
++        }
++        else
++        {
++            for (std::size_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mBoxes + i, input[i].rect);
++            for (std::size_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mPayloads + i, input[i].payload);
++            for (std::uint32_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mMeta + i, typename Store::Meta{input[i].filter, 0, i, false});
++            for (std::uint32_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
++        }
++        mEntries.mOwner = owner;
+         mEntries.mSize = count;
+         mEntries.mSlotsUsed = count;
+         if (handles)
+@@ -2296,6 +2316,45 @@
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
++    template<typename Visitor, typename Predicate>
++    void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        const auto count = mEntries.mSize;
++        const auto* boxes = mEntries.mBoxes;
++        const auto* meta = mEntries.mMeta;
++        for (std::uint32_t a = 0; a + 1 < count; ++a)
++            for (std::uint32_t b = a + 1; b < count; ++b)
++            {
++                if (!detail::compatible(meta[a].filter, meta[b].filter))
++                {
++                    context.filtered();
++                    continue;
++                }
++                // The caller checked that every possible pair fits the budget.
++                if constexpr (Instrumented)
++                    ++context.result.counters.candidateTests;
++                const auto& x = boxes[a];
++                const auto& y = boxes[b];
++                // Strict overlap always qualifies; only contact needs the boundary and degeneracy checks.
++                if (!(x.minX < y.maxX && y.minX < x.maxX && x.minY < y.maxY && y.minY < x.maxY) &&
++                    !(detail::closedOverlap(x, y) && (mConfig.boundary == Boundary::TouchInclusive ||
++                        x.minX == x.maxX || x.minY == x.maxY || y.minX == y.maxX || y.minY == y.maxY)))
++                    continue;
++                auto first = a, second = b;
++                orient(first, second, false);
++                const View left = view(first), right = view(second);
++                if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
++                {
++                    context.predicate();
++                    if (!std::invoke(predicate, left, right))
++                        continue;
++                }
++                context.report(std::invoke(visitor, left, right));
++                if (!context.active())
++                    return;
++            }
++    }
++
+     template<typename G, typename Visitor, typename Predicate>
+     QueryResult regionQuery(const G& geometry, std::optional<Filter> queryFilter, Visitor& visitor,
+         QueryOptions<T> options, Predicate& predicate) const noexcept

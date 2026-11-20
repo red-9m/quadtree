@@ -1,0 +1,13 @@
+Test project /tmp/qt-verification.SlAoQV/release
+    Start  1: index-test
+1/4 Test  #1: index-test .......................   Passed    0.34 sec
+    Start  2: index-test-noexcept
+2/4 Test  #2: index-test-noexcept ..............   Passed    0.34 sec
+    Start 18: index-regression-bench-smoke
+3/4 Test #18: index-regression-bench-smoke .....   Passed    0.08 sec
+    Start 19: index-fuzz-quick
+4/4 Test #19: index-fuzz-quick .................   Passed    0.13 sec
+
+100% tests passed out of 4
+
+Total Test time (real) =   0.88 sec

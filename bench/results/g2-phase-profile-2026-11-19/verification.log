@@ -1,0 +1,3 @@
+baseline: 204 rows match historical status and fixture hashes; all uncapped G2-size rows match work and checksums; 68 library rows have zero warm allocations.
+repeat: 204 rows match historical status and fixture hashes; all uncapped G2-size rows match work and checksums; 68 library rows have zero warm allocations.
+All 14 profile rows match baseline fixture hashes, pair results and traversal counts with zero warm allocations.

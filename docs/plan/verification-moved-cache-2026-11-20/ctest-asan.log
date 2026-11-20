@@ -1,0 +1,15 @@
+Test project /tmp/qt-verification.SlAoQV/asan
+    Start  1: index-test
+1/5 Test  #1: index-test .......................   Passed    0.96 sec
+    Start  2: index-test-noexcept
+2/5 Test  #2: index-test-noexcept ..............   Passed    0.95 sec
+    Start  7: entry-store-test
+3/5 Test  #7: entry-store-test .................   Passed    0.08 sec
+    Start  8: entry-store-test-noexcept
+4/5 Test  #8: entry-store-test-noexcept ........   Passed    0.08 sec
+    Start 19: index-fuzz-quick
+5/5 Test #19: index-fuzz-quick .................   Passed    0.66 sec
+
+100% tests passed out of 5
+
+Total Test time (real) =   2.72 sec

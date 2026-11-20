@@ -1,0 +1,33 @@
+2026-11-20T02:04:30+02:00
+Linux r9 7.3.0-1-custom #1 SMP PREEMPT_DYNAMIC Mon, 19 Oct 2026 00:11:47 +0000 x86_64 GNU/Linux
+Model name:                              AMD Ryzen 9 5900HS with Radeon Graphics
+g++ (GCC) 16.2.1 20260810
+Build flags: -std=gnu++20 -O3 -DNDEBUG -fno-exceptions -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Werror
+CPU affinity: 6
+/sys/devices/system/cpu/cpu6/topology/thread_siblings_list:6-7
+/sys/devices/system/cpu/cpufreq/policy6/scaling_driver:amd-pstate-epp
+/sys/devices/system/cpu/cpufreq/policy6/scaling_governor:powersave
+/sys/devices/system/clocksource/clocksource0/current_clocksource:hpet
+/sys/firmware/acpi/platform_profile:performance
+/sys/devices/system/cpu/cpufreq/policy0/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy10/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy11/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy12/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy13/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy14/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy15/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy1/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy2/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy3/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy4/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy5/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy6/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy7/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy8/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy9/energy_performance_preference:performance
+ 02:04:30 up 42 min,  0 users,  load average: 0.58, 1.60, 1.74
+
+Tested source SHA-256:
+20a6a92e9cda75620c8919648568e3e255e52be6f26f678dcf0690a39555b861  quadtree-index.h
+428c982d1b461223f7039cc8767b7cf7003ce7cdfebbdfa7da653ff48d532ad1  detail/quadtree-index-impl.h
+7bc6db0c49f1848e6f0b7d73bdcb21a69c7f601f4d166572f8f517a8ebc63d5f  bench/results/moved-setup-2026-11-20/measure.cpp

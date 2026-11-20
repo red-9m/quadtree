@@ -1,0 +1,13 @@
+run,scene,n,replacement_pct,adapter_pct,scan_and_checksum_pct,other_pct
+before,uniform,1,66.3,17.9,12.6,3.1
+before,uniform,2,41.1,9.8,46.5,2.6
+before,uniform,4,26.8,10.1,62.2,0.9
+before,clustered,1,66.8,16.1,13.7,3.5
+before,clustered,2,40.4,9.8,47.4,2.4
+before,clustered,4,26.8,9.7,62.7,0.9
+retained,uniform,1,59.0,19.7,16.4,4.9
+retained,uniform,2,38.3,8.8,31.2,21.6
+retained,uniform,4,19.9,7.3,22.8,50.0
+retained,clustered,1,61.7,18.7,14.9,4.6
+retained,clustered,2,38.4,9.0,34.7,18.0
+retained,clustered,4,22.7,8.2,27.4,41.7

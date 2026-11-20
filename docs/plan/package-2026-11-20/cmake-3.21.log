@@ -1,0 +1,86 @@
+cmake version 3.21.4
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+c++ (GCC) 16.2.1 20260810
+Network namespace: net:[4026532784]
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-3.21/subdirectory
+[1/2] Building CXX object CMakeFiles/consumer.dir/main.cpp.o
+[2/2] Linking CXX executable consumer
+Internal ctest changing into directory: /tmp/qt-package.udR1I9/cmake-3.21/subdirectory
+Test project /tmp/qt-package.udR1I9/cmake-3.21/subdirectory
+    Start 1: quadtree-consumer
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-3.21/fetchcontent
+[1/2] Building CXX object CMakeFiles/consumer.dir/main.cpp.o
+[2/2] Linking CXX executable consumer
+Internal ctest changing into directory: /tmp/qt-package.udR1I9/cmake-3.21/fetchcontent
+Test project /tmp/qt-package.udR1I9/cmake-3.21/fetchcontent
+    Start 1: quadtree-consumer
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-3.21/library
+-- Install configuration: ""
+-- Installing: /tmp/qt-package.udR1I9/cmake-3.21/staged/lib/cmake/QuadTree/QuadTreeTargets.cmake
+-- Installing: /tmp/qt-package.udR1I9/cmake-3.21/staged/lib/cmake/QuadTree/QuadTreeConfig.cmake
+-- Installing: /tmp/qt-package.udR1I9/cmake-3.21/staged/lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+-- Installing: /tmp/qt-package.udR1I9/cmake-3.21/staged/include/QuadTree/quadtree-index.h
+-- Installing: /tmp/qt-package.udR1I9/cmake-3.21/staged/include/QuadTree/detail/quadtree-index-impl.h
+-- Installing: /tmp/qt-package.udR1I9/cmake-3.21/staged/share/licenses/QuadTree/LICENSE
+include/QuadTree/detail/quadtree-index-impl.h
+include/QuadTree/quadtree-index.h
+lib/cmake/QuadTree/QuadTreeConfig.cmake
+lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+lib/cmake/QuadTree/QuadTreeTargets.cmake
+share/licenses/QuadTree/LICENSE
+Network namespace: net:[4026532810]
+Checkout and original prefix not visible
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-3.21/installed
+[1/2] /usr/bin/c++  -isystem "/tmp/qt-package.udR1I9/cmake-3.21/relocated prefix/include/QuadTree"  -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/qt-package.udR1I9/cmake-3.21/consumer-source/main.cpp
+[2/2] : && /usr/bin/c++   CMakeFiles/consumer.dir/main.cpp.o -o consumer   && :
+Internal ctest changing into directory: /tmp/qt-package.udR1I9/cmake-3.21/installed
+Test project /tmp/qt-package.udR1I9/cmake-3.21/installed
+    Start 1: quadtree-consumer
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec

@@ -1,0 +1,33 @@
+Test project /tmp/qt-verification.SlAoQV/libstdcxx-debug
+      Start  1: index-test
+ 1/14 Test  #1: index-test ..........................   Passed    9.32 sec
+      Start  2: index-test-noexcept
+ 2/14 Test  #2: index-test-noexcept .................   Passed    9.17 sec
+      Start  3: index-death-stale-moved
+ 3/14 Test  #3: index-death-stale-moved .............   Passed    0.09 sec
+      Start  4: index-death-foreign-moved
+ 4/14 Test  #4: index-death-foreign-moved ...........   Passed    0.07 sec
+      Start  5: index-death-default-partners
+ 5/14 Test  #5: index-death-default-partners ........   Passed    0.07 sec
+      Start  6: index-death-cleared-update
+ 6/14 Test  #6: index-death-cleared-update ..........   Passed    0.05 sec
+      Start  7: entry-store-test
+ 7/14 Test  #7: entry-store-test ....................   Passed    0.18 sec
+      Start  8: entry-store-test-noexcept
+ 8/14 Test  #8: entry-store-test-noexcept ...........   Passed    0.18 sec
+      Start  9: entry-store-death-valid
+ 9/14 Test  #9: entry-store-death-valid .............   Passed    0.00 sec
+      Start 10: entry-store-death-stale-remove
+10/14 Test #10: entry-store-death-stale-remove ......   Passed    0.08 sec
+      Start 11: entry-store-death-foreign-payload
+11/14 Test #11: entry-store-death-foreign-payload ...   Passed    0.07 sec
+      Start 12: entry-store-death-default-rect
+12/14 Test #12: entry-store-death-default-rect ......   Passed    0.07 sec
+      Start 13: entry-store-death-cleared-update
+13/14 Test #13: entry-store-death-cleared-update ....   Passed    0.08 sec
+      Start 14: entry-store-death-moved-setfilter
+14/14 Test #14: entry-store-death-moved-setfilter ...   Passed    0.07 sec
+
+100% tests passed out of 14
+
+Total Test time (real) =  19.50 sec

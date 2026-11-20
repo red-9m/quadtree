@@ -1,0 +1,28 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1974,6 +1974,25 @@
+         }
+         for (i = 0; i < count; ++i)
+         {
++#if defined(__GNUC__) || defined(__clang__)
++            if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&
++                std::is_trivially_copy_constructible_v<Payload>)
++            {
++                if (node_count != 0 && ranked == 0)
++                {
++                    // Start the indexed descriptor fetch before the dependent payload fetch.
++                    constexpr std::size_t descriptorAhead = 32, payloadAhead = 16;
++                    if (count - i > descriptorAhead)
++                    {
++                        const auto& future = scratch->mDescriptors[scratch->mKeys[i + descriptorAhead].entry];
++                        __builtin_prefetch(&future, 0, 3);
++                        __builtin_prefetch(&future.payload, 0, 3);
++                    }
++                    if (count - i > payloadAhead)
++                        __builtin_prefetch(scratch->mDescriptors[scratch->mKeys[i + payloadAhead].entry].payload, 0, 3);
++                }
++            }
++#endif
+             // Spatially sorted dense entries keep snapshot geometry contiguous.
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : scratch->mKeys[i].entry;
+             const auto& descriptor = scratch->mDescriptors[input];

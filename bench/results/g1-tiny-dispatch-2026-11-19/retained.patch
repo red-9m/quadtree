@@ -1,0 +1,231 @@
+--- a/quadtree-index.h
++++ b/quadtree-index.h
+@@ -775,13 +775,9 @@
+     void clear() noexcept
+     {
+         std::destroy_n(mPayloads, mSize);
+-        if (mRankCapacity != 0)
+-            clearRanks();
++        resetSlots();
+         mSize = 0;
+         mSlotsUsed = 0;
+-        mFreeHead = kNone;
+-        mRetired = 0;
+-        mFreshGeneration = 0;
+         mOwner = 0;
+     }
+ 
+@@ -1079,6 +1075,15 @@
+     }
+ 
+     // Empties the set in O(1); a wrapped epoch resets every bucket.
++    void resetSlots() noexcept
++    {
++        if (mRankCapacity != 0)
++            clearRanks();
++        mFreeHead = kNone;
++        mRetired = 0;
++        mFreshGeneration = 0;
++    }
++
+     void clearRanks() noexcept
+     {
+         mRankCount = 0;
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1075,6 +1075,8 @@
+         }
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
++        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
++            tinyPairs(context, visitor, predicate);
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+@@ -1998,7 +2000,11 @@
+         std::optional<std::span<HandleType>> handles) noexcept
+     {
+         auto extent = input[0].rect;
+-        for (std::uint32_t i = 0; i < count; ++i)
++        if (input[0].rank)
++            return std::nullopt;
++        if (!detail::canonicalize(extent))
++            return Status::InvalidGeometry;
++        for (std::uint32_t i = 1; i < count; ++i)
+         {
+             auto box = input[i].rect;
+             if (input[i].rank)
+@@ -2010,19 +2016,31 @@
+         const auto owner = Traits::acquireIdentity();
+         if (owner == 0)
+             return Status::IdentityExhausted;
+-        mEntries.clear();
+-        mEntries.mOwner = owner;
++        // Payload destruction is trivial. Reset the slot/rank bookkeeping,
++        // then publish the new identity and counts without clearing them first.
++        mEntries.resetSlots();
+         if (mRoot != none)
+             resetTopology();
+         mExtent = extent;
+-        for (std::size_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mBoxes + i, input[i].rect);
+-        for (std::size_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mPayloads + i, input[i].payload);
+-        for (std::uint32_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mMeta + i, typename Store::Meta{input[i].filter, 0, i, false});
+-        for (std::uint32_t i = 0; i < count; ++i)
+-            std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
++        if (count == 1)
++        {
++            std::construct_at(mEntries.mBoxes, extent);
++            std::construct_at(mEntries.mPayloads, input[0].payload);
++            std::construct_at(mEntries.mMeta, typename Store::Meta{input[0].filter, 0, 0, false});
++            std::construct_at(mEntries.mSlots, typename Store::Slot{0, 0});
++        }
++        else
++        {
++            for (std::size_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mBoxes + i, input[i].rect);
++            for (std::size_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mPayloads + i, input[i].payload);
++            for (std::uint32_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mMeta + i, typename Store::Meta{input[i].filter, 0, i, false});
++            for (std::uint32_t i = 0; i < count; ++i)
++                std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
++        }
++        mEntries.mOwner = owner;
+         mEntries.mSize = count;
+         mEntries.mSlotsUsed = count;
+         if (handles)
+@@ -2296,6 +2314,45 @@
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
++    template<typename Visitor, typename Predicate>
++    void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        const auto count = mEntries.mSize;
++        const auto* boxes = mEntries.mBoxes;
++        const auto* meta = mEntries.mMeta;
++        for (std::uint32_t a = 0; a + 1 < count; ++a)
++            for (std::uint32_t b = a + 1; b < count; ++b)
++            {
++                if (!detail::compatible(meta[a].filter, meta[b].filter))
++                {
++                    context.filtered();
++                    continue;
++                }
++                // The caller checked that every possible pair fits the budget.
++                if constexpr (Instrumented)
++                    ++context.result.counters.candidateTests;
++                const auto& x = boxes[a];
++                const auto& y = boxes[b];
++                // Strict overlap always qualifies; only contact needs the boundary and degeneracy checks.
++                if (!(x.minX < y.maxX && y.minX < x.maxX && x.minY < y.maxY && y.minY < x.maxY) &&
++                    !(detail::closedOverlap(x, y) && (mConfig.boundary == Boundary::TouchInclusive ||
++                        x.minX == x.maxX || x.minY == x.maxY || y.minX == y.maxX || y.minY == y.maxY)))
++                    continue;
++                auto first = a, second = b;
++                orient(first, second, false);
++                const View left = view(first), right = view(second);
++                if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
++                {
++                    context.predicate();
++                    if (!std::invoke(predicate, left, right))
++                        continue;
++                }
++                context.report(std::invoke(visitor, left, right));
++                if (!context.active())
++                    return;
++            }
++    }
++
+     template<typename G, typename Visitor, typename Predicate>
+     QueryResult regionQuery(const G& geometry, std::optional<Filter> queryFilter, Visitor& visitor,
+         QueryOptions<T> options, Predicate& predicate) const noexcept
+--- a/tests/index-test.cpp
++++ b/tests/index-test.cpp
+@@ -779,9 +779,74 @@
+     REQUIRE(tree.build(flat, output, {.workspace = &scratch}) == Status::Ok);
+     CHECK(!tree.valid(flatHandles[0]) && !tree.valid(flatHandles[1]));
+     CHECK(tree.rank(output[0]) == 6 && tree.rank(output[1]) == 7);
++
++    REQUIRE(tree.build(entries, output, {.workspace = &scratch}) == Status::Ok);
++    const auto topologyHandles = output;
++    entries[0].rank.reset();
++    const auto singleton = flat.first(1);
++    entries[0].rect = {3, 0, 2, 3};
++    CHECK(tree.build(singleton, output, {.workspace = &scratch}) == Status::InvalidGeometry);
++    CHECK(output == topologyHandles && tree.valid(output[0]) && tree.stats().references == 3);
++    entries[0].rect = {0, 0, 3, 3};
++    REQUIRE(tree.build(singleton, output, {.workspace = &scratch}) == Status::Ok);
++    CHECK(tree.extent() == entries[0].rect && tree.stats().references == 0);
++    CHECK(tree.payload(output[0]) == 1 && !tree.rank(output[0]) && output[1] == topologyHandles[1]);
++    for (std::size_t i = 0; i < 3; ++i)
++        CHECK(!tree.valid(topologyHandles[i]));
++    CHECK(tree.insert(entries[1].rect, 2, entries[1].filter, 7).ok());
+     CHECK(resource.allocations == allocations);
+ }
+ 
++void tinyPairs()
++{
++    for (const auto boundary : {Boundary::Default, Boundary::TouchInclusive})
++    {
++        auto made = Tree<int>::create({.boundary = boundary});
++        REQUIRE(made.ok());
++        auto tree = std::move(made).value();
++        using E = QuadTree::BuildEntry<int, int>;
++        std::array<E, 4> input{{{{0, 0, 4, 4}, 0}, {{4, 0, 8, 4}, 1},
++            {{4, 2, 4, 2}, 2}, {{4, 2, 4, 2}, 3, {0, 0}}}};
++        std::array<Tree<int>::HandleType, 4> handles{};
++        REQUIRE(tree.build(input, handles) == Status::Ok);
++        REQUIRE(tree.remove(handles[0]) == Status::Ok);
++        // The final dense entry reuses the first slot: callbacks must still be slot-oriented.
++        REQUIRE(tree.insert(input[0].rect, 0).ok());
++        const bool touch = boundary == Boundary::TouchInclusive;
++        for (std::uint64_t budget : {0u, 2u, 3u, 6u})
++        {
++            std::uint64_t reports = 0;
++            const auto result = tree.forEachPair([&](const auto& a, const auto& b) noexcept
++            {
++                CHECK((touch && a.payload == 0 && b.payload == 1) || (a.payload == 1 && b.payload == 2));
++                ++reports;
++                return Continue;
++            }, {.budget = {.candidateTests = budget}}, [](const auto& a, const auto& b) noexcept
++            {
++                CHECK(a.payload < b.payload);
++                return a.payload != 0 || b.payload != 2;
++            });
++            CHECK(result.status == (budget < 3 ? Status::BudgetExhausted : Status::Ok));
++            CHECK(result.counters.candidateTests == std::min(budget, std::uint64_t{3}));
++            if (budget >= 3)
++            {
++                CHECK(result.counters.filterRejections == 3 && result.counters.predicateCalls == (touch ? 3u : 2u));
++                CHECK(reports == (touch ? 2u : 1u));
++            }
++            CHECK(reports == result.counters.reports);
++        }
++        const auto stop = [](const auto&, const auto&) noexcept { return Stop; };
++        const auto stopped = tree.forEachPair(stop, {.budget = {.candidateTests = 6}});
++        CHECK(stopped.status == Status::Stopped && stopped.counters.reports == 1);
++        REQUIRE(tree.build(std::span(input).subspan(1, 2)) == Status::Ok);
++        CHECK(tree.forEachPair(stop, {.budget = {.candidateTests = 0}}).status == Status::BudgetExhausted);
++        CHECK(tree.forEachPair(stop, {.budget = {.candidateTests = 1}}).status == Status::Stopped);
++        REQUIRE(tree.build(std::span(input).last(2)) == Status::Ok);
++        const auto filtered = tree.forEachPair(stop, {.budget = {.candidateTests = 0}});
++        CHECK(filtered.complete() && filtered.counters.filterRejections == 1 && filtered.counters.candidateTests == 0);
++    }
++}
++
+ struct LimitedIdentities
+ {
+     static constexpr bool checkHandles = true;
+@@ -1315,7 +1380,7 @@
+ 
+ int main()
+ {
+-    contracts(); budgets(); crossAndSelections(); hardCapacity(); failureInjection(); preparedSmallBuild(); identities();
++    contracts(); budgets(); crossAndSelections(); hardCapacity(); failureInjection(); preparedSmallBuild(); tinyPairs(); identities();
+     payloadsAndMoves(); cacheAndChurn(); mutationWork(); coarseAncestorCaches();
+     orderedMovedSources(); orderedMovedWork(); coincidentMotion(); concurrency(); uninstrumented();
+     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();

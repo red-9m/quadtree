@@ -1,0 +1,29 @@
+--- a/bench/bench-index.h
++++ b/bench/bench-index.h
+@@ -53,15 +53,20 @@
+         if (mPrepared < boxes.size())
+         {
+             require(mWorkspace.reserve({Ordered ? boxes.size() : 0, 0, boxes.size()}));
++            mInput.resize(boxes.size());
++            for (std::size_t i = mPrepared; i < boxes.size(); ++i)
++            {
++                const auto id = static_cast<std::uint32_t>(i);
++                mInput[i].payload = id;
++                if constexpr (Ordered)
++                    mInput[i].rank = mix64(id ^ 0x72616e6bu);
++            }
+             mPrepared = boxes.size();
+         }
+-        mInput.resize(boxes.size());
++        // IDs, filters and ranks depend only on position, not on the scene.
+         for (std::size_t i = 0; i < boxes.size(); ++i)
+-        {
+-            const auto id = static_cast<std::uint32_t>(i);
+-            mInput[i] = {boxes[i], id, {}, Ordered ? std::optional<std::uint64_t>(mix64(id ^ 0x72616e6bu)) : std::nullopt};
+-        }
+-        require(mTree->build(mInput, {.workspace = &mWorkspace}));
++            mInput[i].rect = boxes[i];
++        require(mTree->build(std::span{mInput.data(), boxes.size()}, {.workspace = &mWorkspace}));
+     }
+ 
+     void reset(const EngineSetup<T>& setup)

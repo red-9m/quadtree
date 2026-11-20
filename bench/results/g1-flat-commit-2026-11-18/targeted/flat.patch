@@ -1,0 +1,69 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1945,23 +1945,35 @@
+         // Commit is infallible: validated input, preallocated topology/rank/slot
+         // storage, unique ranks, a reserved identity and nonthrowing payloads.
+         const std::uint64_t owner = mEntries.mOwner;
+-        resetTopology();
++        // Tree-less indexes already have reset topology; avoid rewriting it on each flat build.
++        if (mRoot != none)
++            resetTopology();
+         mExtent = next_extent;
++        if constexpr (Consume ? std::is_trivially_move_constructible_v<Payload> :
++            std::is_trivially_copy_constructible_v<Payload>)
++        {
++            if (node_count == 0 && ranked == 0)
++            {
++                // No rank insertion or client construction observes a partially built store.
++                // Publish the dense/slot counts once, after constructing every entry.
++                const auto size = static_cast<std::uint32_t>(count);
++                for (std::uint32_t dense = 0; dense < size; ++dense)
++                    constructBuildEntry<Consume>(dense, scratch->mDescriptors[dense], false);
++                mEntries.mSize = size;
++                mEntries.mSlotsUsed = size;
++                if (handles)
++                    for (std::uint32_t dense = 0; dense < size; ++dense)
++                        (*handles)[dense] = detail::HandleAccess::make<Store>(owner, dense, 0);
++                return Status::Ok;
++            }
++        }
+         for (i = 0; i < count; ++i)
+         {
+             // Spatially sorted dense entries keep snapshot geometry contiguous.
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : scratch->mKeys[i].entry;
+             const auto& descriptor = scratch->mDescriptors[input];
+-            const Payload* value = static_cast<const Payload*>(descriptor.payload);
+             const auto dense = static_cast<std::uint32_t>(i);
+-            if constexpr (Consume)
+-                std::construct_at(mEntries.mPayloads + dense, std::move(*const_cast<Payload*>(value)));
+-            else
+-                std::construct_at(mEntries.mPayloads + dense, *value);
+-            std::construct_at(mEntries.mBoxes + dense, descriptor.box);
+-            std::construct_at(mEntries.mMeta + dense, typename Store::Meta{descriptor.filter,
+-                descriptor.rank.value_or(0), dense, descriptor.rank.has_value()});
+-            std::construct_at(mEntries.mSlots + dense, typename Store::Slot{0, dense});
++            constructBuildEntry<Consume>(dense, descriptor, descriptor.rank.has_value());
+             ++mEntries.mSize;
+             ++mEntries.mSlotsUsed;
+             if (descriptor.rank)
+@@ -1979,6 +1991,20 @@
+         return Status::Ok;
+     }
+ 
++    template<bool Consume>
++    void constructBuildEntry(std::uint32_t dense, const detail::Descriptor<T>& descriptor, bool ranked) noexcept
++    {
++        const auto* value = static_cast<const Payload*>(descriptor.payload);
++        if constexpr (Consume)
++            std::construct_at(mEntries.mPayloads + dense, std::move(*const_cast<Payload*>(value)));
++        else
++            std::construct_at(mEntries.mPayloads + dense, *value);
++        std::construct_at(mEntries.mBoxes + dense, descriptor.box);
++        std::construct_at(mEntries.mMeta + dense, typename Store::Meta{descriptor.filter,
++            ranked ? *descriptor.rank : 0, dense, ranked});
++        std::construct_at(mEntries.mSlots + dense, typename Store::Slot{0, dense});
++    }
++
+     // Prepared replacements need neither a pending storage transaction nor its cleanup.
+     Status prepareReplacement(std::size_t count, std::size_t ranked, std::size_t nodeCount) noexcept
+     {

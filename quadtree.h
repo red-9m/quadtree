@@ -1,8 +1,12 @@
 #pragma once
 
-#include <vector>
 #include <algorithm>
+#include <cstddef>
+#include <functional>
+#include <iterator>
 #include <type_traits>
+#include <utility>
+#include <vector>
 
 namespace QuadTree
 {
@@ -351,16 +355,16 @@ protected:
 #ifdef _DEBUG
     constexpr void enumerateNode(Node& node, int level, int quadrant, EnumCallbackT enumCallback)
     {
-        enumCallback(0, level, quadrant, node.rect, node.hasChildren, NULL);
+        enumCallback(0, level, quadrant, node.rect, node.hasChildren, nullptr);
         for (const auto &item: node.items)
-           enumCallback(1, level, quadrant, node.rect, 0, &item);
+           enumCallback(1, level, quadrant, node.rect, false, &item);
 
-        enumCallback(2, level, quadrant, node.rect, 0, NULL);
+        enumCallback(2, level, quadrant, node.rect, false, nullptr);
 
         if (node.hasChildren)
         {
-            for (int i = 0; i < QUAD_CHILDREN; i++)
-                enumerateNode(*node.children[i], level+1, i, enumCallback);
+            for (std::size_t i = 0; i < QUAD_CHILDREN; i++)
+                enumerateNode(*node.children[i], level+1, static_cast<int>(i), enumCallback);
         }
     }
 #endif

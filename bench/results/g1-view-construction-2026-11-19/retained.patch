@@ -1,0 +1,78 @@
+--- a/quadtree-index.h
++++ b/quadtree-index.h
+@@ -1074,7 +1074,6 @@
+         mRankTree = false;
+     }
+ 
+-    // Empties the set in O(1); a wrapped epoch resets every bucket.
+     void resetSlots() noexcept
+     {
+         if (mRankCapacity != 0)
+@@ -1084,6 +1083,7 @@
+         mFreshGeneration = 0;
+     }
+ 
++    // Empties the set in O(1); a wrapped epoch resets every bucket.
+     void clearRanks() noexcept
+     {
+         mRankCount = 0;
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1297,7 +1297,10 @@
+         const auto& meta = mEntries.mMeta[dense];
+         const auto handle = detail::HandleAccess::make<Store>(mEntries.mOwner, meta.slot,
+             mEntries.mSlots[meta.slot].generation);
+-        return {handle, mEntries.mBoxes[dense], mEntries.mPayloads[dense], meta.filter, mEntries.rankAt(dense)};
++        View result{handle, mEntries.mBoxes[dense], mEntries.mPayloads[dense], meta.filter, {}};
++        if (meta.hasRank)
++            result.rank.emplace(meta.rank);
++        return result;
+     }
+ 
+     std::uint32_t entryKey(std::uint32_t dense) const noexcept { return mEntries.mMeta[dense].slot; }
+--- a/tests/index-test.cpp
++++ b/tests/index-test.cpp
+@@ -805,24 +805,40 @@
+         REQUIRE(made.ok());
+         auto tree = std::move(made).value();
+         using E = QuadTree::BuildEntry<int, int>;
+-        std::array<E, 4> input{{{{0, 0, 4, 4}, 0}, {{4, 0, 8, 4}, 1},
++        std::array<E, 4> input{{{{0, 0, 4, 4}, 0}, {{4, 0, 8, 4}, 1, {3, 3}, 7},
+             {{4, 2, 4, 2}, 2}, {{4, 2, 4, 2}, 3, {0, 0}}}};
+         std::array<Tree<int>::HandleType, 4> handles{};
+         REQUIRE(tree.build(input, handles) == Status::Ok);
+         REQUIRE(tree.remove(handles[0]) == Status::Ok);
+         // The final dense entry reuses the first slot: callbacks must still be slot-oriented.
+-        REQUIRE(tree.insert(input[0].rect, 0).ok());
++        const auto inserted = tree.insert(input[0].rect, 0);
++        REQUIRE(inserted.ok());
++        handles[0] = inserted.handle;
++        const auto checkView = [&](const auto& view) noexcept
++        {
++            const auto k = static_cast<std::size_t>(view.payload);
++            CHECK(k < input.size());
++            if (k < input.size())
++            {
++                CHECK(view.handle == handles[k] && view.rect == input[k].rect);
++                CHECK(view.filter == input[k].filter && view.rank == input[k].rank);
++            }
++        };
+         const bool touch = boundary == Boundary::TouchInclusive;
+         for (std::uint64_t budget : {0u, 2u, 3u, 6u})
+         {
+             std::uint64_t reports = 0;
+             const auto result = tree.forEachPair([&](const auto& a, const auto& b) noexcept
+             {
++                checkView(a);
++                checkView(b);
+                 CHECK((touch && a.payload == 0 && b.payload == 1) || (a.payload == 1 && b.payload == 2));
+                 ++reports;
+                 return Continue;
+-            }, {.budget = {.candidateTests = budget}}, [](const auto& a, const auto& b) noexcept
++            }, {.budget = {.candidateTests = budget}}, [&](const auto& a, const auto& b) noexcept
+             {
++                checkView(a);
++                checkView(b);
+                 CHECK(a.payload < b.payload);
+                 return a.payload != 0 || b.payload != 2;
+             });

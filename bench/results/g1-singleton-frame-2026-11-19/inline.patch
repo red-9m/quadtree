@@ -1,0 +1,73 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1833,6 +1833,13 @@
+                 activeDepth(mNodes[n].firstChild + q, depth);
+     }
+ 
++    template<bool Consume, bool Projected, typename R>
++    static constexpr bool flatIntegerInput = !Projected && !Consume && !FloatCoordinate<T> &&
++        std::ranges::contiguous_range<R> &&
++        std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
++        std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
++        !requires { Policy::acquireIdentity(); };
++
+     template<bool Consume, bool Projected, typename R, typename Accessor>
+     Status buildRange(R& range, Accessor&& accessor, std::optional<std::span<HandleType>> handles,
+         BuildOptions<T> options) noexcept
+@@ -1867,10 +1874,30 @@
+         if (handles && handles->size() < count)
+             return Status::InsufficientOutput;
+         if (options.workspace)
++        {
++            if constexpr (flatIntegerInput<Consume, Projected, R>)
++                if (count == 1 && !handles)
++                    if (auto result = buildPreparedSingleton(std::ranges::data(range), *options.workspace))
++                        return *result;
+             return buildPrepared<Consume, Projected>(range, accessor, handles, count, *options.workspace);
++        }
+         return buildWithLocalWorkspace<Consume, Projected>(range, accessor, handles, count);
+     }
+ 
++#if __has_cpp_attribute(gnu::always_inline)
++    [[gnu::always_inline]]
++#endif
++    std::optional<Status> buildPreparedSingleton(const BuildEntry<Payload, T>* input, Workspace<T>& workspace) noexcept
++    {
++        if (mConfig.smallSetThreshold == 0 || mEntries.mCapacity == 0 || mEntries.mSlotCapacity == 0 ||
++            mConfig.extent == Extent::Fixed)
++            return std::nullopt;
++        if (workspace.mDescriptors.capacity() == 0 || workspace.mKeys.capacity() == 0 || workspace.mTemp.capacity() == 0)
++            return Status::InsufficientWorkspace;
++        typename Workspace<T>::Use use(workspace);
++        return buildFlatInteger<true>(input, 1, std::nullopt);
++    }
++
+     template<bool Consume, bool Projected, typename R, typename Accessor>
+     Status buildWithLocalWorkspace(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
+         std::size_t count) noexcept
+@@ -1891,11 +1918,7 @@
+             scratch->mTemp.capacity() < count)
+             return Status::InsufficientWorkspace;
+         typename Workspace<T>::Use use(*scratch);
+-        if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+-            std::ranges::contiguous_range<R> &&
+-            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
+-            std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
+-            !requires { Policy::acquireIdentity(); })
++        if constexpr (flatIntegerInput<Consume, Projected, R>)
+         {
+             if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
+                 count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
+@@ -1999,9 +2022,12 @@
+     // Warm, unranked integer boxes need no descriptor copy: validated edges are
+     // already canonical. The commit neither allocates nor invokes client code.
+     // A ranked entry delegates to the general path before any state changes.
++    template<bool Singleton = false>
+     std::optional<Status> buildFlatInteger(const BuildEntry<Payload, T>* input, std::uint32_t count,
+         std::optional<std::span<HandleType>> handles) noexcept
+     {
++        if constexpr (Singleton)
++            count = 1;
+         auto extent = input[0].rect;
+         if (input[0].rank)
+             return std::nullopt;

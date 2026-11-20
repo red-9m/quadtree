@@ -1,92 +1,57 @@
-# QuadTree C++ 20 implementation
-This is a high-performance modern C++ header library implementing a QuadTree for rectangular items.
+# QuadTree
 
-A QuadTree distributes rectangles to quadrants by recursively subdividing a region into four equal parts (quadrants). Each rectangle is assigned to a quadrant based on its position relative to the center point. If a rectangle spans multiple quadrants, it is placed in the node that represents the entire region:
-```
- Quadrant Layout:
-┌───────┬───────┐
-│       │       │
-│   1   │   2   │
-│       │       │
-├───────┼───┬───┤
-│       │4.1│4.2│
-│   3   ├───┼───┤
-│       │4.3│4.4│
-└───────┴───┴───┘
-```
+`QuadTree::Index` is a header-only C++20 spatial index for axis-aligned bounding
+boxes (AABBs). Include `<quadtree-index.h>` and link the CMake target
+`QuadTree::QuadTree`.
 
-# API
-* add()      - Adds an item containing a rectangle (like a Bounding Box for game item) to the QuadTree. Returns true on success, or false without inserting if the rectangle is not fully contained in the root (matching root edges is allowed)
-* remove()   - Removes one of the previously added items from the QuadTree
-* query()    - Returns a list of items that intersect with given rectangle
-* queryAll() - Returns a list of item pairs that contain all intersections between tree items
+- **Snapshot:** use `build` when replacing a whole scene, such as a fresh frame
+  or a batch of static tiles. A successful rebuild invalidates old handles.
+- **Persistent:** use `insert`, `update`, and `remove` when only part of the scene
+  changes. Keep each entry's handle for updates; use stable application collider
+  IDs to identify objects across rebuilds.
 
-# Updating item geometry
-The rectangle returned by `getRect()` must remain unchanged while the item is in the tree. To move or resize an item, remove it using its old bounds, change its rectangle, then add it again:
+## Run the dynamic/static example
 
-```c++
-tree.remove(&item);             // Uses old bounds
-item.rect.quadRect = newRect;
-tree.add(&item);                // Uses new bounds
+[`examples/dynamic-static.cpp`](examples/dynamic-static.cpp) bulk-builds a static
+tile index, moves a collider in a persistent dynamic index, then calls
+`dynamic_index.forEachPair(static_index, ...)`. The visitor receives the dynamic
+collider ID on the left and a different payload type (`Tile`) on the right.
+
+```sh
+cmake -S . -B build-example -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=OFF -DQUADTREE_BUILD_BENCHMARKS=OFF -DQUADTREE_BUILD_TESTS=ON
+cmake --build build-example --config Debug --target quadtree-dynamic-static
+ctest --test-dir build-example -C Debug -V -R '^index-example-dynamic-static$'
 ```
 
-Changing bounds before `remove()` can make removal search the wrong node and cause queries to miss intersections.
+The example checks and prints `dynamic 101 -> static 9` and
+`dynamic 102 -> static 7`. These are current AABB overlap candidates, **not**
+confirmed contacts or enter/exit events. Stage results and check `complete()`
+before replacing a candidate cache: a stopped or budget-exhausted traversal may
+already have called the visitor. For incremental cache updates, see the
+[moved-set replacement protocol](INDEX.md#persistent-moved-sets-and-cache-replacement).
 
-# Features
-* Template based implementation takes single header file only
-* Tries to provide maximum performance that should fit nice for game object intersection task
-* Supported integral and floating point rectangle coordinates
-* Can process points and lines as a degenerate case of rectangle
-* The QuadTree can work with any class that represents your item. You just need to provide a callback function to get the item's rectangle
-* Two classes to deal with: QuadTree::Tree and QuadTree::Rect. In the item you can use any compatible class instead of QuadTree::Rect (Ex: SDL_Rect)
-* Supported compilers: Linux: Clang, GNU(GCC); Windows: MSCV(Microsoft Visual Studio)
+## Use in a project
 
-# Constructor
-```c++
-constexpr Tree(Rect<RectT> rect, ItemRectFunc getRect, std::size_t nodeItems = 16, std::size_t depth = 4)
+With CMake 3.21+, use `add_subdirectory(path/to/quadtree)` for a checkout, or
+`find_package(QuadTree 2.0 CONFIG REQUIRED)` for an installed copy. In either case:
+
+```cmake
+target_link_libraries(my_app PRIVATE QuadTree::QuadTree)
 ```
 
-* rect      - Represents your initial rectangle (screen/space)
-* getRect   - Callback function to get your item's rectangle as QuadTree::Rect
-* nodeItems - Number of items that must be reserved for each node
-* depth     - Depth of QuadTree. Ex: 1 - means a total of 5 nodes, root node and 4 children
+To install the runtime package from the checkout:
 
-# Example
-See details in quadtree-test.cpp: function quadTreeSimple()
-
-```c++
-// Prepare your Item type and getRect() function to extract Rect from Item
-typedef Item<int>* TreeItemT;
-auto getRect = [](const TreeItemT& item) -> const QuadTree::Rect<int>&
-{
-    return item->rect.quadRect;
-};
-
-// QuadTree Constructor: Use integral(int) rectangle coordinates
-constexpr std::size_t node_items = 1;
-constexpr std::size_t depth = 1;
-auto tree = QuadTree::Tree<TreeItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
-
-// Prepare items
-std::vector<Item<int>> items{
-    {{{10, 10, 3, 3}}, 1},
-    {{{60, 10, 3, 3}}, 2},
-    {{{10, 60, 3, 3}}, 3},
-    {{{60, 60, 3, 3}}, 4},
-    {{{11, 11, 50, 50}}, 5},
-    {{{11, 11, 50, 3}}, 6},
-    {{{11, 11, 3, 50}}, 7},
-};
-
-// Add items
-for (auto& item : items)
-    tree.add(&item);
-
-// Make a Query to find intersections
-std::vector<TreeItemT> query_res;
-tree.query({11, 11, 3, 3}, query_res);
-
+```sh
+cmake -S . -B build-install -DQUADTREE_INSTALL=ON -DQUADTREE_BUILD_DEMO=OFF -DQUADTREE_BUILD_TESTS=OFF -DQUADTREE_BUILD_BENCHMARKS=OFF
+cmake --install build-install --prefix "$PWD/quadtree-install"
 ```
 
-# Inspiration code
-https://github.com/pvigier/Quadtree.git
+Set `CMAKE_PREFIX_PATH` to that prefix when configuring your app. Without CMake,
+put the directory containing `quadtree-index.h` on the include path and keep
+`detail/quadtree-index-impl.h` beside it under `detail/`.
+
+## Reference and limits
+
+- [Runtime API and examples](INDEX.md) · [Build/input ownership](INDEX.md#build-and-input-ownership) · [Workspace and reservation](INDEX.md#reservation-workspace-and-allocation)
+- [Measured limitations](bench/results/current-snapshot-2026-11-18/README.md): measured snapshot rows miss G1 and G2; release performance acceptance is not complete.
+- [Migration guide](INDEX.md#migration) · [Legacy `Tree` documentation](docs/legacy.md). The legacy `quadtree.h` is a separate API, not a compatibility layer or part of the installed runtime package. Do not include both API headers in one translation unit.

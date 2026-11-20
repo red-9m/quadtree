@@ -1,0 +1,74 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2323,37 +2323,43 @@
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;
+         const auto* meta = mEntries.mMeta;
++        const auto test = [&](std::uint32_t a, std::uint32_t b) noexcept
++        {
++            if (!detail::compatible(meta[a].filter, meta[b].filter))
++            {
++                context.filtered();
++                return true;
++            }
++            // The caller checked that every possible pair fits the budget.
++            if constexpr (Instrumented)
++                ++context.result.counters.candidateTests;
++            const auto& x = boxes[a];
++            const auto& y = boxes[b];
++            // Strict overlap always qualifies; only contact needs the boundary and degeneracy checks.
++            if (!(x.minX < y.maxX && y.minX < x.maxX && x.minY < y.maxY && y.minY < x.maxY) &&
++                !(detail::closedOverlap(x, y) && (mConfig.boundary == Boundary::TouchInclusive ||
++                    x.minX == x.maxX || x.minY == x.maxY || y.minX == y.maxX || y.minY == y.maxY)))
++                return true;
++            orient(a, b, false);
++            const View left = view(a), right = view(b);
++            if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
++            {
++                context.predicate();
++                if (!std::invoke(predicate, left, right))
++                    return true;
++            }
++            context.report(std::invoke(visitor, left, right));
++            return context.active();
++        };
++        if (count == 2)
++        {
++            test(0, 1);
++            return;
++        }
+         for (std::uint32_t a = 0; a + 1 < count; ++a)
+             for (std::uint32_t b = a + 1; b < count; ++b)
+-            {
+-                if (!detail::compatible(meta[a].filter, meta[b].filter))
+-                {
+-                    context.filtered();
+-                    continue;
+-                }
+-                // The caller checked that every possible pair fits the budget.
+-                if constexpr (Instrumented)
+-                    ++context.result.counters.candidateTests;
+-                const auto& x = boxes[a];
+-                const auto& y = boxes[b];
+-                // Strict overlap always qualifies; only contact needs the boundary and degeneracy checks.
+-                if (!(x.minX < y.maxX && y.minX < x.maxX && x.minY < y.maxY && y.minY < x.maxY) &&
+-                    !(detail::closedOverlap(x, y) && (mConfig.boundary == Boundary::TouchInclusive ||
+-                        x.minX == x.maxX || x.minY == x.maxY || y.minX == y.maxX || y.minY == y.maxY)))
+-                    continue;
+-                auto first = a, second = b;
+-                orient(first, second, false);
+-                const View left = view(first), right = view(second);
+-                if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
+-                {
+-                    context.predicate();
+-                    if (!std::invoke(predicate, left, right))
+-                        continue;
+-                }
+-                context.report(std::invoke(visitor, left, right));
+-                if (!context.active())
++                if (!test(a, b))
+                     return;
+-            }
+     }
+ 
+     template<typename G, typename Visitor, typename Predicate>

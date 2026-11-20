@@ -1,0 +1,58 @@
+cmake version 3.24.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+[1/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/bitset.c.o
+[2/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/arena_allocator.c.o
+[3/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/aabb.c.o
+[4/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/constraint_graph.c.o
+[5/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/broad_phase.c.o
+[6/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/contact_solver.c.o
+[7/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/contact.c.o
+[8/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/core.c.o
+[9/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/contact_solver_w4.c.o
+[10/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/body.c.o
+[11/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/distance_joint.c.o
+[12/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/distance.c.o
+[13/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/hull.c.o
+[14/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/id_pool.c.o
+[15/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/geometry.c.o
+[16/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/dynamic_tree.c.o
+[17/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/contact_solver_w8.c.o
+[18/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/math_functions.c.o
+[19/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/island.c.o
+[20/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/mover_joint.c.o
+[21/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/mover.c.o
+[22/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/motor_joint.c.o
+[23/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/parallel_for.c.o
+[24/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/pogo_joint.c.o
+[25/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/manifold.c.o
+[26/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/joint.c.o
+[27/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/prismatic_joint.c.o
+[28/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/revolute_joint.c.o
+[29/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/scheduler.c.o
+[30/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/sensor.c.o
+[31/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/physics_world.c.o
+[32/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/simd.c.o
+[33/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/shape.c.o
+[34/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/snapshot.c.o
+[35/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/solver_set.c.o
+[36/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/table.c.o
+[37/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/timer.c.o
+[38/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/types.c.o
+[39/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/recording.c.o
+[40/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/replay.c.o
+[41/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/weld_joint.c.o
+[42/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/solver.c.o
+[43/47] Building C object _deps/box2d-build/src/CMakeFiles/box2d.dir/wheel_joint.c.o
+[44/47] Linking C static library _deps/box2d-build/src/libbox2d.a
+[45/47] Building CXX object bench/CMakeFiles/quadtree-bench.dir/bench-memory.cpp.o
+[46/47] Building CXX object bench/CMakeFiles/quadtree-bench.dir/quadtree-bench.cpp.o
+[47/47] Linking CXX executable bench/quadtree-bench
+-- Install configuration: "Release"
+-- Up-to-date: /tmp/qt-package.udR1I9/install-cmake-3.24/lib/cmake/QuadTree/QuadTreeTargets.cmake
+-- Up-to-date: /tmp/qt-package.udR1I9/install-cmake-3.24/lib/cmake/QuadTree/QuadTreeConfig.cmake
+-- Up-to-date: /tmp/qt-package.udR1I9/install-cmake-3.24/lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+-- Up-to-date: /tmp/qt-package.udR1I9/install-cmake-3.24/include/QuadTree/quadtree-index.h
+-- Up-to-date: /tmp/qt-package.udR1I9/install-cmake-3.24/include/QuadTree/detail/quadtree-index-impl.h
+-- Up-to-date: /tmp/qt-package.udR1I9/install-cmake-3.24/share/licenses/QuadTree/LICENSE
+Install manifest matches library-only install

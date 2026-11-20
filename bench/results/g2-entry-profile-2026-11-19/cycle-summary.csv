@@ -1,0 +1,9 @@
+run,commit_samples,commit_period,commit_pct_build,key_load_pct_commit,descriptor_load_pct_commit,payload_load_pct_commit,dense_store_pct_commit,counts_rank_test_key_rewrite_pct_commit,after_rank_flag_load_pct_commit,after_payload_load_pct_commit,loop_helper_overhead_pct_commit,other_entry_commit_pct_commit
+1-uniform-100000,383,583859251,23.48,0.00,1.31,1.28,1.25,0.26,17.57,72.61,5.72,0.00
+1-split-line-100000,357,543411193,21.18,0.56,0.53,1.98,1.33,1.13,16.54,73.70,4.23,0.00
+1-split-line-translated-100000,367,559017902,21.28,0.00,0.00,0.82,1.85,0.82,16.60,73.61,6.30,0.00
+1-clustered-100000,299,455824817,23.69,0.00,0.33,1.01,0.94,0.67,19.72,73.62,3.70,0.00
+2-uniform-100000,474,623934304,24.65,0.42,0.00,2.34,1.62,0.21,21.13,67.77,6.51,0.00
+2-split-line-100000,408,536624519,20.97,0.00,0.00,1.96,2.14,0.00,13.22,76.27,6.40,0.00
+2-split-line-translated-100000,425,558554098,21.14,0.00,0.47,0.44,0.92,0.95,15.97,76.28,4.98,0.00
+2-clustered-100000,331,435264561,23.02,0.00,0.00,1.48,0.84,1.21,19.34,71.69,5.44,0.00

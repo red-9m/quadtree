@@ -1,0 +1,8 @@
+variant,scene,n,build_prepared_pct,replacement_pct,adapter_pct,scan_pct,other_pct
+before,uniform,2,38.73,13.10,9.38,38.23,0.56
+before,uniform,4,28.88,10.88,8.14,51.19,0.91
+before,clustered,2,38.71,12.85,9.29,38.39,0.76
+before,clustered,4,29.02,10.14,8.22,51.78,0.83
+fused,uniform,1,96.60,0.00,2.40,0.60,0.41
+fused,uniform,2,87.13,0.00,2.24,10.37,0.26
+fused,uniform,4,76.14,0.00,3.07,20.43,0.36

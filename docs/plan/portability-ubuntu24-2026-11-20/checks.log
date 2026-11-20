@@ -1,0 +1,165 @@
+Local container runs, not GitHub Actions. Excerpts: configure/build invocations, representative compiler/link commands, CTest commands and outcomes.
+
+== gcc-debug ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.VhUGInY9tS/build -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is GNU 13.3.0
++ cmake --build /tmp/tmp.VhUGInY9tS/build --config Debug --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[6/26] /usr/bin/g++-13 -D_DEBUG -I/src -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.VhUGInY9tS/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/g++-13  -I/src -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.VhUGInY9tS/build -C Debug --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed    2.54 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    0.90 sec
+100% tests passed, 0 tests failed out of 16
++ cmake --install /tmp/tmp.VhUGInY9tS/build --config Debug --prefix /tmp/tmp.VhUGInY9tS/staged
++ cmake -S /tmp/tmp.VhUGInY9tS/consumer-source -B /tmp/tmp.VhUGInY9tS/consumer -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_TEST_MODE=installed '-DQUADTREE_TEST_PREFIX=/tmp/tmp.VhUGInY9tS/relocated prefix' '-DCMAKE_PREFIX_PATH=/tmp/tmp.VhUGInY9tS/relocated prefix' -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF
+-- The CXX compiler identification is GNU 13.3.0
++ cmake --build /tmp/tmp.VhUGInY9tS/consumer --config Debug --parallel 2 --verbose
+[1/2] /usr/bin/g++-13  -isystem "/tmp/tmp.VhUGInY9tS/relocated prefix/include/QuadTree" -g -std=c++20 -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/tmp.VhUGInY9tS/consumer-source/main.cpp
++ ctest --test-dir /tmp/tmp.VhUGInY9tS/consumer -C Debug --output-on-failure --no-tests=error --timeout 180
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+100% tests passed, 0 tests failed out of 1
+
+== gcc-release ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.J8xmdCiVcn/build -DCMAKE_BUILD_TYPE=Release -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is GNU 13.3.0
++ cmake --build /tmp/tmp.J8xmdCiVcn/build --config Release --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[5/26] /usr/bin/g++-13  -I/src -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.J8xmdCiVcn/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/g++-13  -I/src -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.J8xmdCiVcn/build -C Release --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed    0.36 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    0.14 sec
+100% tests passed, 0 tests failed out of 16
++ cmake --install /tmp/tmp.J8xmdCiVcn/build --config Release --prefix /tmp/tmp.J8xmdCiVcn/staged
++ cmake -S /tmp/tmp.J8xmdCiVcn/consumer-source -B /tmp/tmp.J8xmdCiVcn/consumer -DCMAKE_BUILD_TYPE=Release -DQUADTREE_TEST_MODE=installed '-DQUADTREE_TEST_PREFIX=/tmp/tmp.J8xmdCiVcn/relocated prefix' '-DCMAKE_PREFIX_PATH=/tmp/tmp.J8xmdCiVcn/relocated prefix' -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF
+-- The CXX compiler identification is GNU 13.3.0
++ cmake --build /tmp/tmp.J8xmdCiVcn/consumer --config Release --parallel 2 --verbose
+[1/2] /usr/bin/g++-13  -isystem "/tmp/tmp.J8xmdCiVcn/relocated prefix/include/QuadTree" -O3 -DNDEBUG -std=c++20 -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/tmp.J8xmdCiVcn/consumer-source/main.cpp
++ ctest --test-dir /tmp/tmp.J8xmdCiVcn/consumer -C Release --output-on-failure --no-tests=error --timeout 180
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+100% tests passed, 0 tests failed out of 1
+
+== clang-libstdcxx-debug ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.QLxwamhwou/build -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.QLxwamhwou/build --config Debug --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[5/26] /usr/bin/clang++-18 -D_DEBUG -I/src -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.QLxwamhwou/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/clang++-18  -I/src -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.QLxwamhwou/build -C Debug --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed    3.43 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    1.02 sec
+100% tests passed, 0 tests failed out of 16
++ cmake --install /tmp/tmp.QLxwamhwou/build --config Debug --prefix /tmp/tmp.QLxwamhwou/staged
++ cmake -S /tmp/tmp.QLxwamhwou/consumer-source -B /tmp/tmp.QLxwamhwou/consumer -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_TEST_MODE=installed '-DQUADTREE_TEST_PREFIX=/tmp/tmp.QLxwamhwou/relocated prefix' '-DCMAKE_PREFIX_PATH=/tmp/tmp.QLxwamhwou/relocated prefix' -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.QLxwamhwou/consumer --config Debug --parallel 2 --verbose
+[1/2] /usr/bin/clang++-18  -isystem "/tmp/tmp.QLxwamhwou/relocated prefix/include/QuadTree" -g -std=c++20 -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/tmp.QLxwamhwou/consumer-source/main.cpp
++ ctest --test-dir /tmp/tmp.QLxwamhwou/consumer -C Debug --output-on-failure --no-tests=error --timeout 180
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+100% tests passed, 0 tests failed out of 1
+
+== clang-libstdcxx-release ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.0vKlsoe4t3/build -DCMAKE_BUILD_TYPE=Release -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.0vKlsoe4t3/build --config Release --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[6/26] /usr/bin/clang++-18  -I/src -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.0vKlsoe4t3/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/clang++-18  -I/src -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.0vKlsoe4t3/build -C Release --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed    0.38 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    0.14 sec
+100% tests passed, 0 tests failed out of 16
++ cmake --install /tmp/tmp.0vKlsoe4t3/build --config Release --prefix /tmp/tmp.0vKlsoe4t3/staged
++ cmake -S /tmp/tmp.0vKlsoe4t3/consumer-source -B /tmp/tmp.0vKlsoe4t3/consumer -DCMAKE_BUILD_TYPE=Release -DQUADTREE_TEST_MODE=installed '-DQUADTREE_TEST_PREFIX=/tmp/tmp.0vKlsoe4t3/relocated prefix' '-DCMAKE_PREFIX_PATH=/tmp/tmp.0vKlsoe4t3/relocated prefix' -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.0vKlsoe4t3/consumer --config Release --parallel 2 --verbose
+[1/2] /usr/bin/clang++-18  -isystem "/tmp/tmp.0vKlsoe4t3/relocated prefix/include/QuadTree" -O3 -DNDEBUG -std=c++20 -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/tmp.0vKlsoe4t3/consumer-source/main.cpp
++ ctest --test-dir /tmp/tmp.0vKlsoe4t3/consumer -C Release --output-on-failure --no-tests=error --timeout 180
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+100% tests passed, 0 tests failed out of 1
+
+== clang-libcxx-debug ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.B4MOsRlTDh/build -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.B4MOsRlTDh/build --config Debug --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[5/26] /usr/bin/clang++-18 -D_DEBUG -I/src -stdlib=libc++ -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.B4MOsRlTDh/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/clang++-18  -I/src -stdlib=libc++ -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.B4MOsRlTDh/build -C Debug --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed    3.16 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    1.55 sec
+100% tests passed, 0 tests failed out of 16
++ cmake --install /tmp/tmp.B4MOsRlTDh/build --config Debug --prefix /tmp/tmp.B4MOsRlTDh/staged
++ cmake -S /tmp/tmp.B4MOsRlTDh/consumer-source -B /tmp/tmp.B4MOsRlTDh/consumer -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_TEST_MODE=installed '-DQUADTREE_TEST_PREFIX=/tmp/tmp.B4MOsRlTDh/relocated prefix' '-DCMAKE_PREFIX_PATH=/tmp/tmp.B4MOsRlTDh/relocated prefix' -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.B4MOsRlTDh/consumer --config Debug --parallel 2 --verbose
+[1/2] /usr/bin/clang++-18  -isystem "/tmp/tmp.B4MOsRlTDh/relocated prefix/include/QuadTree" -stdlib=libc++ -g -std=c++20 -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/tmp.B4MOsRlTDh/consumer-source/main.cpp
++ ctest --test-dir /tmp/tmp.B4MOsRlTDh/consumer -C Debug --output-on-failure --no-tests=error --timeout 180
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+100% tests passed, 0 tests failed out of 1
+
+== clang-libcxx-release ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.liIWNhEYYu/build -DCMAKE_BUILD_TYPE=Release -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.liIWNhEYYu/build --config Release --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[6/26] /usr/bin/clang++-18  -I/src -stdlib=libc++ -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.liIWNhEYYu/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/clang++-18  -I/src -stdlib=libc++ -O3 -DNDEBUG -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.liIWNhEYYu/build -C Release --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed    0.37 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    0.14 sec
+100% tests passed, 0 tests failed out of 16
++ cmake --install /tmp/tmp.liIWNhEYYu/build --config Release --prefix /tmp/tmp.liIWNhEYYu/staged
++ cmake -S /tmp/tmp.liIWNhEYYu/consumer-source -B /tmp/tmp.liIWNhEYYu/consumer -DCMAKE_BUILD_TYPE=Release -DQUADTREE_TEST_MODE=installed '-DQUADTREE_TEST_PREFIX=/tmp/tmp.liIWNhEYYu/relocated prefix' '-DCMAKE_PREFIX_PATH=/tmp/tmp.liIWNhEYYu/relocated prefix' -DCMAKE_FIND_USE_PACKAGE_REGISTRY=OFF -DCMAKE_FIND_USE_SYSTEM_PACKAGE_REGISTRY=OFF
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.liIWNhEYYu/consumer --config Release --parallel 2 --verbose
+[1/2] /usr/bin/clang++-18  -isystem "/tmp/tmp.liIWNhEYYu/relocated prefix/include/QuadTree" -stdlib=libc++ -O3 -DNDEBUG -std=c++20 -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/tmp.liIWNhEYYu/consumer-source/main.cpp
++ ctest --test-dir /tmp/tmp.liIWNhEYYu/consumer -C Release --output-on-failure --no-tests=error --timeout 180
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+100% tests passed, 0 tests failed out of 1
+
+== asan-ubsan ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.cIHmVEqiWC/build -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.cIHmVEqiWC/build --config Debug --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[6/26] /usr/bin/clang++-18 -D_DEBUG -I/src -fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.cIHmVEqiWC/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/clang++-18  -I/src -fsanitize=address,undefined -fno-sanitize-recover=all -fno-omit-frame-pointer -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.cIHmVEqiWC/build -C Debug --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.01 sec
+ 2/16 Test  #2: index-test ..........................   Passed   10.49 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    3.93 sec
+100% tests passed, 0 tests failed out of 16
+
+== stl-debug ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.lpTHDle66Z/build -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=ON -DQUADTREE_BUILD_BENCHMARKS=ON -DQUADTREE_BENCH_BOX2D=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is GNU 13.3.0
++ cmake --build /tmp/tmp.lpTHDle66Z/build --config Debug --parallel 2 --verbose --target quadtree-test quadtree-public-headers quadtree-no-exceptions-check index-test index-test-noexcept index-death entry-store-test entry-store-test-noexcept entry-store-death quadtree-index-fuzz quadtree-dynamic-static
+[3/26] /usr/bin/g++-13 -D_DEBUG -I/src -D_GLIBCXX_DEBUG -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -MF tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o.d -o tests/CMakeFiles/quadtree-public-headers.dir/include-quadtree-index.h.cpp.o -c /tmp/tmp.lpTHDle66Z/build/tests/include-quadtree-index.h.cpp
+[8/26] /usr/bin/g++-13  -I/src -D_GLIBCXX_DEBUG -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -fno-exceptions -MD -MT tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -MF tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o.d -o tests/CMakeFiles/quadtree-no-exceptions-check.dir/no-exceptions-check.cpp.o -c /src/tests/no-exceptions-check.cpp
++ ctest --test-dir /tmp/tmp.lpTHDle66Z/build -C Debug --output-on-failure --no-tests=error --timeout 180 -R '^(index-test(-noexcept)?|index-death-.*|entry-store-.*|index-fuzz-quick|index-example-dynamic-static)$'
+ 1/16 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+ 2/16 Test  #2: index-test ..........................   Passed   14.70 sec
+16/16 Test #20: index-fuzz-quick ....................   Passed    2.40 sec
+100% tests passed, 0 tests failed out of 16
+
+== tsan ==
+cmake version 3.28.3
++ cmake -S /src -B /tmp/tmp.VNS9IF3q8X/build -DCMAKE_BUILD_TYPE=Debug -DQUADTREE_BUILD_DEMO=OFF -DQUADTREE_BUILD_BENCHMARKS=OFF -DQUADTREE_BUILD_TESTS=ON -DQUADTREE_INSTALL=ON
+-- The CXX compiler identification is Clang 18.1.3
++ cmake --build /tmp/tmp.VNS9IF3q8X/build --config Debug --parallel 2 --verbose --target index-test
+[1/3] /usr/bin/clang++-18 -DQUADTREE_TEST_DEBUG_HEADER -I/src -fsanitize=thread -fno-omit-frame-pointer -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/index-test.dir/index-test-tu2.cpp.o -MF tests/CMakeFiles/index-test.dir/index-test-tu2.cpp.o.d -o tests/CMakeFiles/index-test.dir/index-test-tu2.cpp.o -c /src/tests/index-test-tu2.cpp
+[2/3] /usr/bin/clang++-18  -I/src -fsanitize=thread -fno-omit-frame-pointer -g -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -pedantic-errors -Werror -MD -MT tests/CMakeFiles/index-test.dir/index-test.cpp.o -MF tests/CMakeFiles/index-test.dir/index-test.cpp.o.d -o tests/CMakeFiles/index-test.dir/index-test.cpp.o -c /src/tests/index-test.cpp
+[3/3] : && /usr/bin/clang++-18 -fsanitize=thread -fno-omit-frame-pointer -g  tests/CMakeFiles/index-test.dir/index-test.cpp.o tests/CMakeFiles/index-test.dir/index-test-tu2.cpp.o -o tests/index-test   && :
++ ctest --test-dir /tmp/tmp.VNS9IF3q8X/build -C Debug --output-on-failure --no-tests=error --timeout 180 -R '^index-test$'
+1/1 Test #2: index-test .......................   Passed   15.78 sec
+100% tests passed, 0 tests failed out of 1

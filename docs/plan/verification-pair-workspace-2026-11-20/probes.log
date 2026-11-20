@@ -1,0 +1,6 @@
+pair-workspace full group=1: 256 entries, 0 pairs, 3392 bytes retained/peak
+pair-workspace moved group=1: 256 entries, 0 pairs, 3392 bytes retained/peak
+pair-workspace full group=16: 256 entries, 1920 pairs, 3392 bytes retained/peak
+pair-workspace moved group=16: 256 entries, 240 pairs, 3392 bytes retained/peak
+pair-workspace full group=256: 256 entries, 32640 pairs, 3392 bytes retained/peak
+pair-workspace moved group=256: 256 entries, 3960 pairs, 3392 bytes retained/peak

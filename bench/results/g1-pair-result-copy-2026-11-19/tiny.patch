@@ -1,0 +1,14 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1076,7 +1076,11 @@
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
+         else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
++        {
+             tinyPairs(context, visitor, predicate);
++            const auto& [nodes, candidates, filtered, predicates, reports] = context.result.counters;
++            return {context.result.status, {nodes, candidates, filtered, predicates, reports}};
++        }
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)

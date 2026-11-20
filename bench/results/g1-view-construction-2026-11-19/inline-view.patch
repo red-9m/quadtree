@@ -1,0 +1,25 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2320,6 +2320,13 @@
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;
+         const auto* meta = mEntries.mMeta;
++        // Construct views in the visitor's instantiation so unused fields can be elided.
++        const auto entry = [&](std::uint32_t dense) noexcept -> View
++        {
++            const auto& value = meta[dense];
++            return {detail::HandleAccess::make<Store>(mEntries.mOwner, value.slot, mEntries.mSlots[value.slot].generation),
++                boxes[dense], mEntries.mPayloads[dense], value.filter, mEntries.rankAt(dense)};
++        };
+         for (std::uint32_t a = 0; a + 1 < count; ++a)
+             for (std::uint32_t b = a + 1; b < count; ++b)
+             {
+@@ -2340,7 +2347,7 @@
+                     continue;
+                 auto first = a, second = b;
+                 orient(first, second, false);
+-                const View left = view(first), right = view(second);
++                const View left = entry(first), right = entry(second);
+                 if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
+                 {
+                     context.predicate();

@@ -1,0 +1,83 @@
+--- a/bench/bench-index.h
++++ b/bench/bench-index.h
+@@ -53,15 +53,20 @@
+         if (mPrepared < boxes.size())
+         {
+             require(mWorkspace.reserve({Ordered ? boxes.size() : 0, 0, boxes.size()}));
++            mInput.resize(boxes.size());
++            for (std::size_t i = mPrepared; i < boxes.size(); ++i)
++            {
++                const auto id = static_cast<std::uint32_t>(i);
++                mInput[i].payload = id;
++                if constexpr (Ordered)
++                    mInput[i].rank = mix64(id ^ 0x72616e6bu);
++            }
+             mPrepared = boxes.size();
+         }
+-        mInput.resize(boxes.size());
++        // IDs, filters and ranks depend only on position, not on the scene.
+         for (std::size_t i = 0; i < boxes.size(); ++i)
+-        {
+-            const auto id = static_cast<std::uint32_t>(i);
+-            mInput[i] = {boxes[i], id, {}, Ordered ? std::optional<std::uint64_t>(mix64(id ^ 0x72616e6bu)) : std::nullopt};
+-        }
+-        require(mTree->build(mInput, {.workspace = &mWorkspace}));
++            mInput[i].rect = boxes[i];
++        require(mTree->build(std::span{mInput.data(), boxes.size()}, {.workspace = &mWorkspace}));
+     }
+ 
+     void reset(const EngineSetup<T>& setup)
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1883,11 +1883,10 @@
+     Status buildPrepared(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
+         std::size_t count, Workspace<T>& workspace) noexcept
+     {
+-        auto* scratch = &workspace;
+-        if (scratch->mDescriptors.capacity() < count || scratch->mKeys.capacity() < count ||
+-            scratch->mTemp.capacity() < count)
++        if (workspace.mDescriptors.capacity() < count || workspace.mKeys.capacity() < count ||
++            workspace.mTemp.capacity() < count)
+             return Status::InsufficientWorkspace;
+-        typename Workspace<T>::Use use(*scratch);
++        typename Workspace<T>::Use use(workspace);
+         if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+             std::ranges::contiguous_range<R> &&
+             std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
+@@ -1903,6 +1902,14 @@
+         }
+         if (count == 1 && mConfig.smallSetThreshold != 0)
+             return buildSingle<Consume, Projected>(*std::ranges::begin(range), accessor, handles);
++        return buildGeneral<Consume, Projected>(range, accessor, handles, count, workspace);
++    }
++
++    template<bool Consume, bool Projected, typename R, typename Accessor>
++    Status buildGeneral(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
++        std::size_t count, Workspace<T>& workspace) noexcept
++    {
++        auto* scratch = &workspace;
+         std::size_t i = 0, ranked = 0;
+         std::optional<Box<T>> next_extent = mConfig.extent == Extent::Fixed ? mConfig.root : std::nullopt;
+         for (auto& entry : range)
+@@ -2320,6 +2327,12 @@
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;
+         const auto* meta = mEntries.mMeta;
++        const auto entry = [&](std::uint32_t dense) noexcept -> View
++        {
++            const auto& value = meta[dense];
++            return {detail::HandleAccess::make<Store>(mEntries.mOwner, value.slot, mEntries.mSlots[value.slot].generation),
++                boxes[dense], mEntries.mPayloads[dense], value.filter, mEntries.rankAt(dense)};
++        };
+         for (std::uint32_t a = 0; a + 1 < count; ++a)
+             for (std::uint32_t b = a + 1; b < count; ++b)
+             {
+@@ -2340,7 +2353,7 @@
+                     continue;
+                 auto first = a, second = b;
+                 orient(first, second, false);
+-                const View left = view(first), right = view(second);
++                const View left = entry(first), right = entry(second);
+                 if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
+                 {
+                     context.predicate();

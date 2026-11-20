@@ -1,0 +1,10 @@
+# Persistent process-term calibration (3%): identical invocations in separate processes
+# command: quadtree-bench --model=persistent --types=float --persistent-sizes=1000,10000 --engines=b2tree,b2tree-fat,grid,grid-rebuild,qt-loose
+## calibration-persistent-1.csv vs calibration-persistent-2.csv
+compared 656: faster 10, slower 18, same within error 628; geometric mean new/old 1.001
+## calibration-persistent-1.csv vs calibration-persistent-3.csv
+compared 656: faster 10, slower 18, same within error 628; geometric mean new/old 1.000
+## calibration-persistent-2.csv vs calibration-persistent-3.csv
+compared 656: faster 9, slower 1, same within error 646; geometric mean new/old 0.999
+## different invocation: persistent-float.csv vs calibration-persistent-1.csv
+compared 656: faster 5, slower 45, same within error 606; geometric mean new/old 1.007

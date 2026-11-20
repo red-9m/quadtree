@@ -1,0 +1,90 @@
+--- a/quadtree-index.h
++++ b/quadtree-index.h
+@@ -398,7 +398,10 @@
+ inline std::atomic<std::uint64_t> moduleIdentityCounter{0};
+ 
+ // Returns a unique nonzero identity, or 0 when the counter is exhausted.
+-inline std::uint64_t acquireModuleIdentity() noexcept
++#if __has_cpp_attribute(gnu::always_inline)
++[[gnu::always_inline]]
++#endif
++inline std::uint64_t acquireModuleIdentityInline() noexcept
+ {
+     std::uint64_t current = moduleIdentityCounter.load(std::memory_order_relaxed);
+     do
+@@ -410,6 +413,11 @@
+     return current + 1;
+ }
+ 
++inline std::uint64_t acquireModuleIdentity() noexcept
++{
++    return acquireModuleIdentityInline();
++}
++
+ [[noreturn]] inline void invalidHandle(const char* operation) noexcept
+ {
+     std::fputs("QuadTree: invalid handle passed to ", stderr);
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2016,7 +2016,7 @@
+                 return Status::InvalidGeometry;
+             extent = detail::unite(extent, box);
+         }
+-        const auto owner = Traits::acquireIdentity();
++        const auto owner = detail::acquireModuleIdentityInline();
+         if (owner == 0)
+             return Status::IdentityExhausted;
+         // Payload destruction is trivial. Reset the slot/rank bookkeeping,
+--- a/tests/index-test.cpp
++++ b/tests/index-test.cpp
+@@ -931,6 +931,42 @@
+     CHECK(second.value().valid(b) && !second.value().valid(a));
+ }
+ 
++// Run last: the module counter must never be reset after exhaustion.
++void flatIdentityExhaustion()
++{
++    using I = QuadTree::Index<int, int>;
++    auto made = I::create();
++    REQUIRE(made.ok());
++    auto tree = std::move(made).value();
++    REQUIRE(tree.reserve({.entries = 2}) == Status::Ok);
++    QuadTree::Workspace<int> scratch;
++    REQUIRE(scratch.reserve({0, 0, 2}) == Status::Ok);
++    const auto old = tree.insert(Box<int>{0, 0, 1, 1}, 1);
++    REQUIRE(old.ok());
++    std::array<QuadTree::BuildEntry<int, int>, 2> input{{{{1, 0, 2, 1}, 2}, {{0, 0, 2, 1}, 3}}};
++    std::array<I::HandleType, 3> output{old.handle, old.handle, old.handle};
++    const auto maximum = std::numeric_limits<std::uint64_t>::max();
++    auto& counter = QuadTree::detail::moduleIdentityCounter;
++    counter.store(maximum - 1, std::memory_order_relaxed);
++
++    input[1].rect.maxX = -1;
++    CHECK(tree.build(input, output, {.workspace = &scratch}) == Status::InvalidGeometry);
++    CHECK(counter.load(std::memory_order_relaxed) == maximum - 1);
++    CHECK(tree.valid(old.handle) && output[0] == old.handle && output[1] == old.handle);
++    input[1].rect.maxX = 2;
++    REQUIRE(tree.build(input, output, {.workspace = &scratch}) == Status::Ok);
++    CHECK(counter.load(std::memory_order_relaxed) == maximum && !tree.valid(old.handle));
++    REQUIRE(tree.valid(output[0]) && tree.valid(output[1]));
++    CHECK(tree.payload(output[0]) == 2 && tree.payload(output[1]) == 3 && output[2] == old.handle);
++
++    const auto committed = output;
++    const auto extent = tree.extent();
++    input[1].rect.maxX = 3;
++    CHECK(tree.build(input, output, {.workspace = &scratch}) == Status::IdentityExhausted);
++    CHECK(output == committed && tree.valid(committed[0]) && tree.valid(committed[1]));
++    CHECK(tree.extent() == extent && counter.load(std::memory_order_relaxed) == maximum);
++}
++
+ struct MoveOnly
+ {
+     std::unique_ptr<int> value;
+@@ -1437,6 +1473,7 @@
+             randomized<float>(boundary, extent);
+             randomized<double>(boundary, extent);
+         }
++    flatIdentityExhaustion();
+     std::printf("index-test: %d failures\n", failures);
+     return failures == 0 ? 0 : 1;
+ }

@@ -1,0 +1,13 @@
+scene,engine,variant,median_saving_ns,median_ci_low_ns,median_ci_high_ns,min_saving_ns,max_saving_ns
+uniform,index,workspace,+0.45,+0.4,+0.5,+0.4,+0.5
+uniform,index,dispatch,+0.00,+0.0,+0.0,-0.1,+0.0
+uniform,index,combined,+0.40,+0.3,+0.5,+0.1,+0.5
+uniform,brute,workspace,+0.00,+0.0,+0.0,+0.0,+0.0
+uniform,brute,dispatch,+0.00,+0.0,+0.0,-0.1,+0.0
+uniform,brute,combined,+0.00,+0.0,+0.0,+0.0,+0.0
+clustered,index,workspace,+0.40,+0.4,+0.5,+0.3,+0.6
+clustered,index,dispatch,-0.05,-0.1,+0.0,-0.2,+0.2
+clustered,index,combined,+0.40,+0.3,+0.5,+0.3,+0.6
+clustered,brute,workspace,+0.00,-0.1,+0.0,-0.2,+0.0
+clustered,brute,dispatch,+0.00,+0.0,+0.0,-0.1,+0.0
+clustered,brute,combined,+0.00,+0.0,+0.0,-0.1,+0.0

@@ -1,0 +1,48 @@
+--- a/tests/index-test.cpp
++++ b/tests/index-test.cpp
+@@ -854,12 +854,41 @@
+         const auto stop = [](const auto&, const auto&) noexcept { return Stop; };
+         const auto stopped = tree.forEachPair(stop, {.budget = {.candidateTests = 6}});
+         CHECK(stopped.status == Status::Stopped && stopped.counters.reports == 1);
+-        REQUIRE(tree.build(std::span(input).subspan(1, 2)) == Status::Ok);
++        REQUIRE(tree.build(std::span(input).first(2)) == Status::Ok);
++        const auto contact = tree.forEachPair(stop, {.budget = {.candidateTests = 1}});
++        CHECK(contact.status == (touch ? Status::Stopped : Status::Ok));
++        CHECK(contact.counters.candidateTests == 1 && contact.counters.reports == (touch ? 1u : 0u));
++
++        REQUIRE(tree.build(std::span(input).first(3), handles) == Status::Ok);
++        REQUIRE(tree.remove(handles[0]) == Status::Ok);
+         CHECK(tree.forEachPair(stop, {.budget = {.candidateTests = 0}}).status == Status::BudgetExhausted);
+-        CHECK(tree.forEachPair(stop, {.budget = {.candidateTests = 1}}).status == Status::Stopped);
++        const auto checkPair = [&](const auto& a, const auto& b) noexcept
++        {
++            checkView(a);
++            checkView(b);
++            CHECK(a.payload == 1 && b.payload == 2);
++        };
++        for (bool accept : {false, true})
++        {
++            const auto result = tree.forEachPair([&](const auto& a, const auto& b) noexcept
++            {
++                checkPair(a, b);
++                return Stop;
++            }, {.budget = {.candidateTests = 1}}, [&](const auto& a, const auto& b) noexcept
++            {
++                checkPair(a, b);
++                return accept;
++            });
++            CHECK(result.status == (accept ? Status::Stopped : Status::Ok));
++            CHECK(result.counters.candidateTests == 1 && result.counters.predicateCalls == 1);
++            CHECK(result.counters.reports == (accept ? 1u : 0u));
++        }
+         REQUIRE(tree.build(std::span(input).last(2)) == Status::Ok);
+-        const auto filtered = tree.forEachPair(stop, {.budget = {.candidateTests = 0}});
+-        CHECK(filtered.complete() && filtered.counters.filterRejections == 1 && filtered.counters.candidateTests == 0);
++        for (std::uint64_t budget : {0u, 1u})
++        {
++            const auto filtered = tree.forEachPair(stop, {.budget = {.candidateTests = budget}});
++            CHECK(filtered.complete() && filtered.counters.filterRejections == 1 && filtered.counters.candidateTests == 0);
++        }
+     }
+ }
+ 

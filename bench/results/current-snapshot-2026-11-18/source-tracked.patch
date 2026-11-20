@@ -1,0 +1,87 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 860d10f..ce2240e 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,16 +1,21 @@
+-cmake_minimum_required(VERSION 3.5)
++cmake_minimum_required(VERSION 3.21)
+ project (quadtree CXX)
+ 
+-# Project properties
+-set(CMAKE_CXX_STANDARD 20)
+-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-set(CMAKE_CXX_EXTENSIONS OFF)
++add_library(quadtree INTERFACE)
++add_library(QuadTree::QuadTree ALIAS quadtree)
++target_include_directories(quadtree INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
++target_compile_features(quadtree INTERFACE cxx_std_20)
++
++option(QUADTREE_BUILD_DEMO "Build the legacy QuadTree demo" ${PROJECT_IS_TOP_LEVEL})
++if (QUADTREE_BUILD_DEMO)
+ 
+ # Sources
+ set(quadtree-src quadtree-test.cpp)
+ 
+ # Targets
+ add_executable(quadtree-test ${quadtree-src})
++target_compile_features(quadtree-test PRIVATE cxx_std_20)
++set_target_properties(quadtree-test PROPERTIES CXX_EXTENSIONS OFF)
+ 
+ # Show Compiler
+ message(STATUS "CXX Compiler: ${CMAKE_CXX_COMPILER_ID}")
+@@ -44,3 +49,19 @@ else()
+     target_compile_options(quadtree-test PRIVATE ${COMPILE_OPT})
+     target_link_options(quadtree-test PRIVATE ${LINK_OPT})
+ endif()
++
++endif() # QUADTREE_BUILD_DEMO
++
++# Tests for the next major version (quadtree-index.h)
++option(QUADTREE_BUILD_TESTS "Build QuadTree tests" ${PROJECT_IS_TOP_LEVEL})
++if (QUADTREE_BUILD_TESTS)
++    enable_testing()
++    add_subdirectory(tests)
++endif()
++
++# Benchmark harness (bench/MANIFEST.md)
++option(QUADTREE_BUILD_BENCHMARKS "Build QuadTree benchmarks" ${PROJECT_IS_TOP_LEVEL})
++if (QUADTREE_BUILD_BENCHMARKS)
++    enable_testing()
++    add_subdirectory(bench)
++endif()
+diff --git a/README.md b/README.md
+index 143b51b..6ec5450 100644
+--- a/README.md
++++ b/README.md
+@@ -1,4 +1,13 @@
+ # QuadTree C++ 20 implementation
++
++The runtime `QuadTree::Index` API is in **`quadtree-index.h`**: loose quadtree,
++sorted bulk build, pooled storage, small sets, and persistent moved-set pairs.
++See [INDEX.md](INDEX.md) for usage, contracts, reservation and migration, and
++[development measurements](bench/results/index-development/README.md) for the
++remaining performance gates. CMake target: `QuadTree::QuadTree`.
++
++The documentation below describes the separate legacy `quadtree.h` API.
++
+ This is a high-performance modern C++ header library implementing a QuadTree for rectangular items.
+ 
+ A QuadTree distributes rectangles to quadrants by recursively subdividing a region into four equal parts (quadrants). Each rectangle is assigned to a quadrant based on its position relative to the center point. If a rectangle spans multiple quadrants, it is placed in the node that represents the entire region:
+diff --git a/quadtree-test.cpp b/quadtree-test.cpp
+index 8513d7e..69be8e6 100644
+--- a/quadtree-test.cpp
++++ b/quadtree-test.cpp
+@@ -17,8 +17,12 @@ constexpr auto testDelim = "----------------------------------------------------
+ template<typename RectT>
+ bool altRectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* rect2)
+ {
++    if (rect1->w1 == 0 || rect1->h1 == 0 || rect2->w1 == 0 || rect2->h1 == 0)
++        return !(
++            rect1->x1 > rect2->x1 + rect2->w1 || rect1->x1 + rect1->w1 < rect2->x1 ||
++            rect1->y1 > rect2->y1 + rect2->h1 || rect1->y1 + rect1->h1 < rect2->y1);
++
+     return !(
+-        rect1->w1 == 0 || rect1->h1 == 0 || rect2->w1 == 0 || rect2->h1 == 0 ||
+         rect1->x1 >= rect2->x1 + rect2->w1 || rect1->x1 + rect1->w1 <= rect2->x1 ||
+         rect1->y1 >= rect2->y1 + rect2->h1 || rect1->y1 + rect1->h1 <= rect2->y1);
+ }

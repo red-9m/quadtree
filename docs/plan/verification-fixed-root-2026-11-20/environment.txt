@@ -1,0 +1,21 @@
+Linux r9 7.3.0-1-custom #1 SMP PREEMPT_DYNAMIC Mon, 19 Oct 2026 00:11:47 +0000 x86_64 GNU/Linux
+g++ (GCC) 16.2.1 20260810
+clang version 22.1.8
+cmake version 4.4.2
+Box2D: 178495ba35695aefe9c321e569d2277f06db3b90
+
+Tested input SHA-256:
+885b8f1ab3eb7fc50a83da26eaaac4fcfa77aeb0d89ac335f7fc9fb20dd9da23  CMakeLists.txt
+20a6a92e9cda75620c8919648568e3e255e52be6f26f678dcf0690a39555b861  quadtree-index.h
+428c982d1b461223f7039cc8767b7cf7003ce7cdfebbdfa7da653ff48d532ad1  detail/quadtree-index-impl.h
+65671b62ecc326b35dea4b0d136ace97b7612ecf216b3baf69c59971ffcfba41  tests/CMakeLists.txt
+960e3da25ae2f916f4742771be7bc28e8ed38e7e1f0cdda46621c048ac655ead  tests/entry-store-death.cpp
+c878770b06f2dbc6a10935198c600bd09a15a44956000f55e1cf91505103de9b  tests/entry-store-test.cpp
+5bee2608c706bff1107f7b4b4a8349c08e0d14c0db9761bed602b93f8b1d61bf  tests/entry-store-test-tu2.cpp
+122fd7e2b70af784aaa51f56f1957767c5061bcb6826cae16749a19b0c4a8db5  tests/index-death.cpp
+702b7c8431fa3129f343bce25b1934fcdef5bac0028e5ccb4d05bf4a7833fc1c  tests/index-test.cpp
+10a83d80ccc2d4fb484868969efa960fa9bc4d4c1d5f959ddf8d7d10ff45b203  tests/index-test-tu2.cpp
+f48ca0cabeca1d513e1162d3c8412a25053093f5e718fe4f69cf7be2e6fb1705  tests/expect-abort.cmake
+14a1b906a0892794a0dba5b30be632ef1c13197ad1e3b8ae542d4dc0ed2a1485  bench/CMakeLists.txt
+35d5f42cfbe8d749307d51e93df73618cbcf3a3c252147abd1a385d2361ea379  bench/index-fuzz.cpp
+ea5dd4301a4154cdc3e99d845385287136ce41602808bf4a01c31bd9e38d8a40  bench/index-regression-bench.cpp

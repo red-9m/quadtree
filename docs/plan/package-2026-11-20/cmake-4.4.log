@@ -1,0 +1,87 @@
+cmake version 4.4.2
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+c++ (GCC) 16.2.1 20260810
+Network namespace: net:[4026532847]
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-4.4/subdirectory
+[1/2] Building CXX object CMakeFiles/consumer.dir/main.cpp.o
+[2/2] Linking CXX executable consumer
+Test project /tmp/qt-package.udR1I9/cmake-4.4/subdirectory
+    Start 1: quadtree-consumer
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.00 sec
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-4.4/fetchcontent
+[1/2] Building CXX object CMakeFiles/consumer.dir/main.cpp.o
+[2/2] Linking CXX executable consumer
+Test project /tmp/qt-package.udR1I9/cmake-4.4/fetchcontent
+    Start 1: quadtree-consumer
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.00 sec
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-4.4/library
+-- Install configuration: ""
+-- Installing: /tmp/qt-package.udR1I9/cmake-4.4/staged/lib/cmake/QuadTree/QuadTreeTargets.cmake
+-- Installing: /tmp/qt-package.udR1I9/cmake-4.4/staged/lib/cmake/QuadTree/QuadTreeConfig.cmake
+-- Installing: /tmp/qt-package.udR1I9/cmake-4.4/staged/lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+-- Installing: /tmp/qt-package.udR1I9/cmake-4.4/staged/custom-include/QuadTree/quadtree-index.h
+-- Installing: /tmp/qt-package.udR1I9/cmake-4.4/staged/custom-include/QuadTree/detail/quadtree-index-impl.h
+-- Installing: /tmp/qt-package.udR1I9/cmake-4.4/staged/custom-share/licenses/QuadTree/LICENSE
+custom-include/QuadTree/detail/quadtree-index-impl.h
+custom-include/QuadTree/quadtree-index.h
+custom-share/licenses/QuadTree/LICENSE
+lib/cmake/QuadTree/QuadTreeConfig.cmake
+lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+lib/cmake/QuadTree/QuadTreeTargets.cmake
+Network namespace: net:[4026532914]
+Checkout and original prefix not visible
+-- The CXX compiler identification is GNU 16.2.1
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /tmp/qt-package.udR1I9/cmake-4.4/installed
+Change Dir: '/tmp/qt-package.udR1I9/cmake-4.4/installed'
+
+Run Build Command(s): /usr/bin/ninja -v
+[1/2] /usr/bin/c++  -isystem "/tmp/qt-package.udR1I9/cmake-4.4/relocated prefix/custom-include/QuadTree"  -MD -MT CMakeFiles/consumer.dir/main.cpp.o -MF CMakeFiles/consumer.dir/main.cpp.o.d -o CMakeFiles/consumer.dir/main.cpp.o -c /tmp/qt-package.udR1I9/cmake-4.4/consumer-source/main.cpp
+[2/2] : && /usr/bin/c++  -Wl,--dependency-file=CMakeFiles/consumer.dir/link.d CMakeFiles/consumer.dir/main.cpp.o -o consumer   && :
+
+Test project /tmp/qt-package.udR1I9/cmake-4.4/installed
+    Start 1: quadtree-consumer
+1/1 Test #1: quadtree-consumer ................   Passed    0.00 sec
+
+100% tests passed out of 1
+
+Total Test time (real) =   0.00 sec

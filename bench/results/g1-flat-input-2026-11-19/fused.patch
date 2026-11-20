@@ -1,0 +1,68 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1886,6 +1886,19 @@
+             scratch->mTemp.capacity() < count)
+             return Status::InsufficientWorkspace;
+         typename Workspace<T>::Use use(*scratch);
++        if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
++            std::ranges::contiguous_range<R> &&
++            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
++            std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
++            !requires { Policy::acquireIdentity(); })
++        {
++            if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
++                count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
++            {
++                if (auto result = buildFlatInteger(std::ranges::data(range), static_cast<std::uint32_t>(count), handles))
++                    return *result;
++            }
++        }
+         if (count == 1 && mConfig.smallSetThreshold != 0)
+             return buildSingle<Consume, Projected>(*std::ranges::begin(range), accessor, handles);
+         std::size_t i = 0, ranked = 0;
+@@ -1978,6 +1991,45 @@
+         return Status::Ok;
+     }
+ 
++    // Warm, unranked integer boxes need no descriptor copy: validated edges are
++    // already canonical. The commit neither allocates nor invokes client code.
++    // A ranked entry delegates to the general path before any state changes.
++    std::optional<Status> buildFlatInteger(const BuildEntry<Payload, T>* input, std::uint32_t count,
++        std::optional<std::span<HandleType>> handles) noexcept
++    {
++        auto extent = input[0].rect;
++        for (std::uint32_t i = 0; i < count; ++i)
++        {
++            auto box = input[i].rect;
++            if (input[i].rank)
++                return std::nullopt;
++            if (!detail::canonicalize(box))
++                return Status::InvalidGeometry;
++            extent = detail::unite(extent, box);
++        }
++        const auto owner = Traits::acquireIdentity();
++        if (owner == 0)
++            return Status::IdentityExhausted;
++        mEntries.clear();
++        mEntries.mOwner = owner;
++        if (mRoot != none)
++            resetTopology();
++        mExtent = extent;
++        for (std::uint32_t i = 0; i < count; ++i)
++        {
++            std::construct_at(mEntries.mBoxes + i, input[i].rect);
++            std::construct_at(mEntries.mPayloads + i, input[i].payload);
++            std::construct_at(mEntries.mMeta + i, typename Store::Meta{input[i].filter, 0, i, false});
++            std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
++        }
++        mEntries.mSize = count;
++        mEntries.mSlotsUsed = count;
++        if (handles)
++            for (std::uint32_t i = 0; i < count; ++i)
++                (*handles)[i] = detail::HandleAccess::make<Store>(owner, i, 0);
++        return Status::Ok;
++    }
++
+     template<bool Projected, typename Entry, typename Accessor>
+     static bool captureBuildEntry(Entry& entry, Accessor& accessor, detail::Descriptor<T>& descriptor) noexcept
+     {

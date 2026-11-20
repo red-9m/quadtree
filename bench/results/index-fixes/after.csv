@@ -1,0 +1,16 @@
+label,scene,n,operation,median_ns_per_op,allocations,candidate_tests,node_visits,reports
+after,coincident,1000,insert,235.6,0,0,0,0
+after,coincident,1000,update,168.9,0,0,0,0
+after,coincident,4000,insert,200.3,0,0,0,0
+after,coincident,4000,update,163.7,0,0,0,0
+after,coincident,16000,insert,249.1,0,0,0,0
+after,coincident,16000,update,164.4,0,0,0,0
+after,coarse-ancestors,0,update,45.1,0,0,0,0
+after,coarse-ancestors,2000,update,46.4,0,0,0,0
+after,coarse-ancestors,8000,update,46.9,0,0,0,0
+after,single-moved,1000,unordered,4052.9,0,479,5,8
+after,single-moved,1000,ordered,2841.7,0,483,10,8
+after,single-moved,10000,unordered,1278.8,0,159,37,8
+after,single-moved,10000,ordered,1283.4,0,163,74,8
+after,single-moved,100000,unordered,462.4,0,24,93,8
+after,single-moved,100000,ordered,798.8,0,28,186,8

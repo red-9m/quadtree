@@ -1,0 +1,6 @@
+uniform n=1 16.6 ns/scene (235904 batches)
+uniform n=2 32.0 ns/scene (122304 batches)
+uniform n=4 54.9 ns/scene (71168 batches)
+clustered n=1 16.7 ns/scene (234112 batches)
+clustered n=2 31.8 ns/scene (122880 batches)
+clustered n=4 53.5 ns/scene (72960 batches)

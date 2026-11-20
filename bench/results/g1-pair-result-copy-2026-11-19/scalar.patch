@@ -1,0 +1,12 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1081,7 +1081,8 @@
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+                     testPair(a, b, false, context, visitor, predicate);
+-        return context.result;
++        const auto& [nodes, candidates, filtered, predicates, reports] = context.result.counters;
++        return {context.result.status, {nodes, candidates, filtered, predicates, reports}};
+     }
+ 
+     template<typename Visitor, typename Predicate = detail::AcceptAll>

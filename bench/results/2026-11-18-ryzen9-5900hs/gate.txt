@@ -1,0 +1,1313 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot float clustered n=0 vs brute force (brute)                                     2.444 [2.374-2.517]     <= 2 FAIL
+G1   hard snapshot float clustered n=1 vs brute force (brute)                                  70.254 [65.411-75.455]     <= 2 FAIL
+G1   hard snapshot float clustered n=16 vs brute force (brute)                                    2.516 [2.444-2.591]     <= 2 FAIL
+G1   hard snapshot float clustered n=2 vs brute force (brute)                                  38.489 [35.859-41.311]     <= 2 FAIL
+G1   hard snapshot float clustered n=32 vs brute force (brute)                                    1.473 [1.432-1.516]     <= 2 pass
+G1   hard snapshot float clustered n=4 vs brute force (brute)                                  26.231 [24.751-27.799]     <= 2 FAIL
+G1   hard snapshot float clustered n=64 vs brute force (brute)                                    1.075 [1.044-1.106]     <= 2 pass
+G1   hard snapshot float clustered n=8 vs brute force (brute)                                     5.175 [5.007-5.349]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=0 vs brute force (brute)                                     2.800 [2.719-2.883]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=1 vs brute force (brute)                                  77.188 [74.299-80.188]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=16 vs brute force (brute)                                    3.071 [2.985-3.160]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=2 vs brute force (brute)                                  41.377 [40.066-42.731]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=32 vs brute force (brute)                                    1.792 [1.742-1.844]     <= 2 pass
+G1   hard snapshot int32 clustered n=4 vs brute force (brute)                                  27.380 [26.438-28.355]     <= 2 FAIL
+G1   hard snapshot int32 clustered n=64 vs brute force (brute)                                    1.309 [1.272-1.346]     <= 2 pass
+G1   hard snapshot int32 clustered n=8 vs brute force (brute)                                     6.213 [6.033-6.397]     <= 2 FAIL
+G1   hard snapshot float uniform n=0 vs brute force (brute)                                       2.444 [2.374-2.517]     <= 2 FAIL
+G1   hard snapshot float uniform n=1 vs brute force (brute)                                    72.116 [68.785-75.608]     <= 2 FAIL
+G1   hard snapshot float uniform n=16 vs brute force (brute)                                      2.246 [2.180-2.314]     <= 2 FAIL
+G1   hard snapshot float uniform n=2 vs brute force (brute)                                    40.629 [37.133-44.454]     <= 2 FAIL
+G1   hard snapshot float uniform n=32 vs brute force (brute)                                      1.334 [1.296-1.372]     <= 2 pass
+G1   hard snapshot float uniform n=4 vs brute force (brute)                                    26.874 [25.750-28.048]     <= 2 FAIL
+G1   hard snapshot float uniform n=64 vs brute force (brute)                                      0.789 [0.767-0.812]     <= 2 pass
+G1   hard snapshot float uniform n=8 vs brute force (brute)                                       4.960 [4.807-5.118]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=0 vs brute force (brute)                                       2.820 [2.724-2.920]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=1 vs brute force (brute)                                    76.812 [73.835-79.910]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=16 vs brute force (brute)                                      2.702 [2.626-2.780]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=2 vs brute force (brute)                                    40.797 [39.353-42.293]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=32 vs brute force (brute)                                      1.621 [1.573-1.670]     <= 2 pass
+G1   hard snapshot int32 uniform n=4 vs brute force (brute)                                    27.893 [26.987-28.828]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=64 vs brute force (brute)                                      0.961 [0.934-0.989]     <= 2 pass
+G1   hard snapshot int32 uniform n=8 vs brute force (brute)                                       5.998 [5.825-6.177]     <= 2 FAIL
+G2   hard snapshot float clustered n=100 vs best baseline (sweep)                                 2.256 [2.180-2.333]     <= 4 pass
+G2   hard snapshot float clustered n=1000 vs best baseline (grid)                                 2.395 [2.238-2.563]     <= 4 pass
+G2   hard snapshot float clustered n=10000 vs best baseline (grid)                                1.282 [1.246-1.319]     <= 2 pass
+G2   hard snapshot float clustered n=100000 vs best baseline (grid)                               1.161 [1.128-1.196]     <= 2 pass
+G2   hard snapshot int32 clustered n=100 vs best baseline (sweep)                                 2.178 [2.093-2.266]     <= 4 pass
+G2   hard snapshot int32 clustered n=1000 vs best baseline (grid)                                 2.249 [2.174-2.326]     <= 4 pass
+G2   hard snapshot int32 clustered n=10000 vs best baseline (grid)                                1.333 [1.296-1.371]     <= 2 pass
+G2   hard snapshot int32 clustered n=100000 vs best baseline (grid)                               1.214 [1.179-1.251]     <= 2 pass
+G2   hard snapshot float mixed-size n=100 vs best baseline (sweep)                                3.473 [3.375-3.574]     <= 4 pass
+G2   hard snapshot float mixed-size n=1000 vs best baseline (grid)                                2.537 [2.460-2.616]     <= 4 pass
+G2   hard snapshot float mixed-size n=10000 vs best baseline (grid)                               1.105 [1.074-1.137]     <= 2 pass
+G2   hard snapshot float mixed-size n=100000 vs best baseline (grid)                              0.701 [0.681-0.721]     <= 2 pass
+G2   hard snapshot int32 mixed-size n=100 vs best baseline (sweep)                                3.302 [3.191-3.417]     <= 4 pass
+G2   hard snapshot int32 mixed-size n=1000 vs best baseline (grid)                                2.442 [2.367-2.518]     <= 4 pass
+G2   hard snapshot int32 mixed-size n=10000 vs best baseline (grid)                               1.124 [1.092-1.157]     <= 2 pass
+G2   hard snapshot int32 mixed-size n=100000 vs best baseline (grid)                              0.664 [0.642-0.686]     <= 2 pass
+G2   hard snapshot float split-line n=100 vs best baseline (sweep)                                3.683 [3.521-3.852]     <= 4 pass
+G2   hard snapshot float split-line n=1000 vs best baseline (grid)                                3.346 [3.248-3.447]     <= 4 pass
+G2   hard snapshot float split-line n=10000 vs best baseline (grid)                               1.799 [1.747-1.852]     <= 2 pass
+G2   hard snapshot float split-line n=100000 vs best baseline (grid)                              1.466 [1.423-1.509]     <= 2 pass
+G2   hard snapshot int32 split-line n=100 vs best baseline (sweep)                                3.730 [3.556-3.912]     <= 4 pass
+G2   hard snapshot int32 split-line n=1000 vs best baseline (grid)                                3.200 [3.074-3.331]     <= 4 pass
+G2   hard snapshot int32 split-line n=10000 vs best baseline (grid)                               1.726 [1.677-1.776]     <= 2 pass
+G2   hard snapshot int32 split-line n=100000 vs best baseline (grid)                              1.418 [1.377-1.461]     <= 2 pass
+G2   hard snapshot float split-line-translated n=100 vs best baseline (sweep)                     3.828 [3.706-3.953]     <= 4 pass
+G2   hard snapshot float split-line-translated n=1000 vs best baseline (grid)                     3.143 [3.045-3.245]     <= 4 pass
+G2   hard snapshot float split-line-translated n=10000 vs best baseline (grid)                    1.745 [1.694-1.797]     <= 2 pass
+G2   hard snapshot float split-line-translated n=100000 vs best baseline (grid)                   1.471 [1.405-1.541]     <= 2 pass
+G2   hard snapshot int32 split-line-translated n=100 vs best baseline (sweep)                     3.953 [3.831-4.078]     <= 4 inconclusive
+G2   hard snapshot int32 split-line-translated n=1000 vs best baseline (grid)                     2.997 [2.833-3.170]     <= 4 pass
+G2   hard snapshot int32 split-line-translated n=10000 vs best baseline (grid)                    1.682 [1.634-1.732]     <= 2 pass
+G2   hard snapshot int32 split-line-translated n=100000 vs best baseline (grid)                   1.419 [1.318-1.526]     <= 2 pass
+G2   hard snapshot float uniform n=100 vs best baseline (sweep)                                   3.235 [3.138-3.335]     <= 4 pass
+G2   hard snapshot float uniform n=1000 vs best baseline (grid)                                   3.643 [3.536-3.752]     <= 4 pass
+G2   hard snapshot float uniform n=10000 vs best baseline (grid)                                  1.751 [1.701-1.802]     <= 2 pass
+G2   hard snapshot float uniform n=100000 vs best baseline (grid)                                 1.623 [1.575-1.672]     <= 2 pass
+G2   hard snapshot int32 uniform n=100 vs best baseline (grid)                                    3.272 [3.175-3.372]     <= 4 pass
+G2   hard snapshot int32 uniform n=1000 vs best baseline (grid)                                   3.688 [3.575-3.805]     <= 4 pass
+G2   hard snapshot int32 uniform n=10000 vs best baseline (grid)                                  1.777 [1.726-1.829]     <= 2 pass
+G2   hard snapshot int32 uniform n=100000 vs best baseline (grid)                                 1.630 [1.582-1.679]     <= 2 pass
+G3   hard snapshot float mixed-size n=1000 candidates/(pairs+n) vs n=100                                        0.632   <= 1.5 pass
+G3   hard snapshot float mixed-size n=10000 candidates/(pairs+n) vs n=1000                                      0.724   <= 1.5 pass
+G3   hard snapshot float mixed-size n=100000 candidates/(pairs+n) vs n=10000                                    0.766   <= 1.5 pass
+G3   hard snapshot int32 mixed-size n=1000 candidates/(pairs+n) vs n=100                                        0.632   <= 1.5 pass
+G3   hard snapshot int32 mixed-size n=10000 candidates/(pairs+n) vs n=1000                                      0.724   <= 1.5 pass
+G3   hard snapshot int32 mixed-size n=100000 candidates/(pairs+n) vs n=10000                                    0.766   <= 1.5 pass
+G3   hard snapshot float split-line n=1000 candidates/(pairs+n) vs n=100                                        1.240   <= 1.5 pass
+G3   hard snapshot float split-line n=10000 candidates/(pairs+n) vs n=1000                                      0.791   <= 1.5 pass
+G3   hard snapshot float split-line n=100000 candidates/(pairs+n) vs n=10000                                    0.977   <= 1.5 pass
+G3   hard snapshot int32 split-line n=1000 candidates/(pairs+n) vs n=100                                        1.240   <= 1.5 pass
+G3   hard snapshot int32 split-line n=10000 candidates/(pairs+n) vs n=1000                                      0.791   <= 1.5 pass
+G3   hard snapshot int32 split-line n=100000 candidates/(pairs+n) vs n=10000                                    0.977   <= 1.5 pass
+G3   hard snapshot float split-line-translated n=1000 candidates/(pairs+n) vs n=100                             1.211   <= 1.5 pass
+G3   hard snapshot float split-line-translated n=10000 candidates/(pairs+n) vs n=1000                           0.806   <= 1.5 pass
+G3   hard snapshot float split-line-translated n=100000 candidates/(pairs+n) vs n=10000                         0.937   <= 1.5 pass
+G3   hard snapshot int32 split-line-translated n=1000 candidates/(pairs+n) vs n=100                             1.211   <= 1.5 pass
+G3   hard snapshot int32 split-line-translated n=10000 candidates/(pairs+n) vs n=1000                           0.806   <= 1.5 pass
+G3   hard snapshot int32 split-line-translated n=100000 candidates/(pairs+n) vs n=10000                         0.937   <= 1.5 pass
+G4   hard snapshot float split-line-translated n=100 candidates vs split-line                                   0.954    x/1.5 pass
+G4   hard snapshot float split-line-translated n=100 time vs split-line                           1.018 [0.972-1.065]    x/1.5 pass
+G4   hard snapshot float split-line-translated n=1000 candidates vs split-line                                  0.932    x/1.5 pass
+G4   hard snapshot float split-line-translated n=1000 time vs split-line                          0.945 [0.918-0.974]    x/1.5 pass
+G4   hard snapshot float split-line-translated n=10000 candidates vs split-line                                 0.950    x/1.5 pass
+G4   hard snapshot float split-line-translated n=10000 time vs split-line                         0.970 [0.942-0.999]    x/1.5 pass
+G4   hard snapshot float split-line-translated n=100000 candidates vs split-line                                0.912    x/1.5 pass
+G4   hard snapshot float split-line-translated n=100000 time vs split-line                        0.962 [0.933-0.992]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100 candidates vs split-line                                   0.954    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100 time vs split-line                           1.038 [1.007-1.070]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=1000 candidates vs split-line                                  0.932    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=1000 time vs split-line                          0.950 [0.923-0.979]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=10000 candidates vs split-line                                 0.950    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=10000 time vs split-line                         0.976 [0.949-1.005]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100000 candidates vs split-line                                0.912    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100000 time vs split-line                        0.969 [0.939-1.000]    x/1.5 pass
+G6   hard persistent float clustered n=1000 churn-1%/full allocations per step                                  6.422     <= 0 FAIL
+G6   hard persistent float clustered n=1000 churn-1%/moved allocations per step                                 6.422     <= 0 FAIL
+G6   hard persistent float clustered n=1000 churn-10%/full allocations per step                                13.531     <= 0 FAIL
+G6   hard persistent float clustered n=1000 churn-10%/moved allocations per step                               13.531     <= 0 FAIL
+G6   hard persistent float clustered n=1000 noop-100%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float clustered n=1000 small-1%/full allocations per step                                  0.406     <= 0 FAIL
+G6   hard persistent float clustered n=1000 small-1%/moved allocations per step                                 0.406     <= 0 FAIL
+G6   hard persistent float clustered n=1000 small-10%/full allocations per step                                 4.500     <= 0 FAIL
+G6   hard persistent float clustered n=1000 small-10%/moved allocations per step                                4.500     <= 0 FAIL
+G6   hard persistent float clustered n=1000 small-100%/full allocations per step                               27.844     <= 0 FAIL
+G6   hard persistent float clustered n=1000 small-single/full allocations per step                              0.031     <= 0 FAIL
+G6   hard persistent float clustered n=1000 small-single/moved allocations per step                             0.031     <= 0 FAIL
+G6   hard persistent float clustered n=1000 static/full allocations per step                                    0.000     <= 0 pass
+G6   hard persistent float clustered n=1000 static/moved allocations per step                                   0.000     <= 0 pass
+G6   hard persistent float clustered n=1000 teleport-1%/full allocations per step                               2.766     <= 0 FAIL
+G6   hard persistent float clustered n=1000 teleport-1%/moved allocations per step                              2.766     <= 0 FAIL
+G6   hard persistent float clustered n=1000 teleport-10%/full allocations per step                              9.516     <= 0 FAIL
+G6   hard persistent float clustered n=1000 teleport-10%/moved allocations per step                             9.516     <= 0 FAIL
+G6   hard persistent float clustered n=10000 churn-1%/full allocations per step                                62.125     <= 0 FAIL
+G6   hard persistent float clustered n=10000 churn-1%/moved allocations per step                               62.125     <= 0 FAIL
+G6   hard persistent float clustered n=10000 churn-10%/full allocations per step                              181.922     <= 0 FAIL
+G6   hard persistent float clustered n=10000 churn-10%/moved allocations per step                             181.922     <= 0 FAIL
+G6   hard persistent float clustered n=10000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent float clustered n=10000 small-1%/full allocations per step                                 4.609     <= 0 FAIL
+G6   hard persistent float clustered n=10000 small-1%/moved allocations per step                                4.609     <= 0 FAIL
+G6   hard persistent float clustered n=10000 small-10%/full allocations per step                               31.984     <= 0 FAIL
+G6   hard persistent float clustered n=10000 small-10%/moved allocations per step                              31.984     <= 0 FAIL
+G6   hard persistent float clustered n=10000 small-100%/full allocations per step                             207.953     <= 0 FAIL
+G6   hard persistent float clustered n=10000 small-single/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent float clustered n=10000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent float clustered n=10000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent float clustered n=10000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float clustered n=10000 teleport-1%/full allocations per step                             22.047     <= 0 FAIL
+G6   hard persistent float clustered n=10000 teleport-1%/moved allocations per step                            22.047     <= 0 FAIL
+G6   hard persistent float clustered n=10000 teleport-10%/full allocations per step                            80.359     <= 0 FAIL
+G6   hard persistent float clustered n=10000 teleport-10%/moved allocations per step                           80.359     <= 0 FAIL
+G6   hard persistent float clustered n=100000 churn-1%/full allocations per step                              690.219     <= 0 FAIL
+G6   hard persistent float clustered n=100000 churn-1%/moved allocations per step                             690.219     <= 0 FAIL
+G6   hard persistent float clustered n=100000 churn-10%/full allocations per step                            1656.267     <= 0 FAIL
+G6   hard persistent float clustered n=100000 churn-10%/moved allocations per step                           1572.484     <= 0 FAIL
+G6   hard persistent float clustered n=100000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent float clustered n=100000 small-1%/full allocations per step                               47.893     <= 0 FAIL
+G6   hard persistent float clustered n=100000 small-1%/moved allocations per step                              46.578     <= 0 FAIL
+G6   hard persistent float clustered n=100000 small-10%/full allocations per step                             346.018     <= 0 FAIL
+G6   hard persistent float clustered n=100000 small-10%/moved allocations per step                            322.844     <= 0 FAIL
+G6   hard persistent float clustered n=100000 small-100%/full allocations per step                           2729.698     <= 0 FAIL
+G6   hard persistent float clustered n=100000 small-single/full allocations per step                            0.053     <= 0 FAIL
+G6   hard persistent float clustered n=100000 small-single/moved allocations per step                           0.062     <= 0 FAIL
+G6   hard persistent float clustered n=100000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float clustered n=100000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float clustered n=100000 teleport-1%/full allocations per step                           262.691     <= 0 FAIL
+G6   hard persistent float clustered n=100000 teleport-1%/moved allocations per step                          238.578     <= 0 FAIL
+G6   hard persistent float clustered n=100000 teleport-10%/full allocations per step                          926.392     <= 0 FAIL
+G6   hard persistent float clustered n=100000 teleport-10%/moved allocations per step                         780.906     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 churn-1%/full allocations per step                                  6.422     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 churn-1%/moved allocations per step                                 6.422     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 churn-10%/full allocations per step                                13.531     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 churn-10%/moved allocations per step                               13.531     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 noop-100%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 clustered n=1000 small-1%/full allocations per step                                  0.406     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 small-1%/moved allocations per step                                 0.406     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 small-10%/full allocations per step                                 4.500     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 small-10%/moved allocations per step                                4.500     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 small-100%/full allocations per step                               27.844     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 small-single/full allocations per step                              0.031     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 small-single/moved allocations per step                             0.031     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 static/full allocations per step                                    0.000     <= 0 pass
+G6   hard persistent int32 clustered n=1000 static/moved allocations per step                                   0.000     <= 0 pass
+G6   hard persistent int32 clustered n=1000 teleport-1%/full allocations per step                               2.766     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 teleport-1%/moved allocations per step                              2.766     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 teleport-10%/full allocations per step                              9.516     <= 0 FAIL
+G6   hard persistent int32 clustered n=1000 teleport-10%/moved allocations per step                             9.516     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 churn-1%/full allocations per step                                62.125     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 churn-1%/moved allocations per step                               62.125     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 churn-10%/full allocations per step                              181.922     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 churn-10%/moved allocations per step                             181.922     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent int32 clustered n=10000 small-1%/full allocations per step                                 4.609     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 small-1%/moved allocations per step                                4.609     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 small-10%/full allocations per step                               31.984     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 small-10%/moved allocations per step                              31.984     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 small-100%/full allocations per step                             207.953     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 small-single/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent int32 clustered n=10000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent int32 clustered n=10000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent int32 clustered n=10000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 clustered n=10000 teleport-1%/full allocations per step                             22.047     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 teleport-1%/moved allocations per step                            22.047     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 teleport-10%/full allocations per step                            80.359     <= 0 FAIL
+G6   hard persistent int32 clustered n=10000 teleport-10%/moved allocations per step                           80.359     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 churn-1%/full allocations per step                              687.219     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 churn-1%/moved allocations per step                             687.219     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 churn-10%/full allocations per step                            1570.578     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 churn-10%/moved allocations per step                           1570.578     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent int32 clustered n=100000 small-1%/full allocations per step                               47.623     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 small-1%/moved allocations per step                              47.141     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 small-10%/full allocations per step                             332.767     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 small-10%/moved allocations per step                            323.344     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 small-100%/full allocations per step                           2685.261     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 small-single/full allocations per step                            0.081     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 small-single/moved allocations per step                           0.078     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 clustered n=100000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 clustered n=100000 teleport-1%/full allocations per step                           247.383     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 teleport-1%/moved allocations per step                          237.562     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 teleport-10%/full allocations per step                          865.643     <= 0 FAIL
+G6   hard persistent int32 clustered n=100000 teleport-10%/moved allocations per step                         781.500     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 churn-1%/full allocations per step                                 3.812     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 churn-1%/moved allocations per step                                3.812     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 churn-10%/full allocations per step                                8.797     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 churn-10%/moved allocations per step                               8.797     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent float mixed-size n=1000 small-1%/full allocations per step                                 0.453     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 small-1%/moved allocations per step                                0.453     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 small-10%/full allocations per step                                2.938     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 small-10%/moved allocations per step                               2.938     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 small-100%/full allocations per step                              17.672     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 small-single/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent float mixed-size n=1000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent float mixed-size n=1000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent float mixed-size n=1000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float mixed-size n=1000 teleport-1%/full allocations per step                              3.422     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 teleport-1%/moved allocations per step                             3.422     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 teleport-10%/full allocations per step                             9.734     <= 0 FAIL
+G6   hard persistent float mixed-size n=1000 teleport-10%/moved allocations per step                            9.734     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 churn-1%/full allocations per step                               60.078     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 churn-1%/moved allocations per step                              60.078     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 churn-10%/full allocations per step                             118.406     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 churn-10%/moved allocations per step                            118.406     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 small-1%/full allocations per step                                7.031     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 small-1%/moved allocations per step                               7.031     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 small-10%/full allocations per step                              42.641     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 small-10%/moved allocations per step                             42.641     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 small-100%/full allocations per step                            144.203     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 small-single/full allocations per step                            0.062     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 small-single/moved allocations per step                           0.062     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 teleport-1%/full allocations per step                            43.688     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 teleport-1%/moved allocations per step                           43.688     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 teleport-10%/full allocations per step                          111.766     <= 0 FAIL
+G6   hard persistent float mixed-size n=10000 teleport-10%/moved allocations per step                         111.766     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 churn-1%/full allocations per step                             787.400     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 churn-1%/moved allocations per step                            612.625     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 churn-10%/full allocations per step                           2467.120     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 churn-10%/moved allocations per step                          1760.667     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent float mixed-size n=100000 small-1%/full allocations per step                              68.903     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 small-1%/moved allocations per step                             69.812     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 small-10%/full allocations per step                            580.586     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 small-10%/moved allocations per step                           503.880     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 small-100%/full allocations per step                          3565.591     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 small-single/full allocations per step                           0.062     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 small-single/moved allocations per step                          0.188     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float mixed-size n=100000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent float mixed-size n=100000 teleport-1%/full allocations per step                          689.931     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 teleport-1%/moved allocations per step                         442.109     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 teleport-10%/full allocations per step                        2791.520     <= 0 FAIL
+G6   hard persistent float mixed-size n=100000 teleport-10%/moved allocations per step                       1916.136     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 churn-1%/full allocations per step                                 3.812     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 churn-1%/moved allocations per step                                3.812     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 churn-10%/full allocations per step                                8.797     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 churn-10%/moved allocations per step                               8.797     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=1000 small-1%/full allocations per step                                 0.453     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 small-1%/moved allocations per step                                0.453     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 small-10%/full allocations per step                                2.938     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 small-10%/moved allocations per step                               2.938     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 small-100%/full allocations per step                              17.672     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 small-single/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=1000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=1000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=1000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=1000 teleport-1%/full allocations per step                              3.422     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 teleport-1%/moved allocations per step                             3.422     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 teleport-10%/full allocations per step                             9.734     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=1000 teleport-10%/moved allocations per step                            9.734     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 churn-1%/full allocations per step                               60.078     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 churn-1%/moved allocations per step                              60.078     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 churn-10%/full allocations per step                             118.406     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 churn-10%/moved allocations per step                            118.406     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=10000 small-1%/full allocations per step                                7.031     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 small-1%/moved allocations per step                               7.031     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 small-10%/full allocations per step                              42.641     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 small-10%/moved allocations per step                             42.641     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 small-100%/full allocations per step                            144.203     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 small-single/full allocations per step                            0.062     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 small-single/moved allocations per step                           0.062     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=10000 teleport-1%/full allocations per step                            43.688     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 teleport-1%/moved allocations per step                           43.688     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 teleport-10%/full allocations per step                          111.766     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=10000 teleport-10%/moved allocations per step                         111.766     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 churn-1%/full allocations per step                             775.065     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 churn-1%/moved allocations per step                            611.141     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 churn-10%/full allocations per step                           2385.808     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 churn-10%/moved allocations per step                          1634.186     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=100000 small-1%/full allocations per step                              69.606     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 small-1%/moved allocations per step                             69.531     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 small-10%/full allocations per step                            567.355     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 small-10%/moved allocations per step                           506.638     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 small-100%/full allocations per step                          3516.696     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 small-single/full allocations per step                           0.061     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 small-single/moved allocations per step                          0.031     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=100000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=100000 teleport-1%/full allocations per step                          650.031     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 teleport-1%/moved allocations per step                         439.469     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 teleport-10%/full allocations per step                        2722.269     <= 0 FAIL
+G6   hard persistent int32 mixed-size n=100000 teleport-10%/moved allocations per step                       1857.261     <= 0 FAIL
+G6   hard persistent float split-line n=1000 churn-1%/full allocations per step                                 7.844     <= 0 FAIL
+G6   hard persistent float split-line n=1000 churn-1%/moved allocations per step                                7.844     <= 0 FAIL
+G6   hard persistent float split-line n=1000 churn-10%/full allocations per step                               16.000     <= 0 FAIL
+G6   hard persistent float split-line n=1000 churn-10%/moved allocations per step                              16.000     <= 0 FAIL
+G6   hard persistent float split-line n=1000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent float split-line n=1000 small-1%/full allocations per step                                 0.625     <= 0 FAIL
+G6   hard persistent float split-line n=1000 small-1%/moved allocations per step                                0.625     <= 0 FAIL
+G6   hard persistent float split-line n=1000 small-10%/full allocations per step                                3.406     <= 0 FAIL
+G6   hard persistent float split-line n=1000 small-10%/moved allocations per step                               3.406     <= 0 FAIL
+G6   hard persistent float split-line n=1000 small-100%/full allocations per step                              17.922     <= 0 FAIL
+G6   hard persistent float split-line n=1000 small-single/full allocations per step                             0.234     <= 0 FAIL
+G6   hard persistent float split-line n=1000 small-single/moved allocations per step                            0.234     <= 0 FAIL
+G6   hard persistent float split-line n=1000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent float split-line n=1000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float split-line n=1000 teleport-1%/full allocations per step                              1.875     <= 0 FAIL
+G6   hard persistent float split-line n=1000 teleport-1%/moved allocations per step                             1.875     <= 0 FAIL
+G6   hard persistent float split-line n=1000 teleport-10%/full allocations per step                             8.156     <= 0 FAIL
+G6   hard persistent float split-line n=1000 teleport-10%/moved allocations per step                            8.156     <= 0 FAIL
+G6   hard persistent float split-line n=10000 churn-1%/full allocations per step                               71.328     <= 0 FAIL
+G6   hard persistent float split-line n=10000 churn-1%/moved allocations per step                              71.328     <= 0 FAIL
+G6   hard persistent float split-line n=10000 churn-10%/full allocations per step                             135.500     <= 0 FAIL
+G6   hard persistent float split-line n=10000 churn-10%/moved allocations per step                            135.500     <= 0 FAIL
+G6   hard persistent float split-line n=10000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 small-1%/full allocations per step                                5.781     <= 0 FAIL
+G6   hard persistent float split-line n=10000 small-1%/moved allocations per step                               5.781     <= 0 FAIL
+G6   hard persistent float split-line n=10000 small-10%/full allocations per step                              42.125     <= 0 FAIL
+G6   hard persistent float split-line n=10000 small-10%/moved allocations per step                             42.125     <= 0 FAIL
+G6   hard persistent float split-line n=10000 small-100%/full allocations per step                            168.328     <= 0 FAIL
+G6   hard persistent float split-line n=10000 small-single/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 small-single/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 teleport-1%/full allocations per step                            24.672     <= 0 FAIL
+G6   hard persistent float split-line n=10000 teleport-1%/moved allocations per step                           24.672     <= 0 FAIL
+G6   hard persistent float split-line n=10000 teleport-10%/full allocations per step                          113.828     <= 0 FAIL
+G6   hard persistent float split-line n=10000 teleport-10%/moved allocations per step                         113.828     <= 0 FAIL
+G6   hard persistent float split-line n=100000 churn-1%/full allocations per step                             809.016     <= 0 FAIL
+G6   hard persistent float split-line n=100000 churn-1%/moved allocations per step                            809.016     <= 0 FAIL
+G6   hard persistent float split-line n=100000 churn-10%/full allocations per step                           1390.578     <= 0 FAIL
+G6   hard persistent float split-line n=100000 churn-10%/moved allocations per step                          1390.578     <= 0 FAIL
+G6   hard persistent float split-line n=100000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent float split-line n=100000 small-1%/full allocations per step                              45.609     <= 0 FAIL
+G6   hard persistent float split-line n=100000 small-1%/moved allocations per step                             45.609     <= 0 FAIL
+G6   hard persistent float split-line n=100000 small-10%/full allocations per step                            332.250     <= 0 FAIL
+G6   hard persistent float split-line n=100000 small-10%/moved allocations per step                           332.250     <= 0 FAIL
+G6   hard persistent float split-line n=100000 small-100%/full allocations per step                          2022.400     <= 0 FAIL
+G6   hard persistent float split-line n=100000 small-single/full allocations per step                           0.203     <= 0 FAIL
+G6   hard persistent float split-line n=100000 small-single/moved allocations per step                          0.203     <= 0 FAIL
+G6   hard persistent float split-line n=100000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float split-line n=100000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent float split-line n=100000 teleport-1%/full allocations per step                          236.484     <= 0 FAIL
+G6   hard persistent float split-line n=100000 teleport-1%/moved allocations per step                         236.484     <= 0 FAIL
+G6   hard persistent float split-line n=100000 teleport-10%/full allocations per step                         898.672     <= 0 FAIL
+G6   hard persistent float split-line n=100000 teleport-10%/moved allocations per step                        898.672     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 churn-1%/full allocations per step                                 7.844     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 churn-1%/moved allocations per step                                7.844     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 churn-10%/full allocations per step                               16.000     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 churn-10%/moved allocations per step                              16.000     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent int32 split-line n=1000 small-1%/full allocations per step                                 0.625     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 small-1%/moved allocations per step                                0.625     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 small-10%/full allocations per step                                3.406     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 small-10%/moved allocations per step                               3.406     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 small-100%/full allocations per step                              17.922     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 small-single/full allocations per step                             0.234     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 small-single/moved allocations per step                            0.234     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent int32 split-line n=1000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 split-line n=1000 teleport-1%/full allocations per step                              1.875     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 teleport-1%/moved allocations per step                             1.875     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 teleport-10%/full allocations per step                             8.156     <= 0 FAIL
+G6   hard persistent int32 split-line n=1000 teleport-10%/moved allocations per step                            8.156     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 churn-1%/full allocations per step                               71.328     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 churn-1%/moved allocations per step                              71.328     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 churn-10%/full allocations per step                             135.500     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 churn-10%/moved allocations per step                            135.500     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent int32 split-line n=10000 small-1%/full allocations per step                                5.781     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 small-1%/moved allocations per step                               5.781     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 small-10%/full allocations per step                              42.125     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 small-10%/moved allocations per step                             42.125     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 small-100%/full allocations per step                            168.328     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 small-single/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent int32 split-line n=10000 small-single/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent int32 split-line n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 split-line n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 split-line n=10000 teleport-1%/full allocations per step                            24.672     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 teleport-1%/moved allocations per step                           24.672     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 teleport-10%/full allocations per step                          113.828     <= 0 FAIL
+G6   hard persistent int32 split-line n=10000 teleport-10%/moved allocations per step                         113.828     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 churn-1%/full allocations per step                             809.016     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 churn-1%/moved allocations per step                            809.016     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 churn-10%/full allocations per step                           1390.578     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 churn-10%/moved allocations per step                          1390.578     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent int32 split-line n=100000 small-1%/full allocations per step                              45.609     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 small-1%/moved allocations per step                             45.609     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 small-10%/full allocations per step                            332.250     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 small-10%/moved allocations per step                           332.250     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 small-100%/full allocations per step                          1963.466     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 small-single/full allocations per step                           0.203     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 small-single/moved allocations per step                          0.203     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 split-line n=100000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent int32 split-line n=100000 teleport-1%/full allocations per step                          236.484     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 teleport-1%/moved allocations per step                         236.484     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 teleport-10%/full allocations per step                         898.672     <= 0 FAIL
+G6   hard persistent int32 split-line n=100000 teleport-10%/moved allocations per step                        898.672     <= 0 FAIL
+G6   hard persistent float uniform n=1000 churn-1%/full allocations per step                                    4.516     <= 0 FAIL
+G6   hard persistent float uniform n=1000 churn-1%/moved allocations per step                                   4.516     <= 0 FAIL
+G6   hard persistent float uniform n=1000 churn-10%/full allocations per step                                   8.969     <= 0 FAIL
+G6   hard persistent float uniform n=1000 churn-10%/moved allocations per step                                  8.969     <= 0 FAIL
+G6   hard persistent float uniform n=1000 noop-100%/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent float uniform n=1000 small-1%/full allocations per step                                    0.766     <= 0 FAIL
+G6   hard persistent float uniform n=1000 small-1%/moved allocations per step                                   0.766     <= 0 FAIL
+G6   hard persistent float uniform n=1000 small-10%/full allocations per step                                   3.562     <= 0 FAIL
+G6   hard persistent float uniform n=1000 small-10%/moved allocations per step                                  3.562     <= 0 FAIL
+G6   hard persistent float uniform n=1000 small-100%/full allocations per step                                 14.438     <= 0 FAIL
+G6   hard persistent float uniform n=1000 small-single/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent float uniform n=1000 small-single/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent float uniform n=1000 static/full allocations per step                                      0.000     <= 0 pass
+G6   hard persistent float uniform n=1000 static/moved allocations per step                                     0.000     <= 0 pass
+G6   hard persistent float uniform n=1000 teleport-1%/full allocations per step                                 3.594     <= 0 FAIL
+G6   hard persistent float uniform n=1000 teleport-1%/moved allocations per step                                3.594     <= 0 FAIL
+G6   hard persistent float uniform n=1000 teleport-10%/full allocations per step                                9.734     <= 0 FAIL
+G6   hard persistent float uniform n=1000 teleport-10%/moved allocations per step                               9.734     <= 0 FAIL
+G6   hard persistent float uniform n=10000 churn-1%/full allocations per step                                  60.281     <= 0 FAIL
+G6   hard persistent float uniform n=10000 churn-1%/moved allocations per step                                 60.281     <= 0 FAIL
+G6   hard persistent float uniform n=10000 churn-10%/full allocations per step                                114.109     <= 0 FAIL
+G6   hard persistent float uniform n=10000 churn-10%/moved allocations per step                               114.109     <= 0 FAIL
+G6   hard persistent float uniform n=10000 noop-100%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float uniform n=10000 small-1%/full allocations per step                                   6.641     <= 0 FAIL
+G6   hard persistent float uniform n=10000 small-1%/moved allocations per step                                  6.641     <= 0 FAIL
+G6   hard persistent float uniform n=10000 small-10%/full allocations per step                                 46.109     <= 0 FAIL
+G6   hard persistent float uniform n=10000 small-10%/moved allocations per step                                46.109     <= 0 FAIL
+G6   hard persistent float uniform n=10000 small-100%/full allocations per step                               142.266     <= 0 FAIL
+G6   hard persistent float uniform n=10000 small-single/full allocations per step                               0.047     <= 0 FAIL
+G6   hard persistent float uniform n=10000 small-single/moved allocations per step                              0.047     <= 0 FAIL
+G6   hard persistent float uniform n=10000 static/full allocations per step                                     0.000     <= 0 pass
+G6   hard persistent float uniform n=10000 static/moved allocations per step                                    0.000     <= 0 pass
+G6   hard persistent float uniform n=10000 teleport-1%/full allocations per step                               45.625     <= 0 FAIL
+G6   hard persistent float uniform n=10000 teleport-1%/moved allocations per step                              45.625     <= 0 FAIL
+G6   hard persistent float uniform n=10000 teleport-10%/full allocations per step                             109.234     <= 0 FAIL
+G6   hard persistent float uniform n=10000 teleport-10%/moved allocations per step                            109.234     <= 0 FAIL
+G6   hard persistent float uniform n=100000 churn-1%/full allocations per step                                639.297     <= 0 FAIL
+G6   hard persistent float uniform n=100000 churn-1%/moved allocations per step                               639.297     <= 0 FAIL
+G6   hard persistent float uniform n=100000 churn-10%/full allocations per step                              1287.213     <= 0 FAIL
+G6   hard persistent float uniform n=100000 churn-10%/moved allocations per step                             1237.578     <= 0 FAIL
+G6   hard persistent float uniform n=100000 noop-100%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float uniform n=100000 small-1%/full allocations per step                                 72.500     <= 0 FAIL
+G6   hard persistent float uniform n=100000 small-1%/moved allocations per step                                72.500     <= 0 FAIL
+G6   hard persistent float uniform n=100000 small-10%/full allocations per step                               491.141     <= 0 FAIL
+G6   hard persistent float uniform n=100000 small-10%/moved allocations per step                              491.141     <= 0 FAIL
+G6   hard persistent float uniform n=100000 small-100%/full allocations per step                             2883.130     <= 0 FAIL
+G6   hard persistent float uniform n=100000 small-single/full allocations per step                              0.016     <= 0 FAIL
+G6   hard persistent float uniform n=100000 small-single/moved allocations per step                             0.016     <= 0 FAIL
+G6   hard persistent float uniform n=100000 static/full allocations per step                                    0.000     <= 0 pass
+G6   hard persistent float uniform n=100000 static/moved allocations per step                                   0.000     <= 0 pass
+G6   hard persistent float uniform n=100000 teleport-1%/full allocations per step                             457.109     <= 0 FAIL
+G6   hard persistent float uniform n=100000 teleport-1%/moved allocations per step                            457.109     <= 0 FAIL
+G6   hard persistent float uniform n=100000 teleport-10%/full allocations per step                           1521.438     <= 0 FAIL
+G6   hard persistent float uniform n=100000 teleport-10%/moved allocations per step                          1521.438     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 churn-1%/full allocations per step                                    4.516     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 churn-1%/moved allocations per step                                   4.516     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 churn-10%/full allocations per step                                   8.969     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 churn-10%/moved allocations per step                                  8.969     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 noop-100%/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent int32 uniform n=1000 small-1%/full allocations per step                                    0.766     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 small-1%/moved allocations per step                                   0.766     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 small-10%/full allocations per step                                   3.562     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 small-10%/moved allocations per step                                  3.562     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 small-100%/full allocations per step                                 14.438     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 small-single/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent int32 uniform n=1000 small-single/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent int32 uniform n=1000 static/full allocations per step                                      0.000     <= 0 pass
+G6   hard persistent int32 uniform n=1000 static/moved allocations per step                                     0.000     <= 0 pass
+G6   hard persistent int32 uniform n=1000 teleport-1%/full allocations per step                                 3.594     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 teleport-1%/moved allocations per step                                3.594     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 teleport-10%/full allocations per step                                9.734     <= 0 FAIL
+G6   hard persistent int32 uniform n=1000 teleport-10%/moved allocations per step                               9.734     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 churn-1%/full allocations per step                                  60.281     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 churn-1%/moved allocations per step                                 60.281     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 churn-10%/full allocations per step                                114.109     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 churn-10%/moved allocations per step                               114.109     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 noop-100%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent int32 uniform n=10000 small-1%/full allocations per step                                   6.641     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 small-1%/moved allocations per step                                  6.641     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 small-10%/full allocations per step                                 46.109     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 small-10%/moved allocations per step                                46.109     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 small-100%/full allocations per step                               142.266     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 small-single/full allocations per step                               0.047     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 small-single/moved allocations per step                              0.047     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 static/full allocations per step                                     0.000     <= 0 pass
+G6   hard persistent int32 uniform n=10000 static/moved allocations per step                                    0.000     <= 0 pass
+G6   hard persistent int32 uniform n=10000 teleport-1%/full allocations per step                               45.625     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 teleport-1%/moved allocations per step                              45.625     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 teleport-10%/full allocations per step                             109.234     <= 0 FAIL
+G6   hard persistent int32 uniform n=10000 teleport-10%/moved allocations per step                            109.234     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 churn-1%/full allocations per step                                640.969     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 churn-1%/moved allocations per step                               640.969     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 churn-10%/full allocations per step                              1238.031     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 churn-10%/moved allocations per step                             1238.031     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 noop-100%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent int32 uniform n=100000 small-1%/full allocations per step                                 72.531     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 small-1%/moved allocations per step                                72.531     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 small-10%/full allocations per step                               490.266     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 small-10%/moved allocations per step                              490.266     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 small-100%/full allocations per step                             2802.878     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 small-single/full allocations per step                              0.016     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 small-single/moved allocations per step                             0.016     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 static/full allocations per step                                    0.000     <= 0 pass
+G6   hard persistent int32 uniform n=100000 static/moved allocations per step                                   0.000     <= 0 pass
+G6   hard persistent int32 uniform n=100000 teleport-1%/full allocations per step                             452.234     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 teleport-1%/moved allocations per step                            452.234     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 teleport-10%/full allocations per step                           1517.531     <= 0 FAIL
+G6   hard persistent int32 uniform n=100000 teleport-10%/moved allocations per step                          1517.531     <= 0 FAIL
+G6   hard snapshot float clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot float clustered n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float clustered n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot float clustered n=16 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=32 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float clustered n=4 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=64 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float clustered n=8 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=16 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=32 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=4 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=64 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=8 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float disjoint n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float disjoint n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot float disjoint n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float disjoint n=100000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=100000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float long-thin n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot float long-thin n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float long-thin n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float long-thin n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot float outliers n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float outliers n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot float outliers n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float pile n=100 allocations per warm step                                                   0.000     <= 0 pass
+G6   hard snapshot float pile n=1000 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 pile n=100 allocations per warm step                                                   0.000     <= 0 pass
+G6   hard snapshot int32 pile n=1000 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float points n=100 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot float points n=1000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float points n=10000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float points n=100000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 points n=100 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 points n=1000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 points n=10000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 points n=100000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot float split-line n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float split-line n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float split-line n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot float split-line n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=100 allocations per warm step                                  0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=10000 allocations per warm step                                0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=100 allocations per warm step                                  0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=10000 allocations per warm step                                0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot float tiles n=100 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float tiles n=1000 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot float tiles n=10000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float tiles n=100000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=100 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=1000 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=10000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=100000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float tiles-touch n=100 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float tiles-touch n=1000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot float tiles-touch n=10000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot float tiles-touch n=100000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=100 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=1000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=10000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=100000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot float uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=100 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float uniform n=10000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot float uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float uniform n=16 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot float uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=32 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot float uniform n=4 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=64 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot float uniform n=8 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=10000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=16 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=32 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=4 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=64 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=8 allocations per warm step                                                  0.000     <= 0 pass
+G7   hard persistent float clustered n=1000 churn-1%/full vs dynamic tree (b2tree)                0.337 [0.322-0.353]     <= 2 pass
+G7   soft persistent float clustered n=1000 churn-1%/full vs grid (grid)                          1.276 [1.217-1.338]     <= 4 pass
+G7   hard persistent float clustered n=1000 churn-10%/full vs dynamic tree (b2tree)               0.413 [0.396-0.431]     <= 2 pass
+G7   soft persistent float clustered n=1000 churn-10%/full vs grid (grid)                         1.742 [1.669-1.819]     <= 4 pass
+G7   hard persistent float clustered n=1000 noop-100%/full vs dynamic tree (b2tree-fat)           0.290 [0.276-0.304]     <= 2 pass
+G7   soft persistent float clustered n=1000 noop-100%/full vs grid (grid)                         2.414 [2.299-2.536]     <= 4 pass
+G7   hard persistent float clustered n=1000 small-1%/full vs dynamic tree (b2tree)                0.281 [0.268-0.294]     <= 2 pass
+G7   soft persistent float clustered n=1000 small-1%/full vs grid (grid)                          1.773 [1.684-1.868]     <= 4 pass
+G7   hard persistent float clustered n=1000 small-10%/full vs dynamic tree (b2tree)               0.341 [0.326-0.356]     <= 2 pass
+G7   soft persistent float clustered n=1000 small-10%/full vs grid (grid)                         1.308 [1.250-1.368]     <= 4 pass
+G7   hard persistent float clustered n=1000 small-100%/full vs dynamic tree (b2tree-fat)          0.247 [0.236-0.259]     <= 2 pass
+G7   soft persistent float clustered n=1000 small-100%/full vs grid (grid)                        1.407 [1.347-1.470]     <= 4 pass
+G7   hard persistent float clustered n=1000 small-single/full vs dynamic tree (b2tree)            0.280 [0.268-0.293]     <= 2 pass
+G7   soft persistent float clustered n=1000 small-single/full vs grid (grid)                      2.074 [1.982-2.171]     <= 4 pass
+G7   hard persistent float clustered n=1000 static/full vs dynamic tree (b2tree)                  0.280 [0.268-0.293]     <= 2 pass
+G7   soft persistent float clustered n=1000 static/full vs grid (grid)                            2.126 [2.030-2.227]     <= 4 pass
+G7   hard persistent float clustered n=1000 teleport-1%/full vs dynamic tree (b2tree)             0.304 [0.291-0.317]     <= 2 pass
+G7   soft persistent float clustered n=1000 teleport-1%/full vs grid (grid)                       1.897 [1.805-1.993]     <= 4 pass
+G7   hard persistent float clustered n=1000 teleport-10%/full vs dynamic tree (b2tree)            0.374 [0.359-0.391]     <= 2 pass
+G7   soft persistent float clustered n=1000 teleport-10%/full vs grid (grid)                      1.414 [1.352-1.479]     <= 4 pass
+G7   hard persistent float clustered n=10000 churn-1%/full vs dynamic tree (b2tree)               0.362 [0.346-0.378]     <= 2 pass
+G7   soft persistent float clustered n=10000 churn-1%/full vs grid (grid)                         1.407 [1.347-1.469]     <= 4 pass
+G7   hard persistent float clustered n=10000 churn-10%/full vs dynamic tree (b2tree)              0.321 [0.305-0.338]     <= 2 pass
+G7   soft persistent float clustered n=10000 churn-10%/full vs grid (grid)                        1.800 [1.712-1.892]     <= 4 pass
+G7   hard persistent float clustered n=10000 noop-100%/full vs dynamic tree (b2tree-fat)          0.352 [0.337-0.367]     <= 2 pass
+G7   soft persistent float clustered n=10000 noop-100%/full vs grid (grid)                        1.346 [1.290-1.404]     <= 4 pass
+G7   hard persistent float clustered n=10000 small-1%/full vs dynamic tree (b2tree)               0.409 [0.392-0.427]     <= 2 pass
+G7   soft persistent float clustered n=10000 small-1%/full vs grid (grid)                         1.261 [1.208-1.317]     <= 4 pass
+G7   hard persistent float clustered n=10000 small-10%/full vs dynamic tree (b2tree)              0.379 [0.363-0.395]     <= 2 pass
+G7   soft persistent float clustered n=10000 small-10%/full vs grid (grid)                        1.312 [1.257-1.370]     <= 4 pass
+G7   hard persistent float clustered n=10000 small-100%/full vs dynamic tree (b2tree-fat)         0.203 [0.195-0.212]     <= 2 pass
+G7   soft persistent float clustered n=10000 small-100%/full vs grid (grid-rebuild)               1.582 [1.515-1.652]     <= 4 pass
+G7   hard persistent float clustered n=10000 small-single/full vs dynamic tree (b2tree)           0.389 [0.372-0.406]     <= 2 pass
+G7   soft persistent float clustered n=10000 small-single/full vs grid (grid)                     1.248 [1.196-1.302]     <= 4 pass
+G7   hard persistent float clustered n=10000 static/full vs dynamic tree (b2tree)                 0.389 [0.373-0.406]     <= 2 pass
+G7   soft persistent float clustered n=10000 static/full vs grid (grid)                           1.250 [1.198-1.305]     <= 4 pass
+G7   hard persistent float clustered n=10000 teleport-1%/full vs dynamic tree (b2tree)            0.397 [0.380-0.414]     <= 2 pass
+G7   soft persistent float clustered n=10000 teleport-1%/full vs grid (grid)                      1.267 [1.214-1.322]     <= 4 pass
+G7   hard persistent float clustered n=10000 teleport-10%/full vs dynamic tree (b2tree)           0.371 [0.355-0.387]     <= 2 pass
+G7   soft persistent float clustered n=10000 teleport-10%/full vs grid (grid)                     1.346 [1.289-1.405]     <= 4 pass
+G7   hard persistent float clustered n=100000 churn-1%/full vs dynamic tree (b2tree)              0.230 [0.220-0.241]     <= 2 pass
+G7   soft persistent float clustered n=100000 churn-1%/full vs grid (grid)                        1.272 [1.217-1.330]     <= 4 pass
+G7   hard persistent float clustered n=100000 churn-10%/full vs dynamic tree (b2tree)             0.249 [0.237-0.262]     <= 2 pass
+G7   soft persistent float clustered n=100000 churn-10%/full vs grid (grid-rebuild)               1.771 [1.690-1.857]     <= 4 pass
+G7   hard persistent float clustered n=100000 noop-100%/full vs dynamic tree (b2tree-fat)         0.256 [0.244-0.269]     <= 2 pass
+G7   soft persistent float clustered n=100000 noop-100%/full vs grid (grid)                       1.217 [1.133-1.308]     <= 4 pass
+G7   hard persistent float clustered n=100000 small-1%/full vs dynamic tree (b2tree)              0.268 [0.257-0.280]     <= 2 pass
+G7   soft persistent float clustered n=100000 small-1%/full vs grid (grid)                        1.101 [1.055-1.150]     <= 4 pass
+G7   hard persistent float clustered n=100000 small-10%/full vs dynamic tree (b2tree)             0.241 [0.211-0.274]     <= 2 pass
+G7   soft persistent float clustered n=100000 small-10%/full vs grid (grid)                       1.191 [1.103-1.287]     <= 4 pass
+G7   hard persistent float clustered n=100000 small-100%/full vs dynamic tree (b2tree-fat)        0.169 [0.161-0.178]     <= 2 pass
+G7   soft persistent float clustered n=100000 small-100%/full vs grid (grid-rebuild)              1.847 [1.757-1.942]     <= 4 pass
+G7   hard persistent float clustered n=100000 small-single/full vs dynamic tree (b2tree)          0.272 [0.260-0.284]     <= 2 pass
+G7   soft persistent float clustered n=100000 small-single/full vs grid (grid)                    1.091 [1.045-1.139]     <= 4 pass
+G7   hard persistent float clustered n=100000 static/full vs dynamic tree (b2tree)                0.274 [0.262-0.286]     <= 2 pass
+G7   soft persistent float clustered n=100000 static/full vs grid (grid)                          1.092 [1.046-1.141]     <= 4 pass
+G7   hard persistent float clustered n=100000 teleport-1%/full vs dynamic tree (b2tree)           0.272 [0.261-0.284]     <= 2 pass
+G7   soft persistent float clustered n=100000 teleport-1%/full vs grid (grid)                     1.114 [1.066-1.163]     <= 4 pass
+G7   hard persistent float clustered n=100000 teleport-10%/full vs dynamic tree (b2tree)          0.269 [0.256-0.282]     <= 2 pass
+G7   soft persistent float clustered n=100000 teleport-10%/full vs grid (grid)                    1.251 [1.189-1.317]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 churn-1%/full vs dynamic tree (b2tree)                0.316 [0.302-0.331]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 churn-1%/full vs grid (grid)                          1.244 [1.191-1.301]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 churn-10%/full vs dynamic tree (b2tree)               0.374 [0.359-0.391]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 churn-10%/full vs grid (grid)                         1.663 [1.593-1.737]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 noop-100%/full vs dynamic tree (b2tree-fat)           0.283 [0.269-0.297]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 noop-100%/full vs grid (grid)                         2.262 [2.157-2.373]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 small-1%/full vs dynamic tree (b2tree)                0.273 [0.260-0.286]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 small-1%/full vs grid (grid)                          1.667 [1.569-1.771]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 small-10%/full vs dynamic tree (b2tree)               0.322 [0.308-0.336]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 small-10%/full vs grid (grid)                         1.273 [1.217-1.331]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 small-100%/full vs dynamic tree (b2tree-fat)          0.230 [0.220-0.240]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 small-100%/full vs grid (grid)                        1.385 [1.325-1.448]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 small-single/full vs dynamic tree (b2tree)            0.272 [0.256-0.288]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 small-single/full vs grid (grid)                      1.900 [1.781-2.027]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 static/full vs dynamic tree (b2tree)                  0.274 [0.262-0.286]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 static/full vs grid (grid)                            1.979 [1.889-2.074]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 teleport-1%/full vs dynamic tree (b2tree)             0.291 [0.278-0.304]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 teleport-1%/full vs grid (grid)                       1.768 [1.678-1.863]     <= 4 pass
+G7   hard persistent int32 clustered n=1000 teleport-10%/full vs dynamic tree (b2tree)            0.348 [0.333-0.363]     <= 2 pass
+G7   soft persistent int32 clustered n=1000 teleport-10%/full vs grid (grid)                      1.359 [1.298-1.422]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 churn-1%/full vs dynamic tree (b2tree)               0.333 [0.319-0.348]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 churn-1%/full vs grid (grid)                         1.391 [1.328-1.456]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 churn-10%/full vs dynamic tree (b2tree)              0.301 [0.286-0.317]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 churn-10%/full vs grid (grid)                        1.740 [1.653-1.832]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 noop-100%/full vs dynamic tree (b2tree-fat)          0.326 [0.312-0.340]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 noop-100%/full vs grid (grid)                        1.351 [1.295-1.410]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 small-1%/full vs dynamic tree (b2tree)               0.357 [0.342-0.372]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 small-1%/full vs grid (grid)                         1.250 [1.198-1.304]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 small-10%/full vs dynamic tree (b2tree)              0.346 [0.331-0.361]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 small-10%/full vs grid (grid)                        1.313 [1.257-1.370]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 small-100%/full vs dynamic tree (b2tree-fat)         0.184 [0.176-0.193]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 small-100%/full vs grid (grid-rebuild)               1.508 [1.444-1.575]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 small-single/full vs dynamic tree (b2tree)           0.355 [0.340-0.371]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 small-single/full vs grid (grid)                     1.247 [1.195-1.301]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 static/full vs dynamic tree (b2tree)                 0.357 [0.342-0.372]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 static/full vs grid (grid)                           1.239 [1.188-1.293]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 teleport-1%/full vs dynamic tree (b2tree)            0.357 [0.342-0.373]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 teleport-1%/full vs grid (grid)                      1.252 [1.200-1.307]     <= 4 pass
+G7   hard persistent int32 clustered n=10000 teleport-10%/full vs dynamic tree (b2tree)           0.335 [0.321-0.350]     <= 2 pass
+G7   soft persistent int32 clustered n=10000 teleport-10%/full vs grid (grid)                     1.325 [1.269-1.383]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 churn-1%/full vs dynamic tree (b2tree)              0.209 [0.198-0.220]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 churn-1%/full vs grid (grid)                        1.196 [1.114-1.284]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 churn-10%/full vs dynamic tree (b2tree)             0.237 [0.223-0.253]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 churn-10%/full vs grid (grid-rebuild)               1.712 [1.621-1.808]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 noop-100%/full vs dynamic tree (b2tree-fat)         0.234 [0.223-0.245]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 noop-100%/full vs grid (grid)                       1.238 [1.181-1.297]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 small-1%/full vs dynamic tree (b2tree)              0.253 [0.242-0.265]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 small-1%/full vs grid (grid)                        1.115 [1.068-1.165]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 small-10%/full vs dynamic tree (b2tree)             0.231 [0.221-0.242]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 small-10%/full vs grid (grid)                       1.187 [1.137-1.240]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 small-100%/full vs dynamic tree (b2tree-fat)        0.151 [0.143-0.159]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 small-100%/full vs grid (grid-rebuild)              1.691 [1.595-1.794]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 small-single/full vs dynamic tree (b2tree)          0.256 [0.245-0.267]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 small-single/full vs grid (grid)                    1.101 [1.054-1.149]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 static/full vs dynamic tree (b2tree)                0.254 [0.228-0.282]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 static/full vs grid (grid)                          1.120 [1.053-1.191]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 teleport-1%/full vs dynamic tree (b2tree)           0.257 [0.246-0.269]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 teleport-1%/full vs grid (grid)                     1.140 [1.092-1.190]     <= 4 pass
+G7   hard persistent int32 clustered n=100000 teleport-10%/full vs dynamic tree (b2tree)          0.243 [0.233-0.254]     <= 2 pass
+G7   soft persistent int32 clustered n=100000 teleport-10%/full vs grid (grid)                    1.229 [1.175-1.284]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 churn-1%/full vs dynamic tree (b2tree)               0.305 [0.292-0.318]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 churn-1%/full vs grid (grid)                         1.042 [0.997-1.089]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 churn-10%/full vs dynamic tree (b2tree)              0.316 [0.303-0.330]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 churn-10%/full vs grid (grid)                        1.107 [1.060-1.156]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 noop-100%/full vs dynamic tree (b2tree-fat)          0.273 [0.262-0.286]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 noop-100%/full vs grid (grid)                        2.237 [2.120-2.361]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 small-1%/full vs dynamic tree (b2tree)               0.265 [0.253-0.278]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 small-1%/full vs grid (grid)                         1.815 [1.724-1.911]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 small-10%/full vs dynamic tree (b2tree)              0.294 [0.282-0.307]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 small-10%/full vs grid (grid)                        1.240 [1.184-1.299]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 small-100%/full vs dynamic tree (b2tree-fat)         0.238 [0.228-0.249]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 small-100%/full vs grid (grid)                       1.161 [1.112-1.212]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 small-single/full vs dynamic tree (b2tree)           0.257 [0.245-0.268]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 small-single/full vs grid (grid)                     2.117 [2.022-2.216]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 static/full vs dynamic tree (b2tree)                 0.253 [0.241-0.265]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 static/full vs grid (grid)                           2.099 [2.000-2.202]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 teleport-1%/full vs dynamic tree (b2tree)            0.289 [0.276-0.302]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 teleport-1%/full vs grid (grid)                      1.887 [1.803-1.974]     <= 4 pass
+G7   hard persistent float mixed-size n=1000 teleport-10%/full vs dynamic tree (b2tree)           0.322 [0.308-0.336]     <= 2 pass
+G7   soft persistent float mixed-size n=1000 teleport-10%/full vs grid (grid)                     1.064 [1.018-1.112]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 churn-1%/full vs dynamic tree (b2tree)              0.249 [0.238-0.259]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 churn-1%/full vs grid (grid)                        1.078 [1.033-1.125]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 churn-10%/full vs dynamic tree (b2tree)             0.248 [0.237-0.259]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 churn-10%/full vs grid (grid)                       1.152 [1.104-1.202]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 noop-100%/full vs dynamic tree (b2tree-fat)         0.277 [0.266-0.289]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 noop-100%/full vs grid (grid)                       1.178 [1.129-1.229]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 small-1%/full vs dynamic tree (b2tree)              0.256 [0.245-0.267]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 small-1%/full vs grid (grid)                        1.060 [1.016-1.106]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 small-10%/full vs dynamic tree (b2tree)             0.234 [0.224-0.245]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 small-10%/full vs grid (grid)                       1.103 [1.056-1.151]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 small-100%/full vs dynamic tree (b2tree-fat)        0.183 [0.175-0.191]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 small-100%/full vs grid (grid)                      1.114 [1.068-1.163]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 small-single/full vs dynamic tree (b2tree)          0.256 [0.244-0.268]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 small-single/full vs grid (grid)                    1.057 [1.011-1.105]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 static/full vs dynamic tree (b2tree)                0.256 [0.245-0.267]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 static/full vs grid (grid)                          1.055 [1.011-1.101]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 teleport-1%/full vs dynamic tree (b2tree)           0.247 [0.237-0.258]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 teleport-1%/full vs grid (grid)                     1.064 [1.019-1.110]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 teleport-10%/full vs dynamic tree (b2tree)          0.263 [0.252-0.274]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 teleport-10%/full vs grid (grid)                    1.119 [1.072-1.168]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 churn-1%/full vs dynamic tree (b2tree)             0.159 [0.152-0.166]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 churn-1%/full vs grid (grid)                       0.846 [0.810-0.884]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 churn-10%/full vs dynamic tree (b2tree)            0.164 [0.157-0.172]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 churn-10%/full vs grid (grid-rebuild)              0.915 [0.876-0.956]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 noop-100%/full vs dynamic tree (b2tree-fat)        0.169 [0.161-0.176]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 noop-100%/full vs grid (grid)                      0.890 [0.851-0.931]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 small-1%/full vs dynamic tree (b2tree)             0.157 [0.150-0.164]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 small-1%/full vs grid (grid)                       0.824 [0.789-0.860]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 small-10%/full vs dynamic tree (b2tree-fat)        0.158 [0.152-0.165]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 small-10%/full vs grid (grid)                      0.863 [0.827-0.901]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 small-100%/full vs dynamic tree (b2tree-fat)        0.162 [0.151-0.173]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 small-100%/full vs grid (grid-rebuild)             0.975 [0.905-1.051]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 small-single/full vs dynamic tree (b2tree)         0.156 [0.149-0.163]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 small-single/full vs grid (grid)                   0.798 [0.745-0.855]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 static/full vs dynamic tree (b2tree)               0.157 [0.148-0.167]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 static/full vs grid (grid)                         0.818 [0.767-0.871]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 teleport-1%/full vs dynamic tree (b2tree)          0.164 [0.157-0.171]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 teleport-1%/full vs grid (grid)                    0.850 [0.813-0.888]     <= 4 pass
+G7   hard persistent float mixed-size n=100000 teleport-10%/full vs dynamic tree (b2tree)         0.180 [0.171-0.189]     <= 2 pass
+G7   soft persistent float mixed-size n=100000 teleport-10%/full vs grid (grid)                   0.948 [0.907-0.991]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 churn-1%/full vs dynamic tree (b2tree)               0.285 [0.272-0.298]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 churn-1%/full vs grid (grid)                         1.020 [0.974-1.067]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 churn-10%/full vs dynamic tree (b2tree)              0.291 [0.278-0.303]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 churn-10%/full vs grid (grid)                        1.069 [1.023-1.117]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 noop-100%/full vs dynamic tree (b2tree-fat)          0.267 [0.255-0.279]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 noop-100%/full vs grid (grid)                        2.143 [2.050-2.239]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 small-1%/full vs dynamic tree (b2tree)               0.255 [0.244-0.267]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 small-1%/full vs grid (grid)                         1.731 [1.652-1.813]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 small-10%/full vs dynamic tree (b2tree)              0.273 [0.261-0.286]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 small-10%/full vs grid (grid)                        1.196 [1.143-1.251]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 small-100%/full vs dynamic tree (b2tree-fat)         0.219 [0.210-0.229]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 small-100%/full vs grid (grid)                       1.130 [1.082-1.180]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 small-single/full vs dynamic tree (b2tree)           0.245 [0.234-0.257]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 small-single/full vs grid (grid)                     2.020 [1.935-2.108]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 static/full vs dynamic tree (b2tree)                 0.246 [0.234-0.258]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 static/full vs grid (grid)                           2.025 [1.933-2.121]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 teleport-1%/full vs dynamic tree (b2tree)            0.278 [0.266-0.290]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 teleport-1%/full vs grid (grid)                      1.795 [1.718-1.875]     <= 4 pass
+G7   hard persistent int32 mixed-size n=1000 teleport-10%/full vs dynamic tree (b2tree)           0.295 [0.282-0.308]     <= 2 pass
+G7   soft persistent int32 mixed-size n=1000 teleport-10%/full vs grid (grid)                     1.023 [0.978-1.070]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 churn-1%/full vs dynamic tree (b2tree)              0.231 [0.221-0.242]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 churn-1%/full vs grid (grid)                        1.044 [1.000-1.090]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 churn-10%/full vs dynamic tree (b2tree)             0.232 [0.223-0.242]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 churn-10%/full vs grid (grid)                       1.107 [1.060-1.155]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 noop-100%/full vs dynamic tree (b2tree-fat)         0.256 [0.245-0.267]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 noop-100%/full vs grid (grid)                       1.143 [1.095-1.192]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 small-1%/full vs dynamic tree (b2tree)              0.235 [0.225-0.246]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 small-1%/full vs grid (grid)                        1.024 [0.982-1.069]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 small-10%/full vs dynamic tree (b2tree)             0.228 [0.218-0.237]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 small-10%/full vs grid (grid)                       1.064 [1.020-1.110]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 small-100%/full vs dynamic tree (b2tree-fat)        0.177 [0.169-0.185]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 small-100%/full vs grid (grid)                      1.078 [1.033-1.125]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 small-single/full vs dynamic tree (b2tree)          0.240 [0.230-0.250]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 small-single/full vs grid (grid)                    1.027 [0.984-1.071]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 static/full vs dynamic tree (b2tree)                0.237 [0.226-0.248]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 static/full vs grid (grid)                          1.019 [0.975-1.064]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 teleport-1%/full vs dynamic tree (b2tree)           0.242 [0.232-0.253]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 teleport-1%/full vs grid (grid)                     1.040 [0.996-1.085]     <= 4 pass
+G7   hard persistent int32 mixed-size n=10000 teleport-10%/full vs dynamic tree (b2tree)          0.239 [0.228-0.249]     <= 2 pass
+G7   soft persistent int32 mixed-size n=10000 teleport-10%/full vs grid (grid)                    1.072 [1.027-1.118]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 churn-1%/full vs dynamic tree (b2tree)             0.155 [0.148-0.162]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 churn-1%/full vs grid (grid)                       0.839 [0.802-0.877]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 churn-10%/full vs dynamic tree (b2tree)            0.153 [0.147-0.160]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 churn-10%/full vs grid (grid)                      0.887 [0.849-0.927]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 noop-100%/full vs dynamic tree (b2tree-fat)        0.160 [0.154-0.167]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 noop-100%/full vs grid (grid)                      0.862 [0.825-0.899]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 small-1%/full vs dynamic tree (b2tree)             0.149 [0.143-0.155]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 small-1%/full vs grid (grid)                       0.797 [0.763-0.832]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 small-10%/full vs dynamic tree (b2tree)            0.150 [0.143-0.157]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 small-10%/full vs grid (grid)                      0.840 [0.802-0.879]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 small-100%/full vs dynamic tree (b2tree-fat)        0.155 [0.147-0.163]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 small-100%/full vs grid (grid)                     0.954 [0.913-0.996]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 small-single/full vs dynamic tree (b2tree)         0.147 [0.141-0.154]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 small-single/full vs grid (grid)                   0.784 [0.752-0.819]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 static/full vs dynamic tree (b2tree)               0.147 [0.141-0.154]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 static/full vs grid (grid)                         0.780 [0.747-0.814]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 teleport-1%/full vs dynamic tree (b2tree)          0.153 [0.146-0.159]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 teleport-1%/full vs grid (grid)                    0.806 [0.772-0.842]     <= 4 pass
+G7   hard persistent int32 mixed-size n=100000 teleport-10%/full vs dynamic tree (b2tree)         0.172 [0.164-0.179]     <= 2 pass
+G7   soft persistent int32 mixed-size n=100000 teleport-10%/full vs grid (grid)                   0.923 [0.883-0.964]     <= 4 pass
+G7   hard persistent float split-line n=1000 churn-1%/full vs dynamic tree (b2tree)               0.383 [0.367-0.400]     <= 2 pass
+G7   soft persistent float split-line n=1000 churn-1%/full vs grid (grid)                         3.136 [2.998-3.280]     <= 4 pass
+G7   hard persistent float split-line n=1000 churn-10%/full vs dynamic tree (b2tree)              0.326 [0.312-0.341]     <= 2 pass
+G7   soft persistent float split-line n=1000 churn-10%/full vs grid (grid)                        1.840 [1.761-1.923]     <= 4 pass
+G7   hard persistent float split-line n=1000 noop-100%/full vs dynamic tree (b2tree-fat)          0.464 [0.444-0.485]     <= 2 pass
+G7   soft persistent float split-line n=1000 noop-100%/full vs grid (grid)                        3.304 [3.159-3.455]     <= 4 pass
+G7   hard persistent float split-line n=1000 small-1%/full vs dynamic tree (b2tree)               0.607 [0.580-0.634]     <= 2 pass
+G7   soft persistent float split-line n=1000 small-1%/full vs grid (grid)                         3.402 [3.257-3.554]     <= 4 pass
+G7   hard persistent float split-line n=1000 small-10%/full vs dynamic tree (b2tree)              0.399 [0.381-0.417]     <= 2 pass
+G7   soft persistent float split-line n=1000 small-10%/full vs grid (grid)                        2.812 [2.688-2.942]     <= 4 pass
+G7   hard persistent float split-line n=1000 small-100%/full vs dynamic tree (b2tree-fat)         0.248 [0.238-0.259]     <= 2 pass
+G7   soft persistent float split-line n=1000 small-100%/full vs grid (grid)                       1.571 [1.505-1.640]     <= 4 pass
+G7   hard persistent float split-line n=1000 small-single/full vs dynamic tree (b2tree)           0.492 [0.469-0.515]     <= 2 pass
+G7   soft persistent float split-line n=1000 small-single/full vs grid (grid)                     3.508 [3.356-3.666]     <= 4 pass
+G7   hard persistent float split-line n=1000 static/full vs dynamic tree (b2tree)                 0.475 [0.453-0.499]     <= 2 pass
+G7   soft persistent float split-line n=1000 static/full vs grid (grid)                           3.497 [3.346-3.655]     <= 4 pass
+G7   hard persistent float split-line n=1000 teleport-1%/full vs dynamic tree (b2tree)            0.367 [0.351-0.383]     <= 2 pass
+G7   soft persistent float split-line n=1000 teleport-1%/full vs grid (grid)                      3.247 [3.103-3.397]     <= 4 pass
+G7   hard persistent float split-line n=1000 teleport-10%/full vs dynamic tree (b2tree)           0.378 [0.361-0.395]     <= 2 pass
+G7   soft persistent float split-line n=1000 teleport-10%/full vs grid (grid)                     2.517 [2.406-2.634]     <= 4 pass
+G7   hard persistent float split-line n=10000 churn-1%/full vs dynamic tree (b2tree)              0.327 [0.312-0.342]     <= 2 pass
+G7   soft persistent float split-line n=10000 churn-1%/full vs grid (grid)                        2.111 [2.015-2.213]     <= 4 pass
+G7   hard persistent float split-line n=10000 churn-10%/full vs dynamic tree (b2tree)             0.239 [0.229-0.250]     <= 2 pass
+G7   soft persistent float split-line n=10000 churn-10%/full vs grid (grid)                       1.790 [1.708-1.877]     <= 4 pass
+G7   hard persistent float split-line n=10000 noop-100%/full vs dynamic tree (b2tree-fat)         0.483 [0.463-0.505]     <= 2 pass
+G7   soft persistent float split-line n=10000 noop-100%/full vs grid (grid)                       2.374 [2.271-2.481]     <= 4 pass
+G7   hard persistent float split-line n=10000 small-1%/full vs dynamic tree (b2tree)              0.431 [0.413-0.451]     <= 2 pass
+G7   soft persistent float split-line n=10000 small-1%/full vs grid (grid)                        2.185 [2.092-2.282]     <= 4 pass
+G7   hard persistent float split-line n=10000 small-10%/full vs dynamic tree (b2tree-fat)         0.370 [0.352-0.390]     <= 2 pass
+G7   soft persistent float split-line n=10000 small-10%/full vs grid (grid)                       2.146 [2.045-2.252]     <= 4 pass
+G7   hard persistent float split-line n=10000 small-100%/full vs dynamic tree (b2tree-fat)        0.199 [0.191-0.208]     <= 2 pass
+G7   soft persistent float split-line n=10000 small-100%/full vs grid (grid-rebuild)              1.654 [1.584-1.727]     <= 4 pass
+G7   hard persistent float split-line n=10000 small-single/full vs dynamic tree (b2tree)          0.459 [0.440-0.479]     <= 2 pass
+G7   soft persistent float split-line n=10000 small-single/full vs grid (grid)                    2.117 [2.025-2.213]     <= 4 pass
+G7   hard persistent float split-line n=10000 static/full vs dynamic tree (b2tree)                0.461 [0.442-0.482]     <= 2 pass
+G7   soft persistent float split-line n=10000 static/full vs grid (grid)                          2.151 [2.060-2.247]     <= 4 pass
+G7   hard persistent float split-line n=10000 teleport-1%/full vs dynamic tree (b2tree)           0.420 [0.402-0.438]     <= 2 pass
+G7   soft persistent float split-line n=10000 teleport-1%/full vs grid (grid)                     2.144 [2.052-2.239]     <= 4 pass
+G7   hard persistent float split-line n=10000 teleport-10%/full vs dynamic tree (b2tree)          0.381 [0.365-0.397]     <= 2 pass
+G7   soft persistent float split-line n=10000 teleport-10%/full vs grid (grid)                    2.095 [2.006-2.188]     <= 4 pass
+G7   hard persistent float split-line n=100000 churn-1%/full vs dynamic tree (b2tree)             0.245 [0.234-0.257]     <= 2 pass
+G7   soft persistent float split-line n=100000 churn-1%/full vs grid (grid)                       1.699 [1.625-1.777]     <= 4 pass
+G7   hard persistent float split-line n=100000 churn-10%/full vs dynamic tree (b2tree)            0.217 [0.169-0.278]     <= 2 pass
+G7   soft persistent float split-line n=100000 churn-10%/full vs grid (grid-rebuild)              1.745 [1.461-2.083]     <= 4 pass
+G7   hard persistent float split-line n=100000 noop-100%/full vs dynamic tree (b2tree-fat)        0.311 [0.297-0.327]     <= 2 pass
+G7   soft persistent float split-line n=100000 noop-100%/full vs grid (grid)                      1.742 [1.657-1.830]     <= 4 pass
+G7   hard persistent float split-line n=100000 small-1%/full vs dynamic tree (b2tree)             0.264 [0.236-0.295]     <= 2 pass
+G7   soft persistent float split-line n=100000 small-1%/full vs grid (grid)                       1.653 [1.494-1.828]     <= 4 pass
+G7   hard persistent float split-line n=100000 small-10%/full vs dynamic tree (b2tree-fat)        0.241 [0.231-0.252]     <= 2 pass
+G7   soft persistent float split-line n=100000 small-10%/full vs grid (grid)                      1.688 [1.616-1.763]     <= 4 pass
+G7   hard persistent float split-line n=100000 small-100%/full vs dynamic tree (b2tree-fat)        0.181 [0.173-0.190]     <= 2 pass
+G7   soft persistent float split-line n=100000 small-100%/full vs grid (grid-rebuild)             1.778 [1.701-1.860]     <= 4 pass
+G7   hard persistent float split-line n=100000 small-single/full vs dynamic tree (b2tree)         0.269 [0.257-0.282]     <= 2 pass
+G7   soft persistent float split-line n=100000 small-single/full vs grid (grid)                   1.631 [1.560-1.705]     <= 4 pass
+G7   hard persistent float split-line n=100000 static/full vs dynamic tree (b2tree)               0.270 [0.259-0.283]     <= 2 pass
+G7   soft persistent float split-line n=100000 static/full vs grid (grid)                         1.624 [1.540-1.713]     <= 4 pass
+G7   hard persistent float split-line n=100000 teleport-1%/full vs dynamic tree (b2tree)          0.253 [0.241-0.266]     <= 2 pass
+G7   soft persistent float split-line n=100000 teleport-1%/full vs grid (grid)                    1.576 [1.510-1.645]     <= 4 pass
+G7   hard persistent float split-line n=100000 teleport-10%/full vs dynamic tree (b2tree)         0.232 [0.213-0.252]     <= 2 pass
+G7   soft persistent float split-line n=100000 teleport-10%/full vs grid (grid)                   1.404 [1.340-1.470]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 churn-1%/full vs dynamic tree (b2tree)               0.397 [0.379-0.415]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 churn-1%/full vs grid (grid)                         2.829 [2.707-2.957]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 churn-10%/full vs dynamic tree (b2tree)              0.300 [0.288-0.314]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 churn-10%/full vs grid (grid)                        1.682 [1.611-1.756]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 noop-100%/full vs dynamic tree (b2tree-fat)          0.540 [0.512-0.569]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 noop-100%/full vs grid (grid)                        3.142 [3.008-3.281]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 small-1%/full vs dynamic tree (b2tree)               0.699 [0.536-0.911]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 small-1%/full vs grid (grid)                         3.119 [2.988-3.256]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 small-10%/full vs dynamic tree (b2tree-fat)          0.392 [0.375-0.410]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 small-10%/full vs grid (grid)                        2.660 [2.542-2.783]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 small-100%/full vs dynamic tree (b2tree-fat)         0.230 [0.220-0.240]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 small-100%/full vs grid (grid)                       1.535 [1.465-1.608]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 small-single/full vs dynamic tree (b2tree)           0.955 [0.914-0.998]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 small-single/full vs grid (grid)                     3.226 [3.089-3.369]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 static/full vs dynamic tree (b2tree)                 0.720 [0.525-0.986]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 static/full vs grid (grid)                           3.203 [3.061-3.352]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 teleport-1%/full vs dynamic tree (b2tree)            0.369 [0.353-0.386]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 teleport-1%/full vs grid (grid)                      3.007 [2.876-3.144]     <= 4 pass
+G7   hard persistent int32 split-line n=1000 teleport-10%/full vs dynamic tree (b2tree)           0.367 [0.351-0.383]     <= 2 pass
+G7   soft persistent int32 split-line n=1000 teleport-10%/full vs grid (grid)                     2.352 [2.242-2.467]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 churn-1%/full vs dynamic tree (b2tree)              0.321 [0.306-0.336]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 churn-1%/full vs grid (grid)                        1.968 [1.880-2.059]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 churn-10%/full vs dynamic tree (b2tree)             0.237 [0.224-0.250]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 churn-10%/full vs grid (grid)                       1.653 [1.561-1.751]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 noop-100%/full vs dynamic tree (b2tree-fat)         0.467 [0.447-0.488]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 noop-100%/full vs grid (grid)                       2.291 [2.192-2.395]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 small-1%/full vs dynamic tree (b2tree)              0.412 [0.395-0.430]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 small-1%/full vs grid (grid)                        2.036 [1.949-2.127]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 small-10%/full vs dynamic tree (b2tree-fat)         0.352 [0.335-0.370]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 small-10%/full vs grid (grid)                       2.022 [1.934-2.114]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 small-100%/full vs dynamic tree (b2tree-fat)        0.183 [0.174-0.193]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 small-100%/full vs grid (grid)                      1.558 [1.489-1.630]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 small-single/full vs dynamic tree (b2tree)          0.416 [0.399-0.435]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 small-single/full vs grid (grid)                    2.005 [1.918-2.095]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 static/full vs dynamic tree (b2tree)                0.414 [0.396-0.433]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 static/full vs grid (grid)                          2.008 [1.921-2.100]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 teleport-1%/full vs dynamic tree (b2tree)           0.403 [0.385-0.421]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 teleport-1%/full vs grid (grid)                     1.979 [1.888-2.075]     <= 4 pass
+G7   hard persistent int32 split-line n=10000 teleport-10%/full vs dynamic tree (b2tree)          0.357 [0.341-0.373]     <= 2 pass
+G7   soft persistent int32 split-line n=10000 teleport-10%/full vs grid (grid)                    1.964 [1.877-2.055]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 churn-1%/full vs dynamic tree (b2tree)             0.225 [0.215-0.235]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 churn-1%/full vs grid (grid)                       1.565 [1.488-1.646]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 churn-10%/full vs dynamic tree (b2tree)            0.202 [0.193-0.213]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 churn-10%/full vs grid (grid-rebuild)              1.431 [1.356-1.511]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 noop-100%/full vs dynamic tree (b2tree-fat)        0.295 [0.281-0.309]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 noop-100%/full vs grid (grid)                      1.678 [1.592-1.768]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 small-1%/full vs dynamic tree (b2tree)             0.240 [0.229-0.252]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 small-1%/full vs grid (grid)                       1.572 [1.502-1.644]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 small-10%/full vs dynamic tree (b2tree-fat)        0.224 [0.201-0.250]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 small-10%/full vs grid (grid)                      1.623 [1.407-1.872]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 small-100%/full vs dynamic tree (b2tree-fat)        0.183 [0.147-0.229]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 small-100%/full vs grid (grid-rebuild)             1.775 [1.468-2.146]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 small-single/full vs dynamic tree (b2tree)         0.239 [0.195-0.294]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 small-single/full vs grid (grid)                   1.534 [1.286-1.831]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 static/full vs dynamic tree (b2tree)               0.240 [0.229-0.252]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 static/full vs grid (grid)                         1.558 [1.488-1.632]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 teleport-1%/full vs dynamic tree (b2tree)          0.206 [0.148-0.289]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 teleport-1%/full vs grid (grid)                    1.554 [1.202-2.009]     <= 4 pass
+G7   hard persistent int32 split-line n=100000 teleport-10%/full vs dynamic tree (b2tree)         0.214 [0.202-0.226]     <= 2 pass
+G7   soft persistent int32 split-line n=100000 teleport-10%/full vs grid (grid)                   1.285 [1.221-1.353]     <= 4 pass
+G7   hard persistent float uniform n=1000 churn-1%/full vs dynamic tree (b2tree)                  0.501 [0.473-0.531]     <= 2 pass
+G7   soft persistent float uniform n=1000 churn-1%/full vs grid (grid)                            3.076 [2.942-3.216]     <= 4 pass
+G7   hard persistent float uniform n=1000 churn-10%/full vs dynamic tree (b2tree)                 0.443 [0.425-0.463]     <= 2 pass
+G7   soft persistent float uniform n=1000 churn-10%/full vs grid (grid)                           1.865 [1.787-1.947]     <= 4 pass
+G7   hard persistent float uniform n=1000 noop-100%/full vs dynamic tree (b2tree-fat)             0.621 [0.465-0.829]     <= 2 pass
+G7   soft persistent float uniform n=1000 noop-100%/full vs grid (grid)                           3.504 [3.355-3.659]     <= 4 pass
+G7   hard persistent float uniform n=1000 small-1%/full vs dynamic tree (b2tree)                  0.849 [0.810-0.889]     <= 2 pass
+G7   soft persistent float uniform n=1000 small-1%/full vs grid (grid)                            3.756 [3.594-3.926]     <= 4 pass
+G7   hard persistent float uniform n=1000 small-10%/full vs dynamic tree (b2tree)                 0.414 [0.396-0.432]     <= 2 pass
+G7   soft persistent float uniform n=1000 small-10%/full vs grid (grid)                           2.703 [2.572-2.841]     <= 4 pass
+G7   hard persistent float uniform n=1000 small-100%/full vs dynamic tree (b2tree-fat)            0.254 [0.242-0.267]     <= 2 pass
+G7   soft persistent float uniform n=1000 small-100%/full vs grid (grid)                          1.566 [1.490-1.646]     <= 4 pass
+G7   hard persistent float uniform n=1000 small-single/full vs dynamic tree (b2tree)              0.996 [0.953-1.041]     <= 2 pass
+G7   soft persistent float uniform n=1000 small-single/full vs grid (grid)                        3.995 [3.823-4.176]     <= 4 inconclusive
+G7   hard persistent float uniform n=1000 static/full vs dynamic tree (b2tree)                    1.011 [0.969-1.056]     <= 2 pass
+G7   soft persistent float uniform n=1000 static/full vs grid (grid)                              3.941 [3.755-4.136]     <= 4 inconclusive
+G7   hard persistent float uniform n=1000 teleport-1%/full vs dynamic tree (b2tree)               0.821 [0.785-0.859]     <= 2 pass
+G7   soft persistent float uniform n=1000 teleport-1%/full vs grid (grid)                         3.303 [3.158-3.454]     <= 4 pass
+G7   hard persistent float uniform n=1000 teleport-10%/full vs dynamic tree (b2tree)              0.485 [0.465-0.507]     <= 2 pass
+G7   soft persistent float uniform n=1000 teleport-10%/full vs grid (grid)                        2.238 [2.139-2.341]     <= 4 pass
+G7   hard persistent float uniform n=10000 churn-1%/full vs dynamic tree (b2tree)                 0.344 [0.329-0.359]     <= 2 pass
+G7   soft persistent float uniform n=10000 churn-1%/full vs grid (grid)                           1.811 [1.736-1.890]     <= 4 pass
+G7   hard persistent float uniform n=10000 churn-10%/full vs dynamic tree (b2tree)                0.334 [0.320-0.349]     <= 2 pass
+G7   soft persistent float uniform n=10000 churn-10%/full vs grid (grid)                          1.808 [1.729-1.891]     <= 4 pass
+G7   hard persistent float uniform n=10000 noop-100%/full vs dynamic tree (b2tree-fat)            0.386 [0.370-0.403]     <= 2 pass
+G7   soft persistent float uniform n=10000 noop-100%/full vs grid (grid)                          2.071 [1.984-2.162]     <= 4 pass
+G7   hard persistent float uniform n=10000 small-1%/full vs dynamic tree (b2tree)                 0.354 [0.339-0.370]     <= 2 pass
+G7   soft persistent float uniform n=10000 small-1%/full vs grid (grid)                           1.840 [1.762-1.922]     <= 4 pass
+G7   hard persistent float uniform n=10000 small-10%/full vs dynamic tree (b2tree)                0.319 [0.306-0.333]     <= 2 pass
+G7   soft persistent float uniform n=10000 small-10%/full vs grid (grid)                          1.890 [1.810-1.972]     <= 4 pass
+G7   hard persistent float uniform n=10000 small-100%/full vs dynamic tree (b2tree-fat)           0.208 [0.199-0.217]     <= 2 pass
+G7   soft persistent float uniform n=10000 small-100%/full vs grid (grid-rebuild)                 1.632 [1.563-1.704]     <= 4 pass
+G7   hard persistent float uniform n=10000 small-single/full vs dynamic tree (b2tree)             0.351 [0.337-0.367]     <= 2 pass
+G7   soft persistent float uniform n=10000 small-single/full vs grid (grid)                       1.820 [1.743-1.901]     <= 4 pass
+G7   hard persistent float uniform n=10000 static/full vs dynamic tree (b2tree)                   0.355 [0.340-0.370]     <= 2 pass
+G7   soft persistent float uniform n=10000 static/full vs grid (grid)                             1.807 [1.728-1.891]     <= 4 pass
+G7   hard persistent float uniform n=10000 teleport-1%/full vs dynamic tree (b2tree)              0.360 [0.345-0.376]     <= 2 pass
+G7   soft persistent float uniform n=10000 teleport-1%/full vs grid (grid)                        1.848 [1.770-1.930]     <= 4 pass
+G7   hard persistent float uniform n=10000 teleport-10%/full vs dynamic tree (b2tree)             0.357 [0.342-0.373]     <= 2 pass
+G7   soft persistent float uniform n=10000 teleport-10%/full vs grid (grid)                       1.874 [1.794-1.956]     <= 4 pass
+G7   hard persistent float uniform n=100000 churn-1%/full vs dynamic tree (b2tree)                0.263 [0.251-0.275]     <= 2 pass
+G7   soft persistent float uniform n=100000 churn-1%/full vs grid (grid)                          1.823 [1.746-1.903]     <= 4 pass
+G7   hard persistent float uniform n=100000 churn-10%/full vs dynamic tree (b2tree)               0.265 [0.249-0.281]     <= 2 pass
+G7   soft persistent float uniform n=100000 churn-10%/full vs grid (grid-rebuild)                 1.771 [1.697-1.849]     <= 4 pass
+G7   hard persistent float uniform n=100000 noop-100%/full vs dynamic tree (b2tree-fat)           0.303 [0.288-0.320]     <= 2 pass
+G7   soft persistent float uniform n=100000 noop-100%/full vs grid (grid)                         2.129 [2.036-2.227]     <= 4 pass
+G7   hard persistent float uniform n=100000 small-1%/full vs dynamic tree (b2tree)                0.261 [0.249-0.272]     <= 2 pass
+G7   soft persistent float uniform n=100000 small-1%/full vs grid (grid)                          1.870 [1.792-1.951]     <= 4 pass
+G7   hard persistent float uniform n=100000 small-10%/full vs dynamic tree (b2tree)               0.229 [0.217-0.242]     <= 2 pass
+G7   soft persistent float uniform n=100000 small-10%/full vs grid (grid)                         1.886 [1.801-1.976]     <= 4 pass
+G7   hard persistent float uniform n=100000 small-100%/full vs dynamic tree (b2tree-fat)          0.219 [0.206-0.233]     <= 2 pass
+G7   soft persistent float uniform n=100000 small-100%/full vs grid (grid-rebuild)                2.156 [2.061-2.255]     <= 4 pass
+G7   hard persistent float uniform n=100000 small-single/full vs dynamic tree (b2tree)            0.259 [0.227-0.297]     <= 2 pass
+G7   soft persistent float uniform n=100000 small-single/full vs grid (grid)                      1.897 [1.762-2.042]     <= 4 pass
+G7   hard persistent float uniform n=100000 static/full vs dynamic tree (b2tree)                  0.269 [0.256-0.282]     <= 2 pass
+G7   soft persistent float uniform n=100000 static/full vs grid (grid)                            1.870 [1.791-1.952]     <= 4 pass
+G7   hard persistent float uniform n=100000 teleport-1%/full vs dynamic tree (b2tree)             0.242 [0.217-0.271]     <= 2 pass
+G7   soft persistent float uniform n=100000 teleport-1%/full vs grid (grid)                       1.804 [1.724-1.889]     <= 4 pass
+G7   hard persistent float uniform n=100000 teleport-10%/full vs dynamic tree (b2tree)            0.286 [0.269-0.305]     <= 2 pass
+G7   soft persistent float uniform n=100000 teleport-10%/full vs grid (grid)                      2.046 [1.956-2.139]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 churn-1%/full vs dynamic tree (b2tree)                  0.454 [0.435-0.474]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 churn-1%/full vs grid (grid)                            2.848 [2.713-2.990]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 churn-10%/full vs dynamic tree (b2tree)                 0.402 [0.385-0.419]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 churn-10%/full vs grid (grid)                           1.787 [1.711-1.866]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 noop-100%/full vs dynamic tree (b2tree-fat)             0.563 [0.532-0.595]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 noop-100%/full vs grid (grid)                           3.150 [2.615-3.794]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 small-1%/full vs dynamic tree (b2tree)                  0.792 [0.743-0.845]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 small-1%/full vs grid (grid)                            3.517 [3.360-3.681]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 small-10%/full vs dynamic tree (b2tree)                 0.379 [0.363-0.396]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 small-10%/full vs grid (grid)                           2.604 [2.486-2.728]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 small-100%/full vs dynamic tree (b2tree-fat)            0.232 [0.222-0.242]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 small-100%/full vs grid (grid)                          1.513 [1.448-1.581]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 small-single/full vs dynamic tree (b2tree)              0.975 [0.933-1.019]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 small-single/full vs grid (grid)                        3.731 [3.569-3.899]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 static/full vs dynamic tree (b2tree)                    0.981 [0.938-1.026]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 static/full vs grid (grid)                              3.665 [3.489-3.850]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 teleport-1%/full vs dynamic tree (b2tree)               0.761 [0.727-0.797]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 teleport-1%/full vs grid (grid)                         3.094 [2.961-3.233]     <= 4 pass
+G7   hard persistent int32 uniform n=1000 teleport-10%/full vs dynamic tree (b2tree)              0.439 [0.420-0.458]     <= 2 pass
+G7   soft persistent int32 uniform n=1000 teleport-10%/full vs grid (grid)                        2.104 [2.011-2.201]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 churn-1%/full vs dynamic tree (b2tree)                 0.317 [0.304-0.331]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 churn-1%/full vs grid (grid)                           1.736 [1.663-1.812]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 churn-10%/full vs dynamic tree (b2tree)                0.306 [0.293-0.319]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 churn-10%/full vs grid (grid)                          1.731 [1.656-1.809]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 noop-100%/full vs dynamic tree (b2tree-fat)            0.355 [0.340-0.371]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 noop-100%/full vs grid (grid)                          1.983 [1.899-2.071]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 small-1%/full vs dynamic tree (b2tree)                 0.323 [0.309-0.337]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 small-1%/full vs grid (grid)                           1.770 [1.696-1.847]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 small-10%/full vs dynamic tree (b2tree)                0.293 [0.281-0.306]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 small-10%/full vs grid (grid)                          1.823 [1.745-1.905]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 small-100%/full vs dynamic tree (b2tree-fat)           0.190 [0.182-0.199]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 small-100%/full vs grid (grid)                         1.542 [1.478-1.610]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 small-single/full vs dynamic tree (b2tree)             0.322 [0.309-0.337]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 small-single/full vs grid (grid)                       1.735 [1.661-1.812]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 static/full vs dynamic tree (b2tree)                   0.323 [0.309-0.338]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 static/full vs grid (grid)                             1.727 [1.652-1.805]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 teleport-1%/full vs dynamic tree (b2tree)              0.329 [0.315-0.343]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 teleport-1%/full vs grid (grid)                        1.764 [1.689-1.842]     <= 4 pass
+G7   hard persistent int32 uniform n=10000 teleport-10%/full vs dynamic tree (b2tree)             0.323 [0.310-0.338]     <= 2 pass
+G7   soft persistent int32 uniform n=10000 teleport-10%/full vs grid (grid)                       1.774 [1.699-1.852]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 churn-1%/full vs dynamic tree (b2tree)                0.239 [0.228-0.249]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 churn-1%/full vs grid (grid)                          1.729 [1.655-1.807]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 churn-10%/full vs dynamic tree (b2tree)               0.266 [0.247-0.286]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 churn-10%/full vs grid (grid-rebuild)                 1.719 [1.647-1.795]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 noop-100%/full vs dynamic tree (b2tree-fat)           0.285 [0.272-0.299]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 noop-100%/full vs grid (grid)                         2.095 [2.003-2.191]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 small-1%/full vs dynamic tree (b2tree)                0.235 [0.224-0.246]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 small-1%/full vs grid (grid)                          1.777 [1.702-1.855]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 small-10%/full vs dynamic tree (b2tree)               0.212 [0.201-0.223]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 small-10%/full vs grid (grid)                         1.828 [1.749-1.910]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 small-100%/full vs dynamic tree (b2tree-fat)          0.198 [0.182-0.215]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 small-100%/full vs grid (grid-rebuild)                1.999 [1.906-2.096]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 small-single/full vs dynamic tree (b2tree)            0.245 [0.226-0.265]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 small-single/full vs grid (grid)                      1.791 [1.634-1.963]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 static/full vs dynamic tree (b2tree)                  0.243 [0.231-0.255]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 static/full vs grid (grid)                            1.781 [1.706-1.859]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 teleport-1%/full vs dynamic tree (b2tree)             0.226 [0.216-0.237]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 teleport-1%/full vs grid (grid)                       1.724 [1.651-1.800]     <= 4 pass
+G7   hard persistent int32 uniform n=100000 teleport-10%/full vs dynamic tree (b2tree)            0.250 [0.226-0.277]     <= 2 pass
+G7   soft persistent int32 uniform n=100000 teleport-10%/full vs grid (grid)                      1.895 [1.811-1.983]     <= 4 pass
+G8a  hard persistent float clustered n=1000 static/moved ns per step                           17.800 [12.300-23.300]  <= 1000 pass
+G8a  hard persistent float clustered n=10000 static/moved ns per step                          20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float clustered n=100000 static/moved ns per step                         20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent int32 clustered n=1000 static/moved ns per step                           18.900 [16.100-21.700]  <= 1000 pass
+G8a  hard persistent int32 clustered n=10000 static/moved ns per step                          19.900 [19.200-20.600]  <= 1000 pass
+G8a  hard persistent int32 clustered n=100000 static/moved ns per step                         20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float mixed-size n=1000 static/moved ns per step                          19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent float mixed-size n=10000 static/moved ns per step                         20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float mixed-size n=100000 static/moved ns per step                        18.000 [12.400-23.600]  <= 1000 pass
+G8a  hard persistent int32 mixed-size n=1000 static/moved ns per step                          20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent int32 mixed-size n=10000 static/moved ns per step                         19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent int32 mixed-size n=100000 static/moved ns per step                        20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float split-line n=1000 static/moved ns per step                          19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent float split-line n=10000 static/moved ns per step                         20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float split-line n=100000 static/moved ns per step                        19.900 [19.200-20.600]  <= 1000 pass
+G8a  hard persistent int32 split-line n=1000 static/moved ns per step                          20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent int32 split-line n=10000 static/moved ns per step                         20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent int32 split-line n=100000 static/moved ns per step                        20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float uniform n=1000 static/moved ns per step                             20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float uniform n=10000 static/moved ns per step                            20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent float uniform n=100000 static/moved ns per step                           19.900 [19.200-20.600]  <= 1000 pass
+G8a  hard persistent int32 uniform n=1000 static/moved ns per step                             19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent int32 uniform n=10000 static/moved ns per step                            20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent int32 uniform n=100000 static/moved ns per step                           20.000 [19.400-20.600]  <= 1000 pass
+G8b  hard persistent float clustered n=100000 small-single/moved vs n=1000                        0.986 [0.930-1.046]     <= 4 pass
+G8b  hard persistent int32 clustered n=100000 small-single/moved vs n=1000                        1.005 [0.947-1.066]     <= 4 pass
+G8b  hard persistent float mixed-size n=100000 small-single/moved vs n=1000                       3.170 [3.029-3.318]     <= 4 pass
+G8b  hard persistent int32 mixed-size n=100000 small-single/moved vs n=1000                       3.301 [3.121-3.492]     <= 4 pass
+G8b  hard persistent float split-line n=100000 small-single/moved vs n=1000                       1.728 [1.641-1.821]     <= 4 pass
+G8b  hard persistent int32 split-line n=100000 small-single/moved vs n=1000                       1.916 [1.773-2.071]     <= 4 pass
+G8b  hard persistent float uniform n=100000 small-single/moved vs n=1000                          1.706 [1.628-1.788]     <= 4 pass
+G8b  hard persistent int32 uniform n=100000 small-single/moved vs n=1000                          1.529 [1.466-1.596]     <= 4 pass
+G8c  hard persistent float clustered n=1000 small-1%/moved vs dynamic tree (b2tree-fat)           0.690 [0.657-0.725]     <= 2 pass
+G8c  soft persistent float clustered n=1000 small-1%/moved vs grid (grid)                         1.660 [1.585-1.738]     <= 4 pass
+G8c  hard persistent float clustered n=1000 teleport-1%/moved vs dynamic tree (b2tree)            0.860 [0.819-0.902]     <= 2 pass
+G8c  soft persistent float clustered n=1000 teleport-1%/moved vs grid (grid)                      2.294 [2.188-2.405]     <= 4 pass
+G8c  hard persistent float clustered n=10000 small-1%/moved vs dynamic tree (b2tree-fat)          0.623 [0.592-0.655]     <= 2 pass
+G8c  soft persistent float clustered n=10000 small-1%/moved vs grid (grid)                        2.006 [1.909-2.107]     <= 4 pass
+G8c  hard persistent float clustered n=10000 teleport-1%/moved vs dynamic tree (b2tree)           0.760 [0.726-0.795]     <= 2 pass
+G8c  soft persistent float clustered n=10000 teleport-1%/moved vs grid (grid)                     2.608 [2.489-2.731]     <= 4 pass
+G8c  hard persistent float clustered n=100000 small-1%/moved vs dynamic tree (b2tree-fat)         0.694 [0.652-0.738]     <= 2 pass
+G8c  soft persistent float clustered n=100000 small-1%/moved vs grid (grid)                       2.280 [2.143-2.427]     <= 4 pass
+G8c  hard persistent float clustered n=100000 teleport-1%/moved vs dynamic tree (b2tree)          0.707 [0.670-0.746]     <= 2 pass
+G8c  soft persistent float clustered n=100000 teleport-1%/moved vs grid (grid)                    2.878 [2.746-3.017]     <= 4 pass
+G8c  hard persistent int32 clustered n=1000 small-1%/moved vs dynamic tree (b2tree-fat)           0.659 [0.624-0.696]     <= 2 pass
+G8c  soft persistent int32 clustered n=1000 small-1%/moved vs grid (grid)                         1.691 [1.607-1.779]     <= 4 pass
+G8c  hard persistent int32 clustered n=1000 teleport-1%/moved vs dynamic tree (b2tree)            0.806 [0.770-0.843]     <= 2 pass
+G8c  soft persistent int32 clustered n=1000 teleport-1%/moved vs grid (grid)                      2.269 [2.166-2.377]     <= 4 pass
+G8c  hard persistent int32 clustered n=10000 small-1%/moved vs dynamic tree (b2tree-fat)          0.584 [0.551-0.618]     <= 2 pass
+G8c  soft persistent int32 clustered n=10000 small-1%/moved vs grid (grid)                        1.854 [1.748-1.967]     <= 4 pass
+G8c  hard persistent int32 clustered n=10000 teleport-1%/moved vs dynamic tree (b2tree)           0.701 [0.669-0.734]     <= 2 pass
+G8c  soft persistent int32 clustered n=10000 teleport-1%/moved vs grid (grid)                     2.430 [2.312-2.554]     <= 4 pass
+G8c  hard persistent int32 clustered n=100000 small-1%/moved vs dynamic tree (b2tree-fat)         0.657 [0.623-0.693]     <= 2 pass
+G8c  soft persistent int32 clustered n=100000 small-1%/moved vs grid (grid)                       2.228 [2.096-2.369]     <= 4 pass
+G8c  hard persistent int32 clustered n=100000 teleport-1%/moved vs dynamic tree (b2tree)          0.678 [0.647-0.710]     <= 2 pass
+G8c  soft persistent int32 clustered n=100000 teleport-1%/moved vs grid (grid)                    2.958 [2.825-3.097]     <= 4 pass
+G8c  hard persistent float mixed-size n=1000 small-1%/moved vs dynamic tree (b2tree-fat)          0.734 [0.701-0.768]     <= 2 pass
+G8c  soft persistent float mixed-size n=1000 small-1%/moved vs grid (grid)                        1.278 [1.222-1.337]     <= 4 pass
+G8c  hard persistent float mixed-size n=1000 teleport-1%/moved vs dynamic tree (b2tree)           0.759 [0.724-0.796]     <= 2 pass
+G8c  soft persistent float mixed-size n=1000 teleport-1%/moved vs grid (grid)                     2.234 [2.129-2.345]     <= 4 pass
+G8c  hard persistent float mixed-size n=10000 small-1%/moved vs dynamic tree (b2tree-fat)         0.628 [0.597-0.660]     <= 2 pass
+G8c  soft persistent float mixed-size n=10000 small-1%/moved vs grid (grid)                       2.485 [2.367-2.608]     <= 4 pass
+G8c  hard persistent float mixed-size n=10000 teleport-1%/moved vs dynamic tree (b2tree)          0.702 [0.670-0.736]     <= 2 pass
+G8c  soft persistent float mixed-size n=10000 teleport-1%/moved vs grid (grid)                    1.734 [1.644-1.828]     <= 4 pass
+G8c  hard persistent float mixed-size n=100000 small-1%/moved vs dynamic tree (b2tree-fat)        0.687 [0.653-0.722]     <= 2 pass
+G8c  soft persistent float mixed-size n=100000 small-1%/moved vs grid (grid)                      2.018 [1.933-2.107]     <= 4 pass
+G8c  hard persistent float mixed-size n=100000 teleport-1%/moved vs dynamic tree (b2tree)         0.671 [0.642-0.702]     <= 2 pass
+G8c  soft persistent float mixed-size n=100000 teleport-1%/moved vs grid (grid)                   1.116 [1.069-1.166]     <= 4 pass
+G8c  hard persistent int32 mixed-size n=1000 small-1%/moved vs dynamic tree (b2tree-fat)          0.693 [0.659-0.729]     <= 2 pass
+G8c  soft persistent int32 mixed-size n=1000 small-1%/moved vs grid (grid)                        1.232 [1.176-1.290]     <= 4 pass
+G8c  hard persistent int32 mixed-size n=1000 teleport-1%/moved vs dynamic tree (b2tree)           0.697 [0.664-0.732]     <= 2 pass
+G8c  soft persistent int32 mixed-size n=1000 teleport-1%/moved vs grid (grid)                     2.214 [2.107-2.327]     <= 4 pass
+G8c  hard persistent int32 mixed-size n=10000 small-1%/moved vs dynamic tree (b2tree-fat)         0.580 [0.554-0.608]     <= 2 pass
+G8c  soft persistent int32 mixed-size n=10000 small-1%/moved vs grid (grid)                       2.373 [2.268-2.482]     <= 4 pass
+G8c  hard persistent int32 mixed-size n=10000 teleport-1%/moved vs dynamic tree (b2tree)          0.674 [0.644-0.705]     <= 2 pass
+G8c  soft persistent int32 mixed-size n=10000 teleport-1%/moved vs grid (grid)                    1.689 [1.615-1.767]     <= 4 pass
+G8c  hard persistent int32 mixed-size n=100000 small-1%/moved vs dynamic tree (b2tree-fat)        0.633 [0.606-0.662]     <= 2 pass
+G8c  soft persistent int32 mixed-size n=100000 small-1%/moved vs grid (grid)                      1.849 [1.770-1.931]     <= 4 pass
+G8c  hard persistent int32 mixed-size n=100000 teleport-1%/moved vs dynamic tree (b2tree)         0.631 [0.604-0.659]     <= 2 pass
+G8c  soft persistent int32 mixed-size n=100000 teleport-1%/moved vs grid (grid)                   1.005 [0.958-1.054]     <= 4 pass
+G8c  hard persistent float split-line n=1000 small-1%/moved vs dynamic tree (b2tree-fat)          0.731 [0.697-0.766]     <= 2 pass
+G8c  soft persistent float split-line n=1000 small-1%/moved vs grid (grid)                        2.363 [2.244-2.489]     <= 4 pass
+G8c  hard persistent float split-line n=1000 teleport-1%/moved vs dynamic tree (b2tree)           0.595 [0.568-0.623]     <= 2 pass
+G8c  soft persistent float split-line n=1000 teleport-1%/moved vs grid (grid)                     1.791 [1.675-1.914]     <= 4 pass
+G8c  hard persistent float split-line n=10000 small-1%/moved vs dynamic tree (b2tree-fat)         0.675 [0.637-0.716]     <= 2 pass
+G8c  soft persistent float split-line n=10000 small-1%/moved vs grid (grid)                       2.845 [2.715-2.981]     <= 4 pass
+G8c  hard persistent float split-line n=10000 teleport-1%/moved vs dynamic tree (b2tree)          0.518 [0.496-0.541]     <= 2 pass
+G8c  soft persistent float split-line n=10000 teleport-1%/moved vs grid (grid)                    2.352 [2.240-2.470]     <= 4 pass
+G8c  hard persistent float split-line n=100000 small-1%/moved vs dynamic tree (b2tree-fat)        0.730 [0.677-0.786]     <= 2 pass
+G8c  soft persistent float split-line n=100000 small-1%/moved vs grid (grid)                      3.766 [3.563-3.981]     <= 4 pass
+G8c  hard persistent float split-line n=100000 teleport-1%/moved vs dynamic tree (b2tree)         0.531 [0.506-0.558]     <= 2 pass
+G8c  soft persistent float split-line n=100000 teleport-1%/moved vs grid (grid)                   2.161 [1.916-2.437]     <= 4 pass
+G8c  hard persistent int32 split-line n=1000 small-1%/moved vs dynamic tree (b2tree-fat)          0.693 [0.662-0.727]     <= 2 pass
+G8c  soft persistent int32 split-line n=1000 small-1%/moved vs grid (grid)                        2.321 [2.207-2.440]     <= 4 pass
+G8c  hard persistent int32 split-line n=1000 teleport-1%/moved vs dynamic tree (b2tree)           0.547 [0.521-0.573]     <= 2 pass
+G8c  soft persistent int32 split-line n=1000 teleport-1%/moved vs grid (grid)                     1.683 [1.565-1.810]     <= 4 pass
+G8c  hard persistent int32 split-line n=10000 small-1%/moved vs dynamic tree (b2tree-fat)         0.613 [0.564-0.665]     <= 2 pass
+G8c  soft persistent int32 split-line n=10000 small-1%/moved vs grid (grid)                       2.814 [2.678-2.956]     <= 4 pass
+G8c  hard persistent int32 split-line n=10000 teleport-1%/moved vs dynamic tree (b2tree)          0.481 [0.460-0.504]     <= 2 pass
+G8c  soft persistent int32 split-line n=10000 teleport-1%/moved vs grid (grid)                    2.337 [2.232-2.447]     <= 4 pass
+G8c  hard persistent int32 split-line n=100000 small-1%/moved vs dynamic tree (b2tree-fat)        0.689 [0.650-0.731]     <= 2 pass
+G8c  soft persistent int32 split-line n=100000 small-1%/moved vs grid (grid)                      3.786 [3.578-4.006]     <= 4 inconclusive
+G8c  hard persistent int32 split-line n=100000 teleport-1%/moved vs dynamic tree (b2tree)         0.495 [0.441-0.556]     <= 2 pass
+G8c  soft persistent int32 split-line n=100000 teleport-1%/moved vs grid (grid)                   1.817 [1.424-2.319]     <= 4 pass
+G8c  hard persistent float uniform n=1000 small-1%/moved vs dynamic tree (b2tree-fat)             0.683 [0.648-0.719]     <= 2 pass
+G8c  soft persistent float uniform n=1000 small-1%/moved vs grid (grid)                           2.076 [1.974-2.182]     <= 4 pass
+G8c  hard persistent float uniform n=1000 teleport-1%/moved vs dynamic tree (b2tree)              0.791 [0.756-0.829]     <= 2 pass
+G8c  soft persistent float uniform n=1000 teleport-1%/moved vs grid (grid)                        2.336 [2.223-2.454]     <= 4 pass
+G8c  hard persistent float uniform n=10000 small-1%/moved vs dynamic tree (b2tree-fat)            0.631 [0.575-0.693]     <= 2 pass
+G8c  soft persistent float uniform n=10000 small-1%/moved vs grid (grid)                          2.317 [2.207-2.433]     <= 4 pass
+G8c  hard persistent float uniform n=10000 teleport-1%/moved vs dynamic tree (b2tree)             0.772 [0.736-0.810]     <= 2 pass
+G8c  soft persistent float uniform n=10000 teleport-1%/moved vs grid (grid)                       2.721 [2.591-2.858]     <= 4 pass
+G8c  hard persistent float uniform n=100000 small-1%/moved vs dynamic tree (b2tree-fat)           0.726 [0.693-0.760]     <= 2 pass
+G8c  soft persistent float uniform n=100000 small-1%/moved vs grid (grid)                         2.809 [2.654-2.973]     <= 4 pass
+G8c  hard persistent float uniform n=100000 teleport-1%/moved vs dynamic tree (b2tree)            0.711 [0.671-0.754]     <= 2 pass
+G8c  soft persistent float uniform n=100000 teleport-1%/moved vs grid (grid)                      2.922 [2.764-3.090]     <= 4 pass
+G8c  hard persistent int32 uniform n=1000 small-1%/moved vs dynamic tree (b2tree-fat)             0.654 [0.622-0.688]     <= 2 pass
+G8c  soft persistent int32 uniform n=1000 small-1%/moved vs grid (grid)                           2.090 [1.994-2.190]     <= 4 pass
+G8c  hard persistent int32 uniform n=1000 teleport-1%/moved vs dynamic tree (b2tree)              0.730 [0.699-0.763]     <= 2 pass
+G8c  soft persistent int32 uniform n=1000 teleport-1%/moved vs grid (grid)                        2.253 [2.144-2.366]     <= 4 pass
+G8c  hard persistent int32 uniform n=10000 small-1%/moved vs dynamic tree (b2tree-fat)            0.622 [0.592-0.654]     <= 2 pass
+G8c  soft persistent int32 uniform n=10000 small-1%/moved vs grid (grid)                          2.312 [2.200-2.430]     <= 4 pass
+G8c  hard persistent int32 uniform n=10000 teleport-1%/moved vs dynamic tree (b2tree)             0.705 [0.675-0.737]     <= 2 pass
+G8c  soft persistent int32 uniform n=10000 teleport-1%/moved vs grid (grid)                       2.556 [2.439-2.678]     <= 4 pass
+G8c  hard persistent int32 uniform n=100000 small-1%/moved vs dynamic tree (b2tree-fat)           0.676 [0.624-0.731]     <= 2 pass
+G8c  soft persistent int32 uniform n=100000 small-1%/moved vs grid (grid)                         2.713 [2.558-2.876]     <= 4 pass
+G8c  hard persistent int32 uniform n=100000 teleport-1%/moved vs dynamic tree (b2tree)            0.650 [0.589-0.716]     <= 2 pass
+G8c  soft persistent int32 uniform n=100000 teleport-1%/moved vs grid (grid)                      2.826 [2.690-2.970]     <= 4 pass
+G9   hard snapshot float clustered n=1000 vs unordered (qt-refs)                                  2.647 [2.572-2.724]     <= 4 pass
+G9   hard snapshot float clustered n=10000 vs unordered (qt-refs)                                 2.462 [2.392-2.533]     <= 4 pass
+G9   hard snapshot float clustered n=100000 vs unordered (qt-refs)                                2.828 [2.748-2.911]     <= 4 pass
+G9   hard snapshot int32 clustered n=1000 vs unordered (qt-refs)                                  2.781 [2.703-2.860]     <= 4 pass
+G9   hard snapshot int32 clustered n=10000 vs unordered (qt-refs)                                 2.652 [2.577-2.729]     <= 4 pass
+G9   hard snapshot int32 clustered n=100000 vs unordered (qt-refs)                                3.032 [2.945-3.121]     <= 4 pass
+G9   hard snapshot float mixed-size n=1000 vs unordered (qt-refs)                                 2.926 [2.842-3.012]     <= 4 pass
+G9   hard snapshot float mixed-size n=10000 vs unordered (qt-refs)                                3.361 [3.266-3.459]     <= 4 pass
+G9   hard snapshot float mixed-size n=100000 vs unordered (qt-refs)                               6.545 [6.352-6.743]     <= 4 FAIL
+G9   hard snapshot int32 mixed-size n=1000 vs unordered (qt-refs)                                 3.074 [2.984-3.167]     <= 4 pass
+G9   hard snapshot int32 mixed-size n=10000 vs unordered (qt-refs)                                3.544 [3.444-3.648]     <= 4 pass
+G9   hard snapshot int32 mixed-size n=100000 vs unordered (qt-refs)                               6.800 [6.608-6.999]     <= 4 FAIL
+G9   hard snapshot float split-line n=1000 vs unordered (qt-refs)                                 2.623 [2.548-2.700]     <= 4 pass
+G9   hard snapshot float split-line n=10000 vs unordered (qt-refs)                                2.502 [2.431-2.576]     <= 4 pass
+G9   hard snapshot float split-line n=100000 vs unordered (qt-refs)                               2.793 [2.706-2.882]     <= 4 pass
+G9   hard snapshot int32 split-line n=1000 vs unordered (qt-refs)                                 2.693 [2.614-2.775]     <= 4 pass
+G9   hard snapshot int32 split-line n=10000 vs unordered (qt-refs)                                2.641 [2.566-2.718]     <= 4 pass
+G9   hard snapshot int32 split-line n=100000 vs unordered (qt-refs)                               2.967 [2.877-3.059]     <= 4 pass
+G9   hard snapshot float split-line-translated n=1000 vs unordered (qt-refs)                      2.651 [2.572-2.732]     <= 4 pass
+G9   hard snapshot float split-line-translated n=10000 vs unordered (qt-refs)                     2.539 [2.461-2.619]     <= 4 pass
+G9   hard snapshot float split-line-translated n=100000 vs unordered (qt-refs)                    2.801 [2.720-2.884]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=1000 vs unordered (qt-refs)                      2.829 [2.741-2.919]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=10000 vs unordered (qt-refs)                     2.668 [2.592-2.746]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=100000 vs unordered (qt-refs)                    3.078 [2.894-3.273]     <= 4 pass
+G9   hard snapshot float uniform n=1000 vs unordered (qt-refs)                                    2.925 [2.823-3.030]     <= 4 pass
+G9   hard snapshot float uniform n=10000 vs unordered (qt-refs)                                   2.558 [2.485-2.633]     <= 4 pass
+G9   hard snapshot float uniform n=100000 vs unordered (qt-refs)                                  2.826 [2.743-2.911]     <= 4 pass
+G9   hard snapshot int32 uniform n=1000 vs unordered (qt-refs)                                    3.284 [3.146-3.427]     <= 4 pass
+G9   hard snapshot int32 uniform n=10000 vs unordered (qt-refs)                                   2.723 [2.647-2.802]     <= 4 pass
+G9   hard snapshot int32 uniform n=100000 vs unordered (qt-refs)                                  3.024 [2.929-3.123]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard      8    24     0
+  G2 hard     39     0     1
+  G3 hard     18     0     0
+  G4 hard     16     0     0
+  G6 hard    210   344     0
+  G7 hard    240     0     0
+  G7 soft    238     0     2
+  G8a hard    24     0     0
+  G8b hard     8     0     0
+  G8c hard    48     0     0
+  G8c soft    47     0     1
+  G9 hard     28     2     0
+gates: FAIL (candidates: snapshot qt-loose-sort, persistent qt-loose, ordered qt-refs-ordered vs qt-refs)

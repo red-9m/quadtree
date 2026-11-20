@@ -1,0 +1,31 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2531,6 +2531,9 @@
+     }
+ 
+     template<typename Visitor, typename Predicate>
++#if __has_cpp_attribute(gnu::always_inline)
++    [[gnu::always_inline]]
++#endif
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+     {
+@@ -2545,6 +2548,18 @@
+             context.filtered();
+             return;
+         }
++        crossPairsOverlapping(a, b, context, visitor, predicate);
++    }
++
++    template<typename Visitor, typename Predicate>
++#if __has_cpp_attribute(gnu::noinline)
++    [[gnu::noinline]]
++#endif
++    void crossPairsOverlapping(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
++        Predicate& predicate) const noexcept
++    {
++        const Node& left = mNodes[a];
++        const Node& right = mNodes[b];
+         for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+             for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+                 testPair(i, j, false, context, visitor, predicate);

@@ -1,0 +1,13 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1884,8 +1884,8 @@
+         return buildWithLocalWorkspace<Consume, Projected>(range, accessor, handles, count);
+     }
+ 
+-#if __has_cpp_attribute(gnu::always_inline)
+-    [[gnu::always_inline]]
++#if __has_cpp_attribute(gnu::noinline)
++    [[gnu::noinline]]
+ #endif
+     std::optional<Status> buildPreparedSingleton(const BuildEntry<Payload, T>* input, Workspace<T>& workspace) noexcept
+     {

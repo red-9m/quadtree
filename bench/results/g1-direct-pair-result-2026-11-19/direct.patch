@@ -1,0 +1,76 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1021,7 +1021,7 @@
+     template<typename Visitor> requires std::is_nothrow_invocable_r_v<Visit, Visitor&, const NodeView<T>&>
+     QueryResult forEachNode(Visitor&& visitor) const noexcept
+     {
+-        Context context({});
++        Context context(WorkBudget{});
+         if (mRoot != none)
+             visitNodes(mRoot, context, visitor);
+         return context.result;
+@@ -1030,7 +1030,7 @@
+     template<typename Visitor> requires std::is_nothrow_invocable_r_v<Visit, Visitor&, const View&>
+     QueryResult forEachEntry(Visitor&& visitor) const noexcept
+     {
+-        Context context({});
++        Context context(WorkBudget{});
+         for (std::uint32_t i = 0; i < size() && context.active(); ++i)
+             reportEntry(i, context, visitor);
+         return context.result;
+@@ -1076,7 +1076,12 @@
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
+         else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+-            tinyPairs(context, visitor, predicate);
++        {
++            QueryResult result;
++            QueryContext<QueryResult&> direct(options.budget, result);
++            tinyPairs(direct, visitor, predicate);
++            return result;
++        }
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+@@ -2163,12 +2168,15 @@
+         return Status::Ok;
+     }
+ 
+-    struct Context
++    template<typename Result>
++    struct QueryContext
+     {
+-        QueryResult result;
++        Result result;
+         WorkBudget remaining;
+ 
+-        explicit Context(WorkBudget budget) noexcept: remaining(budget) {}
++        explicit QueryContext(WorkBudget budget) noexcept requires (!std::is_reference_v<Result>): remaining(budget) {}
++        QueryContext(WorkBudget budget, QueryResult& output) noexcept requires std::is_reference_v<Result>:
++            result(output), remaining(budget) {}
+         bool active() const noexcept { return result.status == Status::Ok; }
+ 
+         bool charge(std::uint64_t& budget, std::uint64_t& counter) noexcept
+@@ -2202,6 +2210,11 @@
+         }
+     };
+ 
++    struct Context: QueryContext<QueryResult>
++    {
++        using QueryContext<QueryResult>::QueryContext;
++    };
++
+     bool allRanked() const noexcept { return mEntries.mRankCount == size(); }
+ 
+     static Status queryWorkspace(Workspace<T>& scratch, bool grow, std::size_t entries, std::size_t moved,
+@@ -2317,8 +2330,8 @@
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
+-    template<typename Visitor, typename Predicate>
+-    void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    template<typename C, typename Visitor, typename Predicate>
++    void tinyPairs(C& context, Visitor& visitor, Predicate& predicate) const noexcept
+     {
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;

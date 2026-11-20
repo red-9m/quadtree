@@ -1,0 +1,37 @@
+Test project /tmp/qt-g1.REag44/build
+      Start  1: index-test
+ 1/16 Test  #1: index-test ..........................   Passed    0.33 sec
+      Start  2: index-test-noexcept
+ 2/16 Test  #2: index-test-noexcept .................   Passed    0.33 sec
+      Start  3: index-death-stale-moved
+ 3/16 Test  #3: index-death-stale-moved .............   Passed    0.06 sec
+      Start  4: index-death-foreign-moved
+ 4/16 Test  #4: index-death-foreign-moved ...........   Passed    0.05 sec
+      Start  5: index-death-default-partners
+ 5/16 Test  #5: index-death-default-partners ........   Passed    0.06 sec
+      Start  6: index-death-cleared-update
+ 6/16 Test  #6: index-death-cleared-update ..........   Passed    0.05 sec
+      Start  7: entry-store-test
+ 7/16 Test  #7: entry-store-test ....................   Passed    0.02 sec
+      Start  8: entry-store-test-noexcept
+ 8/16 Test  #8: entry-store-test-noexcept ...........   Passed    0.02 sec
+      Start  9: entry-store-death-valid
+ 9/16 Test  #9: entry-store-death-valid .............   Passed    0.00 sec
+      Start 10: entry-store-death-stale-remove
+10/16 Test #10: entry-store-death-stale-remove ......   Passed    0.05 sec
+      Start 11: entry-store-death-foreign-payload
+11/16 Test #11: entry-store-death-foreign-payload ...   Passed    0.06 sec
+      Start 12: entry-store-death-default-rect
+12/16 Test #12: entry-store-death-default-rect ......   Passed    0.07 sec
+      Start 13: entry-store-death-cleared-update
+13/16 Test #13: entry-store-death-cleared-update ....   Passed    0.06 sec
+      Start 14: entry-store-death-moved-setfilter
+14/16 Test #14: entry-store-death-moved-setfilter ...   Passed    0.06 sec
+      Start 19: index-fuzz-quick
+15/16 Test #19: index-fuzz-quick ....................   Passed    0.13 sec
+      Start 20: bench-gate-check
+16/16 Test #20: bench-gate-check ....................   Passed    0.01 sec
+
+100% tests passed out of 16
+
+Total Test time (real) =   1.36 sec

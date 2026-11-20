@@ -1,0 +1,44 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1331,12 +1331,39 @@
+     {
+         Key key;
+         key.entry = dense;
++        T center_x{}, center_y{};
++        decltype(detail::span(T{}, T{})) width{}, height{};
++        if constexpr (IntegerCoordinate<T>)
++        {
++            center_x = std::midpoint(box.minX, box.maxX);
++            center_y = std::midpoint(box.minY, box.maxY);
++            width = detail::span(box.minX, box.maxX);
++            height = detail::span(box.minY, box.maxY);
++        }
+         while (baseDepth + key.level < mConfig.maxDepth)
+         {
+             const detail::Split<T> split(cell);
+-            if (!split.progress() || !split.fits(cell, box))
++            if (!split.progress())
+                 break;
+-            const std::uint32_t q = split.quadrant(box);
++            std::uint32_t q;
++            if constexpr (IntegerCoordinate<T>)
++            {
++                const auto w = split.splitX ?
++                    std::min(detail::span(cell.box.minX, split.x), detail::span(split.x, cell.box.maxX)) :
++                    detail::span(cell.box.minX, cell.box.maxX);
++                const auto h = split.splitY ?
++                    std::min(detail::span(cell.box.minY, split.y), detail::span(split.y, cell.box.maxY)) :
++                    detail::span(cell.box.minY, cell.box.maxY);
++                if (width > w || height > h)
++                    break;
++                q = (split.splitX && center_x >= split.x ? 1u : 0u) | (split.splitY && center_y >= split.y ? 2u : 0u);
++            }
++            else
++            {
++                if (!split.fits(cell, box))
++                    break;
++                q = split.quadrant(box);
++            }
+             if (key.level < 32)
+                 key.hi |= std::uint64_t(q) << (62 - 2 * key.level);
+             else

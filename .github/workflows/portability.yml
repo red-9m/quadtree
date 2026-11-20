@@ -1,0 +1,58 @@
+name: Portability
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  compilers:
+    name: ${{ matrix.toolchain.name }} / ${{ matrix.config }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        config: [Debug, Release]
+        toolchain:
+          - {name: GCC/libstdc++, cxx: g++-13}
+          - {name: Clang/libstdc++, cxx: clang++-18}
+          - {name: Clang/libc++, cxx: clang++-18, flags: '-stdlib=libc++'}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install libc++
+        if: matrix.toolchain.name == 'Clang/libc++'
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libc++-18-dev libc++abi-18-dev
+      - name: Compile, test, and verify relocated package
+        shell: bash
+        env:
+          CXX: ${{ matrix.toolchain.cxx }}
+          CXXFLAGS: ${{ matrix.toolchain.flags }}
+        run: bash ci/portability.sh check '${{ matrix.config }}'
+
+  instrumentation:
+    name: ${{ matrix.mode }} / Debug
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mode: asan-ubsan, cxx: clang++-18}
+          - {mode: stl-debug, cxx: g++-13}
+          - {mode: tsan, cxx: clang++-18}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install Clang sanitizer runtimes
+        if: matrix.cxx == 'clang++-18'
+        run: |
+          sudo apt-get update
+          sudo apt-get install --no-install-recommends -y libclang-rt-18-dev
+      - name: Allow LLVM 18 TSan to map shadow memory
+        if: matrix.mode == 'tsan'
+        run: sudo sysctl -w vm.mmap_rnd_bits=28
+      - name: Compile and test
+        shell: bash
+        env:
+          CXX: ${{ matrix.cxx }}
+        run: bash ci/portability.sh '${{ matrix.mode }}' Debug

@@ -1,0 +1,10 @@
+81-control: 96 ok rows, 7776 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+81-outlined: 96 ok rows, 7776 raw samples, G1 8/8/0 (pass/fail/inconclusive)
+81-inline: 96 ok rows, 7776 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+117-control: 96 ok rows, 11232 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+117-outlined: 96 ok rows, 11232 raw samples, G1 8/8/0 (pass/fail/inconclusive)
+117-inline: 96 ok rows, 11232 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+153-control: 96 ok rows, 14688 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+153-outlined: 96 ok rows, 14688 raw samples, G1 8/7/1 (pass/fail/inconclusive)
+153-inline: 96 ok rows, 14688 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+864 engine rows match retained counts, checksums, fixture hashes and traversal counters; 288 library rows have zero warm allocations.

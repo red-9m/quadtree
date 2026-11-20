@@ -1,0 +1,6 @@
+before: 8 pass, 6 fail, 2 inconclusive; 96 OK rows, 32 zero-warm-allocation library rows; library pairs, checksums, fixture hashes, candidates and node visits match before
+retained: 9 pass, 6 fail, 1 inconclusive; 96 OK rows, 32 zero-warm-allocation library rows; library pairs, checksums, fixture hashes, candidates and node visits match before
+retained-repeat: 10 pass, 6 fail, 0 inconclusive; 96 OK rows, 32 zero-warm-allocation library rows; library pairs, checksums, fixture hashes, candidates and node visits match before
+single-pair: 9 pass, 6 fail, 1 inconclusive; 96 OK rows, 32 zero-warm-allocation library rows; library pairs, checksums, fixture hashes, candidates and node visits match before
+single-pair-repeat: 8 pass, 6 fail, 2 inconclusive; 96 OK rows, 32 zero-warm-allocation library rows; library pairs, checksums, fixture hashes, candidates and node visits match before
+fused-mask: 7 pass, 5 fail, 4 inconclusive; 96 OK rows, 32 zero-warm-allocation library rows; library pairs, checksums, fixture hashes, candidates and node visits match before

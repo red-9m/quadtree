@@ -1,0 +1,348 @@
+--- a/quadtree-index.h
++++ b/quadtree-index.h
+@@ -288,6 +288,9 @@
+ //   static constexpr std::uint32_t retiredLimit;      // retired slots that block new slots (> 0)
+ //   static constexpr std::uint32_t rankProbeLimit;    // rank hash displacement bound (> 0)
+ //   static constexpr std::uint32_t rankEpochLimit;    // rank hash epochs before a full reset (> 1)
++// Index work probes (test-only; omitted entirely when the policy has no hook):
++//   static void onSplitPreparation(std::size_t entries) noexcept;
++//   static void onItemRefit(std::size_t entries) noexcept;
+ template<typename P>
+ concept DiagnosticsPolicy = requires { { P::checkHandles } -> std::convertible_to<bool>; };
+ 
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -657,8 +657,11 @@
+         std::uint32_t head = none;
+         std::uint32_t count = 0;
+         std::uint32_t ownCount = 0;
++        std::uint32_t splitRetry = 0;  // Successful own changes before retrying an unproductive split
++        std::uint32_t itemChanges = 0; // Changes since the last tight own-summary refit
+         std::uint8_t depth = 0; // Config validation caps depth at 64
+         bool linear = true;    // Sorted snapshots can traverse own entries without link loads
++        bool itemDirty = false; // Own bounds/filter summaries may conservatively include old entries
+     };
+ 
+ public:
+@@ -797,11 +800,14 @@
+         if (mRoot != none && next_extent == mExtent && belongs(mReferences[dense].node, box))
+         {
+             const Node& node = mNodes[mReferences[dense].node];
+-            // An overfull formerly coincident leaf may become productive even
+-            // though this move stays in the same cell. Reconsider its split.
+-            if (node.firstChild != none || node.ownCount <= mConfig.splitThreshold || node.depth >= mConfig.maxDepth)
++            // Retry overfull leaves periodically: motion can make a formerly
++            // coincident leaf productive without changing the owning cell.
++            if (node.firstChild != none || node.ownCount <= mConfig.splitThreshold ||
++                node.depth >= mConfig.maxDepth || node.splitRetry != 0)
+             {
+                 mEntries.mBoxes[dense] = box;
++                changedItems(mReferences[dense].node, true);
++                includeItem(mReferences[dense].node, dense);
+                 refitPath(mReferences[dense].node);
+                 return Status::Ok;
+             }
+@@ -852,9 +858,15 @@
+     {
+         mEntries.requireValid(handle, "setFilter");
+         const std::uint32_t dense = mEntries.denseOf(handle);
++        if (mEntries.mMeta[dense].filter == entryFilter)
++            return Status::Ok;
+         mEntries.mMeta[dense].filter = entryFilter;
+         if (mRoot != none)
++        {
++            changedItems(mReferences[dense].node, true);
++            includeItem(mReferences[dense].node, dense);
+             refitPath(mReferences[dense].node);
++        }
+         return Status::Ok;
+     }
+ 
+@@ -1095,6 +1107,8 @@
+             if (scratch->mMembership[dense] == scratch->mEpoch)
+                 return {Status::DuplicateHandle, {}};
+             scratch->mMembership[dense] = scratch->mEpoch;
++            if (options.ordered)
++                scratch->mSelections[dense] = 1; // Dirty; source-only marks use 2
+             scratch->mMoved[i] = dense;
+         }
+         Context context(options.budget);
+@@ -1102,7 +1116,7 @@
+         {
+             if (!allRanked())
+                 return {Status::MissingRank, {}};
+-            orderedSelf(*scratch, true, context, visitor, predicate);
++            orderedMoved(*scratch, moved.size(), context, visitor, predicate);
+         }
+         else
+             for (std::size_t i = 0; i < moved.size() && context.active(); ++i)
+@@ -1419,6 +1433,47 @@
+         mActiveNodes -= 4;
+     }
+ 
++    void changedItems(std::uint32_t n, bool stale) noexcept
++    {
++        Node& node = mNodes[n];
++        if (node.splitRetry != 0)
++            --node.splitRetry;
++        if (node.ownCount == 0)
++        {
++            node.itemBounds = {};
++            node.itemSummary = {0, 0};
++            node.itemDirty = false;
++            node.itemChanges = 0;
++            node.splitRetry = 0;
++        }
++        else
++        {
++            node.itemDirty = node.itemDirty || stale;
++            if (node.itemDirty && node.itemChanges != none)
++                ++node.itemChanges;
++        }
++    }
++
++    void includeItem(std::uint32_t n, std::uint32_t dense) noexcept
++    {
++        Node& node = mNodes[n];
++        const Box<T>& box = mEntries.mBoxes[dense];
++        const Filter f = mEntries.mMeta[dense].filter;
++        if (node.ownCount == 1)
++        {
++            node.itemBounds = box;
++            node.itemSummary = f;
++            node.itemDirty = false;
++            node.itemChanges = 0;
++        }
++        else
++        {
++            node.itemBounds = detail::unite(node.itemBounds, box);
++            node.itemSummary.category |= f.category;
++            node.itemSummary.mask |= f.mask;
++        }
++    }
++
+     void link(std::uint32_t node, std::uint32_t dense) noexcept
+     {
+         Reference& ref = mReferences[dense];
+@@ -1429,6 +1484,8 @@
+             mReferences[ref.next].previous = dense;
+         mNodes[node].head = dense;
+         ++mNodes[node].ownCount;
++        changedItems(node, false);
++        includeItem(node, dense);
+     }
+ 
+     void unlink(std::uint32_t dense) noexcept
+@@ -1442,6 +1499,7 @@
+         if (ref.next != none)
+             mReferences[ref.next].previous = ref.previous;
+         --mNodes[ref.node].ownCount;
++        changedItems(ref.node, true);
+     }
+ 
+     void remapReference(std::uint32_t oldDense, std::uint32_t newDense) noexcept
+@@ -1464,20 +1522,34 @@
+         return dense + 1 == node.head + node.ownCount ? none : dense + 1;
+     }
+ 
+-    void refit(std::uint32_t n) noexcept
++    void refit(std::uint32_t n, bool items = true) noexcept
+     {
+         Node& node = mNodes[n];
+         node.count = node.ownCount;
+-        node.itemSummary = {0, 0};
+-        bool any = false;
+-        for (std::uint32_t i = node.head; i != none; i = nextItem(node, i))
++        if (items && node.itemDirty && (node.ownCount <= 8 ||
++            node.itemChanges >= std::max<std::uint32_t>(1, node.ownCount / 2)))
+         {
+-            node.itemBounds = any ? detail::unite(node.itemBounds, mEntries.mBoxes[i]) : mEntries.mBoxes[i];
+-            const Filter f = mEntries.mMeta[i].filter;
+-            node.itemSummary.category |= f.category;
+-            node.itemSummary.mask |= f.mask;
+-            any = true;
++            if constexpr (requires { Policy::onItemRefit(std::size_t{}); })
++            {
++                static_assert(noexcept(Policy::onItemRefit(std::size_t{})) &&
++                    std::same_as<decltype(Policy::onItemRefit(std::size_t{})), void>,
++                    "QuadTree: Policy::onItemRefit() must be noexcept and return void");
++                Policy::onItemRefit(node.ownCount);
++            }
++            bool any = false;
++            node.itemSummary = {0, 0};
++            for (std::uint32_t i = node.head; i != none; i = nextItem(node, i))
++            {
++                node.itemBounds = any ? detail::unite(node.itemBounds, mEntries.mBoxes[i]) : mEntries.mBoxes[i];
++                const Filter f = mEntries.mMeta[i].filter;
++                node.itemSummary.category |= f.category;
++                node.itemSummary.mask |= f.mask;
++                any = true;
++            }
++            node.itemDirty = false;
++            node.itemChanges = 0;
+         }
++        bool any = node.ownCount != 0;
+         node.bounds = node.itemBounds;
+         node.summary = node.itemSummary;
+         if (node.firstChild != none)
+@@ -1496,8 +1568,11 @@
+ 
+     void refitPath(std::uint32_t n) noexcept
+     {
+-        for (; n != none; n = mNodes[n].parent)
+-            refit(n);
++        if (n == none)
++            return;
++        refit(n);
++        for (n = mNodes[n].parent; n != none; n = mNodes[n].parent)
++            refit(n, false);
+     }
+ 
+     void materialize(std::uint32_t n, const Key* keys, std::size_t begin, std::size_t end,
+@@ -1521,6 +1596,8 @@
+                 materialize(first + q, keys, ranges.bound[q], ranges.bound[q + 1], level + 1);
+             }
+         }
++        else if (mNodes[n].ownCount > mConfig.splitThreshold)
++            mNodes[n].splitRetry = std::max<std::uint32_t>(1, mNodes[n].ownCount / 2);
+         refit(n);
+     }
+ 
+@@ -1614,7 +1691,7 @@
+             plan.records = std::size_t(node.ownCount) + 1;
+             if (!inserting && mReferences[dense].node == plan.target)
+                 --plan.records;
+-            if (plan.records <= mConfig.splitThreshold || node.depth >= mConfig.maxDepth)
++            if (plan.records <= mConfig.splitThreshold || node.depth >= mConfig.maxDepth || node.splitRetry != 0)
+             {
+                 plan.records = 0;
+                 return Status::Ok;
+@@ -1625,6 +1702,13 @@
+         const Status status = scratchFor(plan.records);
+         if (status != Status::Ok)
+             return status;
++        if constexpr (requires { Policy::onSplitPreparation(std::size_t{}); })
++        {
++            static_assert(noexcept(Policy::onSplitPreparation(std::size_t{})) &&
++                std::same_as<decltype(Policy::onSplitPreparation(std::size_t{})), void>,
++                "QuadTree: Policy::onSplitPreparation() must be noexcept and return void");
++            Policy::onSplitPreparation(plan.records);
++        }
+         std::size_t fill = 0;
+         if (plan.rebuildAll)
+         {
+@@ -1671,7 +1755,7 @@
+             rebuild(mKeys.data(), plan.records, plan.cell);
+             return;
+         }
+-        if (oldNode != none)
++        if (oldNode != none && (oldNode != plan.target || plan.plannedNodes > 1))
+             unlink(dense);
+         if (plan.plannedNodes > 1)
+         {
+@@ -1682,12 +1766,19 @@
+             mNodes[plan.target].depth = old.depth;
+             materialize(plan.target, mKeys.data(), 0, plan.records, 0);
+         }
++        else if (oldNode == plan.target)
++        {
++            changedItems(plan.target, true);
++            includeItem(plan.target, dense);
++        }
+         else
+             link(plan.target, dense);
+-        if (oldNode != none)
++        if (plan.plannedNodes == 1)
++            mNodes[plan.target].splitRetry = std::max<std::uint32_t>(1, mNodes[plan.target].ownCount / 2);
++        if (oldNode != none && oldNode != plan.target)
+             refitPath(oldNode);
+         refitPath(plan.target);
+-        if (oldNode != none)
++        if (oldNode != none && oldNode != plan.target)
+             maybeMerge(oldNode);
+     }
+ 
+@@ -1931,7 +2022,8 @@
+                 return reserved;
+         }
+         if ((ordered && (scratch.mOrder.capacity() < entries || scratch.mRow.capacity() < entries)) ||
+-            (moved != 0 && (scratch.mMembership.capacity() < entries || scratch.mMoved.capacity() < moved)))
++            (moved != 0 && (scratch.mMembership.capacity() < entries || scratch.mMoved.capacity() < moved ||
++                (ordered && scratch.mSelections.capacity() < entries))))
+             return Status::InsufficientWorkspace;
+         return Status::Ok;
+     }
+@@ -2118,6 +2210,73 @@
+             sortRanks(scratch.mRow.data(), count);
+             for (std::size_t j = 0; j < count && context.active(); ++j)
+                 reportPair(a, scratch.mRow[j], true, context, visitor);
++        }
++    }
++
++    template<typename Visitor, typename Predicate>
++    void orderedMoved(Workspace<T>& scratch, std::size_t movedCount, Context& context, Visitor& visitor,
++        Predicate& predicate) const noexcept
++    {
++        if (movedCount >= (size() + 1) / 2)
++        {
++            orderedSelf(scratch, true, context, visitor, predicate);
++            return;
++        }
++        // Every output row starts at a dirty entry or a clean lower-ranked
++        // partner of one. Epoch stamps deduplicate source-only marks without
++        // clearing/scanning the whole index or changing dirty membership.
++        std::size_t sources = movedCount;
++        detail::AcceptAll geometryOnly; // Custom predicates filter rows, never drive source pruning.
++        for (std::size_t i = 0; i < movedCount && context.active(); ++i)
++        {
++            const std::uint32_t a = scratch.mMoved[i];
++            scratch.mOrder[i] = a;
++            if (mEntries.mMeta[a].rank == 0)
++                continue;
++            auto candidate = [&](std::uint32_t b) noexcept
++            {
++                if (mEntries.mMeta[b].rank >= mEntries.mMeta[a].rank || scratch.mMembership[b] == scratch.mEpoch)
++                    return;
++                if (pairQualifies(a, b, true, context, geometryOnly))
++                {
++                    scratch.mMembership[b] = scratch.mEpoch;
++                    scratch.mSelections[b] = 2;
++                    scratch.mOrder[sources++] = b;
++                }
++            };
++            scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
++        }
++        if (!context.active())
++            return; // Incomplete source discovery cannot establish an ordered prefix.
++        sortRanks(scratch.mOrder.data(), sources);
++        for (std::size_t i = 0; i < sources && context.active(); ++i)
++        {
++            const std::uint32_t a = scratch.mOrder[i];
++            if ((sources == size() && i + 1 == sources) ||
++                mEntries.mMeta[a].rank == std::numeric_limits<std::uint64_t>::max())
++                break; // The global maximum rank has no higher partners.
++            const bool dirty = scratch.mSelections[a] == 1;
++            std::size_t count = 0;
++            auto candidate = [&](std::uint32_t b) noexcept
++            {
++                if (mEntries.mMeta[b].rank <= mEntries.mMeta[a].rank ||
++                    (!dirty && (scratch.mMembership[b] != scratch.mEpoch || scratch.mSelections[b] != 1)))
++                    return;
++                if (pairQualifies(a, b, true, context, predicate))
++                    scratch.mRow[count++] = b;
++            };
++            // For a tiny dirty set, a clean row's partners are cheaper to find
++            // directly in S; this also avoids n full scans of an overlapping pile.
++            if (!dirty && movedCount <= 64)
++                for (std::size_t j = 0; j < movedCount && context.active(); ++j)
++                    candidate(scratch.mMoved[j]);
++            else
++                scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
++            if (!context.active())
++                return; // Both discovery passes are budgeted; discard an unfinished row.
++            sortRanks(scratch.mRow.data(), count);
++            for (std::size_t j = 0; j < count && context.active(); ++j)
++                reportPair(a, scratch.mRow[j], true, context, visitor);
+         }
+     }
+ 

@@ -1,0 +1,5 @@
+filter-pruning homogeneous: 4 nodes, 0 candidates, 2 filter rejections, 0 reports
+filter-pruning interleaved: 4 nodes, 128 candidates, 112 filter rejections, 128 reports
+rebuild-peak default: old 2048, scratch 13312, retained 44056, peak 59032 bytes
+rebuild-peak transactional: old 2048, scratch 13312, retained 44056, peak 59032 bytes
+index-test: 0 failures

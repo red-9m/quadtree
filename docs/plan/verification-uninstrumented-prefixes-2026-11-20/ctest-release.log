@@ -1,0 +1,45 @@
+Test project /tmp/qt-verification.SlAoQV/release
+      Start  1: index-test
+ 1/20 Test  #1: index-test ..........................   Passed    0.35 sec
+      Start  2: index-test-noexcept
+ 2/20 Test  #2: index-test-noexcept .................   Passed    0.35 sec
+      Start  3: index-death-stale-moved
+ 3/20 Test  #3: index-death-stale-moved .............   Passed    0.10 sec
+      Start  4: index-death-foreign-moved
+ 4/20 Test  #4: index-death-foreign-moved ...........   Passed    0.07 sec
+      Start  5: index-death-default-partners
+ 5/20 Test  #5: index-death-default-partners ........   Passed    0.07 sec
+      Start  6: index-death-cleared-update
+ 6/20 Test  #6: index-death-cleared-update ..........   Passed    0.07 sec
+      Start  7: entry-store-test
+ 7/20 Test  #7: entry-store-test ....................   Passed    0.02 sec
+      Start  8: entry-store-test-noexcept
+ 8/20 Test  #8: entry-store-test-noexcept ...........   Passed    0.02 sec
+      Start  9: entry-store-death-valid
+ 9/20 Test  #9: entry-store-death-valid .............   Passed    0.00 sec
+      Start 10: entry-store-death-stale-remove
+10/20 Test #10: entry-store-death-stale-remove ......   Passed    0.06 sec
+      Start 11: entry-store-death-foreign-payload
+11/20 Test #11: entry-store-death-foreign-payload ...   Passed    0.08 sec
+      Start 12: entry-store-death-default-rect
+12/20 Test #12: entry-store-death-default-rect ......   Passed    0.07 sec
+      Start 13: entry-store-death-cleared-update
+13/20 Test #13: entry-store-death-cleared-update ....   Passed    0.06 sec
+      Start 14: entry-store-death-moved-setfilter
+14/20 Test #14: entry-store-death-moved-setfilter ...   Passed    0.07 sec
+      Start 15: bench-smoke
+15/20 Test #15: bench-smoke .........................   Passed    5.61 sec
+      Start 16: bench-persistent-check
+16/20 Test #16: bench-persistent-check ..............   Passed    9.10 sec
+      Start 17: rank-bench-smoke
+17/20 Test #17: rank-bench-smoke ....................   Passed    0.01 sec
+      Start 18: index-regression-bench-smoke
+18/20 Test #18: index-regression-bench-smoke ........   Passed    0.08 sec
+      Start 19: index-fuzz-quick
+19/20 Test #19: index-fuzz-quick ....................   Passed    0.13 sec
+      Start 20: bench-gate-check
+20/20 Test #20: bench-gate-check ....................   Passed    0.01 sec
+
+100% tests passed out of 20
+
+Total Test time (real) =  16.35 sec

@@ -1,0 +1,8 @@
+81-control: 96 ok rows, 7776 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+81-direct: 96 ok rows, 7776 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+117-direct: 96 ok rows, 11232 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+117-control: 96 ok rows, 11232 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+153-control: 96 ok rows, 14688 raw samples, G1 9/6/1 (pass/fail/inconclusive)
+153-direct: 96 ok rows, 14688 raw samples, G1 8/6/2 (pass/fail/inconclusive)
+576 engine rows match historical per-engine counts, checksums, fixture hashes and traversal counters.
+Every engine matches brute pair counts, checksums and fixture hashes; 192 library rows have zero warm allocations.

@@ -1,0 +1,15 @@
+-- Install configuration: "Release"
+-- Installing: /tmp/qt-package.udR1I9/with-optionals-final/lib/cmake/QuadTree/QuadTreeTargets.cmake
+-- Installing: /tmp/qt-package.udR1I9/with-optionals-final/lib/cmake/QuadTree/QuadTreeConfig.cmake
+-- Installing: /tmp/qt-package.udR1I9/with-optionals-final/lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+-- Installing: /tmp/qt-package.udR1I9/with-optionals-final/include/QuadTree/quadtree-index.h
+-- Installing: /tmp/qt-package.udR1I9/with-optionals-final/include/QuadTree/detail/quadtree-index-impl.h
+-- Installing: /tmp/qt-package.udR1I9/with-optionals-final/share/licenses/QuadTree/LICENSE
+
+Install contents (demo, tests, benchmarks enabled):
+include/QuadTree/detail/quadtree-index-impl.h
+include/QuadTree/quadtree-index.h
+lib/cmake/QuadTree/QuadTreeConfig.cmake
+lib/cmake/QuadTree/QuadTreeConfigVersion.cmake
+lib/cmake/QuadTree/QuadTreeTargets.cmake
+share/licenses/QuadTree/LICENSE

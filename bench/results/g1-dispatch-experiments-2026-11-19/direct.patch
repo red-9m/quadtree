@@ -1,0 +1,69 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1075,6 +1075,8 @@
+         }
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
++        else if (options.budget.candidateTests >= std::uint64_t(size()) * (size() - 1) / 2)
++            directPairs(context, visitor, predicate);
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+@@ -2243,6 +2245,57 @@
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
++    template<typename Visitor, typename Predicate>
++    void directPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        const auto count = mEntries.mSize;
++        const auto* boxes = mEntries.mBoxes;
++        const auto* meta = mEntries.mMeta;
++        const bool touch = mConfig.boundary == Boundary::TouchInclusive;
++        for (std::uint32_t a = 0; a + 1 < count; ++a)
++        {
++            const auto& left = boxes[a];
++            const auto filter = meta[a].filter;
++            const bool closed = touch || left.minX == left.maxX || left.minY == left.maxY;
++            for (std::uint32_t b = a + 1; b < count; ++b)
++            {
++                if (!detail::compatible(filter, meta[b].filter))
++                {
++                    context.filtered();
++                    continue;
++                }
++                // All unordered pairs fit the budget, and the pair count fits in uint64_t.
++                if constexpr (Instrumented)
++                    ++context.result.counters.candidateTests;
++                const auto& right = boxes[b];
++                if (closed)
++                {
++                    if (!detail::closedOverlap(left, right))
++                        continue;
++                }
++                else if (!(left.minX < right.maxX && right.minX < left.maxX &&
++                    left.minY < right.maxY && right.minY < left.maxY))
++                {
++                    if (!(detail::closedOverlap(left, right) &&
++                        (right.minX == right.maxX || right.minY == right.maxY)))
++                        continue;
++                }
++                auto first = a, second = b;
++                orient(first, second, false);
++                const View x = view(first), y = view(second);
++                if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
++                {
++                    context.predicate();
++                    if (!std::invoke(predicate, x, y))
++                        continue;
++                }
++                context.report(std::invoke(visitor, x, y));
++                if (!context.active())
++                    return;
++            }
++        }
++    }
++
+     template<typename G, typename Visitor, typename Predicate>
+     QueryResult regionQuery(const G& geometry, std::optional<Filter> queryFilter, Visitor& visitor,
+         QueryOptions<T> options, Predicate& predicate) const noexcept

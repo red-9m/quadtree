@@ -1,0 +1,69 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1060,28 +1060,7 @@
+     {
+         if (size() < 2)
+             return {options.ordered && !allRanked() ? Status::MissingRank : Status::Ok, {}};
+-        if (options.ordered && !allRanked())
+-            return {Status::MissingRank, {}};
+-        Context context(options.budget);
+-        if (options.ordered)
+-        {
+-            Workspace<T> local(resource());
+-            Workspace<T>* scratch = options.workspace ? options.workspace : &local;
+-            const Status prepared = queryWorkspace(*scratch, options.workspace == nullptr, size(), 0);
+-            if (prepared != Status::Ok)
+-                return {prepared, {}};
+-            typename Workspace<T>::Use use(*scratch);
+-            orderedSelf(*scratch, false, context, visitor, predicate);
+-        }
+-        else if (mRoot != none)
+-            selfPairs(mRoot, context, visitor, predicate);
+-        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+-            tinyPairs(context, visitor, predicate);
+-        else
+-            for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+-                for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+-                    testPair(a, b, false, context, visitor, predicate);
+-        return context.result;
++        return forEachPairNontrivial(visitor, options, predicate);
+     }
+ 
+     template<typename Visitor, typename Predicate = detail::AcceptAll>
+@@ -2204,6 +2183,36 @@
+ 
+     bool allRanked() const noexcept { return mEntries.mRankCount == size(); }
+ 
++    template<typename Visitor, typename Predicate>
++#if __has_cpp_attribute(gnu::noinline)
++    [[gnu::noinline]]
++#endif
++    QueryResult forEachPairNontrivial(Visitor& visitor, const QueryOptions<T>& options, Predicate& predicate) const noexcept
++    {
++        if (options.ordered && !allRanked())
++            return {Status::MissingRank, {}};
++        Context context(options.budget);
++        if (options.ordered)
++        {
++            Workspace<T> local(resource());
++            Workspace<T>* scratch = options.workspace ? options.workspace : &local;
++            const Status prepared = queryWorkspace(*scratch, options.workspace == nullptr, size(), 0);
++            if (prepared != Status::Ok)
++                return {prepared, {}};
++            typename Workspace<T>::Use use(*scratch);
++            orderedSelf(*scratch, false, context, visitor, predicate);
++        }
++        else if (mRoot != none)
++            selfPairs(mRoot, context, visitor, predicate);
++        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
++            tinyPairs(context, visitor, predicate);
++        else
++            for (std::uint32_t a = 0; a < size() && context.active(); ++a)
++                for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
++                    testPair(a, b, false, context, visitor, predicate);
++        return context.result;
++    }
++
+     static Status queryWorkspace(Workspace<T>& scratch, bool grow, std::size_t entries, std::size_t moved,
+         bool ordered = true) noexcept
+     {

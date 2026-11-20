@@ -1,0 +1,11 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2024,7 +2024,7 @@
+         mEntries.resetSlots();
+         if (mRoot != none)
+             resetTopology();
+-        mExtent = extent;
++        mExtent.emplace(extent);
+         if (count == 1)
+         {
+             std::construct_at(mEntries.mBoxes, extent);

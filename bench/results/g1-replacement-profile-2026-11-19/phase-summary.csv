@@ -1,0 +1,17 @@
+run,event,scene,n,step_pct_process,replacement_pct_step,build_range_pct_replacement,prepared_dispatch_pct_replacement,validate_extent_pct_replacement,identity_atomic_pct_replacement,identity_boundary_pct_replacement,commit_setup_pct_replacement,entry_stores_pct_replacement,publish_pct_replacement,replacement_other_pct_replacement,reload_pc_pct_step
+fresh,cycles,clustered,2,98.41,37.59,2.75,14.82,11.95,10.31,41.56,1.70,14.30,2.61,0.00,14.22
+fresh,cycles,clustered,4,98.80,30.02,3.74,16.34,19.70,7.25,30.73,0.92,21.17,0.15,0.00,8.45
+fresh,cycles,uniform,2,98.56,38.07,1.87,15.85,11.07,10.20,40.95,1.27,16.81,1.97,0.00,14.56
+fresh,cycles,uniform,4,98.93,30.16,3.39,13.69,16.32,6.75,36.56,0.76,22.38,0.15,0.00,10.30
+fresh,instructions,clustered,2,99.18,33.71,2.19,19.03,13.58,9.49,38.14,1.49,14.20,1.90,0.00,11.65
+fresh,instructions,clustered,4,99.56,32.31,4.44,16.38,20.13,7.14,31.18,1.13,19.52,0.07,0.00,9.23
+fresh,instructions,uniform,2,99.32,33.65,2.71,17.61,11.89,9.33,36.93,1.57,17.51,2.45,0.00,11.37
+fresh,instructions,uniform,4,99.59,29.95,3.97,17.72,21.65,7.17,29.94,1.22,18.09,0.23,0.00,8.21
+prior-1,cycles,clustered,2,98.29,37.99,2.47,14.13,12.71,9.05,41.83,1.41,16.10,2.29,0.00,14.49
+prior-1,cycles,clustered,4,98.55,31.18,4.07,16.93,16.90,5.51,32.54,1.18,22.55,0.32,0.00,9.47
+prior-1,cycles,uniform,2,98.52,36.57,2.64,14.74,13.00,9.41,40.39,1.46,16.34,2.01,0.00,13.74
+prior-1,cycles,uniform,4,98.53,29.11,3.91,14.28,17.05,6.80,34.38,1.03,22.32,0.23,0.00,9.34
+prior-2,cycles,clustered,2,98.02,36.90,2.33,16.15,10.14,8.13,43.01,1.97,16.27,1.99,0.00,14.64
+prior-2,cycles,clustered,4,98.63,30.66,3.68,16.41,16.01,7.07,33.38,1.40,22.05,0.00,0.00,9.53
+prior-2,cycles,uniform,2,98.40,37.39,2.52,16.15,12.85,9.06,40.89,1.63,14.53,2.37,0.00,13.85
+prior-2,cycles,uniform,4,98.83,28.35,5.60,14.23,18.18,7.75,31.70,1.73,20.71,0.11,0.00,8.47

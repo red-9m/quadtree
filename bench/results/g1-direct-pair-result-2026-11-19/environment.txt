@@ -1,0 +1,19 @@
+Linux r9 7.3.0-1-custom #1 SMP PREEMPT_DYNAMIC Mon, 19 Oct 2026 00:11:47 +0000 x86_64 GNU/Linux
+Model name:                              AMD Ryzen 9 5900HS with Radeon Graphics
+c++ (GCC) 16.2.1 20260810
+cmake version 4.4.2
+1.13.2
+CPU affinity: 6
+CPU 6 SMT siblings: 6-7
+Clock source: tsc
+scaling_driver: amd-pstate-epp
+scaling_governor: powersave
+energy_performance_preference: power
+Box2D commit: 178495ba35695aefe9c321e569d2277f06db3b90
+Run order:
+2026-11-19T19:56:46+02:00 81-control
+2026-11-19T19:56:53+02:00 81-direct
+2026-11-19T19:56:59+02:00 117-direct
+2026-11-19T19:57:08+02:00 117-control
+2026-11-19T19:58:25+02:00 153-control
+2026-11-19T19:58:37+02:00 153-direct

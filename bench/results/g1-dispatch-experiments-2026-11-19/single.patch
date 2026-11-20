@@ -1,0 +1,29 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2011,7 +2011,7 @@
+         if (fixed && !detail::contains(*mConfig.root, descriptor.box))
+             return Status::OutOfBounds;
+         const bool ranked = descriptor.rank.has_value();
+-        const Status storage = prepareReplacement(1, ranked, 0);
++        const Status storage = prepareReplacement<true>(1, ranked, 0);
+         if (storage != Status::Ok)
+             return storage;
+         if (mRoot != none)
+@@ -2045,8 +2045,17 @@
+     }
+ 
+     // Prepared replacements need neither a pending storage transaction nor its cleanup.
++    template<bool Single = false>
+     Status prepareReplacement(std::size_t count, std::size_t ranked, std::size_t nodeCount) noexcept
+     {
++        // A separate instantiation lets the compiler specialize storage checks
++        // for the known one-entry, tree-less call.
++        if constexpr (Single)
++        {
++            count = 1;
++            nodeCount = 0;
++            ranked = ranked != 0;
++        }
+         const auto rankCapacity = Store::rankCapacityFor(ranked);
+         if (count <= mEntries.mCapacity && count <= mEntries.mSlotCapacity && rankCapacity <= mEntries.mRankCapacity &&
+             (nodeCount == 0 || (nodeCount <= mNodes.capacity() && count <= mReferences.capacity())))
