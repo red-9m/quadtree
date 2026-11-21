@@ -1,0 +1,16 @@
+    25.99%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::planBulk(QuadTree::detail::Cell<int> const&, unsigned int, un
+    18.96%  [.] void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::crossPairs<bench::LibraryIndex<int, false>::pairs<(anony
+    18.08%  [.] void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::selfPairs<bench::LibraryIndex<int, false>::pairs<(anonym
+     8.54%  [.] QuadTree::Status QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::buildPrepared<false, false, std::vector<Quad
+     5.00%  [.] void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::itemsVsSubtree<bench::LibraryIndex<int, false>::pairs<(a
+     3.76%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::refit(unsigned int, bool)                                    
+     3.16%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::materializeBulk(unsigned int, QuadTree::detail::SpatialKey co
+     3.14%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::buildDenseItems(unsigned int, unsigned int, unsigned int)    
+     2.34%  [.] (anonymous namespace)::Runner<bench::LibraryIndex<int, false>, int>::step((anonymous namespace)::Fixture<int> const&, bench:
+     2.10%  [.] void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::constructBuildEntry<false>(unsigned int, QuadTree::Box<i
+     1.94%  [.] void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchec
+     1.71%  [.] void std::__introsort_loop<__gnu_cxx::__normal_iterator<long*, std::vector<long, std::allocator<long> > >, long, std::less<v
+     1.68%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::makeKey(QuadTree::detail::Cell<int>, unsigned int, unsigned i
+     1.03%  [.] bool QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::pairQualifies<false, QuadTree::detail::AcceptAll>(unsign
+     0.78%  [.] QuadTree::detail::Split<int>::Split(QuadTree::detail::Cell<int> const&)                                                     
+     0.53%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::view(unsigned int) const                                     

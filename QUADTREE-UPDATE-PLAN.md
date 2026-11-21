@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: [08 — `int32` release: the two remaining G2 rows](bench/results/release-acceptance-2026-11-21/README.md#handoff).** Owner decision (option 3): ship `int32` first, with performance sign-off covering only `int32`. [Task 09](docs/plan/09-other-coordinate-types.md) owns `int64`/`float`/`double`. `int32` has one blocking row (G2 `split-line-translated` 10²) and one unresolved row (`uniform` 10³). Make one time-boxed fix attempt; if it fails, the owner decides on an exception. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: owner decision on the two `int32` G2 rows** ([fix attempt rejected](bench/results/int32-g2-planbulk-2026-11-21/README.md)). Either accept a G2 exception for `split-line-translated` 10² and `uniform` 10³, or fund structural small-tree work. Then rerun `int32` and sign off 08. [Task 09](docs/plan/09-other-coordinate-types.md) owns the other types. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -28,7 +28,7 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [05 · Installable package](docs/plan/05-package.md) | Done; source and relocated install verified | [Consumer and install evidence](docs/plan/05-package-result.md) |
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
-| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Open: `int32` release in progress** (sign-off scope is `int32` only). Remaining: G2 `split-line-translated` 10² blocking, `uniform` 10³ unresolved, then the `int32` rerun and sign-off. | [Release acceptance run](bench/results/release-acceptance-2026-11-21/README.md) · [Promotion record](bench/results/promotion-2026-11-21/README.md) · [Frozen gates and G1 exception](bench/MANIFEST.md#frozen-acceptance-limits) |
+| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Open: `int32` release in progress** (sign-off scope is `int32` only). Remaining: G2 `split-line-translated` 10² blocking and `uniform` 10³ unresolved; the [fix attempt was rejected](bench/results/int32-g2-planbulk-2026-11-21/README.md) and an owner decision is pending; then the `int32` rerun and sign-off. | [Release acceptance run](bench/results/release-acceptance-2026-11-21/README.md) · [Promotion record](bench/results/promotion-2026-11-21/README.md) · [Frozen gates and G1 exception](bench/MANIFEST.md#frozen-acceptance-limits) |
 | [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | After the `int32` release; G2 for `int64`/`float`/`double`, G1 for `float`/`double` | [Four-type baseline](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
@@ -40,7 +40,7 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 
 Work in `/home/dima/src/quadtree.git`. Read [the 08 brief](docs/plan/08-final-acceptance.md), including its release scope and G1 exception, and [the release run](bench/results/release-acceptance-2026-11-21/README.md).
 
-1. **Two remaining `int32` G2 rows:** `split-line-translated` 10² is blocking (4.18× [4.06–4.30] vs `sweep`, 45 rounds) and `uniform` 10³ is unresolved (3.93× [3.82–4.04] vs `grid`). Make one time-boxed fix attempt: measure the phases first, change only a measured cost, preserve the contract, then run matched A/B. If neither row clears, record the evidence and ask the owner for an exception.
+1. **Two remaining `int32` G2 rows:** `split-line-translated` 10² is blocking (4.18× [4.06–4.30] vs `sweep`) and `uniform` 10³ is unresolved (3.93× [3.82–4.04] vs `grid`). The time-boxed [packed-cursor attempt](bench/results/int32-g2-planbulk-2026-11-21/README.md) was rejected (+0.2–9.3% slower). **Owner decision pending:** a G2 exception or structural small-tree work.
 2. **`int32` rerun:** snapshot plus persistent, `--types=int32`, using [run.sh](bench/results/release-acceptance-2026-11-21/run.sh) stages on the final committed source.
 3. **Sign-off:** a result record and the plan update.
 

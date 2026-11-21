@@ -1,0 +1,79 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1616,8 +1616,19 @@
+         const auto length = end - begin;
+         const auto middle = length < 32 ? begin : begin + length / 2;
+         std::uint32_t count[5]{}, lowerCount[5]{};
++        // Ranges below 4096 entries keep per-tag counts and cursors as 12-bit lanes of one
++        // register: no store-to-load chain through a stack array between consecutive entries.
++        constexpr unsigned lane = 12;
++        constexpr std::uint32_t packedLimit = (1u << lane) - 1;
++        const bool packed = end - begin <= packedLimit;
++        const auto unpack = [](std::uint64_t value, std::uint32_t (&bins)[5]) noexcept
++        {
++            for (unsigned b = 0; b < 5; ++b)
++                bins[b] = static_cast<std::uint32_t>(value >> (lane * b)) & packedLimit;
++        };
+         const auto classify = [&](std::uint32_t from, std::uint32_t to, std::uint32_t (&bins)[5]) noexcept
+         {
++            std::uint64_t lanes = 0;
+             for (auto i = from; i < to; ++i)
+             {
+ #if defined(__GNUC__) || defined(__clang__)
+@@ -1637,8 +1648,13 @@
+                         (split.splitY && y >= split.y ? 2u : 0u));
+                 }
+                 tags[i] = static_cast<std::uint8_t>(b);
+-                ++bins[b];
++                if (packed)
++                    lanes += std::uint64_t(1) << (lane * b);
++                else
++                    ++bins[b];
+             }
++            if (packed)
++                unpack(lanes, bins);
+         };
+         if (middle != begin)
+             classify(begin, middle, lowerCount);
+@@ -1675,7 +1691,40 @@
+         const std::uint32_t edges[5]{begin + count[0], begin + count[0] + count[1],
+             begin + count[0] + count[1] + count[2], end - count[4], end};
+         std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};
+-        if (middle == begin)
++        const auto offsets = [&](const std::uint32_t (&cursor)[5]) noexcept
++        {
++            std::uint64_t value = 0;
++            for (unsigned b = 0; b < 5; ++b)
++                value |= std::uint64_t(cursor[b] - begin) << (lane * b);
++            return value;
++        };
++        if (packed && middle == begin)
++        {
++            auto cursors = offsets(next);
++            for (auto i = begin; i < end; ++i)
++            {
++                const unsigned shift = lane * tags[i];
++                dst[begin + (static_cast<std::uint32_t>(cursors >> shift) & packedLimit)] = src[i];
++                cursors += std::uint64_t(1) << shift;
++            }
++        }
++        else if (packed)
++        {
++            std::uint32_t upper[5]{begin + lowerCount[0], edges[0] + lowerCount[1],
++                edges[1] + lowerCount[2], edges[2] + lowerCount[3], edges[3] + lowerCount[4]};
++            auto low = offsets(next), high = offsets(upper);
++            for (auto i = begin, j = middle; i < middle; ++i, ++j)
++            {
++                const unsigned a = lane * tags[i], b = lane * tags[j];
++                dst[begin + (static_cast<std::uint32_t>(low >> a) & packedLimit)] = src[i];
++                dst[begin + (static_cast<std::uint32_t>(high >> b) & packedLimit)] = src[j];
++                low += std::uint64_t(1) << a;
++                high += std::uint64_t(1) << b;
++            }
++            if ((length & 1u) != 0)
++                dst[begin + (static_cast<std::uint32_t>(high >> (lane * tags[end - 1])) & packedLimit)] = src[end - 1];
++        }
++        else if (middle == begin)
+         {
+             for (auto i = begin; i < end; ++i)
+                 dst[next[tags[i]]++] = src[i];

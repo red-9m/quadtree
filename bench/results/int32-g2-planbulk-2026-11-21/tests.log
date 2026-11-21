@@ -1,0 +1,47 @@
+Test project /home/dima/.cache/quadtree-int32-small.2jX4Ra/ctest
+      Start 17: bench-persistent-check
+      Start 16: bench-smoke
+      Start  3: index-test-noexcept
+      Start  2: index-test
+ 1/21 Test  #2: index-test ..........................   Passed    0.34 sec
+      Start 20: index-fuzz-quick
+ 2/21 Test  #3: index-test-noexcept .................   Passed    0.35 sec
+      Start 15: entry-store-death-moved-setfilter
+ 3/21 Test #15: entry-store-death-moved-setfilter ...   Passed    0.07 sec
+      Start 11: entry-store-death-stale-remove
+ 4/21 Test #20: index-fuzz-quick ....................   Passed    0.13 sec
+      Start 12: entry-store-death-foreign-payload
+ 5/21 Test #11: entry-store-death-stale-remove ......   Passed    0.07 sec
+      Start 19: index-regression-bench-smoke
+ 6/21 Test #12: entry-store-death-foreign-payload ...   Passed    0.04 sec
+      Start 13: entry-store-death-default-rect
+ 7/21 Test #19: index-regression-bench-smoke ........   Passed    0.08 sec
+      Start 14: entry-store-death-cleared-update
+ 8/21 Test #13: entry-store-death-default-rect ......   Passed    0.07 sec
+      Start  4: index-death-stale-moved
+ 9/21 Test #14: entry-store-death-cleared-update ....   Passed    0.07 sec
+      Start  5: index-death-foreign-moved
+10/21 Test  #4: index-death-stale-moved .............   Passed    0.06 sec
+      Start  6: index-death-default-partners
+11/21 Test  #6: index-death-default-partners ........   Passed    0.06 sec
+      Start  7: index-death-cleared-update
+12/21 Test  #5: index-death-foreign-moved ...........   Passed    0.06 sec
+      Start  9: entry-store-test-noexcept
+13/21 Test  #9: entry-store-test-noexcept ...........   Passed    0.02 sec
+      Start  8: entry-store-test
+14/21 Test  #8: entry-store-test ....................   Passed    0.02 sec
+      Start 18: rank-bench-smoke
+15/21 Test #18: rank-bench-smoke ....................   Passed    0.01 sec
+      Start 21: bench-gate-check
+16/21 Test #21: bench-gate-check ....................   Passed    0.01 sec
+      Start  1: index-example-dynamic-static
+17/21 Test  #1: index-example-dynamic-static ........   Passed    0.00 sec
+      Start 10: entry-store-death-valid
+18/21 Test #10: entry-store-death-valid .............   Passed    0.00 sec
+19/21 Test  #7: index-death-cleared-update ..........   Passed    0.07 sec
+20/21 Test #16: bench-smoke .........................   Passed    5.42 sec
+21/21 Test #17: bench-persistent-check ..............   Passed    8.66 sec
+
+100% tests passed out of 21
+
+Total Test time (real) =   8.66 sec
