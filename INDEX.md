@@ -6,11 +6,16 @@ Do not include the legacy `quadtree.h` in the same translation unit.
 
 The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
-Performance acceptance is **not complete**; see the
-[current snapshot measurements](bench/results/current-snapshot-2026-11-18/README.md)
-for G1/G2 failures and inconclusive results.
+**Performance scope.** Performance acceptance covers `int32` coordinates only;
+it is in progress for this release. `int64`, `float` and `double` are
+functionally supported: they pass the same correctness, allocation and
+portability checks. Their snapshot builds are not yet performance-accepted. On
+the [release run](bench/results/release-acceptance-2026-11-21/README.md), G2
+ratios reach 2.7–5.1× (`int64`) and 2.4–11.5× (`float`/`double`) the best
+baseline, against 2–4× limits. Persistent motion passes every applicable hard
+gate for every type.
 
-Very small snapshots carry fixed rebuild overhead. With 0–4 entries, a
+Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs
 loop on the reference machine. This is an
 [accepted G1 exception](docs/plan/02-g1-small-snapshots-result.md). Callers

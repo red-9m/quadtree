@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: owner decision on [release scope](bench/results/release-acceptance-2026-11-21/README.md#handoff).** The 08 matrix on `a72bc80` blocks release. G2 fails 48 rows, mostly `int64`/`float`/`double` with one `int32` 10² row. `float`/`double` G1 at 1–8 entries is outside the exception. All persistent hard gates, G3/G4/G6 and nearly all of G9 pass. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: [08 — `int32` release: the two remaining G2 rows](bench/results/release-acceptance-2026-11-21/README.md#handoff).** Owner decision (option 3): ship `int32` first, with performance sign-off covering only `int32`. [Task 09](docs/plan/09-other-coordinate-types.md) owns `int64`/`float`/`double`. `int32` has one blocking row (G2 `split-line-translated` 10²) and one unresolved row (`uniform` 10³). Make one time-boxed fix attempt; if it fails, the owner decides on an exception. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -28,22 +28,23 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [05 · Installable package](docs/plan/05-package.md) | Done; source and relocated install verified | [Consumer and install evidence](docs/plan/05-package-result.md) |
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
-| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Open: release blocked.** Full matrix run on `a72bc80`: G2 blocking on 48 rows (`int32` 1, `int64` 11, `float`/`double` 18 each) and `float`/`double` G1 1–8 entries; 5 hard rows unresolved. Persistent, G3/G4/G6 pass. | [Release acceptance run](bench/results/release-acceptance-2026-11-21/README.md) · [Promotion record](bench/results/promotion-2026-11-21/README.md) · [Frozen gates and G1 exception](bench/MANIFEST.md#frozen-acceptance-limits) |
+| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Open: `int32` release in progress** (sign-off scope is `int32` only). Remaining: G2 `split-line-translated` 10² blocking, `uniform` 10³ unresolved, then the `int32` rerun and sign-off. | [Release acceptance run](bench/results/release-acceptance-2026-11-21/README.md) · [Promotion record](bench/results/promotion-2026-11-21/README.md) · [Frozen gates and G1 exception](bench/MANIFEST.md#frozen-acceptance-limits) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | After the `int32` release; G2 for `int64`/`float`/`double`, G1 for `float`/`double` | [Four-type baseline](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: release scope decision
+### Fresh session: Task 08 — `int32` release
 
-Work in `/home/dima/src/quadtree.git`. Read [the release acceptance handoff](bench/results/release-acceptance-2026-11-21/README.md#handoff). No new benchmark or runtime work should start until the owner chooses:
+Work in `/home/dima/src/quadtree.git`. Read [the 08 brief](docs/plan/08-final-acceptance.md), including its release scope and G1 exception, and [the release run](bench/results/release-acceptance-2026-11-21/README.md).
 
-1. **`int32`-only release:** document `int32` as the only performance-accepted coordinate type. Resolve its remaining G2 rows, `split-line-translated` 10² (blocking) and `uniform` 10³ (unresolved), by a fix brief or an exception decision. Then rerun the 08 matrix for `int32`.
-2. **New optimization task:** write a brief for G2 on `int64`/`float`/`double`, small-snapshot G1 on `float`/`double`, and `int32` 10². Start from the per-row evidence in the [gate rows](bench/results/release-acceptance-2026-11-21/data/gate-rows.csv) and [library rows](bench/results/release-acceptance-2026-11-21/data/library-rows.csv).
-3. **Both:** ship `int32` first and follow with the other types.
+1. **Two remaining `int32` G2 rows:** `split-line-translated` 10² is blocking (4.18× [4.06–4.30] vs `sweep`, 45 rounds) and `uniform` 10³ is unresolved (3.93× [3.82–4.04] vs `grid`). Make one time-boxed fix attempt: measure the phases first, change only a measured cost, preserve the contract, then run matched A/B. If neither row clears, record the evidence and ask the owner for an exception.
+2. **`int32` rerun:** snapshot plus persistent, `--types=int32`, using [run.sh](bench/results/release-acceptance-2026-11-21/run.sh) stages on the final committed source.
+3. **Sign-off:** a result record and the plan update.
 
-08 does not change thresholds or algorithms. If the user just says "continue", ask which option to take.
+Do not change thresholds. `int64`/`float`/`double` belong to [Task 09](docs/plan/09-other-coordinate-types.md).
 
 ### Update the handoff after the session
 

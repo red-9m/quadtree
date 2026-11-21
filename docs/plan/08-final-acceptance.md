@@ -10,4 +10,6 @@
 
 **Exit:** every applicable hard gate passes on supported evidence, no unresolved hard intervals, and the correctness/allocation/memory and portability checks from 04/06 pass. Otherwise publish the blocking row/check and leave release open. No threshold changes or algorithm fixes in this task.
 
+**Release scope (owner decision, 2026-11-21):** performance sign-off covers `int32` only. `int64`, `float` and `double` ship as functionally supported, and their timing gates are published but not release-blocking; [Task 09](09-other-coordinate-types.md) owns them. Their correctness (G0), allocation (G6) and portability checks still block. The [full four-type run](../../bench/results/release-acceptance-2026-11-21/README.md) is the baseline.
+
 **Accepted exception (owner decision, 2026-11-21):** G1 rows of 0–4 entries do not block release if their ratio interval's upper bound is ≤ 3.5× brute. Publish each such row as `FAIL (accepted exception)` with absolute ns/scene and its interval. Above 3.5×, or on any other gate (G0, G6, memory), it blocks as usual. All 8–64-entry G1 rows must pass. Scope and evidence: [02 result](02-g1-small-snapshots-result.md).
