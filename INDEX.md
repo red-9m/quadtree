@@ -10,6 +10,12 @@ Performance acceptance is **not complete**; see the
 [current snapshot measurements](bench/results/current-snapshot-2026-11-18/README.md)
 for G1/G2 failures and inconclusive results.
 
+Very small snapshots carry fixed rebuild overhead. With 0–4 entries, a
+build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs
+loop on the reference machine. This is an
+[accepted G1 exception](docs/plan/02-g1-small-snapshots-result.md). Callers
+that rebuild tiny sets very often may test them directly.
+
 ## Types and creation
 
 ```cpp

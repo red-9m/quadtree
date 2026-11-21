@@ -453,6 +453,8 @@ targets. Timing never waives correctness, allocation or memory gates.
 
 ¹ `uniform`, `clustered`, `split-line`, `split-line-translated`, `mixed-size`.
 
+**Accepted release exception (G1, 2026-11-21).** The G1 limit is unchanged, and rows of 0–4 entries still report `FAIL`. By owner decision, release sign-off accepts them when their upper bound is ≤ 3.5× brute. The remaining gap is fixed per-rebuild work the contract requires. See [the decision record](../docs/plan/02-g1-small-snapshots-result.md).
+
 **Amendment before first use (G3).** The provisional form limited raw
 candidates to 15× per tenfold n. The published data showed that the fixtures'
 output itself grows ×8.6–44 per tenfold n (`mixed-size` large boxes scale with

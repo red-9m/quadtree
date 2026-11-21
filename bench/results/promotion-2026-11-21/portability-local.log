@@ -1,0 +1,8 @@
+g++ check Debug rc=0 28s 100% tests passed out of 16 100% tests passed out of 1 
+g++ check Release rc=0 81s 100% tests passed out of 16 100% tests passed out of 1 
+g++ asan-ubsan Debug rc=0 79s 100% tests passed out of 16 
+clang++ check Debug rc=0 25s 100% tests passed out of 16 100% tests passed out of 1 
+clang++ check Release rc=0 50s 100% tests passed out of 16 100% tests passed out of 1 
+clang++ asan-ubsan Debug rc=0 50s 100% tests passed out of 16 
+g++ stl-debug Debug rc=0 47s 100% tests passed out of 16 
+clang++ tsan Debug rc=0 21s 100% tests passed out of 1 

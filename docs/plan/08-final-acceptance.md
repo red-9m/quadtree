@@ -9,3 +9,5 @@
 **Deliver:** a new results directory with exact source provenance, hardware/compiler/flags, arguments/seeds, raw samples, summaries and `--gate-files` output. Report median/p95, allocations, work and memory, including rebuild peaks. Reconcile expected vs observed rows and explain every omission; a successful evaluator exit cannot prove coverage of rows it never saw.
 
 **Exit:** every applicable hard gate passes on supported evidence, no unresolved hard intervals, and the correctness/allocation/memory and portability checks from 04/06 pass. Otherwise publish the blocking row/check and leave release open. No threshold changes or algorithm fixes in this task.
+
+**Accepted exception (owner decision, 2026-11-21):** G1 rows of 0–4 entries do not block release if their ratio interval's upper bound is ≤ 3.5× brute. Publish each such row as `FAIL (accepted exception)` with absolute ns/scene and its interval. Above 3.5×, or on any other gate (G0, G6, memory), it blocks as usual. All 8–64-entry G1 rows must pass. Scope and evidence: [02 result](02-g1-small-snapshots-result.md).

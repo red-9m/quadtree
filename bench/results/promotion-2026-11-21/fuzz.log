@@ -1,0 +1,24 @@
+int32  uniform   seeds 1-40, 1500 steps: ok
+int32  clustered seeds 1-40, 1500 steps: ok
+int32  mixed     seeds 1-40, 1500 steps: ok
+int32  pile      seeds 1-40, 1500 steps: ok
+int32  outliers  seeds 1-40, 1500 steps: ok
+int64  uniform   seeds 1-40, 1500 steps: ok
+int64  clustered seeds 1-40, 1500 steps: ok
+int64  mixed     seeds 1-40, 1500 steps: ok
+int64  pile      seeds 1-40, 1500 steps: ok
+int64  outliers  seeds 1-40, 1500 steps: ok
+float  uniform   seeds 1-40, 1500 steps: ok
+float  clustered seeds 1-40, 1500 steps: ok
+float  mixed     seeds 1-40, 1500 steps: ok
+float  pile      seeds 1-40, 1500 steps: ok
+float  outliers  seeds 1-40, 1500 steps: ok
+double uniform   seeds 1-40, 1500 steps: ok
+double clustered seeds 1-40, 1500 steps: ok
+double mixed     seeds 1-40, 1500 steps: ok
+double pile      seeds 1-40, 1500 steps: ok
+double outliers  seeds 1-40, 1500 steps: ok
+
+real	0m11.566s
+user	0m11.559s
+sys	0m0.007s

@@ -1,0 +1,7 @@
+c++ (GCC) 16.2.1 20260810
+cmake version 4.4.2
+57d30dcc49cff7de5563f46625b385cc145861cb
+178495ba35695aefe9c321e569d2277f06db3b90
+g++ (GCC) 16.2.1 20260810
+clang version 22.1.8
+1.13.2
