@@ -1,0 +1,12 @@
+double equivalence extremes: match a3fcff03c6ab50c1
+double equivalence uniform 1000: match 08fca66c7d3e16cb
+double equivalence uniform 10000: match 7bc76bae5443f30b
+double equivalence uniform 100000: match b7e0341ea855bed6
+double equivalence clustered 1000: match 0f3c1e73aa11a189
+double equivalence clustered 100000: match a54d50568d4fd73e
+double equivalence split-line 1000: match fd20b66655176abb
+double equivalence split-line 100000: match cc59cd4ade09e3f3
+double equivalence split-line-translated 1000: match 2c68a5f02871894c
+double equivalence split-line-translated 100000: match 508b8347d8331adf
+double equivalence mixed-size 1000: match 02c812c46d205b2a
+double equivalence mixed-size 100000: match 4d0b264e74a75ad7

@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: 09 — `int64` [`uniform` 10⁵ and five near-limit rows](bench/results/int64-staged-2026-11-21/README.md#next).** The `int64` fast paths are staged in `df2cfeb`: CI 9/9, `int32` acceptance rechecked and holding. `int64` G2 is down to 1 fail and 5 unresolved; G9 passes. Next is a decision: design work on compact boxes for `uniform` 10⁵, or move to `float`/`double` first. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: 09 — stage the [`float`/`double` candidate](bench/results/float-bulk-plan-2026-11-21/README.md#handoff).** Bulk planner, flat build and packed overlap for floats make them 24–72% faster. G1 now looks like `int32`'s; G2 is down to 7–8 fails per type, about 5–15% over, from 18. `int32`/`int64` are neutral. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -29,20 +29,20 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
 | [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope; [rechecked on `df2cfeb`](bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb)). All hard gates pass, with the accepted G1 (0–4 entries) and G2 (`int32` 10²/10³ rows) exceptions; the G2 10⁵ row passes by pre-specified pooling. | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`int32` confirmation](bench/results/release-int32-2026-11-21/README.md) · [Four-type run](bench/results/release-acceptance-2026-11-21/README.md) |
-| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | In progress: `int64` paths staged (`df2cfeb`). `int64` G2: 1 fail (`uniform` 10⁵, 2.14×) and 5 unresolved; G9 pass. `float`/`double` not started. | [Staged recheck](bench/results/int64-staged-2026-11-21/README.md) · [`int64` candidate](bench/results/int64-bulk-plan-2026-11-21/README.md) · [Four-type baseline](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | In progress: `int64` staged (`df2cfeb`; G2 1 fail, 5 unresolved). `float`/`double` candidate validated, not staged: G2 7–8 fails, G1 int-like. | [`float`/`double` candidate](bench/results/float-bulk-plan-2026-11-21/README.md) · [`int64` staged recheck](bench/results/int64-staged-2026-11-21/README.md) · [Four-type baseline](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: Task 09 — after `int64` staging
+### Fresh session: Task 09 — `float`/`double`
 
-Work in `/home/dima/src/quadtree.git`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md) and [the staged recheck](bench/results/int64-staged-2026-11-21/README.md).
+Work in `/home/dima/src/quadtree.git`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md) and [the `float`/`double` candidate](bench/results/float-bulk-plan-2026-11-21/README.md).
 
-**State:** `df2cfeb` (pushed, CI 9/9) runs the integer bulk planner and ordered paths for `int64`. The `int32` acceptance holds on it. Remaining `int64` G2: `uniform` 10⁵ fails at 2.14×. Unresolved: `split-line-translated` 10⁵ and `split-line` 10⁴ (~1.96×), `split-line` 10³ (3.90×), `uniform` 10³ (4.05×), `split-line-translated` 10² (4.08×).
+**State:** [float-paths.patch](bench/results/float-bulk-plan-2026-11-21/float-paths.patch) is validated, not committed. It passes the equivalence probes for 4 types, the small-set float transcript, the budget contract, CTest and fuzz, and `int32`/`int64` timing is neutral. The scratch tree is the path in `/tmp/quadtree-float.current`.
 
-**Open decisions:** (1) design work on `uniform` 10⁵, where the box size is the remaining gap, e.g. compact or relative coordinates during planning and traversal; (2) whether to extend the `int32` G2 exceptions to `int64`; (3) start `float`/`double` (G2 up to 11.5×, G1 outside its exception).
+**Next:** stage it as with `int64`: commit, push, hosted CI, then a matched recheck of all four types with 45-round resolves under a pre-specified rule. Then decide on the remaining `float`/`double` G2 rows (5–15% over) and `int64` `uniform` 10⁵.
 
 ### Update the handoff after the session
 

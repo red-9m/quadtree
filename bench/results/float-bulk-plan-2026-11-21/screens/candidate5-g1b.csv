@@ -1,0 +1,110 @@
+# date: 2026-11-21T21:10:04Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293763 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=float,double --scenes=uniform,clustered --sizes= --engines=index,index-ordered,brute --rounds=5 --csv=/home/dima/.cache/quadtree-float.QFGU1C/screen/candidate5-g1b.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+model,scene,boundary,type,n,batch,workload,mode,engine,status,rounds,reps,estimate_ns,err_ns,round_err_ns,vs_best,vs_best_lo,vs_best_hi,median_ns,p95_ns,min_ns,prepare_median_ns,pairs_median_ns,init_ns,candidates,node_visits,cell_tests,references,max_refs,pairs,checksum,allocs_per_step,cold_allocs,peak_bytes,retained_bytes,scene_hash
+snapshot,uniform,default,float,0,1024,-,full,brute,ok,5,1000,5.4,0.1,0.1,1.0000,1.0000,1.0000,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,float,0,1024,-,full,index,ok,5,1000,9.9,0.9,0.9,1.8251,1.6628,2.0032,9,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,float,0,1024,-,full,index-ordered,ok,5,1000,10.5,1.4,1.4,1.9336,1.7103,2.1860,9,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,float,1,1024,-,full,brute,ok,5,1000,7.0,0.2,0.1,1.0000,1.0000,1.0000,7,7,6,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,2,17,17,d045874af0972114
+snapshot,uniform,default,float,1,1024,-,full,index,ok,5,1000,19.0,1.1,1.0,2.7221,2.5540,2.9012,18,20,18,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,9,220,220,d045874af0972114
+snapshot,uniform,default,float,1,1024,-,full,index-ordered,ok,5,1000,31.9,1.1,0.8,4.5653,4.4092,4.7270,31,33,30,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,14,361,361,d045874af0972114
+snapshot,uniform,default,float,2,1024,-,full,brute,ok,5,1000,13.3,0.3,0.2,1.0000,1.0000,1.0000,13,13,13,-1,-1,-1.0,1024,0,0,0,0,465,d7f2a196384931fb,0.000,2,34,34,941d9ed5641ad063
+snapshot,uniform,default,float,2,1024,-,full,index,ok,5,1000,34.3,0.8,0.4,2.5821,2.5040,2.6626,34,35,33,-1,-1,-1.0,1024,0,0,2048,1,465,d7f2a196384931fb,0.000,9,440,440,941d9ed5641ad063
+snapshot,uniform,default,float,2,1024,-,full,index-ordered,ok,5,1000,89.7,2.2,1.2,6.7585,6.5420,6.9822,89,91,88,-1,-1,-1.0,1024,0,0,2048,1,465,d7f2a196384931fb,0.000,14,594,594,941d9ed5641ad063
+snapshot,uniform,default,float,4,1024,-,full,brute,ok,5,1000,23.8,0.6,0.4,1.0000,1.0000,1.0000,23,24,23,-1,-1,-1.0,6144,0,0,0,0,2717,649a13e58cf27ea6,0.000,2,68,68,ce16aa82b1e3a7a3
+snapshot,uniform,default,float,4,1024,-,full,index,ok,5,1000,67.6,1.5,0.7,2.8373,2.7537,2.9234,67,68,66,-1,-1,-1.0,6144,0,0,4096,1,2717,649a13e58cf27ea6,0.000,9,880,880,ce16aa82b1e3a7a3
+snapshot,uniform,default,float,4,1024,-,full,index-ordered,ok,5,1000,181.4,3.8,1.0,7.6191,7.3918,7.8534,180,191,179,-1,-1,-1.0,6144,0,0,4096,1,2717,649a13e58cf27ea6,0.000,14,1060,1060,ce16aa82b1e3a7a3
+snapshot,uniform,default,float,8,1024,-,full,brute,ok,5,1000,184.5,3.8,0.7,1.1716,1.1459,1.1979,184,195,180,-1,-1,-1.0,28672,0,0,0,0,5536,5680a3a936f97732,0.000,2,136,136,0db6df646330253c
+snapshot,uniform,default,float,8,1024,-,full,index,ok,5,1000,157.5,3.3,1.1,1.0000,1.0000,1.0000,157,168,154,-1,-1,-1.0,28672,0,0,8192,1,5536,5680a3a936f97732,0.000,9,1760,1760,0db6df646330253c
+snapshot,uniform,default,float,8,1024,-,full,index-ordered,ok,5,901,540.5,11.5,4.0,3.4330,3.3523,3.5155,542,555,533,-1,-1,-1.0,28672,0,0,8192,1,5536,5680a3a936f97732,0.000,14,2120,2120,0db6df646330253c
+snapshot,uniform,default,float,16,1024,-,full,brute,ok,5,645,760.2,15.4,2.3,1.5487,1.5143,1.5838,759,772,742,-1,-1,-1.0,122880,0,0,0,0,13047,d16d87f20725c0d8,0.000,2,272,272,63f80a82ded4156e
+snapshot,uniform,default,float,16,1024,-,full,index,ok,5,995,490.9,11.3,5.6,1.0000,1.0000,1.0000,491,503,479,-1,-1,-1.0,122880,0,0,16384,1,13047,d16d87f20725c0d8,0.000,9,3520,3520,63f80a82ded4156e
+snapshot,uniform,default,float,16,1024,-,full,index-ordered,ok,5,259,1910.9,38.7,6.0,3.8927,3.8040,3.9836,1910,1930,1881,-1,-1,-1.0,122880,0,0,16384,1,13047,d16d87f20725c0d8,0.000,14,4240,4240,63f80a82ded4156e
+snapshot,uniform,default,float,32,1024,-,full,brute,ok,5,200,2480.9,50.2,7.3,1.9483,1.9080,1.9894,2479,2506,2446,-1,-1,-1.0,507904,0,0,0,0,22997,b35171ad213376f2,0.000,2,544,544,c1c6fab6550d2d43
+snapshot,uniform,default,float,32,1024,-,full,index,ok,5,385,1273.4,26.6,7.8,1.0000,1.0000,1.0000,1272,1295,1255,-1,-1,-1.0,507904,0,0,32768,1,22997,b35171ad213376f2,0.000,9,7040,7040,c1c6fab6550d2d43
+snapshot,uniform,default,float,32,1024,-,full,index-ordered,ok,5,80,6178.9,124.4,14.2,4.8523,4.7533,4.9534,6180,6221,6140,-1,-1,-1.0,507904,0,0,32768,1,22997,b35171ad213376f2,0.000,14,8480,8480,c1c6fab6550d2d43
+snapshot,uniform,default,float,64,1024,-,full,brute,ok,5,65,7969.3,159.8,11.8,1.9820,1.9423,2.0224,7963,8018,7914,-1,-1,-1.0,2064384,0,0,0,0,51416,3c5501e06bea3fd6,0.000,2,1088,1088,c20e93a227e5e485
+snapshot,uniform,default,float,64,1024,-,full,index,ok,5,125,4020.9,81.0,9.7,1.0000,1.0000,1.0000,4022,4075,3973,-1,-1,-1.0,2064384,0,0,65536,1,51416,3c5501e06bea3fd6,0.000,9,14080,14080,c20e93a227e5e485
+snapshot,uniform,default,float,64,1024,-,full,index-ordered,ok,5,25,21898.7,440.1,43.5,5.4463,5.3378,5.5570,21897,22007,21808,-1,-1,-1.0,2064384,0,0,65536,1,51416,3c5501e06bea3fd6,0.000,14,16960,16960,c20e93a227e5e485
+snapshot,clustered,default,float,0,1024,-,full,brute,ok,5,1000,5.4,0.1,0.0,1.0000,1.0000,1.0000,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,float,0,1024,-,full,index,ok,5,1000,9.9,0.9,0.9,1.8348,1.6798,2.0041,9,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,float,0,1024,-,full,index-ordered,ok,5,1000,10.6,1.3,1.2,1.9508,1.7343,2.1943,10,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,float,1,1024,-,full,brute,ok,5,1000,6.9,0.1,0.0,1.0000,1.0000,1.0000,6,7,6,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,2,17,17,d273bdde68b374ba
+snapshot,clustered,default,float,1,1024,-,full,index,ok,5,1000,19.0,0.8,0.7,2.7420,2.6307,2.8580,18,20,18,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,9,220,220,d273bdde68b374ba
+snapshot,clustered,default,float,1,1024,-,full,index-ordered,ok,5,1000,31.7,1.3,1.1,4.5770,4.3956,4.7660,31,32,30,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,14,361,361,d273bdde68b374ba
+snapshot,clustered,default,float,2,1024,-,full,brute,ok,5,1000,13.8,2.0,2.0,1.0000,1.0000,1.0000,13,22,12,-1,-1,-1.0,1024,0,0,0,0,329,097983fd2c33ae9f,0.000,2,34,34,566327b594f4b3b4
+snapshot,clustered,default,float,2,1024,-,full,index,ok,5,1000,39.0,0.9,0.5,2.8434,2.4828,3.2564,38,39,38,-1,-1,-1.0,1024,0,0,2048,1,329,097983fd2c33ae9f,0.000,9,440,440,566327b594f4b3b4
+snapshot,clustered,default,float,2,1024,-,full,index-ordered,ok,5,1000,88.6,2.0,0.9,6.4692,5.7007,7.3413,88,90,87,-1,-1,-1.0,1024,0,0,2048,1,329,097983fd2c33ae9f,0.000,14,594,594,566327b594f4b3b4
+snapshot,clustered,default,float,4,1024,-,full,brute,ok,5,1000,22.8,0.5,0.3,1.0000,1.0000,1.0000,22,23,22,-1,-1,-1.0,6144,0,0,0,0,2016,2d040be8d78c1a89,0.000,2,68,68,74bbba01d1e6d7cc
+snapshot,clustered,default,float,4,1024,-,full,index,ok,5,1000,63.8,1.3,0.4,2.8013,2.7404,2.8636,63,65,62,-1,-1,-1.0,6144,0,0,4096,1,2016,2d040be8d78c1a89,0.000,9,880,880,74bbba01d1e6d7cc
+snapshot,clustered,default,float,4,1024,-,full,index-ordered,ok,5,1000,178.1,3.6,0.6,7.8163,7.6333,8.0038,178,188,176,-1,-1,-1.0,6144,0,0,4096,1,2016,2d040be8d78c1a89,0.000,14,1060,1060,74bbba01d1e6d7cc
+snapshot,clustered,default,float,8,1024,-,full,brute,ok,5,1000,177.2,3.6,0.4,1.0239,0.9967,1.0519,177,188,173,-1,-1,-1.0,28672,0,0,0,0,6540,5e20dda635cf525e,0.000,2,136,136,dd16824ab5838fe4
+snapshot,clustered,default,float,8,1024,-,full,index,ok,5,1000,173.1,4.5,2.9,1.0000,1.0000,1.0000,172,183,169,-1,-1,-1.0,28672,0,0,8192,1,6540,5e20dda635cf525e,0.000,9,1760,1760,dd16824ab5838fe4
+snapshot,clustered,default,float,8,1024,-,full,index-ordered,ok,5,900,542.7,13.6,8.3,3.1360,3.0626,3.2112,544,559,531,-1,-1,-1.0,28672,0,0,8192,1,6540,5e20dda635cf525e,0.000,14,2120,2120,dd16824ab5838fe4
+snapshot,clustered,default,float,16,1024,-,full,brute,ok,5,643,760.5,15.3,1.9,1.1753,1.1483,1.2029,760,774,741,-1,-1,-1.0,122880,0,0,0,0,23120,bb887f7f75463e7e,0.000,2,272,272,dffcb0618ba3c0aa
+snapshot,clustered,default,float,16,1024,-,full,index,ok,5,756,647.1,15.6,8.7,1.0000,1.0000,1.0000,647,665,631,-1,-1,-1.0,122880,0,0,16384,1,23120,bb887f7f75463e7e,0.000,9,3520,3520,dffcb0618ba3c0aa
+snapshot,clustered,default,float,16,1024,-,full,index-ordered,ok,5,245,1999.6,40.2,4.3,3.0900,3.0174,3.1644,1999,2024,1979,-1,-1,-1.0,122880,0,0,16384,1,23120,bb887f7f75463e7e,0.000,14,4240,4240,dffcb0618ba3c0aa
+snapshot,clustered,default,float,32,1024,-,full,brute,ok,5,175,2816.6,56.9,8.2,1.3801,1.3507,1.4101,2816,2836,2762,-1,-1,-1.0,507904,0,0,0,0,72007,077565d3ee138827,0.000,2,544,544,e85044a0decb3fca
+snapshot,clustered,default,float,32,1024,-,full,index,ok,5,242,2040.9,44.9,18.7,1.0000,1.0000,1.0000,2043,2083,2001,-1,-1,-1.0,507904,0,0,32768,1,72007,077565d3ee138827,0.000,9,7040,7040,e85044a0decb3fca
+snapshot,clustered,default,float,32,1024,-,full,index-ordered,ok,5,70,7193.2,144.6,14.6,3.5246,3.4475,3.6033,7189,7237,7149,-1,-1,-1.0,507904,0,0,32768,1,72007,077565d3ee138827,0.000,14,8480,8480,e85044a0decb3fca
+snapshot,clustered,default,float,64,1024,-,full,brute,ok,5,50,10057.4,202.1,19.9,1.3912,1.3622,1.4207,10054,10116,9990,-1,-1,-1.0,2064384,0,0,0,0,263407,7113a7ca93a6a007,0.000,2,1088,1088,505fc72d94f59028
+snapshot,clustered,default,float,64,1024,-,full,index,ok,5,70,7229.5,150.2,40.7,1.0000,1.0000,1.0000,7227,7322,7154,-1,-1,-1.0,2064384,0,0,65536,1,263407,7113a7ca93a6a007,0.000,9,14080,14080,505fc72d94f59028
+snapshot,clustered,default,float,64,1024,-,full,index-ordered,ok,5,20,27167.0,545.9,52.5,3.7578,3.6812,3.8360,27180,27271,27024,-1,-1,-1.0,2064384,0,0,65536,1,263407,7113a7ca93a6a007,0.000,14,16960,16960,505fc72d94f59028
+snapshot,uniform,default,double,0,1024,-,full,brute,ok,5,1000,5.2,0.1,0.0,1.0000,1.0000,1.0000,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,double,0,1024,-,full,index,ok,5,1000,11.1,1.0,1.0,2.1281,1.9263,2.3509,11,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,double,0,1024,-,full,index-ordered,ok,5,1000,10.9,1.1,1.0,2.0899,1.8911,2.3095,11,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,double,1,1024,-,full,brute,ok,5,1000,6.7,0.1,0.0,1.0000,1.0000,1.0000,6,6,6,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,2,33,33,d045874af0972114
+snapshot,uniform,default,double,1,1024,-,full,index,ok,5,1000,20.1,0.6,0.4,3.0052,2.9164,3.0967,20,20,19,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,9,268,268,d045874af0972114
+snapshot,uniform,default,double,1,1024,-,full,index-ordered,ok,5,1000,32.5,0.8,0.5,4.8467,4.7266,4.9698,32,33,31,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,14,409,409,d045874af0972114
+snapshot,uniform,default,double,2,1024,-,full,brute,ok,5,1000,13.8,0.3,0.1,1.0000,1.0000,1.0000,13,13,13,-1,-1,-1.0,1024,0,0,0,0,465,d7f2a196384931fb,0.000,2,66,66,941d9ed5641ad063
+snapshot,uniform,default,double,2,1024,-,full,index,ok,5,1000,35.0,0.8,0.4,2.5449,2.4838,2.6075,34,35,34,-1,-1,-1.0,1024,0,0,2048,1,465,d7f2a196384931fb,0.000,9,536,536,941d9ed5641ad063
+snapshot,uniform,default,double,2,1024,-,full,index-ordered,ok,5,1000,86.9,2.2,1.4,6.3199,6.1757,6.4675,86,89,85,-1,-1,-1.0,1024,0,0,2048,1,465,d7f2a196384931fb,0.000,14,690,690,941d9ed5641ad063
+snapshot,uniform,default,double,4,1024,-,full,brute,ok,5,1000,25.8,0.6,0.2,1.0000,1.0000,1.0000,25,26,25,-1,-1,-1.0,6144,0,0,0,0,2717,649a13e58cf27ea6,0.000,2,132,132,ce16aa82b1e3a7a3
+snapshot,uniform,default,double,4,1024,-,full,index,ok,5,1000,70.1,1.7,0.9,2.7182,2.6569,2.7809,70,72,68,-1,-1,-1.0,6144,0,0,4096,1,2717,649a13e58cf27ea6,0.000,9,1072,1072,ce16aa82b1e3a7a3
+snapshot,uniform,default,double,4,1024,-,full,index-ordered,ok,5,1000,176.5,3.6,0.9,6.8429,6.6873,7.0021,176,186,175,-1,-1,-1.0,6144,0,0,4096,1,2717,649a13e58cf27ea6,0.000,14,1252,1252,ce16aa82b1e3a7a3
+snapshot,uniform,default,double,8,1024,-,full,brute,ok,5,1000,189.9,3.8,0.6,1.1113,1.0807,1.1427,190,201,186,-1,-1,-1.0,28672,0,0,0,0,5536,5680a3a936f97732,0.000,2,264,264,0db6df646330253c
+snapshot,uniform,default,double,8,1024,-,full,index,ok,5,1000,170.9,4.5,2.9,1.0000,1.0000,1.0000,171,181,164,-1,-1,-1.0,28672,0,0,8192,1,5536,5680a3a936f97732,0.000,9,2144,2144,0db6df646330253c
+snapshot,uniform,default,double,8,1024,-,full,index-ordered,ok,5,900,540.8,11.4,3.6,3.1640,3.0870,3.2428,541,555,524,-1,-1,-1.0,28672,0,0,8192,1,5536,5680a3a936f97732,0.000,14,2504,2504,0db6df646330253c
+snapshot,uniform,default,double,16,1024,-,full,brute,ok,5,630,775.9,15.6,1.9,1.5111,1.4782,1.5447,775,788,766,-1,-1,-1.0,122880,0,0,0,0,13047,d16d87f20725c0d8,0.000,2,528,528,63f80a82ded4156e
+snapshot,uniform,default,double,16,1024,-,full,index,ok,5,947,513.5,11.1,4.3,1.0000,1.0000,1.0000,513,529,506,-1,-1,-1.0,122880,0,0,16384,1,13047,d16d87f20725c0d8,0.000,9,4288,4288,63f80a82ded4156e
+snapshot,uniform,default,double,16,1024,-,full,index-ordered,ok,5,260,1890.5,38.1,5.1,3.6816,3.6016,3.7634,1889,1912,1858,-1,-1,-1.0,122880,0,0,16384,1,13047,d16d87f20725c0d8,0.000,14,5008,5008,63f80a82ded4156e
+snapshot,uniform,default,double,32,1024,-,full,brute,ok,5,195,2516.4,50.4,3.1,1.8236,1.7869,1.8609,2515,2533,2489,-1,-1,-1.0,507904,0,0,0,0,22997,b35171ad213376f2,0.000,2,1056,1056,c1c6fab6550d2d43
+snapshot,uniform,default,double,32,1024,-,full,index,ok,5,355,1379.9,28.1,5.2,1.0000,1.0000,1.0000,1382,1396,1369,-1,-1,-1.0,507904,0,0,32768,1,22997,b35171ad213376f2,0.000,9,8576,8576,c1c6fab6550d2d43
+snapshot,uniform,default,double,32,1024,-,full,index-ordered,ok,5,80,6127.5,124.1,19.8,4.4404,4.3521,4.5305,6122,6195,6090,-1,-1,-1.0,507904,0,0,32768,1,22997,b35171ad213376f2,0.000,14,10016,10016,c1c6fab6550d2d43
+snapshot,uniform,default,double,64,1024,-,full,brute,ok,5,65,8062.8,161.6,9.8,1.8197,1.7819,1.8583,8060,8095,8034,-1,-1,-1.0,2064384,0,0,0,0,51416,3c5501e06bea3fd6,0.000,2,2112,2112,c20e93a227e5e485
+snapshot,uniform,default,double,64,1024,-,full,index,ok,5,113,4431.0,93.0,28.4,1.0000,1.0000,1.0000,4431,4485,4393,-1,-1,-1.0,2064384,0,0,65536,1,51416,3c5501e06bea3fd6,0.000,9,17152,17152,c20e93a227e5e485
+snapshot,uniform,default,double,64,1024,-,full,index-ordered,ok,5,25,21555.8,442.2,98.2,4.8648,4.7624,4.9694,21527,21695,21479,-1,-1,-1.0,2064384,0,0,65536,1,51416,3c5501e06bea3fd6,0.000,14,20032,20032,c20e93a227e5e485
+snapshot,clustered,default,double,0,1024,-,full,brute,ok,5,1000,5.2,0.1,0.0,1.0000,1.0000,1.0000,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,double,0,1024,-,full,index,ok,5,1000,11.1,1.0,1.0,2.1399,1.9438,2.3557,11,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,double,0,1024,-,full,index-ordered,ok,5,1000,10.9,1.1,1.1,2.0917,1.8920,2.3125,11,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,double,1,1024,-,full,brute,ok,5,1000,6.7,0.1,0.0,1.0000,1.0000,1.0000,6,6,6,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,2,33,33,d273bdde68b374ba
+snapshot,clustered,default,double,1,1024,-,full,index,ok,5,1000,19.8,0.7,0.6,2.9536,2.8488,3.0624,20,20,18,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,9,268,268,d273bdde68b374ba
+snapshot,clustered,default,double,1,1024,-,full,index-ordered,ok,5,1000,32.7,0.7,0.3,4.8751,4.7660,4.9868,32,33,31,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,14,409,409,d273bdde68b374ba
+snapshot,clustered,default,double,2,1024,-,full,brute,ok,5,1000,13.3,0.3,0.1,1.0000,1.0000,1.0000,13,13,13,-1,-1,-1.0,1024,0,0,0,0,329,097983fd2c33ae9f,0.000,2,66,66,566327b594f4b3b4
+snapshot,clustered,default,double,2,1024,-,full,index,ok,5,1000,33.9,0.7,0.3,2.5435,2.4856,2.6027,33,35,33,-1,-1,-1.0,1024,0,0,2048,1,329,097983fd2c33ae9f,0.000,9,536,536,566327b594f4b3b4
+snapshot,clustered,default,double,2,1024,-,full,index-ordered,ok,5,1000,87.4,1.8,0.6,6.5503,6.4149,6.6886,87,88,86,-1,-1,-1.0,1024,0,0,2048,1,329,097983fd2c33ae9f,0.000,14,690,690,566327b594f4b3b4
+snapshot,clustered,default,double,4,1024,-,full,brute,ok,5,1000,24.6,0.6,0.3,1.0000,1.0000,1.0000,24,25,24,-1,-1,-1.0,6144,0,0,0,0,2016,2d040be8d78c1a89,0.000,2,132,132,74bbba01d1e6d7cc
+snapshot,clustered,default,double,4,1024,-,full,index,ok,5,1000,72.5,1.5,0.2,2.9485,2.8819,3.0166,72,73,72,-1,-1,-1.0,6144,0,0,4096,1,2016,2d040be8d78c1a89,0.000,9,1072,1072,74bbba01d1e6d7cc
+snapshot,clustered,default,double,4,1024,-,full,index-ordered,ok,5,1000,175.0,3.5,0.5,7.1227,6.9565,7.2929,175,186,173,-1,-1,-1.0,6144,0,0,4096,1,2016,2d040be8d78c1a89,0.000,14,1252,1252,74bbba01d1e6d7cc
+snapshot,clustered,default,double,8,1024,-,full,brute,ok,5,1000,183.9,4.1,1.8,1.0089,0.9872,1.0309,183,194,180,-1,-1,-1.0,28672,0,0,0,0,6540,5e20dda635cf525e,0.000,2,264,264,dd16824ab5838fe4
+snapshot,clustered,default,double,8,1024,-,full,index,ok,5,1000,182.3,4.9,3.3,1.0000,1.0000,1.0000,181,193,178,-1,-1,-1.0,28672,0,0,8192,1,6540,5e20dda635cf525e,0.000,9,2144,2144,dd16824ab5838fe4
+snapshot,clustered,default,double,8,1024,-,full,index-ordered,ok,5,910,536.5,11.7,4.6,2.9431,2.8773,3.0104,535,548,519,-1,-1,-1.0,28672,0,0,8192,1,6540,5e20dda635cf525e,0.000,14,2504,2504,dd16824ab5838fe4
+snapshot,clustered,default,double,16,1024,-,full,brute,ok,5,628,778.0,16.0,3.9,1.1622,1.1360,1.1890,778,791,762,-1,-1,-1.0,122880,0,0,0,0,23120,bb887f7f75463e7e,0.000,2,528,528,dffcb0618ba3c0aa
+snapshot,clustered,default,double,16,1024,-,full,index,ok,5,730,669.4,16.7,10.0,1.0000,1.0000,1.0000,670,687,655,-1,-1,-1.0,122880,0,0,16384,1,23120,bb887f7f75463e7e,0.000,9,4288,4288,dffcb0618ba3c0aa
+snapshot,clustered,default,double,16,1024,-,full,index-ordered,ok,5,248,1990.5,41.6,12.1,2.9737,2.9042,3.0448,1989,2014,1957,-1,-1,-1.0,122880,0,0,16384,1,23120,bb887f7f75463e7e,0.000,14,5008,5008,dffcb0618ba3c0aa
+snapshot,clustered,default,double,32,1024,-,full,brute,ok,5,175,2833.4,56.8,4.5,1.3288,1.3024,1.3557,2832,2852,2801,-1,-1,-1.0,507904,0,0,0,0,72007,077565d3ee138827,0.000,2,1056,1056,e85044a0decb3fca
+snapshot,clustered,default,double,32,1024,-,full,index,ok,5,230,2132.3,42.7,2.4,1.0000,1.0000,1.0000,2132,2161,2105,-1,-1,-1.0,507904,0,0,32768,1,72007,077565d3ee138827,0.000,9,8576,8576,e85044a0decb3fca
+snapshot,clustered,default,double,32,1024,-,full,index-ordered,ok,5,70,7084.7,143.8,24.5,3.3225,3.2558,3.3905,7078,7130,7042,-1,-1,-1.0,507904,0,0,32768,1,72007,077565d3ee138827,0.000,14,10016,10016,e85044a0decb3fca
+snapshot,clustered,default,double,64,1024,-,full,brute,ok,5,50,10074.7,202.8,23.0,1.3187,1.2921,1.3459,10064,10119,10013,-1,-1,-1.0,2064384,0,0,0,0,263407,7113a7ca93a6a007,0.000,2,2112,2112,505fc72d94f59028
+snapshot,clustered,default,double,64,1024,-,full,index,ok,5,65,7639.7,159.6,45.9,1.0000,1.0000,1.0000,7630,7715,7564,-1,-1,-1.0,2064384,0,0,65536,1,263407,7113a7ca93a6a007,0.000,9,17152,17152,505fc72d94f59028
+snapshot,clustered,default,double,64,1024,-,full,index-ordered,ok,5,20,26637.1,533.4,26.7,3.4867,3.4142,3.5607,26616,26786,26578,-1,-1,-1.0,2064384,0,0,65536,1,263407,7113a7ca93a6a007,0.000,14,20032,20032,505fc72d94f59028

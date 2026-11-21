@@ -1,0 +1,4 @@
+float: budget contract: 761945 checks passed
+float ASan/UBSan: budget contract: 761945 checks passed
+double: budget contract: 762003 checks passed
+double ASan/UBSan: budget contract: 762003 checks passed

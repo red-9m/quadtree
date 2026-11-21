@@ -1,0 +1,12 @@
+float equivalence extremes: match 91cc09c7e66ee352
+float equivalence uniform 1000: match 5a785d83e1ea10c9
+float equivalence uniform 10000: match ad2d2a8a3f152793
+float equivalence uniform 100000: match 1f7afb54df02a951
+float equivalence clustered 1000: match e38c38963258e123
+float equivalence clustered 100000: match 0db25013adef9a17
+float equivalence split-line 1000: match eede94fe4aa94206
+float equivalence split-line 100000: match 78cd1af19f1c8e1c
+float equivalence split-line-translated 1000: match 1e1b63e5201a4d8b
+float equivalence split-line-translated 100000: match 59ee319fb7d21ed2
+float equivalence mixed-size 1000: match 22a9f944c8ec0a63
+float equivalence mixed-size 100000: match ecea9504f5b1cf98

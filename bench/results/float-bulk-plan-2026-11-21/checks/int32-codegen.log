@@ -1,0 +1,13 @@
+82 control / 82 candidate int32 symbols; 80 shared
+only in control QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::planBulk(QuadTree::detail::Cell<int> const&, unsigned int, unsigned int, unsigned int, 
+only in control QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::planBulk(QuadTree::detail::Cell<int> const&, unsigned int, unsigned int, unsigned int, 
+only in candidate QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::planBulk<false>(QuadTree::detail::Cell<int> const&, unsigned int, unsigned int, unsigne
+only in candidate bool QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::planBulk<false>(QuadTree::detail::Cell<int> const&, unsigned int, unsigned int, un
+7 differ
+DIFFERENT (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, false>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> 
+DIFFERENT (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, false>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> 
+DIFFERENT (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> >
+DIFFERENT (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> >
+DIFFERENT QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::prepareReplacement(unsigned long, unsigned long, unsigned long)
+DIFFERENT QuadTree::Status QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::buildPrepared<false, false, std::vector<QuadTree::BuildEntry<unsigned 
+DIFFERENT QuadTree::Status QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::buildPrepared<false, false, std::vector<QuadTree::BuildEntry<unsigned 

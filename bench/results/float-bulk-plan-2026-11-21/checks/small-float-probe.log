@@ -1,0 +1,5 @@
+# control and candidate -O2 transcripts (15000 lines; status Ok/InvalidGeometry = 7038/4962) are byte-identical
+e1a04f02e0dd23d4e7e0a7d5427a26b306da7efc49787fda4e87a87c50ba8ff5  sfp-control.txt
+e1a04f02e0dd23d4e7e0a7d5427a26b306da7efc49787fda4e87a87c50ba8ff5  sfp-candidate.txt
+# candidate clang -O1 ASan+UBSan transcript
+e1a04f02e0dd23d4e7e0a7d5427a26b306da7efc49787fda4e87a87c50ba8ff5  -
