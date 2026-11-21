@@ -1,0 +1,1 @@
+10 payload fixtures: exact handles, dense ids and pair streams, no warmed allocations; rollback verified. GCC/ASan/UBSan SHA-256 c5928e70661ea7f10858d6e011467d53d8085accc232b94b0535d8f7432818c2

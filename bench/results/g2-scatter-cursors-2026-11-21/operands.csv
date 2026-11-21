@@ -1,0 +1,10 @@
+pc,group,op,operand
+145f00,tag_id_loads,LOAD,tag
+145f05,tag_id_loads,LOAD,source_id
+145f09,loop_control,-,index_increment
+145f0d,cursor_update,LOAD,cursor_load
+145f14,cursor_update,-,cursor_increment
+145f18,destination_store,STORE,destination_id
+145f1c,cursor_update,STORE,cursor_store
+145f24,loop_control,-,loop_compare
+145f27,loop_control,-,loop_branch

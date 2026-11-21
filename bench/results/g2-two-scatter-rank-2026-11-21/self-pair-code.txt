@@ -1,0 +1,14 @@
+control: int32 snapshot unordered selfPairs
+000000000009afe0 00000000000007a4 (address, size in hex)
+   9b317:	call   9a090 <itemsVsSubtree>
+   9b347:	call   9afe0 <selfPairs>
+   9b397:	call   9aad0 <crossPairs>
+
+candidate: int32 snapshot unordered selfPairs
+000000000009a8a0 000000000000051e (address, size in hex)
+   9a9f1:	call   12100 <pairQualifies>
+   9ab46:	call   12100 <pairQualifies>
+   9ac71:	call   99950 <itemsVsSubtree>
+   9ac9e:	call   9a8a0 <selfPairs>
+   9acf8:	call   9a390 <crossPairs>
+

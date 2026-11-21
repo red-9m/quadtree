@@ -1,0 +1,49 @@
+block,scene,n,engine,operand,pcs,loads,known_loads,known_non_l1_loads,stores,pct_build_non_l1_loads
+1,uniform,100000,index,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,550,550,17,0,9.19
+1,uniform,100000,index,gather_id,0x145c93 0x145d87,145,145,0,0,0.00
+1,uniform,100000,index,lookahead_id,0x145c87 0x145d7b,129,129,0,0,0.00
+1,uniform,100000,index,scatter_tag,0x145f00,136,136,0,0,0.00
+1,uniform,100000,index,scatter_id,0x145f05,132,132,0,0,0.00
+1,uniform,100000,index,scatter_destination,0x145f18,0,0,0,165,0.00
+1,split-line-translated,100000,index,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,629,629,11,0,5.79
+1,split-line-translated,100000,index,gather_id,0x145c93 0x145d87,152,152,0,0,0.00
+1,split-line-translated,100000,index,lookahead_id,0x145c87 0x145d7b,141,141,1,0,0.53
+1,split-line-translated,100000,index,scatter_tag,0x145f00,159,159,0,0,0.00
+1,split-line-translated,100000,index,scatter_id,0x145f05,179,179,7,0,3.68
+1,split-line-translated,100000,index,scatter_destination,0x145f18,0,0,0,168,0.00
+1,uniform,100000,index-ordered,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,200,200,8,0,10.67
+1,uniform,100000,index-ordered,gather_id,0x145c93 0x145d87,47,47,0,0,0.00
+1,uniform,100000,index-ordered,lookahead_id,0x145c87 0x145d7b,44,44,0,0,0.00
+1,uniform,100000,index-ordered,scatter_tag,0x145f00,66,66,0,0,0.00
+1,uniform,100000,index-ordered,scatter_id,0x145f05,46,46,0,0,0.00
+1,uniform,100000,index-ordered,scatter_destination,0x145f18,0,0,0,48,0.00
+1,split-line-translated,100000,index-ordered,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,183,183,2,0,3.12
+1,split-line-translated,100000,index-ordered,gather_id,0x145c93 0x145d87,40,40,0,0,0.00
+1,split-line-translated,100000,index-ordered,lookahead_id,0x145c87 0x145d7b,30,30,0,0,0.00
+1,split-line-translated,100000,index-ordered,scatter_tag,0x145f00,53,53,0,0,0.00
+1,split-line-translated,100000,index-ordered,scatter_id,0x145f05,49,49,2,0,3.12
+1,split-line-translated,100000,index-ordered,scatter_destination,0x145f18,0,0,0,41,0.00
+2,split-line-translated,100000,index-ordered,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,170,170,3,0,6.25
+2,split-line-translated,100000,index-ordered,gather_id,0x145c93 0x145d87,48,48,0,0,0.00
+2,split-line-translated,100000,index-ordered,lookahead_id,0x145c87 0x145d7b,32,32,0,0,0.00
+2,split-line-translated,100000,index-ordered,scatter_tag,0x145f00,46,46,1,0,2.08
+2,split-line-translated,100000,index-ordered,scatter_id,0x145f05,46,46,1,0,2.08
+2,split-line-translated,100000,index-ordered,scatter_destination,0x145f18,0,0,0,31,0.00
+2,uniform,100000,index-ordered,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,175,175,4,0,6.90
+2,uniform,100000,index-ordered,gather_id,0x145c93 0x145d87,37,37,0,0,0.00
+2,uniform,100000,index-ordered,lookahead_id,0x145c87 0x145d7b,38,38,0,0,0.00
+2,uniform,100000,index-ordered,scatter_tag,0x145f00,44,44,0,0,0.00
+2,uniform,100000,index-ordered,scatter_id,0x145f05,51,51,0,0,0.00
+2,uniform,100000,index-ordered,scatter_destination,0x145f18,0,0,0,48,0.00
+2,split-line-translated,100000,index,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,587,587,14,0,9.15
+2,split-line-translated,100000,index,gather_id,0x145c93 0x145d87,157,157,0,0,0.00
+2,split-line-translated,100000,index,lookahead_id,0x145c87 0x145d7b,110,110,0,0,0.00
+2,split-line-translated,100000,index,scatter_tag,0x145f00,134,134,1,0,0.65
+2,split-line-translated,100000,index,scatter_id,0x145f05,140,140,5,0,3.27
+2,split-line-translated,100000,index,scatter_destination,0x145f18,0,0,0,162,0.00
+2,uniform,100000,index,gather_box,0x145c9c 0x145c9f 0x145ca2 0x145ca6 0x145d92 0x145d95 0x145d98 0x145d9b,530,530,20,0,11.76
+2,uniform,100000,index,gather_id,0x145c93 0x145d87,128,128,0,0,0.00
+2,uniform,100000,index,lookahead_id,0x145c87 0x145d7b,117,117,1,0,0.59
+2,uniform,100000,index,scatter_tag,0x145f00,132,132,0,0,0.00
+2,uniform,100000,index,scatter_id,0x145f05,120,120,1,0,0.59
+2,uniform,100000,index,scatter_destination,0x145f18,0,0,0,147,0.00

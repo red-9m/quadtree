@@ -1,0 +1,145 @@
+block,scene,n,owner,phase,pc,period,inline_locations
+1,uniform,100000,self,geometry_mode_setup,0x9b8e1,196643236,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,self,strict_endpoints,0x9ba9e,191818835,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,cross,return_other,0x11db0,118970497,quadtree-index-impl.h:2792
+1,uniform,100000,cross,geometry_mode_setup,0x11d38,101636843,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,filter,0x11ca0,97304855,quadtree-index-impl.h:2777
+1,uniform,100000,cross,filter,0x11cc6,91291293,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,uniform,100000,cross,strict_endpoints,0x11da0,88473439,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,uniform,100000,self,geometry_mode_setup,0x9b8c7,77663478,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,cross,filter,0x11cb5,74727790,quadtree-index-impl.h:2777
+1,uniform,100000,cross,filter,0x11cc2,71494901,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,uniform,100000,cross,strict_endpoints,0x11da8,68625551,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,charge,0x11d02,62372085,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,filter,0x11cd3,60853031,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,uniform,100000,cross,geometry_mode_setup,0x11d20,56519765,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,geometry_mode_setup,0x11d85,55002702,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,geometry_mode_setup,0x11d2c,48476266,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,geometry_mode_setup,0x11d35,42640273,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,geometry_mode_setup,0x11d2f,42585652,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,self,strict_endpoints,0x9ba94,39559562,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,self,geometry_mode_setup,0x9ba6d,36642617,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,cross,geometry_mode_setup,0x11d18,36510453,quadtree-index-impl.h:2782
+1,uniform,100000,self,geometry_mode_setup,0x9b8ec,36369321,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,self,filter,0x9b863,33471537,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,cross,charge,0x11cf8,33362588,quadtree-index-impl.h:538 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+1,split-line,10000,self,geometry_mode_setup,0x9b8e1,173667491,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,strict_endpoints,0x9ba9e,170969775,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,geometry_mode_setup,0x9b8c7,97245019,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,cross,strict_endpoints,0x11da8,91338488,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,return_other,0x11db0,78971197,quadtree-index-impl.h:2792
+1,split-line,10000,cross,geometry_mode_setup,0x11d38,71480784,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,filter,0x11cc6,71479399,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line,10000,cross,strict_endpoints,0x11da0,64191355,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,filter,0x11cc2,63866788,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line,10000,cross,filter,0x11cd3,53368887,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line,10000,cross,geometry_mode_setup,0x11d2f,51612165,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,filter,0x11cb5,47228367,quadtree-index-impl.h:2777
+1,split-line,10000,self,geometry_mode_setup,0x9b8ec,45758787,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,cross,filter,0x11ca0,45720009,quadtree-index-impl.h:2777
+1,split-line,10000,cross,strict_endpoints,0x11d95,38092154,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,geometry_mode_setup,0x11d20,34998552,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+1,split-line,10000,self,geometry_mode_setup,0x9ba6d,33526289,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,strict_endpoints,0x9ba78,31995206,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,filter,0x9b863,31874055,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,geometry_mode_setup,0x9b8d5,31828235,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,cross,geometry_mode_setup,0x11d35,29214191,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line,10000,self,strict_endpoints,0x9ba94,27507927,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,filter,0x9b855,27339051,quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,cross,charge,0x11cf8,25885763,quadtree-index-impl.h:538 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,self,geometry_mode_setup,0x9b8e1,185814527,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,self,strict_endpoints,0x9ba9e,109621034,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,self,geometry_mode_setup,0x9b8c7,97495476,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,cross,filter,0x11cc6,62459809,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,return_other,0x11db0,56176058,quadtree-index-impl.h:2792
+1,split-line-translated,100000,cross,geometry_mode_setup,0x11d38,53264486,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,filter,0x11cc2,50391102,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,filter,0x11ca0,48796460,quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,strict_endpoints,0x11da0,48560837,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,strict_endpoints,0x11da8,45559062,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,filter,0x11cb5,41182024,quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,geometry_mode_setup,0x11d20,39617565,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,self,filter,0x9b863,38062825,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,cross,charge,0x11d02,36457519,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,self,filter,0x9b855,32100255,quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,holder,filter,0x11cc2,32064346,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,filter,0x11cd3,31889919,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line-translated,100000,self,geometry_mode_setup,0x9b8cb,30269486,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,cross,geometry_mode_setup,0x11d2f,28970002,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,geometry_mode_setup,0x11d35,27460791,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,geometry_mode_setup,0x11d85,27455330,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,self,geometry_mode_setup,0x9ba6d,27443367,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,self,geometry_mode_setup,0x9b8ec,27437926,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,self,geometry_mode_setup,0x9b8d5,25889426,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,self,geometry_mode_setup,0x9b8e1,215396837,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,self,strict_endpoints,0x9ba9e,123553940,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,self,geometry_mode_setup,0x9b8c7,81475043,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,filter,0x11cc6,68244002,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line-translated,100000,cross,geometry_mode_setup,0x11d38,55199055,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,return_other,0x11db0,52645527,quadtree-index-impl.h:2792
+2,split-line-translated,100000,cross,strict_endpoints,0x11da0,48506456,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,strict_endpoints,0x11da8,47255756,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,filter,0x11ca0,46088973,quadtree-index-impl.h:2777
+2,split-line-translated,100000,cross,filter,0x11cc2,44780169,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line-translated,100000,self,geometry_mode_setup,0x9ba6d,44719263,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,filter,0x11cb5,41900414,quadtree-index-impl.h:2777
+2,split-line-translated,100000,cross,geometry_mode_setup,0x11d20,36853693,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,filter,0x11cd3,35534410,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line-translated,100000,self,filter,0x9b863,34204249,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,geometry_mode_setup,0x11d35,31596847,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,geometry_mode_setup,0x11d1c,28856331,quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,charge,0x11d02,27690661,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,self,geometry_mode_setup,0x9b8ec,27606159,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,self,strict_endpoints,0x9ba7c,24981113,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,self,geometry_mode_setup,0x9b8d5,24938260,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,strict_endpoints,0x11d95,23651214,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,self,strict_endpoints,0x9ba94,23645143,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,geometry_mode_setup,0x11d18,22361123,quadtree-index-impl.h:2782
+2,split-line,10000,self,geometry_mode_setup,0x9b8e1,218153127,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,self,strict_endpoints,0x9ba9e,174661278,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,strict_endpoints,0x11da8,83610528,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line,10000,self,geometry_mode_setup,0x9b8c7,82964930,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,filter,0x11cc6,64607570,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line,10000,cross,filter,0x11cc2,64509564,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line,10000,cross,return_other,0x11db0,57830399,quadtree-index-impl.h:2792
+2,split-line,10000,cross,strict_endpoints,0x11da0,54008370,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,filter,0x11ca0,53838868,quadtree-index-impl.h:2777
+2,split-line,10000,cross,geometry_mode_setup,0x11d38,51224816,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,filter,0x11cb5,47178500,quadtree-index-impl.h:2777
+2,split-line,10000,cross,geometry_mode_setup,0x11d35,40858490,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,strict_endpoints,0x11d95,38044025,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line,10000,self,geometry_mode_setup,0x9b8ec,36822247,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,self,geometry_mode_setup,0x9ba6d,34164893,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,self,filter,0x9b863,34161701,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,self,strict_endpoints,0x9ba94,32893245,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,filter,0x11cd3,32842925,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line,10000,self,geometry_mode_setup,0x9b8d5,31542729,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,charge,0x11d02,30156527,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,geometry_mode_setup,0x11d2f,27604336,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,geometry_mode_setup,0x11d91,27589726,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,geometry_mode_setup,0x11d20,27582236,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,charge,0x11cf8,26289956,quadtree-index-impl.h:538 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,uniform,100000,self,geometry_mode_setup,0x9b8e1,207688466,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,self,strict_endpoints,0x9ba9e,184495887,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,cross,strict_endpoints,0x11da8,111778484,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,return_other,0x11db0,98579664,quadtree-index-impl.h:2792
+2,uniform,100000,cross,filter,0x11cc6,93325431,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,uniform,100000,self,geometry_mode_setup,0x9b8c7,88164566,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,cross,filter,0x11cc2,73640405,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,uniform,100000,cross,geometry_mode_setup,0x11d38,72452678,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,strict_endpoints,0x11da0,70952263,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,filter,0x11ca0,65872332,quadtree-index-impl.h:2777
+2,uniform,100000,cross,filter,0x11cd3,60624201,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,uniform,100000,cross,filter,0x11cb5,59397454,quadtree-index-impl.h:2777
+2,uniform,100000,cross,charge,0x11d02,56474849,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,geometry_mode_setup,0x11d20,55094830,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,geometry_mode_setup,0x11d2f,51456800,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,geometry_mode_setup,0x11d85,47290791,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,geometry_mode_setup,0x11d35,43424294,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,geometry_mode_setup,0x11d2c,39511513,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,self,filter,0x9b863,38170455,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,cross,strict_endpoints,0x11d95,35518480,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,charge,0x11cf8,34418655,quadtree-index-impl.h:538 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,charge,0x11cdd,31668032,quadtree-index-impl.h:2593 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,uniform,100000,self,strict_endpoints,0x9ba94,31644413,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,self,geometry_mode_setup,0x9b8ec,31592454,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138

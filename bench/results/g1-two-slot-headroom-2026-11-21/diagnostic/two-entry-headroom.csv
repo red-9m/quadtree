@@ -1,0 +1,5 @@
+rounds,scene,control_ns,probe_ns,control_brute_ns,probe_brute_ns,saved_ns,ab_lower,ab_upper,ab_verdict,control_ratio,control_lower,control_upper,control_gate,synthetic_ratio,synthetic_lower,synthetic_upper,control_point_gap_ns,approx_probe_upper_gap_ns,probe_status
+81,clustered,33.7,33.3,12.3,12.3,0.40,0.9594,1.0178,unresolved,2.740,2.653,2.829,FAIL,2.707,2.622,2.796,9.10,9.48,INVALID
+81,uniform,34.5,34.2,12.6,12.1,0.30,0.9445,1.0404,unresolved,2.738,2.654,2.825,FAIL,2.826,2.697,2.962,9.30,11.11,INVALID
+117,clustered,34.0,33.3,12.3,12.0,0.70,0.9510,1.0087,unresolved,2.764,2.677,2.854,FAIL,2.775,2.686,2.867,9.40,10.07,INVALID
+117,uniform,33.9,33.5,12.1,12.0,0.40,0.9596,1.0177,unresolved,2.802,2.729,2.877,FAIL,2.792,2.718,2.867,9.70,10.13,INVALID

@@ -1,0 +1,9 @@
+kind,symbol,vma,bytes,vma_mod64
+control,pairQualifies,0x11d80,273,0
+control,walkOrdered,0x1e660,1222,32
+control,crossPairs,0x9ad90,1287,16
+control,selfPairs,0x9b2a0,1956,32
+hintbin,pairQualifies,0x11f80,273,0
+hintbin,walkOrdered,0x1e030,1222,48
+hintbin,crossPairs,0x9a910,1287,16
+hintbin,selfPairs,0x9ae20,1310,32

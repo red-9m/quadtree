@@ -1,0 +1,29 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2201,6 +2201,26 @@
+     Status buildRange(R& range, Accessor&& accessor, std::optional<std::span<HandleType>> handles,
+         BuildOptions<T> options) noexcept
+     {
++        // DIAGNOSTIC ONLY: this skips geometry/rank/workspace validation,
++        // extent publication and fresh handle identity. Never use for real builds.
++        if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&
++            std::same_as<Payload, std::uint32_t> && std::ranges::contiguous_range<R> &&
++            std::ranges::sized_range<R> &&
++            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>>)
++        {
++            if (std::ranges::size(range) == 2 && size() == 2 && !handles &&
++                mConfig.extent == Extent::Snapshot && mRoot == none && mEntries.mRankCount == 0)
++            {
++                const auto* input = std::ranges::data(range);
++                mEntries.mBoxes[0] = input[0].rect;
++                mEntries.mBoxes[1] = input[1].rect;
++                mEntries.mPayloads[0] = input[0].payload;
++                mEntries.mPayloads[1] = input[1].payload;
++                mEntries.mMeta[0].filter = input[0].filter;
++                mEntries.mMeta[1].filter = input[1].filter;
++                return Status::Ok;
++            }
++        }
+         if (std::ranges::empty(range))
+         {
+             // A previously cleared index has no identity or topology to retire.

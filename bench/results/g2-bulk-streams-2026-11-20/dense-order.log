@@ -1,0 +1,5 @@
+control: exact dense slots, topology and callback prefixes; 27072604 bytes, SHA-256 941f3592c312be796d5da16ba5aea559293e5e166957bdb685ab6ede62085d45
+centers: exact dense slots, topology and callback prefixes; 27072604 bytes, SHA-256 941f3592c312be796d5da16ba5aea559293e5e166957bdb685ab6ede62085d45
+centers: ASan/UBSan stream matches.
+narrow: exact dense slots, topology and callback prefixes; 27072604 bytes, SHA-256 941f3592c312be796d5da16ba5aea559293e5e166957bdb685ab6ede62085d45
+narrow: ASan/UBSan stream matches.

@@ -1,0 +1,83 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1589,6 +1589,34 @@
+ 
+     // Top-down bulk plan for int32. Stable permutations and tags use compact
+     // temporary streams. Only internal nodes write records to the key array.
++#if __has_cpp_attribute(gnu::always_inline)
++    [[gnu::always_inline]]
++#endif
++    static void classifyBulkID(std::uint32_t i, std::uint32_t end, const Box<T>* boxes, const std::uint32_t* src,
++        std::uint8_t* tags, std::uint32_t (&bins)[5], const detail::Split<T>& split,
++        std::uint32_t fits_width, std::uint32_t fits_height) noexcept
++        requires std::same_as<T, std::int32_t>
++    {
++#if defined(__GNUC__) || defined(__clang__)
++        constexpr std::uint32_t ahead = 16;
++        if (end - i > ahead)
++            __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
++#endif
++        const auto& box = boxes[src[i]];
++        const auto width = detail::span(box.minX, box.maxX);
++        const auto height = detail::span(box.minY, box.maxY);
++        std::uint32_t b = 0;
++        if (width <= fits_width && height <= fits_height)
++        {
++            const auto x = box.minX + static_cast<T>(width / 2);
++            const auto y = box.minY + static_cast<T>(height / 2);
++            b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
++                (split.splitY && y >= split.y ? 2u : 0u));
++        }
++        tags[i] = static_cast<std::uint8_t>(b);
++        ++bins[b];
++    }
++
+     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
+         const Box<T>* boxes, std::uint32_t* src, std::uint32_t* dst, std::uint32_t* order,
+         Key* keys, std::uint8_t* tags,
+@@ -1613,33 +1641,21 @@
+         const auto length = end - begin;
+         const auto middle = length < 32 ? begin : begin + length / 2;
+         std::uint32_t count[5]{}, lowerCount[5]{};
+-        const auto classify = [&](std::uint32_t from, std::uint32_t to, std::uint32_t (&bins)[5]) noexcept
++        if (middle == begin)
++        {
++            for (auto i = begin; i < end; ++i)
++                classifyBulkID(i, end, boxes, src, tags, count, split, fits_width, fits_height);
++        }
++        else
+         {
+-            for (auto i = from; i < to; ++i)
++            for (auto i = begin, j = middle; i < middle; ++i, ++j)
+             {
+-#if defined(__GNUC__) || defined(__clang__)
+-                constexpr std::uint32_t ahead = 16;
+-                if (end - i > ahead)
+-                    __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
+-#endif
+-                const auto& box = boxes[src[i]];
+-                const auto width = detail::span(box.minX, box.maxX);
+-                const auto height = detail::span(box.minY, box.maxY);
+-                std::uint32_t b = 0;
+-                if (width <= fits_width && height <= fits_height)
+-                {
+-                    const auto x = box.minX + static_cast<T>(width / 2);
+-                    const auto y = box.minY + static_cast<T>(height / 2);
+-                    b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+-                        (split.splitY && y >= split.y ? 2u : 0u));
+-                }
+-                tags[i] = static_cast<std::uint8_t>(b);
+-                ++bins[b];
++                classifyBulkID(i, end, boxes, src, tags, lowerCount, split, fits_width, fits_height);
++                classifyBulkID(j, end, boxes, src, tags, count, split, fits_width, fits_height);
+             }
+-        };
+-        if (middle != begin)
+-            classify(begin, middle, lowerCount);
+-        classify(middle, end, count);
++            if ((length & 1u) != 0)
++                classifyBulkID(end - 1, end, boxes, src, tags, count, split, fits_width, fits_height);
++        }
+         for (unsigned b = 0; b < 5; ++b)
+             count[b] += lowerCount[b];
+         const auto movable = end - begin - count[0];

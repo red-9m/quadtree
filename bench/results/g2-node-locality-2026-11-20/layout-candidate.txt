@@ -1,0 +1,15 @@
+int32 sizeof=120 alignof=8
+int64 sizeof=168 alignof=8
+float sizeof=120 alignof=8
+double sizeof=168 alignof=8
+sizeof=120 alignof=8 bounds=0..15 firstChild=20..23 count=16..19
+stride=120, node-start residue step=8, hardware line=64
+start_mod64,count_line,bounds_first_line,bounds_last_line,firstChild_line,three_field_lines,four_sibling_count_bounds_lines,packed_three_field_lines,packed_four_sibling_count_bounds_lines
+0,0,0,0,0,1,6,1,6
+8,0,0,0,0,1,6,1,6
+16,0,0,0,0,1,5,1,5
+24,0,0,0,0,1,4,1,4
+32,0,0,0,0,1,4,1,4
+40,0,0,0,0,1,4,1,4
+48,1,0,0,1,2,5,2,5
+56,1,0,1,1,2,6,2,6

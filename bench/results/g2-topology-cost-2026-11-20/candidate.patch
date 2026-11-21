@@ -1,0 +1,18 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1891,11 +1891,10 @@
+             const detail::Split<T> split(mNodes[n].cell);
+             for (std::uint32_t q = 0; q < 4; ++q)
+             {
+-                Node node;
+-                node.cell = split.child(mNodes[n].cell, q);
+-                node.parent = n;
+-                node.depth = static_cast<std::uint8_t>(mNodes[n].depth + 1);
+-                mNodes[base + q] = node;
++                // Reinitialize this trivially destructible pool slot directly.
++                ::new (static_cast<void*>(mNodes.data() + base + q)) Node{
++                    .cell = split.child(mNodes[n].cell, q), .parent = n,
++                    .depth = static_cast<std::uint8_t>(mNodes[n].depth + 1)};
+                 materializeBulk(base + q, plan, (info.level & (1u << q)) != 0, edges[q], edges[q + 1]);
+             }
+         }

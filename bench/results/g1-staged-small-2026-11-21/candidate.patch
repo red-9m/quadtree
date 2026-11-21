@@ -1,0 +1,101 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -863,7 +863,12 @@
+     bool empty() const noexcept { return mEntries.empty(); }
+     bool valid(HandleType handle) const noexcept { return mEntries.valid(handle); }
+     const Config<T>& config() const noexcept { return mConfig; }
+-    std::optional<Box<T>> extent() const noexcept { return mExtent; }
++    std::optional<Box<T>> extent() const noexcept
++    {
++        if (mExtent || empty())
++            return mExtent;
++        return dataExtent();
++    }
+     const Box<T>& rect(HandleType handle) const noexcept { return mEntries.rect(handle); }
+     const Payload& payload(HandleType handle) const noexcept { return mEntries.payload(handle); }
+     Payload& payload(HandleType handle) noexcept { return mEntries.payload(handle); }
+@@ -980,6 +985,9 @@
+             if (dense != last)
+                 remapReference(last, dense);
+         }
++        // Removal retains the old extent even if it removes the last entry.
++        if (!mExtent)
++            mExtent = dataExtent();
+         const Status status = mEntries.remove(handle);
+         if (size() <= mConfig.smallSetThreshold)
+             resetTopology();
+@@ -1057,7 +1065,7 @@
+         if (status != Status::Ok)
+             return status;
+         auto new_extent = mExtent;
+-        if (mConfig.extent == Extent::Adaptive || (mConfig.extent == Extent::Snapshot &&
++        if (!new_extent || mConfig.extent == Extent::Adaptive || (mConfig.extent == Extent::Snapshot &&
+             mConfig.snapshotGrowth == SnapshotGrowth::Adaptive))
+             new_extent = dataExtent();
+         const Cell cell{*new_extent};
+@@ -1418,6 +1426,8 @@
+     detail::Buffer<Node> mNodes;
+     detail::Buffer<Reference> mReferences;
+     detail::Buffer<Key> mKeys, mTemp;
++    // Disengaged with live entries only after a warm tiny integer build;
++    // its exact extent is the union of the (at most four) stored boxes.
+     std::optional<Box<T>> mExtent;
+     std::uint32_t mRoot = none;
+     std::uint32_t mNodeUsed = 0;
+@@ -1443,7 +1453,7 @@
+ 
+     Status mutationExtent(const Box<T>& box, std::optional<Box<T>>& result) const noexcept
+     {
+-        result = mExtent;
++        result = extent();
+         const bool reject = mConfig.extent == Extent::Fixed || (mConfig.extent == Extent::Snapshot &&
+             mConfig.snapshotGrowth == SnapshotGrowth::Reject);
+         if (reject)
+@@ -2424,15 +2434,28 @@
+             return std::nullopt;
+         if (!detail::canonicalize(extent))
+             return Status::InvalidGeometry;
+-        for (std::uint32_t i = 1; i < count; ++i)
++        const bool deferExtent = count <= 4;
++        if (deferExtent)
+         {
+-            auto box = input[i].rect;
+-            if (input[i].rank)
+-                return std::nullopt;
+-            if (!detail::canonicalize(box))
+-                return Status::InvalidGeometry;
+-            extent = detail::unite(extent, box);
++            for (std::uint32_t i = 1; i < count; ++i)
++            {
++                auto box = input[i].rect;
++                if (input[i].rank)
++                    return std::nullopt;
++                if (!detail::canonicalize(box))
++                    return Status::InvalidGeometry;
++            }
+         }
++        else
++            for (std::uint32_t i = 1; i < count; ++i)
++            {
++                auto box = input[i].rect;
++                if (input[i].rank)
++                    return std::nullopt;
++                if (!detail::canonicalize(box))
++                    return Status::InvalidGeometry;
++                extent = detail::unite(extent, box);
++            }
+         const auto owner = detail::acquireModuleIdentityInline();
+         if (owner == 0)
+             return Status::IdentityExhausted;
+@@ -2441,7 +2464,10 @@
+         mEntries.resetSlots();
+         if (mRoot != none)
+             resetTopology();
+-        mExtent = extent;
++        if (deferExtent)
++            mExtent.reset();
++        else
++            mExtent = extent;
+         if (count == 1)
+         {
+             std::construct_at(mEntries.mBoxes, extent);

@@ -1,0 +1,7 @@
+0x9b631: CALL 0x11ea0 -> CALL 0x11d80
+0x9b786: CALL 0x11ea0 -> CALL 0x11d80
+0x11ea0: JMP 0x11d80 unchanged
+Whole-ELF differing offsets: 0x9b632, 0x9b633, 0x9b787, 0x9b788
+77b38baf5a2b57cc5b4a58caa7c50dddca4ab48cbe6a208ab85adcb2c46efadd  outlined.elf
+7894ceb7af9ce441dd3a73939f62713a6908a6fa2d6dad0aab296b6dbadd849b  direct.elf
+702021a351948c1d628bcf984f81916c30255edf76bedb3aa7760dcc97e6d344  direct.text

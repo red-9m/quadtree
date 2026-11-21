@@ -1,0 +1,16 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2457,8 +2457,11 @@
+                 std::construct_at(mEntries.mPayloads + i, input[i].payload);
+             for (std::uint32_t i = 0; i < count; ++i)
+                 std::construct_at(mEntries.mMeta + i, typename Store::Meta{input[i].filter, 0, i, false});
+-            for (std::uint32_t i = 0; i < count; ++i)
+-                std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
++            // DIAGNOSTIC ONLY: assume a previous cold two-entry build initialized
++            // the same slots. This is not valid after arbitrary earlier mutations.
++            if (count != 2)
++                for (std::uint32_t i = 0; i < count; ++i)
++                    std::construct_at(mEntries.mSlots + i, typename Store::Slot{0, i});
+         }
+         mEntries.mOwner = owner;
+         mEntries.mSize = count;

@@ -1,0 +1,25 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1927,14 +1927,19 @@
+                     .depth = static_cast<std::uint8_t>(mNodes[n].depth + 1)};
+                 materializeBulk(base + q, plan, (info.level & (1u << q)) != 0, edges[q], edges[q + 1]);
+             }
++            refit(n);
+         }
+         else
+         {
+             buildDenseItems(n, begin, end);
+-            if (mNodes[n].ownCount > mConfig.splitThreshold)
+-                mNodes[n].splitRetry = std::max<std::uint32_t>(1, mNodes[n].ownCount / 2);
++            auto& node = mNodes[n];
++            if (node.ownCount > mConfig.splitThreshold)
++                node.splitRetry = std::max<std::uint32_t>(1, node.ownCount / 2);
++            // This leaf was just initialized; its own summary is already tight.
++            node.count = node.ownCount;
++            node.bounds = node.itemBounds;
++            node.summary = node.itemSummary;
+         }
+-        refit(n);
+     }
+ 
+     template<bool DenseBuild = false>

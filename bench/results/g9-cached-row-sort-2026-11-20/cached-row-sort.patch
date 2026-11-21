@@ -1,0 +1,42 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2788,6 +2788,27 @@
+         return context.result;
+     }
+ 
++    void sortFullPartnerRow(Workspace<T>& scratch, std::size_t count) const noexcept
++    {
++        auto* row = scratch.mRow.data();
++        if constexpr (std::same_as<T, std::int32_t>)
++        {
++            // Reuse the inactive build buffer when the caller reserved it.
++            // Query-only reservations still take the allocation-free index sort.
++            if (count > 64 && count <= scratch.mTemp.capacity())
++            {
++                auto* keys = scratch.mTemp.data();
++                for (std::size_t i = 0; i < count; ++i)
++                    keys[i] = Key{mEntries.mMeta[row[i]].rank, 0, 0, row[i]};
++                detail::rankSort(keys, count, [](const Key& a, const Key& b) noexcept { return a.hi < b.hi; });
++                for (std::size_t i = 0; i < count; ++i)
++                    row[i] = keys[i].entry;
++                return;
++            }
++        }
++        sortRanks(row, count);
++    }
++
+     template<typename Visitor, typename Predicate>
+     void orderedSelf(Workspace<T>& scratch, bool movedOnly, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -2822,7 +2843,10 @@
+                 scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
+             if (!context.active())
+                 return; // An unfinished row is discarded, never emitted as a non-prefix.
+-            sortRanks(scratch.mRow.data(), count);
++            if (movedOnly)
++                sortRanks(scratch.mRow.data(), count);
++            else
++                sortFullPartnerRow(scratch, count);
+             for (std::size_t j = 0; j < count && context.active(); ++j)
+                 reportPair(a, scratch.mRow[j], true, context, visitor);
+         }

@@ -1,0 +1,28 @@
+23 control / 23 candidate symbols; 23 shared names
+DIFFERENT 2451 2592 (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> > > const&,
+DIFFERENT 36 42 (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> > > const&,
+same 2 2 (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::~PersistentRunner()
+same 65 65 (anonymous namespace)::Runner<bench::LibraryIndex<int, true>, int>::reset()
+same 668 668 (anonymous namespace)::Runner<bench::LibraryIndex<int, true>, int>::step((anonymous namespace)::Fixture<int> const&, bench::Boundary, unsigned long)
+same 6 6 (anonymous namespace)::Runner<bench::LibraryIndex<int, true>, int>::step((anonymous namespace)::Fixture<int> const&, bench::Boundary, unsigned long) [clone .col
+same 45 45 (anonymous namespace)::Runner<bench::LibraryIndex<int, true>, int>::~Runner()
+same 46 46 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedMoved<bench::LibraryIndex<int, true>::pairsInvolving<(anonymous namespace)::PairSink>(std:
+same 506 506 bench::Counters bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const
+same 85 85 bool QuadTree::Index<unsigned int, double, QuadTree::Unchecked, true>::pairQualifies<false, QuadTree::detail::AcceptAll>(unsigned int, unsigned int, bool, QuadT
+same 90 90 bool QuadTree::Index<unsigned int, float, QuadTree::Unchecked, true>::pairQualifies<false, QuadTree::detail::AcceptAll>(unsigned int, unsigned int, bool, QuadTr
+same 86 86 bool QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::pairQualifies<false, QuadTree::detail::AcceptAll>(unsigned int, unsigned int, bool, QuadTree
+same 90 90 bool QuadTree::Index<unsigned int, long, QuadTree::Unchecked, true>::pairQualifies<false, QuadTree::detail::AcceptAll>(unsigned int, unsigned int, bool, QuadTre
+same 429 429 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::crossPairs<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous
+same 131 131 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::itemsVsSubtree<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anony
+same 476 476 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::selfPairs<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous 
+same 227 227 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 211 211 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 159 159 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 119 119 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 157 157 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 157 157 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 295 295 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench
+# Wider check: all 28 QuadTree::Index<unsigned int, int, Unchecked, true>:: symbols plus int32 LibraryIndex adapters.
+# Only differences: LibraryIndex<int, false>::pairs (350 -> 347, intended) and Index::cut (119 -> 120),
+# where the only change is one alignment nop split into two; no executed instruction differs.
+# PersistentRunner<LibraryIndex<int, true>>::pass differs by one std::vector call inlined vs outlined; not on the G1 snapshot path.

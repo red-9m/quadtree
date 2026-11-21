@@ -1,0 +1,85 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2272,9 +2272,18 @@
+         auto* ranks = scratch->tempRanks(count);
+         std::size_t i = 0;
+         std::uint32_t ranked = 0;
++        using InputEntry = BuildEntry<Payload, T>;
++        constexpr bool directCopy = !Consume && !Projected && std::same_as<T, std::int32_t> &&
++            std::is_trivially_copyable_v<Payload> && sizeof(Payload) <= sizeof(void*) &&
++            std::ranges::contiguous_range<R> && std::same_as<std::ranges::range_value_t<R>, InputEntry> &&
++            !std::is_volatile_v<std::remove_reference_t<std::ranges::range_reference_t<R>>>;
++        const InputEntry* directSource = nullptr;
+         std::optional<Box<T>> next_extent = mConfig.extent == Extent::Fixed ? mConfig.root : std::nullopt;
+         for (auto& entry : range)
+         {
++            if constexpr (directCopy)
++                if (i == 0)
++                    directSource = std::addressof(entry);
+             auto& box = boxes[i];
+             auto& descriptor = descriptors[i];
+             if (!captureBuildEntry<Projected>(entry, accessor, box, descriptor))
+@@ -2358,6 +2367,8 @@
+                 return Status::Ok;
+             }
+         }
++        if (!bulk_order)
++            directSource = nullptr;
+         for (i = 0; i < count; ++i)
+         {
+ #if defined(__GNUC__) || defined(__clang__)
+@@ -2366,17 +2377,23 @@
+             {
+                 if (node_count != 0 && ranked == 0)
+                 {
+-                    // Start the indexed descriptor fetch before the dependent payload fetch.
+                     constexpr std::size_t descriptorAhead = 32, payloadAhead = 16;
+                     if (count - i > descriptorAhead)
+                     {
+                         const auto future = spatialEntry(i + descriptorAhead);
+                         __builtin_prefetch(&boxes[future], 0, 3);
+                         __builtin_prefetch(&descriptors[future], 0, 3);
+-                        __builtin_prefetch(&descriptors[future].payload, 0, 3);
++                        if (!directSource)
++                            __builtin_prefetch(&descriptors[future].payload, 0, 3);
+                     }
+                     if (count - i > payloadAhead)
+-                        __builtin_prefetch(descriptors[spatialEntry(i + payloadAhead)].payload, 0, 3);
++                    {
++                        const auto future = spatialEntry(i + payloadAhead);
++                        if (directSource)
++                            __builtin_prefetch(std::addressof(directSource[future].payload), 0, 3);
++                        else
++                            __builtin_prefetch(descriptors[future].payload, 0, 3);
++                    }
+                 }
+             }
+ #endif
+@@ -2384,7 +2401,11 @@
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : spatialEntry(i);
+             const auto& descriptor = descriptors[input];
+             const auto dense = static_cast<std::uint32_t>(i);
+-            constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
++            if (directSource)
++                constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value(),
++                    std::addressof(directSource[input].payload));
++            else
++                constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
+             ++mEntries.mSize;
+             ++mEntries.mSlotsUsed;
+             if (descriptor.rank)
+@@ -2524,7 +2545,13 @@
+     void constructBuildEntry(std::uint32_t dense, const Box<T>& box, const detail::Descriptor& descriptor,
+         bool ranked) noexcept
+     {
+-        const auto* value = static_cast<const Payload*>(descriptor.payload);
++        constructBuildEntry<Consume>(dense, box, descriptor, ranked, static_cast<const Payload*>(descriptor.payload));
++    }
++
++    template<bool Consume>
++    void constructBuildEntry(std::uint32_t dense, const Box<T>& box, const detail::Descriptor& descriptor,
++        bool ranked, const Payload* value) noexcept
++    {
+         if constexpr (Consume)
+             std::construct_at(mEntries.mPayloads + dense, std::move(*const_cast<Payload*>(value)));
+         else

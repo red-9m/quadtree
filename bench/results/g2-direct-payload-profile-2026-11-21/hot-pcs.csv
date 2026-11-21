@@ -1,0 +1,241 @@
+block,kind,scene,engine,phase,pc,period,inline_locations
+1,control,uniform,index,plan,0x146bba,343673348,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+1,control,uniform,index,construct,0x14783c,335938110,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,control,uniform,index,plan,0x146e64,282950985,quadtree-index-impl.h:1692
+1,control,uniform,index,plan,0x147272,212739980,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+1,control,uniform,index,lookahead,0xd3317,158163122,quadtree-index-impl.h:2379
+1,control,uniform,index,plan,0x14745c,135416335,quadtree-index-impl.h:1678
+1,control,uniform,index,plan,0x146e67,128669092,quadtree-index-impl.h:1686
+1,control,uniform,index,current_gather_call,0xd331a,118467059,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+1,control,uniform,index,build_other,0xd2606,117051125,quadtree-index-impl.h:2289
+1,control,uniform,index,plan,0x146e35,115669538,quadtree-index-impl.h:1690
+1,control,uniform,index,build_other,0xef1a4,92726339,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,uniform,index,plan,0x146bd7,60934358,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+1,control,uniform,index,topology,0x130311,59378842,quadtree-index-impl.h:1865
+1,control,uniform,index,plan,0x146be4,59253660,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1642
+1,control,uniform,index,build_other,0xef194,54780146,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,uniform,index,plan,0x146c23,53594992,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+1,control,uniform,index,plan,0x147299,53115042,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1641
+1,control,uniform,index,plan,0x146e39,48491029,quadtree-index-impl.h:1690
+1,control,uniform,index,build_other,0xef1a8,47113586,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,uniform,index,plan,0x146bf0,47089039,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+1,candidate,uniform,index,current_gather_call,0xd354f,815798556,quadtree-index-impl.h:2405
+1,candidate,uniform,index,plan,0x145f3a,324308770,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+1,candidate,uniform,index,plan,0x1465f2,251944056,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+1,candidate,uniform,index,plan,0x1461e4,222354365,quadtree-index-impl.h:1692
+1,candidate,uniform,index,plan,0x1467dc,159662894,quadtree-index-impl.h:1678
+1,candidate,uniform,index,plan,0x1461e7,112540434,quadtree-index-impl.h:1686
+1,candidate,uniform,index,current_gather_call,0xd3559,99848957,quadtree-index-impl.h:2405
+1,candidate,uniform,index,build_other,0xee3a4,85390796,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,uniform,index,build_other,0xd27ab,85137408,quadtree-index-impl.h:2298
+1,candidate,uniform,index,plan,0x1461b5,68964559,quadtree-index-impl.h:1690
+1,candidate,uniform,index,plan,0x145f57,65306372,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+1,candidate,uniform,index,plan,0x14665b,58069377,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,candidate,uniform,index,plan,0x146610,56436158,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+1,candidate,uniform,index,topology,0x12f7d1,54828917,quadtree-index-impl.h:1865
+1,candidate,uniform,index,plan,0x145fa3,52403190,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+1,candidate,uniform,index,build_other,0xd2754,51775581,quadtree-index-impl.h:2509 | quadtree-index-impl.h:2289
+1,candidate,uniform,index,plan,0x145f64,50328864,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1642
+1,candidate,uniform,index,build_other,0xee394,50143322,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,uniform,index,plan,0x145f8a,50136865,quadtree-index-impl.h:1631 | quadtree-index-impl.h:1642
+1,candidate,uniform,index,current_gather_call,0xd351c,47332942,quadtree-index-impl.h:2340 | quadtree-index-impl.h:2401
+1,control,split-line-translated,index,plan,0x146bba,356449101,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index,construct,0x14783c,303618096,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,control,split-line-translated,index,plan,0x146e64,251319969,quadtree-index-impl.h:1692
+1,control,split-line-translated,index,plan,0x147272,239819262,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index,lookahead,0xd3317,196723540,quadtree-index-impl.h:2379
+1,control,split-line-translated,index,plan,0x14745c,160440490,quadtree-index-impl.h:1678
+1,control,split-line-translated,index,plan,0x146e67,134649459,quadtree-index-impl.h:1686
+1,control,split-line-translated,index,build_other,0xd2606,124546370,quadtree-index-impl.h:2289
+1,control,split-line-translated,index,plan,0x146e35,104862278,quadtree-index-impl.h:1690
+1,control,split-line-translated,index,build_other,0xef1a4,95869742,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,split-line-translated,index,current_gather_call,0xd331a,95278556,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+1,control,split-line-translated,index,plan,0x146bd7,81833557,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index,build_other,0xd25aa,68297594,quadtree-index-impl.h:2486 | quadtree-index-impl.h:2280
+1,control,split-line-translated,index,plan,0x1472db,66808946,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index,plan,0x146c23,63821042,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index,plan,0x146bf0,63415621,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index,topology,0x130311,59045338,quadtree-index-impl.h:1865
+1,control,split-line-translated,index,plan,0x147290,54419582,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index,build_other,0xef189,50273358,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,split-line-translated,index,build_other,0xef1a8,49859124,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,split-line-translated,index,current_gather_call,0xd354f,883481188,quadtree-index-impl.h:2405
+1,candidate,split-line-translated,index,plan,0x145f3a,349406410,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index,plan,0x1465f2,250350960,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index,plan,0x1461e4,233992569,quadtree-index-impl.h:1692
+1,candidate,split-line-translated,index,plan,0x1467dc,162815335,quadtree-index-impl.h:1678
+1,candidate,split-line-translated,index,build_other,0xd27ab,123095206,quadtree-index-impl.h:2298
+1,candidate,split-line-translated,index,plan,0x1461e7,114025429,quadtree-index-impl.h:1686
+1,candidate,split-line-translated,index,build_other,0xee3a4,98858132,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,split-line-translated,index,plan,0x1461b5,89906043,quadtree-index-impl.h:1690
+1,candidate,split-line-translated,index,current_gather_call,0xd3559,85309057,quadtree-index-impl.h:2405
+1,candidate,split-line-translated,index,plan,0x145f64,71521117,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index,plan,0x145f57,59229902,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index,build_other,0xee389,56127158,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,split-line-translated,index,topology,0x12f7d1,54759977,quadtree-index-impl.h:1865
+1,candidate,split-line-translated,index,plan,0x146642,54711346,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index,plan,0x145fa3,51775957,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index,plan,0x145f70,50261290,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index,plan,0x14665b,50215897,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index,plan,0x146610,47015627,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index,plan,0x146628,45634553,quadtree-index-impl.h:1629 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index-ordered,rank_insert,0x144fa1,491916504,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,control,split-line-translated,index-ordered,construct,0x14783c,430554125,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,control,split-line-translated,index-ordered,plan,0x146bba,109712438,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index-ordered,plan,0x147272,106764452,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index-ordered,plan,0x146e64,83706789,quadtree-index-impl.h:1692
+1,control,split-line-translated,index-ordered,current_gather_call,0xd44cc,80221810,quadtree-index-impl.h:2387
+1,control,split-line-translated,index-ordered,plan,0x14745c,44202250,quadtree-index-impl.h:1678
+1,control,split-line-translated,index-ordered,build_other,0xf30b4,31786175,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,split-line-translated,index-ordered,plan,0x146e67,30462433,quadtree-index-impl.h:1686
+1,control,split-line-translated,index-ordered,plan,0x146e35,30399665,quadtree-index-impl.h:1690
+1,control,split-line-translated,index-ordered,build_other,0xd2606,26062169,quadtree-index-impl.h:2289
+1,control,split-line-translated,index-ordered,build_other,0xf3091,22793703,bench-scenes.h:26 | bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,control,split-line-translated,index-ordered,plan,0x147290,18268486,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index-ordered,plan,0x146bd7,15268669,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index-ordered,construct,0x14785e,15261663,quadtree-index-impl.h:2534
+1,control,split-line-translated,index-ordered,rank_insert,0x144f84,15247033,quadtree-index.h:1141 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,control,split-line-translated,index-ordered,plan,0x1472db,15206346,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,control,split-line-translated,index-ordered,topology,0x130311,15196108,quadtree-index-impl.h:1865
+1,control,split-line-translated,index-ordered,plan,0x146bf0,15178917,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+1,control,split-line-translated,index-ordered,build_other,0xf306b,13793866,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,split-line-translated,index-ordered,rank_insert,0x144461,643545284,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,candidate,split-line-translated,index-ordered,current_gather_call,0xd3559,176186873,quadtree-index-impl.h:2405
+1,candidate,split-line-translated,index-ordered,current_gather_call,0xd354f,153763504,quadtree-index-impl.h:2405
+1,candidate,split-line-translated,index-ordered,plan,0x145f3a,127942403,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index-ordered,plan,0x1465f2,65515834,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index-ordered,plan,0x1461e4,64058785,quadtree-index-impl.h:1692
+1,candidate,split-line-translated,index-ordered,plan,0x1467dc,42737632,quadtree-index-impl.h:1678
+1,candidate,split-line-translated,index-ordered,plan,0x1461b5,42694926,quadtree-index-impl.h:1690
+1,candidate,split-line-translated,index-ordered,build_other,0xf20d4,28842518,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,split-line-translated,index-ordered,construct,0x11647,28808367,quadtree-index-impl.h:2561
+1,candidate,split-line-translated,index-ordered,plan,0x1461e7,27416183,quadtree-index-impl.h:1686
+1,candidate,split-line-translated,index-ordered,build_other,0xd27ab,24393071,quadtree-index-impl.h:2298
+1,candidate,split-line-translated,index-ordered,build_other,0xf20b1,19771812,bench-scenes.h:26 | bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+1,candidate,split-line-translated,index-ordered,plan,0x145f70,18299232,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+1,candidate,split-line-translated,index-ordered,plan,0x146610,15251583,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index-ordered,build_other,0xd274c,15220740,quadtree-index-impl.h:2508 | quadtree-index-impl.h:2289
+1,candidate,split-line-translated,index-ordered,plan,0x146642,15214012,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index-ordered,plan,0x14665b,13733465,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+1,candidate,split-line-translated,index-ordered,topology,0x12f7d1,13711553,quadtree-index-impl.h:1865
+1,candidate,split-line-translated,index-ordered,plan,0x145b97,13659147,quadtree-index-impl.h:1712
+2,candidate,split-line-translated,index-ordered,rank_insert,0x144461,681119951,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,candidate,split-line-translated,index-ordered,current_gather_call,0xd3559,161353034,quadtree-index-impl.h:2405
+2,candidate,split-line-translated,index-ordered,current_gather_call,0xd354f,154846291,quadtree-index-impl.h:2405
+2,candidate,split-line-translated,index-ordered,plan,0x145f3a,96140617,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index-ordered,plan,0x1461e4,77597445,quadtree-index-impl.h:1692
+2,candidate,split-line-translated,index-ordered,plan,0x1465f2,65722232,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index-ordered,plan,0x1467dc,38271360,quadtree-index-impl.h:1678
+2,candidate,split-line-translated,index-ordered,build_other,0xf20d4,34229476,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,split-line-translated,index-ordered,plan,0x1461e7,34109038,quadtree-index-impl.h:1686
+2,candidate,split-line-translated,index-ordered,plan,0x145fa3,28972893,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index-ordered,build_other,0xd27ab,26146032,quadtree-index-impl.h:2298
+2,candidate,split-line-translated,index-ordered,plan,0x1461b5,23703481,quadtree-index-impl.h:1690
+2,candidate,split-line-translated,index-ordered,plan,0x145f57,23651221,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index-ordered,plan,0x146610,21103129,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index-ordered,build_other,0xf20b1,21024054,bench-scenes.h:26 | bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,split-line-translated,index-ordered,construct,0x11647,19692326,quadtree-index-impl.h:2561
+2,candidate,split-line-translated,index-ordered,plan,0x146642,17063635,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index-ordered,build_other,0xd2744,15795578,quadtree-index-impl.h:2507 | quadtree-index-impl.h:2289
+2,candidate,split-line-translated,index-ordered,plan,0x146628,14514367,quadtree-index-impl.h:1629 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index-ordered,build_other,0xf208b,13165928,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,split-line-translated,index-ordered,rank_insert,0x144fa1,506902758,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,control,split-line-translated,index-ordered,construct,0x14783c,434079843,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,control,split-line-translated,index-ordered,plan,0x146bba,94485766,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index-ordered,plan,0x146e64,93091006,quadtree-index-impl.h:1692
+2,control,split-line-translated,index-ordered,current_gather_call,0xd44cc,77882966,quadtree-index-impl.h:2387
+2,control,split-line-translated,index-ordered,plan,0x147272,57838850,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+2,control,split-line-translated,index-ordered,plan,0x14745c,57769317,quadtree-index-impl.h:1678
+2,control,split-line-translated,index-ordered,plan,0x146e67,41902837,quadtree-index-impl.h:1686
+2,control,split-line-translated,index-ordered,build_other,0xf30b4,32831335,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,split-line-translated,index-ordered,build_other,0xf3091,27596136,bench-scenes.h:26 | bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,split-line-translated,index-ordered,build_other,0xd2606,26368126,quadtree-index-impl.h:2289
+2,control,split-line-translated,index-ordered,build_other,0xd25aa,21028896,quadtree-index-impl.h:2486 | quadtree-index-impl.h:2280
+2,control,split-line-translated,index-ordered,plan,0x146bd7,19676385,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index-ordered,plan,0x146e35,18434305,quadtree-index-impl.h:1690
+2,control,split-line-translated,index-ordered,plan,0x146bf0,17096495,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index-ordered,plan,0x146e39,17059373,quadtree-index-impl.h:1690
+2,control,split-line-translated,index-ordered,plan,0x147290,15608069,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+2,control,split-line-translated,index-ordered,plan,0x146c0a,14438308,quadtree-index-impl.h:1631 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index-ordered,build_other,0xd25b6,14361641,quadtree-index-impl.h:2488 | quadtree-index-impl.h:2280
+2,control,split-line-translated,index-ordered,plan,0x1472a8,13262233,quadtree-index-impl.h:1629 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index,current_gather_call,0xd354f,904913936,quadtree-index-impl.h:2405
+2,candidate,split-line-translated,index,plan,0x145f3a,317399890,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index,plan,0x1461e4,282169095,quadtree-index-impl.h:1692
+2,candidate,split-line-translated,index,plan,0x1465f2,271747795,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index,plan,0x1467dc,156115604,quadtree-index-impl.h:1678
+2,candidate,split-line-translated,index,plan,0x1461e7,135093454,quadtree-index-impl.h:1686
+2,candidate,split-line-translated,index,plan,0x1461b5,115836208,quadtree-index-impl.h:1690
+2,candidate,split-line-translated,index,build_other,0xd27ab,102504711,quadtree-index-impl.h:2298
+2,candidate,split-line-translated,index,current_gather_call,0xd3559,95774287,quadtree-index-impl.h:2405
+2,candidate,split-line-translated,index,build_other,0xee3a4,90672804,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,split-line-translated,index,plan,0x145f57,69482518,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index,plan,0x145f8a,56365163,quadtree-index-impl.h:1631 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index,plan,0x14665b,55142444,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index,plan,0x145f64,55126365,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1642
+2,candidate,split-line-translated,index,build_other,0xee394,52659659,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,split-line-translated,index,plan,0x1461b9,52485669,quadtree-index-impl.h:1690
+2,candidate,split-line-translated,index,topology,0x12f7d1,50047172,quadtree-index-impl.h:1865
+2,candidate,split-line-translated,index,plan,0x146628,47344564,quadtree-index-impl.h:1629 | quadtree-index-impl.h:1641
+2,candidate,split-line-translated,index,build_other,0xd2744,47270622,quadtree-index-impl.h:2507 | quadtree-index-impl.h:2289
+2,candidate,split-line-translated,index,plan,0x1465ea,45874052,quadtree-index-impl.h:1637 | quadtree-index-impl.h:1641
+2,control,split-line-translated,index,plan,0x146bba,362307309,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index,construct,0x14783c,360007691,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,control,split-line-translated,index,plan,0x147272,275246846,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+2,control,split-line-translated,index,plan,0x146e64,236818647,quadtree-index-impl.h:1692
+2,control,split-line-translated,index,lookahead,0xd3317,211457596,quadtree-index-impl.h:2379
+2,control,split-line-translated,index,plan,0x14745c,153208866,quadtree-index-impl.h:1678
+2,control,split-line-translated,index,plan,0x146e67,127505240,quadtree-index-impl.h:1686
+2,control,split-line-translated,index,plan,0x146e35,115845362,quadtree-index-impl.h:1690
+2,control,split-line-translated,index,build_other,0xef1a4,101318533,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,split-line-translated,index,build_other,0xd2606,92316421,quadtree-index-impl.h:2289
+2,control,split-line-translated,index,current_gather_call,0xd331a,69665772,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+2,control,split-line-translated,index,plan,0x146bd7,68366872,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index,plan,0x146c23,63041517,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+2,control,split-line-translated,index,topology,0x130311,60525962,quadtree-index-impl.h:1865
+2,control,split-line-translated,index,build_other,0xef194,57963040,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,split-line-translated,index,plan,0x1472db,57833206,quadtree-index-impl.h:1633 | quadtree-index-impl.h:1641
+2,control,split-line-translated,index,build_other,0xd25aa,54116756,quadtree-index-impl.h:2486 | quadtree-index-impl.h:2280
+2,control,split-line-translated,index,construct,0x14785e,52627763,quadtree-index-impl.h:2534
+2,control,split-line-translated,index,plan,0x147290,51481602,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+2,control,split-line-translated,index,build_other,0xef189,50069236,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,uniform,index,current_gather_call,0xd354f,826778354,quadtree-index-impl.h:2405
+2,candidate,uniform,index,plan,0x145f3a,349411306,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+2,candidate,uniform,index,plan,0x1465f2,262905836,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+2,candidate,uniform,index,plan,0x1461e4,253554783,quadtree-index-impl.h:1692
+2,candidate,uniform,index,plan,0x1467dc,161535511,quadtree-index-impl.h:1678
+2,candidate,uniform,index,plan,0x1461e7,132697498,quadtree-index-impl.h:1686
+2,candidate,uniform,index,build_other,0xd27ab,105079903,quadtree-index-impl.h:2298
+2,candidate,uniform,index,build_other,0xee3a4,85212476,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,uniform,index,current_gather_call,0xd3559,78733462,quadtree-index-impl.h:2405
+2,candidate,uniform,index,plan,0x1461b5,77548459,quadtree-index-impl.h:1690
+2,candidate,uniform,index,build_other,0xee394,64736816,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,candidate,uniform,index,plan,0x145f57,59219206,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+2,candidate,uniform,index,build_other,0xd2744,52638777,quadtree-index-impl.h:2507 | quadtree-index-impl.h:2289
+2,candidate,uniform,index,topology,0x12f7d1,52497276,quadtree-index-impl.h:1865
+2,candidate,uniform,index,plan,0x1461b9,48567323,quadtree-index-impl.h:1690
+2,candidate,uniform,index,plan,0x146628,46001258,quadtree-index-impl.h:1629 | quadtree-index-impl.h:1641
+2,candidate,uniform,index,plan,0x145f70,44762717,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+2,candidate,uniform,index,plan,0x146610,43430706,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1641
+2,candidate,uniform,index,current_gather_call,0xd351c,43402455,quadtree-index-impl.h:2340 | quadtree-index-impl.h:2401
+2,candidate,uniform,index,plan,0x145f64,43377403,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1642
+2,control,uniform,index,construct,0x14783c,349538026,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,control,uniform,index,plan,0x146bba,293706281,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642
+2,control,uniform,index,plan,0x146e64,279039483,quadtree-index-impl.h:1692
+2,control,uniform,index,plan,0x147272,204421143,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1641
+2,control,uniform,index,lookahead,0xd3317,151574283,quadtree-index-impl.h:2379
+2,control,uniform,index,current_gather_call,0xd331a,143100712,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+2,control,uniform,index,plan,0x14745c,136245475,quadtree-index-impl.h:1678
+2,control,uniform,index,plan,0x146e67,128551483,quadtree-index-impl.h:1686
+2,control,uniform,index,build_other,0xef1a4,86510260,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,uniform,index,build_other,0xd2606,85277328,quadtree-index-impl.h:2289
+2,control,uniform,index,plan,0x146e35,80012809,quadtree-index-impl.h:1690
+2,control,uniform,index,plan,0x146be4,61563624,quadtree-index-impl.h:427 | quadtree-index-impl.h:1626 | quadtree-index-impl.h:1642
+2,control,uniform,index,plan,0x146c23,57710165,quadtree-index-impl.h:1634 | quadtree-index-impl.h:1642
+2,control,uniform,index,plan,0x146bd7,57635945,quadtree-index-impl.h:1625 | quadtree-index-impl.h:1642
+2,control,uniform,index,build_other,0xd25b6,53758469,quadtree-index-impl.h:2488 | quadtree-index-impl.h:2280
+2,control,uniform,index,plan,0x146e39,47293417,quadtree-index-impl.h:1690
+2,control,uniform,index,build_other,0xef1a8,47253265,bench-index.h:62 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,uniform,index,plan,0x146bf0,47215190,quadtree-index-impl.h:427 | quadtree-index-impl.h:1627 | quadtree-index-impl.h:1642
+2,control,uniform,index,build_other,0xef194,47162781,bench-index.h:59 | quadtree-bench.cpp:684 | quadtree-bench.cpp:724
+2,control,uniform,index,plan,0x146bae,44709862,quadtree-index-impl.h:1618 | quadtree-index-impl.h:1642

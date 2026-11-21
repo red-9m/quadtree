@@ -1,0 +1,3 @@
+run,start,finish,start_tctl_millidegrees,finish_tctl_millidegrees
+117-candidate,2026-11-21T14:36:52+02:00,2026-11-21T14:37:01+02:00,30500,56000
+117-control,2026-11-21T14:37:33+02:00,2026-11-21T14:37:42+02:00,31375,56125

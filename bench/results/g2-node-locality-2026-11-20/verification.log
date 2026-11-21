@@ -1,0 +1,3 @@
+16 captures match the 15-round staged control on fixture, pair checksum, work, memory and cold allocations.
+All 16 warm rows allocate zero. Both events cover build and pairs; IBS covers both target functions.
+All nonzero mapped IBS data addresses have the expected alignment for the audited node field.

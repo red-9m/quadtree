@@ -1,0 +1,63 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2231,10 +2231,42 @@
+         if (handles && handles->size() < count)
+             return Status::InsufficientOutput;
+         if (options.workspace)
++        {
++            if constexpr (flatIntegerEligible<Consume, Projected, R>())
++            {
++                // Dispatch the warm flat path before entering the general preparation frame.
++                // Same checks and order as buildPrepared: workspace capacity, active guard, flat build.
++                if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
++                    count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
++                {
++                    auto& scratch = *options.workspace;
++                    if (!workspaceFits(scratch, count))
++                        return Status::InsufficientWorkspace;
++                    typename Workspace<T>::Use use(scratch);
++                    if (auto result = buildFlatInteger(std::ranges::data(range), static_cast<std::uint32_t>(count), handles))
++                        return *result;
++                }
++            }
+             return buildPrepared<Consume, Projected>(range, accessor, handles, count, *options.workspace);
++        }
+         return buildWithLocalWorkspace<Consume, Projected>(range, accessor, handles, count);
+     }
+ 
++    template<bool Consume, bool Projected, typename R>
++    static constexpr bool flatIntegerEligible() noexcept
++    {
++        return !Projected && !Consume && !FloatCoordinate<T> && std::ranges::contiguous_range<R> &&
++            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
++            std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
++            !requires { Policy::acquireIdentity(); };
++    }
++
++    static bool workspaceFits(const Workspace<T>& scratch, std::size_t count) noexcept
++    {
++        return scratch.mBuildBoxes.capacity() >= count && scratch.mDescriptors.capacity() >= count &&
++            scratch.mKeys.capacity() >= count && scratch.tempKeyCapacity() >= count;
++    }
++
+     template<bool Consume, bool Projected, typename R, typename Accessor>
+     Status buildWithLocalWorkspace(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
+         std::size_t count) noexcept
+@@ -2251,15 +2283,10 @@
+         std::size_t count, Workspace<T>& workspace) noexcept
+     {
+         auto* scratch = &workspace;
+-        if (scratch->mBuildBoxes.capacity() < count || scratch->mDescriptors.capacity() < count ||
+-            scratch->mKeys.capacity() < count || scratch->tempKeyCapacity() < count)
++        if (!workspaceFits(*scratch, count))
+             return Status::InsufficientWorkspace;
+         typename Workspace<T>::Use use(*scratch);
+-        if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+-            std::ranges::contiguous_range<R> &&
+-            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
+-            std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
+-            !requires { Policy::acquireIdentity(); })
++        if constexpr (flatIntegerEligible<Consume, Projected, R>())
+         {
+             if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
+                 count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)

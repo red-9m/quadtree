@@ -1,0 +1,7 @@
+virtual address 0x11c45, file offset 0x11c45, 0f180a -> 0f1f00
+Whole-ELF byte differences: 0x11c46, 0x11c47
+.text size 0x14a614, virtual address 0x7480, file offset 0x7480 (unchanged)
+d7bbe34cff81131668ee5f005c53a7037b481640cbc960b8b7c98d1ef920f165  hint.elf
+dd51b111e17c6b258715c0c331c59710878b5ad3e94f42395d1d821705e3bebf  hint.text
+a12344971517a89d6faacee0caec81344c471911f6bc11813e34a0a1cb4917ca  nohint.elf
+0f3fda5f1a57f3aa57f93a21f7851addde5ccdfb7d4a60fd4a6d6e99d064758c  nohint.text

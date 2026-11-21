@@ -1,0 +1,484 @@
+block,scene,n,engine,phase,op,level,samples
+1,uniform,100000,index,adapter,LOAD,L1 hit,9
+1,uniform,100000,index,adapter,N/A,N/A,61
+1,uniform,100000,index,adapter,STORE,L1 hit,73
+1,uniform,100000,index,adapter,STORE,L2 hit,4
+1,uniform,100000,index,adapter,STORE,N/A,25
+1,uniform,100000,index,capture,LOAD,L1 hit,189
+1,uniform,100000,index,capture,LOAD,RAM hit,4
+1,uniform,100000,index,capture,N/A,N/A,411
+1,uniform,100000,index,capture,STORE,L1 hit,130
+1,uniform,100000,index,capture,STORE,L2 hit,3
+1,uniform,100000,index,capture,STORE,N/A,4
+1,uniform,100000,index,split_classify,LOAD,L1 hit,655
+1,uniform,100000,index,split_classify,LOAD,L2 hit,131
+1,uniform,100000,index,split_classify,LOAD,RAM hit,5
+1,uniform,100000,index,split_classify,LOAD,"core, same node Any cache hit",163
+1,uniform,100000,index,split_classify,N/A,N/A,2793
+1,uniform,100000,index,split_classify,STORE,L1 hit,122
+1,uniform,100000,index,split_classify,STORE,L2 hit,1
+1,uniform,100000,index,split_classify,STORE,N/A,2
+1,uniform,100000,index,split_scatter,LOAD,L1 hit,338
+1,uniform,100000,index,split_scatter,LOAD,L2 hit,3
+1,uniform,100000,index,split_scatter,N/A,N/A,715
+1,uniform,100000,index,split_scatter,STORE,L1 hit,224
+1,uniform,100000,index,split_scatter,STORE,L2 hit,2
+1,uniform,100000,index,split_other,LOAD,L1 hit,248
+1,uniform,100000,index,split_other,LOAD,L2 hit,2
+1,uniform,100000,index,split_other,N/A,N/A,338
+1,uniform,100000,index,split_other,STORE,L1 hit,164
+1,uniform,100000,index,split_other,STORE,L2 hit,9
+1,uniform,100000,index,split_other,STORE,N/A,4
+1,uniform,100000,index,dense_commit,LOAD,L1 hit,336
+1,uniform,100000,index,dense_commit,LOAD,L2 hit,7
+1,uniform,100000,index,dense_commit,LOAD,RAM hit,15
+1,uniform,100000,index,dense_commit,LOAD,"core, same node Any cache hit",34
+1,uniform,100000,index,dense_commit,N/A,N/A,500
+1,uniform,100000,index,dense_commit,STORE,L1 hit,197
+1,uniform,100000,index,dense_commit,STORE,L2 hit,2
+1,uniform,100000,index,dense_commit,STORE,N/A,1
+1,uniform,100000,index,topology_commit,LOAD,L1 hit,435
+1,uniform,100000,index,topology_commit,LOAD,L2 hit,3
+1,uniform,100000,index,topology_commit,LOAD,"core, same node Any cache hit",1
+1,uniform,100000,index,topology_commit,N/A,N/A,835
+1,uniform,100000,index,topology_commit,STORE,L1 hit,370
+1,uniform,100000,index,topology_commit,STORE,L2 hit,1
+1,uniform,100000,index,pairs,LOAD,L1 hit,2210
+1,uniform,100000,index,pairs,LOAD,L2 hit,10
+1,uniform,100000,index,pairs,LOAD,RAM hit,2
+1,uniform,100000,index,pairs,LOAD,"core, same node Any cache hit",6
+1,uniform,100000,index,pairs,N/A,N/A,3979
+1,uniform,100000,index,pairs,STORE,L1 hit,719
+1,uniform,100000,index,pairs,STORE,L2 hit,1
+1,uniform,100000,index,other_process,LOAD,L1 hit,3720
+1,uniform,100000,index,other_process,LOAD,L2 hit,15
+1,uniform,100000,index,other_process,LOAD,RAM hit,3
+1,uniform,100000,index,other_process,LOAD,"core, same node Any cache hit",2
+1,uniform,100000,index,other_process,N/A,N/A,7239
+1,uniform,100000,index,other_process,NO,N/A,17
+1,uniform,100000,index,other_process,STORE,L1 hit,1190
+1,uniform,100000,index,other_process,STORE,L2 hit,1
+1,split-line-translated,100000,index,adapter,LOAD,L1 hit,17
+1,split-line-translated,100000,index,adapter,N/A,N/A,68
+1,split-line-translated,100000,index,adapter,STORE,L1 hit,52
+1,split-line-translated,100000,index,adapter,STORE,L2 hit,1
+1,split-line-translated,100000,index,adapter,STORE,N/A,40
+1,split-line-translated,100000,index,capture,LOAD,L1 hit,189
+1,split-line-translated,100000,index,capture,LOAD,L2 hit,4
+1,split-line-translated,100000,index,capture,LOAD,RAM hit,10
+1,split-line-translated,100000,index,capture,N/A,N/A,416
+1,split-line-translated,100000,index,capture,STORE,L1 hit,115
+1,split-line-translated,100000,index,capture,STORE,N/A,5
+1,split-line-translated,100000,index,split_classify,LOAD,L1 hit,721
+1,split-line-translated,100000,index,split_classify,LOAD,L2 hit,132
+1,split-line-translated,100000,index,split_classify,LOAD,RAM hit,10
+1,split-line-translated,100000,index,split_classify,LOAD,"core, same node Any cache hit",212
+1,split-line-translated,100000,index,split_classify,N/A,N/A,3320
+1,split-line-translated,100000,index,split_classify,STORE,L1 hit,138
+1,split-line-translated,100000,index,split_classify,STORE,N/A,1
+1,split-line-translated,100000,index,split_scatter,LOAD,L1 hit,364
+1,split-line-translated,100000,index,split_scatter,LOAD,L2 hit,28
+1,split-line-translated,100000,index,split_scatter,N/A,N/A,886
+1,split-line-translated,100000,index,split_scatter,STORE,L1 hit,270
+1,split-line-translated,100000,index,split_scatter,STORE,L2 hit,21
+1,split-line-translated,100000,index,split_other,LOAD,L1 hit,265
+1,split-line-translated,100000,index,split_other,LOAD,L2 hit,3
+1,split-line-translated,100000,index,split_other,LOAD,"core, same node Any cache hit",2
+1,split-line-translated,100000,index,split_other,N/A,N/A,336
+1,split-line-translated,100000,index,split_other,STORE,L1 hit,207
+1,split-line-translated,100000,index,split_other,STORE,L2 hit,9
+1,split-line-translated,100000,index,split_other,STORE,N/A,9
+1,split-line-translated,100000,index,replacement,STORE,L1 hit,1
+1,split-line-translated,100000,index,dense_commit,LOAD,L1 hit,367
+1,split-line-translated,100000,index,dense_commit,LOAD,L2 hit,8
+1,split-line-translated,100000,index,dense_commit,LOAD,RAM hit,14
+1,split-line-translated,100000,index,dense_commit,LOAD,"core, same node Any cache hit",47
+1,split-line-translated,100000,index,dense_commit,N/A,N/A,466
+1,split-line-translated,100000,index,dense_commit,STORE,L1 hit,201
+1,split-line-translated,100000,index,dense_commit,STORE,L2 hit,4
+1,split-line-translated,100000,index,dense_commit,STORE,N/A,2
+1,split-line-translated,100000,index,topology_commit,LOAD,L1 hit,465
+1,split-line-translated,100000,index,topology_commit,LOAD,L2 hit,3
+1,split-line-translated,100000,index,topology_commit,N/A,N/A,947
+1,split-line-translated,100000,index,topology_commit,STORE,L1 hit,358
+1,split-line-translated,100000,index,topology_commit,STORE,L2 hit,1
+1,split-line-translated,100000,index,pairs,LOAD,L1 hit,2164
+1,split-line-translated,100000,index,pairs,LOAD,L2 hit,15
+1,split-line-translated,100000,index,pairs,LOAD,"core, same node Any cache hit",3
+1,split-line-translated,100000,index,pairs,N/A,N/A,3909
+1,split-line-translated,100000,index,pairs,STORE,L1 hit,709
+1,split-line-translated,100000,index,other_process,LOAD,L1 hit,3362
+1,split-line-translated,100000,index,other_process,LOAD,L2 hit,9
+1,split-line-translated,100000,index,other_process,LOAD,"core, same node Any cache hit",2
+1,split-line-translated,100000,index,other_process,N/A,N/A,6589
+1,split-line-translated,100000,index,other_process,NO,N/A,9
+1,split-line-translated,100000,index,other_process,STORE,L1 hit,1083
+1,split-line-translated,100000,index,other_process,STORE,L2 hit,2
+1,uniform,100000,index-ordered,adapter,LOAD,L1 hit,5
+1,uniform,100000,index-ordered,adapter,N/A,N/A,88
+1,uniform,100000,index-ordered,adapter,STORE,L1 hit,14
+1,uniform,100000,index-ordered,adapter,STORE,N/A,10
+1,uniform,100000,index-ordered,capture,LOAD,L1 hit,85
+1,uniform,100000,index-ordered,capture,LOAD,L2 hit,6
+1,uniform,100000,index-ordered,capture,LOAD,RAM hit,6
+1,uniform,100000,index-ordered,capture,N/A,N/A,148
+1,uniform,100000,index-ordered,capture,STORE,L1 hit,55
+1,uniform,100000,index-ordered,capture,STORE,L2 hit,2
+1,uniform,100000,index-ordered,capture,STORE,N/A,1
+1,uniform,100000,index-ordered,rank_validation,LOAD,L1 hit,191
+1,uniform,100000,index-ordered,rank_validation,LOAD,L2 hit,6
+1,uniform,100000,index-ordered,rank_validation,N/A,N/A,764
+1,uniform,100000,index-ordered,rank_validation,STORE,L1 hit,116
+1,uniform,100000,index-ordered,split_classify,LOAD,L1 hit,170
+1,uniform,100000,index-ordered,split_classify,LOAD,L2 hit,39
+1,uniform,100000,index-ordered,split_classify,LOAD,RAM hit,2
+1,uniform,100000,index-ordered,split_classify,LOAD,"core, same node Any cache hit",47
+1,uniform,100000,index-ordered,split_classify,N/A,N/A,943
+1,uniform,100000,index-ordered,split_classify,STORE,L1 hit,40
+1,uniform,100000,index-ordered,split_classify,STORE,L2 hit,1
+1,uniform,100000,index-ordered,split_scatter,LOAD,L1 hit,122
+1,uniform,100000,index-ordered,split_scatter,LOAD,L2 hit,1
+1,uniform,100000,index-ordered,split_scatter,N/A,N/A,251
+1,uniform,100000,index-ordered,split_scatter,STORE,L1 hit,69
+1,uniform,100000,index-ordered,split_other,LOAD,L1 hit,62
+1,uniform,100000,index-ordered,split_other,N/A,N/A,117
+1,uniform,100000,index-ordered,split_other,STORE,L1 hit,60
+1,uniform,100000,index-ordered,split_other,STORE,L2 hit,7
+1,uniform,100000,index-ordered,replacement,N/A,N/A,1
+1,uniform,100000,index-ordered,replacement,STORE,L1 hit,1
+1,uniform,100000,index-ordered,dense_commit,LOAD,L1 hit,64
+1,uniform,100000,index-ordered,dense_commit,LOAD,RAM hit,8
+1,uniform,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",25
+1,uniform,100000,index-ordered,dense_commit,N/A,N/A,153
+1,uniform,100000,index-ordered,dense_commit,STORE,L1 hit,37
+1,uniform,100000,index-ordered,rank_insert,LOAD,L1 hit,59
+1,uniform,100000,index-ordered,rank_insert,LOAD,RAM hit,7
+1,uniform,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",6
+1,uniform,100000,index-ordered,rank_insert,N/A,N/A,160
+1,uniform,100000,index-ordered,rank_insert,STORE,L1 hit,22
+1,uniform,100000,index-ordered,rank_insert,STORE,L2 hit,1
+1,uniform,100000,index-ordered,rank_insert,STORE,N/A,8
+1,uniform,100000,index-ordered,topology_commit,LOAD,L1 hit,125
+1,uniform,100000,index-ordered,topology_commit,N/A,N/A,306
+1,uniform,100000,index-ordered,topology_commit,STORE,L1 hit,100
+1,uniform,100000,index-ordered,pairs,LOAD,L1 hit,2405
+1,uniform,100000,index-ordered,pairs,LOAD,L2 hit,81
+1,uniform,100000,index-ordered,pairs,LOAD,RAM hit,5
+1,uniform,100000,index-ordered,pairs,LOAD,"core, same node Any cache hit",134
+1,uniform,100000,index-ordered,pairs,N/A,N/A,4440
+1,uniform,100000,index-ordered,pairs,STORE,L1 hit,669
+1,uniform,100000,index-ordered,pairs,STORE,L2 hit,2
+1,uniform,100000,index-ordered,pairs,STORE,N/A,2
+1,uniform,100000,index-ordered,other_process,LOAD,L1 hit,1975
+1,uniform,100000,index-ordered,other_process,LOAD,L2 hit,37
+1,uniform,100000,index-ordered,other_process,LOAD,RAM hit,2
+1,uniform,100000,index-ordered,other_process,LOAD,"core, same node Any cache hit",48
+1,uniform,100000,index-ordered,other_process,N/A,N/A,4843
+1,uniform,100000,index-ordered,other_process,NO,N/A,10
+1,uniform,100000,index-ordered,other_process,STORE,L1 hit,657
+1,split-line-translated,100000,index-ordered,adapter,LOAD,L1 hit,6
+1,split-line-translated,100000,index-ordered,adapter,N/A,N/A,81
+1,split-line-translated,100000,index-ordered,adapter,STORE,L1 hit,13
+1,split-line-translated,100000,index-ordered,adapter,STORE,L2 hit,1
+1,split-line-translated,100000,index-ordered,adapter,STORE,N/A,9
+1,split-line-translated,100000,index-ordered,capture,LOAD,L1 hit,61
+1,split-line-translated,100000,index-ordered,capture,LOAD,L2 hit,5
+1,split-line-translated,100000,index-ordered,capture,LOAD,RAM hit,5
+1,split-line-translated,100000,index-ordered,capture,N/A,N/A,130
+1,split-line-translated,100000,index-ordered,capture,STORE,L1 hit,59
+1,split-line-translated,100000,index-ordered,capture,STORE,L2 hit,2
+1,split-line-translated,100000,index-ordered,capture,STORE,N/A,1
+1,split-line-translated,100000,index-ordered,rank_validation,LOAD,L1 hit,186
+1,split-line-translated,100000,index-ordered,rank_validation,LOAD,L2 hit,3
+1,split-line-translated,100000,index-ordered,rank_validation,N/A,N/A,659
+1,split-line-translated,100000,index-ordered,rank_validation,STORE,L1 hit,88
+1,split-line-translated,100000,index-ordered,split_classify,LOAD,L1 hit,176
+1,split-line-translated,100000,index-ordered,split_classify,LOAD,L2 hit,33
+1,split-line-translated,100000,index-ordered,split_classify,LOAD,RAM hit,1
+1,split-line-translated,100000,index-ordered,split_classify,LOAD,"core, same node Any cache hit",72
+1,split-line-translated,100000,index-ordered,split_classify,N/A,N/A,935
+1,split-line-translated,100000,index-ordered,split_classify,STORE,L1 hit,43
+1,split-line-translated,100000,index-ordered,split_scatter,LOAD,L1 hit,127
+1,split-line-translated,100000,index-ordered,split_scatter,LOAD,L2 hit,10
+1,split-line-translated,100000,index-ordered,split_scatter,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index-ordered,split_scatter,N/A,N/A,235
+1,split-line-translated,100000,index-ordered,split_scatter,STORE,L1 hit,85
+1,split-line-translated,100000,index-ordered,split_scatter,STORE,L2 hit,6
+1,split-line-translated,100000,index-ordered,split_other,LOAD,L1 hit,69
+1,split-line-translated,100000,index-ordered,split_other,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index-ordered,split_other,N/A,N/A,95
+1,split-line-translated,100000,index-ordered,split_other,STORE,L1 hit,46
+1,split-line-translated,100000,index-ordered,split_other,STORE,L2 hit,8
+1,split-line-translated,100000,index-ordered,split_other,STORE,N/A,1
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,L1 hit,60
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,RAM hit,5
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",13
+1,split-line-translated,100000,index-ordered,dense_commit,N/A,N/A,130
+1,split-line-translated,100000,index-ordered,dense_commit,STORE,L1 hit,51
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,L1 hit,43
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,RAM hit,5
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",3
+1,split-line-translated,100000,index-ordered,rank_insert,N/A,N/A,150
+1,split-line-translated,100000,index-ordered,rank_insert,STORE,L1 hit,27
+1,split-line-translated,100000,index-ordered,rank_insert,STORE,N/A,9
+1,split-line-translated,100000,index-ordered,topology_commit,LOAD,L1 hit,137
+1,split-line-translated,100000,index-ordered,topology_commit,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,topology_commit,N/A,N/A,271
+1,split-line-translated,100000,index-ordered,topology_commit,STORE,L1 hit,93
+1,split-line-translated,100000,index-ordered,topology_commit,STORE,L2 hit,1
+1,split-line-translated,100000,index-ordered,pairs,LOAD,L1 hit,2387
+1,split-line-translated,100000,index-ordered,pairs,LOAD,L2 hit,95
+1,split-line-translated,100000,index-ordered,pairs,LOAD,RAM hit,5
+1,split-line-translated,100000,index-ordered,pairs,LOAD,"core, same node Any cache hit",142
+1,split-line-translated,100000,index-ordered,pairs,N/A,N/A,4695
+1,split-line-translated,100000,index-ordered,pairs,STORE,L1 hit,678
+1,split-line-translated,100000,index-ordered,pairs,STORE,L2 hit,3
+1,split-line-translated,100000,index-ordered,pairs,STORE,N/A,4
+1,split-line-translated,100000,index-ordered,other_process,LOAD,L1 hit,2091
+1,split-line-translated,100000,index-ordered,other_process,LOAD,L2 hit,45
+1,split-line-translated,100000,index-ordered,other_process,LOAD,RAM hit,2
+1,split-line-translated,100000,index-ordered,other_process,LOAD,"core, same node Any cache hit",78
+1,split-line-translated,100000,index-ordered,other_process,N/A,N/A,5261
+1,split-line-translated,100000,index-ordered,other_process,NO,N/A,20
+1,split-line-translated,100000,index-ordered,other_process,STORE,L1 hit,693
+1,split-line-translated,100000,index-ordered,other_process,STORE,N/A,1
+2,split-line-translated,100000,index-ordered,adapter,LOAD,L1 hit,2
+2,split-line-translated,100000,index-ordered,adapter,N/A,N/A,67
+2,split-line-translated,100000,index-ordered,adapter,STORE,L1 hit,12
+2,split-line-translated,100000,index-ordered,adapter,STORE,N/A,11
+2,split-line-translated,100000,index-ordered,capture,LOAD,L1 hit,57
+2,split-line-translated,100000,index-ordered,capture,LOAD,L2 hit,5
+2,split-line-translated,100000,index-ordered,capture,N/A,N/A,107
+2,split-line-translated,100000,index-ordered,capture,STORE,L1 hit,59
+2,split-line-translated,100000,index-ordered,capture,STORE,L2 hit,2
+2,split-line-translated,100000,index-ordered,capture,STORE,N/A,3
+2,split-line-translated,100000,index-ordered,rank_validation,LOAD,L1 hit,170
+2,split-line-translated,100000,index-ordered,rank_validation,LOAD,L2 hit,3
+2,split-line-translated,100000,index-ordered,rank_validation,LOAD,"core, same node Any cache hit",2
+2,split-line-translated,100000,index-ordered,rank_validation,N/A,N/A,528
+2,split-line-translated,100000,index-ordered,rank_validation,STORE,L1 hit,72
+2,split-line-translated,100000,index-ordered,split_classify,LOAD,L1 hit,156
+2,split-line-translated,100000,index-ordered,split_classify,LOAD,L2 hit,25
+2,split-line-translated,100000,index-ordered,split_classify,LOAD,RAM hit,1
+2,split-line-translated,100000,index-ordered,split_classify,LOAD,"core, same node Any cache hit",55
+2,split-line-translated,100000,index-ordered,split_classify,N/A,N/A,820
+2,split-line-translated,100000,index-ordered,split_classify,STORE,L1 hit,27
+2,split-line-translated,100000,index-ordered,split_scatter,LOAD,L1 hit,109
+2,split-line-translated,100000,index-ordered,split_scatter,LOAD,L2 hit,6
+2,split-line-translated,100000,index-ordered,split_scatter,N/A,N/A,214
+2,split-line-translated,100000,index-ordered,split_scatter,STORE,L1 hit,70
+2,split-line-translated,100000,index-ordered,split_scatter,STORE,L2 hit,8
+2,split-line-translated,100000,index-ordered,split_other,LOAD,L1 hit,65
+2,split-line-translated,100000,index-ordered,split_other,N/A,N/A,77
+2,split-line-translated,100000,index-ordered,split_other,STORE,L1 hit,48
+2,split-line-translated,100000,index-ordered,split_other,STORE,L2 hit,3
+2,split-line-translated,100000,index-ordered,split_other,STORE,N/A,2
+2,split-line-translated,100000,index-ordered,replacement,STORE,L1 hit,1
+2,split-line-translated,100000,index-ordered,dense_commit,LOAD,L1 hit,47
+2,split-line-translated,100000,index-ordered,dense_commit,LOAD,RAM hit,5
+2,split-line-translated,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",14
+2,split-line-translated,100000,index-ordered,dense_commit,N/A,N/A,104
+2,split-line-translated,100000,index-ordered,dense_commit,STORE,L1 hit,57
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,L1 hit,36
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,L2 hit,2
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,RAM hit,5
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",1
+2,split-line-translated,100000,index-ordered,rank_insert,N/A,N/A,133
+2,split-line-translated,100000,index-ordered,rank_insert,STORE,L1 hit,10
+2,split-line-translated,100000,index-ordered,rank_insert,STORE,N/A,9
+2,split-line-translated,100000,index-ordered,topology_commit,LOAD,L1 hit,116
+2,split-line-translated,100000,index-ordered,topology_commit,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,topology_commit,N/A,N/A,219
+2,split-line-translated,100000,index-ordered,topology_commit,STORE,L1 hit,106
+2,split-line-translated,100000,index-ordered,pairs,LOAD,L1 hit,2086
+2,split-line-translated,100000,index-ordered,pairs,LOAD,L2 hit,96
+2,split-line-translated,100000,index-ordered,pairs,LOAD,RAM hit,6
+2,split-line-translated,100000,index-ordered,pairs,LOAD,"core, same node Any cache hit",168
+2,split-line-translated,100000,index-ordered,pairs,N/A,N/A,4104
+2,split-line-translated,100000,index-ordered,pairs,STORE,L1 hit,572
+2,split-line-translated,100000,index-ordered,pairs,STORE,L2 hit,3
+2,split-line-translated,100000,index-ordered,other_process,LOAD,L1 hit,1800
+2,split-line-translated,100000,index-ordered,other_process,LOAD,L2 hit,44
+2,split-line-translated,100000,index-ordered,other_process,LOAD,RAM hit,2
+2,split-line-translated,100000,index-ordered,other_process,LOAD,"core, same node Any cache hit",67
+2,split-line-translated,100000,index-ordered,other_process,N/A,N/A,4664
+2,split-line-translated,100000,index-ordered,other_process,NO,N/A,9
+2,split-line-translated,100000,index-ordered,other_process,STORE,L1 hit,579
+2,uniform,100000,index-ordered,adapter,LOAD,L1 hit,2
+2,uniform,100000,index-ordered,adapter,N/A,N/A,82
+2,uniform,100000,index-ordered,adapter,STORE,L1 hit,13
+2,uniform,100000,index-ordered,adapter,STORE,L2 hit,1
+2,uniform,100000,index-ordered,adapter,STORE,N/A,13
+2,uniform,100000,index-ordered,capture,LOAD,L1 hit,71
+2,uniform,100000,index-ordered,capture,LOAD,L2 hit,3
+2,uniform,100000,index-ordered,capture,LOAD,RAM hit,1
+2,uniform,100000,index-ordered,capture,N/A,N/A,140
+2,uniform,100000,index-ordered,capture,STORE,L1 hit,46
+2,uniform,100000,index-ordered,capture,STORE,L2 hit,2
+2,uniform,100000,index-ordered,capture,STORE,N/A,4
+2,uniform,100000,index-ordered,rank_validation,LOAD,L1 hit,171
+2,uniform,100000,index-ordered,rank_validation,LOAD,L2 hit,5
+2,uniform,100000,index-ordered,rank_validation,N/A,N/A,644
+2,uniform,100000,index-ordered,rank_validation,STORE,L1 hit,94
+2,uniform,100000,index-ordered,rank_validation,STORE,L2 hit,1
+2,uniform,100000,index-ordered,split_classify,LOAD,L1 hit,190
+2,uniform,100000,index-ordered,split_classify,LOAD,L2 hit,38
+2,uniform,100000,index-ordered,split_classify,LOAD,RAM hit,1
+2,uniform,100000,index-ordered,split_classify,LOAD,"core, same node Any cache hit",49
+2,uniform,100000,index-ordered,split_classify,N/A,N/A,801
+2,uniform,100000,index-ordered,split_classify,STORE,L1 hit,41
+2,uniform,100000,index-ordered,split_scatter,LOAD,L1 hit,112
+2,uniform,100000,index-ordered,split_scatter,N/A,N/A,207
+2,uniform,100000,index-ordered,split_scatter,STORE,L1 hit,69
+2,uniform,100000,index-ordered,split_other,LOAD,L1 hit,68
+2,uniform,100000,index-ordered,split_other,N/A,N/A,88
+2,uniform,100000,index-ordered,split_other,STORE,L1 hit,46
+2,uniform,100000,index-ordered,split_other,STORE,L2 hit,6
+2,uniform,100000,index-ordered,split_other,STORE,N/A,1
+2,uniform,100000,index-ordered,dense_commit,LOAD,L1 hit,72
+2,uniform,100000,index-ordered,dense_commit,LOAD,RAM hit,3
+2,uniform,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",17
+2,uniform,100000,index-ordered,dense_commit,N/A,N/A,122
+2,uniform,100000,index-ordered,dense_commit,STORE,L1 hit,44
+2,uniform,100000,index-ordered,rank_insert,LOAD,L1 hit,53
+2,uniform,100000,index-ordered,rank_insert,LOAD,RAM hit,5
+2,uniform,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",5
+2,uniform,100000,index-ordered,rank_insert,N/A,N/A,150
+2,uniform,100000,index-ordered,rank_insert,STORE,L1 hit,18
+2,uniform,100000,index-ordered,rank_insert,STORE,N/A,15
+2,uniform,100000,index-ordered,topology_commit,LOAD,L1 hit,107
+2,uniform,100000,index-ordered,topology_commit,LOAD,L2 hit,3
+2,uniform,100000,index-ordered,topology_commit,N/A,N/A,263
+2,uniform,100000,index-ordered,topology_commit,STORE,L1 hit,109
+2,uniform,100000,index-ordered,topology_commit,STORE,L2 hit,1
+2,uniform,100000,index-ordered,pairs,LOAD,L1 hit,2199
+2,uniform,100000,index-ordered,pairs,LOAD,L2 hit,63
+2,uniform,100000,index-ordered,pairs,LOAD,"core, same node Any cache hit",132
+2,uniform,100000,index-ordered,pairs,N/A,N/A,3968
+2,uniform,100000,index-ordered,pairs,STORE,L1 hit,611
+2,uniform,100000,index-ordered,pairs,STORE,L2 hit,3
+2,uniform,100000,index-ordered,pairs,STORE,N/A,1
+2,uniform,100000,index-ordered,other_process,LOAD,L1 hit,1763
+2,uniform,100000,index-ordered,other_process,LOAD,L2 hit,39
+2,uniform,100000,index-ordered,other_process,LOAD,"core, same node Any cache hit",50
+2,uniform,100000,index-ordered,other_process,N/A,N/A,4397
+2,uniform,100000,index-ordered,other_process,NO,N/A,8
+2,uniform,100000,index-ordered,other_process,STORE,L1 hit,532
+2,uniform,100000,index-ordered,other_process,STORE,L2 hit,1
+2,uniform,100000,index-ordered,other_process,STORE,N/A,2
+2,split-line-translated,100000,index,adapter,LOAD,L1 hit,13
+2,split-line-translated,100000,index,adapter,LOAD,RAM hit,1
+2,split-line-translated,100000,index,adapter,N/A,N/A,64
+2,split-line-translated,100000,index,adapter,STORE,L1 hit,49
+2,split-line-translated,100000,index,adapter,STORE,L2 hit,3
+2,split-line-translated,100000,index,adapter,STORE,N/A,32
+2,split-line-translated,100000,index,capture,LOAD,L1 hit,170
+2,split-line-translated,100000,index,capture,LOAD,L2 hit,1
+2,split-line-translated,100000,index,capture,LOAD,RAM hit,3
+2,split-line-translated,100000,index,capture,N/A,N/A,380
+2,split-line-translated,100000,index,capture,STORE,L1 hit,121
+2,split-line-translated,100000,index,capture,STORE,L2 hit,2
+2,split-line-translated,100000,index,capture,STORE,N/A,4
+2,split-line-translated,100000,index,split_classify,LOAD,L1 hit,710
+2,split-line-translated,100000,index,split_classify,LOAD,L2 hit,135
+2,split-line-translated,100000,index,split_classify,LOAD,RAM hit,8
+2,split-line-translated,100000,index,split_classify,LOAD,"core, same node Any cache hit",212
+2,split-line-translated,100000,index,split_classify,N/A,N/A,3012
+2,split-line-translated,100000,index,split_classify,STORE,L1 hit,134
+2,split-line-translated,100000,index,split_classify,STORE,L2 hit,1
+2,split-line-translated,100000,index,split_scatter,LOAD,L1 hit,346
+2,split-line-translated,100000,index,split_scatter,LOAD,L2 hit,41
+2,split-line-translated,100000,index,split_scatter,N/A,N/A,746
+2,split-line-translated,100000,index,split_scatter,STORE,L1 hit,219
+2,split-line-translated,100000,index,split_scatter,STORE,L2 hit,13
+2,split-line-translated,100000,index,split_other,LOAD,L1 hit,222
+2,split-line-translated,100000,index,split_other,LOAD,L2 hit,2
+2,split-line-translated,100000,index,split_other,N/A,N/A,296
+2,split-line-translated,100000,index,split_other,STORE,L1 hit,176
+2,split-line-translated,100000,index,split_other,STORE,L2 hit,13
+2,split-line-translated,100000,index,split_other,STORE,N/A,10
+2,split-line-translated,100000,index,dense_commit,LOAD,L1 hit,321
+2,split-line-translated,100000,index,dense_commit,LOAD,L2 hit,5
+2,split-line-translated,100000,index,dense_commit,LOAD,RAM hit,14
+2,split-line-translated,100000,index,dense_commit,LOAD,"core, same node Any cache hit",39
+2,split-line-translated,100000,index,dense_commit,N/A,N/A,432
+2,split-line-translated,100000,index,dense_commit,STORE,L1 hit,189
+2,split-line-translated,100000,index,dense_commit,STORE,L2 hit,8
+2,split-line-translated,100000,index,dense_commit,STORE,N/A,4
+2,split-line-translated,100000,index,topology_commit,LOAD,L1 hit,410
+2,split-line-translated,100000,index,topology_commit,LOAD,L2 hit,3
+2,split-line-translated,100000,index,topology_commit,N/A,N/A,847
+2,split-line-translated,100000,index,topology_commit,STORE,L1 hit,328
+2,split-line-translated,100000,index,topology_commit,STORE,L2 hit,2
+2,split-line-translated,100000,index,pairs,LOAD,L1 hit,1908
+2,split-line-translated,100000,index,pairs,LOAD,L2 hit,12
+2,split-line-translated,100000,index,pairs,LOAD,"core, same node Any cache hit",3
+2,split-line-translated,100000,index,pairs,N/A,N/A,3457
+2,split-line-translated,100000,index,pairs,STORE,L1 hit,707
+2,split-line-translated,100000,index,pairs,STORE,L2 hit,2
+2,split-line-translated,100000,index,other_process,LOAD,L1 hit,3206
+2,split-line-translated,100000,index,other_process,LOAD,L2 hit,15
+2,split-line-translated,100000,index,other_process,LOAD,RAM hit,1
+2,split-line-translated,100000,index,other_process,LOAD,"core, same node Any cache hit",1
+2,split-line-translated,100000,index,other_process,N/A,N/A,6060
+2,split-line-translated,100000,index,other_process,NO,N/A,13
+2,split-line-translated,100000,index,other_process,STORE,L1 hit,1036
+2,uniform,100000,index,adapter,LOAD,L1 hit,19
+2,uniform,100000,index,adapter,N/A,N/A,66
+2,uniform,100000,index,adapter,STORE,L1 hit,52
+2,uniform,100000,index,adapter,STORE,L2 hit,1
+2,uniform,100000,index,adapter,STORE,N/A,25
+2,uniform,100000,index,capture,LOAD,L1 hit,156
+2,uniform,100000,index,capture,LOAD,RAM hit,1
+2,uniform,100000,index,capture,N/A,N/A,393
+2,uniform,100000,index,capture,STORE,L1 hit,98
+2,uniform,100000,index,capture,STORE,L2 hit,2
+2,uniform,100000,index,capture,STORE,N/A,4
+2,uniform,100000,index,split_classify,LOAD,L1 hit,585
+2,uniform,100000,index,split_classify,LOAD,L2 hit,121
+2,uniform,100000,index,split_classify,LOAD,RAM hit,18
+2,uniform,100000,index,split_classify,LOAD,"core, same node Any cache hit",151
+2,uniform,100000,index,split_classify,N/A,N/A,2524
+2,uniform,100000,index,split_classify,STORE,L1 hit,124
+2,uniform,100000,index,split_classify,STORE,L2 hit,1
+2,uniform,100000,index,split_scatter,LOAD,L1 hit,310
+2,uniform,100000,index,split_scatter,LOAD,L2 hit,4
+2,uniform,100000,index,split_scatter,N/A,N/A,632
+2,uniform,100000,index,split_scatter,STORE,L1 hit,240
+2,uniform,100000,index,split_scatter,STORE,L2 hit,1
+2,uniform,100000,index,split_other,LOAD,L1 hit,197
+2,uniform,100000,index,split_other,LOAD,L2 hit,4
+2,uniform,100000,index,split_other,LOAD,"core, same node Any cache hit",1
+2,uniform,100000,index,split_other,N/A,N/A,298
+2,uniform,100000,index,split_other,STORE,L1 hit,125
+2,uniform,100000,index,split_other,STORE,L2 hit,9
+2,uniform,100000,index,split_other,STORE,N/A,5
+2,uniform,100000,index,replacement,STORE,L1 hit,1
+2,uniform,100000,index,dense_commit,LOAD,L1 hit,328
+2,uniform,100000,index,dense_commit,LOAD,L2 hit,10
+2,uniform,100000,index,dense_commit,LOAD,RAM hit,13
+2,uniform,100000,index,dense_commit,LOAD,"core, same node Any cache hit",27
+2,uniform,100000,index,dense_commit,N/A,N/A,424
+2,uniform,100000,index,dense_commit,STORE,L1 hit,193
+2,uniform,100000,index,dense_commit,STORE,L2 hit,1
+2,uniform,100000,index,dense_commit,STORE,N/A,1
+2,uniform,100000,index,topology_commit,LOAD,L1 hit,383
+2,uniform,100000,index,topology_commit,LOAD,L2 hit,2
+2,uniform,100000,index,topology_commit,N/A,N/A,805
+2,uniform,100000,index,topology_commit,STORE,L1 hit,295
+2,uniform,100000,index,topology_commit,STORE,L2 hit,6
+2,uniform,100000,index,pairs,LOAD,L1 hit,1991
+2,uniform,100000,index,pairs,LOAD,L2 hit,11
+2,uniform,100000,index,pairs,LOAD,"core, same node Any cache hit",1
+2,uniform,100000,index,pairs,N/A,N/A,3647
+2,uniform,100000,index,pairs,STORE,L1 hit,692
+2,uniform,100000,index,pairs,STORE,L2 hit,1
+2,uniform,100000,index,other_process,LOAD,L1 hit,3358
+2,uniform,100000,index,other_process,LOAD,L2 hit,8
+2,uniform,100000,index,other_process,LOAD,RAM hit,2
+2,uniform,100000,index,other_process,LOAD,"core, same node Any cache hit",3
+2,uniform,100000,index,other_process,N/A,N/A,6388
+2,uniform,100000,index,other_process,NO,N/A,14
+2,uniform,100000,index,other_process,STORE,L1 hit,983
+2,uniform,100000,index,other_process,STORE,L2 hit,1

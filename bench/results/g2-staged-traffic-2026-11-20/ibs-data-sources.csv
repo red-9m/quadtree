@@ -1,0 +1,399 @@
+block,scene,n,engine,phase,op,level,samples
+1,uniform,100000,index,permutation_seed,STORE,L1 hit,4
+1,uniform,100000,index,permutation_seed,STORE,N/A,3
+1,uniform,100000,index,gather_classify,LOAD,L1 hit,1303
+1,uniform,100000,index,gather_classify,LOAD,L2 hit,52
+1,uniform,100000,index,gather_classify,LOAD,RAM hit,2
+1,uniform,100000,index,gather_classify,LOAD,"core, same node Any cache hit",37
+1,uniform,100000,index,gather_classify,STORE,L1 hit,165
+1,uniform,100000,index,gather_classify,STORE,L2 hit,2
+1,uniform,100000,index,gather_classify,STORE,N/A,1
+1,uniform,100000,index,stable_scatter,LOAD,L1 hit,415
+1,uniform,100000,index,stable_scatter,STORE,L1 hit,323
+1,uniform,100000,index,stable_scatter,STORE,N/A,1
+1,uniform,100000,index,finish_copy,STORE,L1 hit,1
+1,uniform,100000,index,plan_other,LOAD,L1 hit,250
+1,uniform,100000,index,plan_other,LOAD,L2 hit,3
+1,uniform,100000,index,plan_other,STORE,L1 hit,190
+1,uniform,100000,index,plan_other,STORE,L2 hit,2
+1,uniform,100000,index,adapter,LOAD,L1 hit,57
+1,uniform,100000,index,adapter,STORE,L1 hit,83
+1,uniform,100000,index,adapter,STORE,L2 hit,2
+1,uniform,100000,index,adapter,STORE,N/A,32
+1,uniform,100000,index,capture,LOAD,L1 hit,234
+1,uniform,100000,index,capture,LOAD,RAM hit,4
+1,uniform,100000,index,capture,STORE,L1 hit,218
+1,uniform,100000,index,dense_commit,LOAD,L1 hit,415
+1,uniform,100000,index,dense_commit,LOAD,L2 hit,13
+1,uniform,100000,index,dense_commit,LOAD,RAM hit,25
+1,uniform,100000,index,dense_commit,LOAD,"core, same node Any cache hit",48
+1,uniform,100000,index,dense_commit,STORE,L1 hit,148
+1,uniform,100000,index,dense_commit,STORE,L2 hit,3
+1,uniform,100000,index,topology_commit,LOAD,L1 hit,365
+1,uniform,100000,index,topology_commit,LOAD,L2 hit,1
+1,uniform,100000,index,topology_commit,STORE,L1 hit,296
+1,uniform,100000,index,topology_commit,STORE,L2 hit,1
+1,uniform,100000,index,partition_total,LOAD,L1 hit,1968
+1,uniform,100000,index,partition_total,LOAD,L2 hit,55
+1,uniform,100000,index,partition_total,LOAD,RAM hit,2
+1,uniform,100000,index,partition_total,LOAD,"core, same node Any cache hit",37
+1,uniform,100000,index,partition_total,STORE,L1 hit,683
+1,uniform,100000,index,partition_total,STORE,L2 hit,4
+1,uniform,100000,index,partition_total,STORE,N/A,5
+1,uniform,100000,index,build_total,LOAD,L1 hit,3039
+1,uniform,100000,index,build_total,LOAD,L2 hit,69
+1,uniform,100000,index,build_total,LOAD,RAM hit,31
+1,uniform,100000,index,build_total,LOAD,"core, same node Any cache hit",85
+1,uniform,100000,index,build_total,STORE,L1 hit,1428
+1,uniform,100000,index,build_total,STORE,L2 hit,10
+1,uniform,100000,index,build_total,STORE,N/A,37
+1,split-line-translated,100000,index,permutation_seed,STORE,L1 hit,3
+1,split-line-translated,100000,index,permutation_seed,STORE,L2 hit,1
+1,split-line-translated,100000,index,permutation_seed,STORE,N/A,5
+1,split-line-translated,100000,index,gather_classify,LOAD,L1 hit,1514
+1,split-line-translated,100000,index,gather_classify,LOAD,L2 hit,42
+1,split-line-translated,100000,index,gather_classify,LOAD,"core, same node Any cache hit",34
+1,split-line-translated,100000,index,gather_classify,STORE,L1 hit,193
+1,split-line-translated,100000,index,gather_classify,STORE,L2 hit,1
+1,split-line-translated,100000,index,stable_scatter,LOAD,L1 hit,495
+1,split-line-translated,100000,index,stable_scatter,LOAD,L2 hit,7
+1,split-line-translated,100000,index,stable_scatter,STORE,L1 hit,284
+1,split-line-translated,100000,index,stable_scatter,STORE,L2 hit,10
+1,split-line-translated,100000,index,finish_copy,STORE,L1 hit,2
+1,split-line-translated,100000,index,plan_other,LOAD,L1 hit,256
+1,split-line-translated,100000,index,plan_other,LOAD,L2 hit,2
+1,split-line-translated,100000,index,plan_other,STORE,L1 hit,207
+1,split-line-translated,100000,index,plan_other,STORE,L2 hit,2
+1,split-line-translated,100000,index,plan_other,STORE,N/A,1
+1,split-line-translated,100000,index,adapter,LOAD,L1 hit,67
+1,split-line-translated,100000,index,adapter,STORE,L1 hit,66
+1,split-line-translated,100000,index,adapter,STORE,L2 hit,8
+1,split-line-translated,100000,index,adapter,STORE,N/A,43
+1,split-line-translated,100000,index,capture,LOAD,L1 hit,212
+1,split-line-translated,100000,index,capture,LOAD,L2 hit,2
+1,split-line-translated,100000,index,capture,LOAD,RAM hit,9
+1,split-line-translated,100000,index,capture,STORE,L1 hit,183
+1,split-line-translated,100000,index,capture,STORE,L2 hit,1
+1,split-line-translated,100000,index,capture,STORE,N/A,2
+1,split-line-translated,100000,index,dense_commit,LOAD,L1 hit,390
+1,split-line-translated,100000,index,dense_commit,LOAD,L2 hit,9
+1,split-line-translated,100000,index,dense_commit,LOAD,RAM hit,18
+1,split-line-translated,100000,index,dense_commit,LOAD,"core, same node Any cache hit",62
+1,split-line-translated,100000,index,dense_commit,STORE,L1 hit,155
+1,split-line-translated,100000,index,dense_commit,STORE,L2 hit,2
+1,split-line-translated,100000,index,dense_commit,STORE,N/A,1
+1,split-line-translated,100000,index,topology_commit,LOAD,L1 hit,366
+1,split-line-translated,100000,index,topology_commit,LOAD,L2 hit,2
+1,split-line-translated,100000,index,topology_commit,LOAD,"core, same node Any cache hit",3
+1,split-line-translated,100000,index,topology_commit,STORE,L1 hit,327
+1,split-line-translated,100000,index,topology_commit,STORE,L2 hit,4
+1,split-line-translated,100000,index,partition_total,LOAD,L1 hit,2265
+1,split-line-translated,100000,index,partition_total,LOAD,L2 hit,51
+1,split-line-translated,100000,index,partition_total,LOAD,"core, same node Any cache hit",34
+1,split-line-translated,100000,index,partition_total,STORE,L1 hit,689
+1,split-line-translated,100000,index,partition_total,STORE,L2 hit,14
+1,split-line-translated,100000,index,partition_total,STORE,N/A,6
+1,split-line-translated,100000,index,build_total,LOAD,L1 hit,3300
+1,split-line-translated,100000,index,build_total,LOAD,L2 hit,64
+1,split-line-translated,100000,index,build_total,LOAD,RAM hit,27
+1,split-line-translated,100000,index,build_total,LOAD,"core, same node Any cache hit",99
+1,split-line-translated,100000,index,build_total,STORE,L1 hit,1420
+1,split-line-translated,100000,index,build_total,STORE,L2 hit,29
+1,split-line-translated,100000,index,build_total,STORE,N/A,52
+1,uniform,100000,index-ordered,gather_classify,LOAD,L1 hit,448
+1,uniform,100000,index-ordered,gather_classify,LOAD,L2 hit,21
+1,uniform,100000,index-ordered,gather_classify,LOAD,"core, same node Any cache hit",9
+1,uniform,100000,index-ordered,gather_classify,STORE,L1 hit,54
+1,uniform,100000,index-ordered,stable_scatter,LOAD,L1 hit,152
+1,uniform,100000,index-ordered,stable_scatter,STORE,L1 hit,97
+1,uniform,100000,index-ordered,finish_copy,LOAD,L1 hit,1
+1,uniform,100000,index-ordered,finish_copy,STORE,L1 hit,1
+1,uniform,100000,index-ordered,plan_other,LOAD,L1 hit,84
+1,uniform,100000,index-ordered,plan_other,STORE,L1 hit,63
+1,uniform,100000,index-ordered,adapter,LOAD,L1 hit,20
+1,uniform,100000,index-ordered,adapter,STORE,L1 hit,15
+1,uniform,100000,index-ordered,adapter,STORE,N/A,18
+1,uniform,100000,index-ordered,capture,LOAD,L1 hit,85
+1,uniform,100000,index-ordered,capture,LOAD,L2 hit,18
+1,uniform,100000,index-ordered,capture,LOAD,RAM hit,2
+1,uniform,100000,index-ordered,capture,STORE,L1 hit,63
+1,uniform,100000,index-ordered,capture,STORE,L2 hit,8
+1,uniform,100000,index-ordered,rank_validate,LOAD,L1 hit,158
+1,uniform,100000,index-ordered,rank_validate,LOAD,L2 hit,1
+1,uniform,100000,index-ordered,rank_validate,STORE,L1 hit,92
+1,uniform,100000,index-ordered,rank_validate,STORE,L2 hit,10
+1,uniform,100000,index-ordered,rank_validate,STORE,N/A,1
+1,uniform,100000,index-ordered,rank_insert,LOAD,L1 hit,54
+1,uniform,100000,index-ordered,rank_insert,LOAD,RAM hit,6
+1,uniform,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",2
+1,uniform,100000,index-ordered,rank_insert,STORE,L1 hit,16
+1,uniform,100000,index-ordered,rank_insert,STORE,N/A,9
+1,uniform,100000,index-ordered,dense_commit,LOAD,L1 hit,64
+1,uniform,100000,index-ordered,dense_commit,LOAD,RAM hit,3
+1,uniform,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",13
+1,uniform,100000,index-ordered,dense_commit,STORE,L1 hit,46
+1,uniform,100000,index-ordered,topology_commit,LOAD,L1 hit,122
+1,uniform,100000,index-ordered,topology_commit,STORE,L1 hit,88
+1,uniform,100000,index-ordered,topology_commit,STORE,L2 hit,1
+1,uniform,100000,index-ordered,partition_total,LOAD,L1 hit,685
+1,uniform,100000,index-ordered,partition_total,LOAD,L2 hit,21
+1,uniform,100000,index-ordered,partition_total,LOAD,"core, same node Any cache hit",9
+1,uniform,100000,index-ordered,partition_total,STORE,L1 hit,215
+1,uniform,100000,index-ordered,build_total,LOAD,L1 hit,1188
+1,uniform,100000,index-ordered,build_total,LOAD,L2 hit,40
+1,uniform,100000,index-ordered,build_total,LOAD,RAM hit,11
+1,uniform,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",24
+1,uniform,100000,index-ordered,build_total,STORE,L1 hit,535
+1,uniform,100000,index-ordered,build_total,STORE,L2 hit,19
+1,uniform,100000,index-ordered,build_total,STORE,N/A,28
+1,split-line-translated,100000,index-ordered,permutation_seed,STORE,L1 hit,1
+1,split-line-translated,100000,index-ordered,gather_classify,LOAD,L1 hit,414
+1,split-line-translated,100000,index-ordered,gather_classify,LOAD,L2 hit,12
+1,split-line-translated,100000,index-ordered,gather_classify,LOAD,"core, same node Any cache hit",9
+1,split-line-translated,100000,index-ordered,gather_classify,STORE,L1 hit,60
+1,split-line-translated,100000,index-ordered,gather_classify,STORE,L2 hit,1
+1,split-line-translated,100000,index-ordered,stable_scatter,LOAD,L1 hit,152
+1,split-line-translated,100000,index-ordered,stable_scatter,LOAD,L2 hit,2
+1,split-line-translated,100000,index-ordered,stable_scatter,STORE,L1 hit,91
+1,split-line-translated,100000,index-ordered,stable_scatter,STORE,L2 hit,2
+1,split-line-translated,100000,index-ordered,plan_other,LOAD,L1 hit,65
+1,split-line-translated,100000,index-ordered,plan_other,STORE,L1 hit,52
+1,split-line-translated,100000,index-ordered,plan_other,STORE,L2 hit,1
+1,split-line-translated,100000,index-ordered,adapter,LOAD,L1 hit,17
+1,split-line-translated,100000,index-ordered,adapter,STORE,L1 hit,14
+1,split-line-translated,100000,index-ordered,adapter,STORE,N/A,13
+1,split-line-translated,100000,index-ordered,capture,LOAD,L1 hit,69
+1,split-line-translated,100000,index-ordered,capture,LOAD,L2 hit,10
+1,split-line-translated,100000,index-ordered,capture,LOAD,RAM hit,3
+1,split-line-translated,100000,index-ordered,capture,STORE,L1 hit,65
+1,split-line-translated,100000,index-ordered,capture,STORE,L2 hit,2
+1,split-line-translated,100000,index-ordered,capture,STORE,N/A,1
+1,split-line-translated,100000,index-ordered,rank_validate,LOAD,L1 hit,133
+1,split-line-translated,100000,index-ordered,rank_validate,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,rank_validate,STORE,L1 hit,92
+1,split-line-translated,100000,index-ordered,rank_validate,STORE,L2 hit,9
+1,split-line-translated,100000,index-ordered,rank_validate,STORE,N/A,1
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,L1 hit,27
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,RAM hit,4
+1,split-line-translated,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index-ordered,rank_insert,STORE,L1 hit,18
+1,split-line-translated,100000,index-ordered,rank_insert,STORE,N/A,3
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,L1 hit,57
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,RAM hit,9
+1,split-line-translated,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",11
+1,split-line-translated,100000,index-ordered,dense_commit,STORE,L1 hit,46
+1,split-line-translated,100000,index-ordered,topology_commit,LOAD,L1 hit,108
+1,split-line-translated,100000,index-ordered,topology_commit,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,topology_commit,STORE,L1 hit,91
+1,split-line-translated,100000,index-ordered,partition_total,LOAD,L1 hit,631
+1,split-line-translated,100000,index-ordered,partition_total,LOAD,L2 hit,14
+1,split-line-translated,100000,index-ordered,partition_total,LOAD,"core, same node Any cache hit",9
+1,split-line-translated,100000,index-ordered,partition_total,STORE,L1 hit,204
+1,split-line-translated,100000,index-ordered,partition_total,STORE,L2 hit,4
+1,split-line-translated,100000,index-ordered,build_total,LOAD,L1 hit,1042
+1,split-line-translated,100000,index-ordered,build_total,LOAD,L2 hit,27
+1,split-line-translated,100000,index-ordered,build_total,LOAD,RAM hit,16
+1,split-line-translated,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",21
+1,split-line-translated,100000,index-ordered,build_total,STORE,L1 hit,530
+1,split-line-translated,100000,index-ordered,build_total,STORE,L2 hit,15
+1,split-line-translated,100000,index-ordered,build_total,STORE,N/A,18
+2,split-line-translated,100000,index-ordered,permutation_seed,STORE,L1 hit,3
+2,split-line-translated,100000,index-ordered,gather_classify,LOAD,L1 hit,389
+2,split-line-translated,100000,index-ordered,gather_classify,LOAD,L2 hit,16
+2,split-line-translated,100000,index-ordered,gather_classify,LOAD,"core, same node Any cache hit",10
+2,split-line-translated,100000,index-ordered,gather_classify,STORE,L1 hit,46
+2,split-line-translated,100000,index-ordered,stable_scatter,LOAD,L1 hit,129
+2,split-line-translated,100000,index-ordered,stable_scatter,LOAD,L2 hit,2
+2,split-line-translated,100000,index-ordered,stable_scatter,STORE,L1 hit,68
+2,split-line-translated,100000,index-ordered,stable_scatter,STORE,L2 hit,4
+2,split-line-translated,100000,index-ordered,plan_other,LOAD,L1 hit,65
+2,split-line-translated,100000,index-ordered,plan_other,STORE,L1 hit,61
+2,split-line-translated,100000,index-ordered,plan_other,STORE,L2 hit,1
+2,split-line-translated,100000,index-ordered,adapter,LOAD,L1 hit,17
+2,split-line-translated,100000,index-ordered,adapter,STORE,L1 hit,14
+2,split-line-translated,100000,index-ordered,adapter,STORE,N/A,11
+2,split-line-translated,100000,index-ordered,capture,LOAD,L1 hit,69
+2,split-line-translated,100000,index-ordered,capture,LOAD,L2 hit,8
+2,split-line-translated,100000,index-ordered,capture,LOAD,RAM hit,1
+2,split-line-translated,100000,index-ordered,capture,STORE,L1 hit,69
+2,split-line-translated,100000,index-ordered,capture,STORE,L2 hit,6
+2,split-line-translated,100000,index-ordered,capture,STORE,N/A,1
+2,split-line-translated,100000,index-ordered,rank_validate,LOAD,L1 hit,139
+2,split-line-translated,100000,index-ordered,rank_validate,STORE,L1 hit,76
+2,split-line-translated,100000,index-ordered,rank_validate,STORE,L2 hit,9
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,L1 hit,35
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,RAM hit,4
+2,split-line-translated,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",1
+2,split-line-translated,100000,index-ordered,rank_insert,STORE,L1 hit,12
+2,split-line-translated,100000,index-ordered,rank_insert,STORE,N/A,11
+2,split-line-translated,100000,index-ordered,dense_commit,LOAD,L1 hit,71
+2,split-line-translated,100000,index-ordered,dense_commit,LOAD,RAM hit,1
+2,split-line-translated,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",4
+2,split-line-translated,100000,index-ordered,dense_commit,STORE,L1 hit,30
+2,split-line-translated,100000,index-ordered,topology_commit,LOAD,L1 hit,91
+2,split-line-translated,100000,index-ordered,topology_commit,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,topology_commit,STORE,L1 hit,89
+2,split-line-translated,100000,index-ordered,topology_commit,STORE,L2 hit,3
+2,split-line-translated,100000,index-ordered,partition_total,LOAD,L1 hit,583
+2,split-line-translated,100000,index-ordered,partition_total,LOAD,L2 hit,18
+2,split-line-translated,100000,index-ordered,partition_total,LOAD,"core, same node Any cache hit",10
+2,split-line-translated,100000,index-ordered,partition_total,STORE,L1 hit,178
+2,split-line-translated,100000,index-ordered,partition_total,STORE,L2 hit,5
+2,split-line-translated,100000,index-ordered,build_total,LOAD,L1 hit,1005
+2,split-line-translated,100000,index-ordered,build_total,LOAD,L2 hit,27
+2,split-line-translated,100000,index-ordered,build_total,LOAD,RAM hit,6
+2,split-line-translated,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",15
+2,split-line-translated,100000,index-ordered,build_total,STORE,L1 hit,468
+2,split-line-translated,100000,index-ordered,build_total,STORE,L2 hit,23
+2,split-line-translated,100000,index-ordered,build_total,STORE,N/A,23
+2,uniform,100000,index-ordered,permutation_seed,STORE,L1 hit,2
+2,uniform,100000,index-ordered,gather_classify,LOAD,L1 hit,401
+2,uniform,100000,index-ordered,gather_classify,LOAD,L2 hit,17
+2,uniform,100000,index-ordered,gather_classify,LOAD,"core, same node Any cache hit",9
+2,uniform,100000,index-ordered,gather_classify,STORE,L1 hit,39
+2,uniform,100000,index-ordered,gather_classify,STORE,L2 hit,3
+2,uniform,100000,index-ordered,stable_scatter,LOAD,L1 hit,138
+2,uniform,100000,index-ordered,stable_scatter,STORE,L1 hit,83
+2,uniform,100000,index-ordered,finish_copy,STORE,L1 hit,1
+2,uniform,100000,index-ordered,plan_other,LOAD,L1 hit,77
+2,uniform,100000,index-ordered,plan_other,STORE,L1 hit,52
+2,uniform,100000,index-ordered,plan_other,STORE,L2 hit,2
+2,uniform,100000,index-ordered,adapter,LOAD,L1 hit,20
+2,uniform,100000,index-ordered,adapter,STORE,L1 hit,16
+2,uniform,100000,index-ordered,adapter,STORE,L2 hit,2
+2,uniform,100000,index-ordered,adapter,STORE,N/A,16
+2,uniform,100000,index-ordered,capture,LOAD,L1 hit,75
+2,uniform,100000,index-ordered,capture,LOAD,L2 hit,12
+2,uniform,100000,index-ordered,capture,LOAD,RAM hit,4
+2,uniform,100000,index-ordered,capture,STORE,L1 hit,70
+2,uniform,100000,index-ordered,capture,STORE,L2 hit,6
+2,uniform,100000,index-ordered,capture,STORE,N/A,1
+2,uniform,100000,index-ordered,rank_validate,LOAD,L1 hit,158
+2,uniform,100000,index-ordered,rank_validate,STORE,L1 hit,76
+2,uniform,100000,index-ordered,rank_validate,STORE,L2 hit,8
+2,uniform,100000,index-ordered,rank_insert,LOAD,L1 hit,37
+2,uniform,100000,index-ordered,rank_insert,LOAD,RAM hit,4
+2,uniform,100000,index-ordered,rank_insert,LOAD,"core, same node Any cache hit",4
+2,uniform,100000,index-ordered,rank_insert,STORE,L1 hit,18
+2,uniform,100000,index-ordered,rank_insert,STORE,L2 hit,1
+2,uniform,100000,index-ordered,rank_insert,STORE,N/A,7
+2,uniform,100000,index-ordered,dense_commit,LOAD,L1 hit,74
+2,uniform,100000,index-ordered,dense_commit,LOAD,RAM hit,2
+2,uniform,100000,index-ordered,dense_commit,LOAD,"core, same node Any cache hit",5
+2,uniform,100000,index-ordered,dense_commit,STORE,L1 hit,57
+2,uniform,100000,index-ordered,topology_commit,LOAD,L1 hit,107
+2,uniform,100000,index-ordered,topology_commit,LOAD,L2 hit,1
+2,uniform,100000,index-ordered,topology_commit,STORE,L1 hit,88
+2,uniform,100000,index-ordered,topology_commit,STORE,L2 hit,1
+2,uniform,100000,index-ordered,partition_total,LOAD,L1 hit,616
+2,uniform,100000,index-ordered,partition_total,LOAD,L2 hit,17
+2,uniform,100000,index-ordered,partition_total,LOAD,"core, same node Any cache hit",9
+2,uniform,100000,index-ordered,partition_total,STORE,L1 hit,177
+2,uniform,100000,index-ordered,partition_total,STORE,L2 hit,5
+2,uniform,100000,index-ordered,build_total,LOAD,L1 hit,1087
+2,uniform,100000,index-ordered,build_total,LOAD,L2 hit,30
+2,uniform,100000,index-ordered,build_total,LOAD,RAM hit,10
+2,uniform,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",18
+2,uniform,100000,index-ordered,build_total,STORE,L1 hit,502
+2,uniform,100000,index-ordered,build_total,STORE,L2 hit,23
+2,uniform,100000,index-ordered,build_total,STORE,N/A,24
+2,split-line-translated,100000,index,permutation_seed,STORE,L1 hit,1
+2,split-line-translated,100000,index,permutation_seed,STORE,N/A,1
+2,split-line-translated,100000,index,gather_classify,LOAD,L1 hit,1360
+2,split-line-translated,100000,index,gather_classify,LOAD,L2 hit,42
+2,split-line-translated,100000,index,gather_classify,LOAD,RAM hit,2
+2,split-line-translated,100000,index,gather_classify,LOAD,"core, same node Any cache hit",22
+2,split-line-translated,100000,index,gather_classify,STORE,L1 hit,141
+2,split-line-translated,100000,index,gather_classify,STORE,L2 hit,4
+2,split-line-translated,100000,index,stable_scatter,LOAD,L1 hit,406
+2,split-line-translated,100000,index,stable_scatter,LOAD,L2 hit,6
+2,split-line-translated,100000,index,stable_scatter,STORE,L1 hit,296
+2,split-line-translated,100000,index,stable_scatter,STORE,L2 hit,11
+2,split-line-translated,100000,index,stable_scatter,STORE,N/A,2
+2,split-line-translated,100000,index,finish_copy,STORE,L1 hit,1
+2,split-line-translated,100000,index,plan_other,LOAD,L1 hit,227
+2,split-line-translated,100000,index,plan_other,LOAD,L2 hit,4
+2,split-line-translated,100000,index,plan_other,STORE,L1 hit,175
+2,split-line-translated,100000,index,plan_other,STORE,L2 hit,2
+2,split-line-translated,100000,index,adapter,LOAD,L1 hit,57
+2,split-line-translated,100000,index,adapter,LOAD,L2 hit,1
+2,split-line-translated,100000,index,adapter,STORE,L1 hit,66
+2,split-line-translated,100000,index,adapter,STORE,L2 hit,1
+2,split-line-translated,100000,index,adapter,STORE,N/A,42
+2,split-line-translated,100000,index,capture,LOAD,L1 hit,218
+2,split-line-translated,100000,index,capture,LOAD,L2 hit,2
+2,split-line-translated,100000,index,capture,LOAD,RAM hit,5
+2,split-line-translated,100000,index,capture,STORE,L1 hit,168
+2,split-line-translated,100000,index,dense_commit,LOAD,L1 hit,374
+2,split-line-translated,100000,index,dense_commit,LOAD,L2 hit,12
+2,split-line-translated,100000,index,dense_commit,LOAD,RAM hit,22
+2,split-line-translated,100000,index,dense_commit,LOAD,"core, same node Any cache hit",34
+2,split-line-translated,100000,index,dense_commit,STORE,L1 hit,148
+2,split-line-translated,100000,index,dense_commit,STORE,L2 hit,2
+2,split-line-translated,100000,index,topology_commit,LOAD,L1 hit,339
+2,split-line-translated,100000,index,topology_commit,LOAD,L2 hit,1
+2,split-line-translated,100000,index,topology_commit,STORE,L1 hit,297
+2,split-line-translated,100000,index,topology_commit,STORE,N/A,1
+2,split-line-translated,100000,index,partition_total,LOAD,L1 hit,1993
+2,split-line-translated,100000,index,partition_total,LOAD,L2 hit,52
+2,split-line-translated,100000,index,partition_total,LOAD,RAM hit,2
+2,split-line-translated,100000,index,partition_total,LOAD,"core, same node Any cache hit",22
+2,split-line-translated,100000,index,partition_total,STORE,L1 hit,614
+2,split-line-translated,100000,index,partition_total,STORE,L2 hit,17
+2,split-line-translated,100000,index,partition_total,STORE,N/A,3
+2,split-line-translated,100000,index,build_total,LOAD,L1 hit,2981
+2,split-line-translated,100000,index,build_total,LOAD,L2 hit,68
+2,split-line-translated,100000,index,build_total,LOAD,RAM hit,29
+2,split-line-translated,100000,index,build_total,LOAD,"core, same node Any cache hit",56
+2,split-line-translated,100000,index,build_total,STORE,L1 hit,1293
+2,split-line-translated,100000,index,build_total,STORE,L2 hit,20
+2,split-line-translated,100000,index,build_total,STORE,N/A,46
+2,uniform,100000,index,permutation_seed,STORE,N/A,1
+2,uniform,100000,index,gather_classify,LOAD,L1 hit,1201
+2,uniform,100000,index,gather_classify,LOAD,L2 hit,59
+2,uniform,100000,index,gather_classify,LOAD,RAM hit,1
+2,uniform,100000,index,gather_classify,LOAD,"core, same node Any cache hit",21
+2,uniform,100000,index,gather_classify,STORE,L1 hit,125
+2,uniform,100000,index,gather_classify,STORE,L2 hit,1
+2,uniform,100000,index,stable_scatter,LOAD,L1 hit,388
+2,uniform,100000,index,stable_scatter,LOAD,L2 hit,1
+2,uniform,100000,index,stable_scatter,STORE,L1 hit,281
+2,uniform,100000,index,stable_scatter,STORE,L2 hit,1
+2,uniform,100000,index,finish_copy,STORE,L1 hit,4
+2,uniform,100000,index,plan_other,LOAD,L1 hit,225
+2,uniform,100000,index,plan_other,LOAD,"core, same node Any cache hit",1
+2,uniform,100000,index,plan_other,STORE,L1 hit,149
+2,uniform,100000,index,plan_other,STORE,L2 hit,2
+2,uniform,100000,index,adapter,LOAD,L1 hit,60
+2,uniform,100000,index,adapter,STORE,L1 hit,86
+2,uniform,100000,index,adapter,STORE,L2 hit,8
+2,uniform,100000,index,adapter,STORE,N/A,25
+2,uniform,100000,index,capture,LOAD,L1 hit,235
+2,uniform,100000,index,capture,LOAD,RAM hit,8
+2,uniform,100000,index,capture,STORE,L1 hit,198
+2,uniform,100000,index,capture,STORE,N/A,1
+2,uniform,100000,index,dense_commit,LOAD,L1 hit,371
+2,uniform,100000,index,dense_commit,LOAD,L2 hit,9
+2,uniform,100000,index,dense_commit,LOAD,RAM hit,19
+2,uniform,100000,index,dense_commit,LOAD,"core, same node Any cache hit",47
+2,uniform,100000,index,dense_commit,STORE,L1 hit,134
+2,uniform,100000,index,dense_commit,STORE,N/A,1
+2,uniform,100000,index,topology_commit,LOAD,L1 hit,346
+2,uniform,100000,index,topology_commit,LOAD,L2 hit,4
+2,uniform,100000,index,topology_commit,STORE,L1 hit,246
+2,uniform,100000,index,topology_commit,STORE,L2 hit,1
+2,uniform,100000,index,partition_total,LOAD,L1 hit,1814
+2,uniform,100000,index,partition_total,LOAD,L2 hit,60
+2,uniform,100000,index,partition_total,LOAD,RAM hit,1
+2,uniform,100000,index,partition_total,LOAD,"core, same node Any cache hit",22
+2,uniform,100000,index,partition_total,STORE,L1 hit,559
+2,uniform,100000,index,partition_total,STORE,L2 hit,4
+2,uniform,100000,index,partition_total,STORE,N/A,1
+2,uniform,100000,index,build_total,LOAD,L1 hit,2826
+2,uniform,100000,index,build_total,LOAD,L2 hit,73
+2,uniform,100000,index,build_total,LOAD,RAM hit,28
+2,uniform,100000,index,build_total,LOAD,"core, same node Any cache hit",69
+2,uniform,100000,index,build_total,STORE,L1 hit,1223
+2,uniform,100000,index,build_total,STORE,L2 hit,13
+2,uniform,100000,index,build_total,STORE,N/A,28

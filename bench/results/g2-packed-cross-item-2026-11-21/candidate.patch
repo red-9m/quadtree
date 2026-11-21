@@ -1,0 +1,77 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -4,6 +4,9 @@
+ #include <numeric>
+ #include <ranges>
+ #include <span>
++#if defined(__SSE2__)
++#include <emmintrin.h>
++#endif
+ 
+ #include "../quadtree-index.h"
+ 
+@@ -2771,7 +2774,29 @@
+             std::swap(a, b);
+     }
+ 
+-    template<typename Predicate>
++    static bool packedCrossItemOverlap(const Box<T>& a, const Box<T>& b, Boundary boundary) noexcept
++    {
++#if defined(__SSE2__)
++        if constexpr (std::same_as<T, std::int32_t>)
++        {
++            static_assert(sizeof(Box<T>) == sizeof(__m128i) && offsetof(Box<T>, minX) == 0 &&
++                offsetof(Box<T>, minY) == 4 && offsetof(Box<T>, maxX) == 8 && offsetof(Box<T>, maxY) == 12);
++            __m128i left, right;
++            std::memcpy(&left, &a, sizeof(left));
++            std::memcpy(&right, &b, sizeof(right));
++            const auto lo = _mm_unpacklo_epi64(left, right);
++            const auto hi = _mm_unpackhi_epi64(right, left);
++            if (_mm_movemask_epi8(_mm_cmpgt_epi32(lo, hi)) != 0)
++                return false;
++            // No opposing endpoints are equal on a strict hit. Only contact needs the mode.
++            return _mm_movemask_epi8(_mm_cmpeq_epi32(lo, hi)) == 0 || boundary == Boundary::TouchInclusive ||
++                a.minX == a.maxX || a.minY == a.maxY || b.minX == b.maxX || b.minY == b.maxY;
++        }
++#endif
++        return detail::overlaps(a, b, boundary);
++    }
++
++    template<bool PackedCross = false, typename Predicate>
+     bool pairQualifies(std::uint32_t a, std::uint32_t b, bool ordered, Context& context, Predicate& predicate) const noexcept
+     {
+         if (!detail::compatible(mEntries.mMeta[a].filter, mEntries.mMeta[b].filter))
+@@ -2779,7 +2804,9 @@
+             context.filtered();
+             return false;
+         }
+-        if (!context.candidate() || !detail::overlaps(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary))
++        if (!context.candidate() || !(PackedCross && std::same_as<Predicate, detail::AcceptAll> ?
++            packedCrossItemOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary) :
++            detail::overlaps(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary)))
+             return false;
+         if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
+         {
+@@ -2799,11 +2826,11 @@
+         context.report(std::invoke(visitor, left, right));
+     }
+ 
+-    template<typename Visitor, typename Predicate>
++    template<bool PackedCross = false, typename Visitor, typename Predicate>
+     void testPair(std::uint32_t a, std::uint32_t b, bool ordered, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+     {
+-        if (pairQualifies(a, b, ordered, context, predicate))
++        if (pairQualifies<PackedCross>(a, b, ordered, context, predicate))
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
+@@ -3109,7 +3136,7 @@
+         }
+         for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+             for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+-                testPair(i, j, false, context, visitor, predicate);
++                testPair<true>(i, j, false, context, visitor, predicate);
+         if (right.firstChild != none)
+             for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+                 itemsVsSubtree(a, right.firstChild + q, context, visitor, predicate);

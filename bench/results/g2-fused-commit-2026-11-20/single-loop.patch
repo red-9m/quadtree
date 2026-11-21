@@ -1,0 +1,191 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1876,17 +1876,41 @@
+         node.itemSummary = summary;
+     }
+ 
+-    void materializeBulk(std::uint32_t n, const Key*& plan, bool splitNode, std::uint32_t begin,
+-        std::uint32_t end) noexcept
++    template<typename Commit>
++    void commitBulkItems(std::uint32_t n, std::uint32_t begin, std::uint32_t end, Commit& commit) noexcept
+     {
++        if (begin == end)
++            return;
++        constexpr auto low = std::numeric_limits<T>::lowest(), high = std::numeric_limits<T>::max();
++        Box<T> bounds{high, high, low, low}; // Identity for an integer box union.
++        Filter summary{0, 0};
++        auto previous = none;
++        for (auto i = begin; i < end; ++i)
++        {
++            commit(i, bounds, summary);
++            mReferences[i] = {n, previous, i + 1 == end ? none : i + 1};
++            previous = i;
++        }
++        auto& node = mNodes[n];
++        node.head = begin;
++        node.ownCount = end - begin;
++        node.itemBounds = bounds;
++        node.itemSummary = summary;
++    }
++
++    template<typename Commit>
++    void materializeBulk(std::uint32_t n, std::uint32_t& nextNode, const Key*& plan, bool splitNode,
++        std::uint32_t begin, std::uint32_t end, Commit& commit) noexcept
++    {
++        const auto ownEnd = splitNode ? static_cast<std::uint32_t>(plan->hi >> 32) : end;
++        commitBulkItems(n, begin, ownEnd, commit);
+         if (splitNode)
+         {
+             const auto& info = *plan++;
+-            const std::uint32_t edges[5]{static_cast<std::uint32_t>(info.hi >> 32),
+-                static_cast<std::uint32_t>(info.hi), static_cast<std::uint32_t>(info.lo >> 32),
+-                static_cast<std::uint32_t>(info.lo), end};
+-            buildDenseItems(n, begin, edges[0]);
+-            const auto base = takeBlock();
++            const std::uint32_t edges[5]{ownEnd, static_cast<std::uint32_t>(info.hi),
++                static_cast<std::uint32_t>(info.lo >> 32), static_cast<std::uint32_t>(info.lo), end};
++            const auto base = nextNode;
++            nextNode += 4;
+             mNodes[n].firstChild = base;
+             const detail::Split<T> split(mNodes[n].cell);
+             for (std::uint32_t q = 0; q < 4; ++q)
+@@ -1896,15 +1920,12 @@
+                 node.parent = n;
+                 node.depth = static_cast<std::uint8_t>(mNodes[n].depth + 1);
+                 mNodes[base + q] = node;
+-                materializeBulk(base + q, plan, (info.level & (1u << q)) != 0, edges[q], edges[q + 1]);
++                materializeBulk(base + q, nextNode, plan, (info.level & (1u << q)) != 0,
++                    edges[q], edges[q + 1], commit);
+             }
+         }
+-        else
+-        {
+-            buildDenseItems(n, begin, end);
+-            if (mNodes[n].ownCount > mConfig.splitThreshold)
+-                mNodes[n].splitRetry = std::max<std::uint32_t>(1, mNodes[n].ownCount / 2);
+-        }
++        else if (mNodes[n].ownCount > mConfig.splitThreshold)
++            mNodes[n].splitRetry = std::max<std::uint32_t>(1, mNodes[n].ownCount / 2);
+         refit(n);
+     }
+ 
+@@ -2297,10 +2318,6 @@
+                     return Status::CapacityExhausted;
+             }
+         }
+-        const auto spatialEntry = [&](std::size_t dense) noexcept
+-        {
+-            return bulk_order ? bulk_order[dense] : scratch->mKeys[dense].entry;
+-        };
+         const Status storage = prepareReplacement(count, ranked, node_count);
+         if (storage != Status::Ok)
+             return storage;
+@@ -2329,7 +2346,21 @@
+                 return Status::Ok;
+             }
+         }
+-        for (i = 0; i < count; ++i)
++        const auto commitEntry = [&](std::uint32_t dense, std::uint32_t input, const Box<T>& box,
++            const detail::Descriptor& descriptor) noexcept
++        {
++            constructBuildEntry<Consume>(dense, box, descriptor, descriptor.rank.has_value());
++            ++mEntries.mSize;
++            ++mEntries.mSlotsUsed;
++            if (descriptor.rank)
++            {
++                mEntries.insertRank(*descriptor.rank);
++                ++mEntries.mRankCount;
++            }
++            if (handles)
++                (*handles)[input] = detail::HandleAccess::make<Store>(owner, dense, 0);
++        };
++        const auto prefetchEntry = [&](std::size_t dense, auto spatialEntry) noexcept
+         {
+ #if defined(__GNUC__) || defined(__clang__)
+             if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&
+@@ -2339,44 +2370,60 @@
+                 {
+                     // Start the indexed descriptor fetch before the dependent payload fetch.
+                     constexpr std::size_t descriptorAhead = 32, payloadAhead = 16;
+-                    if (count - i > descriptorAhead)
++                    if (count - dense > descriptorAhead)
+                     {
+-                        const auto future = spatialEntry(i + descriptorAhead);
++                        const auto future = spatialEntry(dense + descriptorAhead);
+                         __builtin_prefetch(&boxes[future], 0, 3);
+                         __builtin_prefetch(&descriptors[future], 0, 3);
+                         __builtin_prefetch(&descriptors[future].payload, 0, 3);
+                     }
+-                    if (count - i > payloadAhead)
+-                        __builtin_prefetch(descriptors[spatialEntry(i + payloadAhead)].payload, 0, 3);
++                    if (count - dense > payloadAhead)
++                        __builtin_prefetch(descriptors[spatialEntry(dense + payloadAhead)].payload, 0, 3);
+                 }
+             }
+ #endif
+-            // Spatially sorted dense entries keep snapshot geometry contiguous.
+-            const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : spatialEntry(i);
+-            const auto& descriptor = descriptors[input];
+-            const auto dense = static_cast<std::uint32_t>(i);
+-            constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
+-            ++mEntries.mSize;
+-            ++mEntries.mSlotsUsed;
+-            if (descriptor.rank)
++            (void)dense;
++            (void)spatialEntry;
++        };
++        if constexpr (std::same_as<T, std::int32_t>)
++        {
++            if (bulk_order)
+             {
+-                mEntries.insertRank(*descriptor.rank);
+-                ++mEntries.mRankCount;
++                const auto spatialEntry = [bulk_order](std::size_t dense) noexcept { return bulk_order[dense]; };
++                const auto commit = [&](std::uint32_t dense, Box<T>& bounds, Filter& summary) noexcept
++                {
++                    prefetchEntry(dense, spatialEntry);
++                    const auto input = spatialEntry(dense);
++                    const auto box = boxes[input];
++                    const auto& descriptor = descriptors[input];
++                    const auto filter = descriptor.filter;
++                    commitEntry(dense, input, box, descriptor);
++                    bounds = detail::unite(bounds, box);
++                    summary.category |= filter.category;
++                    summary.mask |= filter.mask;
++                };
++                // The plan visits parent own entries before children in dense order.
++                // Publish topology only after every payload has been constructed.
++                mNodes[0] = Node{};
++                mNodes[0].cell = Cell{*next_extent};
++                std::uint32_t nextNode = 1;
++                const Key* plan = scratch->mKeys.data();
++                materializeBulk(0, nextNode, plan, node_count != 1, 0, static_cast<std::uint32_t>(count), commit);
++                mNodeUsed = nextNode;
++                mActiveNodes = nextNode;
++                mRoot = 0;
++                return Status::Ok;
+             }
+-            if (handles)
+-                (*handles)[input] = detail::HandleAccess::make<Store>(owner, dense, 0);
+         }
+-        if (bulk_order)
++        const auto spatialEntry = [&](std::size_t dense) noexcept { return scratch->mKeys[dense].entry; };
++        for (i = 0; i < count; ++i)
+         {
+-            mRoot = 0;
+-            mNodeUsed = 1;
+-            mActiveNodes = 1;
+-            mNodes[0] = Node{};
+-            mNodes[0].cell = Cell{*next_extent};
+-            const Key* plan = scratch->mKeys.data();
+-            materializeBulk(0, plan, node_count != 1, 0, static_cast<std::uint32_t>(count));
++            prefetchEntry(i, spatialEntry);
++            const auto dense = static_cast<std::uint32_t>(i);
++            const auto input = node_count == 0 ? dense : spatialEntry(i);
++            commitEntry(dense, input, boxes[input], descriptors[input]);
+         }
+-        else if (node_count != 0)
++        if (node_count != 0)
+             rebuild<true>(scratch->mKeys.data(), count, Cell{*next_extent});
+         return Status::Ok;
+     }

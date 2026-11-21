@@ -1,0 +1,430 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -223,6 +223,66 @@
+     }
+ }
+ 
++// Bounded stack, no allocation; equal keys need not be stable.
++template<typename U, typename Less>
++void introPartition(U* data, std::size_t count, Less less, unsigned depth) noexcept
++{
++    while (count > 16)
++    {
++        if (depth == 0)
++        {
++            heapSort(data, count, less);
++            return;
++        }
++        --depth;
++        const U pivot = data[count / 2];
++        std::size_t left = 0, right = count;
++        do
++        {
++            while (left < right && less(data[left], pivot)) ++left;
++            while (left < right && less(pivot, data[right - 1])) --right;
++            if (left == right) break;
++            std::swap(data[left++], data[--right]);
++        } while (left < right);
++        if (left == 0 || left == count)
++        {
++            heapSort(data, count, less);
++            return;
++        }
++        if (left < count - left)
++        {
++            introPartition(data, left, less, depth);
++            data += left;
++            count -= left;
++        }
++        else
++        {
++            introPartition(data + left, count - left, less, depth);
++            count = left;
++        }
++    }
++    for (std::size_t i = 1; i < count; ++i)
++    {
++        U value = data[i];
++        std::size_t j = i;
++        while (j != 0 && less(value, data[j - 1]))
++        {
++            data[j] = data[j - 1];
++            --j;
++        }
++        data[j] = value;
++    }
++}
++
++template<typename U, typename Less>
++void rankSort(U* data, std::size_t count, Less less) noexcept
++{
++    unsigned depth = 0;
++    for (std::size_t n = count; n > 1; n >>= 1)
++        depth += 2;
++    introPartition(data, count, less, depth);
++}
++
+ // Stable LSD radix sort on (hi, lo, level); equal keys retain input order.
+ inline void radixSort(SpatialKey* keys, SpatialKey* temp, std::size_t count) noexcept
+ {
+@@ -1347,6 +1407,54 @@
+         return key;
+     }
+ 
++    Key makeBuildKey(const Cell& cell, std::uint32_t input, const Box<T>& box) const noexcept
++    {
++        if constexpr (!IntegerCoordinate<T>)
++            return makeKey(cell, 0, input, box);
++        else
++        {
++            // All build entries are contained in the root. Store the center
++            // relative to the cell's low edge, and halve the unsigned span.
++            using U = std::make_unsigned_t<T>;
++            const U width = detail::span(box.minX, box.maxX);
++            const U height = detail::span(box.minY, box.maxY);
++            U x = detail::span(cell.box.minX, box.minX) + width / 2;
++            U y = detail::span(cell.box.minY, box.minY) + height / 2;
++            U w = detail::span(cell.box.minX, cell.box.maxX);
++            U h = detail::span(cell.box.minY, cell.box.maxY);
++            Key key{0, 0, 0, input};
++            while (key.level < mConfig.maxDepth)
++            {
++                const U mx = w / 2, my = h / 2;
++                if ((mx | my) == 0 || width > (mx != 0 ? mx : w) || height > (my != 0 ? my : h))
++                    break;
++                std::uint32_t q = 0;
++                if (mx != 0)
++                {
++                    if (x >= mx) { q = 1; x -= mx; w -= mx; }
++                    else w = mx;
++                }
++                if (my != 0)
++                {
++                    if (y >= my) { q |= 2; y -= my; h -= my; }
++                    else h = my;
++                }
++                if constexpr (sizeof(T) <= 4)
++                    key.hi = (key.hi << 2) | q;
++                else if (key.level < 32)
++                    key.hi = (key.hi << 2) | q;
++                else
++                    key.lo = (key.lo << 2) | q;
++                ++key.level;
++            }
++            if (key.level != 0 && key.level < 32)
++                key.hi <<= 64 - 2 * key.level;
++            if (key.level > 32 && key.level < 64)
++                key.lo <<= 128 - 2 * key.level;
++            return key;
++        }
++    }
++
+     static std::uint32_t digit(const Key& key, std::uint32_t level) noexcept
+     {
+         return static_cast<std::uint32_t>(level < 32 ? (key.hi >> (62 - 2 * level)) & 3u :
+@@ -1407,6 +1515,97 @@
+         return count;
+     }
+ 
++    // Top-down bulk plan for int32. Alternate stable permutations between
++    // the two existing key arrays. Only internal nodes need plan records;
++    // their bounds/masks occupy fields not used by the entry permutations.
++    bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
++        const detail::Descriptor<T>* entries, Key* src, Key* dst, Key* keys, Key* tags,
++        std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
++        requires std::same_as<T, std::int32_t>
++    {
++        const auto finish = [&]() noexcept
++        {
++            if (src != keys)
++                for (auto i = begin; i < end; ++i)
++                    keys[i].entry = src[i].entry;
++            return false;
++        };
++        if (end - begin <= mConfig.splitThreshold || depth == mConfig.maxDepth)
++            return finish();
++        const detail::Split<T> split(cell);
++        if (!split.progress())
++            return finish();
++        const auto w = detail::span(cell.box.minX, cell.box.maxX);
++        const auto h = detail::span(cell.box.minY, cell.box.maxY);
++        const auto fits_width = split.splitX ? w / 2 : w;
++        const auto fits_height = split.splitY ? h / 2 : h;
++        std::uint32_t count[5]{};
++        for (auto i = begin; i < end; ++i)
++        {
++            const auto& box = entries[src[i].entry].box;
++            const auto width = detail::span(box.minX, box.maxX);
++            const auto height = detail::span(box.minY, box.maxY);
++            std::uint32_t b = 0;
++            if (width <= fits_width && height <= fits_height)
++            {
++                const auto x = box.minX + static_cast<T>(width / 2);
++                const auto y = box.minY + static_cast<T>(height / 2);
++                b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
++                    (split.splitY && y >= split.y ? 2u : 0u));
++            }
++            tags[i].level = b;
++            ++count[b];
++        }
++        const auto movable = end - begin - count[0];
++        if (movable <= mConfig.splitThreshold)
++            return finish();
++        if (count[1] == movable || count[2] == movable || count[3] == movable || count[4] == movable)
++        {
++            // A single occupied quadrant can still split lower down. Match
++            // cut()'s padded-prefix equality test without generating keys
++            // for groups that already diverge at this level.
++            Key first{};
++            bool seen = false, distinct = false;
++            for (auto i = begin; i < end; ++i)
++            {
++                if (tags[i].level == 0)
++                    continue;
++                const auto key = makeKey(cell, depth, 0, entries[src[i].entry].box);
++                if (!seen) { first = key; seen = true; }
++                else if (first.hi != key.hi || first.lo != key.lo) { distinct = true; break; }
++            }
++            if (!distinct)
++                return finish();
++        }
++        if (plans == planCapacity)
++        {
++            overflow = true;
++            return false;
++        }
++        const auto plan = plans++;
++        const std::uint32_t edges[5]{begin + count[0], begin + count[0] + count[1],
++            begin + count[0] + count[1] + count[2], end - count[4], end};
++        std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};
++        for (auto i = begin; i < end; ++i)
++            dst[next[tags[i].level]++].entry = src[i].entry;
++        if (dst != keys)
++            for (auto i = begin; i < edges[0]; ++i)
++                keys[i].entry = dst[i].entry;
++        std::uint32_t children = 0;
++        for (std::uint32_t q = 0; q < 4; ++q)
++        {
++            if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], entries,
++                dst, src, keys, tags, planCapacity, plans, overflow))
++                children |= 1u << q;
++            if (overflow)
++                return false;
++        }
++        keys[plan].hi = (std::uint64_t(edges[0]) << 32) | edges[1];
++        keys[plan].lo = (std::uint64_t(edges[2]) << 32) | edges[3];
++        keys[plan].level = children;
++        return true;
++    }
++
+     void resetTopology() noexcept
+     {
+         mRoot = none;
+@@ -1581,12 +1780,69 @@
+             refit(n, false);
+     }
+ 
++    void buildDenseItems(std::uint32_t n, std::uint32_t begin, std::uint32_t end) noexcept
++    {
++        if (begin == end)
++            return;
++        auto& node = mNodes[n];
++        auto bounds = mEntries.mBoxes[begin];
++        Filter summary{0, 0};
++        for (auto i = begin; i < end; ++i)
++        {
++            mReferences[i] = {n, i == begin ? none : i - 1, i + 1 == end ? none : i + 1};
++            bounds = detail::unite(bounds, mEntries.mBoxes[i]);
++            const auto filter = mEntries.mMeta[i].filter;
++            summary.category |= filter.category;
++            summary.mask |= filter.mask;
++        }
++        node.head = begin;
++        node.ownCount = end - begin;
++        node.itemBounds = bounds;
++        node.itemSummary = summary;
++    }
++
++    void materializeBulk(std::uint32_t n, const Key*& plan, bool splitNode, std::uint32_t begin,
++        std::uint32_t end) noexcept
++    {
++        if (splitNode)
++        {
++            const auto& info = *plan++;
++            const std::uint32_t edges[5]{static_cast<std::uint32_t>(info.hi >> 32),
++                static_cast<std::uint32_t>(info.hi), static_cast<std::uint32_t>(info.lo >> 32),
++                static_cast<std::uint32_t>(info.lo), end};
++            buildDenseItems(n, begin, edges[0]);
++            const auto base = takeBlock();
++            mNodes[n].firstChild = base;
++            const detail::Split<T> split(mNodes[n].cell);
++            for (std::uint32_t q = 0; q < 4; ++q)
++            {
++                Node node;
++                node.cell = split.child(mNodes[n].cell, q);
++                node.parent = n;
++                node.depth = static_cast<std::uint8_t>(mNodes[n].depth + 1);
++                mNodes[base + q] = node;
++                materializeBulk(base + q, plan, (info.level & (1u << q)) != 0, edges[q], edges[q + 1]);
++            }
++        }
++        else
++        {
++            buildDenseItems(n, begin, end);
++            if (mNodes[n].ownCount > mConfig.splitThreshold)
++                mNodes[n].splitRetry = std::max<std::uint32_t>(1, mNodes[n].ownCount / 2);
++        }
++        refit(n);
++    }
++
++    template<bool DenseBuild = false>
+     void materialize(std::uint32_t n, const Key* keys, std::size_t begin, std::size_t end,
+         std::uint32_t level) noexcept
+     {
+         const Cut ranges = cut(keys, begin, end, level);
+-        for (std::size_t i = ranges.own; i != begin;)
+-            link(n, keys[--i].entry);
++        if constexpr (DenseBuild)
++            buildDenseItems(n, static_cast<std::uint32_t>(begin), static_cast<std::uint32_t>(ranges.own));
++        else
++            for (std::size_t i = ranges.own; i != begin;)
++                link(n, keys[--i].entry);
+         if (ranges.split)
+         {
+             const std::uint32_t first = takeBlock();
+@@ -1599,7 +1855,7 @@
+                 node.parent = n;
+                 node.depth = static_cast<std::uint8_t>(mNodes[n].depth + 1);
+                 mNodes[first + q] = node;
+-                materialize(first + q, keys, ranges.bound[q], ranges.bound[q + 1], level + 1);
++                materialize<DenseBuild>(first + q, keys, ranges.bound[q], ranges.bound[q + 1], level + 1);
+             }
+         }
+         else if (mNodes[n].ownCount > mConfig.splitThreshold)
+@@ -1607,6 +1863,7 @@
+         refit(n);
+     }
+ 
++    template<bool DenseBuild = false>
+     void rebuild(const Key* keys, std::size_t count, const Cell& cell) noexcept
+     {
+         resetTopology();
+@@ -1615,7 +1872,7 @@
+         mActiveNodes = 1;
+         mNodes[0] = Node{};
+         mNodes[0].cell = cell;
+-        materialize(0, keys, 0, count, 0);
++        materialize<DenseBuild>(0, keys, 0, count, 0);
+     }
+ 
+     std::uint32_t destination(const Box<T>& box) const noexcept
+@@ -1927,22 +2184,43 @@
+         // Independent preparation: no payload moves, topology mutation, or output writes.
+         if (ranked > 1)
+         {
+-            detail::heapSort(scratch->mKeys.data(), ranked, [](const Key& a, const Key& b) noexcept
++            detail::rankSort(scratch->mKeys.data(), ranked, [](const Key& a, const Key& b) noexcept
+                 { return a.hi < b.hi; });
+             for (i = 1; i < ranked; ++i)
+                 if (scratch->mKeys[i - 1].hi == scratch->mKeys[i].hi)
+                     return Status::DuplicateRank;
+         }
+         std::size_t node_count = 0;
++        bool top_down = false;
+         if (count > mConfig.smallSetThreshold)
+         {
+             const Cell cell{*next_extent};
+-            for (i = 0; i < count; ++i)
+-                scratch->mKeys[i] = makeKey(cell, 0, static_cast<std::uint32_t>(i), scratch->mDescriptors[i].box);
+-            detail::radixSort(scratch->mKeys.data(), scratch->mTemp.data(), count);
+-            node_count = countNodes(scratch->mKeys.data(), 0, count, 0);
+-            if (node_count > mConfig.maxNodes)
+-                return Status::CapacityExhausted;
++            if constexpr (std::same_as<T, std::int32_t>)
++            {
++                auto* keys = scratch->mKeys.data();
++                auto* temp = scratch->mTemp.data();
++                for (i = 0; i < count; ++i)
++                    keys[i].entry = static_cast<std::uint32_t>(i);
++                const auto nodeLimit = (mConfig.maxNodes - 1) / 4;
++                std::size_t plans = 0;
++                bool overflow = false;
++                planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), scratch->mDescriptors.data(), keys, temp,
++                    keys, temp, std::min(count, nodeLimit), plans, overflow);
++                if (overflow && plans == nodeLimit)
++                    return Status::CapacityExhausted;
++                top_down = !overflow;
++                if (top_down)
++                    node_count = 1 + 4 * plans;
++            }
++            if (!top_down)
++            {
++                for (i = 0; i < count; ++i)
++                    scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), scratch->mDescriptors[i].box);
++                detail::radixSort(scratch->mKeys.data(), scratch->mTemp.data(), count);
++                node_count = countNodes(scratch->mKeys.data(), 0, count, 0);
++                if (node_count > mConfig.maxNodes)
++                    return Status::CapacityExhausted;
++            }
+         }
+         const Status storage = prepareReplacement(count, ranked, node_count);
+         if (storage != Status::Ok)
+@@ -1974,6 +2252,25 @@
+         }
+         for (i = 0; i < count; ++i)
+         {
++#if defined(__GNUC__) || defined(__clang__)
++            if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&
++                std::is_trivially_copy_constructible_v<Payload>)
++            {
++                if (node_count != 0 && ranked == 0)
++                {
++                    // Start the indexed descriptor fetch before the dependent payload fetch.
++                    constexpr std::size_t descriptorAhead = 32, payloadAhead = 16;
++                    if (count - i > descriptorAhead)
++                    {
++                        const auto& future = scratch->mDescriptors[scratch->mKeys[i + descriptorAhead].entry];
++                        __builtin_prefetch(&future, 0, 3);
++                        __builtin_prefetch(&future.payload, 0, 3);
++                    }
++                    if (count - i > payloadAhead)
++                        __builtin_prefetch(scratch->mDescriptors[scratch->mKeys[i + payloadAhead].entry].payload, 0, 3);
++                }
++            }
++#endif
+             // Spatially sorted dense entries keep snapshot geometry contiguous.
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : scratch->mKeys[i].entry;
+             const auto& descriptor = scratch->mDescriptors[input];
+@@ -1988,11 +2285,19 @@
+             }
+             if (handles)
+                 (*handles)[input] = detail::HandleAccess::make<Store>(owner, dense, 0);
+-            if (node_count != 0)
+-                scratch->mKeys[i].entry = dense;
+         }
+-        if (node_count != 0)
+-            rebuild(scratch->mKeys.data(), count, Cell{*next_extent});
++        if (top_down)
++        {
++            mRoot = 0;
++            mNodeUsed = 1;
++            mActiveNodes = 1;
++            mNodes[0] = Node{};
++            mNodes[0].cell = Cell{*next_extent};
++            const Key* plan = scratch->mKeys.data();
++            materializeBulk(0, plan, node_count != 1, 0, static_cast<std::uint32_t>(count));
++        }
++        else if (node_count != 0)
++            rebuild<true>(scratch->mKeys.data(), count, Cell{*next_extent});
+         return Status::Ok;
+     }
+ 
+@@ -2222,7 +2527,7 @@
+ 
+     void sortRanks(std::uint32_t* order, std::size_t count) const noexcept
+     {
+-        detail::heapSort(order, count, [this](std::uint32_t a, std::uint32_t b) noexcept
++        detail::rankSort(order, count, [this](std::uint32_t a, std::uint32_t b) noexcept
+             { return mEntries.mMeta[a].rank < mEntries.mMeta[b].rank; });
+     }
+ 

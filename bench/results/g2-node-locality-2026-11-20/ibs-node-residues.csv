@@ -1,0 +1,695 @@
+block,scene,engine,function,field,node_start_mod64,level,samples
+1,uniform,index,crossPairs,bounds,0,L1 hit,34
+1,uniform,index,crossPairs,bounds,8,L1 hit,41
+1,uniform,index,crossPairs,bounds,16,L1 hit,38
+1,uniform,index,crossPairs,bounds,16,RAM hit,1
+1,uniform,index,crossPairs,bounds,24,L1 hit,46
+1,uniform,index,crossPairs,bounds,24,L2 hit,4
+1,uniform,index,crossPairs,bounds,32,L1 hit,47
+1,uniform,index,crossPairs,bounds,40,L1 hit,60
+1,uniform,index,crossPairs,bounds,48,L1 hit,53
+1,uniform,index,crossPairs,bounds,56,L1 hit,34
+1,uniform,index,crossPairs,bounds,56,L2 hit,1
+1,uniform,index,crossPairs,count,0,L1 hit,20
+1,uniform,index,crossPairs,count,8,L1 hit,18
+1,uniform,index,crossPairs,count,16,L1 hit,17
+1,uniform,index,crossPairs,count,24,L1 hit,22
+1,uniform,index,crossPairs,count,24,L2 hit,1
+1,uniform,index,crossPairs,count,32,L1 hit,13
+1,uniform,index,crossPairs,count,40,L1 hit,24
+1,uniform,index,crossPairs,count,40,L2 hit,2
+1,uniform,index,crossPairs,count,40,RAM hit,1
+1,uniform,index,crossPairs,count,48,L1 hit,18
+1,uniform,index,crossPairs,count,48,L2 hit,1
+1,uniform,index,crossPairs,count,56,L1 hit,20
+1,uniform,index,crossPairs,count,56,"core, same node Any cache hit",1
+1,uniform,index,crossPairs,firstChild,0,L1 hit,3
+1,uniform,index,crossPairs,firstChild,8,L1 hit,4
+1,uniform,index,crossPairs,firstChild,16,L1 hit,2
+1,uniform,index,crossPairs,firstChild,24,L1 hit,1
+1,uniform,index,crossPairs,firstChild,32,L1 hit,2
+1,uniform,index,crossPairs,firstChild,40,L1 hit,2
+1,uniform,index,crossPairs,firstChild,48,L1 hit,3
+1,uniform,index,crossPairs,firstChild,56,L1 hit,3
+1,uniform,index,crossPairs,head,0,L1 hit,3
+1,uniform,index,crossPairs,head,8,L1 hit,3
+1,uniform,index,crossPairs,head,16,L1 hit,8
+1,uniform,index,crossPairs,head,24,L1 hit,5
+1,uniform,index,crossPairs,head,32,L1 hit,2
+1,uniform,index,crossPairs,head,40,L1 hit,7
+1,uniform,index,crossPairs,head,48,L1 hit,3
+1,uniform,index,crossPairs,head,56,L1 hit,8
+1,uniform,index,crossPairs,linear,0,L1 hit,3
+1,uniform,index,crossPairs,linear,8,L1 hit,12
+1,uniform,index,crossPairs,linear,16,L1 hit,17
+1,uniform,index,crossPairs,linear,24,L1 hit,10
+1,uniform,index,crossPairs,linear,32,L1 hit,13
+1,uniform,index,crossPairs,linear,40,L1 hit,15
+1,uniform,index,crossPairs,linear,48,L1 hit,19
+1,uniform,index,crossPairs,linear,56,L1 hit,19
+1,uniform,index,crossPairs,ownCount,0,L1 hit,17
+1,uniform,index,crossPairs,ownCount,8,L1 hit,18
+1,uniform,index,crossPairs,ownCount,16,L1 hit,12
+1,uniform,index,crossPairs,ownCount,24,L1 hit,17
+1,uniform,index,crossPairs,ownCount,32,L1 hit,8
+1,uniform,index,crossPairs,ownCount,40,L1 hit,14
+1,uniform,index,crossPairs,ownCount,48,L1 hit,12
+1,uniform,index,crossPairs,ownCount,56,L1 hit,24
+1,uniform,index,crossPairs,summary,0,L1 hit,3
+1,uniform,index,crossPairs,summary,8,L1 hit,8
+1,uniform,index,crossPairs,summary,16,L1 hit,3
+1,uniform,index,crossPairs,summary,24,L1 hit,8
+1,uniform,index,crossPairs,summary,32,L1 hit,5
+1,uniform,index,crossPairs,summary,40,L1 hit,6
+1,uniform,index,crossPairs,summary,48,L1 hit,5
+1,uniform,index,crossPairs,summary,56,L1 hit,5
+1,split-line-translated,index,crossPairs,bounds,0,L1 hit,46
+1,split-line-translated,index,crossPairs,bounds,0,L2 hit,2
+1,split-line-translated,index,crossPairs,bounds,8,L1 hit,34
+1,split-line-translated,index,crossPairs,bounds,8,L2 hit,1
+1,split-line-translated,index,crossPairs,bounds,16,L1 hit,45
+1,split-line-translated,index,crossPairs,bounds,16,L2 hit,1
+1,split-line-translated,index,crossPairs,bounds,16,"core, same node Any cache hit",1
+1,split-line-translated,index,crossPairs,bounds,24,L1 hit,39
+1,split-line-translated,index,crossPairs,bounds,32,L1 hit,44
+1,split-line-translated,index,crossPairs,bounds,32,L2 hit,1
+1,split-line-translated,index,crossPairs,bounds,40,L1 hit,37
+1,split-line-translated,index,crossPairs,bounds,40,L2 hit,2
+1,split-line-translated,index,crossPairs,bounds,48,L1 hit,40
+1,split-line-translated,index,crossPairs,bounds,48,L2 hit,1
+1,split-line-translated,index,crossPairs,bounds,48,"core, same node Any cache hit",1
+1,split-line-translated,index,crossPairs,bounds,56,L1 hit,48
+1,split-line-translated,index,crossPairs,bounds,56,L2 hit,3
+1,split-line-translated,index,crossPairs,count,0,L1 hit,13
+1,split-line-translated,index,crossPairs,count,0,L2 hit,1
+1,split-line-translated,index,crossPairs,count,8,L1 hit,16
+1,split-line-translated,index,crossPairs,count,8,L2 hit,1
+1,split-line-translated,index,crossPairs,count,16,L1 hit,15
+1,split-line-translated,index,crossPairs,count,16,L2 hit,2
+1,split-line-translated,index,crossPairs,count,16,RAM hit,1
+1,split-line-translated,index,crossPairs,count,24,L1 hit,17
+1,split-line-translated,index,crossPairs,count,24,RAM hit,1
+1,split-line-translated,index,crossPairs,count,32,L1 hit,26
+1,split-line-translated,index,crossPairs,count,32,L2 hit,1
+1,split-line-translated,index,crossPairs,count,40,L1 hit,13
+1,split-line-translated,index,crossPairs,count,48,L1 hit,20
+1,split-line-translated,index,crossPairs,count,56,L1 hit,14
+1,split-line-translated,index,crossPairs,count,56,"core, same node Any cache hit",1
+1,split-line-translated,index,crossPairs,firstChild,0,L1 hit,3
+1,split-line-translated,index,crossPairs,firstChild,8,L1 hit,3
+1,split-line-translated,index,crossPairs,firstChild,16,L1 hit,2
+1,split-line-translated,index,crossPairs,firstChild,24,L1 hit,3
+1,split-line-translated,index,crossPairs,firstChild,32,L1 hit,5
+1,split-line-translated,index,crossPairs,firstChild,40,L1 hit,1
+1,split-line-translated,index,crossPairs,firstChild,48,L1 hit,1
+1,split-line-translated,index,crossPairs,firstChild,56,L1 hit,2
+1,split-line-translated,index,crossPairs,head,8,L1 hit,4
+1,split-line-translated,index,crossPairs,head,16,L1 hit,7
+1,split-line-translated,index,crossPairs,head,24,L1 hit,4
+1,split-line-translated,index,crossPairs,head,32,L1 hit,1
+1,split-line-translated,index,crossPairs,head,40,L1 hit,8
+1,split-line-translated,index,crossPairs,head,48,L1 hit,3
+1,split-line-translated,index,crossPairs,head,56,L1 hit,9
+1,split-line-translated,index,crossPairs,linear,0,L1 hit,7
+1,split-line-translated,index,crossPairs,linear,8,L1 hit,17
+1,split-line-translated,index,crossPairs,linear,16,L1 hit,10
+1,split-line-translated,index,crossPairs,linear,24,L1 hit,17
+1,split-line-translated,index,crossPairs,linear,32,L1 hit,6
+1,split-line-translated,index,crossPairs,linear,40,L1 hit,13
+1,split-line-translated,index,crossPairs,linear,48,L1 hit,15
+1,split-line-translated,index,crossPairs,linear,56,L1 hit,20
+1,split-line-translated,index,crossPairs,ownCount,0,L1 hit,4
+1,split-line-translated,index,crossPairs,ownCount,8,L1 hit,9
+1,split-line-translated,index,crossPairs,ownCount,16,L1 hit,18
+1,split-line-translated,index,crossPairs,ownCount,24,L1 hit,13
+1,split-line-translated,index,crossPairs,ownCount,32,L1 hit,3
+1,split-line-translated,index,crossPairs,ownCount,40,L1 hit,7
+1,split-line-translated,index,crossPairs,ownCount,48,L1 hit,17
+1,split-line-translated,index,crossPairs,ownCount,56,L1 hit,16
+1,split-line-translated,index,crossPairs,summary,0,L1 hit,3
+1,split-line-translated,index,crossPairs,summary,8,L1 hit,4
+1,split-line-translated,index,crossPairs,summary,16,L1 hit,6
+1,split-line-translated,index,crossPairs,summary,24,L1 hit,2
+1,split-line-translated,index,crossPairs,summary,24,L2 hit,1
+1,split-line-translated,index,crossPairs,summary,32,L1 hit,2
+1,split-line-translated,index,crossPairs,summary,40,L1 hit,2
+1,split-line-translated,index,crossPairs,summary,48,L1 hit,8
+1,split-line-translated,index,crossPairs,summary,56,L1 hit,5
+1,uniform,index-ordered,walkOrdered,bounds,0,L1 hit,51
+1,uniform,index-ordered,walkOrdered,bounds,0,L2 hit,10
+1,uniform,index-ordered,walkOrdered,bounds,0,RAM hit,2
+1,uniform,index-ordered,walkOrdered,bounds,0,"core, same node Any cache hit",12
+1,uniform,index-ordered,walkOrdered,bounds,8,L1 hit,67
+1,uniform,index-ordered,walkOrdered,bounds,8,L2 hit,8
+1,uniform,index-ordered,walkOrdered,bounds,8,"core, same node Any cache hit",9
+1,uniform,index-ordered,walkOrdered,bounds,16,L1 hit,57
+1,uniform,index-ordered,walkOrdered,bounds,16,L2 hit,11
+1,uniform,index-ordered,walkOrdered,bounds,16,"core, same node Any cache hit",13
+1,uniform,index-ordered,walkOrdered,bounds,24,L1 hit,47
+1,uniform,index-ordered,walkOrdered,bounds,24,L2 hit,8
+1,uniform,index-ordered,walkOrdered,bounds,24,RAM hit,1
+1,uniform,index-ordered,walkOrdered,bounds,24,"core, same node Any cache hit",10
+1,uniform,index-ordered,walkOrdered,bounds,32,L1 hit,43
+1,uniform,index-ordered,walkOrdered,bounds,32,L2 hit,9
+1,uniform,index-ordered,walkOrdered,bounds,32,"core, same node Any cache hit",11
+1,uniform,index-ordered,walkOrdered,bounds,40,L1 hit,45
+1,uniform,index-ordered,walkOrdered,bounds,40,L2 hit,9
+1,uniform,index-ordered,walkOrdered,bounds,40,"core, same node Any cache hit",17
+1,uniform,index-ordered,walkOrdered,bounds,48,L1 hit,44
+1,uniform,index-ordered,walkOrdered,bounds,48,L2 hit,7
+1,uniform,index-ordered,walkOrdered,bounds,48,"core, same node Any cache hit",14
+1,uniform,index-ordered,walkOrdered,bounds,56,L1 hit,22
+1,uniform,index-ordered,walkOrdered,bounds,56,L2 hit,15
+1,uniform,index-ordered,walkOrdered,bounds,56,"core, same node Any cache hit",15
+1,uniform,index-ordered,walkOrdered,count,0,L1 hit,24
+1,uniform,index-ordered,walkOrdered,count,0,L2 hit,2
+1,uniform,index-ordered,walkOrdered,count,0,"core, same node Any cache hit",4
+1,uniform,index-ordered,walkOrdered,count,8,L1 hit,27
+1,uniform,index-ordered,walkOrdered,count,8,L2 hit,4
+1,uniform,index-ordered,walkOrdered,count,8,"core, same node Any cache hit",7
+1,uniform,index-ordered,walkOrdered,count,16,L1 hit,18
+1,uniform,index-ordered,walkOrdered,count,16,L2 hit,4
+1,uniform,index-ordered,walkOrdered,count,16,"core, same node Any cache hit",3
+1,uniform,index-ordered,walkOrdered,count,24,L1 hit,15
+1,uniform,index-ordered,walkOrdered,count,24,L2 hit,8
+1,uniform,index-ordered,walkOrdered,count,24,"core, same node Any cache hit",5
+1,uniform,index-ordered,walkOrdered,count,32,L1 hit,24
+1,uniform,index-ordered,walkOrdered,count,32,L2 hit,1
+1,uniform,index-ordered,walkOrdered,count,32,"core, same node Any cache hit",4
+1,uniform,index-ordered,walkOrdered,count,40,L1 hit,14
+1,uniform,index-ordered,walkOrdered,count,40,L2 hit,2
+1,uniform,index-ordered,walkOrdered,count,40,"core, same node Any cache hit",3
+1,uniform,index-ordered,walkOrdered,count,48,L1 hit,18
+1,uniform,index-ordered,walkOrdered,count,48,L2 hit,6
+1,uniform,index-ordered,walkOrdered,count,48,"core, same node Any cache hit",6
+1,uniform,index-ordered,walkOrdered,count,56,L1 hit,5
+1,uniform,index-ordered,walkOrdered,count,56,L2 hit,9
+1,uniform,index-ordered,walkOrdered,count,56,"core, same node Any cache hit",5
+1,uniform,index-ordered,walkOrdered,firstChild,0,L1 hit,10
+1,uniform,index-ordered,walkOrdered,firstChild,8,L1 hit,2
+1,uniform,index-ordered,walkOrdered,firstChild,16,L1 hit,4
+1,uniform,index-ordered,walkOrdered,firstChild,24,L1 hit,12
+1,uniform,index-ordered,walkOrdered,firstChild,24,L2 hit,1
+1,uniform,index-ordered,walkOrdered,firstChild,32,L1 hit,13
+1,uniform,index-ordered,walkOrdered,firstChild,32,L2 hit,1
+1,uniform,index-ordered,walkOrdered,firstChild,32,"core, same node Any cache hit",2
+1,uniform,index-ordered,walkOrdered,firstChild,40,L1 hit,4
+1,uniform,index-ordered,walkOrdered,firstChild,40,"core, same node Any cache hit",1
+1,uniform,index-ordered,walkOrdered,firstChild,48,L1 hit,10
+1,uniform,index-ordered,walkOrdered,firstChild,48,"core, same node Any cache hit",1
+1,uniform,index-ordered,walkOrdered,firstChild,56,L1 hit,8
+1,uniform,index-ordered,walkOrdered,head,0,L1 hit,9
+1,uniform,index-ordered,walkOrdered,head,0,"core, same node Any cache hit",1
+1,uniform,index-ordered,walkOrdered,head,8,L1 hit,16
+1,uniform,index-ordered,walkOrdered,head,8,L2 hit,1
+1,uniform,index-ordered,walkOrdered,head,16,L1 hit,16
+1,uniform,index-ordered,walkOrdered,head,16,L2 hit,1
+1,uniform,index-ordered,walkOrdered,head,24,L1 hit,11
+1,uniform,index-ordered,walkOrdered,head,32,L1 hit,15
+1,uniform,index-ordered,walkOrdered,head,32,"core, same node Any cache hit",1
+1,uniform,index-ordered,walkOrdered,head,40,L1 hit,10
+1,uniform,index-ordered,walkOrdered,head,40,L2 hit,1
+1,uniform,index-ordered,walkOrdered,head,48,L1 hit,18
+1,uniform,index-ordered,walkOrdered,head,56,L1 hit,15
+1,uniform,index-ordered,walkOrdered,linear,0,L1 hit,9
+1,uniform,index-ordered,walkOrdered,linear,8,L1 hit,6
+1,uniform,index-ordered,walkOrdered,linear,16,L1 hit,10
+1,uniform,index-ordered,walkOrdered,linear,24,L1 hit,3
+1,uniform,index-ordered,walkOrdered,linear,32,L1 hit,9
+1,uniform,index-ordered,walkOrdered,linear,40,L1 hit,8
+1,uniform,index-ordered,walkOrdered,linear,48,L1 hit,4
+1,uniform,index-ordered,walkOrdered,linear,56,L1 hit,6
+1,uniform,index-ordered,walkOrdered,ownCount,0,L1 hit,3
+1,uniform,index-ordered,walkOrdered,ownCount,8,L1 hit,13
+1,uniform,index-ordered,walkOrdered,ownCount,16,L1 hit,4
+1,uniform,index-ordered,walkOrdered,ownCount,24,L1 hit,12
+1,uniform,index-ordered,walkOrdered,ownCount,32,L1 hit,5
+1,uniform,index-ordered,walkOrdered,ownCount,40,L1 hit,11
+1,uniform,index-ordered,walkOrdered,ownCount,48,L1 hit,6
+1,uniform,index-ordered,walkOrdered,ownCount,56,L1 hit,12
+1,uniform,index-ordered,walkOrdered,summary,0,L1 hit,9
+1,uniform,index-ordered,walkOrdered,summary,0,L2 hit,1
+1,uniform,index-ordered,walkOrdered,summary,8,L1 hit,14
+1,uniform,index-ordered,walkOrdered,summary,8,L2 hit,2
+1,uniform,index-ordered,walkOrdered,summary,8,"core, same node Any cache hit",5
+1,uniform,index-ordered,walkOrdered,summary,16,L1 hit,14
+1,uniform,index-ordered,walkOrdered,summary,24,L1 hit,17
+1,uniform,index-ordered,walkOrdered,summary,24,L2 hit,1
+1,uniform,index-ordered,walkOrdered,summary,24,"core, same node Any cache hit",1
+1,uniform,index-ordered,walkOrdered,summary,32,L1 hit,23
+1,uniform,index-ordered,walkOrdered,summary,32,"core, same node Any cache hit",3
+1,uniform,index-ordered,walkOrdered,summary,40,L1 hit,7
+1,uniform,index-ordered,walkOrdered,summary,40,L2 hit,1
+1,uniform,index-ordered,walkOrdered,summary,40,"core, same node Any cache hit",2
+1,uniform,index-ordered,walkOrdered,summary,48,L1 hit,14
+1,uniform,index-ordered,walkOrdered,summary,56,L1 hit,15
+1,split-line-translated,index-ordered,walkOrdered,bounds,0,L1 hit,86
+1,split-line-translated,index-ordered,walkOrdered,bounds,0,L2 hit,8
+1,split-line-translated,index-ordered,walkOrdered,bounds,0,"core, same node Any cache hit",8
+1,split-line-translated,index-ordered,walkOrdered,bounds,8,L1 hit,64
+1,split-line-translated,index-ordered,walkOrdered,bounds,8,L2 hit,11
+1,split-line-translated,index-ordered,walkOrdered,bounds,8,"core, same node Any cache hit",18
+1,split-line-translated,index-ordered,walkOrdered,bounds,16,L1 hit,63
+1,split-line-translated,index-ordered,walkOrdered,bounds,16,L2 hit,15
+1,split-line-translated,index-ordered,walkOrdered,bounds,16,"core, same node Any cache hit",27
+1,split-line-translated,index-ordered,walkOrdered,bounds,24,L1 hit,52
+1,split-line-translated,index-ordered,walkOrdered,bounds,24,L2 hit,10
+1,split-line-translated,index-ordered,walkOrdered,bounds,24,"core, same node Any cache hit",22
+1,split-line-translated,index-ordered,walkOrdered,bounds,32,L1 hit,53
+1,split-line-translated,index-ordered,walkOrdered,bounds,32,L2 hit,12
+1,split-line-translated,index-ordered,walkOrdered,bounds,32,"core, same node Any cache hit",25
+1,split-line-translated,index-ordered,walkOrdered,bounds,40,L1 hit,43
+1,split-line-translated,index-ordered,walkOrdered,bounds,40,L2 hit,13
+1,split-line-translated,index-ordered,walkOrdered,bounds,40,"core, same node Any cache hit",7
+1,split-line-translated,index-ordered,walkOrdered,bounds,48,L1 hit,46
+1,split-line-translated,index-ordered,walkOrdered,bounds,48,L2 hit,7
+1,split-line-translated,index-ordered,walkOrdered,bounds,48,"core, same node Any cache hit",21
+1,split-line-translated,index-ordered,walkOrdered,bounds,56,L1 hit,31
+1,split-line-translated,index-ordered,walkOrdered,bounds,56,L2 hit,18
+1,split-line-translated,index-ordered,walkOrdered,bounds,56,RAM hit,1
+1,split-line-translated,index-ordered,walkOrdered,bounds,56,"core, same node Any cache hit",21
+1,split-line-translated,index-ordered,walkOrdered,count,0,L1 hit,27
+1,split-line-translated,index-ordered,walkOrdered,count,0,L2 hit,3
+1,split-line-translated,index-ordered,walkOrdered,count,0,"core, same node Any cache hit",7
+1,split-line-translated,index-ordered,walkOrdered,count,8,L1 hit,21
+1,split-line-translated,index-ordered,walkOrdered,count,8,L2 hit,6
+1,split-line-translated,index-ordered,walkOrdered,count,8,"core, same node Any cache hit",5
+1,split-line-translated,index-ordered,walkOrdered,count,16,L1 hit,23
+1,split-line-translated,index-ordered,walkOrdered,count,16,L2 hit,6
+1,split-line-translated,index-ordered,walkOrdered,count,16,RAM hit,1
+1,split-line-translated,index-ordered,walkOrdered,count,16,"core, same node Any cache hit",4
+1,split-line-translated,index-ordered,walkOrdered,count,24,L1 hit,13
+1,split-line-translated,index-ordered,walkOrdered,count,24,L2 hit,9
+1,split-line-translated,index-ordered,walkOrdered,count,24,"core, same node Any cache hit",17
+1,split-line-translated,index-ordered,walkOrdered,count,32,L1 hit,28
+1,split-line-translated,index-ordered,walkOrdered,count,32,L2 hit,6
+1,split-line-translated,index-ordered,walkOrdered,count,32,"core, same node Any cache hit",2
+1,split-line-translated,index-ordered,walkOrdered,count,40,L1 hit,30
+1,split-line-translated,index-ordered,walkOrdered,count,40,L2 hit,5
+1,split-line-translated,index-ordered,walkOrdered,count,40,"core, same node Any cache hit",3
+1,split-line-translated,index-ordered,walkOrdered,count,48,L1 hit,24
+1,split-line-translated,index-ordered,walkOrdered,count,48,L2 hit,3
+1,split-line-translated,index-ordered,walkOrdered,count,48,"core, same node Any cache hit",7
+1,split-line-translated,index-ordered,walkOrdered,count,56,L1 hit,5
+1,split-line-translated,index-ordered,walkOrdered,count,56,L2 hit,11
+1,split-line-translated,index-ordered,walkOrdered,count,56,"core, same node Any cache hit",7
+1,split-line-translated,index-ordered,walkOrdered,firstChild,0,L1 hit,10
+1,split-line-translated,index-ordered,walkOrdered,firstChild,8,L1 hit,11
+1,split-line-translated,index-ordered,walkOrdered,firstChild,8,L2 hit,2
+1,split-line-translated,index-ordered,walkOrdered,firstChild,8,"core, same node Any cache hit",2
+1,split-line-translated,index-ordered,walkOrdered,firstChild,16,L1 hit,12
+1,split-line-translated,index-ordered,walkOrdered,firstChild,24,L1 hit,8
+1,split-line-translated,index-ordered,walkOrdered,firstChild,24,L2 hit,1
+1,split-line-translated,index-ordered,walkOrdered,firstChild,32,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,firstChild,40,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,firstChild,40,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,firstChild,48,L1 hit,7
+1,split-line-translated,index-ordered,walkOrdered,firstChild,56,L1 hit,7
+1,split-line-translated,index-ordered,walkOrdered,firstChild,56,L2 hit,1
+1,split-line-translated,index-ordered,walkOrdered,head,0,L1 hit,9
+1,split-line-translated,index-ordered,walkOrdered,head,0,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,head,8,L1 hit,21
+1,split-line-translated,index-ordered,walkOrdered,head,8,L2 hit,1
+1,split-line-translated,index-ordered,walkOrdered,head,8,"core, same node Any cache hit",4
+1,split-line-translated,index-ordered,walkOrdered,head,16,L1 hit,17
+1,split-line-translated,index-ordered,walkOrdered,head,24,L1 hit,16
+1,split-line-translated,index-ordered,walkOrdered,head,24,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,head,32,L1 hit,15
+1,split-line-translated,index-ordered,walkOrdered,head,40,L1 hit,12
+1,split-line-translated,index-ordered,walkOrdered,head,40,L2 hit,2
+1,split-line-translated,index-ordered,walkOrdered,head,40,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,head,48,L1 hit,14
+1,split-line-translated,index-ordered,walkOrdered,head,56,L1 hit,30
+1,split-line-translated,index-ordered,walkOrdered,head,56,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,linear,0,L1 hit,5
+1,split-line-translated,index-ordered,walkOrdered,linear,8,L1 hit,3
+1,split-line-translated,index-ordered,walkOrdered,linear,16,L1 hit,4
+1,split-line-translated,index-ordered,walkOrdered,linear,24,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,linear,32,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,linear,40,L1 hit,9
+1,split-line-translated,index-ordered,walkOrdered,linear,48,L1 hit,10
+1,split-line-translated,index-ordered,walkOrdered,linear,56,L1 hit,7
+1,split-line-translated,index-ordered,walkOrdered,ownCount,0,L1 hit,4
+1,split-line-translated,index-ordered,walkOrdered,ownCount,8,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,ownCount,16,L1 hit,12
+1,split-line-translated,index-ordered,walkOrdered,ownCount,24,L1 hit,7
+1,split-line-translated,index-ordered,walkOrdered,ownCount,32,L1 hit,4
+1,split-line-translated,index-ordered,walkOrdered,ownCount,40,L1 hit,5
+1,split-line-translated,index-ordered,walkOrdered,ownCount,48,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,ownCount,56,L1 hit,6
+1,split-line-translated,index-ordered,walkOrdered,summary,0,L1 hit,11
+1,split-line-translated,index-ordered,walkOrdered,summary,0,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,summary,8,L1 hit,15
+1,split-line-translated,index-ordered,walkOrdered,summary,8,L2 hit,1
+1,split-line-translated,index-ordered,walkOrdered,summary,8,"core, same node Any cache hit",2
+1,split-line-translated,index-ordered,walkOrdered,summary,16,L1 hit,19
+1,split-line-translated,index-ordered,walkOrdered,summary,16,L2 hit,1
+1,split-line-translated,index-ordered,walkOrdered,summary,16,"core, same node Any cache hit",2
+1,split-line-translated,index-ordered,walkOrdered,summary,24,L1 hit,16
+1,split-line-translated,index-ordered,walkOrdered,summary,24,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,summary,32,L1 hit,20
+1,split-line-translated,index-ordered,walkOrdered,summary,32,L2 hit,3
+1,split-line-translated,index-ordered,walkOrdered,summary,32,"core, same node Any cache hit",4
+1,split-line-translated,index-ordered,walkOrdered,summary,40,L1 hit,12
+1,split-line-translated,index-ordered,walkOrdered,summary,40,"core, same node Any cache hit",1
+1,split-line-translated,index-ordered,walkOrdered,summary,48,L1 hit,18
+1,split-line-translated,index-ordered,walkOrdered,summary,56,L1 hit,15
+2,split-line-translated,index-ordered,walkOrdered,bounds,0,L1 hit,61
+2,split-line-translated,index-ordered,walkOrdered,bounds,0,L2 hit,8
+2,split-line-translated,index-ordered,walkOrdered,bounds,0,"core, same node Any cache hit",18
+2,split-line-translated,index-ordered,walkOrdered,bounds,8,L1 hit,66
+2,split-line-translated,index-ordered,walkOrdered,bounds,8,L2 hit,9
+2,split-line-translated,index-ordered,walkOrdered,bounds,8,"core, same node Any cache hit",15
+2,split-line-translated,index-ordered,walkOrdered,bounds,16,L1 hit,73
+2,split-line-translated,index-ordered,walkOrdered,bounds,16,L2 hit,12
+2,split-line-translated,index-ordered,walkOrdered,bounds,16,"core, same node Any cache hit",14
+2,split-line-translated,index-ordered,walkOrdered,bounds,24,L1 hit,44
+2,split-line-translated,index-ordered,walkOrdered,bounds,24,L2 hit,17
+2,split-line-translated,index-ordered,walkOrdered,bounds,24,"core, same node Any cache hit",13
+2,split-line-translated,index-ordered,walkOrdered,bounds,32,L1 hit,40
+2,split-line-translated,index-ordered,walkOrdered,bounds,32,L2 hit,9
+2,split-line-translated,index-ordered,walkOrdered,bounds,32,"core, same node Any cache hit",9
+2,split-line-translated,index-ordered,walkOrdered,bounds,40,L1 hit,36
+2,split-line-translated,index-ordered,walkOrdered,bounds,40,L2 hit,12
+2,split-line-translated,index-ordered,walkOrdered,bounds,40,"core, same node Any cache hit",16
+2,split-line-translated,index-ordered,walkOrdered,bounds,48,L1 hit,47
+2,split-line-translated,index-ordered,walkOrdered,bounds,48,L2 hit,9
+2,split-line-translated,index-ordered,walkOrdered,bounds,48,RAM hit,1
+2,split-line-translated,index-ordered,walkOrdered,bounds,48,"core, same node Any cache hit",17
+2,split-line-translated,index-ordered,walkOrdered,bounds,56,L1 hit,25
+2,split-line-translated,index-ordered,walkOrdered,bounds,56,L2 hit,21
+2,split-line-translated,index-ordered,walkOrdered,bounds,56,"core, same node Any cache hit",14
+2,split-line-translated,index-ordered,walkOrdered,count,0,L1 hit,18
+2,split-line-translated,index-ordered,walkOrdered,count,0,L2 hit,5
+2,split-line-translated,index-ordered,walkOrdered,count,0,"core, same node Any cache hit",3
+2,split-line-translated,index-ordered,walkOrdered,count,8,L1 hit,23
+2,split-line-translated,index-ordered,walkOrdered,count,8,L2 hit,4
+2,split-line-translated,index-ordered,walkOrdered,count,8,"core, same node Any cache hit",6
+2,split-line-translated,index-ordered,walkOrdered,count,16,L1 hit,22
+2,split-line-translated,index-ordered,walkOrdered,count,16,L2 hit,2
+2,split-line-translated,index-ordered,walkOrdered,count,16,"core, same node Any cache hit",4
+2,split-line-translated,index-ordered,walkOrdered,count,24,L1 hit,9
+2,split-line-translated,index-ordered,walkOrdered,count,24,L2 hit,8
+2,split-line-translated,index-ordered,walkOrdered,count,24,"core, same node Any cache hit",9
+2,split-line-translated,index-ordered,walkOrdered,count,32,L1 hit,12
+2,split-line-translated,index-ordered,walkOrdered,count,32,L2 hit,8
+2,split-line-translated,index-ordered,walkOrdered,count,32,"core, same node Any cache hit",7
+2,split-line-translated,index-ordered,walkOrdered,count,40,L1 hit,14
+2,split-line-translated,index-ordered,walkOrdered,count,40,L2 hit,8
+2,split-line-translated,index-ordered,walkOrdered,count,40,"core, same node Any cache hit",7
+2,split-line-translated,index-ordered,walkOrdered,count,48,L1 hit,15
+2,split-line-translated,index-ordered,walkOrdered,count,48,L2 hit,2
+2,split-line-translated,index-ordered,walkOrdered,count,48,"core, same node Any cache hit",5
+2,split-line-translated,index-ordered,walkOrdered,count,56,L1 hit,4
+2,split-line-translated,index-ordered,walkOrdered,count,56,L2 hit,9
+2,split-line-translated,index-ordered,walkOrdered,count,56,"core, same node Any cache hit",10
+2,split-line-translated,index-ordered,walkOrdered,firstChild,0,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,firstChild,8,L1 hit,10
+2,split-line-translated,index-ordered,walkOrdered,firstChild,8,L2 hit,2
+2,split-line-translated,index-ordered,walkOrdered,firstChild,16,L1 hit,4
+2,split-line-translated,index-ordered,walkOrdered,firstChild,24,L1 hit,8
+2,split-line-translated,index-ordered,walkOrdered,firstChild,24,"core, same node Any cache hit",1
+2,split-line-translated,index-ordered,walkOrdered,firstChild,32,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,firstChild,40,L1 hit,1
+2,split-line-translated,index-ordered,walkOrdered,firstChild,48,L1 hit,11
+2,split-line-translated,index-ordered,walkOrdered,firstChild,56,L1 hit,4
+2,split-line-translated,index-ordered,walkOrdered,head,0,L1 hit,11
+2,split-line-translated,index-ordered,walkOrdered,head,0,L2 hit,1
+2,split-line-translated,index-ordered,walkOrdered,head,0,"core, same node Any cache hit",2
+2,split-line-translated,index-ordered,walkOrdered,head,8,L1 hit,15
+2,split-line-translated,index-ordered,walkOrdered,head,8,L2 hit,1
+2,split-line-translated,index-ordered,walkOrdered,head,16,L1 hit,13
+2,split-line-translated,index-ordered,walkOrdered,head,16,L2 hit,1
+2,split-line-translated,index-ordered,walkOrdered,head,24,L1 hit,13
+2,split-line-translated,index-ordered,walkOrdered,head,32,L1 hit,21
+2,split-line-translated,index-ordered,walkOrdered,head,40,L1 hit,9
+2,split-line-translated,index-ordered,walkOrdered,head,40,"core, same node Any cache hit",1
+2,split-line-translated,index-ordered,walkOrdered,head,48,L1 hit,15
+2,split-line-translated,index-ordered,walkOrdered,head,56,L1 hit,11
+2,split-line-translated,index-ordered,walkOrdered,linear,0,L1 hit,2
+2,split-line-translated,index-ordered,walkOrdered,linear,8,L1 hit,3
+2,split-line-translated,index-ordered,walkOrdered,linear,16,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,linear,24,L1 hit,3
+2,split-line-translated,index-ordered,walkOrdered,linear,32,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,linear,40,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,linear,48,L1 hit,8
+2,split-line-translated,index-ordered,walkOrdered,linear,56,L1 hit,5
+2,split-line-translated,index-ordered,walkOrdered,ownCount,0,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,ownCount,8,L1 hit,3
+2,split-line-translated,index-ordered,walkOrdered,ownCount,16,L1 hit,6
+2,split-line-translated,index-ordered,walkOrdered,ownCount,24,L1 hit,9
+2,split-line-translated,index-ordered,walkOrdered,ownCount,32,L1 hit,7
+2,split-line-translated,index-ordered,walkOrdered,ownCount,40,L1 hit,11
+2,split-line-translated,index-ordered,walkOrdered,ownCount,48,L1 hit,10
+2,split-line-translated,index-ordered,walkOrdered,ownCount,56,L1 hit,10
+2,split-line-translated,index-ordered,walkOrdered,summary,0,L1 hit,21
+2,split-line-translated,index-ordered,walkOrdered,summary,0,"core, same node Any cache hit",1
+2,split-line-translated,index-ordered,walkOrdered,summary,8,L1 hit,13
+2,split-line-translated,index-ordered,walkOrdered,summary,8,L2 hit,1
+2,split-line-translated,index-ordered,walkOrdered,summary,8,"core, same node Any cache hit",2
+2,split-line-translated,index-ordered,walkOrdered,summary,16,L1 hit,16
+2,split-line-translated,index-ordered,walkOrdered,summary,24,L1 hit,25
+2,split-line-translated,index-ordered,walkOrdered,summary,24,"core, same node Any cache hit",1
+2,split-line-translated,index-ordered,walkOrdered,summary,32,L1 hit,16
+2,split-line-translated,index-ordered,walkOrdered,summary,32,L2 hit,3
+2,split-line-translated,index-ordered,walkOrdered,summary,32,"core, same node Any cache hit",3
+2,split-line-translated,index-ordered,walkOrdered,summary,40,L1 hit,10
+2,split-line-translated,index-ordered,walkOrdered,summary,40,L2 hit,1
+2,split-line-translated,index-ordered,walkOrdered,summary,40,"core, same node Any cache hit",2
+2,split-line-translated,index-ordered,walkOrdered,summary,48,L1 hit,13
+2,split-line-translated,index-ordered,walkOrdered,summary,56,L1 hit,16
+2,uniform,index-ordered,walkOrdered,bounds,0,L1 hit,68
+2,uniform,index-ordered,walkOrdered,bounds,0,L2 hit,12
+2,uniform,index-ordered,walkOrdered,bounds,0,"core, same node Any cache hit",9
+2,uniform,index-ordered,walkOrdered,bounds,8,L1 hit,62
+2,uniform,index-ordered,walkOrdered,bounds,8,L2 hit,4
+2,uniform,index-ordered,walkOrdered,bounds,8,"core, same node Any cache hit",5
+2,uniform,index-ordered,walkOrdered,bounds,16,L1 hit,61
+2,uniform,index-ordered,walkOrdered,bounds,16,L2 hit,12
+2,uniform,index-ordered,walkOrdered,bounds,16,RAM hit,2
+2,uniform,index-ordered,walkOrdered,bounds,16,"core, same node Any cache hit",13
+2,uniform,index-ordered,walkOrdered,bounds,24,L1 hit,44
+2,uniform,index-ordered,walkOrdered,bounds,24,L2 hit,5
+2,uniform,index-ordered,walkOrdered,bounds,24,"core, same node Any cache hit",11
+2,uniform,index-ordered,walkOrdered,bounds,32,L1 hit,44
+2,uniform,index-ordered,walkOrdered,bounds,32,L2 hit,5
+2,uniform,index-ordered,walkOrdered,bounds,32,"core, same node Any cache hit",9
+2,uniform,index-ordered,walkOrdered,bounds,40,L1 hit,49
+2,uniform,index-ordered,walkOrdered,bounds,40,L2 hit,10
+2,uniform,index-ordered,walkOrdered,bounds,40,RAM hit,1
+2,uniform,index-ordered,walkOrdered,bounds,40,"core, same node Any cache hit",7
+2,uniform,index-ordered,walkOrdered,bounds,48,L1 hit,42
+2,uniform,index-ordered,walkOrdered,bounds,48,L2 hit,6
+2,uniform,index-ordered,walkOrdered,bounds,48,"core, same node Any cache hit",9
+2,uniform,index-ordered,walkOrdered,bounds,56,L1 hit,28
+2,uniform,index-ordered,walkOrdered,bounds,56,L2 hit,16
+2,uniform,index-ordered,walkOrdered,bounds,56,"core, same node Any cache hit",23
+2,uniform,index-ordered,walkOrdered,count,0,L1 hit,25
+2,uniform,index-ordered,walkOrdered,count,0,L2 hit,4
+2,uniform,index-ordered,walkOrdered,count,0,"core, same node Any cache hit",4
+2,uniform,index-ordered,walkOrdered,count,8,L1 hit,14
+2,uniform,index-ordered,walkOrdered,count,8,L2 hit,3
+2,uniform,index-ordered,walkOrdered,count,8,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,count,16,L1 hit,9
+2,uniform,index-ordered,walkOrdered,count,16,L2 hit,4
+2,uniform,index-ordered,walkOrdered,count,16,"core, same node Any cache hit",7
+2,uniform,index-ordered,walkOrdered,count,24,L1 hit,9
+2,uniform,index-ordered,walkOrdered,count,24,L2 hit,3
+2,uniform,index-ordered,walkOrdered,count,24,"core, same node Any cache hit",8
+2,uniform,index-ordered,walkOrdered,count,32,L1 hit,15
+2,uniform,index-ordered,walkOrdered,count,32,L2 hit,3
+2,uniform,index-ordered,walkOrdered,count,32,"core, same node Any cache hit",6
+2,uniform,index-ordered,walkOrdered,count,40,L1 hit,14
+2,uniform,index-ordered,walkOrdered,count,40,L2 hit,1
+2,uniform,index-ordered,walkOrdered,count,40,"core, same node Any cache hit",4
+2,uniform,index-ordered,walkOrdered,count,48,L1 hit,12
+2,uniform,index-ordered,walkOrdered,count,48,L2 hit,5
+2,uniform,index-ordered,walkOrdered,count,48,"core, same node Any cache hit",2
+2,uniform,index-ordered,walkOrdered,count,56,L1 hit,1
+2,uniform,index-ordered,walkOrdered,count,56,L2 hit,4
+2,uniform,index-ordered,walkOrdered,count,56,"core, same node Any cache hit",13
+2,uniform,index-ordered,walkOrdered,firstChild,0,L1 hit,1
+2,uniform,index-ordered,walkOrdered,firstChild,0,L2 hit,1
+2,uniform,index-ordered,walkOrdered,firstChild,8,L1 hit,10
+2,uniform,index-ordered,walkOrdered,firstChild,16,L1 hit,8
+2,uniform,index-ordered,walkOrdered,firstChild,24,L1 hit,5
+2,uniform,index-ordered,walkOrdered,firstChild,32,L1 hit,11
+2,uniform,index-ordered,walkOrdered,firstChild,40,L1 hit,6
+2,uniform,index-ordered,walkOrdered,firstChild,40,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,firstChild,48,L1 hit,9
+2,uniform,index-ordered,walkOrdered,firstChild,56,L1 hit,2
+2,uniform,index-ordered,walkOrdered,head,0,L1 hit,17
+2,uniform,index-ordered,walkOrdered,head,0,"core, same node Any cache hit",2
+2,uniform,index-ordered,walkOrdered,head,8,L1 hit,10
+2,uniform,index-ordered,walkOrdered,head,8,L2 hit,1
+2,uniform,index-ordered,walkOrdered,head,16,L1 hit,11
+2,uniform,index-ordered,walkOrdered,head,24,L1 hit,17
+2,uniform,index-ordered,walkOrdered,head,32,L1 hit,17
+2,uniform,index-ordered,walkOrdered,head,40,L1 hit,11
+2,uniform,index-ordered,walkOrdered,head,40,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,head,48,L1 hit,12
+2,uniform,index-ordered,walkOrdered,head,56,L1 hit,12
+2,uniform,index-ordered,walkOrdered,linear,0,L1 hit,5
+2,uniform,index-ordered,walkOrdered,linear,8,L1 hit,4
+2,uniform,index-ordered,walkOrdered,linear,16,L1 hit,8
+2,uniform,index-ordered,walkOrdered,linear,24,L1 hit,8
+2,uniform,index-ordered,walkOrdered,linear,32,L1 hit,5
+2,uniform,index-ordered,walkOrdered,linear,32,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,linear,40,L1 hit,5
+2,uniform,index-ordered,walkOrdered,linear,48,L1 hit,5
+2,uniform,index-ordered,walkOrdered,linear,56,L1 hit,7
+2,uniform,index-ordered,walkOrdered,ownCount,0,L1 hit,4
+2,uniform,index-ordered,walkOrdered,ownCount,8,L1 hit,7
+2,uniform,index-ordered,walkOrdered,ownCount,16,L1 hit,7
+2,uniform,index-ordered,walkOrdered,ownCount,24,L1 hit,4
+2,uniform,index-ordered,walkOrdered,ownCount,32,L1 hit,5
+2,uniform,index-ordered,walkOrdered,ownCount,40,L1 hit,10
+2,uniform,index-ordered,walkOrdered,ownCount,48,L1 hit,11
+2,uniform,index-ordered,walkOrdered,ownCount,56,L1 hit,6
+2,uniform,index-ordered,walkOrdered,summary,0,L1 hit,13
+2,uniform,index-ordered,walkOrdered,summary,0,L2 hit,1
+2,uniform,index-ordered,walkOrdered,summary,0,"core, same node Any cache hit",2
+2,uniform,index-ordered,walkOrdered,summary,8,L1 hit,13
+2,uniform,index-ordered,walkOrdered,summary,8,L2 hit,2
+2,uniform,index-ordered,walkOrdered,summary,8,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,summary,16,L1 hit,22
+2,uniform,index-ordered,walkOrdered,summary,16,L2 hit,1
+2,uniform,index-ordered,walkOrdered,summary,16,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,summary,24,L1 hit,22
+2,uniform,index-ordered,walkOrdered,summary,32,L1 hit,19
+2,uniform,index-ordered,walkOrdered,summary,32,"core, same node Any cache hit",4
+2,uniform,index-ordered,walkOrdered,summary,40,L1 hit,8
+2,uniform,index-ordered,walkOrdered,summary,48,L1 hit,12
+2,uniform,index-ordered,walkOrdered,summary,56,L1 hit,11
+2,split-line-translated,index,crossPairs,bounds,0,L1 hit,45
+2,split-line-translated,index,crossPairs,bounds,8,L1 hit,40
+2,split-line-translated,index,crossPairs,bounds,8,L2 hit,1
+2,split-line-translated,index,crossPairs,bounds,16,L1 hit,44
+2,split-line-translated,index,crossPairs,bounds,16,L2 hit,1
+2,split-line-translated,index,crossPairs,bounds,24,L1 hit,38
+2,split-line-translated,index,crossPairs,bounds,24,L2 hit,2
+2,split-line-translated,index,crossPairs,bounds,24,"core, same node Any cache hit",1
+2,split-line-translated,index,crossPairs,bounds,32,L1 hit,36
+2,split-line-translated,index,crossPairs,bounds,32,L2 hit,1
+2,split-line-translated,index,crossPairs,bounds,40,L1 hit,41
+2,split-line-translated,index,crossPairs,bounds,40,L2 hit,1
+2,split-line-translated,index,crossPairs,bounds,48,L1 hit,45
+2,split-line-translated,index,crossPairs,bounds,48,L2 hit,2
+2,split-line-translated,index,crossPairs,bounds,56,L1 hit,32
+2,split-line-translated,index,crossPairs,bounds,56,L2 hit,1
+2,split-line-translated,index,crossPairs,bounds,56,"core, same node Any cache hit",1
+2,split-line-translated,index,crossPairs,count,0,L1 hit,10
+2,split-line-translated,index,crossPairs,count,8,L1 hit,13
+2,split-line-translated,index,crossPairs,count,16,L1 hit,11
+2,split-line-translated,index,crossPairs,count,24,L1 hit,20
+2,split-line-translated,index,crossPairs,count,24,L2 hit,1
+2,split-line-translated,index,crossPairs,count,32,L1 hit,15
+2,split-line-translated,index,crossPairs,count,32,L2 hit,1
+2,split-line-translated,index,crossPairs,count,40,L1 hit,19
+2,split-line-translated,index,crossPairs,count,48,L1 hit,16
+2,split-line-translated,index,crossPairs,count,48,L2 hit,2
+2,split-line-translated,index,crossPairs,count,56,L1 hit,17
+2,split-line-translated,index,crossPairs,firstChild,0,L1 hit,1
+2,split-line-translated,index,crossPairs,firstChild,8,L1 hit,3
+2,split-line-translated,index,crossPairs,firstChild,16,L1 hit,3
+2,split-line-translated,index,crossPairs,firstChild,24,L1 hit,1
+2,split-line-translated,index,crossPairs,firstChild,32,L1 hit,1
+2,split-line-translated,index,crossPairs,firstChild,40,L1 hit,1
+2,split-line-translated,index,crossPairs,firstChild,56,L1 hit,2
+2,split-line-translated,index,crossPairs,head,0,L1 hit,3
+2,split-line-translated,index,crossPairs,head,8,L1 hit,2
+2,split-line-translated,index,crossPairs,head,16,L1 hit,2
+2,split-line-translated,index,crossPairs,head,24,L1 hit,3
+2,split-line-translated,index,crossPairs,head,32,L1 hit,3
+2,split-line-translated,index,crossPairs,head,40,L1 hit,5
+2,split-line-translated,index,crossPairs,head,48,L1 hit,8
+2,split-line-translated,index,crossPairs,head,56,L1 hit,6
+2,split-line-translated,index,crossPairs,linear,0,L1 hit,4
+2,split-line-translated,index,crossPairs,linear,8,L1 hit,9
+2,split-line-translated,index,crossPairs,linear,16,L1 hit,22
+2,split-line-translated,index,crossPairs,linear,24,L1 hit,13
+2,split-line-translated,index,crossPairs,linear,32,L1 hit,5
+2,split-line-translated,index,crossPairs,linear,40,L1 hit,15
+2,split-line-translated,index,crossPairs,linear,48,L1 hit,10
+2,split-line-translated,index,crossPairs,linear,56,L1 hit,20
+2,split-line-translated,index,crossPairs,ownCount,0,L1 hit,8
+2,split-line-translated,index,crossPairs,ownCount,8,L1 hit,16
+2,split-line-translated,index,crossPairs,ownCount,16,L1 hit,9
+2,split-line-translated,index,crossPairs,ownCount,24,L1 hit,17
+2,split-line-translated,index,crossPairs,ownCount,32,L1 hit,5
+2,split-line-translated,index,crossPairs,ownCount,40,L1 hit,7
+2,split-line-translated,index,crossPairs,ownCount,48,L1 hit,11
+2,split-line-translated,index,crossPairs,ownCount,56,L1 hit,19
+2,split-line-translated,index,crossPairs,summary,0,L1 hit,3
+2,split-line-translated,index,crossPairs,summary,8,L1 hit,4
+2,split-line-translated,index,crossPairs,summary,16,L1 hit,3
+2,split-line-translated,index,crossPairs,summary,24,L1 hit,4
+2,split-line-translated,index,crossPairs,summary,32,L1 hit,6
+2,split-line-translated,index,crossPairs,summary,40,L1 hit,4
+2,split-line-translated,index,crossPairs,summary,48,L1 hit,3
+2,split-line-translated,index,crossPairs,summary,48,L2 hit,1
+2,split-line-translated,index,crossPairs,summary,56,L1 hit,3
+2,uniform,index,crossPairs,bounds,0,L1 hit,33
+2,uniform,index,crossPairs,bounds,8,L1 hit,49
+2,uniform,index,crossPairs,bounds,8,L2 hit,1
+2,uniform,index,crossPairs,bounds,16,L1 hit,43
+2,uniform,index,crossPairs,bounds,24,L1 hit,46
+2,uniform,index,crossPairs,bounds,24,L2 hit,2
+2,uniform,index,crossPairs,bounds,32,L1 hit,37
+2,uniform,index,crossPairs,bounds,40,L1 hit,49
+2,uniform,index,crossPairs,bounds,40,L2 hit,1
+2,uniform,index,crossPairs,bounds,48,L1 hit,46
+2,uniform,index,crossPairs,bounds,56,L1 hit,57
+2,uniform,index,crossPairs,bounds,56,L2 hit,3
+2,uniform,index,crossPairs,count,0,L1 hit,8
+2,uniform,index,crossPairs,count,8,L1 hit,17
+2,uniform,index,crossPairs,count,16,L1 hit,16
+2,uniform,index,crossPairs,count,24,L1 hit,7
+2,uniform,index,crossPairs,count,24,L2 hit,1
+2,uniform,index,crossPairs,count,32,L1 hit,17
+2,uniform,index,crossPairs,count,40,L1 hit,15
+2,uniform,index,crossPairs,count,40,L2 hit,1
+2,uniform,index,crossPairs,count,48,L1 hit,12
+2,uniform,index,crossPairs,count,56,L1 hit,12
+2,uniform,index,crossPairs,count,56,L2 hit,1
+2,uniform,index,crossPairs,firstChild,0,L1 hit,1
+2,uniform,index,crossPairs,firstChild,8,L1 hit,4
+2,uniform,index,crossPairs,firstChild,16,L1 hit,4
+2,uniform,index,crossPairs,firstChild,24,L1 hit,5
+2,uniform,index,crossPairs,firstChild,32,L1 hit,3
+2,uniform,index,crossPairs,firstChild,40,L1 hit,1
+2,uniform,index,crossPairs,firstChild,48,L1 hit,1
+2,uniform,index,crossPairs,firstChild,56,L1 hit,4
+2,uniform,index,crossPairs,head,0,L1 hit,5
+2,uniform,index,crossPairs,head,8,L1 hit,5
+2,uniform,index,crossPairs,head,16,L1 hit,8
+2,uniform,index,crossPairs,head,24,L1 hit,1
+2,uniform,index,crossPairs,head,32,L1 hit,3
+2,uniform,index,crossPairs,head,40,L1 hit,3
+2,uniform,index,crossPairs,head,48,L1 hit,1
+2,uniform,index,crossPairs,head,56,L1 hit,1
+2,uniform,index,crossPairs,linear,0,L1 hit,17
+2,uniform,index,crossPairs,linear,8,L1 hit,16
+2,uniform,index,crossPairs,linear,16,L1 hit,21
+2,uniform,index,crossPairs,linear,24,L1 hit,13
+2,uniform,index,crossPairs,linear,32,L1 hit,15
+2,uniform,index,crossPairs,linear,40,L1 hit,18
+2,uniform,index,crossPairs,linear,48,L1 hit,17
+2,uniform,index,crossPairs,linear,56,L1 hit,23
+2,uniform,index,crossPairs,linear,56,L2 hit,1
+2,uniform,index,crossPairs,ownCount,0,L1 hit,12
+2,uniform,index,crossPairs,ownCount,8,L1 hit,19
+2,uniform,index,crossPairs,ownCount,16,L1 hit,17
+2,uniform,index,crossPairs,ownCount,24,L1 hit,23
+2,uniform,index,crossPairs,ownCount,32,L1 hit,10
+2,uniform,index,crossPairs,ownCount,40,L1 hit,13
+2,uniform,index,crossPairs,ownCount,48,L1 hit,11
+2,uniform,index,crossPairs,ownCount,56,L1 hit,22
+2,uniform,index,crossPairs,summary,0,L1 hit,5
+2,uniform,index,crossPairs,summary,8,L1 hit,4
+2,uniform,index,crossPairs,summary,16,L1 hit,10
+2,uniform,index,crossPairs,summary,24,L1 hit,4
+2,uniform,index,crossPairs,summary,32,L1 hit,4
+2,uniform,index,crossPairs,summary,40,L1 hit,5
+2,uniform,index,crossPairs,summary,48,L1 hit,5
+2,uniform,index,crossPairs,summary,56,L1 hit,4

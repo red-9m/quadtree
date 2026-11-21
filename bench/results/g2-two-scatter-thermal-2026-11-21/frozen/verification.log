@@ -1,0 +1,16 @@
+Run 1: 2940 raw samples, 204 rows, 68 warm allocation-free library rows; fixtures, uncapped checksums, work and footprint agree with the staged reference.
+Run 1: G2 12/0/3 (pass/fail/inconclusive).
+Run 1: G9 14/0/1 (pass/fail/inconclusive).
+Run 2: 2940 raw samples, 204 rows, 68 warm allocation-free library rows; fixtures, uncapped checksums, work and footprint agree with the staged reference.
+Run 2: G2 12/0/3 (pass/fail/inconclusive).
+Run 2: G9 15/0/0 (pass/fail/inconclusive).
+Coverage: 189/196 (96.4%) within combined error; meets the 95% target.
+Run 1 cpu: 7.19% busy; 8.16% peak sampled interval.
+Run 1 Tctl: 32.750 °C start, 32.8–68.1 °C range; CPU 6 sampled frequency 4577–4642 MHz.
+Run 1 cpu6: 100.00% busy; 100.00% peak sampled interval.
+Run 1 cpu7: 0.31% busy; 1.60% peak sampled interval.
+Run 2 cpu: 6.71% busy; 7.06% peak sampled interval.
+Run 2 Tctl: 33.750 °C start, 33.8–67.6 °C range; CPU 6 sampled frequency 4579–4642 MHz.
+Run 2 cpu6: 99.99% busy; 100.00% peak sampled interval.
+Run 2 cpu7: 0.00% busy; 0.00% peak sampled interval.
+Run boundary Tctl difference: 1.000 °C (≤1 °C).

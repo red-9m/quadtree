@@ -1,0 +1,18 @@
+# date: 2026-11-20T20:09:49Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293790 GHz, 7.8 ns per read; clock source tsc
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int32 --scenes=split-line-translated,uniform --engines=index,index-ordered --sizes=100000 --small-sizes= --rounds=15 --min-time=0.03 --min-reps=3 --max-reps=12 --csv=/tmp/quadtree-g9-rank-hint-ablation.rYW2R4/results/4-hintbin.csv --raw=/tmp/quadtree-g9-rank-hint-ablation.rYW2R4/results/4-hintbin-raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+model,scene,boundary,type,n,batch,workload,mode,engine,status,rounds,reps,estimate_ns,err_ns,round_err_ns,vs_best,vs_best_lo,vs_best_hi,median_ns,p95_ns,min_ns,prepare_median_ns,pairs_median_ns,init_ns,candidates,node_visits,cell_tests,references,max_refs,pairs,checksum,allocs_per_step,cold_allocs,peak_bytes,retained_bytes,scene_hash
+snapshot,uniform,default,int32,100000,1,-,full,index,ok,15,15,12987563.6,336655.2,214163.6,1.0000,1.0000,1.0000,12796682,13929323,12636741,5882460,6932436,-1.0,788738,426273,0,100000,1,73905,47126aad363c014b,0.000,11,27091000,27091000,e077e5c6bd810b22
+snapshot,uniform,default,int32,100000,1,-,full,index-ordered,ok,15,15,43480497.7,984848.4,462282.4,3.3486,3.2550,3.4449,42995884,44902371,42334709,10700286,32277883,-1.0,383603,3405732,0,100000,1,73905,47126aad363c014b,0.000,16,32585304,32585304,e077e5c6bd810b22
+snapshot,split-line-translated,default,int32,100000,1,-,full,index,ok,15,15,13361447.7,354605.6,233096.2,1.0000,1.0000,1.0000,13200371,14267039,12935964,6498960,6698816,-1.0,625694,434151,0,100000,1,105137,dc2fa1796e7c7b83,0.000,11,27624280,27624280,5ac13c16e425951c
+snapshot,split-line-translated,default,int32,100000,1,-,full,index-ordered,ok,15,15,51115626.3,1299879.7,802847.6,3.8259,3.7245,3.9301,50636763,53576525,49243661,11232508,39511887,-1.0,422813,4279010,0,100000,1,105137,dc2fa1796e7c7b83,0.000,16,33118584,33118584,5ac13c16e425951c

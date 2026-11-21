@@ -1,0 +1,8 @@
+# build-probe: control and combined -O3 transcripts (21000 lines; statuses 0/2/4/5/6/12 = 10749/688/294/4538/1552/179) are byte-identical
+7b9c70d6c748053a4da093c1ee4b98ff64d88ac881e6ff262dea0047bf1c87fd  bp-control.txt
+7b9c70d6c748053a4da093c1ee4b98ff64d88ac881e6ff262dea0047bf1c87fd  bp-candidate.txt
+# build-probe: combined -O1 ASan+UBSan transcript
+7b9c70d6c748053a4da093c1ee4b98ff64d88ac881e6ff262dea0047bf1c87fd  -
+# direct-result semantics-probe on combined, -O3 then -O1 ASan+UBSan (control sha 448f16fd…)
+448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79  -
+448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79  -

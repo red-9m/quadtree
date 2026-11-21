@@ -1,0 +1,218 @@
+# date: 2026-11-20T13:38:17Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293787 GHz, 7.8 ns per read; clock source tsc
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int32 --scenes=uniform,clustered,split-line,split-line-translated,mixed-size,outliers --engines=index,index-ordered,qt-loose-sort,sweep,grid,brute --sizes=1000,10000,100000 --small-sizes=0,1,2,4,8,16,32,64 --batch=256 --rounds=9 --min-time=0.03 --min-reps=3 --max-reps=12 --csv=/tmp/quadtree-g2-cross-screen.imKTpF/timing/9-candidate/snapshot.csv --raw=/tmp/quadtree-g2-cross-screen.imKTpF/timing/9-candidate/snapshot-raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int32        0   256 brute               0.006    27.9     1.01 [0.98-1.03]             0           0     0.00         0 ok
+uniform                                  int32        0   256 sweep               0.006    25.1     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  int32        0   256 grid                0.009    23.4     1.62 [1.58-1.65]             0           0     0.00         0 ok
+uniform                                  int32        0   256 qt-loose-sort        0.014    22.6     2.42 [2.36-2.49]             0           0     0.00         0 ok
+uniform                                  int32        0   256 index               0.011     6.3     1.97 [1.70-2.28]             0           0     0.00         0 ok
+uniform                                  int32        0   256 index-ordered        0.011     7.9     1.96 [1.70-2.26]             0           0     0.00         0 ok
+uniform                                  int32        1   256 brute               0.008    24.1     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  int32        1   256 sweep               0.010    20.8     1.25 [1.06-1.47]             0           0     0.00         0 ok
+uniform                                  int32        1   256 grid                0.040     8.5     5.23 [4.41-6.22]             0           0     0.00         0 ok
+uniform                                  int32        1   256 qt-loose-sort        0.569    24.1  72.50 [62.32-84.33]             0           0     0.00         0 ok
+uniform                                  int32        1   256 index               0.022    10.5     2.85 [2.53-3.21]             0           0     0.00         0 ok
+uniform                                  int32        1   256 index-ordered        0.031    13.5     4.00 [3.64-4.39]             0           0     0.00         0 ok
+uniform                                  int32        2   256 brute               0.012     4.4     1.00 [1.00-1.00]           256         114     0.00         0 ok
+uniform                                  int32        2   256 sweep               0.019     9.3     1.51 [1.39-1.63]           165         114     0.00         0 ok
+uniform                                  int32        2   256 grid                0.062     4.2     5.03 [4.89-5.18]           230         114     0.00         0 ok
+uniform                                  int32        2   256 qt-loose-sort        0.502     2.4  40.79 [38.91-42.77]           256         114     0.00         0 ok
+uniform                                  int32        2   256 index               0.035     2.2     2.87 [2.74-3.00]           256         114     0.00         0 ok
+uniform                                  int32        2   256 index-ordered        0.071     2.3     5.73 [5.47-6.00]           256         114     0.00         0 ok
+uniform                                  int32        4   256 brute               0.024     8.2     1.00 [1.00-1.00]          1536         671     0.00         0 ok
+uniform                                  int32        4   256 sweep               0.038     8.8     1.58 [1.51-1.65]          1063         671     0.00         0 ok
+uniform                                  int32        4   256 grid                0.115    10.1     4.74 [4.45-5.06]          1357         671     0.00         0 ok
+uniform                                  int32        4   256 qt-loose-sort        0.595     2.2  24.78 [22.94-26.76]          1536         671     0.00         0 ok
+uniform                                  int32        4   256 index               0.062     3.6     2.60 [2.45-2.77]          1536         671     0.00         0 ok
+uniform                                  int32        4   256 index-ordered        0.142     4.2     5.93 [5.45-6.45]          1536         671     0.00         1 ok
+uniform                                  int32        8   256 brute               0.142     3.0     1.00 [1.00-1.00]          7168        1348     0.00         0 ok
+uniform                                  int32        8   256 sweep               0.147     2.4     1.03 [1.01-1.06]          3293        1348     0.00         0 ok
+uniform                                  int32        8   256 grid                0.364     2.4     2.57 [2.50-2.64]          3738        1348     0.00         0 ok
+uniform                                  int32        8   256 qt-loose-sort        0.925     6.2     6.50 [6.12-6.90]          7168        1348     0.00         0 ok
+uniform                                  int32        8   256 index               0.267     2.3     1.88 [1.82-1.95]          7168        1348     0.00         1 ok
+uniform                                  int32        8   256 index-ordered        0.442     2.6     3.11 [3.02-3.21]          7168        1348     0.00         2 ok
+uniform                                  int32       16   256 brute               0.599     2.0     1.41 [1.38-1.44]         30720        3291     0.00         0 ok
+uniform                                  int32       16   256 sweep               0.424     2.0     1.00 [1.00-1.00]         10408        3291     0.00         0 ok
+uniform                                  int32       16   256 grid                0.852     2.3     2.01 [1.96-2.06]         10317        3291     0.00         1 ok
+uniform                                  int32       16   256 qt-loose-sort        1.593     2.2     3.76 [3.67-3.85]         18867        3291     0.00         1 ok
+uniform                                  int32       16   256 index               1.033     2.1     2.44 [2.39-2.49]         30720        3291     0.00         3 ok
+uniform                                  int32       16   256 index-ordered        1.624     2.2     3.83 [3.75-3.91]         30720        3291     0.00         4 ok
+uniform                                  int32       32   256 brute               1.964     2.1     1.74 [1.71-1.78]        126976        5876     0.00         0 ok
+uniform                                  int32       32   256 sweep               1.128     2.1     1.00 [1.00-1.00]         28621        5876     0.00         0 ok
+uniform                                  int32       32   256 grid                1.695     2.1     1.50 [1.47-1.54]         21200        5876     0.00         2 ok
+uniform                                  int32       32   256 qt-loose-sort        3.153     2.1     2.80 [2.74-2.86]         35961        5876     0.00         3 ok
+uniform                                  int32       32   256 index               3.398     2.1     3.01 [2.94-3.08]        126976        5876     0.00         6 ok
+uniform                                  int32       32   256 index-ordered        5.238     2.1     4.65 [4.54-4.75]        126976        5876     0.00         8 ok
+uniform                                  int32       64   256 brute               6.314     2.1     2.23 [2.18-2.28]        516096       12728     0.00         1 ok
+uniform                                  int32       64   256 sweep               2.829     2.1     1.00 [1.00-1.00]         85067       12728     0.00         1 ok
+uniform                                  int32       64   256 grid                3.535     2.1     1.25 [1.22-1.28]         47943       12728     0.00         4 ok
+uniform                                  int32       64   256 qt-loose-sort        6.041     2.0     2.14 [2.09-2.18]        101841       12728     0.00         6 ok
+uniform                                  int32       64   256 index              11.464     2.0     4.05 [3.97-4.14]        516096       12728     0.00        13 ok
+uniform                                  int32       64   256 index-ordered       18.415     2.0     6.51 [6.37-6.65]        516096       12728     0.00        16 ok
+uniform                                  int32     1000     1 brute             764.630     2.8  17.43 [16.74-18.14]        499500         734     0.00        16 ok
+uniform                                  int32     1000     1 sweep              87.384     2.5     1.99 [1.92-2.07]         20194         734     0.00        28 ok
+uniform                                  int32     1000     1 grid               43.889     3.4     1.00 [1.00-1.00]          3130         734     0.00        51 ok
+uniform                                  int32     1000     1 qt-loose-sort       97.451     2.2     2.22 [2.15-2.30]          8068         734     0.00        82 ok
+uniform                                  int32     1000     1 index             104.607     2.3     2.38 [2.30-2.47]          7341         734     0.00       269 ok
+uniform                                  int32     1000     1 index-ordered      272.940     2.2     6.22 [6.00-6.45]          3360         734     0.00       314 ok
+uniform                                  int32    10000     1 brute           93546.541     2.1 161.87 [158.27-165.54]      49995000        7525     0.00       166 ok
+uniform                                  int32    10000     1 sweep            2035.678     2.1     3.52 [3.45-3.60]        644061        7525     0.00       283 ok
+uniform                                  int32    10000     1 grid              577.908     2.0     1.00 [1.00-1.00]         31491        7525     0.00       509 ok
+uniform                                  int32    10000     1 qt-loose-sort     1011.706     2.1     1.75 [1.71-1.79]         50842        7525     0.00       797 ok
+uniform                                  int32    10000     1 index            1181.616     2.1     2.04 [2.00-2.09]         51231        7525     0.00      2735 ok
+uniform                                  int32    10000     1 index-ordered     3678.682     2.1     6.37 [6.23-6.50]         31633        7525     0.00      3374 ok
+uniform                                  int32   100000     1 brute                   -       -                    -     200056769        2925     0.00      1660 capped
+uniform                                  int32   100000     1 sweep           46522.237     2.0     7.17 [6.96-7.39]      20226787       73905     0.00      2832 ok
+uniform                                  int32   100000     1 grid             6489.989     3.3     1.00 [1.00-1.00]        310440       73905     0.00      5108 ok
+uniform                                  int32   100000     1 qt-loose-sort    10509.732     2.1     1.62 [1.57-1.68]        790372       73905     0.00      7436 ok
+uniform                                  int32   100000     1 index           15356.966     2.1     2.37 [2.29-2.45]        788738       73905     0.00     26456 ok
+uniform                                  int32   100000     1 index-ordered    51725.083     2.1     7.97 [7.72-8.24]        383603       73905     0.00     31821 ok
+clustered                                int32        0   256 brute               0.005     2.1     1.00 [0.98-1.02]             0           0     0.00         0 ok
+clustered                                int32        0   256 sweep               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                int32        0   256 grid                0.008     2.2     1.63 [1.59-1.66]             0           0     0.00         0 ok
+clustered                                int32        0   256 qt-loose-sort        0.013     2.3     2.43 [2.38-2.49]             0           0     0.00         0 ok
+clustered                                int32        0   256 index               0.011     4.3     2.06 [1.97-2.16]             0           0     0.00         0 ok
+clustered                                int32        0   256 index-ordered        0.011     5.9     2.07 [1.95-2.19]             0           0     0.00         0 ok
+clustered                                int32        1   256 brute               0.006     2.2     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                int32        1   256 sweep               0.009     2.3     1.36 [1.33-1.39]             0           0     0.00         0 ok
+clustered                                int32        1   256 grid                0.038     2.1     5.92 [5.78-6.05]             0           0     0.00         0 ok
+clustered                                int32        1   256 qt-loose-sort        0.495     2.4  76.45 [74.72-78.23]             0           0     0.00         0 ok
+clustered                                int32        1   256 index               0.020     3.7     3.09 [2.97-3.21]             0           0     0.00         0 ok
+clustered                                int32        1   256 index-ordered        0.027     2.6     4.23 [4.12-4.34]             0           0     0.00         0 ok
+clustered                                int32        2   256 brute               0.013     4.2     1.00 [1.00-1.00]           256          84     0.00         0 ok
+clustered                                int32        2   256 sweep               0.018     7.0     1.40 [1.33-1.48]           145          84     0.00         0 ok
+clustered                                int32        2   256 grid                0.061     4.6     4.91 [4.71-5.13]           188          84     0.00         0 ok
+clustered                                int32        2   256 qt-loose-sort        0.497     2.2  39.77 [38.23-41.36]           256          84     0.00         0 ok
+clustered                                int32        2   256 index               0.034     3.0     2.76 [2.66-2.86]           256          84     0.00         0 ok
+clustered                                int32        2   256 index-ordered        0.071     2.5     5.71 [5.44-6.00]           256          84     0.00         0 ok
+clustered                                int32        4   256 brute               0.024     8.9     1.00 [1.00-1.00]          1536         488     0.00         0 ok
+clustered                                int32        4   256 sweep               0.039    11.4     1.66 [1.49-1.86]           890         488     0.00         0 ok
+clustered                                int32        4   256 grid                0.106     7.0     4.50 [4.24-4.77]          1100         488     0.00         0 ok
+clustered                                int32        4   256 qt-loose-sort        0.583     2.2  24.89 [22.70-27.30]          1536         488     0.00         0 ok
+clustered                                int32        4   256 index               0.058     3.8     2.46 [2.30-2.64]          1536         488     0.00         0 ok
+clustered                                int32        4   256 index-ordered        0.139     2.6     5.92 [5.49-6.39]          1536         488     0.00         1 ok
+clustered                                int32        8   256 brute               0.137     2.7     1.00 [1.00-1.00]          7168        1669     0.00         0 ok
+clustered                                int32        8   256 sweep               0.153     2.4     1.12 [1.09-1.15]          3543        1669     0.00         0 ok
+clustered                                int32        8   256 grid                0.346     2.6     2.53 [2.46-2.59]          3785        1669     0.00         0 ok
+clustered                                int32        8   256 qt-loose-sort        0.885     2.2     6.46 [6.26-6.67]          7168        1669     0.00         0 ok
+clustered                                int32        8   256 index               0.272     3.4     1.98 [1.90-2.06]          7168        1669     0.00         1 ok
+clustered                                int32        8   256 index-ordered        0.438     2.5     3.19 [3.10-3.29]          7168        1669     0.00         2 ok
+clustered                                int32       16   256 brute               0.583     2.0     1.24 [1.21-1.26]         30720        5995     0.00         0 ok
+clustered                                int32       16   256 sweep               0.472     2.0     1.00 [1.00-1.00]         14013        5995     0.00         0 ok
+clustered                                int32       16   256 grid                0.900     2.3     1.91 [1.86-1.95]         14394        5995     0.00         1 ok
+clustered                                int32       16   256 qt-loose-sort        1.761     2.0     3.73 [3.65-3.81]         19678        5995     0.00         1 ok
+clustered                                int32       16   256 index               1.064     2.1     2.25 [2.21-2.30]         30720        5995     0.00         3 ok
+clustered                                int32       16   256 index-ordered        1.696     2.0     3.59 [3.52-3.67]         30720        5995     0.00         4 ok
+clustered                                int32       32   256 brute               2.168     2.0     1.44 [1.41-1.47]        126976       18189     0.00         0 ok
+clustered                                int32       32   256 sweep               1.501     2.1     1.00 [1.00-1.00]         50153       18189     0.00         0 ok
+clustered                                int32       32   256 grid                2.414     2.1     1.61 [1.58-1.64]         49023       18189     0.00         2 ok
+clustered                                int32       32   256 qt-loose-sort        3.838     2.1     2.56 [2.51-2.61]         59318       18189     0.00         3 ok
+clustered                                int32       32   256 index               3.892     2.1     2.59 [2.54-2.65]        126976       18189     0.00         6 ok
+clustered                                int32       32   256 index-ordered        6.179     2.1     4.12 [4.03-4.21]        126976       18189     0.00         8 ok
+clustered                                int32       64   256 brute               7.789     2.1     1.74 [1.70-1.78]        516096       64146     0.00         1 ok
+clustered                                int32       64   256 sweep               4.477     2.1     1.00 [1.00-1.00]        184748       64146     0.00         1 ok
+clustered                                int32       64   256 grid                7.377     2.0     1.65 [1.61-1.68]        183817       64146     0.00         3 ok
+clustered                                int32       64   256 qt-loose-sort       10.012     2.0     2.24 [2.19-2.28]        233115       64146     0.00         7 ok
+clustered                                int32       64   256 index              14.498     2.1     3.24 [3.17-3.31]        516096       64146     0.00        13 ok
+clustered                                int32       64   256 index-ordered       23.532     2.1     5.26 [5.14-5.37]        516096       64146     0.00        16 ok
+clustered                                int32     1000     1 brute             805.436     2.6     7.52 [7.32-7.72]        499500        2999     0.00        16 ok
+clustered                                int32     1000     1 sweep             108.307     2.1     1.01 [0.99-1.03]         25028        2999     0.00        28 ok
+clustered                                int32     1000     1 grid              107.147     2.2     1.00 [1.00-1.00]         10412        2999     0.00        51 ok
+clustered                                int32     1000     1 qt-loose-sort      133.669     2.1     1.25 [1.22-1.28]         12060        2999     0.00        83 ok
+clustered                                int32     1000     1 index             155.590     2.0     1.45 [1.42-1.49]         12438        2999     0.00       269 ok
+clustered                                int32     1000     1 index-ordered      397.104     2.1     3.71 [3.62-3.80]          8196        2999     0.00       314 ok
+clustered                                int32    10000     1 brute           94846.018     2.1  72.64 [70.95-74.37]      49995000       33557     0.00       166 ok
+clustered                                int32    10000     1 sweep            2386.315     2.1     1.83 [1.79-1.87]        772497       33557     0.00       283 ok
+clustered                                int32    10000     1 grid             1305.651     2.1     1.00 [1.00-1.00]        120945       33557     0.00       509 ok
+clustered                                int32    10000     1 qt-loose-sort     1728.144     2.0     1.32 [1.30-1.35]        144442       33557     0.00       959 ok
+clustered                                int32    10000     1 index            2111.268     2.2     1.62 [1.58-1.65]        212254       33557     0.00      2603 ok
+clustered                                int32    10000     1 index-ordered     5598.906     2.2     4.29 [4.20-4.38]        119076       33557     0.00      3242 ok
+clustered                                int32   100000     1 brute                   -       -                    -     200056769       13784     0.00      1660 capped
+clustered                                int32   100000     1 sweep           50266.151     2.0     3.59 [3.51-3.67]      21181030      337133     0.00      2832 ok
+clustered                                int32   100000     1 grid            14015.984     2.2     1.00 [1.00-1.00]       1232900      337133     0.00      5108 ok
+clustered                                int32   100000     1 qt-loose-sort    17103.730     2.1     1.22 [1.20-1.25]       1669496      337133     0.00      8912 ok
+clustered                                int32   100000     1 index           22083.742     2.1     1.58 [1.54-1.61]       2082027      337133     0.00     26157 ok
+clustered                                int32   100000     1 index-ordered    70318.928     2.4     5.02 [4.91-5.12]       1118427      337133     0.00     31523 ok
+split-line                               int32     1000     1 brute             749.236     2.6  16.07 [15.28-16.91]        499500         843     0.00        16 ok
+split-line                               int32     1000     1 sweep              87.691     2.9     1.88 [1.83-1.94]         21333         843     0.00        28 ok
+split-line                               int32     1000     1 grid               46.650     4.2     1.00 [1.00-1.00]          2959         843     0.00        83 ok
+split-line                               int32     1000     1 qt-loose-sort       99.596     3.6     2.14 [2.05-2.22]          7914         843     0.00        81 ok
+split-line                               int32     1000     1 index             112.825     2.4     2.42 [2.34-2.50]          7914         843     0.00       267 ok
+split-line                               int32     1000     1 index-ordered      293.954     2.1     6.31 [6.07-6.55]          3858         843     0.00       312 ok
+split-line                               int32    10000     1 brute           91810.427     2.1 146.48 [141.56-151.58]      49995000        7261     0.00       166 ok
+split-line                               int32    10000     1 sweep            1872.511     2.0     2.99 [2.89-3.09]        642882        7261     0.00       283 ok
+split-line                               int32    10000     1 grid              627.099     3.5     1.00 [1.00-1.00]         24510        7261     0.00      1042 ok
+split-line                               int32    10000     1 qt-loose-sort     1032.122     2.3     1.65 [1.59-1.70]         58619        7261     0.00       794 ok
+split-line                               int32    10000     1 index            1314.461     3.9     2.10 [2.00-2.20]         58619        7261     0.00      2728 ok
+split-line                               int32    10000     1 index-ordered     4072.105     2.1     6.50 [6.28-6.72]         37061        7261     0.00      3367 ok
+split-line                               int32   100000     1 brute                   -       -                    -     200056769        4056     0.00      1660 capped
+split-line                               int32   100000     1 sweep           61064.532     2.0     8.77 [8.52-9.03]      28769913      105137     0.00      2832 ok
+split-line                               int32   100000     1 grid             6963.262     3.0     1.00 [1.00-1.00]        329471      105137     0.00     10244 ok
+split-line                               int32   100000     1 qt-loose-sort     9855.881     2.0     1.42 [1.37-1.46]        680447      105137     0.00      8734 ok
+split-line                               int32   100000     1 index           15650.406     2.5     2.25 [2.19-2.31]        681627      105137     0.00     26966 ok
+split-line                               int32   100000     1 index-ordered    57979.917     2.3     8.33 [8.08-8.58]        429581      105137     0.00     32331 ok
+split-line-translated                    int32     1000     1 brute             757.506     2.8  16.42 [15.59-17.30]        499500         843     0.00        16 ok
+split-line-translated                    int32     1000     1 sweep              87.042     2.6     1.89 [1.81-1.96]         21332         843     0.00        28 ok
+split-line-translated                    int32     1000     1 grid               46.179     4.7     1.00 [1.00-1.00]          2893         843     0.00        83 ok
+split-line-translated                    int32     1000     1 qt-loose-sort       95.462     2.2     2.07 [1.98-2.16]          7375         843     0.00        82 ok
+split-line-translated                    int32     1000     1 index             113.011     2.2     2.45 [2.35-2.56]          7375         843     0.00       270 ok
+split-line-translated                    int32     1000     1 index-ordered      294.485     2.1     6.39 [6.10-6.69]          3660         843     0.00       314 ok
+split-line-translated                    int32    10000     1 brute           91779.089     2.2 155.66 [152.19-159.20]      49995000        7261     0.00       166 ok
+split-line-translated                    int32    10000     1 sweep            1867.826     2.0     3.17 [3.10-3.24]        642879        7261     0.00       283 ok
+split-line-translated                    int32    10000     1 grid              589.605     2.1     1.00 [1.00-1.00]         23819        7261     0.00      1040 ok
+split-line-translated                    int32    10000     1 qt-loose-sort      991.041     2.0     1.68 [1.65-1.72]         55704        7261     0.00       794 ok
+split-line-translated                    int32    10000     1 index            1253.832     2.0     2.13 [2.08-2.17]         55720        7261     0.00      2727 ok
+split-line-translated                    int32    10000     1 index-ordered     4025.590     2.0     6.83 [6.69-6.97]         36779        7261     0.00      3366 ok
+split-line-translated                    int32   100000     1 brute                   -       -                    -     200056769        4056     0.00      1660 capped
+split-line-translated                    int32   100000     1 sweep           60905.565     2.0     9.36 [9.12-9.60]      28769910      105137     0.00      2832 ok
+split-line-translated                    int32   100000     1 grid             6509.082     2.5     1.00 [1.00-1.00]        324504      105137     0.00     10226 ok
+split-line-translated                    int32   100000     1 qt-loose-sort     9510.517     2.0     1.46 [1.43-1.50]        620381      105137     0.00      8760 ok
+split-line-translated                    int32   100000     1 index           15277.950     2.2     2.35 [2.28-2.41]        625694      105137     0.00     26976 ok
+split-line-translated                    int32   100000     1 index-ordered    57830.565     2.2     8.89 [8.67-9.11]        422813      105137     0.00     32342 ok
+mixed-size                               int32     1000     1 brute             811.590     2.5     8.54 [8.29-8.80]        499500        2977     0.00        16 ok
+mixed-size                               int32     1000     1 sweep             115.981     2.9     1.22 [1.19-1.25]         26694        2977     0.00        28 ok
+mixed-size                               int32     1000     1 grid               95.006     2.4     1.00 [1.00-1.00]          7075        2977     0.00        49 ok
+mixed-size                               int32     1000     1 qt-loose-sort      115.347     2.3     1.21 [1.19-1.24]          9877        2977     0.00        81 ok
+mixed-size                               int32     1000     1 index             144.846     2.2     1.52 [1.49-1.56]          9683        2977     0.00       267 ok
+mixed-size                               int32     1000     1 index-ordered      386.176     2.0     4.07 [3.97-4.16]          8823        2977     0.00       312 ok
+mixed-size                               int32    10000     1 brute           94441.160     2.1  74.04 [72.55-75.55]      49995000       46479     0.00       166 ok
+mixed-size                               int32    10000     1 sweep            2913.138     2.0     2.28 [2.24-2.33]        891391       46479     0.00       283 ok
+mixed-size                               int32    10000     1 grid             1275.589     2.0     1.00 [1.00-1.00]         92997       46479     0.00       502 ok
+mixed-size                               int32    10000     1 qt-loose-sort     1412.984     2.2     1.11 [1.08-1.13]        101579       46479     0.00       794 ok
+mixed-size                               int32    10000     1 index            1933.065     2.0     1.52 [1.49-1.55]        101984       46479     0.00      2724 ok
+mixed-size                               int32    10000     1 index-ordered     6184.478     2.1     4.85 [4.75-4.95]        151047       46479     0.00      3363 ok
+mixed-size                               int32   100000     1 brute                   -       -                    -     200056769       85597     0.00      1660 capped
+mixed-size                               int32   100000     1 sweep           95947.162     2.0     4.54 [4.44-4.63]      33985904     2054380     0.00      2832 ok
+mixed-size                               int32   100000     1 grid            33506.513     2.0     1.58 [1.55-1.62]       2734376     2054380     0.00      6044 ok
+mixed-size                               int32   100000     1 qt-loose-sort    21140.891     2.0     1.00 [1.00-1.00]       2969328     2054380     0.00      7416 ok
+mixed-size                               int32   100000     1 index           43291.433     2.0     2.05 [2.01-2.09]       2968141     2054380     0.00     26377 ok
+mixed-size                               int32   100000     1 index-ordered   163366.347     2.4     7.73 [7.54-7.92]       6308583     2054380     0.00     31742 ok
+outliers                                 int32     1000     1 brute             761.978     2.5     8.88 [8.56-9.20]        499500         687     0.00        16 ok
+outliers                                 int32     1000     1 sweep              85.858     2.7     1.00 [1.00-1.00]         19547         687     0.00        28 ok
+outliers                                 int32     1000     1 grid             1249.049     2.1  14.55 [14.20-14.91]        490545         687     0.00       100 ok
+outliers                                 int32     1000     1 qt-loose-sort      826.531     2.1     9.63 [9.35-9.92]        490551         687     0.00        59 ok
+outliers                                 int32     1000     1 index             157.965     2.2     1.84 [1.80-1.89]          6419         687     0.00       281 ok
+outliers                                 int32     1000     1 index-ordered      476.175     3.0     5.55 [5.33-5.77]          3277         687     0.00       326 ok
+outliers                                 int32    10000     1 brute           93255.322     2.2  54.49 [53.25-55.75]      49995000        7319     0.00       166 ok
+outliers                                 int32    10000     1 sweep            1883.057     2.7     1.10 [1.07-1.13]        626816        7319     0.00       283 ok
+outliers                                 int32    10000     1 grid           149205.862     2.0  87.18 [85.35-89.06]      48901106        7319     0.00       989 ok
+outliers                                 int32    10000     1 qt-loose-sort    95124.885     2.0  55.58 [54.38-56.81]      48901399        7319     0.00       534 ok
+outliers                                 int32    10000     1 index            1711.428     2.1     1.00 [1.00-1.00]         71882        7319     0.00      2705 ok
+outliers                                 int32    10000     1 index-ordered     5490.208     2.1     3.21 [3.14-3.28]         34165        7319     0.00      3344 ok
+outliers                                 int32   100000     1 brute                   -       -                    -     200056769        2928     0.00      1660 capped
+outliers                                 int32   100000     1 sweep           40019.316     2.0     2.07 [2.01-2.14]      19844093       72320     0.00      2832 ok
+outliers                                 int32   100000     1 grid                    -       -                    -    4903420935       72320     0.00      9874 capped
+outliers                                 int32   100000     1 qt-loose-sort            -       -                    -    3251417423       30371     0.00      5306 capped
+outliers                                 int32   100000     1 index           19312.462     3.1     1.00 [1.00-1.00]        709110       72320     0.00     26821 ok
+outliers                                 int32   100000     1 index-ordered    68149.377     2.1     3.53 [3.42-3.64]        332653       72320     0.00     32186 ok

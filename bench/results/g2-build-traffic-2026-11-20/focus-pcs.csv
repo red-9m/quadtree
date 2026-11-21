@@ -1,0 +1,49 @@
+block,scene,n,engine,phase,operand,pcs,ibs_load,ibs_known_load,ibs_non_l1_load,ibs_store,pct_build_non_l1_load
+1,uniform,100000,index,split_classify,source_id,0x145905,122,122,1,0,0.27
+1,uniform,100000,index,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,432,432,298,0,80.98
+1,uniform,100000,index,split_classify,tag_store,0x1458ef,0,0,0,111,0.00
+1,uniform,100000,index,split_scatter,tag_load,0x145b00,103,103,2,0,0.54
+1,uniform,100000,index,split_scatter,source_id,0x145b05,122,122,1,0,0.27
+1,uniform,100000,index,split_scatter,destination_id,0x145b26,0,0,0,96,0.00
+1,split-line-translated,100000,index,split_classify,source_id,0x145905,127,127,0,0,0.00
+1,split-line-translated,100000,index,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,536,536,354,0,74.84
+1,split-line-translated,100000,index,split_classify,tag_store,0x1458ef,0,0,0,118,0.00
+1,split-line-translated,100000,index,split_scatter,tag_load,0x145b00,121,121,15,0,3.17
+1,split-line-translated,100000,index,split_scatter,source_id,0x145b05,122,122,13,0,2.75
+1,split-line-translated,100000,index,split_scatter,destination_id,0x145b26,0,0,0,147,0.00
+1,uniform,100000,index-ordered,split_classify,source_id,0x145905,36,36,1,0,0.65
+1,uniform,100000,index-ordered,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,123,123,87,0,56.86
+1,uniform,100000,index-ordered,split_classify,tag_store,0x1458ef,0,0,0,38,0.00
+1,uniform,100000,index-ordered,split_scatter,tag_load,0x145b00,42,42,1,0,0.65
+1,uniform,100000,index-ordered,split_scatter,source_id,0x145b05,39,39,0,0,0.00
+1,uniform,100000,index-ordered,split_scatter,destination_id,0x145b26,0,0,0,33,0.00
+1,split-line-translated,100000,index-ordered,split_classify,source_id,0x145905,39,39,0,0,0.00
+1,split-line-translated,100000,index-ordered,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,138,138,106,0,66.67
+1,split-line-translated,100000,index-ordered,split_classify,tag_store,0x1458ef,0,0,0,36,0.00
+1,split-line-translated,100000,index-ordered,split_scatter,tag_load,0x145b00,44,44,3,0,1.89
+1,split-line-translated,100000,index-ordered,split_scatter,source_id,0x145b05,36,36,8,0,5.03
+1,split-line-translated,100000,index-ordered,split_scatter,destination_id,0x145b26,0,0,0,59,0.00
+2,split-line-translated,100000,index-ordered,split_classify,source_id,0x145905,25,25,0,0,0.00
+2,split-line-translated,100000,index-ordered,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,118,118,80,0,64.00
+2,split-line-translated,100000,index-ordered,split_classify,tag_store,0x1458ef,0,0,0,25,0.00
+2,split-line-translated,100000,index-ordered,split_scatter,tag_load,0x145b00,34,34,4,0,3.20
+2,split-line-translated,100000,index-ordered,split_scatter,source_id,0x145b05,30,30,2,0,1.60
+2,split-line-translated,100000,index-ordered,split_scatter,destination_id,0x145b26,0,0,0,41,0.00
+2,uniform,100000,index-ordered,split_classify,source_id,0x145905,37,37,1,0,0.77
+2,uniform,100000,index-ordered,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,129,129,87,0,66.92
+2,uniform,100000,index-ordered,split_classify,tag_store,0x1458ef,0,0,0,34,0.00
+2,uniform,100000,index-ordered,split_scatter,tag_load,0x145b00,44,44,0,0,0.00
+2,uniform,100000,index-ordered,split_scatter,source_id,0x145b05,34,34,0,0,0.00
+2,uniform,100000,index-ordered,split_scatter,destination_id,0x145b26,0,0,0,31,0.00
+2,split-line-translated,100000,index,split_classify,source_id,0x145905,124,124,0,0,0.00
+2,split-line-translated,100000,index,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,524,524,354,0,76.29
+2,split-line-translated,100000,index,split_classify,tag_store,0x1458ef,0,0,0,120,0.00
+2,split-line-translated,100000,index,split_scatter,tag_load,0x145b00,132,132,17,0,3.66
+2,split-line-translated,100000,index,split_scatter,source_id,0x145b05,131,131,24,0,5.17
+2,split-line-translated,100000,index,split_scatter,destination_id,0x145b26,0,0,0,108,0.00
+2,uniform,100000,index,split_classify,source_id,0x145905,105,105,1,0,0.28
+2,uniform,100000,index,split_classify,descriptor_box,0x145911 0x145914 0x145917 0x14591b,422,422,287,0,81.53
+2,uniform,100000,index,split_classify,tag_store,0x1458ef,0,0,0,108,0.00
+2,uniform,100000,index,split_scatter,tag_load,0x145b00,97,97,0,0,0.00
+2,uniform,100000,index,split_scatter,source_id,0x145b05,97,97,3,0,0.85
+2,uniform,100000,index,split_scatter,destination_id,0x145b26,0,0,0,114,0.00

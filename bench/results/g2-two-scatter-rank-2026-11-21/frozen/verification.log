@@ -1,0 +1,9 @@
+9-control: 1764 raw samples; 68 ok library rows with zero warm allocations; G2 10/0/5 (pass/fail/inconclusive)
+9-candidate: 1764 raw samples; 68 ok library rows with zero warm allocations; G2 13/0/2 (pass/fail/inconclusive)
+15-control: 2940 raw samples; 68 ok library rows with zero warm allocations; G2 11/0/4 (pass/fail/inconclusive)
+15-candidate: 2940 raw samples; 68 ok library rows with zero warm allocations; G2 12/0/3 (pass/fail/inconclusive)
+All matched uncapped rows agree on pair counts, checksums, fixtures, work, allocations and memory.
+9-control: G9 12/0/3 (pass/fail/inconclusive)
+9-candidate: G9 12/0/3 (pass/fail/inconclusive)
+15-control: G9 12/0/3 (pass/fail/inconclusive)
+15-candidate: G9 13/0/2 (pass/fail/inconclusive)

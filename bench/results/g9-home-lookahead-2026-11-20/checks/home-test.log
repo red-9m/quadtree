@@ -1,0 +1,2 @@
+Exact hash/tree state, diagnostics, dense slots and ordered callback streams match (GCC and ASan/UBSan): f435840f2b1172e33c89bb90c8bf18ea68bfa90f852a59579e8a26ea166de8eb
+Nine fixtures: short/tail paths, warm epoch reset, collision conversion during commit, tree-mode rebuild and duplicate rollback.

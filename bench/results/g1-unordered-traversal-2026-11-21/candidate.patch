@@ -1,0 +1,50 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1194,6 +1194,8 @@
+             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>
+     QueryResult forEachPair(Visitor&& visitor, QueryOptions<T> options = {}, Predicate&& predicate = {}) const noexcept
+     {
++        if (!options.ordered && empty())
++            return {};
+         if (size() < 2)
+             return {options.ordered && !allRanked() ? Status::MissingRank : Status::Ok, {}};
+         if (options.ordered && !allRanked())
+@@ -1209,14 +1211,8 @@
+             typename Workspace<T>::Use use(*scratch);
+             orderedSelf(*scratch, false, context, visitor, predicate);
+         }
+-        else if (mRoot != none)
+-            selfPairs(mRoot, context, visitor, predicate);
+-        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+-            tinyPairs(context, visitor, predicate);
+         else
+-            for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+-                for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+-                    testPair(a, b, false, context, visitor, predicate);
++            unorderedPairTraversal(context, visitor, predicate);
+         return context.result;
+     }
+ 
+@@ -2835,6 +2831,22 @@
+     }
+ 
+     template<typename Visitor, typename Predicate>
++#if defined(__GNUC__) || defined(__clang__)
++    [[gnu::noinline]]
++#endif
++    void unorderedPairTraversal(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        if (mRoot != none)
++            selfPairs(mRoot, context, visitor, predicate);
++        else if (size() <= 4 && context.remaining.candidateTests >= size() * (size() - 1) / 2)
++            tinyPairs(context, visitor, predicate);
++        else
++            for (std::uint32_t a = 0; a < size() && context.active(); ++a)
++                for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
++                    testPair(a, b, false, context, visitor, predicate);
++    }
++
++    template<typename Visitor, typename Predicate>
+     void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
+     {
+         const auto count = mEntries.mSize;

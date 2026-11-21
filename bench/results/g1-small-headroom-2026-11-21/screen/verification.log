@@ -1,0 +1,6 @@
+empty (contract-preserving probe):
+  81: 7776 raw samples per process; all 96 matched engine rows agree on work, fixture, checksums and memory; zero warm library allocations.
+  117: 11232 raw samples per process; all 96 matched engine rows agree on work, fixture, checksums and memory; zero warm library allocations.
+singleton (invalid diagnostic only):
+  81: 7776 raw samples per process; all 96 matched engine rows agree on work, fixture, checksums and memory; zero warm library allocations.
+  117: 11232 raw samples per process; all 96 matched engine rows agree on work, fixture, checksums and memory; zero warm library allocations.

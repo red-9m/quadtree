@@ -1,0 +1,29 @@
+28 control / 28 candidate symbols; 28 shared names
+same 306 306 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::countNodes(QuadTree::detail::SpatialKey const*, unsigned long, unsigned long, unsigned int) const
+same 122 122 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::cut(QuadTree::detail::SpatialKey const*, unsigned long, unsigned long, unsigned int) const [clone
+same 298 298 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::makeKey(QuadTree::detail::Cell<int>, unsigned int, unsigned int, QuadTree::Box<int> const&) const
+same 46 46 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedMoved<bench::LibraryIndex<int, false>::pairsInvolving<(anonymous namespace)::PairSink>(std
+same 46 46 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedMoved<bench::LibraryIndex<int, true>::pairsInvolving<(anonymous namespace)::PairSink>(std:
+same 202 202 QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::radixRankOrder(QuadTree::Workspace<int>&, unsigned int*, unsigned int) const [clone .isra.0]
+DIFFERENT 350 346 bench::Counters bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const
+same 506 506 bench::Counters bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const
+same 429 429 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::crossPairs<bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anonymou
+same 429 429 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::crossPairs<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous
+same 131 131 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::itemsVsSubtree<bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anon
+same 131 131 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::itemsVsSubtree<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anony
+same 476 476 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::selfPairs<bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anonymous
+same 476 476 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::selfPairs<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous 
+same 227 227 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 227 227 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 211 211 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 211 211 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 159 159 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 119 119 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 159 159 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 119 119 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 157 157 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 157 157 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 157 157 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 157 157 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walk<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context, QuadTree::Index
+same 295 295 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench
+same 295 295 void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench

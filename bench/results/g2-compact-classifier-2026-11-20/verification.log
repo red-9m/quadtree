@@ -1,0 +1,6 @@
+9-control: 1764 raw samples; 68 completed library rows with zero warm allocations.
+9-candidate: 1764 raw samples; 68 completed library rows with zero warm allocations.
+15-control: 2940 raw samples; 68 completed library rows with zero warm allocations.
+15-candidate: 2940 raw samples; 68 completed library rows with zero warm allocations.
+All matched uncapped rows agree on fixtures, pairs, checksums, work, warm allocations, peak and retained bytes.
+Exactly one extra cold allocation for each nonempty library row; no change for any other row.

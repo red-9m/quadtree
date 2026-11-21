@@ -1,0 +1,385 @@
+block,kind,scene,engine,phase,pc,op,level,samples
+1,control,split-line-translated,index,lookahead,0xd32f0,N/A,N/A,48
+1,control,split-line-translated,index,current_gather_call,0xd3322,N/A,N/A,47
+1,control,split-line-translated,index,current_gather_call,0xd3331,N/A,N/A,40
+1,control,split-line-translated,index,lookahead,0xd32e9,N/A,N/A,32
+1,control,split-line-translated,index,current_gather_call,0xd334e,STORE,L1 hit,31
+1,control,split-line-translated,index,dense_other,0xd339e,LOAD,L1 hit,29
+1,control,split-line-translated,index,dense_other,0xd3374,N/A,N/A,28
+1,control,split-line-translated,index,current_gather_call,0xd331f,LOAD,L1 hit,28
+1,control,split-line-translated,index,construct,0x147853,LOAD,L1 hit,28
+1,control,split-line-translated,index,current_gather_call,0xd3344,STORE,L1 hit,26
+1,control,split-line-translated,index,construct,0x14788b,N/A,N/A,26
+1,control,split-line-translated,index,construct,0x14783c,LOAD,L1 hit,26
+1,control,split-line-translated,index,construct,0x147837,N/A,N/A,26
+1,control,split-line-translated,index,dense_other,0xd3358,LOAD,L1 hit,25
+1,control,split-line-translated,index,dense_other,0xd3361,N/A,N/A,25
+1,control,split-line-translated,index,construct,0x14785e,N/A,N/A,25
+1,control,split-line-translated,index,construct,0x14786a,N/A,N/A,23
+1,control,split-line-translated,index,construct,0x14788b,STORE,L1 hit,23
+1,control,split-line-translated,index,construct,0x147834,N/A,N/A,23
+1,control,split-line-translated,index,construct,0x14784f,N/A,N/A,23
+1,control,split-line-translated,index,construct,0x14785a,LOAD,L1 hit,23
+1,control,split-line-translated,index,construct,0x14788f,LOAD,L1 hit,23
+1,control,split-line-translated,index,current_gather_call,0xd334e,N/A,N/A,23
+1,control,split-line-translated,index,construct,0x147876,STORE,L1 hit,22
+1,control,split-line-translated,index,construct,0x14788f,N/A,N/A,22
+1,control,split-line-translated,index,construct,0x147830,LOAD,L1 hit,22
+1,control,split-line-translated,index,dense_other,0xd3376,LOAD,L1 hit,22
+1,control,split-line-translated,index,lookahead,0xd32ec,N/A,N/A,22
+1,control,split-line-translated,index,dense_other,0xd336f,LOAD,L1 hit,21
+1,control,split-line-translated,index,dense_other,0xd3396,N/A,N/A,21
+1,control,split-line-translated,index,current_gather_call,0xd333f,LOAD,L1 hit,21
+1,control,split-line-translated,index,current_gather_call,0xd332e,N/A,N/A,21
+1,control,split-line-translated,index,lookahead,0xd33b2,N/A,N/A,21
+1,control,split-line-translated,index,lookahead,0xd3312,LOAD,L1 hit,21
+1,control,split-line-translated,index,dense_other,0xd3368,N/A,N/A,20
+1,control,split-line-translated,index,dense_other,0xd33ac,N/A,N/A,20
+1,control,split-line-translated,index,construct,0x147879,STORE,L1 hit,20
+1,control,split-line-translated,index,lookahead,0xd32f5,N/A,N/A,20
+1,control,split-line-translated,index,lookahead,0xd32f9,LOAD,"core, same node Any cache hit",20
+1,control,split-line-translated,index,lookahead,0xd3305,LOAD,L1 hit,20
+1,control,split-line-translated,index,construct,0x147867,N/A,N/A,20
+1,control,split-line-translated,index,dense_other,0xd33a8,LOAD,L1 hit,20
+1,control,split-line-translated,index,lookahead,0xd32d9,N/A,N/A,19
+1,control,split-line-translated,index,dense_other,0xd337b,N/A,N/A,19
+1,control,split-line-translated,index,dense_other,0xd335d,N/A,N/A,19
+1,control,split-line-translated,index,construct,0x147884,N/A,N/A,19
+1,control,split-line-translated,index,current_gather_call,0xd3349,STORE,L1 hit,19
+1,control,split-line-translated,index,dense_other,0xd3368,LOAD,L1 hit,18
+1,control,split-line-translated,index,lookahead,0xd330a,LOAD,L1 hit,18
+1,control,split-line-translated,index,construct,0x147844,N/A,N/A,18
+1,control,split-line-translated,index,current_gather_call,0xd332b,N/A,N/A,18
+1,control,split-line-translated,index,construct,0x147880,LOAD,L1 hit,18
+1,control,split-line-translated,index,dense_other,0xd339e,N/A,N/A,18
+1,control,split-line-translated,index,current_gather_call,0xd3336,N/A,N/A,18
+1,control,split-line-translated,index,construct,0x147872,STORE,L1 hit,18
+1,control,split-line-translated,index,construct,0x147884,STORE,L1 hit,17
+1,control,split-line-translated,index,construct,0x147840,N/A,N/A,17
+1,control,split-line-translated,index,construct,0x147847,LOAD,L1 hit,17
+1,control,split-line-translated,index,current_gather_call,0xd333a,STORE,L1 hit,17
+1,control,split-line-translated,index,current_gather_call,0xd3327,N/A,N/A,17
+1,control,split-line-translated,index,construct,0x14786e,LOAD,L1 hit,17
+1,control,split-line-translated,index,current_gather_call,0xd331a,LOAD,L1 hit,16
+1,control,split-line-translated,index,construct,0x14787d,STORE,L1 hit,16
+1,control,split-line-translated,index,dense_other,0xd3353,LOAD,L1 hit,16
+1,control,split-line-translated,index,construct,0x147857,STORE,L1 hit,16
+1,control,split-line-translated,index,construct,0x147840,STORE,L1 hit,16
+1,control,split-line-translated,index,dense_other,0xd3361,LOAD,L1 hit,16
+1,control,split-line-translated,index,lookahead,0xd32d4,LOAD,L1 hit,16
+1,control,split-line-translated,index,lookahead,0xd3301,LOAD,"core, same node Any cache hit",14
+1,control,split-line-translated,index,lookahead,0xd330e,N/A,N/A,14
+1,control,split-line-translated,index,dense_other,0xd339a,N/A,N/A,14
+1,control,split-line-translated,index,lookahead,0xd3317,LOAD,RAM hit,12
+1,control,split-line-translated,index,lookahead,0xd32fe,LOAD,"core, same node Any cache hit",12
+1,control,split-line-translated,index,dense_other,0xd33af,N/A,N/A,12
+1,control,split-line-translated,index,lookahead,0xd32e2,LOAD,L1 hit,11
+1,control,split-line-translated,index,construct,0x14784c,N/A,N/A,11
+1,control,split-line-translated,index,lookahead,0xd3317,LOAD,"core, same node Any cache hit",10
+1,control,split-line-translated,index,lookahead,0xd3301,LOAD,RAM hit,10
+1,control,split-line-translated,index,construct,0x147839,LOAD,L1 hit,10
+1,control,split-line-translated,index,lookahead,0xd32fe,LOAD,RAM hit,9
+1,control,split-line-translated,index,lookahead,0xd32f9,LOAD,L2 hit,6
+1,control,split-line-translated,index,lookahead,0xd3312,LOAD,"core, same node Any cache hit",3
+1,control,split-line-translated,index,construct,0x14785a,LOAD,L2 hit,2
+1,control,split-line-translated,index,construct,0x147830,LOAD,L2 hit,2
+1,control,split-line-translated,index,construct,0x147840,STORE,L2 hit,2
+1,control,split-line-translated,index,construct,0x147839,LOAD,RAM hit,2
+1,control,split-line-translated,index,construct,0x14787d,STORE,L2 hit,1
+1,control,split-line-translated,index,construct,0x147876,STORE,N/A,1
+1,control,split-line-translated,index,lookahead,0xd3312,LOAD,L2 hit,1
+1,control,split-line-translated,index,lookahead,0xd32fe,LOAD,L2 hit,1
+1,control,split-line-translated,index,lookahead,0xd32f9,LOAD,L1 hit,1
+1,control,split-line-translated,index,lookahead,0xd3317,LOAD,L2 hit,1
+1,control,split-line-translated,index,construct,0x147847,LOAD,"core, same node Any cache hit",1
+1,control,split-line-translated,index,construct,0x147876,STORE,L2 hit,1
+1,control,split-line-translated,index,lookahead,0xd32fe,LOAD,L1 hit,1
+1,control,split-line-translated,index,construct,0x147839,LOAD,"core, same node Any cache hit",1
+1,control,split-line-translated,index,construct,0x147847,LOAD,L2 hit,1
+1,control,split-line-translated,index,current_gather_call,0xd333f,LOAD,RAM hit,1
+1,control,split-line-translated,index,lookahead,0xd3301,LOAD,L2 hit,1
+1,control,split-line-translated,index,construct,0x14787d,STORE,N/A,1
+1,candidate,split-line-translated,index,current_gather_call,0xd353c,N/A,N/A,34
+1,candidate,split-line-translated,index,construct,0x11638,N/A,N/A,29
+1,candidate,split-line-translated,index,construct,0x1167a,N/A,N/A,28
+1,candidate,split-line-translated,index,construct,0x11668,STORE,L1 hit,28
+1,candidate,split-line-translated,index,dense_other,0xd34d0,LOAD,L1 hit,27
+1,candidate,split-line-translated,index,construct,0x11627,N/A,N/A,27
+1,candidate,split-line-translated,index,dense_other,0xd3569,N/A,N/A,26
+1,candidate,split-line-translated,index,dense_other,0xd35ab,N/A,N/A,26
+1,candidate,split-line-translated,index,construct,0x11649,N/A,N/A,25
+1,candidate,split-line-translated,index,construct,0x11647,N/A,N/A,25
+1,candidate,split-line-translated,index,current_gather_call,0xd355c,N/A,N/A,24
+1,candidate,split-line-translated,index,current_gather_call,0xd3534,N/A,N/A,24
+1,candidate,split-line-translated,index,lookahead,0xd34f7,N/A,N/A,24
+1,candidate,split-line-translated,index,construct,0x11629,N/A,N/A,24
+1,candidate,split-line-translated,index,current_gather_call,0xd3525,LOAD,L1 hit,24
+1,candidate,split-line-translated,index,lookahead,0xd3506,LOAD,L1 hit,24
+1,candidate,split-line-translated,index,dense_other,0xd3583,LOAD,L1 hit,24
+1,candidate,split-line-translated,index,dense_other,0xd3588,N/A,N/A,24
+1,candidate,split-line-translated,index,construct,0x11659,LOAD,L1 hit,24
+1,candidate,split-line-translated,index,construct,0x1163c,LOAD,L1 hit,24
+1,candidate,split-line-translated,index,current_gather_call,0xd3541,N/A,N/A,24
+1,candidate,split-line-translated,index,construct,0x11620,LOAD,L1 hit,23
+1,candidate,split-line-translated,index,lookahead,0xd35c0,N/A,N/A,23
+1,candidate,split-line-translated,index,dense_other,0xd3575,N/A,N/A,23
+1,candidate,split-line-translated,index,current_gather_call,0xd3531,N/A,N/A,23
+1,candidate,split-line-translated,index,construct,0x11676,N/A,N/A,23
+1,candidate,split-line-translated,index,construct,0x1166f,STORE,L1 hit,23
+1,candidate,split-line-translated,index,dense_other,0xd3570,LOAD,L1 hit,22
+1,candidate,split-line-translated,index,current_gather_call,0xd3521,LOAD,L1 hit,22
+1,candidate,split-line-translated,index,construct,0x11664,STORE,L1 hit,22
+1,candidate,split-line-translated,index,dense_other,0xd35a6,LOAD,L1 hit,22
+1,candidate,split-line-translated,index,dense_other,0xd3581,N/A,N/A,21
+1,candidate,split-line-translated,index,current_gather_call,0xd355f,STORE,L1 hit,21
+1,candidate,split-line-translated,index,lookahead,0xd3501,LOAD,L1 hit,21
+1,candidate,split-line-translated,index,construct,0x1162c,N/A,N/A,21
+1,candidate,split-line-translated,index,construct,0x11676,STORE,L1 hit,21
+1,candidate,split-line-translated,index,lookahead,0xd34e7,LOAD,L1 hit,21
+1,candidate,split-line-translated,index,dense_other,0xd3569,LOAD,L1 hit,20
+1,candidate,split-line-translated,index,dense_other,0xd357c,LOAD,L1 hit,20
+1,candidate,split-line-translated,index,construct,0x11630,N/A,N/A,19
+1,candidate,split-line-translated,index,construct,0x1165d,STORE,L1 hit,19
+1,candidate,split-line-translated,index,lookahead,0xd3513,N/A,N/A,19
+1,candidate,split-line-translated,index,lookahead,0xd34d8,N/A,N/A,19
+1,candidate,split-line-translated,index,construct,0x1167a,LOAD,L1 hit,19
+1,candidate,split-line-translated,index,current_gather_call,0xd3564,N/A,N/A,19
+1,candidate,split-line-translated,index,construct,0x11661,STORE,L1 hit,18
+1,candidate,split-line-translated,index,construct,0x11640,STORE,L1 hit,18
+1,candidate,split-line-translated,index,construct,0x11655,N/A,N/A,18
+1,candidate,split-line-translated,index,current_gather_call,0xd3538,N/A,N/A,18
+1,candidate,split-line-translated,index,dense_other,0xd3575,LOAD,L1 hit,17
+1,candidate,split-line-translated,index,construct,0x1162c,STORE,L1 hit,17
+1,candidate,split-line-translated,index,dense_other,0xd35b8,N/A,N/A,17
+1,candidate,split-line-translated,index,current_gather_call,0xd3554,LOAD,L1 hit,17
+1,candidate,split-line-translated,index,current_gather_call,0xd351c,LOAD,L1 hit,17
+1,candidate,split-line-translated,index,construct,0x1166f,N/A,N/A,17
+1,candidate,split-line-translated,index,lookahead,0xd34f4,N/A,N/A,17
+1,candidate,split-line-translated,index,lookahead,0xd34ec,LOAD,L1 hit,17
+1,candidate,split-line-translated,index,construct,0x11624,N/A,N/A,17
+1,candidate,split-line-translated,index,construct,0x11652,N/A,N/A,17
+1,candidate,split-line-translated,index,current_gather_call,0xd354f,STORE,L1 hit,17
+1,candidate,split-line-translated,index,dense_other,0xd35af,N/A,N/A,16
+1,candidate,split-line-translated,index,current_gather_call,0xd3545,LOAD,L1 hit,16
+1,candidate,split-line-translated,index,construct,0x11633,LOAD,L1 hit,16
+1,candidate,split-line-translated,index,current_gather_call,0xd352d,N/A,N/A,15
+1,candidate,split-line-translated,index,lookahead,0xd350b,N/A,N/A,14
+1,candidate,split-line-translated,index,lookahead,0xd34fb,LOAD,"core, same node Any cache hit",14
+1,candidate,split-line-translated,index,lookahead,0xd34e2,LOAD,L1 hit,14
+1,candidate,split-line-translated,index,dense_other,0xd34d5,N/A,N/A,14
+1,candidate,split-line-translated,index,construct,0x1166b,LOAD,L1 hit,13
+1,candidate,split-line-translated,index,lookahead,0xd34fb,LOAD,RAM hit,13
+1,candidate,split-line-translated,index,lookahead,0xd35bb,LOAD,L1 hit,13
+1,candidate,split-line-translated,index,lookahead,0xd350f,LOAD,"core, same node Any cache hit",13
+1,candidate,split-line-translated,index,current_gather_call,0xd352a,N/A,N/A,12
+1,candidate,split-line-translated,index,current_gather_call,0xd3564,STORE,L1 hit,12
+1,candidate,split-line-translated,index,current_gather_call,0xd3559,N/A,N/A,12
+1,candidate,split-line-translated,index,construct,0x11643,LOAD,L1 hit,11
+1,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,L1 hit,9
+1,candidate,split-line-translated,index,lookahead,0xd3517,LOAD,RAM hit,9
+1,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,RAM hit,7
+1,candidate,split-line-translated,index,lookahead,0xd3517,LOAD,"core, same node Any cache hit",7
+1,candidate,split-line-translated,index,construct,0x11643,LOAD,L2 hit,3
+1,candidate,split-line-translated,index,lookahead,0xd34ec,LOAD,L2 hit,2
+1,candidate,split-line-translated,index,construct,0x11633,LOAD,L2 hit,2
+1,candidate,split-line-translated,index,current_gather_call,0xd3554,LOAD,RAM hit,2
+1,candidate,split-line-translated,index,construct,0x1165d,STORE,L2 hit,1
+1,candidate,split-line-translated,index,current_gather_call,0xd3554,LOAD,L2 hit,1
+1,candidate,split-line-translated,index,lookahead,0xd350f,LOAD,L2 hit,1
+1,candidate,split-line-translated,index,lookahead,0xd34fb,LOAD,L2 hit,1
+1,candidate,split-line-translated,index,construct,0x11661,STORE,N/A,1
+1,candidate,split-line-translated,index,construct,0x1166f,STORE,L2 hit,1
+1,candidate,split-line-translated,index,construct,0x11643,LOAD,RAM hit,1
+1,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,L2 hit,1
+1,candidate,split-line-translated,index,lookahead,0xd350f,LOAD,RAM hit,1
+2,candidate,split-line-translated,index,current_gather_call,0xd353c,N/A,N/A,40
+2,candidate,split-line-translated,index,construct,0x1167a,N/A,N/A,29
+2,candidate,split-line-translated,index,lookahead,0xd34ec,LOAD,L1 hit,27
+2,candidate,split-line-translated,index,dense_other,0xd3570,LOAD,L1 hit,26
+2,candidate,split-line-translated,index,lookahead,0xd35bb,LOAD,L1 hit,24
+2,candidate,split-line-translated,index,current_gather_call,0xd3559,N/A,N/A,24
+2,candidate,split-line-translated,index,dense_other,0xd3588,N/A,N/A,24
+2,candidate,split-line-translated,index,construct,0x11649,N/A,N/A,23
+2,candidate,split-line-translated,index,current_gather_call,0xd3564,N/A,N/A,23
+2,candidate,split-line-translated,index,construct,0x11676,STORE,L1 hit,23
+2,candidate,split-line-translated,index,dense_other,0xd34d0,LOAD,L1 hit,22
+2,candidate,split-line-translated,index,construct,0x1167a,LOAD,L1 hit,22
+2,candidate,split-line-translated,index,construct,0x11655,N/A,N/A,22
+2,candidate,split-line-translated,index,current_gather_call,0xd3538,N/A,N/A,21
+2,candidate,split-line-translated,index,construct,0x11640,STORE,L1 hit,21
+2,candidate,split-line-translated,index,current_gather_call,0xd3545,LOAD,L1 hit,21
+2,candidate,split-line-translated,index,current_gather_call,0xd351c,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,dense_other,0xd3569,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,current_gather_call,0xd355f,STORE,L1 hit,20
+2,candidate,split-line-translated,index,dense_other,0xd3575,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,construct,0x11624,N/A,N/A,20
+2,candidate,split-line-translated,index,dense_other,0xd3581,N/A,N/A,20
+2,candidate,split-line-translated,index,construct,0x11659,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,current_gather_call,0xd3554,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,construct,0x1166b,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,current_gather_call,0xd3525,LOAD,L1 hit,20
+2,candidate,split-line-translated,index,construct,0x1163c,LOAD,L1 hit,19
+2,candidate,split-line-translated,index,construct,0x11647,N/A,N/A,19
+2,candidate,split-line-translated,index,dense_other,0xd3575,N/A,N/A,19
+2,candidate,split-line-translated,index,lookahead,0xd34e2,LOAD,L1 hit,19
+2,candidate,split-line-translated,index,construct,0x11627,N/A,N/A,19
+2,candidate,split-line-translated,index,lookahead,0xd34f4,N/A,N/A,19
+2,candidate,split-line-translated,index,current_gather_call,0xd3534,N/A,N/A,18
+2,candidate,split-line-translated,index,lookahead,0xd34f7,N/A,N/A,18
+2,candidate,split-line-translated,index,construct,0x1166f,N/A,N/A,18
+2,candidate,split-line-translated,index,dense_other,0xd35a6,LOAD,L1 hit,18
+2,candidate,split-line-translated,index,current_gather_call,0xd3541,N/A,N/A,18
+2,candidate,split-line-translated,index,construct,0x11664,STORE,L1 hit,18
+2,candidate,split-line-translated,index,construct,0x1162c,STORE,L1 hit,18
+2,candidate,split-line-translated,index,lookahead,0xd34e7,LOAD,L1 hit,18
+2,candidate,split-line-translated,index,dense_other,0xd34d5,N/A,N/A,18
+2,candidate,split-line-translated,index,current_gather_call,0xd352a,N/A,N/A,18
+2,candidate,split-line-translated,index,current_gather_call,0xd3531,N/A,N/A,18
+2,candidate,split-line-translated,index,lookahead,0xd35c0,N/A,N/A,18
+2,candidate,split-line-translated,index,construct,0x11668,STORE,L1 hit,17
+2,candidate,split-line-translated,index,construct,0x11620,LOAD,L1 hit,17
+2,candidate,split-line-translated,index,dense_other,0xd357c,LOAD,L1 hit,17
+2,candidate,split-line-translated,index,lookahead,0xd34d8,N/A,N/A,17
+2,candidate,split-line-translated,index,current_gather_call,0xd3521,LOAD,L1 hit,17
+2,candidate,split-line-translated,index,lookahead,0xd350f,LOAD,"core, same node Any cache hit",17
+2,candidate,split-line-translated,index,dense_other,0xd3583,LOAD,L1 hit,17
+2,candidate,split-line-translated,index,current_gather_call,0xd355c,N/A,N/A,16
+2,candidate,split-line-translated,index,lookahead,0xd3501,LOAD,L1 hit,16
+2,candidate,split-line-translated,index,current_gather_call,0xd354f,STORE,L1 hit,16
+2,candidate,split-line-translated,index,dense_other,0xd35af,N/A,N/A,16
+2,candidate,split-line-translated,index,lookahead,0xd350b,N/A,N/A,16
+2,candidate,split-line-translated,index,construct,0x1162c,N/A,N/A,15
+2,candidate,split-line-translated,index,construct,0x11638,N/A,N/A,15
+2,candidate,split-line-translated,index,lookahead,0xd3517,LOAD,RAM hit,15
+2,candidate,split-line-translated,index,lookahead,0xd3513,N/A,N/A,14
+2,candidate,split-line-translated,index,construct,0x11652,N/A,N/A,14
+2,candidate,split-line-translated,index,construct,0x11630,N/A,N/A,14
+2,candidate,split-line-translated,index,construct,0x11643,LOAD,L1 hit,14
+2,candidate,split-line-translated,index,construct,0x11661,STORE,L1 hit,14
+2,candidate,split-line-translated,index,dense_other,0xd35ab,N/A,N/A,14
+2,candidate,split-line-translated,index,construct,0x1165d,STORE,L1 hit,13
+2,candidate,split-line-translated,index,dense_other,0xd35b8,N/A,N/A,13
+2,candidate,split-line-translated,index,current_gather_call,0xd3564,STORE,L1 hit,13
+2,candidate,split-line-translated,index,lookahead,0xd34fb,LOAD,RAM hit,12
+2,candidate,split-line-translated,index,current_gather_call,0xd352d,N/A,N/A,12
+2,candidate,split-line-translated,index,dense_other,0xd3569,N/A,N/A,12
+2,candidate,split-line-translated,index,construct,0x11676,N/A,N/A,12
+2,candidate,split-line-translated,index,lookahead,0xd3506,LOAD,L1 hit,12
+2,candidate,split-line-translated,index,construct,0x1166f,STORE,L1 hit,9
+2,candidate,split-line-translated,index,lookahead,0xd34fb,LOAD,"core, same node Any cache hit",9
+2,candidate,split-line-translated,index,lookahead,0xd3517,LOAD,"core, same node Any cache hit",9
+2,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,L1 hit,9
+2,candidate,split-line-translated,index,construct,0x11629,N/A,N/A,9
+2,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,"core, same node Any cache hit",6
+2,candidate,split-line-translated,index,construct,0x11633,LOAD,L1 hit,6
+2,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,RAM hit,3
+2,candidate,split-line-translated,index,construct,0x11661,STORE,L2 hit,3
+2,candidate,split-line-translated,index,current_gather_call,0xd354a,LOAD,L2 hit,3
+2,candidate,split-line-translated,index,construct,0x11643,LOAD,L2 hit,2
+2,candidate,split-line-translated,index,current_gather_call,0xd3554,LOAD,L2 hit,2
+2,candidate,split-line-translated,index,current_gather_call,0xd3554,LOAD,RAM hit,2
+2,candidate,split-line-translated,index,lookahead,0xd34fb,LOAD,L2 hit,1
+2,candidate,split-line-translated,index,lookahead,0xd34ec,LOAD,L2 hit,1
+2,candidate,split-line-translated,index,construct,0x11633,LOAD,L2 hit,1
+2,candidate,split-line-translated,index,current_gather_call,0xd3521,LOAD,L2 hit,1
+2,candidate,split-line-translated,index,construct,0x11643,LOAD,"core, same node Any cache hit",1
+2,candidate,split-line-translated,index,construct,0x11640,STORE,L2 hit,1
+2,candidate,split-line-translated,index,construct,0x11668,STORE,L2 hit,1
+2,candidate,split-line-translated,index,construct,0x1162c,STORE,L2 hit,1
+2,control,split-line-translated,index,lookahead,0xd32f0,N/A,N/A,44
+2,control,split-line-translated,index,current_gather_call,0xd3331,N/A,N/A,36
+2,control,split-line-translated,index,current_gather_call,0xd3322,N/A,N/A,29
+2,control,split-line-translated,index,construct,0x14784c,N/A,N/A,28
+2,control,split-line-translated,index,dense_other,0xd33a8,LOAD,L1 hit,28
+2,control,split-line-translated,index,construct,0x14783c,LOAD,L1 hit,26
+2,control,split-line-translated,index,construct,0x147867,N/A,N/A,25
+2,control,split-line-translated,index,construct,0x147853,LOAD,L1 hit,25
+2,control,split-line-translated,index,lookahead,0xd3305,LOAD,L1 hit,24
+2,control,split-line-translated,index,lookahead,0xd330e,N/A,N/A,24
+2,control,split-line-translated,index,construct,0x14786a,N/A,N/A,24
+2,control,split-line-translated,index,lookahead,0xd32f5,N/A,N/A,23
+2,control,split-line-translated,index,dense_other,0xd335d,N/A,N/A,23
+2,control,split-line-translated,index,current_gather_call,0xd3344,STORE,L1 hit,23
+2,control,split-line-translated,index,dense_other,0xd337b,N/A,N/A,23
+2,control,split-line-translated,index,dense_other,0xd3368,LOAD,L1 hit,23
+2,control,split-line-translated,index,dense_other,0xd3376,LOAD,L1 hit,23
+2,control,split-line-translated,index,dense_other,0xd3374,N/A,N/A,23
+2,control,split-line-translated,index,dense_other,0xd33af,N/A,N/A,22
+2,control,split-line-translated,index,construct,0x147837,N/A,N/A,22
+2,control,split-line-translated,index,construct,0x147840,STORE,L1 hit,21
+2,control,split-line-translated,index,construct,0x14788f,N/A,N/A,21
+2,control,split-line-translated,index,construct,0x14787d,STORE,L1 hit,21
+2,control,split-line-translated,index,current_gather_call,0xd334e,N/A,N/A,21
+2,control,split-line-translated,index,lookahead,0xd32d4,LOAD,L1 hit,21
+2,control,split-line-translated,index,lookahead,0xd330a,LOAD,L1 hit,21
+2,control,split-line-translated,index,construct,0x14788f,LOAD,L1 hit,21
+2,control,split-line-translated,index,construct,0x147834,N/A,N/A,21
+2,control,split-line-translated,index,dense_other,0xd3358,LOAD,L1 hit,21
+2,control,split-line-translated,index,construct,0x14785e,N/A,N/A,20
+2,control,split-line-translated,index,construct,0x14786e,LOAD,L1 hit,20
+2,control,split-line-translated,index,dense_other,0xd3361,LOAD,L1 hit,20
+2,control,split-line-translated,index,current_gather_call,0xd334e,STORE,L1 hit,20
+2,control,split-line-translated,index,lookahead,0xd3312,LOAD,L1 hit,20
+2,control,split-line-translated,index,construct,0x147879,STORE,L1 hit,20
+2,control,split-line-translated,index,dense_other,0xd339e,N/A,N/A,20
+2,control,split-line-translated,index,dense_other,0xd3368,N/A,N/A,20
+2,control,split-line-translated,index,dense_other,0xd336f,LOAD,L1 hit,19
+2,control,split-line-translated,index,construct,0x147884,N/A,N/A,19
+2,control,split-line-translated,index,lookahead,0xd32e2,LOAD,L1 hit,19
+2,control,split-line-translated,index,current_gather_call,0xd331a,LOAD,L1 hit,18
+2,control,split-line-translated,index,construct,0x147840,N/A,N/A,18
+2,control,split-line-translated,index,dense_other,0xd339e,LOAD,L1 hit,18
+2,control,split-line-translated,index,construct,0x147876,STORE,L1 hit,18
+2,control,split-line-translated,index,current_gather_call,0xd3349,STORE,L1 hit,18
+2,control,split-line-translated,index,current_gather_call,0xd333a,STORE,L1 hit,18
+2,control,split-line-translated,index,dense_other,0xd3361,N/A,N/A,18
+2,control,split-line-translated,index,dense_other,0xd3353,LOAD,L1 hit,17
+2,control,split-line-translated,index,construct,0x147872,STORE,L1 hit,17
+2,control,split-line-translated,index,lookahead,0xd32f9,LOAD,"core, same node Any cache hit",17
+2,control,split-line-translated,index,lookahead,0xd3301,LOAD,"core, same node Any cache hit",17
+2,control,split-line-translated,index,current_gather_call,0xd3336,N/A,N/A,17
+2,control,split-line-translated,index,current_gather_call,0xd332b,N/A,N/A,17
+2,control,split-line-translated,index,dense_other,0xd339a,N/A,N/A,17
+2,control,split-line-translated,index,construct,0x147830,LOAD,L1 hit,17
+2,control,split-line-translated,index,current_gather_call,0xd333f,LOAD,L1 hit,17
+2,control,split-line-translated,index,construct,0x147857,STORE,L1 hit,17
+2,control,split-line-translated,index,lookahead,0xd33b2,N/A,N/A,17
+2,control,split-line-translated,index,lookahead,0xd32ec,N/A,N/A,17
+2,control,split-line-translated,index,construct,0x14788b,N/A,N/A,16
+2,control,split-line-translated,index,dense_other,0xd3396,N/A,N/A,16
+2,control,split-line-translated,index,construct,0x14784f,N/A,N/A,16
+2,control,split-line-translated,index,current_gather_call,0xd331f,LOAD,L1 hit,15
+2,control,split-line-translated,index,dense_other,0xd33ac,N/A,N/A,14
+2,control,split-line-translated,index,construct,0x147884,STORE,L1 hit,14
+2,control,split-line-translated,index,lookahead,0xd32d9,N/A,N/A,14
+2,control,split-line-translated,index,current_gather_call,0xd3327,N/A,N/A,14
+2,control,split-line-translated,index,current_gather_call,0xd332e,N/A,N/A,14
+2,control,split-line-translated,index,construct,0x14785a,LOAD,L1 hit,13
+2,control,split-line-translated,index,construct,0x14788b,STORE,L1 hit,13
+2,control,split-line-translated,index,construct,0x147844,N/A,N/A,13
+2,control,split-line-translated,index,construct,0x147847,LOAD,L1 hit,11
+2,control,split-line-translated,index,construct,0x147839,LOAD,L1 hit,9
+2,control,split-line-translated,index,lookahead,0xd3317,LOAD,RAM hit,9
+2,control,split-line-translated,index,construct,0x147880,LOAD,L1 hit,9
+2,control,split-line-translated,index,lookahead,0xd32e9,N/A,N/A,8
+2,control,split-line-translated,index,lookahead,0xd32fe,LOAD,RAM hit,8
+2,control,split-line-translated,index,lookahead,0xd3317,LOAD,"core, same node Any cache hit",7
+2,control,split-line-translated,index,lookahead,0xd32fe,LOAD,"core, same node Any cache hit",7
+2,control,split-line-translated,index,construct,0x147847,LOAD,L2 hit,5
+2,control,split-line-translated,index,lookahead,0xd32fe,LOAD,L2 hit,5
+2,control,split-line-translated,index,lookahead,0xd32f9,LOAD,L2 hit,5
+2,control,split-line-translated,index,construct,0x147879,STORE,L2 hit,3
+2,control,split-line-translated,index,lookahead,0xd3301,LOAD,RAM hit,2
+2,control,split-line-translated,index,construct,0x147839,LOAD,RAM hit,2
+2,control,split-line-translated,index,construct,0x14785a,LOAD,L2 hit,2
+2,control,split-line-translated,index,current_gather_call,0xd333f,LOAD,L2 hit,2
+2,control,split-line-translated,index,construct,0x147840,STORE,L2 hit,2
+2,control,split-line-translated,index,lookahead,0xd32e2,LOAD,L2 hit,1
+2,control,split-line-translated,index,lookahead,0xd3317,LOAD,L1 hit,1
+2,control,split-line-translated,index,construct,0x147872,STORE,N/A,1
+2,control,split-line-translated,index,construct,0x147847,LOAD,"core, same node Any cache hit",1
+2,control,split-line-translated,index,construct,0x14785a,LOAD,RAM hit,1
+2,control,split-line-translated,index,lookahead,0xd3301,LOAD,L2 hit,1
+2,control,split-line-translated,index,construct,0x14785a,LOAD,"core, same node Any cache hit",1
+2,control,split-line-translated,index,construct,0x147839,LOAD,L2 hit,1
+2,control,split-line-translated,index,construct,0x147884,STORE,N/A,1

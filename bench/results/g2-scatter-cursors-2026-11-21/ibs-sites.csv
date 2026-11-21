@@ -1,0 +1,63 @@
+block,scene,n,engine,pc,operand,op,level,samples
+1,uniform,100000,index,0x145f00,tag,LOAD,L1 hit,266
+1,uniform,100000,index,0x145f05,source_id,LOAD,L1 hit,291
+1,uniform,100000,index,0x145f0d,cursor_load,LOAD,L1 hit,289
+1,uniform,100000,index,0x145f0d,cursor_load,LOAD,L2 hit,1
+1,uniform,100000,index,0x145f18,destination_id,STORE,L1 hit,273
+1,uniform,100000,index,0x145f18,destination_id,STORE,L2 hit,2
+1,uniform,100000,index,0x145f18,destination_id,STORE,N/A,1
+1,uniform,100000,index,0x145f1c,cursor_store,STORE,L1 hit,298
+1,split-line-translated,100000,index,0x145f00,tag,LOAD,L1 hit,342
+1,split-line-translated,100000,index,0x145f00,tag,LOAD,L2 hit,2
+1,split-line-translated,100000,index,0x145f05,source_id,LOAD,L1 hit,297
+1,split-line-translated,100000,index,0x145f05,source_id,LOAD,L2 hit,16
+1,split-line-translated,100000,index,0x145f0d,cursor_load,LOAD,L1 hit,342
+1,split-line-translated,100000,index,0x145f18,destination_id,STORE,L1 hit,301
+1,split-line-translated,100000,index,0x145f18,destination_id,STORE,L2 hit,15
+1,split-line-translated,100000,index,0x145f1c,cursor_store,STORE,L1 hit,297
+1,uniform,100000,index-ordered,0x145f00,tag,LOAD,L1 hit,86
+1,uniform,100000,index-ordered,0x145f05,source_id,LOAD,L1 hit,91
+1,uniform,100000,index-ordered,0x145f0d,cursor_load,LOAD,L1 hit,96
+1,uniform,100000,index-ordered,0x145f18,destination_id,STORE,L1 hit,81
+1,uniform,100000,index-ordered,0x145f18,destination_id,STORE,L2 hit,2
+1,uniform,100000,index-ordered,0x145f1c,cursor_store,STORE,L1 hit,78
+1,split-line-translated,100000,index-ordered,0x145f00,tag,LOAD,L1 hit,78
+1,split-line-translated,100000,index-ordered,0x145f00,tag,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index-ordered,0x145f05,source_id,LOAD,L1 hit,76
+1,split-line-translated,100000,index-ordered,0x145f05,source_id,LOAD,L2 hit,2
+1,split-line-translated,100000,index-ordered,0x145f0d,cursor_load,LOAD,L1 hit,68
+1,split-line-translated,100000,index-ordered,0x145f18,destination_id,STORE,L1 hit,75
+1,split-line-translated,100000,index-ordered,0x145f18,destination_id,STORE,L2 hit,2
+1,split-line-translated,100000,index-ordered,0x145f18,destination_id,STORE,N/A,1
+1,split-line-translated,100000,index-ordered,0x145f1c,cursor_store,STORE,L1 hit,66
+2,split-line-translated,100000,index-ordered,0x145f00,tag,LOAD,L1 hit,81
+2,split-line-translated,100000,index-ordered,0x145f00,tag,LOAD,L2 hit,3
+2,split-line-translated,100000,index-ordered,0x145f05,source_id,LOAD,L1 hit,70
+2,split-line-translated,100000,index-ordered,0x145f05,source_id,LOAD,L2 hit,3
+2,split-line-translated,100000,index-ordered,0x145f0d,cursor_load,LOAD,L1 hit,63
+2,split-line-translated,100000,index-ordered,0x145f18,destination_id,STORE,L1 hit,65
+2,split-line-translated,100000,index-ordered,0x145f18,destination_id,STORE,L2 hit,2
+2,split-line-translated,100000,index-ordered,0x145f1c,cursor_store,STORE,L1 hit,71
+2,uniform,100000,index-ordered,0x145f00,tag,LOAD,L1 hit,77
+2,uniform,100000,index-ordered,0x145f00,tag,LOAD,"core, same node Any cache hit",1
+2,uniform,100000,index-ordered,0x145f05,source_id,LOAD,L1 hit,80
+2,uniform,100000,index-ordered,0x145f0d,cursor_load,LOAD,L1 hit,81
+2,uniform,100000,index-ordered,0x145f0d,cursor_load,LOAD,L2 hit,1
+2,uniform,100000,index-ordered,0x145f18,destination_id,STORE,L1 hit,89
+2,uniform,100000,index-ordered,0x145f18,destination_id,STORE,L2 hit,2
+2,uniform,100000,index-ordered,0x145f1c,cursor_store,STORE,L1 hit,67
+2,split-line-translated,100000,index,0x145f00,tag,LOAD,L1 hit,299
+2,split-line-translated,100000,index,0x145f00,tag,LOAD,L2 hit,4
+2,split-line-translated,100000,index,0x145f05,source_id,LOAD,L1 hit,293
+2,split-line-translated,100000,index,0x145f05,source_id,LOAD,L2 hit,12
+2,split-line-translated,100000,index,0x145f0d,cursor_load,LOAD,L1 hit,280
+2,split-line-translated,100000,index,0x145f18,destination_id,STORE,L1 hit,268
+2,split-line-translated,100000,index,0x145f18,destination_id,STORE,L2 hit,16
+2,split-line-translated,100000,index,0x145f1c,cursor_store,STORE,L1 hit,306
+2,uniform,100000,index,0x145f00,tag,LOAD,L1 hit,262
+2,uniform,100000,index,0x145f00,tag,LOAD,L2 hit,1
+2,uniform,100000,index,0x145f05,source_id,LOAD,L1 hit,251
+2,uniform,100000,index,0x145f0d,cursor_load,LOAD,L1 hit,242
+2,uniform,100000,index,0x145f18,destination_id,STORE,L1 hit,251
+2,uniform,100000,index,0x145f18,destination_id,STORE,L2 hit,3
+2,uniform,100000,index,0x145f1c,cursor_store,STORE,L1 hit,274

@@ -1,0 +1,13 @@
+block,scene,n,engine,event,setting,start
+1,uniform,100000,index,cycles,2999,2026-11-20T17:38:12+02:00
+1,uniform,100000,index,ibs,830000,2026-11-20T17:38:15+02:00
+1,split-line-translated,100000,index,cycles,2999,2026-11-20T17:38:18+02:00
+1,split-line-translated,100000,index,ibs,830000,2026-11-20T17:38:21+02:00
+1,split-line-translated,100000,index-ordered,cycles,2999,2026-11-20T17:38:24+02:00
+1,mixed-size,100000,index-ordered,cycles,2999,2026-11-20T17:38:27+02:00
+2,mixed-size,100000,index-ordered,cycles,3469,2026-11-20T17:38:30+02:00
+2,split-line-translated,100000,index-ordered,cycles,3469,2026-11-20T17:38:33+02:00
+2,split-line-translated,100000,index,ibs,910000,2026-11-20T17:38:36+02:00
+2,split-line-translated,100000,index,cycles,3469,2026-11-20T17:38:39+02:00
+2,uniform,100000,index,ibs,910000,2026-11-20T17:38:42+02:00
+2,uniform,100000,index,cycles,3469,2026-11-20T17:38:45+02:00

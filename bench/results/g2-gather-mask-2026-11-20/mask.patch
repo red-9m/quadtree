@@ -1,0 +1,89 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -796,6 +796,7 @@
+         std::uint8_t depth = 0; // Config validation caps depth at 64
+         bool linear = true;    // Sorted snapshots can traverse own entries without link loads
+         bool itemDirty = false; // Own bounds/filter summaries may conservatively include old entries
++        std::uint8_t occupiedChildren = 0; // Refitted with count and bounds
+     };
+ 
+ public:
+@@ -1832,18 +1833,23 @@
+         bool any = node.ownCount != 0;
+         node.bounds = node.itemBounds;
+         node.summary = node.itemSummary;
++        unsigned occupied = 0;
+         if (node.firstChild != none)
+             for (std::uint32_t q = 0; q < 4; ++q)
+             {
+                 const Node& child = mNodes[node.firstChild + q];
+                 if (child.count == 0)
+                     continue;
++                if constexpr (std::same_as<T, std::int32_t>)
++                    occupied |= 1u << q;
+                 node.count += child.count;
+                 node.bounds = any ? detail::unite(node.bounds, child.bounds) : child.bounds;
+                 node.summary.category |= child.summary.category;
+                 node.summary.mask |= child.summary.mask;
+                 any = true;
+             }
++        if constexpr (std::same_as<T, std::int32_t>)
++            node.occupiedChildren = static_cast<std::uint8_t>(occupied);
+     }
+ 
+     void refitPath(std::uint32_t n) noexcept
+@@ -2679,17 +2685,16 @@
+         if (node.firstChild == none || !context.active())
+             return;
+         const Node* children = mNodes.data() + node.firstChild;
+-        unsigned occupied = 0, overlapping = 0;
+-        for (unsigned q = 0; q != 4; ++q)
++        unsigned occupied = node.occupiedChildren;
++        // Empty slots have initialized bounds but never overlap logically.
++        // Screen bounds without dependent occupancy loads or short-circuit branches.
++        const auto hit = [&box](const Box<T>& child) noexcept -> unsigned
+         {
+-            const auto& child = children[q];
+-            if (child.count != 0)
+-            {
+-                occupied |= 1u << q;
+-                if (detail::closedOverlap(box, child.bounds))
+-                    overlapping |= 1u << q;
+-            }
+-        }
++            return (box.minX <= child.maxX) & (child.minX <= box.maxX) &
++                (box.minY <= child.maxY) & (child.minY <= box.maxY);
++        };
++        unsigned overlapping = occupied & (hit(children[0].bounds) | (hit(children[1].bounds) << 1) |
++            (hit(children[2].bounds) << 2) | (hit(children[3].bounds) << 3));
+         while (overlapping != 0)
+         {
+             const auto q = static_cast<unsigned>(std::countr_zero(overlapping));
+--- a/bench/index-fuzz.cpp
++++ b/bench/index-fuzz.cpp
+@@ -281,6 +281,7 @@
+             }
+         }
+         std::uint32_t count = node.ownCount;
++        unsigned occupied = 0;
+         Box<T> bounds = node.itemBounds;
+         Filter summary = any ? node.itemSummary : Filter{0, 0};
+         if (node.firstChild != kNone)
+@@ -291,6 +292,8 @@
+                 const auto& c = tree.mNodes[child];
+                 if (c.count == 0)
+                     continue;
++                if constexpr (std::same_as<T, std::int32_t>)
++                    occupied |= 1u << q;
+                 count += c.count;
+                 bounds = any ? unite(bounds, c.bounds) : c.bounds;
+                 any = true;
+@@ -298,6 +301,8 @@
+                 summary.mask |= c.summary.mask;
+             }
+         CHECK(count == node.count);
++        if constexpr (std::same_as<T, std::int32_t>)
++            CHECK(occupied == node.occupiedChildren);
+         if (count != 0)
+         {
+             CHECK(bounds == node.bounds);

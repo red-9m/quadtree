@@ -1,0 +1,61 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2906,16 +2906,15 @@
+         return context.result;
+     }
+ 
+-    void radixPartnerRow(Workspace<T>& scratch, std::uint32_t count) const noexcept
++    void radixRankOrder(Workspace<T>& scratch, std::uint32_t* order, std::uint32_t count) const noexcept
+     {
+-        auto* row = scratch.mRow.data();
+         auto* keys = scratch.mKeys.data();
+         auto* temp = scratch.tempKeys(count);
+         std::uint32_t counts[8][256]{};
+         // Cache each rank once; all subsequent passes touch only scratch.
+         for (std::uint32_t i = 0; i < count; ++i)
+         {
+-            const auto entry = row[i];
++            const auto entry = order[i];
+             const auto rank = mEntries.mMeta[entry].rank;
+             keys[i].hi = rank;
+             keys[i].entry = entry;
+@@ -2945,16 +2944,27 @@
+             std::swap(keys, temp);
+         }
+         for (std::uint32_t i = 0; i < count; ++i)
+-            row[i] = keys[i].entry;
++            order[i] = keys[i].entry;
+     }
+ 
+     template<typename Visitor, typename Predicate>
+     void orderedSelf(Workspace<T>& scratch, bool movedOnly, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+     {
+-        for (std::uint32_t i = 0; i < size(); ++i)
++        const auto sourceCount = size();
++        for (std::uint32_t i = 0; i < sourceCount; ++i)
+             scratch.mOrder[i] = i;
+-        sortRanks(scratch.mOrder.data(), size());
++        if constexpr (std::same_as<T, std::int32_t>)
++        {
++            // Reuse only already reserved build scratch; smaller queries keep index sort.
++            if (!movedOnly && sourceCount >= 4096 && sourceCount <= scratch.mKeys.capacity() &&
++                sourceCount <= scratch.tempKeyCapacity())
++                radixRankOrder(scratch, scratch.mOrder.data(), static_cast<std::uint32_t>(sourceCount));
++            else
++                sortRanks(scratch.mOrder.data(), sourceCount);
++        }
++        else
++            sortRanks(scratch.mOrder.data(), sourceCount);
+         for (std::size_t i = 0; i + 1 < size() && context.active(); ++i)
+         {
+             const std::uint32_t a = scratch.mOrder[i];
+@@ -2985,7 +2995,7 @@
+             if constexpr (std::same_as<T, std::int32_t>)
+             {
+                 if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.tempKeyCapacity())
+-                    radixPartnerRow(scratch, static_cast<std::uint32_t>(count));
++                    radixRankOrder(scratch, scratch.mRow.data(), static_cast<std::uint32_t>(count));
+                 else
+                     sortRanks(scratch.mRow.data(), count);
+             }

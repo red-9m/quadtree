@@ -1,0 +1,5 @@
+# control and candidate -O3 transcripts (29600 lines; status 0/1/11 = 19288/1975/7537 runs) are byte-identical
+448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79  sem-control.txt
+448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79  sem-candidate.txt
+# candidate -O1 ASan+UBSan transcript
+448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79  -

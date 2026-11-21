@@ -1,0 +1,30 @@
+81: 7776 raw samples per process; 96 matched rows agree on pairs, checksum, scene_hash, candidates, node_visits, cell_tests, references, max_refs, allocs_per_step, cold_allocs, peak_bytes, retained_bytes; 32 library rows per process have zero warm allocations.
+  control: G1 pass/FAIL/inconclusive = 8/7/1
+  candidate: G1 pass/FAIL/inconclusive = 8/8/0
+117: 11232 raw samples per process; 96 matched rows agree on pairs, checksum, scene_hash, candidates, node_visits, cell_tests, references, max_refs, allocs_per_step, cold_allocs, peak_bytes, retained_bytes; 32 library rows per process have zero warm allocations.
+  control: G1 pass/FAIL/inconclusive = 8/8/0
+  candidate: G1 pass/FAIL/inconclusive = 8/7/1
+  81 clustered 2 index 34.10 29.30 4.80 0.8592 0.8347 0.8845 faster
+  81 clustered 2 index-ordered 66.60 79.80 -13.20 1.1982 1.1410 1.2583 slower
+  81 clustered 4 index 56.90 49.10 7.80 0.8629 0.8380 0.8886 faster
+  81 clustered 4 index-ordered 129.40 151.10 -21.70 1.1677 1.1302 1.2065 slower
+  81 clustered 8 index 204.10 199.40 4.70 0.9770 0.9493 1.0055 unresolved
+  81 clustered 8 index-ordered 330.00 347.40 -17.40 1.0527 1.0224 1.0840 slower
+  81 uniform 2 index 34.30 29.60 4.70 0.8630 0.8385 0.8882 faster
+  81 uniform 2 index-ordered 66.40 79.90 -13.50 1.2033 1.1646 1.2433 slower
+  81 uniform 4 index 60.40 53.20 7.20 0.8808 0.8475 0.9154 faster
+  81 uniform 4 index-ordered 135.20 154.30 -19.10 1.1413 1.1094 1.1741 slower
+  81 uniform 8 index 191.60 187.80 3.80 0.9802 0.9517 1.0095 unresolved
+  81 uniform 8 index-ordered 323.40 341.60 -18.20 1.0563 1.0221 1.0916 slower
+  117 clustered 2 index 34.20 29.20 5.00 0.8538 0.8294 0.8789 faster
+  117 clustered 2 index-ordered 64.80 80.10 -15.30 1.2361 1.1994 1.2739 slower
+  117 clustered 4 index 56.20 49.20 7.00 0.8754 0.8500 0.9016 faster
+  117 clustered 4 index-ordered 129.60 149.50 -19.90 1.1535 1.1200 1.1881 slower
+  117 clustered 8 index 204.60 201.10 3.50 0.9829 0.9549 1.0117 unresolved
+  117 clustered 8 index-ordered 333.90 353.80 -19.90 1.0596 1.0267 1.0935 slower
+  117 uniform 2 index 34.40 30.00 4.40 0.8721 0.8387 0.9068 faster
+  117 uniform 2 index-ordered 66.70 79.70 -13.00 1.1949 1.1562 1.2349 slower
+  117 uniform 4 index 59.60 52.20 7.40 0.8758 0.8507 0.9017 faster
+  117 uniform 4 index-ordered 135.20 154.20 -19.00 1.1405 1.1069 1.1752 slower
+  117 uniform 8 index 193.50 192.10 1.40 0.9928 0.9615 1.0250 unresolved
+  117 uniform 8 index-ordered 319.50 337.60 -18.10 1.0567 1.0264 1.0878 slower

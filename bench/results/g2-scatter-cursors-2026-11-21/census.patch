@@ -1,0 +1,64 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -92,6 +92,16 @@
+ 
+ namespace detail
+ {
++// Untimed diagnostic for the archived scatter cursor census only.
++struct ScatterCensus
++{
++    std::uint64_t groups{}, ids{}, first{}, gap1{}, gap2{}, gap3to4{}, gap5to8{}, gap9plus{};
++    std::uint64_t singleBinGroups{}, singleBinIds{}, maxRun{}, halfPairs{}, sameTagHalfPairs{};
++    std::uint64_t tags[5]{};
++    long double expectedAdjacent{};
++};
++inline ScatterCensus scatterCensus[65]{};
++
+ // Trivially copyable resource-backed arrays. Allocation initializes spare slots;
+ // growing, cloning and moving never invoke a throwing allocator.
+ template<typename U, std::size_t Alignment = alignof(U)>
+@@ -1662,8 +1672,43 @@
+         const std::uint32_t edges[5]{begin + count[0], begin + count[0] + count[1],
+             begin + count[0] + count[1] + count[2], end - count[4], end};
+         std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};
++        auto& census = detail::scatterCensus[depth];
++        const auto length = end - begin;
++        ++census.groups;
++        census.ids += length;
++        if (std::find(count + 1, count + 5, length) != count + 5)
++        {
++            ++census.singleBinGroups;
++            census.singleBinIds += length;
++        }
++        for (unsigned b = 0; b < 5; ++b)
++        {
++            census.tags[b] += count[b];
++            if (count[b] > 1)
++                census.expectedAdjacent += static_cast<long double>(count[b]) * (count[b] - 1) / length;
++        }
++        const auto half = length / 2;
++        census.halfPairs += half;
++        for (auto i = begin; i < begin + half; ++i)
++            census.sameTagHalfPairs += tags[i] == tags[i + half];
++        census.maxRun = std::max(census.maxRun, std::uint64_t{1});
++        std::uint32_t last[5]{none, none, none, none, none};
++        std::uint64_t run = 0;
+         for (auto i = begin; i < end; ++i)
+-            dst[next[tags[i]]++] = src[i];
++        {
++            const auto tag = tags[i];
++            const auto previous = last[tag];
++            if (previous == none) ++census.first;
++            else if (i - previous == 1) ++census.gap1;
++            else if (i - previous == 2) ++census.gap2;
++            else if (i - previous <= 4) ++census.gap3to4;
++            else if (i - previous <= 8) ++census.gap5to8;
++            else ++census.gap9plus;
++            last[tag] = i;
++            run = (previous != none && i - previous == 1) ? run + 1 : 1;
++            census.maxRun = std::max(census.maxRun, run);
++            dst[next[tag]++] = src[i];
++        }
+         if (dst != order)
+             std::copy(dst + begin, dst + edges[0], order + begin);
+         std::uint32_t children = 0;

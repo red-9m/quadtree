@@ -1,0 +1,177 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -683,6 +683,14 @@
+         static_assert(sizeof(detail::SpatialKey) >= 2 * sizeof(std::uint64_t));
+         return ::new (mTemp.data()) std::uint64_t[2 * count];
+     }
++    std::pair<std::uint32_t*, std::uint8_t*> tempPermutation(std::size_t count) noexcept
++    {
++        static_assert(sizeof(detail::SpatialKey) >= 2 * sizeof(std::uint32_t) + sizeof(std::uint8_t));
++        auto* data = mTemp.data();
++        auto* ids = ::new (data) std::uint32_t[2 * count];
++        auto* tags = ::new (data + 2 * count * sizeof(std::uint32_t)) std::uint8_t[count];
++        return {ids, tags};
++    }
+     std::uint32_t mEpoch = 0;
+     bool mActive = false;
+ 
+@@ -1579,19 +1587,18 @@
+         return count;
+     }
+ 
+-    // Top-down bulk plan for int32. Alternate stable permutations between
+-    // the two existing key arrays. Only internal nodes need plan records;
+-    // their bounds/masks occupy fields not used by the entry permutations.
++    // Top-down bulk plan for int32. Stable permutations and tags use compact
++    // temporary streams. Only internal nodes write records to the key array.
+     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
+-        const Box<T>* boxes, Key* src, Key* dst, Key* keys, Key* tags,
++        const Box<T>* boxes, std::uint32_t* src, std::uint32_t* dst, std::uint32_t* order,
++        Key* keys, std::uint8_t* tags,
+         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
+         requires std::same_as<T, std::int32_t>
+     {
+         const auto finish = [&]() noexcept
+         {
+-            if (src != keys)
+-                for (auto i = begin; i < end; ++i)
+-                    keys[i].entry = src[i].entry;
++            if (src != order)
++                std::copy(src + begin, src + end, order + begin);
+             return false;
+         };
+         if (end - begin <= mConfig.splitThreshold || depth == mConfig.maxDepth)
+@@ -1606,7 +1613,7 @@
+         std::uint32_t count[5]{};
+         for (auto i = begin; i < end; ++i)
+         {
+-            const auto& box = boxes[src[i].entry];
++            const auto& box = boxes[src[i]];
+             const auto width = detail::span(box.minX, box.maxX);
+             const auto height = detail::span(box.minY, box.maxY);
+             std::uint32_t b = 0;
+@@ -1617,7 +1624,7 @@
+                 b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+                     (split.splitY && y >= split.y ? 2u : 0u));
+             }
+-            tags[i].level = b;
++            tags[i] = static_cast<std::uint8_t>(b);
+             ++count[b];
+         }
+         const auto movable = end - begin - count[0];
+@@ -1632,9 +1639,9 @@
+             bool seen = false, distinct = false;
+             for (auto i = begin; i < end; ++i)
+             {
+-                if (tags[i].level == 0)
++                if (tags[i] == 0)
+                     continue;
+-                const auto key = makeKey(cell, depth, 0, boxes[src[i].entry]);
++                const auto key = makeKey(cell, depth, 0, boxes[src[i]]);
+                 if (!seen) { first = key; seen = true; }
+                 else if (first.hi != key.hi || first.lo != key.lo) { distinct = true; break; }
+             }
+@@ -1651,15 +1658,14 @@
+             begin + count[0] + count[1] + count[2], end - count[4], end};
+         std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};
+         for (auto i = begin; i < end; ++i)
+-            dst[next[tags[i].level]++].entry = src[i].entry;
+-        if (dst != keys)
+-            for (auto i = begin; i < edges[0]; ++i)
+-                keys[i].entry = dst[i].entry;
++            dst[next[tags[i]]++] = src[i];
++        if (dst != order)
++            std::copy(dst + begin, dst + edges[0], order + begin);
+         std::uint32_t children = 0;
+         for (std::uint32_t q = 0; q < 4; ++q)
+         {
+             if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
+-                dst, src, keys, tags, planCapacity, plans, overflow))
++                dst, src, order, keys, tags, planCapacity, plans, overflow))
+                 children |= 1u << q;
+             if (overflow)
+                 return false;
+@@ -2254,37 +2260,42 @@
+         if (ranked > 1 && !detail::uniqueBuildRanks(ranks, ranks + ranked, ranked))
+             return Status::DuplicateRank;
+         std::size_t node_count = 0;
+-        bool top_down = false;
++        const std::uint32_t* bulk_order = nullptr;
+         if (count > mConfig.smallSetThreshold)
+         {
+             const Cell cell{*next_extent};
+-            auto* temp = scratch->tempKeys(count);
+             if constexpr (std::same_as<T, std::int32_t>)
+             {
+-                auto* keys = scratch->mKeys.data();
++                auto [order, tags] = scratch->tempPermutation(count);
+                 for (i = 0; i < count; ++i)
+-                    keys[i].entry = static_cast<std::uint32_t>(i);
++                    order[i] = static_cast<std::uint32_t>(i);
+                 const auto nodeLimit = (mConfig.maxNodes - 1) / 4;
+                 std::size_t plans = 0;
+                 bool overflow = false;
+-                planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, keys, temp,
+-                    keys, temp, std::min(count, nodeLimit), plans, overflow);
++                planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, order, order + count, order,
++                    scratch->mKeys.data(), tags, std::min(count, nodeLimit), plans, overflow);
+                 if (overflow && plans == nodeLimit)
+                     return Status::CapacityExhausted;
+-                top_down = !overflow;
+-                if (top_down)
++                if (!overflow)
++                {
++                    bulk_order = order;
+                     node_count = 1 + 4 * plans;
++                }
+             }
+-            if (!top_down)
++            if (!bulk_order)
+             {
+                 for (i = 0; i < count; ++i)
+                     scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), boxes[i]);
+-                detail::radixSort(scratch->mKeys.data(), temp, count);
++                detail::radixSort(scratch->mKeys.data(), scratch->tempKeys(count), count);
+                 node_count = countNodes(scratch->mKeys.data(), 0, count, 0);
+                 if (node_count > mConfig.maxNodes)
+                     return Status::CapacityExhausted;
+             }
+         }
++        const auto spatialEntry = [&](std::size_t dense) noexcept
++        {
++            return bulk_order ? bulk_order[dense] : scratch->mKeys[dense].entry;
++        };
+         const Status storage = prepareReplacement(count, ranked, node_count);
+         if (storage != Status::Ok)
+             return storage;
+@@ -2325,18 +2336,18 @@
+                     constexpr std::size_t descriptorAhead = 32, payloadAhead = 16;
+                     if (count - i > descriptorAhead)
+                     {
+-                        const auto future = scratch->mKeys[i + descriptorAhead].entry;
++                        const auto future = spatialEntry(i + descriptorAhead);
+                         __builtin_prefetch(&boxes[future], 0, 3);
+                         __builtin_prefetch(&descriptors[future], 0, 3);
+                         __builtin_prefetch(&descriptors[future].payload, 0, 3);
+                     }
+                     if (count - i > payloadAhead)
+-                        __builtin_prefetch(descriptors[scratch->mKeys[i + payloadAhead].entry].payload, 0, 3);
++                        __builtin_prefetch(descriptors[spatialEntry(i + payloadAhead)].payload, 0, 3);
+                 }
+             }
+ #endif
+             // Spatially sorted dense entries keep snapshot geometry contiguous.
+-            const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : scratch->mKeys[i].entry;
++            const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : spatialEntry(i);
+             const auto& descriptor = descriptors[input];
+             const auto dense = static_cast<std::uint32_t>(i);
+             constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
+@@ -2350,7 +2361,7 @@
+             if (handles)
+                 (*handles)[input] = detail::HandleAccess::make<Store>(owner, dense, 0);
+         }
+-        if (top_down)
++        if (bulk_order)
+         {
+             mRoot = 0;
+             mNodeUsed = 1;

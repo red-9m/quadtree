@@ -1,0 +1,33 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1194,7 +1194,21 @@
+             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>
+     QueryResult forEachPair(Visitor&& visitor, QueryOptions<T> options = {}, Predicate&& predicate = {}) const noexcept
+     {
+-        if (size() < 2)
++        // Separate empty from singleton so the caller can propagate size == 0
++        // as well as the zero query result back through its result conversion.
++        if (empty())
++            return {};
++        return forEachNonemptyPair(visitor, options, predicate);
++    }
++
++private:
++    template<typename Visitor, typename Predicate>
++#if defined(__GNUC__) || defined(__clang__)
++    [[gnu::noinline]]
++#endif
++    QueryResult forEachNonemptyPair(Visitor& visitor, QueryOptions<T> options, Predicate& predicate) const noexcept
++    {
++        if (size() == 1)
+             return {options.ordered && !allRanked() ? Status::MissingRank : Status::Ok, {}};
+         if (options.ordered && !allRanked())
+             return {Status::MissingRank, {}};
+@@ -1220,6 +1234,7 @@
+         return context.result;
+     }
+ 
++public:
+     template<typename Visitor, typename Predicate = detail::AcceptAll>
+         requires std::is_nothrow_invocable_r_v<Visit, Visitor&, const View&, const View&> &&
+             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>

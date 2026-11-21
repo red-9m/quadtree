@@ -1,0 +1,9 @@
+variant,call_vma,target_vma,target
+control,0x9b5d7,0x9a350,itemsVsSubtree
+control,0x9b607,0x9b2a0,selfPairs
+control,0x9b657,0x9ad90,crossPairs
+candidate,0x9b631,0x11ea0,selfPairQualifies
+candidate,0x9b786,0x11ea0,selfPairQualifies
+candidate,0x9b8de,0x9ad90,itemsVsSubtree
+candidate,0x9b90b,0x9b4e0,selfPairs
+candidate,0x9b958,0x9afd0,crossPairs

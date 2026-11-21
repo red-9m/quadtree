@@ -1,0 +1,92 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -92,6 +92,16 @@
+ 
+ namespace detail
+ {
++// Diagnostic-only counters; never compiled into the sampled Release build.
++struct BulkTraffic
++{
++    std::uint64_t calls{}, input{}, classifyNodes{}, classifyIDs{}, classifyChildIDs{}, lookaheadIDs{}, prefixIDs{};
++    std::uint64_t splitNodes{}, scatterIDs{}, childIDs{}, finishCopyIDs{}, ownCopyIDs{};
++    std::uint64_t monotoneNodes{}, monotoneIDs{}, monotoneMovedOwnCopyIDs{}, monotoneSavedOwnCopyIDs{};
++    std::uint64_t singleBinNodes{}, singleBinIDs{};
++};
++inline BulkTraffic bulkTraffic[65]{};
++
+ // Trivially copyable resource-backed arrays. Allocation initializes spare slots;
+ // growing, cloning and moving never invoke a throwing allocator.
+ template<typename U, std::size_t Alignment = alignof(U)>
+@@ -1595,10 +1605,17 @@
+         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
+         requires std::same_as<T, std::int32_t>
+     {
++        auto& traffic = detail::bulkTraffic[depth];
++        const auto length = end - begin;
++        ++traffic.calls;
++        traffic.input += length;
+         const auto finish = [&]() noexcept
+         {
+             if (src != order)
++            {
++                traffic.finishCopyIDs += length;
+                 std::copy(src + begin, src + end, order + begin);
++            }
+             return false;
+         };
+         if (end - begin <= mConfig.splitThreshold || depth == mConfig.maxDepth)
+@@ -1611,6 +1628,11 @@
+         const auto fits_width = split.splitX ? w / 2 : w;
+         const auto fits_height = split.splitY ? h / 2 : h;
+         std::uint32_t count[5]{};
++        ++traffic.classifyNodes;
++        traffic.classifyIDs += length;
++#if defined(__GNUC__) || defined(__clang__)
++        traffic.lookaheadIDs += length > 16 ? length - 16 : 0;
++#endif
+         for (auto i = begin; i < end; ++i)
+         {
+ #if defined(__GNUC__) || defined(__clang__)
+@@ -1633,6 +1655,7 @@
+             ++count[b];
+         }
+         const auto movable = end - begin - count[0];
++        traffic.classifyChildIDs += movable;
+         if (movable <= mConfig.splitThreshold)
+             return finish();
+         if (count[1] == movable || count[2] == movable || count[3] == movable || count[4] == movable)
+@@ -1646,6 +1669,7 @@
+             {
+                 if (tags[i] == 0)
+                     continue;
++                ++traffic.prefixIDs;
+                 const auto key = makeKey(cell, depth, 0, boxes[src[i]]);
+                 if (!seen) { first = key; seen = true; }
+                 else if (first.hi != key.hi || first.lo != key.lo) { distinct = true; break; }
+@@ -1659,6 +1683,26 @@
+             return false;
+         }
+         const auto plan = plans++;
++        ++traffic.splitNodes;
++        traffic.scatterIDs += length;
++        traffic.childIDs += movable;
++        if (dst != order)
++            traffic.ownCopyIDs += count[0];
++        if (movable == length && (count[1] == movable || count[2] == movable ||
++            count[3] == movable || count[4] == movable))
++        {
++            ++traffic.singleBinNodes;
++            traffic.singleBinIDs += length;
++        }
++        if (std::is_sorted(tags + begin, tags + end))
++        {
++            ++traffic.monotoneNodes;
++            traffic.monotoneIDs += length;
++            if (src != order)
++                traffic.monotoneMovedOwnCopyIDs += count[0];
++            if (dst != order)
++                traffic.monotoneSavedOwnCopyIDs += count[0];
++        }
+         const std::uint32_t edges[5]{begin + count[0], begin + count[0] + count[1],
+             begin + count[0] + count[1] + count[2], end - count[4], end};
+         std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};

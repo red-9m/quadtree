@@ -1,0 +1,4 @@
+Control invalidates old handles and reconstructs valid mappings after mutation.
+Repeated cold-then-warm two-entry builds preserve exact pair handles.
+Diagnostic is invalid after mutation: successful build returns an invalid new handle.
+Repeated cold-then-warm two-entry builds preserve exact pair handles.

@@ -1,0 +1,148 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -190,6 +190,28 @@
+     const void* payload = nullptr;
+ };
+ 
++// The top-down classifier reuses the same center and span at every split.
++struct BulkGeometry
++{
++    std::int32_t x, y;
++    std::uint32_t width, height;
++
++    static constexpr BulkGeometry capture(const Box<std::int32_t>& box) noexcept
++    {
++        return {std::midpoint(box.minX, box.maxX), std::midpoint(box.minY, box.maxY),
++            std::uint32_t(box.maxX) - std::uint32_t(box.minX),
++            std::uint32_t(box.maxY) - std::uint32_t(box.minY)};
++    }
++
++    constexpr Box<std::int32_t> box() const noexcept
++    {
++        const auto min_x = x - static_cast<std::int32_t>(width / 2);
++        const auto min_y = y - static_cast<std::int32_t>(height / 2);
++        return {min_x, min_y, static_cast<std::int32_t>(std::uint32_t(min_x) + width),
++            static_cast<std::int32_t>(std::uint32_t(min_y) + height)};
++    }
++};
++
+ // A portable 128-bit Morton prefix, then the depth of the stored prefix.
+ // No quantization, floating-point integer conversion, or packed entry limit.
+ struct SpatialKey
+@@ -665,7 +687,8 @@
+     detail::Buffer<std::uint32_t> mMembership;
+     detail::Buffer<std::uint8_t> mSelections;
+     // Spatial planning reads geometry repeatedly, not payloads, filters or ranks.
+-    detail::Buffer<Box<T>> mBuildBoxes;
++    using BuildGeometry = std::conditional_t<std::same_as<T, std::int32_t>, detail::BulkGeometry, Box<T>>;
++    detail::Buffer<BuildGeometry> mBuildBoxes;
+     detail::Buffer<detail::Descriptor> mDescriptors;
+     detail::Buffer<detail::SpatialKey> mKeys;
+     detail::Buffer<std::byte, alignof(detail::SpatialKey)> mTemp;
+@@ -1583,7 +1606,7 @@
+     // the two existing key arrays. Only internal nodes need plan records;
+     // their bounds/masks occupy fields not used by the entry permutations.
+     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
+-        const Box<T>* boxes, Key* src, Key* dst, Key* keys, Key* tags,
++        const detail::BulkGeometry* geometry, Key* src, Key* dst, Key* keys, Key* tags,
+         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
+         requires std::same_as<T, std::int32_t>
+     {
+@@ -1606,17 +1629,11 @@
+         std::uint32_t count[5]{};
+         for (auto i = begin; i < end; ++i)
+         {
+-            const auto& box = boxes[src[i].entry];
+-            const auto width = detail::span(box.minX, box.maxX);
+-            const auto height = detail::span(box.minY, box.maxY);
++            const auto& box = geometry[src[i].entry];
+             std::uint32_t b = 0;
+-            if (width <= fits_width && height <= fits_height)
+-            {
+-                const auto x = box.minX + static_cast<T>(width / 2);
+-                const auto y = box.minY + static_cast<T>(height / 2);
+-                b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+-                    (split.splitY && y >= split.y ? 2u : 0u));
+-            }
++            if (box.width <= fits_width && box.height <= fits_height)
++                b = 1 + ((split.splitX && box.x >= split.x ? 1u : 0u) |
++                    (split.splitY && box.y >= split.y ? 2u : 0u));
+             tags[i].level = b;
+             ++count[b];
+         }
+@@ -1634,7 +1651,7 @@
+             {
+                 if (tags[i].level == 0)
+                     continue;
+-                const auto key = makeKey(cell, depth, 0, boxes[src[i].entry]);
++                const auto key = makeKey(cell, depth, 0, geometry[src[i].entry].box());
+                 if (!seen) { first = key; seen = true; }
+                 else if (first.hi != key.hi || first.lo != key.lo) { distinct = true; break; }
+             }
+@@ -1658,7 +1675,7 @@
+         std::uint32_t children = 0;
+         for (std::uint32_t q = 0; q < 4; ++q)
+         {
+-            if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
++            if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], geometry,
+                 dst, src, keys, tags, planCapacity, plans, overflow))
+                 children |= 1u << q;
+             if (overflow)
+@@ -2235,7 +2252,7 @@
+         std::optional<Box<T>> next_extent = mConfig.extent == Extent::Fixed ? mConfig.root : std::nullopt;
+         for (auto& entry : range)
+         {
+-            auto& box = boxes[i];
++            Box<T> box;
+             auto& descriptor = descriptors[i];
+             if (!captureBuildEntry<Projected>(entry, accessor, box, descriptor))
+                 return Status::InvalidGeometry;
+@@ -2246,10 +2263,21 @@
+             }
+             else
+                 next_extent = next_extent ? detail::unite(*next_extent, box) : box;
++            if constexpr (std::same_as<T, std::int32_t>)
++                boxes[i] = detail::BulkGeometry::capture(box);
++            else
++                boxes[i] = box;
+             if (descriptor.rank)
+                 ranks[ranked++] = *descriptor.rank;
+             ++i;
+         }
++        const auto boxAt = [boxes](std::size_t entry) noexcept -> Box<T>
++        {
++            if constexpr (std::same_as<T, std::int32_t>)
++                return boxes[entry].box();
++            else
++                return boxes[entry];
++        };
+         // Independent preparation: no payload moves, topology mutation, or output writes.
+         if (ranked > 1 && !detail::uniqueBuildRanks(ranks, ranks + ranked, ranked))
+             return Status::DuplicateRank;
+@@ -2278,7 +2306,7 @@
+             if (!top_down)
+             {
+                 for (i = 0; i < count; ++i)
+-                    scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), boxes[i]);
++                    scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), boxAt(i));
+                 detail::radixSort(scratch->mKeys.data(), temp, count);
+                 node_count = countNodes(scratch->mKeys.data(), 0, count, 0);
+                 if (node_count > mConfig.maxNodes)
+@@ -2304,7 +2332,7 @@
+                 // Publish the dense/slot counts once, after constructing every entry.
+                 const auto size = static_cast<std::uint32_t>(count);
+                 for (std::uint32_t dense = 0; dense < size; ++dense)
+-                    constructBuildEntry<Consume>(dense, boxes[dense], descriptors[dense], false);
++                    constructBuildEntry<Consume>(dense, boxAt(dense), descriptors[dense], false);
+                 mEntries.mSize = size;
+                 mEntries.mSlotsUsed = size;
+                 if (handles)
+@@ -2339,7 +2367,7 @@
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : scratch->mKeys[i].entry;
+             const auto& descriptor = descriptors[input];
+             const auto dense = static_cast<std::uint32_t>(i);
+-            constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
++            constructBuildEntry<Consume>(dense, boxAt(input), descriptor, descriptor.rank.has_value());
+             ++mEntries.mSize;
+             ++mEntries.mSlotsUsed;
+             if (descriptor.rank)

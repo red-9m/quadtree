@@ -1,0 +1,9 @@
+block,scene,engine,function,cycle_samples,build_period,pair_period,other_period,function_period,function_pct_pair_cycles
+1,uniform,index,crossPairs,7880,5095107133,6031290593,934990569,2152388480,35.69
+1,split-line-translated,index,crossPairs,7870,5351682311,5616453991,1070880371,1968748182,35.05
+1,uniform,index-ordered,walkOrdered,7981,2627413291,8153938269,1431789249,5348897635,65.60
+1,split-line-translated,index-ordered,walkOrdered,8085,2335694357,8616833180,1419283685,5933722812,68.86
+2,split-line-translated,index-ordered,walkOrdered,9233,2310746258,8493803464,1395411059,5882405122,69.26
+2,uniform,index-ordered,walkOrdered,9245,2606948571,8148776479,1440115278,5381826317,66.04
+2,split-line-translated,index,crossPairs,9133,5333565550,5632814288,1077726871,1987159987,35.28
+2,uniform,index,crossPairs,9085,5049086590,6004347917,935081506,2087745645,34.77

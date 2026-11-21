@@ -1,0 +1,9 @@
+block,scene,n,engine,operand,pcs,known_loads,non_l1_loads,pct_build_non_l1_load
+1,uniform,100000,index,box_edges,0x145e82 0x145e85 0x145e88 0x145e8b,574,252,69.04
+1,uniform,100000,index,source_id,0x145e77,150,0,0.00
+1,split-line-translated,100000,index,box_edges,0x145e82 0x145e85 0x145e88 0x145e8b,699,297,75.77
+1,split-line-translated,100000,index,source_id,0x145e77,173,0,0.00
+2,split-line-translated,100000,index,box_edges,0x145e82 0x145e85 0x145e88 0x145e8b,620,250,65.79
+2,split-line-translated,100000,index,source_id,0x145e77,131,0,0.00
+2,uniform,100000,index,box_edges,0x145e82 0x145e85 0x145e88 0x145e8b,504,258,70.11
+2,uniform,100000,index,source_id,0x145e77,136,1,0.27

@@ -1,0 +1,3 @@
+Eight untimed fixture rows match staged work and pair checksums. Ordered and unordered scatter reuse matches per depth.
+Gap and tag counts reconcile with every scatter ID; total groups and IDs match the staged routing census.
+16 Release captures match frozen fixture hashes, pair checksums, work, and footprint; zero warm allocations.

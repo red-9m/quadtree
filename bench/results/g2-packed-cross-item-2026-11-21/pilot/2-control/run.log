@@ -1,0 +1,30 @@
+# date: 2026-11-21T11:19:10Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293776 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int32 --scenes=uniform,split-line,split-line-translated,mixed-size --engines=index,index-ordered --sizes=10000,100000 --small-sizes= --rounds=9 --min-time=0.03 --min-reps=3 --max-reps=12 --csv=/home/dima/.cache/quadtree-g2-packed-item.a0CB3H/pilot/2-control/snapshot.csv --raw=/home/dima/.cache/quadtree-g2-packed-item.a0CB3H/pilot/2-control/snapshot-raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int32    10000     1 index            1057.357     2.1     1.00 [1.00-1.00]         51231        7525     0.00      2735 ok
+uniform                                  int32    10000     1 index-ordered     2723.120     2.3     2.58 [2.51-2.64]         31633        7525     0.00      3374 ok
+uniform                                  int32   100000     1 index           12850.022     2.6     1.00 [1.00-1.00]        788738       73905     0.00     26456 ok
+uniform                                  int32   100000     1 index-ordered    40747.310     2.2     3.17 [3.09-3.26]        383603       73905     0.00     31821 ok
+split-line                               int32    10000     1 index            1158.755     2.1     1.00 [1.00-1.00]         58619        7261     0.00      2728 ok
+split-line                               int32    10000     1 index-ordered     3030.475     2.2     2.62 [2.55-2.68]         37061        7261     0.00      3367 ok
+split-line                               int32   100000     1 index           13443.210     2.7     1.00 [1.00-1.00]        681627      105137     0.00     26966 ok
+split-line                               int32   100000     1 index-ordered    47832.743     2.3     3.56 [3.46-3.66]        429581      105137     0.00     32331 ok
+split-line-translated                    int32    10000     1 index            1136.180     2.1     1.00 [1.00-1.00]         55720        7261     0.00      2727 ok
+split-line-translated                    int32    10000     1 index-ordered     3120.624     3.4     2.75 [2.64-2.85]         36779        7261     0.00      3366 ok
+split-line-translated                    int32   100000     1 index           13052.393     2.5     1.00 [1.00-1.00]        625694      105137     0.00     26976 ok
+split-line-translated                    int32   100000     1 index-ordered    48148.305     2.5     3.69 [3.59-3.79]        422813      105137     0.00     32342 ok
+mixed-size                               int32    10000     1 index            1811.092     2.1     1.00 [1.00-1.00]        101984       46479     0.00      2724 ok
+mixed-size                               int32    10000     1 index-ordered     5074.363     2.3     2.80 [2.73-2.87]        151047       46479     0.00      3363 ok
+mixed-size                               int32   100000     1 index           39661.075     2.3     1.00 [1.00-1.00]       2968141     2054380     0.00     26377 ok
+mixed-size                               int32   100000     1 index-ordered   141470.419     2.1     3.57 [3.48-3.66]       6308583     2054380     0.00     31742 ok

@@ -1,0 +1,14 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1613,6 +1613,11 @@
+         std::uint32_t count[5]{};
+         for (auto i = begin; i < end; ++i)
+         {
++#if defined(__GNUC__) || defined(__clang__)
++            constexpr std::uint32_t ahead = 16;
++            if (end - i > ahead)
++                __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
++#endif
+             const auto& box = boxes[src[i]];
+             const auto width = detail::span(box.minX, box.maxX);
+             const auto height = detail::span(box.minY, box.maxY);

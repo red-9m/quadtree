@@ -1,0 +1,17 @@
+control unordered_step 0xf0a40 3890
+control ordered_step 0xf4940 3961
+control unordered_pairs 0xf03c0 1656
+control ordered_pairs 0xf3f00 2589
+control unordered_helper no separate symbol
+candidate unordered_step 0xf17c0 3890
+candidate ordered_step 0xf56c0 3961
+candidate unordered_pairs 0xf1140 1646
+candidate ordered_pairs 0xf4c80 2589
+candidate unordered_helper no separate symbol
+ordered_step 665 -> 665 instructions; same after branch/RIP displacement normalization
+ordered_pairs 506 -> 506 instructions; different after branch/RIP displacement normalization
+unordered_pairs 350 -> 346 instructions; different after branch/RIP displacement normalization
+ordered_pairs 506 -> 506 instructions; same after branch/RIP normalization and Context renaming
+ordered_step 665 -> 665 instructions; same after branch/RIP normalization and Context renaming
+unordered_pairs 350 -> 346 instructions; different after branch/RIP normalization and Context renaming
+unordered_step 652 -> 652 instructions; same after branch/RIP normalization and Context renaming

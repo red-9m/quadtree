@@ -25,6 +25,12 @@ sha256sum "$out/release.text" "$out/debug.text" > "$out/text.sha256"
 rm "$out/"{release,debug}{.text,.copy,.layout}
 
 for round in 1 2; do
+  if [[ -n ${QT_PROFILE_QUIET:-} ]]; then
+    for f in /sys/class/hwmon/hwmon*/name; do
+      if [[ $(<"$f") == k10temp ]]; then temp="${f%/name}/temp1_input"; break; fi
+    done
+    taskset -c 0 python3 "$QT_PROFILE_QUIET" "${temp:?Missing k10temp}" "$out/quiet-$round.csv" >/dev/null
+  fi
   if [[ $round == 1 ]]; then
     scenes=(uniform clustered); sizes=(0 1 2 4); engines=(index brute); frequency=4999
   else

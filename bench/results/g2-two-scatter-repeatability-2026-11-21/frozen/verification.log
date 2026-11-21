@@ -1,0 +1,11 @@
+Run 1: 2940 raw samples, 204 rows, 68 warm allocation-free library rows; fixtures, uncapped checksums, work and footprint agree with the staged reference.
+Run 1: G2 11/0/4 (pass/fail/inconclusive).
+Run 1: G9 12/0/3 (pass/fail/inconclusive).
+Run 2: 2940 raw samples, 204 rows, 68 warm allocation-free library rows; fixtures, uncapped checksums, work and footprint agree with the staged reference.
+Run 2: G2 11/0/4 (pass/fail/inconclusive).
+Run 2: G9 12/0/3 (pass/fail/inconclusive).
+Coverage: 184/196 (93.9%) within combined error; below the 95% target.
+cpu: 9.27% busy across both runs; 12.63% peak sampled interval.
+cpu6: 99.99% busy across both runs; 100.00% peak sampled interval.
+cpu7: 0.90% busy across both runs; 6.32% peak sampled interval.
+Package Tctl: 37.2–71.9 °C during the measured block.

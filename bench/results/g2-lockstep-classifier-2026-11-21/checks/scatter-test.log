@@ -1,0 +1,3 @@
+control: 36 exact scatter cases: five tags, disjoint half histograms, own-entry tails, both output parities.
+candidate: 36 exact scatter cases: five tags, disjoint half histograms, own-entry tails, both output parities.
+candidate (ASan/UBSan): 36 exact scatter cases: five tags, disjoint half histograms, own-entry tails, both output parities.

@@ -1,0 +1,3 @@
+16 reused Release profiles match the staged gate rows, including pair checksums, work and allocations.
+Eight census rows match fixture/work/pair checksums and warm allocations; per-depth counts reconcile with topology.
+Ordered and unordered routing counters match at each depth on all four fixtures.

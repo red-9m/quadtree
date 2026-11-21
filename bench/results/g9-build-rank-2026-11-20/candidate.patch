@@ -1,0 +1,224 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -94,7 +94,7 @@
+ {
+ // Trivially copyable resource-backed arrays. Allocation initializes spare slots;
+ // growing, cloning and moving never invoke a throwing allocator.
+-template<typename U>
++template<typename U, std::size_t Alignment = alignof(U)>
+ class Buffer
+ {
+     static_assert(std::is_trivially_copyable_v<U> && std::is_nothrow_default_constructible_v<U>);
+@@ -131,11 +131,14 @@
+             return Status::SizeLimitExceeded;
+         if (count == 0)
+             return Status::Ok;
+-        U* data = static_cast<U*>(mResource->allocate(count * sizeof(U), alignof(U)));
++        U* data = static_cast<U*>(mResource->allocate(count * sizeof(U), Alignment));
+         if (!data)
+             return Status::AllocationFailed;
+-        for (std::size_t i = 0; i < count; ++i)
+-            std::construct_at(data + i);
++        if constexpr (std::same_as<U, std::byte>)
++            data = ::new (data) U[count](); // One byte array can provide storage for typed scratch arrays.
++        else
++            for (std::size_t i = 0; i < count; ++i)
++                std::construct_at(data + i);
+         reset();
+         mData = data;
+         mCapacity = count;
+@@ -191,10 +194,10 @@
+ // No quantization, floating-point integer conversion, or packed entry limit.
+ struct SpatialKey
+ {
+-    std::uint64_t hi = 0;
+-    std::uint64_t lo = 0;
+-    std::uint32_t level = 0;
+-    std::uint32_t entry = 0;
++    std::uint64_t hi;
++    std::uint64_t lo;
++    std::uint32_t level;
++    std::uint32_t entry;
+ };
+ 
+ template<typename U, typename Less>
+@@ -282,6 +285,46 @@
+     introPartition(data, count, less, depth);
+ }
+ 
++inline bool uniqueBuildRanks(std::uint64_t* ranks, std::uint64_t* temp, std::uint32_t count) noexcept
++{
++    if (count < 256)
++        rankSort(ranks, count, std::less<>{});
++    else
++    {
++        std::uint32_t counts[8][256]{};
++        for (std::uint32_t i = 0; i < count; ++i)
++        {
++            const auto rank = ranks[i];
++            for (unsigned byte = 0; byte < 8; ++byte)
++                ++counts[byte][(rank >> (8 * byte)) & 255u];
++        }
++        for (unsigned byte = 0; byte < 8; ++byte)
++        {
++            const auto shift = 8 * byte;
++            auto& bucket = counts[byte];
++            if (bucket[(ranks[0] >> shift) & 255u] == count)
++                continue;
++            std::uint32_t offset = 0;
++            for (auto& size : bucket)
++            {
++                const auto previous = offset;
++                offset += size;
++                size = previous;
++            }
++            for (std::uint32_t i = 0; i < count; ++i)
++            {
++                const auto rank = ranks[i];
++                temp[bucket[(rank >> shift) & 255u]++] = rank;
++            }
++            std::swap(ranks, temp);
++        }
++    }
++    for (std::uint32_t i = 1; i < count; ++i)
++        if (ranks[i - 1] == ranks[i])
++            return false;
++    return true;
++}
++
+ // Stable LSD radix sort on (hi, lo, level); equal keys retain input order.
+ inline void radixSort(SpatialKey* keys, SpatialKey* temp, std::size_t count) noexcept
+ {
+@@ -591,7 +634,9 @@
+         if (status == Status::Ok) status = mBuildBoxes.prepare(pending.mBuildBoxes, reservation.buildEntries);
+         if (status == Status::Ok) status = mDescriptors.prepare(pending.mDescriptors, reservation.buildEntries);
+         if (status == Status::Ok) status = mKeys.prepare(pending.mKeys, reservation.buildEntries);
+-        if (status == Status::Ok) status = mTemp.prepare(pending.mTemp, reservation.buildEntries);
++        // mKeys.prepare already verified the byte multiplication.
++        if (status == Status::Ok && tempKeyCapacity() < reservation.buildEntries)
++            status = pending.mTemp.allocate(reservation.buildEntries * sizeof(detail::SpatialKey));
+         if (status != Status::Ok)
+             return status;
+         mOrder.commit(pending.mOrder);
+@@ -622,7 +667,22 @@
+     // Spatial planning reads geometry repeatedly, not payloads, filters or ranks.
+     detail::Buffer<Box<T>> mBuildBoxes;
+     detail::Buffer<detail::Descriptor> mDescriptors;
+-    detail::Buffer<detail::SpatialKey> mKeys, mTemp;
++    detail::Buffer<detail::SpatialKey> mKeys;
++    detail::Buffer<std::byte, alignof(detail::SpatialKey)> mTemp;
++
++    std::size_t tempKeyCapacity() const noexcept { return mTemp.capacity() / sizeof(detail::SpatialKey); }
++
++    // Each phase starts its own array lifetime within the same allocation.
++    // Scratch is overwritten before it is read; the caller checked capacity.
++    detail::SpatialKey* tempKeys(std::size_t count) noexcept
++    {
++        return ::new (mTemp.data()) detail::SpatialKey[count];
++    }
++    std::uint64_t* tempRanks(std::size_t count) noexcept
++    {
++        static_assert(sizeof(detail::SpatialKey) >= 2 * sizeof(std::uint64_t));
++        return ::new (mTemp.data()) std::uint64_t[2 * count];
++    }
+     std::uint32_t mEpoch = 0;
+     bool mActive = false;
+ 
+@@ -995,7 +1055,7 @@
+         {
+             for (std::uint32_t i = 0; i < size(); ++i)
+                 scratch.mKeys[i] = makeKey(cell, 0, i, mEntries.mBoxes[i]);
+-            detail::radixSort(scratch.mKeys.data(), scratch.mTemp.data(), size());
++            detail::radixSort(scratch.mKeys.data(), scratch.tempKeys(size()), size());
+             node_count = countNodes(scratch.mKeys.data(), 0, size(), 0);
+             if (node_count > mConfig.maxNodes)
+                 return Status::CapacityExhausted;
+@@ -1394,8 +1454,7 @@
+ 
+     Key makeKey(Cell cell, std::uint32_t baseDepth, std::uint32_t dense, const Box<T>& box) const noexcept
+     {
+-        Key key;
+-        key.entry = dense;
++        Key key{0, 0, 0, dense};
+         while (baseDepth + key.level < mConfig.maxDepth)
+         {
+             const detail::Split<T> split(cell);
+@@ -2150,7 +2209,7 @@
+     {
+         auto* scratch = &workspace;
+         if (scratch->mBuildBoxes.capacity() < count || scratch->mDescriptors.capacity() < count ||
+-            scratch->mKeys.capacity() < count || scratch->mTemp.capacity() < count)
++            scratch->mKeys.capacity() < count || scratch->tempKeyCapacity() < count)
+             return Status::InsufficientWorkspace;
+         typename Workspace<T>::Use use(*scratch);
+         if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+@@ -2170,7 +2229,9 @@
+             return buildSingle<Consume, Projected>(*std::ranges::begin(range), accessor, handles);
+         auto* boxes = scratch->mBuildBoxes.data();
+         auto* descriptors = scratch->mDescriptors.data();
+-        std::size_t i = 0, ranked = 0;
++        auto* ranks = scratch->tempRanks(count);
++        std::size_t i = 0;
++        std::uint32_t ranked = 0;
+         std::optional<Box<T>> next_extent = mConfig.extent == Extent::Fixed ? mConfig.root : std::nullopt;
+         for (auto& entry : range)
+         {
+@@ -2186,27 +2247,21 @@
+             else
+                 next_extent = next_extent ? detail::unite(*next_extent, box) : box;
+             if (descriptor.rank)
+-                scratch->mKeys[ranked++] = Key{*descriptor.rank, 0, 0, static_cast<std::uint32_t>(i)};
++                ranks[ranked++] = *descriptor.rank;
+             ++i;
+         }
+         // Independent preparation: no payload moves, topology mutation, or output writes.
+-        if (ranked > 1)
+-        {
+-            detail::rankSort(scratch->mKeys.data(), ranked, [](const Key& a, const Key& b) noexcept
+-                { return a.hi < b.hi; });
+-            for (i = 1; i < ranked; ++i)
+-                if (scratch->mKeys[i - 1].hi == scratch->mKeys[i].hi)
+-                    return Status::DuplicateRank;
+-        }
++        if (ranked > 1 && !detail::uniqueBuildRanks(ranks, ranks + ranked, ranked))
++            return Status::DuplicateRank;
+         std::size_t node_count = 0;
+         bool top_down = false;
+         if (count > mConfig.smallSetThreshold)
+         {
+             const Cell cell{*next_extent};
++            auto* temp = scratch->tempKeys(count);
+             if constexpr (std::same_as<T, std::int32_t>)
+             {
+                 auto* keys = scratch->mKeys.data();
+-                auto* temp = scratch->mTemp.data();
+                 for (i = 0; i < count; ++i)
+                     keys[i].entry = static_cast<std::uint32_t>(i);
+                 const auto nodeLimit = (mConfig.maxNodes - 1) / 4;
+@@ -2224,7 +2279,7 @@
+             {
+                 for (i = 0; i < count; ++i)
+                     scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), boxes[i]);
+-                detail::radixSort(scratch->mKeys.data(), scratch->mTemp.data(), count);
++                detail::radixSort(scratch->mKeys.data(), temp, count);
+                 node_count = countNodes(scratch->mKeys.data(), 0, count, 0);
+                 if (node_count > mConfig.maxNodes)
+                     return Status::CapacityExhausted;
+@@ -2803,7 +2858,7 @@
+     {
+         auto* row = scratch.mRow.data();
+         auto* keys = scratch.mKeys.data();
+-        auto* temp = scratch.mTemp.data();
++        auto* temp = scratch.tempKeys(count);
+         std::uint32_t counts[8][256]{};
+         // Cache each rank once; all subsequent passes touch only scratch.
+         for (std::uint32_t i = 0; i < count; ++i)
+@@ -2877,7 +2932,7 @@
+                 return; // An unfinished row is discarded, never emitted as a non-prefix.
+             if constexpr (std::same_as<T, std::int32_t>)
+             {
+-                if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.mTemp.capacity())
++                if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.tempKeyCapacity())
+                     radixPartnerRow(scratch, static_cast<std::uint32_t>(count));
+                 else
+                     sortRanks(scratch.mRow.data(), count);

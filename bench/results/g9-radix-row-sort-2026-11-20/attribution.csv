@@ -1,0 +1,7 @@
+run,warm_reps,profile_pairs_median_ns,pair_period,pair_samples,source_sort_pct_pairs,row_sort_pct_pairs,row_radix_pct_pairs,unresolved_sort_pct_pairs,all_row_sort_pct_pairs,pair_pct_process
+1-control,14,156568981,10830366422,7055,3.58,28.98,0.00,0.00,28.98,84.29
+1-candidate,16,140890532,11047242292,7199,3.90,8.93,11.67,0.00,20.60,83.68
+2-candidate,16,139131259,10854528361,8191,3.98,9.49,9.93,0.00,19.42,83.42
+2-control,14,158440412,10905225727,8245,3.53,28.31,0.00,0.00,28.31,84.45
+3-control,14,158319229,10900066320,9491,3.50,28.35,0.00,0.00,28.35,84.40
+3-candidate,16,142086765,11054454948,9633,3.91,8.94,11.31,0.00,20.25,83.73

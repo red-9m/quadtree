@@ -1,0 +1,8 @@
+8820 raw samples; all 204 fixture/status rows and uncapped checksum/work/memory fields match prior frozen candidate.
+All 68 warm library rows allocate zero; runtime benchmark and frozen evaluator complete.
+G1: 8/8/0 (pass/fail/inconclusive).
+G2: 15/0/0 (pass/fail/inconclusive).
+G3: 6/0/0 (pass/fail/inconclusive).
+G4: 6/0/0 (pass/fail/inconclusive).
+G6: 34/0/0 (pass/fail/inconclusive).
+G9: 15/0/0 (pass/fail/inconclusive).

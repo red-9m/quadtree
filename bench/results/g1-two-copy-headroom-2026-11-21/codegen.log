@@ -1,0 +1,13 @@
+control unordered_step 0xed1d0 3874
+control ordered_step 0xf10a0 3993
+control unordered_pairs 0xecb50 1656
+control ordered_pairs 0xf0680 2589
+control unordered_helper no separate symbol
+candidate unordered_step 0xecf10 4082
+candidate ordered_step 0xf0c00 4153
+candidate unordered_pairs 0xec890 1656
+candidate ordered_pairs 0xf01e0 2589
+candidate unordered_helper no separate symbol
+ordered_step 668 -> 697 instructions; different after branch/RIP displacement normalization
+ordered_pairs 506 -> 506 instructions; same after branch/RIP displacement normalization
+unordered_pairs 350 -> 350 instructions; same after branch/RIP displacement normalization

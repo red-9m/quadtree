@@ -1,0 +1,320 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -87,7 +87,7 @@
+ {
+     std::size_t entries = 0;      // Ordered rows/order, selection flags and moved membership
+     std::size_t movedEntries = 0; // Submitted moved handles, normalized to dense indices
+-    std::size_t buildEntries = 0; // Captured descriptors and two sorting buffers
++    std::size_t buildEntries = 0; // Captured boxes, descriptors and two sorting buffers
+ };
+ 
+ namespace detail
+@@ -180,10 +180,8 @@
+     std::size_t mCapacity = 0;
+ };
+ 
+-template<Coordinate T>
+ struct Descriptor
+ {
+-    Box<T> box{};
+     Filter filter = {};
+     std::optional<std::uint64_t> rank = {};
+     const void* payload = nullptr;
+@@ -542,7 +540,8 @@
+ public:
+     explicit Workspace(Resource* resource = nullptr) noexcept:
+         mResource(resource ? resource : defaultResource()), mOrder(mResource), mRow(mResource), mMoved(mResource),
+-        mMembership(mResource), mSelections(mResource), mDescriptors(mResource), mKeys(mResource), mTemp(mResource) {}
++        mMembership(mResource), mSelections(mResource), mBuildBoxes(mResource), mDescriptors(mResource),
++        mKeys(mResource), mTemp(mResource) {}
+     Workspace(const Workspace&) = delete;
+     Workspace& operator=(const Workspace&) = delete;
+     Workspace(Workspace&& other) noexcept: Workspace(other.mResource) { *this = std::move(other); }
+@@ -558,6 +557,7 @@
+             mMoved = std::move(other.mMoved);
+             mMembership = std::move(other.mMembership);
+             mSelections = std::move(other.mSelections);
++            mBuildBoxes = std::move(other.mBuildBoxes);
+             mDescriptors = std::move(other.mDescriptors);
+             mKeys = std::move(other.mKeys);
+             mTemp = std::move(other.mTemp);
+@@ -570,7 +570,7 @@
+     std::size_t retainedBytes() const noexcept
+     {
+         return mOrder.bytes() + mRow.bytes() + mMoved.bytes() + mMembership.bytes() + mSelections.bytes() +
+-            mDescriptors.bytes() + mKeys.bytes() + mTemp.bytes();
++            mBuildBoxes.bytes() + mDescriptors.bytes() + mKeys.bytes() + mTemp.bytes();
+     }
+ 
+     Status reserve(std::size_t entries) noexcept { return reserve({entries, entries, entries}); }
+@@ -588,6 +588,7 @@
+         if (status == Status::Ok) status = mMoved.prepare(pending.mMoved, reservation.movedEntries);
+         if (status == Status::Ok) status = mMembership.prepare(pending.mMembership, reservation.entries);
+         if (status == Status::Ok) status = mSelections.prepare(pending.mSelections, reservation.entries);
++        if (status == Status::Ok) status = mBuildBoxes.prepare(pending.mBuildBoxes, reservation.buildEntries);
+         if (status == Status::Ok) status = mDescriptors.prepare(pending.mDescriptors, reservation.buildEntries);
+         if (status == Status::Ok) status = mKeys.prepare(pending.mKeys, reservation.buildEntries);
+         if (status == Status::Ok) status = mTemp.prepare(pending.mTemp, reservation.buildEntries);
+@@ -598,6 +599,7 @@
+         mMoved.commit(pending.mMoved);
+         mMembership.commit(pending.mMembership);
+         mSelections.commit(pending.mSelections);
++        mBuildBoxes.commit(pending.mBuildBoxes);
+         mDescriptors.commit(pending.mDescriptors);
+         mKeys.commit(pending.mKeys);
+         mTemp.commit(pending.mTemp);
+@@ -617,7 +619,9 @@
+     detail::Buffer<std::uint32_t> mOrder, mRow, mMoved;
+     detail::Buffer<std::uint32_t> mMembership;
+     detail::Buffer<std::uint8_t> mSelections;
+-    detail::Buffer<detail::Descriptor<T>> mDescriptors;
++    // Spatial planning reads geometry repeatedly, not payloads, filters or ranks.
++    detail::Buffer<Box<T>> mBuildBoxes;
++    detail::Buffer<detail::Descriptor> mDescriptors;
+     detail::Buffer<detail::SpatialKey> mKeys, mTemp;
+     std::uint32_t mEpoch = 0;
+     bool mActive = false;
+@@ -1520,7 +1524,7 @@
+     // the two existing key arrays. Only internal nodes need plan records;
+     // their bounds/masks occupy fields not used by the entry permutations.
+     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
+-        const detail::Descriptor<T>* entries, Key* src, Key* dst, Key* keys, Key* tags,
++        const Box<T>* boxes, Key* src, Key* dst, Key* keys, Key* tags,
+         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
+         requires std::same_as<T, std::int32_t>
+     {
+@@ -1543,7 +1547,7 @@
+         std::uint32_t count[5]{};
+         for (auto i = begin; i < end; ++i)
+         {
+-            const auto& box = entries[src[i].entry].box;
++            const auto& box = boxes[src[i].entry];
+             const auto width = detail::span(box.minX, box.maxX);
+             const auto height = detail::span(box.minY, box.maxY);
+             std::uint32_t b = 0;
+@@ -1571,7 +1575,7 @@
+             {
+                 if (tags[i].level == 0)
+                     continue;
+-                const auto key = makeKey(cell, depth, 0, entries[src[i].entry].box);
++                const auto key = makeKey(cell, depth, 0, boxes[src[i].entry]);
+                 if (!seen) { first = key; seen = true; }
+                 else if (first.hi != key.hi || first.lo != key.lo) { distinct = true; break; }
+             }
+@@ -1595,7 +1599,7 @@
+         std::uint32_t children = 0;
+         for (std::uint32_t q = 0; q < 4; ++q)
+         {
+-            if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], entries,
++            if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
+                 dst, src, keys, tags, planCapacity, plans, overflow))
+                 children |= 1u << q;
+             if (overflow)
+@@ -2145,8 +2149,8 @@
+         std::size_t count, Workspace<T>& workspace) noexcept
+     {
+         auto* scratch = &workspace;
+-        if (scratch->mDescriptors.capacity() < count || scratch->mKeys.capacity() < count ||
+-            scratch->mTemp.capacity() < count)
++        if (scratch->mBuildBoxes.capacity() < count || scratch->mDescriptors.capacity() < count ||
++            scratch->mKeys.capacity() < count || scratch->mTemp.capacity() < count)
+             return Status::InsufficientWorkspace;
+         typename Workspace<T>::Use use(*scratch);
+         if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+@@ -2164,20 +2168,23 @@
+         }
+         if (count == 1 && mConfig.smallSetThreshold != 0)
+             return buildSingle<Consume, Projected>(*std::ranges::begin(range), accessor, handles);
++        auto* boxes = scratch->mBuildBoxes.data();
++        auto* descriptors = scratch->mDescriptors.data();
+         std::size_t i = 0, ranked = 0;
+         std::optional<Box<T>> next_extent = mConfig.extent == Extent::Fixed ? mConfig.root : std::nullopt;
+         for (auto& entry : range)
+         {
+-            auto& descriptor = scratch->mDescriptors[i];
+-            if (!captureBuildEntry<Projected>(entry, accessor, descriptor))
++            auto& box = boxes[i];
++            auto& descriptor = descriptors[i];
++            if (!captureBuildEntry<Projected>(entry, accessor, box, descriptor))
+                 return Status::InvalidGeometry;
+             if (mConfig.extent == Extent::Fixed)
+             {
+-                if (!detail::contains(*next_extent, descriptor.box))
++                if (!detail::contains(*next_extent, box))
+                     return Status::OutOfBounds;
+             }
+             else
+-                next_extent = next_extent ? detail::unite(*next_extent, descriptor.box) : descriptor.box;
++                next_extent = next_extent ? detail::unite(*next_extent, box) : box;
+             if (descriptor.rank)
+                 scratch->mKeys[ranked++] = Key{*descriptor.rank, 0, 0, static_cast<std::uint32_t>(i)};
+             ++i;
+@@ -2205,7 +2212,7 @@
+                 const auto nodeLimit = (mConfig.maxNodes - 1) / 4;
+                 std::size_t plans = 0;
+                 bool overflow = false;
+-                planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), scratch->mDescriptors.data(), keys, temp,
++                planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, keys, temp,
+                     keys, temp, std::min(count, nodeLimit), plans, overflow);
+                 if (overflow && plans == nodeLimit)
+                     return Status::CapacityExhausted;
+@@ -2216,7 +2223,7 @@
+             if (!top_down)
+             {
+                 for (i = 0; i < count; ++i)
+-                    scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), scratch->mDescriptors[i].box);
++                    scratch->mKeys[i] = makeBuildKey(cell, static_cast<std::uint32_t>(i), boxes[i]);
+                 detail::radixSort(scratch->mKeys.data(), scratch->mTemp.data(), count);
+                 node_count = countNodes(scratch->mKeys.data(), 0, count, 0);
+                 if (node_count > mConfig.maxNodes)
+@@ -2242,7 +2249,7 @@
+                 // Publish the dense/slot counts once, after constructing every entry.
+                 const auto size = static_cast<std::uint32_t>(count);
+                 for (std::uint32_t dense = 0; dense < size; ++dense)
+-                    constructBuildEntry<Consume>(dense, scratch->mDescriptors[dense], false);
++                    constructBuildEntry<Consume>(dense, boxes[dense], descriptors[dense], false);
+                 mEntries.mSize = size;
+                 mEntries.mSlotsUsed = size;
+                 if (handles)
+@@ -2263,20 +2270,21 @@
+                     constexpr std::size_t descriptorAhead = 32, payloadAhead = 16;
+                     if (count - i > descriptorAhead)
+                     {
+-                        const auto& future = scratch->mDescriptors[scratch->mKeys[i + descriptorAhead].entry];
+-                        __builtin_prefetch(&future, 0, 3);
+-                        __builtin_prefetch(&future.payload, 0, 3);
++                        const auto future = scratch->mKeys[i + descriptorAhead].entry;
++                        __builtin_prefetch(&boxes[future], 0, 3);
++                        __builtin_prefetch(&descriptors[future], 0, 3);
++                        __builtin_prefetch(&descriptors[future].payload, 0, 3);
+                     }
+                     if (count - i > payloadAhead)
+-                        __builtin_prefetch(scratch->mDescriptors[scratch->mKeys[i + payloadAhead].entry].payload, 0, 3);
++                        __builtin_prefetch(descriptors[scratch->mKeys[i + payloadAhead].entry].payload, 0, 3);
+                 }
+             }
+ #endif
+             // Spatially sorted dense entries keep snapshot geometry contiguous.
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : scratch->mKeys[i].entry;
+-            const auto& descriptor = scratch->mDescriptors[input];
++            const auto& descriptor = descriptors[input];
+             const auto dense = static_cast<std::uint32_t>(i);
+-            constructBuildEntry<Consume>(dense, descriptor, descriptor.rank.has_value());
++            constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
+             ++mEntries.mSize;
+             ++mEntries.mSlotsUsed;
+             if (descriptor.rank)
+@@ -2359,12 +2367,13 @@
+     }
+ 
+     template<bool Projected, typename Entry, typename Accessor>
+-    static bool captureBuildEntry(Entry& entry, Accessor& accessor, detail::Descriptor<T>& descriptor) noexcept
++    static bool captureBuildEntry(Entry& entry, Accessor& accessor, Box<T>& box,
++        detail::Descriptor& descriptor) noexcept
+     {
+         if constexpr (Projected)
+         {
+             const auto geometry = std::invoke(accessor, std::as_const(entry));
+-            if (!detail::normalize(geometry, descriptor.box))
++            if (!detail::normalize(geometry, box))
+                 return false;
+             descriptor.payload = std::addressof(entry);
+             descriptor.filter = {};
+@@ -2372,7 +2381,7 @@
+         }
+         else
+         {
+-            if (!detail::normalize(entry.rect, descriptor.box))
++            if (!detail::normalize(entry.rect, box))
+                 return false;
+             descriptor.payload = std::addressof(entry.payload);
+             descriptor.filter = entry.filter;
+@@ -2384,11 +2393,12 @@
+     template<bool Consume, bool Projected, typename Entry, typename Accessor>
+     Status buildSingle(Entry& entry, Accessor& accessor, std::optional<std::span<HandleType>> handles) noexcept
+     {
+-        detail::Descriptor<T> descriptor;
+-        if (!captureBuildEntry<Projected>(entry, accessor, descriptor))
++        Box<T> box;
++        detail::Descriptor descriptor;
++        if (!captureBuildEntry<Projected>(entry, accessor, box, descriptor))
+             return Status::InvalidGeometry;
+         const bool fixed = mConfig.extent == Extent::Fixed;
+-        if (fixed && !detail::contains(*mConfig.root, descriptor.box))
++        if (fixed && !detail::contains(*mConfig.root, box))
+             return Status::OutOfBounds;
+         const bool ranked = descriptor.rank.has_value();
+         const Status storage = prepareReplacement(1, ranked, 0);
+@@ -2396,8 +2406,8 @@
+             return storage;
+         if (mRoot != none)
+             resetTopology();
+-        mExtent = fixed ? *mConfig.root : descriptor.box;
+-        constructBuildEntry<Consume>(0, descriptor, ranked);
++        mExtent = fixed ? *mConfig.root : box;
++        constructBuildEntry<Consume>(0, box, descriptor, ranked);
+         mEntries.mSize = 1;
+         mEntries.mSlotsUsed = 1;
+         if (ranked)
+@@ -2411,14 +2421,15 @@
+     }
+ 
+     template<bool Consume>
+-    void constructBuildEntry(std::uint32_t dense, const detail::Descriptor<T>& descriptor, bool ranked) noexcept
++    void constructBuildEntry(std::uint32_t dense, const Box<T>& box, const detail::Descriptor& descriptor,
++        bool ranked) noexcept
+     {
+         const auto* value = static_cast<const Payload*>(descriptor.payload);
+         if constexpr (Consume)
+             std::construct_at(mEntries.mPayloads + dense, std::move(*const_cast<Payload*>(value)));
+         else
+             std::construct_at(mEntries.mPayloads + dense, *value);
+-        std::construct_at(mEntries.mBoxes + dense, descriptor.box);
++        std::construct_at(mEntries.mBoxes + dense, box);
+         std::construct_at(mEntries.mMeta + dense, typename Store::Meta{descriptor.filter,
+             ranked ? *descriptor.rank : 0, dense, ranked});
+         std::construct_at(mEntries.mSlots + dense, typename Store::Slot{0, dense});
+--- a/tests/index-test.cpp
++++ b/tests/index-test.cpp
+@@ -1419,8 +1419,9 @@
+     using I = Tree<int>;
+     constexpr QuadTree::WorkspaceReservation larger{11, 7, 13};
+     constexpr std::array requestBytes{11 * sizeof(std::uint32_t), 11 * sizeof(std::uint32_t), 7 * sizeof(std::uint32_t),
+-        11 * sizeof(std::uint32_t), 11 * sizeof(std::uint8_t), 13 * sizeof(QuadTree::detail::Descriptor<int>),
+-        13 * sizeof(QuadTree::detail::SpatialKey), 13 * sizeof(QuadTree::detail::SpatialKey)};
++        11 * sizeof(std::uint32_t), 11 * sizeof(std::uint8_t), 13 * sizeof(Box<int>),
++        13 * sizeof(QuadTree::detail::Descriptor), 13 * sizeof(QuadTree::detail::SpatialKey),
++        13 * sizeof(QuadTree::detail::SpatialKey)};
+     auto made = I::create();
+     REQUIRE(made.ok());
+     auto tree = std::move(made).value();
+@@ -1480,7 +1481,8 @@
+ 
+ void appendBuildScratchRequests(std::vector<AllocationRequest>& requests, std::size_t count)
+ {
+-    requests.insert(requests.end(), {{"build descriptors", count * sizeof(QuadTree::detail::Descriptor<int>)},
++    requests.insert(requests.end(), {{"build boxes", count * sizeof(Box<int>)},
++        {"build descriptors", count * sizeof(QuadTree::detail::Descriptor)},
+         {"build keys", count * sizeof(QuadTree::detail::SpatialKey)}, {"build temp", count * sizeof(QuadTree::detail::SpatialKey)}});
+ }
+ 
+--- a/INDEX.md
++++ b/INDEX.md
+@@ -287,7 +287,7 @@
+ 
+ - `entries`: rank order, partner row, membership stamps, selection flags.
+ - `movedEntries`: normalized submitted handles.
+-- `buildEntries`: captured descriptors and two key-sort buffers.
++- `buildEntries`: captured boxes, build descriptors and two key-sort buffers.
+ 
+ `Workspace` is non-copyable, allocation-free/nothrow movable with the same
+ resource rules as Index. Never move or reuse an active workspace. Concurrent or
+@@ -397,7 +397,7 @@
+ - Rank cells: 16 bytes, typically 2–4 cells per ranked entry, minimum 8 cells.
+ - Incremental descriptors: 48 bytes per reserved descriptor (two keys).
+ - Build workspace: 104 bytes per entry for int32/float; 120 for int64/double
+-  (captured descriptor plus two keys). It contains no payload objects.
++  (captured box, descriptor and two keys). It contains no payload objects.
+ - Query workspace: 13 bytes per reserved entry plus 4 per reserved moved handle.
+ 
+ `stats()` exposes actual retained bytes/capacities and node/reference/key/handle

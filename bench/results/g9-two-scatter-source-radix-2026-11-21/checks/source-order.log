@@ -1,0 +1,2 @@
+Full-width source orders, predicate/visitor streams, statuses and counters match under GCC and ASan/UBSan: cac360fb181b6852f8f49a9c366b9b9ccb1be8e0e68bd589aea70ccaaedc8189
+4095/4096/4097; full, zero and each independently undersized scratch buffer; finite budgets, stop and reuse; no query allocations.

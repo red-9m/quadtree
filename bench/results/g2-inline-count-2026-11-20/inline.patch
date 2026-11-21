@@ -1,0 +1,34 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2652,6 +2652,13 @@
+                 walk(node.firstChild + q, box, queryFilter, context, callback);
+     }
+ 
++    static constexpr unsigned countChildren(unsigned mask) noexcept
++    {
++        // Only four bits are live. Avoid a general popcount helper on targets
++        // where the compiler cannot emit a hardware instruction.
++        return (0x4332322132212110ULL >> (mask * 4)) & 15u;
++    }
++
+     // The caller has screened geometry and charged this nonempty node.
+     template<typename Callback>
+     void walkOrdered(const Node& node, const Box<T>& box, Filter filter, Context& context,
+@@ -2684,7 +2691,7 @@
+             const auto through = (2u << q) - 1u;
+             // Charge skipped disjoint children and the next admitted child
+             // in DFS order, never precharging siblings beyond that child.
+-            if (!context.nodes(static_cast<unsigned>(std::popcount(occupied & through))))
++            if (!context.nodes(countChildren(occupied & through)))
+                 return;
+             walkOrdered(children[q], box, filter, context, callback);
+             if (!context.active())
+@@ -2693,7 +2700,7 @@
+             overlapping &= overlapping - 1;
+         }
+         if (occupied != 0)
+-            context.nodes(static_cast<unsigned>(std::popcount(occupied)));
++            context.nodes(countChildren(occupied));
+     }
+ 
+     template<typename C, typename Callback>

@@ -1,0 +1,2 @@
+All 16 Release profiles match the staged control fixtures, pair checksums, work and memory; zero warm allocations.
+Every staged topology sample reconciles with the prior build-phase attribution.

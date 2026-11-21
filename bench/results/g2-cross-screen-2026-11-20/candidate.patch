@@ -1,0 +1,88 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -346,6 +346,15 @@
+ template<Coordinate T>
+ constexpr bool overlaps(const Box<T>& a, const Box<T>& b, Boundary boundary) noexcept
+ {
++    if constexpr (std::same_as<T, std::int32_t>)
++    {
++        // Most candidates are disjoint. Check degeneracy only for contact.
++        if (!closedOverlap(a, b))
++            return false;
++        return (a.minX < b.maxX && b.minX < a.maxX && a.minY < b.maxY && b.minY < a.maxY) ||
++            boundary == Boundary::TouchInclusive || a.minX == a.maxX || a.minY == a.maxY ||
++            b.minX == b.maxX || b.minY == b.maxY;
++    }
+     if (boundary == Boundary::TouchInclusive || a.minX == a.maxX || a.minY == a.maxY ||
+         b.minX == b.maxX || b.minY == b.maxY)
+         return closedOverlap(a, b);
+@@ -2964,16 +2973,43 @@
+         }
+     }
+ 
++    // Screen a row of child pairs, charging disjoint nonempty pairs without
++    // calling crossPairs. Flush charges before each recursive visit to retain
++    // the original budget and callback prefix.
++    template<typename Visitor, typename Predicate>
++    void crossChildren(std::uint32_t a, std::uint32_t siblings, unsigned first,
++        Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        const Node& left = mNodes[a];
++        if (left.count == 0 || !context.active())
++            return;
++        const Node* right = mNodes.data() + siblings;
++        unsigned visits = 0;
++        for (unsigned r = first; r < 4; ++r)
++        {
++            if (right[r].count == 0)
++                continue;
++            ++visits;
++            if (!detail::closedOverlap(left.bounds, right[r].bounds))
++                continue;
++            if (!context.nodes(visits))
++                return;
++            crossPairs(a, siblings + r, context, visitor, predicate);
++            if (!context.active())
++                return;
++            visits = 0;
++        }
++        if (visits != 0)
++            context.nodes(visits);
++    }
++
++    // Both nodes are nonempty, overlap, and have been charged.
+     template<typename Visitor, typename Predicate>
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+     {
+         const Node& left = mNodes[a];
+         const Node& right = mNodes[b];
+-        if (!context.active() || left.count == 0 || right.count == 0 || !context.node())
+-            return;
+-        if (!detail::closedOverlap(left.bounds, right.bounds))
+-            return;
+         if (!detail::compatible(left.summary, right.summary))
+         {
+             context.filtered();
+@@ -2990,8 +3026,7 @@
+                 itemsVsSubtree(b, left.firstChild + q, context, visitor, predicate);
+         if (left.firstChild != none && right.firstChild != none)
+             for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+-                for (std::uint32_t r = 0; r < 4 && context.active(); ++r)
+-                    crossPairs(left.firstChild + q, right.firstChild + r, context, visitor, predicate);
++                crossChildren(left.firstChild + q, right.firstChild, 0, context, visitor, predicate);
+     }
+ 
+     template<typename Visitor, typename Predicate>
+@@ -3014,9 +3049,8 @@
+             itemsVsSubtree(n, node.firstChild + q, context, visitor, predicate);
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+             selfPairs(node.firstChild + q, context, visitor, predicate);
+-        for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+-            for (std::uint32_t r = q + 1; r < 4 && context.active(); ++r)
+-                crossPairs(node.firstChild + q, node.firstChild + r, context, visitor, predicate);
++        for (std::uint32_t q = 0; q < 3 && context.active(); ++q)
++            crossChildren(node.firstChild + q, node.firstChild, q + 1, context, visitor, predicate);
+     }
+ 
+     template<typename Other, typename Predicate>

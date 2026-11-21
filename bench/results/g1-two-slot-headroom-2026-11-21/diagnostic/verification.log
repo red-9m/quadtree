@@ -1,0 +1,3 @@
+81: 7776 raw samples per process; 96 matched rows agree on checksums, work and memory, with 32 zero-warm-allocation library rows per process.
+117: 11232 raw samples per process; 96 matched rows agree on checksums, work and memory, with 32 zero-warm-allocation library rows per process.
+The scratch build is invalid outside the fixed-size benchmark history; no candidate gate verdict is claimed.

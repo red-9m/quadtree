@@ -1,0 +1,639 @@
+block,scene,engine,function,pc,field,node_offset,loads,known_loads,known_non_l1_loads,loads_with_address,non_l1_weight_sum,cycle_period,leaf_frames
+1,uniform,index,crossPairs,0x9ad97,unmapped,,74,74,0,0,0,6142381,void QuadTree::Index @ quadtree-index-impl.h:3057
+1,uniform,index,crossPairs,0x9adaa,unmapped,,69,69,0,0,0,10745482,void QuadTree::Index @ quadtree-index-impl.h:3062
+1,uniform,index,crossPairs,0x9adb8,unmapped,,71,71,0,0,0,3076340,QuadTree::detail::Buffer @ quadtree-index-impl.h:122 <- void QuadTree::Index @ quadtree-index-impl.h:3060
+1,uniform,index,crossPairs,0x9adc6,count,100,86,86,4,86,77,18384416,void QuadTree::Index @ quadtree-index-impl.h:3062
+1,uniform,index,crossPairs,0x9addd,count,100,72,72,2,72,18,1462407,void QuadTree::Index @ quadtree-index-impl.h:3062
+1,uniform,index,crossPairs,0x9adea,unmapped,,75,75,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2564 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+1,uniform,index,crossPairs,0x9ae05,unmapped,,70,70,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2572 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+1,uniform,index,crossPairs,0x9ae17,bounds,28,68,68,0,68,0,1536425,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae1b,bounds,20,70,70,1,70,8,44392976,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae2d,bounds,28,61,61,4,61,55,24507702,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae30,bounds,20,53,53,1,53,8,1511178,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae39,bounds,32,25,25,0,25,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae3c,bounds,24,29,29,0,29,0,44371531,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae45,bounds,32,24,24,0,24,0,3074300,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae48,bounds,24,29,29,0,29,0,3063290,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,uniform,index,crossPairs,0x9ae51,summary,56,10,10,0,10,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,uniform,index,crossPairs,0x9ae55,summary,64,13,13,0,13,0,41214911,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,uniform,index,crossPairs,0x9ae5f,summary,64,5,5,0,5,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,uniform,index,crossPairs,0x9ae63,summary,56,15,15,0,15,0,3070845,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,uniform,index,crossPairs,0x9ae6d,head,96,7,7,0,7,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9aed0,head,96,32,32,0,32,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+1,uniform,index,crossPairs,0x9af09,unmapped,,79,79,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+1,uniform,index,crossPairs,0x9af25,unmapped,,135,135,0,0,0,1538206,testPair @ quadtree-index-impl.h:2777 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9af32,linear,117,93,93,0,93,0,0,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+1,uniform,index,crossPairs,0x9af38,unmapped,,130,130,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+1,uniform,index,crossPairs,0x9af40,ownCount,104,103,103,0,103,0,1531406,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+1,uniform,index,crossPairs,0x9af4b,unmapped,,25,25,0,0,0,45954394,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9af50,linear,117,15,15,0,15,0,29135641,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9af76,unmapped,,20,20,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9af88,unmapped,,5,5,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9af8c,unmapped,,4,4,0,0,0,9213719,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9af97,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9afa1,firstChild,92,9,9,0,9,0,3059840,void QuadTree::Index @ quadtree-index-impl.h:3074
+1,uniform,index,crossPairs,0x9afcb,unmapped,,17,17,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,uniform,index,crossPairs,0x9afea,unmapped,,20,20,0,0,0,6056031,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,uniform,index,crossPairs,0x9afee,unmapped,,17,17,0,0,0,4610623,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,uniform,index,crossPairs,0x9affa,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,uniform,index,crossPairs,0x9afff,unmapped,,4,4,0,0,0,3075408,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,uniform,index,crossPairs,0x9b010,firstChild,92,11,11,0,11,0,4598804,void QuadTree::Index @ quadtree-index-impl.h:3077
+1,uniform,index,crossPairs,0x9b037,unmapped,,18,18,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,uniform,index,crossPairs,0x9b058,unmapped,,13,13,0,0,0,3065148,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,uniform,index,crossPairs,0x9b05c,unmapped,,20,20,0,0,0,3064180,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,uniform,index,crossPairs,0x9b069,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,uniform,index,crossPairs,0x9b06e,unmapped,,11,11,0,0,0,3055210,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,uniform,index,crossPairs,0x9b07f,unmapped,,16,16,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b0a4,unmapped,,60,60,0,0,0,27619078,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,uniform,index,crossPairs,0x9b0a8,unmapped,,67,67,0,0,0,1538416,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,uniform,index,crossPairs,0x9b0ac,unmapped,,63,63,0,0,0,18374815,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,uniform,index,crossPairs,0x9b0b8,unmapped,,59,59,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,uniform,index,crossPairs,0x9b0c5,unmapped,,9,9,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b0cd,unmapped,,9,9,0,0,0,16858178,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b0d5,unmapped,,13,13,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b0dd,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b0e5,unmapped,,14,14,0,0,0,7622628,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b0ed,unmapped,,10,10,0,0,0,1529829,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,uniform,index,crossPairs,0x9b100,unmapped,,76,76,0,0,0,3079360,void QuadTree::Index @ quadtree-index-impl.h:3084
+1,uniform,index,crossPairs,0x9b108,unmapped,,71,71,0,0,0,71842144,void QuadTree::Index @ quadtree-index-impl.h:3084
+1,uniform,index,crossPairs,0x9b11e,unmapped,,75,75,0,0,0,1540176,void QuadTree::Index @ quadtree-index-impl.h:3084
+1,uniform,index,crossPairs,0x9b140,unmapped,,45,45,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:539 <- QuadTree::Index @ quadtree-index-impl.h:2601 <- void QuadTree::Index @ quadtree-index-impl.h:3068
+1,uniform,index,crossPairs,0x9b150,unmapped,,2,2,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2766 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b154,unmapped,,3,3,0,0,0,64368308,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b160,unmapped,,4,4,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b164,unmapped,,1,1,0,0,0,13808374,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1a3,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ invoke.h:62 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1a8,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1ad,unmapped,,2,2,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1b2,unmapped,,2,2,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1bd,unmapped,,4,4,0,0,0,0,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1bf,unmapped,,6,6,0,0,0,10714452,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b1c1,unmapped,,4,4,0,0,0,1521173,void QuadTree::Index @ quadtree-bench.cpp:440 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b208,unmapped,,4,4,0,0,0,4588873,operator() @ quadtree-bench.cpp:441 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b20c,unmapped,,6,6,0,0,0,3075714,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,uniform,index,crossPairs,0x9b247,unmapped,,22,22,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index,crossPairs,0x9b24b,ownCount,104,19,19,0,19,0,1539076,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9ad97,unmapped,,75,75,0,0,0,7668553,void QuadTree::Index @ quadtree-index-impl.h:3057
+1,split-line-translated,index,crossPairs,0x9adaa,unmapped,,83,83,0,0,0,10677726,void QuadTree::Index @ quadtree-index-impl.h:3062
+1,split-line-translated,index,crossPairs,0x9adb8,unmapped,,74,74,0,0,0,0,QuadTree::detail::Buffer @ quadtree-index-impl.h:122 <- void QuadTree::Index @ quadtree-index-impl.h:3060
+1,split-line-translated,index,crossPairs,0x9adc6,count,100,72,72,6,72,704,3057713,void QuadTree::Index @ quadtree-index-impl.h:3062
+1,split-line-translated,index,crossPairs,0x9addd,count,100,70,70,2,70,19,0,void QuadTree::Index @ quadtree-index-impl.h:3062
+1,split-line-translated,index,crossPairs,0x9adea,unmapped,,71,71,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2564 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+1,split-line-translated,index,crossPairs,0x9ae05,unmapped,,59,59,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2572 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+1,split-line-translated,index,crossPairs,0x9ae17,bounds,28,63,63,5,63,57,1539085,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae1b,bounds,20,72,72,1,72,11,41205565,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae2d,bounds,28,49,49,1,49,12,38313750,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae30,bounds,20,77,77,4,77,76,3055409,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae39,bounds,32,24,24,1,24,13,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae3c,bounds,24,26,26,0,26,0,36830707,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae45,bounds,32,19,19,1,19,9,3069553,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae48,bounds,24,16,16,0,16,0,9168880,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+1,split-line-translated,index,crossPairs,0x9ae51,summary,56,9,9,0,9,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,split-line-translated,index,crossPairs,0x9ae55,summary,64,7,7,0,7,0,19899659,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,split-line-translated,index,crossPairs,0x9ae5f,summary,64,8,8,1,8,8,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,split-line-translated,index,crossPairs,0x9ae63,summary,56,9,9,0,9,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+1,split-line-translated,index,crossPairs,0x9ae6d,head,96,9,9,0,9,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9aed0,head,96,27,27,0,27,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+1,split-line-translated,index,crossPairs,0x9af09,unmapped,,46,46,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+1,split-line-translated,index,crossPairs,0x9af25,unmapped,,80,80,0,0,0,1539774,testPair @ quadtree-index-impl.h:2777 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9af32,linear,117,85,85,0,85,0,0,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+1,split-line-translated,index,crossPairs,0x9af38,unmapped,,69,69,0,0,0,3065888,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+1,split-line-translated,index,crossPairs,0x9af40,ownCount,104,69,69,0,69,0,3069397,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+1,split-line-translated,index,crossPairs,0x9af4b,unmapped,,22,22,0,0,0,44421430,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9af50,linear,117,20,20,0,20,0,49071078,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9af76,unmapped,,16,16,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9af88,unmapped,,2,2,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9af8c,unmapped,,5,5,0,0,0,10739896,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9af97,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9af9c,unmapped,,1,1,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9afa1,firstChild,92,8,8,0,8,0,3025467,void QuadTree::Index @ quadtree-index-impl.h:3074
+1,split-line-translated,index,crossPairs,0x9afcb,unmapped,,15,15,0,0,0,1533048,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,split-line-translated,index,crossPairs,0x9afea,unmapped,,20,20,0,0,0,4550659,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,split-line-translated,index,crossPairs,0x9afee,unmapped,,19,19,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,split-line-translated,index,crossPairs,0x9affa,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,split-line-translated,index,crossPairs,0x9afff,unmapped,,6,6,0,0,0,9174385,void QuadTree::Index @ quadtree-index-impl.h:3075
+1,split-line-translated,index,crossPairs,0x9b010,firstChild,92,12,12,0,12,0,0,void QuadTree::Index @ quadtree-index-impl.h:3077
+1,split-line-translated,index,crossPairs,0x9b037,unmapped,,24,24,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,split-line-translated,index,crossPairs,0x9b058,unmapped,,15,15,0,0,0,3014826,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,split-line-translated,index,crossPairs,0x9b05c,unmapped,,17,17,0,0,0,1539822,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,split-line-translated,index,crossPairs,0x9b069,unmapped,,5,5,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,split-line-translated,index,crossPairs,0x9b06e,unmapped,,3,3,0,0,0,4562347,void QuadTree::Index @ quadtree-index-impl.h:3078
+1,split-line-translated,index,crossPairs,0x9b07f,unmapped,,9,9,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b0a4,unmapped,,69,69,0,0,0,12211402,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,split-line-translated,index,crossPairs,0x9b0a8,unmapped,,77,77,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,split-line-translated,index,crossPairs,0x9b0ac,unmapped,,59,59,0,0,0,22905158,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,split-line-translated,index,crossPairs,0x9b0b8,unmapped,,58,58,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3082
+1,split-line-translated,index,crossPairs,0x9b0c5,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b0cd,unmapped,,12,12,0,0,0,16877417,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b0d5,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b0dd,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b0e5,unmapped,,8,8,0,0,0,6117774,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b0ed,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+1,split-line-translated,index,crossPairs,0x9b100,unmapped,,81,81,0,0,0,6096013,void QuadTree::Index @ quadtree-index-impl.h:3084
+1,split-line-translated,index,crossPairs,0x9b108,unmapped,,79,79,0,0,0,116323998,void QuadTree::Index @ quadtree-index-impl.h:3084
+1,split-line-translated,index,crossPairs,0x9b11e,unmapped,,79,79,0,0,0,4601412,void QuadTree::Index @ quadtree-index-impl.h:3084
+1,split-line-translated,index,crossPairs,0x9b140,unmapped,,44,44,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:539 <- QuadTree::Index @ quadtree-index-impl.h:2601 <- void QuadTree::Index @ quadtree-index-impl.h:3068
+1,split-line-translated,index,crossPairs,0x9b150,unmapped,,5,5,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2766 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b154,unmapped,,3,3,0,0,0,55144536,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b160,unmapped,,5,5,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b164,unmapped,,4,4,0,0,0,15349668,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1a3,unmapped,,8,8,0,0,0,3068661,void QuadTree::Index @ invoke.h:62 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1a8,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1ad,unmapped,,9,9,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1b2,unmapped,,7,7,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1b5,unmapped,,3,3,0,0,0,0,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1bd,unmapped,,8,8,1,0,0,1538322,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1bf,unmapped,,5,5,0,0,0,12152289,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b1c1,unmapped,,5,5,0,0,0,0,void QuadTree::Index @ quadtree-bench.cpp:440 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b208,unmapped,,4,4,0,0,0,6078801,operator() @ quadtree-bench.cpp:441 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b20c,unmapped,,7,7,0,0,0,4653064,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+1,split-line-translated,index,crossPairs,0x9b247,unmapped,,12,12,0,0,0,4606991,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,split-line-translated,index,crossPairs,0x9b24b,ownCount,104,18,18,0,18,0,1538184,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+1,uniform,index-ordered,walkOrdered,0x1e669,unmapped,,66,66,0,0,0,26009125,void QuadTree::Index @ quadtree-index-impl.h:2669
+1,uniform,index-ordered,walkOrdered,0x1e66e,summary,64,67,67,9,67,253,7688202,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+1,uniform,index-ordered,walkOrdered,0x1e678,summary,56,62,62,7,62,219,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+1,uniform,index-ordered,walkOrdered,0x1e687,head,96,66,66,5,66,127,10712390,void QuadTree::Index @ quadtree-index-impl.h:2677
+1,uniform,index-ordered,walkOrdered,0x1e6e6,unmapped,,59,59,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2677
+1,uniform,index-ordered,walkOrdered,0x1e6f0,unmapped,,59,59,0,0,0,19958174,void QuadTree::Index @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e6f4,unmapped,,52,52,0,0,0,3079348,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e6fd,unmapped,,63,63,0,0,0,0,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e6ff,unmapped,,54,54,0,0,0,47479917,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e70a,unmapped,,62,62,14,0,0,0,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e716,unmapped,,59,59,1,0,0,3067191,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e71d,unmapped,,12,12,0,0,0,1578824,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e721,unmapped,,22,22,0,0,0,110298974,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e73f,unmapped,,21,21,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e74f,unmapped,,4,4,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e753,unmapped,,4,4,0,0,0,75036969,void QuadTree::Index @ quadtree-index-impl.h:2933 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e757,unmapped,,3,3,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e761,unmapped,,5,5,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,uniform,index-ordered,walkOrdered,0x1e769,linear,117,55,55,0,55,0,21410964,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,uniform,index-ordered,walkOrdered,0x1e774,ownCount,104,66,66,0,66,0,16819899,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,uniform,index-ordered,walkOrdered,0x1e77c,head,96,49,49,0,49,0,1533595,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,uniform,index-ordered,walkOrdered,0x1e789,unmapped,,8,8,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,uniform,index-ordered,walkOrdered,0x1e78e,firstChild,92,69,69,6,69,202,94916089,void QuadTree::Index @ quadtree-index-impl.h:2679
+1,uniform,index-ordered,walkOrdered,0x1e79b,unmapped,,64,64,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2679
+1,uniform,index-ordered,walkOrdered,0x1e7af,unmapped,,51,51,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2681
+1,uniform,index-ordered,walkOrdered,0x1e7b7,count,100,47,47,27,47,591,52144395,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,uniform,index-ordered,walkOrdered,0x1e7c3,unmapped,,56,56,11,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7c6,bounds,28,51,51,26,51,925,1517440,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7d0,bounds,20,29,29,9,29,255,7691803,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7da,unmapped,,30,30,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7e0,unmapped,,36,36,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7e4,bounds,32,24,24,9,24,592,3059763,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7f1,bounds,24,14,14,5,14,107,67437342,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e7f5,unmapped,,13,13,0,0,0,10713650,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e800,count,100,55,55,19,55,527,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,uniform,index-ordered,walkOrdered,0x1e80c,unmapped,,57,57,6,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e813,bounds,28,52,52,13,52,446,1534840,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e81c,bounds,20,52,52,20,52,568,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e823,unmapped,,60,60,6,0,0,3074248,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e829,unmapped,,30,30,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e82d,bounds,32,27,27,10,27,276,30659723,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e839,bounds,24,15,15,2,15,55,65837703,void QuadTree::Index @ quadtree-index-impl.h:2690
+1,uniform,index-ordered,walkOrdered,0x1e843,unmapped,,10,10,1,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2690
+1,uniform,index-ordered,walkOrdered,0x1e850,count,100,57,57,16,57,498,1530571,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,uniform,index-ordered,walkOrdered,0x1e863,unmapped,,52,52,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e869,bounds,28,61,61,15,61,445,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e876,unmapped,,35,35,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e87a,bounds,20,26,26,10,26,309,12264590,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e887,unmapped,,33,33,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e88b,bounds,32,37,37,13,37,336,3012729,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e898,bounds,24,31,31,5,31,198,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e89f,unmapped,,18,18,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e8a9,count,100,17,17,3,17,96,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,uniform,index-ordered,walkOrdered,0x1e8bc,unmapped,,18,18,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e8c3,bounds,28,6,6,0,6,0,1538535,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e8cc,bounds,20,12,12,1,12,8,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e908,count,100,0,0,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,uniform,index-ordered,walkOrdered,0x1e937,unmapped,,72,72,0,0,0,12264743,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e963,unmapped,,56,56,1,0,0,42909773,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e99b,unmapped,,60,60,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e9a0,unmapped,,67,67,0,0,0,160689204,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e9a5,unmapped,,77,77,0,0,0,4577924,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e9aa,unmapped,,78,78,0,0,0,1540189,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e9af,unmapped,,49,49,0,0,0,19951077,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,uniform,index-ordered,walkOrdered,0x1e9b4,unmapped,,68,68,0,0,0,1527670,void QuadTree::Index @ quadtree-index-impl.h:2709
+1,uniform,index-ordered,walkOrdered,0x1e9bd,unmapped,,64,64,0,0,0,1527874,void QuadTree::Index @ quadtree-index-impl.h:2709
+1,uniform,index-ordered,walkOrdered,0x1e9c0,count,100,42,42,8,42,241,4586354,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,uniform,index-ordered,walkOrdered,0x1e9f7,bounds,28,39,39,15,39,452,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1e9fe,unmapped,,40,40,0,0,0,1535786,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea07,unmapped,,55,55,4,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea0b,bounds,20,31,31,11,31,372,15295049,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea14,bounds,32,31,31,12,31,309,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea17,unmapped,,28,28,0,0,0,22974651,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea21,unmapped,,29,29,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea25,bounds,24,19,19,5,19,693,4603372,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,uniform,index-ordered,walkOrdered,0x1ea76,unmapped,,54,54,0,0,0,3072177,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,uniform,index-ordered,walkOrdered,0x1ea7b,unmapped,,50,50,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,uniform,index-ordered,walkOrdered,0x1ea80,unmapped,,52,52,0,0,0,6147757,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,uniform,index-ordered,walkOrdered,0x1ea85,unmapped,,57,57,0,0,0,6120162,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,uniform,index-ordered,walkOrdered,0x1ea8f,unmapped,,66,66,0,0,0,50479680,void QuadTree::Index @ quadtree-index-impl.h:2702
+1,uniform,index-ordered,walkOrdered,0x1ea90,unmapped,,66,66,1,0,0,1532356,void QuadTree::Index @ quadtree-index-impl.h:2702
+1,uniform,index-ordered,walkOrdered,0x1ea91,unmapped,,48,48,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2702
+1,uniform,index-ordered,walkOrdered,0x1eac3,unmapped,,32,32,0,0,0,32136042,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+1,uniform,index-ordered,walkOrdered,0x1eae9,unmapped,,33,33,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+1,split-line-translated,index-ordered,walkOrdered,0x1e669,unmapped,,82,82,0,0,0,19921354,void QuadTree::Index @ quadtree-index-impl.h:2669
+1,split-line-translated,index-ordered,walkOrdered,0x1e66e,summary,64,69,69,11,69,259,16907102,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+1,split-line-translated,index-ordered,walkOrdered,0x1e678,summary,56,73,73,5,73,162,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+1,split-line-translated,index-ordered,walkOrdered,0x1e687,head,96,82,82,11,82,276,19947012,void QuadTree::Index @ quadtree-index-impl.h:2677
+1,split-line-translated,index-ordered,walkOrdered,0x1e6e6,unmapped,,55,55,0,0,0,1538430,void QuadTree::Index @ quadtree-index-impl.h:2677
+1,split-line-translated,index-ordered,walkOrdered,0x1e6f0,unmapped,,52,52,0,0,0,29024411,void QuadTree::Index @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e6f4,unmapped,,54,54,0,0,0,0,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e6fd,unmapped,,42,42,0,0,0,3072510,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e6ff,unmapped,,64,64,0,0,0,55239915,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e70a,unmapped,,57,57,10,0,0,3027361,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e716,unmapped,,64,64,0,0,0,1540506,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e71d,unmapped,,21,21,0,0,0,0,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e721,unmapped,,24,24,0,0,0,110363982,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e73f,unmapped,,28,28,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e74f,unmapped,,9,9,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e753,unmapped,,6,6,0,0,0,47729280,void QuadTree::Index @ quadtree-index-impl.h:2933 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e757,unmapped,,4,4,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e761,unmapped,,6,6,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+1,split-line-translated,index-ordered,walkOrdered,0x1e769,linear,117,50,50,0,50,0,18413723,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,split-line-translated,index-ordered,walkOrdered,0x1e774,ownCount,104,50,50,0,50,0,18400529,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,split-line-translated,index-ordered,walkOrdered,0x1e77c,head,96,63,63,0,63,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,split-line-translated,index-ordered,walkOrdered,0x1e789,unmapped,,15,15,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+1,split-line-translated,index-ordered,walkOrdered,0x1e78e,firstChild,92,74,74,7,74,123,118098527,void QuadTree::Index @ quadtree-index-impl.h:2679
+1,split-line-translated,index-ordered,walkOrdered,0x1e79b,unmapped,,67,67,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2679
+1,split-line-translated,index-ordered,walkOrdered,0x1e7af,unmapped,,67,67,0,0,0,4586058,void QuadTree::Index @ quadtree-index-impl.h:2681
+1,split-line-translated,index-ordered,walkOrdered,0x1e7b7,count,100,62,62,44,62,1250,38404294,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,split-line-translated,index-ordered,walkOrdered,0x1e7c3,unmapped,,56,56,5,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7c6,bounds,28,58,58,34,58,1439,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7d0,bounds,20,37,37,15,37,481,4612602,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7da,unmapped,,24,24,1,0,0,1540499,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7e0,unmapped,,40,40,4,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7e4,bounds,32,34,34,15,34,258,4599809,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7f1,bounds,24,26,26,8,26,313,42975488,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e7f5,unmapped,,14,14,0,0,0,13804268,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e800,count,100,68,68,21,68,1013,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,split-line-translated,index-ordered,walkOrdered,0x1e80c,unmapped,,69,69,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e813,bounds,28,67,67,27,67,877,1511397,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e81c,bounds,20,58,58,24,58,626,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e823,unmapped,,60,60,1,0,0,4606057,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e829,unmapped,,25,25,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e82d,bounds,32,35,35,14,35,571,48981960,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e839,bounds,24,19,19,5,19,111,50533808,void QuadTree::Index @ quadtree-index-impl.h:2690
+1,split-line-translated,index-ordered,walkOrdered,0x1e843,unmapped,,12,12,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2690
+1,split-line-translated,index-ordered,walkOrdered,0x1e850,count,100,70,70,19,70,537,3021749,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,split-line-translated,index-ordered,walkOrdered,0x1e863,unmapped,,51,51,2,0,0,4582718,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e869,bounds,28,66,66,15,66,413,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e876,unmapped,,35,35,3,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e87a,bounds,20,30,30,13,30,355,9194321,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e887,unmapped,,32,32,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e88b,bounds,32,28,28,10,28,310,7688480,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e898,bounds,24,32,32,11,32,302,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e89f,unmapped,,32,32,0,0,0,1531376,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e8a9,count,100,11,11,4,11,125,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,split-line-translated,index-ordered,walkOrdered,0x1e8bc,unmapped,,14,14,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e8c3,bounds,28,13,13,4,13,140,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e8cc,bounds,20,16,16,4,16,185,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e908,count,100,8,8,1,8,17,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,split-line-translated,index-ordered,walkOrdered,0x1e937,unmapped,,55,55,0,0,0,15344590,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e963,unmapped,,85,85,0,0,0,36793618,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e99b,unmapped,,85,85,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e9a0,unmapped,,64,64,1,0,0,199203213,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e9a5,unmapped,,67,67,0,0,0,6133048,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e9aa,unmapped,,78,78,0,0,0,1535996,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e9af,unmapped,,73,73,0,0,0,15266341,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+1,split-line-translated,index-ordered,walkOrdered,0x1e9b4,unmapped,,70,70,1,0,0,9224284,void QuadTree::Index @ quadtree-index-impl.h:2709
+1,split-line-translated,index-ordered,walkOrdered,0x1e9bd,unmapped,,65,65,0,0,0,7618958,void QuadTree::Index @ quadtree-index-impl.h:2709
+1,split-line-translated,index-ordered,walkOrdered,0x1e9c0,count,100,54,54,13,54,354,3054012,void QuadTree::Index @ quadtree-index-impl.h:2686
+1,split-line-translated,index-ordered,walkOrdered,0x1e9f7,bounds,28,50,50,16,50,388,1540984,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1e9fe,unmapped,,34,34,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea07,unmapped,,45,45,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea0b,bounds,20,45,45,11,45,288,3071177,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea14,bounds,32,34,34,8,34,254,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea17,unmapped,,35,35,1,0,0,15340780,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea21,unmapped,,26,26,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea25,bounds,24,34,34,10,34,277,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+1,split-line-translated,index-ordered,walkOrdered,0x1ea76,unmapped,,84,84,1,0,0,4598148,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,split-line-translated,index-ordered,walkOrdered,0x1ea7b,unmapped,,61,61,0,0,0,3072891,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,split-line-translated,index-ordered,walkOrdered,0x1ea80,unmapped,,77,77,0,0,0,4609389,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,split-line-translated,index-ordered,walkOrdered,0x1ea85,unmapped,,65,65,0,0,0,1532394,void QuadTree::Index @ quadtree-index-impl.h:2701
+1,split-line-translated,index-ordered,walkOrdered,0x1ea8f,unmapped,,59,59,0,0,0,75111424,void QuadTree::Index @ quadtree-index-impl.h:2702
+1,split-line-translated,index-ordered,walkOrdered,0x1ea90,unmapped,,74,74,1,0,0,1538494,void QuadTree::Index @ quadtree-index-impl.h:2702
+1,split-line-translated,index-ordered,walkOrdered,0x1ea91,unmapped,,63,63,0,0,0,1521274,void QuadTree::Index @ quadtree-index-impl.h:2702
+1,split-line-translated,index-ordered,walkOrdered,0x1eac3,unmapped,,42,42,0,0,0,68965469,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+1,split-line-translated,index-ordered,walkOrdered,0x1eae9,unmapped,,44,44,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+2,split-line-translated,index-ordered,walkOrdered,0x1e669,unmapped,,56,56,0,0,0,28966356,void QuadTree::Index @ quadtree-index-impl.h:2669
+2,split-line-translated,index-ordered,walkOrdered,0x1e66e,summary,64,81,81,4,81,82,21154915,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+2,split-line-translated,index-ordered,walkOrdered,0x1e678,summary,56,63,63,10,63,329,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+2,split-line-translated,index-ordered,walkOrdered,0x1e687,head,96,69,69,6,69,131,10570041,void QuadTree::Index @ quadtree-index-impl.h:2677
+2,split-line-translated,index-ordered,walkOrdered,0x1e6e6,unmapped,,53,53,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2677
+2,split-line-translated,index-ordered,walkOrdered,0x1e6f0,unmapped,,47,47,0,0,0,26439157,void QuadTree::Index @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e6f4,unmapped,,55,55,0,0,0,2658269,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e6fd,unmapped,,51,51,0,0,0,2657317,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e6ff,unmapped,,46,46,0,0,0,37101515,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e70a,unmapped,,71,71,23,0,0,1323336,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e716,unmapped,,47,47,2,0,0,1327750,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e71d,unmapped,,20,20,0,0,0,0,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e721,unmapped,,19,19,0,0,0,96699559,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e73f,unmapped,,22,22,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e74f,unmapped,,6,6,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e753,unmapped,,3,3,0,0,0,76714556,void QuadTree::Index @ quadtree-index-impl.h:2933 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e757,unmapped,,6,6,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e761,unmapped,,2,2,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,split-line-translated,index-ordered,walkOrdered,0x1e769,linear,117,39,39,0,39,0,18513758,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,split-line-translated,index-ordered,walkOrdered,0x1e774,ownCount,104,62,62,0,62,0,5299627,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,split-line-translated,index-ordered,walkOrdered,0x1e77c,head,96,45,45,0,45,0,1329037,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,split-line-translated,index-ordered,walkOrdered,0x1e789,unmapped,,10,10,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,split-line-translated,index-ordered,walkOrdered,0x1e78e,firstChild,92,53,53,3,53,55,92521697,void QuadTree::Index @ quadtree-index-impl.h:2679
+2,split-line-translated,index-ordered,walkOrdered,0x1e79b,unmapped,,67,67,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2679
+2,split-line-translated,index-ordered,walkOrdered,0x1e7af,unmapped,,54,54,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2681
+2,split-line-translated,index-ordered,walkOrdered,0x1e7b7,count,100,49,49,36,49,904,31751228,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,split-line-translated,index-ordered,walkOrdered,0x1e7c3,unmapped,,62,62,9,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7c6,bounds,28,64,64,38,64,919,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7d0,bounds,20,24,24,10,24,325,14480025,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7da,unmapped,,22,22,1,0,0,1328481,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7e0,unmapped,,27,27,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7e4,bounds,32,33,33,14,33,360,7941678,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7f1,bounds,24,13,13,3,13,82,55562459,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e7f5,unmapped,,23,23,0,0,0,14576105,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e800,count,100,50,50,13,50,444,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,split-line-translated,index-ordered,walkOrdered,0x1e80c,unmapped,,50,50,4,0,0,1325052,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e813,bounds,28,55,55,18,55,769,3985008,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e81c,bounds,20,64,64,20,64,632,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e823,unmapped,,63,63,2,0,0,6576827,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e829,unmapped,,35,35,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e82d,bounds,32,36,36,11,36,434,33135173,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e839,bounds,24,18,18,4,18,118,33077085,void QuadTree::Index @ quadtree-index-impl.h:2690
+2,split-line-translated,index-ordered,walkOrdered,0x1e843,unmapped,,14,14,1,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2690
+2,split-line-translated,index-ordered,walkOrdered,0x1e850,count,100,62,62,25,62,716,1330311,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,split-line-translated,index-ordered,walkOrdered,0x1e863,unmapped,,49,49,1,0,0,3977284,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e869,bounds,28,57,57,16,57,471,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e876,unmapped,,36,36,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e87a,bounds,20,29,29,14,29,530,11937571,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e887,unmapped,,26,26,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e88b,bounds,32,30,30,7,30,160,2599584,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e898,bounds,24,38,38,15,38,499,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e89f,unmapped,,35,35,3,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e8a9,count,100,12,12,6,12,148,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,split-line-translated,index-ordered,walkOrdered,0x1e8bc,unmapped,,8,8,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e8c3,bounds,28,15,15,6,15,154,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e8cc,bounds,20,11,11,4,11,136,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e908,count,100,5,5,1,5,9,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,split-line-translated,index-ordered,walkOrdered,0x1e937,unmapped,,57,57,0,0,0,17192249,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e963,unmapped,,53,53,0,0,0,58115465,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e99b,unmapped,,71,71,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e9a0,unmapped,,75,75,4,0,0,212801894,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e9a5,unmapped,,58,58,0,0,0,1328153,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e9aa,unmapped,,68,68,0,0,0,1329915,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e9af,unmapped,,77,77,1,0,0,17204779,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,split-line-translated,index-ordered,walkOrdered,0x1e9b4,unmapped,,73,73,2,0,0,9246069,void QuadTree::Index @ quadtree-index-impl.h:2709
+2,split-line-translated,index-ordered,walkOrdered,0x1e9bd,unmapped,,57,57,0,0,0,3980229,void QuadTree::Index @ quadtree-index-impl.h:2709
+2,split-line-translated,index-ordered,walkOrdered,0x1e9c0,count,100,36,36,16,36,462,1309567,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,split-line-translated,index-ordered,walkOrdered,0x1e9f7,bounds,28,33,33,10,33,196,2592536,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1e9fe,unmapped,,43,43,4,0,0,1324370,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea07,unmapped,,42,42,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea0b,bounds,20,30,30,10,30,289,7944194,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea14,bounds,32,25,25,10,25,383,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea17,unmapped,,23,23,0,0,0,23816236,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea21,unmapped,,23,23,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea25,bounds,24,31,31,4,31,80,3976727,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,split-line-translated,index-ordered,walkOrdered,0x1ea76,unmapped,,68,68,0,0,0,7944700,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,split-line-translated,index-ordered,walkOrdered,0x1ea7b,unmapped,,57,57,0,0,0,1329042,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,split-line-translated,index-ordered,walkOrdered,0x1ea80,unmapped,,68,68,0,0,0,7916848,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,split-line-translated,index-ordered,walkOrdered,0x1ea85,unmapped,,63,63,0,0,0,1320446,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,split-line-translated,index-ordered,walkOrdered,0x1ea8f,unmapped,,66,66,0,0,0,81922034,void QuadTree::Index @ quadtree-index-impl.h:2702
+2,split-line-translated,index-ordered,walkOrdered,0x1ea90,unmapped,,60,60,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2702
+2,split-line-translated,index-ordered,walkOrdered,0x1ea91,unmapped,,64,64,0,0,0,1328687,void QuadTree::Index @ quadtree-index-impl.h:2702
+2,split-line-translated,index-ordered,walkOrdered,0x1eac3,unmapped,,34,34,0,0,0,58156802,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+2,split-line-translated,index-ordered,walkOrdered,0x1eae9,unmapped,,37,37,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+2,uniform,index-ordered,walkOrdered,0x1e669,unmapped,,61,61,0,0,0,26437686,void QuadTree::Index @ quadtree-index-impl.h:2669
+2,uniform,index-ordered,walkOrdered,0x1e66e,summary,64,70,70,6,70,136,15851253,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+2,uniform,index-ordered,walkOrdered,0x1e678,summary,56,62,62,6,62,101,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:2672"
+2,uniform,index-ordered,walkOrdered,0x1e687,head,96,64,64,4,64,68,23660951,void QuadTree::Index @ quadtree-index-impl.h:2677
+2,uniform,index-ordered,walkOrdered,0x1e6e6,unmapped,,47,47,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2677
+2,uniform,index-ordered,walkOrdered,0x1e6f0,unmapped,,46,46,1,0,0,22514622,void QuadTree::Index @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e6f4,unmapped,,50,50,0,0,0,1328630,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e6fd,unmapped,,47,47,0,0,0,1321854,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e6ff,unmapped,,66,66,0,0,0,41006633,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e70a,unmapped,,54,54,15,0,0,2638853,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e716,unmapped,,70,70,1,0,0,1314062,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e71d,unmapped,,33,33,0,0,0,0,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e721,unmapped,,25,25,0,0,0,112207977,operator() @ quadtree-index-impl.h:2935 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e73f,unmapped,,27,27,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e74f,unmapped,,3,3,0,0,0,0,operator() @ quadtree-index-impl.h:2938 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e753,unmapped,,1,1,0,0,0,89845648,void QuadTree::Index @ quadtree-index-impl.h:2933 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e757,unmapped,,2,2,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e761,unmapped,,5,5,0,0,0,0,operator() @ quadtree-index-impl.h:2939 <- operator() @ quadtree-index-impl.h:2933 <- void QuadTree::Index @ quadtree-index-impl.h:2678
+2,uniform,index-ordered,walkOrdered,0x1e769,linear,117,48,48,1,48,9,18439849,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,uniform,index-ordered,walkOrdered,0x1e774,ownCount,104,54,54,0,54,0,5258973,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,uniform,index-ordered,walkOrdered,0x1e77c,head,96,47,47,0,47,0,2597987,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,uniform,index-ordered,walkOrdered,0x1e789,unmapped,,16,16,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:2677
+2,uniform,index-ordered,walkOrdered,0x1e78e,firstChild,92,54,54,2,54,33,97772911,void QuadTree::Index @ quadtree-index-impl.h:2679
+2,uniform,index-ordered,walkOrdered,0x1e79b,unmapped,,44,44,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2679
+2,uniform,index-ordered,walkOrdered,0x1e7af,unmapped,,45,45,0,0,0,2599952,void QuadTree::Index @ quadtree-index-impl.h:2681
+2,uniform,index-ordered,walkOrdered,0x1e7b7,count,100,38,38,28,38,1082,27639972,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,uniform,index-ordered,walkOrdered,0x1e7c3,unmapped,,54,54,10,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7c6,bounds,28,53,53,31,53,1030,1330881,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7d0,bounds,20,29,29,9,29,258,6617070,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7da,unmapped,,26,26,2,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7e0,unmapped,,21,21,4,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7e4,bounds,32,33,33,14,33,444,9267447,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7f1,bounds,24,12,12,1,12,46,51571266,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e7f5,unmapped,,13,13,1,0,0,15809709,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e800,count,100,39,39,18,39,544,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,uniform,index-ordered,walkOrdered,0x1e80c,unmapped,,60,60,5,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e813,bounds,28,62,62,16,62,819,2647740,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e81c,bounds,20,52,52,12,52,752,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e823,unmapped,,53,53,3,0,0,3972677,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e829,unmapped,,20,20,3,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e82d,bounds,32,20,20,13,20,368,43492538,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e839,bounds,24,11,11,1,11,55,47610722,void QuadTree::Index @ quadtree-index-impl.h:2690
+2,uniform,index-ordered,walkOrdered,0x1e843,unmapped,,9,9,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2690
+2,uniform,index-ordered,walkOrdered,0x1e850,count,100,37,37,9,37,240,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,uniform,index-ordered,walkOrdered,0x1e863,unmapped,,54,54,2,0,0,1330240,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e869,bounds,28,59,59,11,59,360,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e876,unmapped,,21,21,2,0,0,1323317,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e87a,bounds,20,31,31,5,31,84,5259400,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e887,unmapped,,25,25,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e88b,bounds,32,26,26,8,26,208,5299503,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e898,bounds,24,22,22,3,22,79,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e89f,unmapped,,31,31,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e8a9,count,100,16,16,2,16,52,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,uniform,index-ordered,walkOrdered,0x1e8bc,unmapped,,14,14,0,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e8c3,bounds,28,9,9,2,9,26,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e8cc,bounds,20,14,14,3,14,59,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e908,count,100,0,0,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,uniform,index-ordered,walkOrdered,0x1e937,unmapped,,58,58,0,0,0,21082536,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e963,unmapped,,54,54,0,0,0,38342616,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e99b,unmapped,,67,67,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e9a0,unmapped,,64,64,0,0,0,187682983,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e9a5,unmapped,,69,69,0,0,0,2650998,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e9aa,unmapped,,62,62,0,0,0,1318972,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e9af,unmapped,,60,60,0,0,0,14540997,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2699
+2,uniform,index-ordered,walkOrdered,0x1e9b4,unmapped,,68,68,0,0,0,5306079,void QuadTree::Index @ quadtree-index-impl.h:2709
+2,uniform,index-ordered,walkOrdered,0x1e9bd,unmapped,,66,66,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2709
+2,uniform,index-ordered,walkOrdered,0x1e9c0,count,100,41,41,15,41,437,2642855,void QuadTree::Index @ quadtree-index-impl.h:2686
+2,uniform,index-ordered,walkOrdered,0x1e9f7,bounds,28,33,33,7,33,170,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1e9fe,unmapped,,39,39,2,0,0,3975986,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea07,unmapped,,42,42,2,0,0,1321797,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea0b,bounds,20,34,34,5,34,156,10544649,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea14,bounds,32,35,35,9,35,199,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea17,unmapped,,24,24,3,0,0,23719195,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea21,unmapped,,17,17,1,0,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea25,bounds,24,22,22,9,22,250,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:2689
+2,uniform,index-ordered,walkOrdered,0x1ea76,unmapped,,42,42,0,0,0,1327045,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,uniform,index-ordered,walkOrdered,0x1ea7b,unmapped,,42,42,1,0,0,2643745,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,uniform,index-ordered,walkOrdered,0x1ea80,unmapped,,55,55,0,0,0,6611757,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,uniform,index-ordered,walkOrdered,0x1ea85,unmapped,,53,53,0,0,0,2612465,void QuadTree::Index @ quadtree-index-impl.h:2701
+2,uniform,index-ordered,walkOrdered,0x1ea8f,unmapped,,66,66,1,0,0,72677697,void QuadTree::Index @ quadtree-index-impl.h:2702
+2,uniform,index-ordered,walkOrdered,0x1ea90,unmapped,,60,60,0,0,0,1313623,void QuadTree::Index @ quadtree-index-impl.h:2702
+2,uniform,index-ordered,walkOrdered,0x1ea91,unmapped,,45,45,0,0,0,3947226,void QuadTree::Index @ quadtree-index-impl.h:2702
+2,uniform,index-ordered,walkOrdered,0x1eac3,unmapped,,32,32,0,0,0,31620469,QuadTree::Index @ quadtree-index-impl.h:2581 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+2,uniform,index-ordered,walkOrdered,0x1eae9,unmapped,,36,36,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2594 <- void QuadTree::Index @ quadtree-index-impl.h:2708
+2,split-line-translated,index,crossPairs,0x9ad97,unmapped,,62,62,0,0,0,19772422,void QuadTree::Index @ quadtree-index-impl.h:3057
+2,split-line-translated,index,crossPairs,0x9adaa,unmapped,,66,66,0,0,0,15827191,void QuadTree::Index @ quadtree-index-impl.h:3062
+2,split-line-translated,index,crossPairs,0x9adb8,unmapped,,72,72,0,0,0,0,QuadTree::detail::Buffer @ quadtree-index-impl.h:122 <- void QuadTree::Index @ quadtree-index-impl.h:3060
+2,split-line-translated,index,crossPairs,0x9adc6,count,100,68,68,2,68,21,10545450,void QuadTree::Index @ quadtree-index-impl.h:3062
+2,split-line-translated,index,crossPairs,0x9addd,count,100,57,57,2,57,20,1329967,void QuadTree::Index @ quadtree-index-impl.h:3062
+2,split-line-translated,index,crossPairs,0x9adea,unmapped,,74,74,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2564 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+2,split-line-translated,index,crossPairs,0x9ae05,unmapped,,55,55,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2572 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+2,split-line-translated,index,crossPairs,0x9ae17,bounds,28,68,68,2,68,17,1311817,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae1b,bounds,20,62,62,2,62,21,35711094,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae2d,bounds,28,58,58,3,58,88,27756162,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae30,bounds,20,58,58,0,58,0,1317032,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae39,bounds,32,17,17,1,17,19,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae3c,bounds,24,25,25,2,25,14,44864727,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae45,bounds,32,22,22,0,22,0,3929147,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae48,bounds,24,22,22,1,22,8,6599108,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,split-line-translated,index,crossPairs,0x9ae51,summary,56,7,7,0,7,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,split-line-translated,index,crossPairs,0x9ae55,summary,64,11,11,0,11,0,22464235,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,split-line-translated,index,crossPairs,0x9ae5f,summary,64,4,4,0,4,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,split-line-translated,index,crossPairs,0x9ae63,summary,56,9,9,1,9,10,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,split-line-translated,index,crossPairs,0x9ae6d,head,96,10,10,0,10,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9aed0,head,96,22,22,0,22,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+2,split-line-translated,index,crossPairs,0x9af09,unmapped,,47,47,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+2,split-line-translated,index,crossPairs,0x9af25,unmapped,,69,69,0,0,0,1330214,testPair @ quadtree-index-impl.h:2777 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9af32,linear,117,81,81,0,81,0,0,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+2,split-line-translated,index,crossPairs,0x9af38,unmapped,,53,53,0,0,0,2648813,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+2,split-line-translated,index,crossPairs,0x9af40,ownCount,104,71,71,0,71,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+2,split-line-translated,index,crossPairs,0x9af4b,unmapped,,28,28,0,0,0,38236019,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9af50,linear,117,17,17,0,17,0,30328261,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9af76,unmapped,,12,12,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9af88,unmapped,,2,2,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9af8c,unmapped,,4,4,0,0,0,6594130,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9af97,unmapped,,5,5,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9af9c,unmapped,,1,1,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9afa1,firstChild,92,4,4,0,4,0,2647092,void QuadTree::Index @ quadtree-index-impl.h:3074
+2,split-line-translated,index,crossPairs,0x9afcb,unmapped,,17,17,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,split-line-translated,index,crossPairs,0x9afea,unmapped,,15,15,1,0,0,3989288,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,split-line-translated,index,crossPairs,0x9afee,unmapped,,21,21,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,split-line-translated,index,crossPairs,0x9affa,unmapped,,8,8,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,split-line-translated,index,crossPairs,0x9afff,unmapped,,5,5,0,0,0,1328631,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,split-line-translated,index,crossPairs,0x9b010,firstChild,92,8,8,0,8,0,0,void QuadTree::Index @ quadtree-index-impl.h:3077
+2,split-line-translated,index,crossPairs,0x9b037,unmapped,,14,14,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,split-line-translated,index,crossPairs,0x9b058,unmapped,,15,15,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,split-line-translated,index,crossPairs,0x9b05c,unmapped,,24,24,0,0,0,1329616,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,split-line-translated,index,crossPairs,0x9b069,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,split-line-translated,index,crossPairs,0x9b06e,unmapped,,5,5,0,0,0,3967913,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,split-line-translated,index,crossPairs,0x9b07f,unmapped,,8,8,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b0a4,unmapped,,56,56,0,0,0,26461439,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,split-line-translated,index,crossPairs,0x9b0a8,unmapped,,43,43,0,0,0,2628152,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,split-line-translated,index,crossPairs,0x9b0ac,unmapped,,57,57,0,0,0,25173971,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,split-line-translated,index,crossPairs,0x9b0b8,unmapped,,44,44,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,split-line-translated,index,crossPairs,0x9b0c5,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b0cd,unmapped,,4,4,0,0,0,10574992,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b0d5,unmapped,,4,4,0,0,0,1277191,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b0dd,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b0e5,unmapped,,5,5,0,0,0,3955476,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b0ed,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,split-line-translated,index,crossPairs,0x9b100,unmapped,,63,63,0,0,0,5302853,void QuadTree::Index @ quadtree-index-impl.h:3084
+2,split-line-translated,index,crossPairs,0x9b108,unmapped,,77,77,0,0,0,104251297,void QuadTree::Index @ quadtree-index-impl.h:3084
+2,split-line-translated,index,crossPairs,0x9b11e,unmapped,,66,66,0,0,0,3954972,void QuadTree::Index @ quadtree-index-impl.h:3084
+2,split-line-translated,index,crossPairs,0x9b140,unmapped,,42,42,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:539 <- QuadTree::Index @ quadtree-index-impl.h:2601 <- void QuadTree::Index @ quadtree-index-impl.h:3068
+2,split-line-translated,index,crossPairs,0x9b150,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2766 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b154,unmapped,,6,6,0,0,0,50214774,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b160,unmapped,,1,1,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b164,unmapped,,4,4,0,0,0,35660292,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1a3,unmapped,,4,4,0,0,0,2651747,void QuadTree::Index @ invoke.h:62 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1a8,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1ad,unmapped,,5,5,0,0,0,1303977,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1b2,unmapped,,5,5,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1b5,unmapped,,1,1,0,0,0,0,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1bd,unmapped,,3,3,0,0,0,0,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1bf,unmapped,,5,5,0,0,0,3953920,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b1c1,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ quadtree-bench.cpp:440 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b208,unmapped,,8,8,0,0,0,2646622,operator() @ quadtree-bench.cpp:441 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b20c,unmapped,,6,6,0,0,0,5292013,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,split-line-translated,index,crossPairs,0x9b247,unmapped,,20,20,0,0,0,1313258,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,split-line-translated,index,crossPairs,0x9b24b,ownCount,104,21,21,0,21,0,0,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9ad97,unmapped,,66,66,0,0,0,5279397,void QuadTree::Index @ quadtree-index-impl.h:3057
+2,uniform,index,crossPairs,0x9adaa,unmapped,,78,78,0,0,0,5319394,void QuadTree::Index @ quadtree-index-impl.h:3062
+2,uniform,index,crossPairs,0x9adb8,unmapped,,76,76,0,0,0,0,QuadTree::detail::Buffer @ quadtree-index-impl.h:122 <- void QuadTree::Index @ quadtree-index-impl.h:3060
+2,uniform,index,crossPairs,0x9adc6,count,100,55,55,2,55,20,11900538,void QuadTree::Index @ quadtree-index-impl.h:3062
+2,uniform,index,crossPairs,0x9addd,count,100,52,52,1,52,9,0,void QuadTree::Index @ quadtree-index-impl.h:3062
+2,uniform,index,crossPairs,0x9adea,unmapped,,56,56,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2564 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+2,uniform,index,crossPairs,0x9ae05,unmapped,,67,67,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2572 <- QuadTree::Index @ quadtree-index-impl.h:2575 <- void QuadTree::Index @ quadtree-index-impl.h:3062
+2,uniform,index,crossPairs,0x9ae17,bounds,28,58,58,1,58,10,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae1b,bounds,20,65,65,2,65,24,40915602,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae2d,bounds,28,79,79,1,79,8,36990825,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae30,bounds,20,66,66,3,66,30,3950888,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae39,bounds,32,28,28,0,28,0,0,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae3c,bounds,24,27,27,0,27,0,51508025,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae45,bounds,32,17,17,0,17,0,2640432,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae48,bounds,24,27,27,0,27,0,5206265,bool QuadTree::detail::closedOverlap @ quadtree-index-impl.h:384 <- void QuadTree::Index @ quadtree-index-impl.h:3064
+2,uniform,index,crossPairs,0x9ae51,summary,56,7,7,0,7,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,uniform,index,crossPairs,0x9ae55,summary,64,11,11,0,11,0,30398074,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,uniform,index,crossPairs,0x9ae5f,summary,64,12,12,0,12,0,0,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,uniform,index,crossPairs,0x9ae63,summary,56,11,11,0,11,0,1317838,"QuadTree::detail::compatible(QuadTree::Filter, QuadTree::Filter) @ quadtree-index-impl.h:371 <- void QuadTree::Index @ quadtree-index-impl.h:3066"
+2,uniform,index,crossPairs,0x9ae6d,head,96,8,8,0,8,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9aed0,head,96,19,19,0,19,0,1221148,void QuadTree::Index @ quadtree-index-impl.h:3072
+2,uniform,index,crossPairs,0x9af09,unmapped,,74,74,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3072
+2,uniform,index,crossPairs,0x9af25,unmapped,,113,113,0,0,0,1307200,testPair @ quadtree-index-impl.h:2777 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9af32,linear,117,110,110,1,110,8,0,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+2,uniform,index,crossPairs,0x9af38,unmapped,,120,120,0,0,0,1329341,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+2,uniform,index,crossPairs,0x9af40,ownCount,104,112,112,0,112,0,2643460,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3072
+2,uniform,index,crossPairs,0x9af4b,unmapped,,27,27,0,0,0,44902521,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9af50,linear,117,31,31,0,31,0,40924114,QuadTree::Index @ quadtree-index-impl.h:1800 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9af76,unmapped,,15,15,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9af88,unmapped,,1,1,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9af8c,unmapped,,4,4,0,0,0,23685574,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9af97,unmapped,,2,2,0,0,0,1327995,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9af9c,unmapped,,9,9,0,0,0,1303293,void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9afa1,firstChild,92,11,11,0,11,0,1327787,void QuadTree::Index @ quadtree-index-impl.h:3074
+2,uniform,index,crossPairs,0x9afcb,unmapped,,23,23,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,uniform,index,crossPairs,0x9afea,unmapped,,20,20,0,0,0,5278980,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,uniform,index,crossPairs,0x9afee,unmapped,,18,18,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,uniform,index,crossPairs,0x9affa,unmapped,,5,5,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,uniform,index,crossPairs,0x9afff,unmapped,,7,7,0,0,0,2602175,void QuadTree::Index @ quadtree-index-impl.h:3075
+2,uniform,index,crossPairs,0x9b010,firstChild,92,12,12,0,12,0,1326928,void QuadTree::Index @ quadtree-index-impl.h:3077
+2,uniform,index,crossPairs,0x9b037,unmapped,,20,20,0,0,0,1319901,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,uniform,index,crossPairs,0x9b058,unmapped,,17,17,0,0,0,3966161,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,uniform,index,crossPairs,0x9b05c,unmapped,,17,17,0,0,0,5280207,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,uniform,index,crossPairs,0x9b069,unmapped,,8,8,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,uniform,index,crossPairs,0x9b06e,unmapped,,3,3,0,0,0,6604467,void QuadTree::Index @ quadtree-index-impl.h:3078
+2,uniform,index,crossPairs,0x9b07f,unmapped,,17,17,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b0a4,unmapped,,65,65,0,0,0,7927814,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,uniform,index,crossPairs,0x9b0a8,unmapped,,53,53,1,0,0,1322038,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,uniform,index,crossPairs,0x9b0ac,unmapped,,39,39,0,0,0,21172759,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,uniform,index,crossPairs,0x9b0b8,unmapped,,38,38,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3082
+2,uniform,index,crossPairs,0x9b0c5,unmapped,,11,11,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b0cd,unmapped,,14,14,0,0,0,10543723,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b0d5,unmapped,,8,8,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b0dd,unmapped,,6,6,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b0e5,unmapped,,9,9,0,0,0,1319532,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b0ed,unmapped,,7,7,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:3081
+2,uniform,index,crossPairs,0x9b100,unmapped,,64,64,0,0,0,3967246,void QuadTree::Index @ quadtree-index-impl.h:3084
+2,uniform,index,crossPairs,0x9b108,unmapped,,66,66,0,0,0,83217841,void QuadTree::Index @ quadtree-index-impl.h:3084
+2,uniform,index,crossPairs,0x9b11e,unmapped,,73,73,0,0,0,2636718,void QuadTree::Index @ quadtree-index-impl.h:3084
+2,uniform,index,crossPairs,0x9b140,unmapped,,48,48,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:539 <- QuadTree::Index @ quadtree-index-impl.h:2601 <- void QuadTree::Index @ quadtree-index-impl.h:3068
+2,uniform,index,crossPairs,0x9b150,unmapped,,3,3,0,0,0,0,void QuadTree::Index @ quadtree-index-impl.h:2766 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b154,unmapped,,2,2,0,0,0,66094031,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b160,unmapped,,3,3,0,0,0,0,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b164,unmapped,,6,6,0,0,0,14524749,QuadTree::Index @ quadtree-index-impl.h:2741 <- reportPair @ quadtree-index-impl.h:2768 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1a3,unmapped,,4,4,0,0,0,0,void QuadTree::Index @ invoke.h:62 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1a8,unmapped,,2,2,0,0,0,0,void QuadTree::Index @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1ad,unmapped,,5,5,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1b2,unmapped,,2,2,0,0,0,0,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1b5,unmapped,,4,4,0,0,0,0,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1bd,unmapped,,2,2,0,0,0,0,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1bf,unmapped,,5,5,1,0,0,6514630,operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b1c1,unmapped,,1,1,0,0,0,1330754,void QuadTree::Index @ quadtree-bench.cpp:440 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b208,unmapped,,2,2,0,0,0,1315948,operator() @ quadtree-bench.cpp:441 <- operator() @ bench-index.h:101 <- __invoke_impl @ invoke.h:63 <- __invoke @ invoke.h:98 <- invoke @ functional:126 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b20c,unmapped,,3,3,0,0,0,1318924,QuadTree::detail::increment(unsigned long&) @ quadtree-index-impl.h:538 <- QuadTree::Index @ quadtree-index-impl.h:2609 <- reportPair @ quadtree-index-impl.h:2770 <- testPair @ quadtree-index-impl.h:2778 <- void QuadTree::Index @ quadtree-index-impl.h:3073
+2,uniform,index,crossPairs,0x9b247,unmapped,,15,15,0,0,0,1325919,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071
+2,uniform,index,crossPairs,0x9b24b,ownCount,104,15,15,0,15,0,1316119,QuadTree::Index @ quadtree-index-impl.h:1802 <- void QuadTree::Index @ quadtree-index-impl.h:3071

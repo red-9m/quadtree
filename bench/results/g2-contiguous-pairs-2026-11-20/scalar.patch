@@ -1,0 +1,66 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3054,6 +3054,43 @@
+     }
+ 
+     template<typename Visitor, typename Predicate>
++    void testOwnRange(std::uint32_t a, const Node& target, std::uint32_t begin,
++        Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        if constexpr (std::same_as<T, std::int32_t> && std::same_as<Predicate, detail::AcceptAll>)
++        {
++            if (begin != none && target.linear)
++            {
++                const auto end = target.head + target.ownCount;
++                const auto source = mEntries.mBoxes[a];
++                const auto filter = mEntries.mMeta[a].filter;
++                const bool closed = mConfig.boundary == Boundary::TouchInclusive ||
++                    source.minX == source.maxX || source.minY == source.maxY;
++                for (auto b = begin; b < end && context.active(); ++b)
++                {
++                    if (!detail::compatible(filter, mEntries.mMeta[b].filter))
++                    {
++                        context.filtered();
++                        continue;
++                    }
++                    if (!context.candidate())
++                        return;
++                    const auto& box = mEntries.mBoxes[b];
++                    if (!detail::closedOverlap(source, box))
++                        continue;
++                    if (closed || box.minX == box.maxX || box.minY == box.maxY ||
++                        (source.minX < box.maxX && box.minX < source.maxX &&
++                         source.minY < box.maxY && box.minY < source.maxY))
++                        reportPair(a, b, false, context, visitor);
++                }
++                return;
++            }
++        }
++        for (auto b = begin; b != none && context.active(); b = nextItem(target, b))
++            testPair(a, b, false, context, visitor, predicate);
++    }
++
++    template<typename Visitor, typename Predicate>
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+     {
+@@ -3069,8 +3106,7 @@
+             return;
+         }
+         for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+-            for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+-                testPair(i, j, false, context, visitor, predicate);
++            testOwnRange(i, right, right.head, context, visitor, predicate);
+         if (right.firstChild != none)
+             for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+                 itemsVsSubtree(a, right.firstChild + q, context, visitor, predicate);
+@@ -3095,8 +3131,7 @@
+             return;
+         }
+         for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
+-            for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
+-                testPair(a, b, false, context, visitor, predicate);
++            testOwnRange(a, node, nextItem(node, a), context, visitor, predicate);
+         if (node.firstChild == none)
+             return;
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)

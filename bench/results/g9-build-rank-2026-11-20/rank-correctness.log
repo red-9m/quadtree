@@ -1,0 +1,5 @@
+radix: 109 ranked-build cases passed (int32, float, 255/256/257, sparse and full-width ranks, rollback, scratch reuse, consume).
+rank: 109 ranked-build cases passed (int32, float, 255/256/257, sparse and full-width ranks, rollback, scratch reuse, consume).
+control: 109 ranked-build cases passed (int32, float, 255/256/257, sparse and full-width ranks, rollback, scratch reuse, consume).
+candidate: 109 ranked-build cases passed (int32, float, 255/256/257, sparse and full-width ranks, rollback, scratch reuse, consume).
+candidate (ASan/UBSan): 109 ranked-build cases passed (int32, float, 255/256/257, sparse and full-width ranks, rollback, scratch reuse, consume).

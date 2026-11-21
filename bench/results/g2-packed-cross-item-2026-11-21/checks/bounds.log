@@ -1,0 +1,3 @@
+packed: 614656 exhaustive signed-extreme box pairs plus 100000 generated pairs match scalar exact bounds in both orders and modes.
+scalar: 614656 exhaustive signed-extreme box pairs plus 100000 generated pairs match scalar exact bounds in both orders and modes.
+ASan/UBSan: 614656 exhaustive signed-extreme box pairs plus 100000 generated pairs match scalar exact bounds in both orders and modes.

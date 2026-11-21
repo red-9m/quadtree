@@ -1,0 +1,11 @@
+run,scene,n,engine,warm_reps,pair_samples,pairs_pct_process,walk_gate_pct_pairs,walk_iteration_pct_pairs,rank_check_and_collect_pct_pairs,pair_eligibility_pct_pairs,report_pct_pairs,rank_sort_pct_pairs,cross_nodes_pct_pairs,self_nodes_pct_pairs,items_vs_subtree_pct_pairs,other_pairs_pct_pairs
+1-split-line-index-ordered,split-line,100000,index-ordered,18,2946,65.09,40.29,23.53,10.66,5.63,4.07,12.59,0.00,0.00,0.00,3.22
+1-split-line-translated-index-ordered,split-line-translated,100000,index-ordered,18,2956,64.98,40.69,22.71,11.83,4.74,3.31,12.73,0.00,0.00,0.00,3.99
+1-mixed-size-index-ordered,mixed-size,100000,index-ordered,7,4137,80.47,14.40,17.99,21.45,10.93,5.06,29.12,0.00,0.00,0.00,1.07
+1-uniform-index,uniform,100000,index,76,1730,40.41,2.48,2.02,0.00,40.51,9.66,0.00,31.45,7.11,6.77,0.00
+1-split-line-translated-index,split-line-translated,100000,index,77,1668,38.94,2.16,2.16,0.00,32.62,15.65,0.00,32.60,7.38,7.44,0.00
+2-split-line-translated-index,split-line-translated,100000,index,78,1954,39.38,2.05,3.12,0.00,31.49,15.37,0.00,32.50,7.63,7.84,0.00
+2-uniform-index,uniform,100000,index,76,2001,40.46,2.75,1.75,0.00,39.37,9.69,0.00,31.44,7.79,7.20,0.00
+2-mixed-size-index-ordered,mixed-size,100000,index-ordered,7,4802,80.47,13.34,19.19,20.70,10.72,4.66,30.07,0.00,0.00,0.00,1.31
+2-split-line-translated-index-ordered,split-line-translated,100000,index-ordered,19,3419,64.92,40.57,24.02,11.43,4.54,3.08,13.12,0.00,0.00,0.00,3.25
+2-split-line-index-ordered,split-line,100000,index-ordered,19,3387,64.86,39.31,24.22,11.36,5.55,3.13,13.56,0.00,0.00,0.00,2.87

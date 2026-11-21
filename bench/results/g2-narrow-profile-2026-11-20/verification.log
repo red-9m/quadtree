@@ -1,0 +1,3 @@
+12 Release profiles agree with the frozen narrow build on fixtures, checksums, work, memory and cold allocations.
+All profiles had zero warm allocations. Eight cycle profiles and four IBS profiles have build sample coverage.
+All four untimed census rows reconcile with the gate results and visit accounting.

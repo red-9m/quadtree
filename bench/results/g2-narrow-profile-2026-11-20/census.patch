@@ -1,0 +1,72 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -567,6 +567,18 @@
+     std::is_lvalue_reference_v<std::ranges::range_reference_t<R>> &&
+     std::same_as<std::remove_cvref_t<std::ranges::range_reference_t<R>>, P>;
+ 
++// Diagnostic only. The driver provides a zeroed stamp array for the snapshot.
++struct OrderedCensus
++{
++    std::uint32_t* stamps = nullptr;
++    std::size_t source = 0, packet = 4;
++    std::uint64_t groups = 0, covered = 0, coveredOccupied = 0, occupied = 0, overlapping = 0, filtered = 0;
++    std::uint64_t distinctGroups = 0, upperGroups = 0, upperDistinctGroups = 0;
++    std::uint64_t fullGroups = 0, trailingCharges = 0;
++    std::uint64_t histogram[5]{};
++};
++inline OrderedCensus orderedCensus;
++
+ struct AcceptAll
+ {
+     template<typename... Args>
+@@ -2657,8 +2669,10 @@
+     void walkOrdered(const Node& node, const Box<T>& box, Filter filter, Context& context,
+         Callback& callback) const noexcept
+     {
++        auto& census = detail::orderedCensus;
+         if (!detail::compatible(filter, node.summary))
+         {
++            ++census.filtered;
+             context.filtered();
+             return;
+         }
+@@ -2678,6 +2692,31 @@
+                     overlapping |= 1u << q;
+             }
+         }
++        const auto present = static_cast<unsigned>(std::popcount(occupied));
++        const auto admitted = static_cast<unsigned>(std::popcount(overlapping));
++        ++census.groups;
++        census.fullGroups += present == 4;
++        census.trailingCharges += std::bit_width(occupied) > std::bit_width(overlapping);
++        ++census.histogram[admitted];
++        census.occupied += present;
++        census.overlapping += admitted;
++        if (detail::contains(box, node.bounds))
++        {
++            ++census.covered;
++            census.coveredOccupied += present;
++        }
++        census.upperGroups += node.depth < 3;
++        if (census.stamps)
++        {
++            const auto stamp = static_cast<std::uint32_t>(1 + census.source / census.packet);
++            auto& previous = census.stamps[static_cast<std::size_t>(&node - mNodes.data())];
++            if (stamp != previous)
++            {
++                previous = stamp;
++                ++census.distinctGroups;
++                census.upperDistinctGroups += node.depth < 3;
++            }
++        }
+         while (overlapping != 0)
+         {
+             const auto q = static_cast<unsigned>(std::countr_zero(overlapping));
+@@ -2916,6 +2955,7 @@
+         sortRanks(scratch.mOrder.data(), size());
+         for (std::size_t i = 0; i + 1 < size() && context.active(); ++i)
+         {
++            detail::orderedCensus.source = i;
+             const std::uint32_t a = scratch.mOrder[i];
+             std::size_t count = 0;
+             auto candidate = [&](std::uint32_t b) noexcept

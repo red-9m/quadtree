@@ -1,0 +1,120 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1,5 +1,6 @@
+ #pragma once
+ 
++#include <bit>
+ #include <numeric>
+ #include <ranges>
+ #include <span>
+@@ -2490,6 +2491,28 @@
+             return true;
+         }
+         bool node() noexcept { return charge(remaining.nodeVisits, result.counters.nodeVisits); }
++        bool nodes(std::uint64_t count) noexcept
++        {
++            auto& budget = remaining.nodeVisits;
++            const auto max = std::numeric_limits<std::uint64_t>::max();
++            bool complete = true;
++            if (budget != max)
++            {
++                complete = count <= budget;
++                if (!complete)
++                {
++                    count = budget;
++                    result.status = Status::BudgetExhausted;
++                }
++                budget -= count;
++            }
++            if constexpr (Instrumented)
++            {
++                auto& visits = result.counters.nodeVisits;
++                visits += std::min(count, max - visits);
++            }
++            return complete;
++        }
+         bool candidate() noexcept { return charge(remaining.candidateTests, result.counters.candidateTests); }
+         void filtered() noexcept
+         {
+@@ -2552,6 +2575,50 @@
+                 walk(node.firstChild + q, box, queryFilter, context, callback);
+     }
+ 
++    // The caller has screened geometry and charged this nonempty node.
++    template<typename Callback>
++    void walkOrdered(const Node& node, const Box<T>& box, Filter filter, Context& context,
++        Callback& callback) const noexcept
++    {
++        if (!detail::compatible(filter, node.summary))
++        {
++            context.filtered();
++            return;
++        }
++        for (std::uint32_t i = node.head; i != none && context.active(); i = nextItem(node, i))
++            callback(i);
++        if (node.firstChild == none || !context.active())
++            return;
++        const Node* children = mNodes.data() + node.firstChild;
++        unsigned occupied = 0, overlapping = 0;
++        for (unsigned q = 0; q != 4; ++q)
++        {
++            const auto& child = children[q];
++            if (child.count != 0)
++            {
++                occupied |= 1u << q;
++                if (detail::closedOverlap(box, child.bounds))
++                    overlapping |= 1u << q;
++            }
++        }
++        while (overlapping != 0)
++        {
++            const auto q = static_cast<unsigned>(std::countr_zero(overlapping));
++            const auto through = (2u << q) - 1u;
++            // Charge skipped disjoint children and the next admitted child
++            // in DFS order, never precharging siblings beyond that child.
++            if (!context.nodes(static_cast<unsigned>(std::popcount(occupied & through))))
++                return;
++            walkOrdered(children[q], box, filter, context, callback);
++            if (!context.active())
++                return;
++            occupied &= ~through;
++            overlapping &= overlapping - 1;
++        }
++        if (occupied != 0)
++            context.nodes(static_cast<unsigned>(std::popcount(occupied)));
++    }
++
+     template<typename C, typename Callback>
+     void scan(const Box<T>& box, std::optional<Filter> queryFilter, C& context, Callback& callback) const noexcept
+     {
+@@ -2740,7 +2807,19 @@
+                 if (pairQualifies(a, b, true, context, predicate))
+                     scratch.mRow[count++] = b;
+             };
+-            scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
++            if constexpr (std::same_as<T, std::int32_t>)
++            {
++                if (!movedOnly && mRoot != none)
++                {
++                    const auto& root = mNodes[mRoot];
++                    if (root.count != 0 && context.node() && detail::closedOverlap(mEntries.mBoxes[a], root.bounds))
++                        walkOrdered(root, mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
++                }
++                else
++                    scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
++            }
++            else
++                scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
+             if (!context.active())
+                 return; // An unfinished row is discarded, never emitted as a non-prefix.
+             sortRanks(scratch.mRow.data(), count);
+--- a/tests/index-mixed-macros.h
++++ b/tests/index-mixed-macros.h
+@@ -5,6 +5,7 @@
+ // macros, and restore the macros before any other headers can see them.
+ #include <algorithm>
+ #include <atomic>
++#include <bit>
+ #include <concepts>
+ #include <cstddef>
+ #include <cstdint>

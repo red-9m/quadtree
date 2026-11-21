@@ -1,0 +1,59 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1212,7 +1212,7 @@
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
+         else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+-            tinyPairs(context, visitor, predicate);
++            return tinyPairResult(options.budget, visitor, predicate);
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+@@ -2583,12 +2583,16 @@
+         return Status::Ok;
+     }
+ 
+-    struct Context
++    // Result is QueryResult for owning contexts or QueryResult& to count into a caller's return object.
++    template<typename Result>
++    struct QueryContext
+     {
+-        QueryResult result;
++        Result result;
+         WorkBudget remaining;
+ 
+-        explicit Context(WorkBudget budget) noexcept: remaining(budget) {}
++        explicit QueryContext(WorkBudget budget) noexcept requires (!std::is_reference_v<Result>): remaining(budget) {}
++        QueryContext(WorkBudget budget, QueryResult& output) noexcept requires std::is_reference_v<Result>:
++            result(output), remaining(budget) {}
+         bool active() const noexcept { return result.status == Status::Ok; }
+ 
+         bool charge(std::uint64_t& budget, std::uint64_t& counter) noexcept
+@@ -2643,6 +2647,7 @@
+                 result.status = Status::Stopped;
+         }
+     };
++    using Context = QueryContext<QueryResult>;
+ 
+     bool allRanked() const noexcept { return mEntries.mRankCount == size(); }
+ 
+@@ -2834,8 +2839,18 @@
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
++    // One named result and one return lets the counters live in the caller's return slot.
+     template<typename Visitor, typename Predicate>
+-    void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    QueryResult tinyPairResult(WorkBudget budget, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        QueryResult result;
++        QueryContext<QueryResult&> context(budget, result);
++        tinyPairs(context, visitor, predicate);
++        return result;
++    }
++
++    template<typename C, typename Visitor, typename Predicate>
++    void tinyPairs(C& context, Visitor& visitor, Predicate& predicate) const noexcept
+     {
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;

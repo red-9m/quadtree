@@ -1,0 +1,6 @@
+control.text: OK
+candidate.text: OK
+05924039e18c2e58e3b44bcdb4646c08ab2cef5e815a542b7d7ccb23110dde5a  control.text
+05924039e18c2e58e3b44bcdb4646c08ab2cef5e815a542b7d7ccb23110dde5a  control-debug.text
+7a6e26bf17962070bb6990fda63a400641f0b49c1bbd0b8cb157415504d542db  candidate.text
+7a6e26bf17962070bb6990fda63a400641f0b49c1bbd0b8cb157415504d542db  candidate-debug.text

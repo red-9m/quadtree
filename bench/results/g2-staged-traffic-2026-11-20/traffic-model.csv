@@ -1,0 +1,5 @@
+scene,n,nodes,classify_ids,scatter_ids,lookahead_ids,prefix_keys,demand_box_bytes,classify_bytes,scatter_bytes,copy_bytes,direct_own_saved_bytes,single_bin_nodes,single_bin_ids,single_bin_local_saved_bytes,monotone_nodes,monotone_ids,monotone_local_saved_bytes,two_level_tags_computed,two_level_tags_scattered,two_level_tags_used,two_level_tags_unused,two_level_pct_gathers_avoided,two_level_net_bytes_before_control_overhead
+uniform,10000,4013,57673,57626,44577,0,922768,1389441,518634,18992,0,0,0,0,0,0,0,30027,30000,27626,2401,47.90,598300
+uniform,100000,32425,726719,726690,612896,0,11627504,17712683,6540210,586352,0,0,0,0,1,10,90,400000,399992,326698,73302,44.96,7264112
+split-line-translated,10000,3941,67727,67718,54714,4,1083632,1641123,609462,55168,0,2,4956,44604,4,7397,66573,37308,37307,30411,6897,44.90,673233
+split-line-translated,100000,36869,852530,850050,719218,14,13640480,20780002,7650450,231072,0,3,50216,451944,10,74076,666684,439842,439467,410583,29259,48.16,9100533

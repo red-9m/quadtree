@@ -1,0 +1,16 @@
+combined uniform n=0 6.2 ns/scene (632320 batches) exit=0
+combined uniform n=1 11.8 ns/scene (330112 batches) exit=0
+combined uniform n=2 26.1 ns/scene (149888 batches) exit=0
+combined uniform n=4 46.4 ns/scene (84288 batches) exit=0
+combined uniform n=8 131.0 ns/scene (29824 batches) exit=0
+combined uniform n=16 713.5 ns/scene (5504 batches) exit=0
+combined uniform n=32 2303.4 ns/scene (1728 batches) exit=0
+combined uniform n=64 7961.9 ns/scene (512 batches) exit=0
+combined clustered n=0 6.2 ns/scene (635072 batches) exit=0
+combined clustered n=1 11.8 ns/scene (331328 batches) exit=0
+combined clustered n=2 25.1 ns/scene (155520 batches) exit=0
+combined clustered n=4 42.6 ns/scene (91648 batches) exit=0
+combined clustered n=8 132.3 ns/scene (29568 batches) exit=0
+combined clustered n=16 802.4 ns/scene (4928 batches) exit=0
+combined clustered n=32 2952.9 ns/scene (1344 batches) exit=0
+combined clustered n=64 10853.6 ns/scene (384 batches) exit=0

@@ -1,0 +1,26 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -781,16 +781,17 @@
+ 
+     struct Node
+     {
+-        Cell cell;
++        // Keep the fields read during subtree screening adjacent.
+         Box<T> bounds{};
+-        Box<T> itemBounds{};
+-        Filter summary{0, 0};
+-        Filter itemSummary{0, 0};
+-        std::uint32_t parent = none;
++        std::uint32_t count = 0;
+         std::uint32_t firstChild = none;
++        Filter summary{0, 0};
+         std::uint32_t head = none;
+-        std::uint32_t count = 0;
+         std::uint32_t ownCount = 0;
++        Cell cell;
++        Box<T> itemBounds{};
++        Filter itemSummary{0, 0};
++        std::uint32_t parent = none;
+         std::uint32_t splitRetry = 0;  // Successful own changes before retrying an unproductive split
+         std::uint32_t itemChanges = 0; // Changes since the last tight own-summary refit
+         std::uint8_t depth = 0; // Config validation caps depth at 64

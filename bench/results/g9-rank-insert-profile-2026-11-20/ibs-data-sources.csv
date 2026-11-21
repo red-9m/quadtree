@@ -1,0 +1,166 @@
+block,scene,n,engine,phase,op,level,samples
+1,uniform,100000,index-ordered,bucket_publish,STORE,L1 hit,10
+1,uniform,100000,index-ordered,bucket_publish,STORE,L2 hit,1
+1,uniform,100000,index-ordered,bucket_publish,STORE,N/A,24
+1,uniform,100000,index-ordered,epoch_address_test,LOAD,L1 hit,2
+1,uniform,100000,index-ordered,epoch_address_test,LOAD,RAM hit,11
+1,uniform,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",4
+1,uniform,100000,index-ordered,insert_setup_return,LOAD,L1 hit,79
+1,uniform,100000,index-ordered,insert_setup_return,STORE,L1 hit,15
+1,uniform,100000,index-ordered,other_build,LOAD,L1 hit,1760
+1,uniform,100000,index-ordered,other_build,LOAD,L2 hit,52
+1,uniform,100000,index-ordered,other_build,LOAD,RAM hit,19
+1,uniform,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",48
+1,uniform,100000,index-ordered,other_build,STORE,L1 hit,812
+1,uniform,100000,index-ordered,other_build,STORE,L2 hit,18
+1,uniform,100000,index-ordered,other_build,STORE,N/A,35
+1,uniform,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,15
+1,uniform,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,15
+1,uniform,100000,index-ordered,rank_validate,LOAD,L1 hit,299
+1,uniform,100000,index-ordered,rank_validate,LOAD,L2 hit,1
+1,uniform,100000,index-ordered,rank_validate,STORE,L1 hit,168
+1,uniform,100000,index-ordered,rank_validate,STORE,L2 hit,27
+1,uniform,100000,index-ordered,rank_validate,STORE,N/A,2
+1,split-line,100000,index-ordered,bucket_publish,STORE,L1 hit,11
+1,split-line,100000,index-ordered,bucket_publish,STORE,L2 hit,1
+1,split-line,100000,index-ordered,bucket_publish,STORE,N/A,19
+1,split-line,100000,index-ordered,epoch_address_test,LOAD,L1 hit,5
+1,split-line,100000,index-ordered,epoch_address_test,LOAD,L2 hit,1
+1,split-line,100000,index-ordered,epoch_address_test,LOAD,RAM hit,6
+1,split-line,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",3
+1,split-line,100000,index-ordered,insert_setup_return,LOAD,L1 hit,68
+1,split-line,100000,index-ordered,insert_setup_return,STORE,L1 hit,7
+1,split-line,100000,index-ordered,other_build,LOAD,L1 hit,1662
+1,split-line,100000,index-ordered,other_build,LOAD,L2 hit,58
+1,split-line,100000,index-ordered,other_build,LOAD,RAM hit,21
+1,split-line,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",50
+1,split-line,100000,index-ordered,other_build,STORE,L1 hit,688
+1,split-line,100000,index-ordered,other_build,STORE,L2 hit,14
+1,split-line,100000,index-ordered,other_build,STORE,N/A,25
+1,split-line,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,15
+1,split-line,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,11
+1,split-line,100000,index-ordered,rank_validate,LOAD,L1 hit,283
+1,split-line,100000,index-ordered,rank_validate,STORE,L1 hit,149
+1,split-line,100000,index-ordered,rank_validate,STORE,L2 hit,17
+1,split-line-translated,100000,index-ordered,bucket_publish,STORE,L1 hit,7
+1,split-line-translated,100000,index-ordered,bucket_publish,STORE,N/A,31
+1,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,L1 hit,4
+1,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,RAM hit,7
+1,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",4
+1,split-line-translated,100000,index-ordered,insert_setup_return,LOAD,L1 hit,57
+1,split-line-translated,100000,index-ordered,insert_setup_return,STORE,L1 hit,13
+1,split-line-translated,100000,index-ordered,other_build,LOAD,L1 hit,1667
+1,split-line-translated,100000,index-ordered,other_build,LOAD,L2 hit,73
+1,split-line-translated,100000,index-ordered,other_build,LOAD,RAM hit,13
+1,split-line-translated,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",35
+1,split-line-translated,100000,index-ordered,other_build,STORE,L1 hit,724
+1,split-line-translated,100000,index-ordered,other_build,STORE,L2 hit,27
+1,split-line-translated,100000,index-ordered,other_build,STORE,N/A,30
+1,split-line-translated,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,6
+1,split-line-translated,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,9
+1,split-line-translated,100000,index-ordered,rank_validate,LOAD,L1 hit,276
+1,split-line-translated,100000,index-ordered,rank_validate,LOAD,L2 hit,2
+1,split-line-translated,100000,index-ordered,rank_validate,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index-ordered,rank_validate,STORE,L1 hit,165
+1,split-line-translated,100000,index-ordered,rank_validate,STORE,L2 hit,27
+1,mixed-size,100000,index-ordered,bucket_publish,STORE,L1 hit,5
+1,mixed-size,100000,index-ordered,bucket_publish,STORE,N/A,4
+1,mixed-size,100000,index-ordered,epoch_address_test,LOAD,L1 hit,1
+1,mixed-size,100000,index-ordered,epoch_address_test,LOAD,L2 hit,1
+1,mixed-size,100000,index-ordered,epoch_address_test,LOAD,RAM hit,3
+1,mixed-size,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",1
+1,mixed-size,100000,index-ordered,insert_setup_return,LOAD,L1 hit,30
+1,mixed-size,100000,index-ordered,insert_setup_return,STORE,L1 hit,2
+1,mixed-size,100000,index-ordered,other_build,LOAD,L1 hit,544
+1,mixed-size,100000,index-ordered,other_build,LOAD,L2 hit,24
+1,mixed-size,100000,index-ordered,other_build,LOAD,RAM hit,10
+1,mixed-size,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",15
+1,mixed-size,100000,index-ordered,other_build,STORE,L1 hit,240
+1,mixed-size,100000,index-ordered,other_build,STORE,L2 hit,1
+1,mixed-size,100000,index-ordered,other_build,STORE,N/A,5
+1,mixed-size,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,2
+1,mixed-size,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,7
+1,mixed-size,100000,index-ordered,rank_validate,LOAD,L1 hit,91
+1,mixed-size,100000,index-ordered,rank_validate,STORE,L1 hit,64
+1,mixed-size,100000,index-ordered,rank_validate,STORE,L2 hit,9
+2,mixed-size,100000,index-ordered,bucket_publish,STORE,L1 hit,3
+2,mixed-size,100000,index-ordered,bucket_publish,STORE,N/A,8
+2,mixed-size,100000,index-ordered,epoch_address_test,LOAD,RAM hit,3
+2,mixed-size,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",2
+2,mixed-size,100000,index-ordered,insert_setup_return,LOAD,L1 hit,20
+2,mixed-size,100000,index-ordered,insert_setup_return,STORE,L1 hit,5
+2,mixed-size,100000,index-ordered,other_build,LOAD,L1 hit,499
+2,mixed-size,100000,index-ordered,other_build,LOAD,L2 hit,8
+2,mixed-size,100000,index-ordered,other_build,LOAD,RAM hit,4
+2,mixed-size,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",16
+2,mixed-size,100000,index-ordered,other_build,STORE,L1 hit,239
+2,mixed-size,100000,index-ordered,other_build,STORE,L2 hit,2
+2,mixed-size,100000,index-ordered,other_build,STORE,N/A,12
+2,mixed-size,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,4
+2,mixed-size,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,1
+2,mixed-size,100000,index-ordered,rank_validate,LOAD,L1 hit,91
+2,mixed-size,100000,index-ordered,rank_validate,STORE,L1 hit,52
+2,mixed-size,100000,index-ordered,rank_validate,STORE,L2 hit,7
+2,split-line-translated,100000,index-ordered,bucket_publish,STORE,L1 hit,3
+2,split-line-translated,100000,index-ordered,bucket_publish,STORE,N/A,24
+2,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,L1 hit,3
+2,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,RAM hit,6
+2,split-line-translated,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",4
+2,split-line-translated,100000,index-ordered,insert_setup_return,LOAD,L1 hit,56
+2,split-line-translated,100000,index-ordered,insert_setup_return,STORE,L1 hit,9
+2,split-line-translated,100000,index-ordered,other_build,LOAD,L1 hit,1582
+2,split-line-translated,100000,index-ordered,other_build,LOAD,L2 hit,70
+2,split-line-translated,100000,index-ordered,other_build,LOAD,RAM hit,17
+2,split-line-translated,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",32
+2,split-line-translated,100000,index-ordered,other_build,STORE,L1 hit,687
+2,split-line-translated,100000,index-ordered,other_build,STORE,L2 hit,18
+2,split-line-translated,100000,index-ordered,other_build,STORE,N/A,31
+2,split-line-translated,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,8
+2,split-line-translated,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,13
+2,split-line-translated,100000,index-ordered,rank_validate,LOAD,L1 hit,256
+2,split-line-translated,100000,index-ordered,rank_validate,STORE,L1 hit,114
+2,split-line-translated,100000,index-ordered,rank_validate,STORE,L2 hit,21
+2,split-line,100000,index-ordered,bucket_publish,STORE,L1 hit,11
+2,split-line,100000,index-ordered,bucket_publish,STORE,L2 hit,1
+2,split-line,100000,index-ordered,bucket_publish,STORE,N/A,25
+2,split-line,100000,index-ordered,epoch_address_test,LOAD,L1 hit,4
+2,split-line,100000,index-ordered,epoch_address_test,LOAD,RAM hit,8
+2,split-line,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",4
+2,split-line,100000,index-ordered,insert_setup_return,LOAD,L1 hit,50
+2,split-line,100000,index-ordered,insert_setup_return,LOAD,"core, same node Any cache hit",1
+2,split-line,100000,index-ordered,insert_setup_return,STORE,L1 hit,8
+2,split-line,100000,index-ordered,other_build,LOAD,L1 hit,1579
+2,split-line,100000,index-ordered,other_build,LOAD,L2 hit,52
+2,split-line,100000,index-ordered,other_build,LOAD,RAM hit,18
+2,split-line,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",26
+2,split-line,100000,index-ordered,other_build,STORE,L1 hit,670
+2,split-line,100000,index-ordered,other_build,STORE,L2 hit,21
+2,split-line,100000,index-ordered,other_build,STORE,N/A,25
+2,split-line,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,14
+2,split-line,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,9
+2,split-line,100000,index-ordered,rank_validate,LOAD,L1 hit,251
+2,split-line,100000,index-ordered,rank_validate,LOAD,L2 hit,4
+2,split-line,100000,index-ordered,rank_validate,STORE,L1 hit,133
+2,split-line,100000,index-ordered,rank_validate,STORE,L2 hit,16
+2,split-line,100000,index-ordered,rank_validate,STORE,N/A,1
+2,uniform,100000,index-ordered,bucket_publish,STORE,L1 hit,10
+2,uniform,100000,index-ordered,bucket_publish,STORE,L2 hit,2
+2,uniform,100000,index-ordered,bucket_publish,STORE,N/A,24
+2,uniform,100000,index-ordered,epoch_address_test,LOAD,L1 hit,4
+2,uniform,100000,index-ordered,epoch_address_test,LOAD,RAM hit,6
+2,uniform,100000,index-ordered,epoch_address_test,LOAD,"core, same node Any cache hit",5
+2,uniform,100000,index-ordered,insert_setup_return,LOAD,L1 hit,75
+2,uniform,100000,index-ordered,insert_setup_return,STORE,L1 hit,10
+2,uniform,100000,index-ordered,other_build,LOAD,L1 hit,1675
+2,uniform,100000,index-ordered,other_build,LOAD,L2 hit,55
+2,uniform,100000,index-ordered,other_build,LOAD,RAM hit,25
+2,uniform,100000,index-ordered,other_build,LOAD,"core, same node Any cache hit",38
+2,uniform,100000,index-ordered,other_build,STORE,L1 hit,752
+2,uniform,100000,index-ordered,other_build,STORE,L2 hit,19
+2,uniform,100000,index-ordered,other_build,STORE,N/A,35
+2,uniform,100000,index-ordered,probe_stats_and_bound,LOAD,L1 hit,13
+2,uniform,100000,index-ordered,probe_stats_and_bound,STORE,L1 hit,12
+2,uniform,100000,index-ordered,rank_validate,LOAD,L1 hit,309
+2,uniform,100000,index-ordered,rank_validate,STORE,L1 hit,174
+2,uniform,100000,index-ordered,rank_validate,STORE,L2 hit,20

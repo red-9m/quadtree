@@ -1,0 +1,193 @@
+block,scene,n,engine,phase,pc,period,pct_of_combined_commit,inline_locations
+1,uniform,100000,index,payload_block,0x14783c,338867023,21.820,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,uniform,100000,index,lookahead,0xd3317,162599503,10.470,quadtree-index-impl.h:2379
+1,uniform,100000,index,gather_call,0xd331a,130812799,8.423,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+1,uniform,100000,index,meta_block,0x14785e,46991366,3.026,quadtree-index-impl.h:2534
+1,uniform,100000,index,refit,0x130311,41093856,2.646,quadtree-index-impl.h:1865
+1,uniform,100000,index,lookahead,0xd3301,30475225,1.962,quadtree-index-impl.h:2376
+1,uniform,100000,index,gather_call,0xd3344,21177508,1.364,quadtree-index-impl.h:2387
+1,uniform,100000,index,box_block,0x14784c,19715535,1.269,quadtree-index-impl.h:2534
+1,uniform,100000,index,topology_other,0x14b939,18298645,1.178,quadtree-index-impl.h:1934
+1,uniform,100000,index,publish_and_loop,0xd336f,13711959,0.883,quadtree-index-impl.h:2390
+1,uniform,100000,index,refit,0x1302fa,12190119,0.785,quadtree-index-impl.h:1838
+1,uniform,100000,index,refit,0x130339,10683358,0.688,quadtree-index-impl.h:1869
+1,uniform,100000,index,payload_block,0x147830,10672912,0.687,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,uniform,100000,index,construct_other,0x14788f,10666807,0.687,quadtree-index-impl.h:2536
+1,uniform,100000,index,gather_call,0xd3336,10634860,0.685,quadtree-index-impl.h:2387
+1,uniform,100000,index,publish_and_loop,0xd335d,9178810,0.591,quadtree-index-impl.h:2390
+1,split-line,10000,index,gather_call,0xd331a,156670737,13.114,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+1,split-line,10000,index,payload_block,0x14783c,71606111,5.994,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,split-line,10000,index,refit,0x130311,66798644,5.591,quadtree-index-impl.h:1865
+1,split-line,10000,index,lookahead,0xd3317,27356718,2.290,quadtree-index-impl.h:2379
+1,split-line,10000,index,lookahead,0xd3301,19718628,1.651,quadtree-index-impl.h:2376
+1,split-line,10000,index,lookahead,0xd32fe,18308293,1.532,quadtree-index-impl.h:2375
+1,split-line,10000,index,refit,0x130319,13742462,1.150,quadtree-index-impl.h:1864
+1,split-line,10000,index,payload_block,0x147830,13742176,1.150,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,split-line,10000,index,lookahead,0xd32f0,13679686,1.145,quadtree-index-impl.h:2375
+1,split-line,10000,index,topology_other,0x14b939,13644127,1.142,quadtree-index-impl.h:1934
+1,split-line,10000,index,own_range,0x14b6a8,12177547,1.019,quadtree-index-impl.h:1895
+1,split-line,10000,index,refit,0x130339,12107725,1.013,quadtree-index-impl.h:1869
+1,split-line,10000,index,lookahead,0xd3305,10651140,0.892,quadtree-index-impl.h:2379
+1,split-line,10000,index,refit,0x1302fa,10645307,0.891,quadtree-index-impl.h:1838
+1,split-line,10000,index,gather_call,0xd3322,9184428,0.769,quadtree-index-impl.h:2385
+1,split-line,10000,index,node_init,0x14b7c1,9153291,0.766,quadtree-index-impl.h:1925
+1,split-line-translated,100000,index,payload_block,0x14783c,334658926,21.698,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,split-line-translated,100000,index,lookahead,0xd3317,158161089,10.254,quadtree-index-impl.h:2379
+1,split-line-translated,100000,index,gather_call,0xd331a,62399968,4.046,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+1,split-line-translated,100000,index,refit,0x130311,53028044,3.438,quadtree-index-impl.h:1865
+1,split-line-translated,100000,index,meta_block,0x14785e,41062325,2.662,quadtree-index-impl.h:2534
+1,split-line-translated,100000,index,topology_other,0x14b939,30481560,1.976,quadtree-index-impl.h:1934
+1,split-line-translated,100000,index,box_block,0x14784c,27374894,1.775,quadtree-index-impl.h:2534
+1,split-line-translated,100000,index,gather_call,0xd3344,22830971,1.480,quadtree-index-impl.h:2387
+1,split-line-translated,100000,index,lookahead,0xd32fe,21286189,1.380,quadtree-index-impl.h:2375
+1,split-line-translated,100000,index,topology_other,0x14b92e,15298893,0.992,quadtree-index-impl.h:121 | quadtree-index-impl.h:1934
+1,split-line-translated,100000,index,gather_call,0xd3336,13751882,0.892,quadtree-index-impl.h:2387
+1,split-line-translated,100000,index,topology_other,0x14b906,13719686,0.890,quadtree-index-impl.h:1937
+1,split-line-translated,100000,index,meta_block,0x14785a,13575155,0.880,quadtree-index-impl.h:2533
+1,split-line-translated,100000,index,lookahead,0xd3301,13370384,0.867,quadtree-index-impl.h:2376
+1,split-line-translated,100000,index,construct_other,0x14788f,12174637,0.789,quadtree-index-impl.h:2536
+1,split-line-translated,100000,index,refit,0x1302fa,12121958,0.786,quadtree-index-impl.h:1838
+1,uniform,100000,index-ordered,payload_block,0x14783c,580400679,37.348,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,uniform,100000,index-ordered,rank_insert,0x144fa1,527819765,33.965,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,uniform,100000,index-ordered,gather_call,0xd44cc,114167586,7.347,quadtree-index-impl.h:2387
+1,uniform,100000,index-ordered,rank_insert,0x144f84,19834089,1.276,quadtree-index.h:1141 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,uniform,100000,index-ordered,refit,0x130311,12232470,0.787,quadtree-index-impl.h:1865
+1,uniform,100000,index-ordered,publish_and_loop,0xd44e3,10690653,0.688,quadtree-index-impl.h:2390
+1,uniform,100000,index-ordered,meta_block,0x14785e,10641260,0.685,quadtree-index-impl.h:2534
+1,uniform,100000,index-ordered,node_init,0x14ba4e,7664126,0.493,quadtree-index-impl.h:480 | quadtree-index-impl.h:1926
+1,uniform,100000,index-ordered,rank_insert,0x144fba,7640511,0.492,quadtree-index.h:1161
+1,uniform,100000,index-ordered,rank_insert,0x144f9a,7640467,0.492,quadtree-index.h:1073 | quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,uniform,100000,index-ordered,topology_other,0x14b939,6112533,0.393,quadtree-index-impl.h:1934
+1,uniform,100000,index-ordered,payload_block,0x147834,6100885,0.393,quadtree-index-impl.h:2524
+1,uniform,100000,index-ordered,rank_insert,0x144f11,4600166,0.296,quadtree-index.h:433 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,uniform,100000,index-ordered,own_range,0x14b5ce,4589806,0.295,quadtree-index-impl.h:1906
+1,uniform,100000,index-ordered,gather_call,0xd44ba,4587798,0.295,quadtree-index-impl.h:2387
+1,uniform,100000,index-ordered,publish_and_loop,0xd4498,4575780,0.294,quadtree-index-impl.h:2361
+1,split-line,10000,index-ordered,payload_block,0x14783c,201659216,27.044,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,split-line,10000,index-ordered,rank_insert,0x144fa1,110381971,14.803,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line,10000,index-ordered,refit,0x130311,30496690,4.090,quadtree-index-impl.h:1865
+1,split-line,10000,index-ordered,gather_call,0xd44cc,22929060,3.075,quadtree-index-impl.h:2387
+1,split-line,10000,index-ordered,rank_insert,0x144f84,15213790,2.040,quadtree-index.h:1141 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line,10000,index-ordered,rank_insert,0x144e50,13746376,1.843,quadtree-index.h:1157
+1,split-line,10000,index-ordered,meta_block,0x14785a,10639986,1.427,quadtree-index-impl.h:2533
+1,split-line,10000,index-ordered,rank_insert,0x144f37,10617666,1.424,quadtree-index.h:436 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line,10000,index-ordered,publish_and_loop,0xd4515,9199716,1.234,quadtree-index-impl.h:2393
+1,split-line,10000,index-ordered,refit,0x130319,7649690,1.026,quadtree-index-impl.h:1864
+1,split-line,10000,index-ordered,rank_insert,0x144f11,6092546,0.817,quadtree-index.h:433 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line,10000,index-ordered,topology_other,0x14b939,6086636,0.816,quadtree-index-impl.h:1934
+1,split-line,10000,index-ordered,publish_and_loop,0xd44e3,6085490,0.816,quadtree-index-impl.h:2390
+1,split-line,10000,index-ordered,node_init,0x14b7c1,4691647,0.629,quadtree-index-impl.h:1925
+1,split-line,10000,index-ordered,publish_and_loop,0xd4510,4594872,0.616,quadtree-index-impl.h:2392
+1,split-line,10000,index-ordered,topology_other,0x14b743,4586221,0.615,quadtree-index-impl.h:1918
+1,split-line-translated,100000,index-ordered,rank_insert,0x144fa1,529203328,39.834,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line-translated,100000,index-ordered,payload_block,0x14783c,403797534,30.394,stl_construct.h:110 | quadtree-index-impl.h:2531
+1,split-line-translated,100000,index-ordered,gather_call,0xd44cc,85974894,6.471,quadtree-index-impl.h:2387
+1,split-line-translated,100000,index-ordered,refit,0x130311,15261572,1.149,quadtree-index-impl.h:1865
+1,split-line-translated,100000,index-ordered,topology_other,0x14b939,13572182,1.022,quadtree-index-impl.h:1934
+1,split-line-translated,100000,index-ordered,meta_block,0x14785e,10712509,0.806,quadtree-index-impl.h:2534
+1,split-line-translated,100000,index-ordered,meta_block,0x14785a,7630524,0.574,quadtree-index-impl.h:2533
+1,split-line-translated,100000,index-ordered,rank_insert,0x144ef8,7626244,0.574,quadtree-index.h:434 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line-translated,100000,index-ordered,rank_insert,0x144fa7,6125676,0.461,quadtree-index.h:1146 | quadtree-index.h:1159 | quadtree-index.h:1155
+1,split-line-translated,100000,index-ordered,payload_block,0x147834,6106875,0.460,quadtree-index-impl.h:2524
+1,split-line-translated,100000,index-ordered,rank_insert,0x144fba,6044672,0.455,quadtree-index.h:1161
+1,split-line-translated,100000,index-ordered,own_range,0x14b1fa,4592432,0.346,quadtree-index-impl.h:1897
+1,split-line-translated,100000,index-ordered,own_range,0x14b657,4590552,0.346,quadtree-index-impl.h:1897
+1,split-line-translated,100000,index-ordered,box_block,0x14784c,4587288,0.345,quadtree-index-impl.h:2534
+1,split-line-translated,100000,index-ordered,topology_other,0x14b709,4586802,0.345,quadtree-index-impl.h:1912
+1,split-line-translated,100000,index-ordered,own_range,0x14b062,4585810,0.345,quadtree-index-impl.h:1890
+2,split-line-translated,100000,index-ordered,payload_block,0x14783c,696149344,47.147,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,split-line-translated,100000,index-ordered,rank_insert,0x144fa1,405945972,27.493,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line-translated,100000,index-ordered,gather_call,0xd44cc,97793938,6.623,quadtree-index-impl.h:2387
+2,split-line-translated,100000,index-ordered,refit,0x130311,15666483,1.061,quadtree-index-impl.h:1865
+2,split-line-translated,100000,index-ordered,meta_block,0x14785e,10571801,0.716,quadtree-index-impl.h:2534
+2,split-line-translated,100000,index-ordered,rank_insert,0x144fa7,9208791,0.624,quadtree-index.h:1146 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line-translated,100000,index-ordered,topology_other,0x14b939,7828910,0.530,quadtree-index-impl.h:1934
+2,split-line-translated,100000,index-ordered,rank_insert,0x144f11,6520144,0.442,quadtree-index.h:433 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line-translated,100000,index-ordered,rank_insert,0x144e50,5289656,0.358,quadtree-index.h:1157
+2,split-line-translated,100000,index-ordered,rank_insert,0x144f37,5251848,0.356,quadtree-index.h:436 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line-translated,100000,index-ordered,own_range,0x14b6a8,5239154,0.355,quadtree-index-impl.h:1895
+2,split-line-translated,100000,index-ordered,rank_insert,0x144f84,5042117,0.341,quadtree-index.h:1141 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line-translated,100000,index-ordered,payload_block,0x147830,3961960,0.268,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,split-line-translated,100000,index-ordered,payload_block,0x147834,3961600,0.268,quadtree-index-impl.h:2524
+2,split-line-translated,100000,index-ordered,topology_other,0x14b92e,3956124,0.268,quadtree-index-impl.h:121 | quadtree-index-impl.h:1934
+2,split-line-translated,100000,index-ordered,node_init,0x12f7ba,3955565,0.268,numeric:233 | quadtree-index-impl.h:448
+2,split-line,10000,index-ordered,payload_block,0x14783c,212484123,26.700,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,split-line,10000,index-ordered,rank_insert,0x144fa1,109178918,13.719,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line,10000,index-ordered,refit,0x130311,21090760,2.650,quadtree-index-impl.h:1865
+2,split-line,10000,index-ordered,rank_insert,0x144f84,19804873,2.489,quadtree-index.h:1141 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line,10000,index-ordered,gather_call,0xd44cc,18449837,2.318,quadtree-index-impl.h:2387
+2,split-line,10000,index-ordered,rank_insert,0x144f9a,14506638,1.823,quadtree-index.h:1073 | quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,split-line,10000,index-ordered,meta_block,0x14785a,13230318,1.662,quadtree-index-impl.h:2533
+2,split-line,10000,index-ordered,publish_and_loop,0xd44e3,11866334,1.491,quadtree-index-impl.h:2390
+2,split-line,10000,index-ordered,publish_and_loop,0xd4515,11833977,1.487,quadtree-index-impl.h:2393
+2,split-line,10000,index-ordered,rank_insert,0x144e50,7932868,0.997,quadtree-index.h:1157
+2,split-line,10000,index-ordered,topology_other,0x14b939,7911122,0.994,quadtree-index-impl.h:1934
+2,split-line,10000,index-ordered,publish_and_loop,0xd4510,7902246,0.993,quadtree-index-impl.h:2392
+2,split-line,10000,index-ordered,topology_other,0x14b92e,7314383,0.919,quadtree-index-impl.h:121 | quadtree-index-impl.h:1934
+2,split-line,10000,index-ordered,node_init,0x14b7c1,6606966,0.830,quadtree-index-impl.h:1925
+2,split-line,10000,index-ordered,publish_and_loop,0xd4498,6595294,0.829,quadtree-index-impl.h:2361
+2,split-line,10000,index-ordered,meta_block,0x147879,6583901,0.827,stl_construct.h:110 | quadtree-index-impl.h:2533
+2,uniform,100000,index-ordered,payload_block,0x14783c,579494801,36.183,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,uniform,100000,index-ordered,rank_insert,0x144fa1,575018925,35.903,quadtree-index.h:1144 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,uniform,100000,index-ordered,gather_call,0xd44cc,125846727,7.858,quadtree-index-impl.h:2387
+2,uniform,100000,index-ordered,refit,0x130311,11856763,0.740,quadtree-index-impl.h:1865
+2,uniform,100000,index-ordered,gather_call,0xd44ba,10566713,0.660,quadtree-index-impl.h:2387
+2,uniform,100000,index-ordered,meta_block,0x14785e,10559922,0.659,quadtree-index-impl.h:2534
+2,uniform,100000,index-ordered,rank_insert,0x144fa7,7873407,0.492,quadtree-index.h:1146 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,uniform,100000,index-ordered,payload_block,0x147830,7616653,0.476,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,uniform,100000,index-ordered,own_range,0x14b657,6618056,0.413,quadtree-index-impl.h:1897
+2,uniform,100000,index-ordered,rank_insert,0x144ef8,6609958,0.413,quadtree-index.h:434 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,uniform,100000,index-ordered,rank_insert,0x144e50,6606068,0.412,quadtree-index.h:1157
+2,uniform,100000,index-ordered,payload_block,0x147834,5277934,0.330,quadtree-index-impl.h:2524
+2,uniform,100000,index-ordered,rank_insert,0x144f84,5260510,0.328,quadtree-index.h:1141 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,uniform,100000,index-ordered,publish_and_loop,0xd4510,3972456,0.248,quadtree-index-impl.h:2392
+2,uniform,100000,index-ordered,rank_insert,0x144f42,3967126,0.248,quadtree-index.h:437 | quadtree-index.h:1070 | quadtree-index.h:1140 | quadtree-index.h:1159 | quadtree-index.h:1155
+2,uniform,100000,index-ordered,publish_and_loop,0xd4515,3960559,0.247,quadtree-index-impl.h:2393
+2,split-line-translated,100000,index,payload_block,0x14783c,387980141,23.000,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,split-line-translated,100000,index,lookahead,0xd3317,227441261,13.483,quadtree-index-impl.h:2379
+2,split-line-translated,100000,index,gather_call,0xd331a,76118526,4.512,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+2,split-line-translated,100000,index,meta_block,0x14785e,64389206,3.817,quadtree-index-impl.h:2534
+2,split-line-translated,100000,index,refit,0x130311,42084173,2.495,quadtree-index-impl.h:1865
+2,split-line-translated,100000,index,box_block,0x14784c,34198838,2.027,quadtree-index-impl.h:2534
+2,split-line-translated,100000,index,gather_call,0xd3344,28982460,1.718,quadtree-index-impl.h:2387
+2,split-line-translated,100000,index,topology_other,0x14b939,20730035,1.229,quadtree-index-impl.h:1934
+2,split-line-translated,100000,index,lookahead,0xd32fe,19679057,1.167,quadtree-index-impl.h:2375
+2,split-line-translated,100000,index,refit,0x130322,17100328,1.014,quadtree-index-impl.h:1865
+2,split-line-translated,100000,index,publish_and_loop,0xd335d,11878957,0.704,quadtree-index-impl.h:2390
+2,split-line-translated,100000,index,refit,0x130306,11864678,0.703,quadtree-index-impl.h:1839
+2,split-line-translated,100000,index,lookahead,0xd3301,11839140,0.702,quadtree-index-impl.h:2376
+2,split-line-translated,100000,index,node_init,0x14ba07,11816486,0.701,quadtree-index-impl.h:473 | quadtree-index-impl.h:1926
+2,split-line-translated,100000,index,refit,0x130319,11800786,0.700,quadtree-index-impl.h:1864
+2,split-line-translated,100000,index,own_range,0x14b6a8,11763906,0.697,quadtree-index-impl.h:1895
+2,split-line,10000,index,gather_call,0xd331a,136637697,11.287,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+2,split-line,10000,index,refit,0x130311,82721075,6.833,quadtree-index-impl.h:1865
+2,split-line,10000,index,payload_block,0x14783c,76094456,6.286,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,split-line,10000,index,lookahead,0xd3317,26346801,2.176,quadtree-index-impl.h:2379
+2,split-line,10000,index,refit,0x130319,21095636,1.743,quadtree-index-impl.h:1864
+2,split-line,10000,index,lookahead,0xd3301,19674877,1.625,quadtree-index-impl.h:2376
+2,split-line,10000,index,payload_block,0x147830,18400822,1.520,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,split-line,10000,index,lookahead,0xd32f0,18379885,1.518,quadtree-index-impl.h:2375
+2,split-line,10000,index,slot_block,0x14788b,14505044,1.198,stl_construct.h:110 | quadtree-index-impl.h:2535
+2,split-line,10000,index,publish_and_loop,0xd33ac,14481051,1.196,quadtree-index-impl.h:2361
+2,split-line,10000,index,topology_other,0x14b939,14450962,1.194,quadtree-index-impl.h:1934
+2,split-line,10000,index,lookahead,0xd32fe,13176956,1.088,quadtree-index-impl.h:2375
+2,split-line,10000,index,meta_block,0x14785a,13139058,1.085,quadtree-index-impl.h:2533
+2,split-line,10000,index,own_range,0x14b6a8,13125961,1.084,quadtree-index-impl.h:1895
+2,split-line,10000,index,gather_call,0xd3336,11816283,0.976,quadtree-index-impl.h:2387
+2,split-line,10000,index,refit,0x130306,10559322,0.872,quadtree-index-impl.h:1839
+2,uniform,100000,index,payload_block,0x14783c,294602461,19.336,stl_construct.h:110 | quadtree-index-impl.h:2531
+2,uniform,100000,index,lookahead,0xd3317,178463020,11.713,quadtree-index-impl.h:2379
+2,uniform,100000,index,gather_call,0xd331a,140815034,9.242,quadtree-index-impl.h:2331 | quadtree-index-impl.h:2384
+2,uniform,100000,index,refit,0x130311,61781461,4.055,quadtree-index-impl.h:1865
+2,uniform,100000,index,meta_block,0x14785e,30116482,1.977,quadtree-index-impl.h:2534
+2,uniform,100000,index,lookahead,0xd3301,29101801,1.910,quadtree-index-impl.h:2376
+2,uniform,100000,index,lookahead,0xd32fe,25065357,1.645,quadtree-index-impl.h:2375
+2,uniform,100000,index,box_block,0x14784c,21147572,1.388,quadtree-index-impl.h:2534
+2,uniform,100000,index,gather_call,0xd3344,17135936,1.125,quadtree-index-impl.h:2387
+2,uniform,100000,index,lookahead,0xd3305,17095986,1.122,quadtree-index-impl.h:2379
+2,uniform,100000,index,topology_other,0x14b939,15782823,1.036,quadtree-index-impl.h:1934
+2,uniform,100000,index,own_range,0x14b6a8,14486186,0.951,quadtree-index-impl.h:1895
+2,uniform,100000,index,gather_call,0xd3322,11813139,0.775,quadtree-index-impl.h:2385
+2,uniform,100000,index,slot_block,0x14788b,10557328,0.693,stl_construct.h:110 | quadtree-index-impl.h:2535
+2,uniform,100000,index,publish_and_loop,0xd336f,10542422,0.692,quadtree-index-impl.h:2390
+2,uniform,100000,index,publish_and_loop,0xd3353,10488078,0.688,quadtree-index-impl.h:2388

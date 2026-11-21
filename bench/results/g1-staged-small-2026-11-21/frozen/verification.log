@@ -1,0 +1,6 @@
+81-control: 7776 samples, 32 warm library rows allocate zero, G1 8/8/0 (pass/fail/inconclusive)
+81-candidate: 7776 samples, 32 warm library rows allocate zero, G1 8/8/0 (pass/fail/inconclusive)
+117-control: 11232 samples, 32 warm library rows allocate zero, G1 8/8/0 (pass/fail/inconclusive)
+117-candidate: 11232 samples, 32 warm library rows allocate zero, G1 8/8/0 (pass/fail/inconclusive)
+192 matched uncapped engine rows agree on pair counts, checksums, fixtures, work, allocations and memory.
+All 32 diagnostic profile rows match frozen control fixture IDs, pair checksums and traversal work.

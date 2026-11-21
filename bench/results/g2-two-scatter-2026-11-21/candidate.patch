@@ -1,0 +1,90 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1610,28 +1610,38 @@
+         const auto h = detail::span(cell.box.minY, cell.box.maxY);
+         const auto fits_width = split.splitX ? w / 2 : w;
+         const auto fits_height = split.splitY ? h / 2 : h;
+-        std::uint32_t count[5]{};
+-        for (auto i = begin; i < end; ++i)
++        const auto length = end - begin;
++        const auto middle = length < 32 ? begin : begin + length / 2;
++        std::uint32_t count[5]{}, lowerCount[5]{};
++        const auto classify = [&](std::uint32_t from, std::uint32_t to, std::uint32_t (&bins)[5]) noexcept
+         {
++            for (auto i = from; i < to; ++i)
++            {
+ #if defined(__GNUC__) || defined(__clang__)
+-            constexpr std::uint32_t ahead = 16;
+-            if (end - i > ahead)
+-                __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
++                constexpr std::uint32_t ahead = 16;
++                if (end - i > ahead)
++                    __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
+ #endif
+-            const auto& box = boxes[src[i]];
+-            const auto width = detail::span(box.minX, box.maxX);
+-            const auto height = detail::span(box.minY, box.maxY);
+-            std::uint32_t b = 0;
+-            if (width <= fits_width && height <= fits_height)
+-            {
+-                const auto x = box.minX + static_cast<T>(width / 2);
+-                const auto y = box.minY + static_cast<T>(height / 2);
+-                b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+-                    (split.splitY && y >= split.y ? 2u : 0u));
++                const auto& box = boxes[src[i]];
++                const auto width = detail::span(box.minX, box.maxX);
++                const auto height = detail::span(box.minY, box.maxY);
++                std::uint32_t b = 0;
++                if (width <= fits_width && height <= fits_height)
++                {
++                    const auto x = box.minX + static_cast<T>(width / 2);
++                    const auto y = box.minY + static_cast<T>(height / 2);
++                    b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
++                        (split.splitY && y >= split.y ? 2u : 0u));
++                }
++                tags[i] = static_cast<std::uint8_t>(b);
++                ++bins[b];
+             }
+-            tags[i] = static_cast<std::uint8_t>(b);
+-            ++count[b];
+-        }
++        };
++        if (middle != begin)
++            classify(begin, middle, lowerCount);
++        classify(middle, end, count);
++        for (unsigned b = 0; b < 5; ++b)
++            count[b] += lowerCount[b];
+         const auto movable = end - begin - count[0];
+         if (movable <= mConfig.splitThreshold)
+             return finish();
+@@ -1662,8 +1672,28 @@
+         const std::uint32_t edges[5]{begin + count[0], begin + count[0] + count[1],
+             begin + count[0] + count[1] + count[2], end - count[4], end};
+         std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};
+-        for (auto i = begin; i < end; ++i)
+-            dst[next[tags[i]]++] = src[i];
++        if (middle == begin)
++        {
++            for (auto i = begin; i < end; ++i)
++                dst[next[tags[i]]++] = src[i];
++        }
++        else
++        {
++            // Each tag's lower-half slice precedes its upper-half slice.
++            // The two independent cursors may advance in interleaved order.
++            std::uint32_t upper[5]{begin + lowerCount[0], edges[0] + lowerCount[1],
++                edges[1] + lowerCount[2], edges[2] + lowerCount[3], edges[3] + lowerCount[4]};
++            for (auto i = begin, j = middle; i < middle; ++i, ++j)
++            {
++                const auto a = tags[i], b = tags[j];
++                const auto x = src[i], y = src[j];
++                const auto lower = next[a]++, higher = upper[b]++;
++                dst[lower] = x;
++                dst[higher] = y;
++            }
++            if ((length & 1u) != 0)
++                dst[upper[tags[end - 1]]] = src[end - 1];
++        }
+         if (dst != order)
+             std::copy(dst + begin, dst + edges[0], order + begin);
+         std::uint32_t children = 0;

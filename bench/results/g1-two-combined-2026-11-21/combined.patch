@@ -1,0 +1,120 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1212,7 +1212,7 @@
+         else if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
+         else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+-            tinyPairs(context, visitor, predicate);
++            return tinyPairResult(options.budget, visitor, predicate);
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
+@@ -2231,10 +2231,42 @@
+         if (handles && handles->size() < count)
+             return Status::InsufficientOutput;
+         if (options.workspace)
++        {
++            if constexpr (flatIntegerEligible<Consume, Projected, R>())
++            {
++                // Dispatch the warm flat path before entering the general preparation frame.
++                // Same checks and order as buildPrepared: workspace capacity, active guard, flat build.
++                if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
++                    count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
++                {
++                    auto& scratch = *options.workspace;
++                    if (!workspaceFits(scratch, count))
++                        return Status::InsufficientWorkspace;
++                    typename Workspace<T>::Use use(scratch);
++                    if (auto result = buildFlatInteger(std::ranges::data(range), static_cast<std::uint32_t>(count), handles))
++                        return *result;
++                }
++            }
+             return buildPrepared<Consume, Projected>(range, accessor, handles, count, *options.workspace);
++        }
+         return buildWithLocalWorkspace<Consume, Projected>(range, accessor, handles, count);
+     }
+ 
++    template<bool Consume, bool Projected, typename R>
++    static constexpr bool flatIntegerEligible() noexcept
++    {
++        return !Projected && !Consume && !FloatCoordinate<T> && std::ranges::contiguous_range<R> &&
++            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
++            std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
++            !requires { Policy::acquireIdentity(); };
++    }
++
++    static bool workspaceFits(const Workspace<T>& scratch, std::size_t count) noexcept
++    {
++        return scratch.mBuildBoxes.capacity() >= count && scratch.mDescriptors.capacity() >= count &&
++            scratch.mKeys.capacity() >= count && scratch.tempKeyCapacity() >= count;
++    }
++
+     template<bool Consume, bool Projected, typename R, typename Accessor>
+     Status buildWithLocalWorkspace(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
+         std::size_t count) noexcept
+@@ -2251,15 +2283,10 @@
+         std::size_t count, Workspace<T>& workspace) noexcept
+     {
+         auto* scratch = &workspace;
+-        if (scratch->mBuildBoxes.capacity() < count || scratch->mDescriptors.capacity() < count ||
+-            scratch->mKeys.capacity() < count || scratch->tempKeyCapacity() < count)
++        if (!workspaceFits(*scratch, count))
+             return Status::InsufficientWorkspace;
+         typename Workspace<T>::Use use(*scratch);
+-        if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+-            std::ranges::contiguous_range<R> &&
+-            std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
+-            std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
+-            !requires { Policy::acquireIdentity(); })
++        if constexpr (flatIntegerEligible<Consume, Projected, R>())
+         {
+             if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
+                 count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
+@@ -2583,12 +2610,16 @@
+         return Status::Ok;
+     }
+ 
+-    struct Context
++    // Result is QueryResult for owning contexts or QueryResult& to count into a caller's return object.
++    template<typename Result>
++    struct QueryContext
+     {
+-        QueryResult result;
++        Result result;
+         WorkBudget remaining;
+ 
+-        explicit Context(WorkBudget budget) noexcept: remaining(budget) {}
++        explicit QueryContext(WorkBudget budget) noexcept requires (!std::is_reference_v<Result>): remaining(budget) {}
++        QueryContext(WorkBudget budget, QueryResult& output) noexcept requires std::is_reference_v<Result>:
++            result(output), remaining(budget) {}
+         bool active() const noexcept { return result.status == Status::Ok; }
+ 
+         bool charge(std::uint64_t& budget, std::uint64_t& counter) noexcept
+@@ -2643,6 +2674,7 @@
+                 result.status = Status::Stopped;
+         }
+     };
++    using Context = QueryContext<QueryResult>;
+ 
+     bool allRanked() const noexcept { return mEntries.mRankCount == size(); }
+ 
+@@ -2834,8 +2866,18 @@
+             reportPair(a, b, ordered, context, visitor);
+     }
+ 
++    // One named result and one return lets the counters live in the caller's return slot.
+     template<typename Visitor, typename Predicate>
+-    void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    QueryResult tinyPairResult(WorkBudget budget, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        QueryResult result;
++        QueryContext<QueryResult&> context(budget, result);
++        tinyPairs(context, visitor, predicate);
++        return result;
++    }
++
++    template<typename C, typename Visitor, typename Predicate>
++    void tinyPairs(C& context, Visitor& visitor, Predicate& predicate) const noexcept
+     {
+         const auto count = mEntries.mSize;
+         const auto* boxes = mEntries.mBoxes;

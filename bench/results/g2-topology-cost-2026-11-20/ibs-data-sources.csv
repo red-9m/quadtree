@@ -1,0 +1,173 @@
+block,scene,n,engine,phase,op,level,samples
+1,uniform,100000,index,build_total,LOAD,L1 hit,3039
+1,uniform,100000,index,build_total,LOAD,L2 hit,69
+1,uniform,100000,index,build_total,LOAD,RAM hit,31
+1,uniform,100000,index,build_total,LOAD,"core, same node Any cache hit",85
+1,uniform,100000,index,build_total,STORE,L1 hit,1428
+1,uniform,100000,index,build_total,STORE,L2 hit,10
+1,uniform,100000,index,build_total,STORE,N/A,37
+1,uniform,100000,index,dense_refs,LOAD,L1 hit,10
+1,uniform,100000,index,dense_refs,STORE,L1 hit,34
+1,uniform,100000,index,node_init,LOAD,L1 hit,84
+1,uniform,100000,index,node_init,STORE,L1 hit,127
+1,uniform,100000,index,node_init,STORE,L2 hit,1
+1,uniform,100000,index,own_loop_other,LOAD,L1 hit,53
+1,uniform,100000,index,own_loop_other,STORE,L1 hit,23
+1,uniform,100000,index,own_summary,LOAD,L1 hit,123
+1,uniform,100000,index,own_summary,STORE,L1 hit,58
+1,uniform,100000,index,subtree_refit,LOAD,L1 hit,23
+1,uniform,100000,index,subtree_refit,LOAD,L2 hit,1
+1,uniform,100000,index,subtree_refit,STORE,L1 hit,10
+1,uniform,100000,index,topology_other,LOAD,L1 hit,72
+1,uniform,100000,index,topology_other,STORE,L1 hit,44
+1,split-line-translated,100000,index,build_total,LOAD,L1 hit,3300
+1,split-line-translated,100000,index,build_total,LOAD,L2 hit,64
+1,split-line-translated,100000,index,build_total,LOAD,RAM hit,27
+1,split-line-translated,100000,index,build_total,LOAD,"core, same node Any cache hit",99
+1,split-line-translated,100000,index,build_total,STORE,L1 hit,1420
+1,split-line-translated,100000,index,build_total,STORE,L2 hit,29
+1,split-line-translated,100000,index,build_total,STORE,N/A,52
+1,split-line-translated,100000,index,dense_refs,LOAD,L1 hit,15
+1,split-line-translated,100000,index,dense_refs,STORE,L1 hit,51
+1,split-line-translated,100000,index,node_init,LOAD,L1 hit,80
+1,split-line-translated,100000,index,node_init,LOAD,L2 hit,1
+1,split-line-translated,100000,index,node_init,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index,node_init,STORE,L1 hit,120
+1,split-line-translated,100000,index,node_init,STORE,L2 hit,3
+1,split-line-translated,100000,index,own_loop_other,LOAD,L1 hit,54
+1,split-line-translated,100000,index,own_loop_other,STORE,L1 hit,39
+1,split-line-translated,100000,index,own_summary,LOAD,L1 hit,104
+1,split-line-translated,100000,index,own_summary,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index,own_summary,STORE,L1 hit,54
+1,split-line-translated,100000,index,own_summary,STORE,L2 hit,1
+1,split-line-translated,100000,index,subtree_refit,LOAD,L1 hit,23
+1,split-line-translated,100000,index,subtree_refit,STORE,L1 hit,13
+1,split-line-translated,100000,index,topology_other,LOAD,L1 hit,90
+1,split-line-translated,100000,index,topology_other,LOAD,L2 hit,1
+1,split-line-translated,100000,index,topology_other,LOAD,"core, same node Any cache hit",1
+1,split-line-translated,100000,index,topology_other,STORE,L1 hit,50
+1,uniform,100000,index-ordered,build_total,LOAD,L1 hit,1188
+1,uniform,100000,index-ordered,build_total,LOAD,L2 hit,40
+1,uniform,100000,index-ordered,build_total,LOAD,RAM hit,11
+1,uniform,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",24
+1,uniform,100000,index-ordered,build_total,STORE,L1 hit,535
+1,uniform,100000,index-ordered,build_total,STORE,L2 hit,19
+1,uniform,100000,index-ordered,build_total,STORE,N/A,28
+1,uniform,100000,index-ordered,dense_refs,LOAD,L1 hit,5
+1,uniform,100000,index-ordered,dense_refs,STORE,L1 hit,16
+1,uniform,100000,index-ordered,node_init,LOAD,L1 hit,19
+1,uniform,100000,index-ordered,node_init,STORE,L1 hit,33
+1,uniform,100000,index-ordered,node_init,STORE,L2 hit,1
+1,uniform,100000,index-ordered,own_loop_other,LOAD,L1 hit,18
+1,uniform,100000,index-ordered,own_loop_other,STORE,L1 hit,11
+1,uniform,100000,index-ordered,own_summary,LOAD,L1 hit,38
+1,uniform,100000,index-ordered,own_summary,STORE,L1 hit,12
+1,uniform,100000,index-ordered,subtree_refit,LOAD,L1 hit,11
+1,uniform,100000,index-ordered,subtree_refit,STORE,L1 hit,2
+1,uniform,100000,index-ordered,topology_other,LOAD,L1 hit,31
+1,uniform,100000,index-ordered,topology_other,STORE,L1 hit,14
+1,split-line-translated,100000,index-ordered,build_total,LOAD,L1 hit,1042
+1,split-line-translated,100000,index-ordered,build_total,LOAD,L2 hit,27
+1,split-line-translated,100000,index-ordered,build_total,LOAD,RAM hit,16
+1,split-line-translated,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",21
+1,split-line-translated,100000,index-ordered,build_total,STORE,L1 hit,530
+1,split-line-translated,100000,index-ordered,build_total,STORE,L2 hit,15
+1,split-line-translated,100000,index-ordered,build_total,STORE,N/A,18
+1,split-line-translated,100000,index-ordered,dense_refs,LOAD,L1 hit,4
+1,split-line-translated,100000,index-ordered,dense_refs,STORE,L1 hit,17
+1,split-line-translated,100000,index-ordered,node_init,LOAD,L1 hit,24
+1,split-line-translated,100000,index-ordered,node_init,STORE,L1 hit,29
+1,split-line-translated,100000,index-ordered,own_loop_other,LOAD,L1 hit,12
+1,split-line-translated,100000,index-ordered,own_loop_other,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,own_loop_other,STORE,L1 hit,7
+1,split-line-translated,100000,index-ordered,own_summary,LOAD,L1 hit,38
+1,split-line-translated,100000,index-ordered,own_summary,STORE,L1 hit,17
+1,split-line-translated,100000,index-ordered,subtree_refit,LOAD,L1 hit,3
+1,split-line-translated,100000,index-ordered,subtree_refit,STORE,L1 hit,5
+1,split-line-translated,100000,index-ordered,topology_other,LOAD,L1 hit,27
+1,split-line-translated,100000,index-ordered,topology_other,STORE,L1 hit,16
+2,split-line-translated,100000,index-ordered,build_total,LOAD,L1 hit,1005
+2,split-line-translated,100000,index-ordered,build_total,LOAD,L2 hit,27
+2,split-line-translated,100000,index-ordered,build_total,LOAD,RAM hit,6
+2,split-line-translated,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",15
+2,split-line-translated,100000,index-ordered,build_total,STORE,L1 hit,468
+2,split-line-translated,100000,index-ordered,build_total,STORE,L2 hit,23
+2,split-line-translated,100000,index-ordered,build_total,STORE,N/A,23
+2,split-line-translated,100000,index-ordered,dense_refs,LOAD,L1 hit,3
+2,split-line-translated,100000,index-ordered,dense_refs,STORE,L1 hit,12
+2,split-line-translated,100000,index-ordered,node_init,LOAD,L1 hit,19
+2,split-line-translated,100000,index-ordered,node_init,STORE,L1 hit,30
+2,split-line-translated,100000,index-ordered,node_init,STORE,L2 hit,3
+2,split-line-translated,100000,index-ordered,own_loop_other,LOAD,L1 hit,12
+2,split-line-translated,100000,index-ordered,own_loop_other,STORE,L1 hit,8
+2,split-line-translated,100000,index-ordered,own_summary,LOAD,L1 hit,39
+2,split-line-translated,100000,index-ordered,own_summary,STORE,L1 hit,16
+2,split-line-translated,100000,index-ordered,subtree_refit,LOAD,L1 hit,4
+2,split-line-translated,100000,index-ordered,subtree_refit,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,subtree_refit,STORE,L1 hit,3
+2,split-line-translated,100000,index-ordered,topology_other,LOAD,L1 hit,14
+2,split-line-translated,100000,index-ordered,topology_other,STORE,L1 hit,20
+2,uniform,100000,index-ordered,build_total,LOAD,L1 hit,1087
+2,uniform,100000,index-ordered,build_total,LOAD,L2 hit,30
+2,uniform,100000,index-ordered,build_total,LOAD,RAM hit,10
+2,uniform,100000,index-ordered,build_total,LOAD,"core, same node Any cache hit",18
+2,uniform,100000,index-ordered,build_total,STORE,L1 hit,502
+2,uniform,100000,index-ordered,build_total,STORE,L2 hit,23
+2,uniform,100000,index-ordered,build_total,STORE,N/A,24
+2,uniform,100000,index-ordered,dense_refs,LOAD,L1 hit,7
+2,uniform,100000,index-ordered,dense_refs,STORE,L1 hit,8
+2,uniform,100000,index-ordered,dense_refs,STORE,L2 hit,1
+2,uniform,100000,index-ordered,node_init,LOAD,L1 hit,20
+2,uniform,100000,index-ordered,node_init,STORE,L1 hit,37
+2,uniform,100000,index-ordered,own_loop_other,LOAD,L1 hit,16
+2,uniform,100000,index-ordered,own_loop_other,STORE,L1 hit,8
+2,uniform,100000,index-ordered,own_summary,LOAD,L1 hit,40
+2,uniform,100000,index-ordered,own_summary,STORE,L1 hit,11
+2,uniform,100000,index-ordered,subtree_refit,LOAD,L1 hit,5
+2,uniform,100000,index-ordered,subtree_refit,LOAD,L2 hit,1
+2,uniform,100000,index-ordered,subtree_refit,STORE,L1 hit,4
+2,uniform,100000,index-ordered,topology_other,LOAD,L1 hit,19
+2,uniform,100000,index-ordered,topology_other,STORE,L1 hit,20
+2,split-line-translated,100000,index,build_total,LOAD,L1 hit,2981
+2,split-line-translated,100000,index,build_total,LOAD,L2 hit,68
+2,split-line-translated,100000,index,build_total,LOAD,RAM hit,29
+2,split-line-translated,100000,index,build_total,LOAD,"core, same node Any cache hit",56
+2,split-line-translated,100000,index,build_total,STORE,L1 hit,1293
+2,split-line-translated,100000,index,build_total,STORE,L2 hit,20
+2,split-line-translated,100000,index,build_total,STORE,N/A,46
+2,split-line-translated,100000,index,dense_refs,LOAD,L1 hit,12
+2,split-line-translated,100000,index,dense_refs,STORE,L1 hit,46
+2,split-line-translated,100000,index,node_init,LOAD,L1 hit,83
+2,split-line-translated,100000,index,node_init,STORE,L1 hit,120
+2,split-line-translated,100000,index,own_loop_other,LOAD,L1 hit,36
+2,split-line-translated,100000,index,own_loop_other,STORE,L1 hit,39
+2,split-line-translated,100000,index,own_summary,LOAD,L1 hit,112
+2,split-line-translated,100000,index,own_summary,LOAD,L2 hit,1
+2,split-line-translated,100000,index,own_summary,STORE,L1 hit,44
+2,split-line-translated,100000,index,subtree_refit,LOAD,L1 hit,27
+2,split-line-translated,100000,index,subtree_refit,STORE,L1 hit,9
+2,split-line-translated,100000,index,topology_other,LOAD,L1 hit,69
+2,split-line-translated,100000,index,topology_other,STORE,L1 hit,39
+2,split-line-translated,100000,index,topology_other,STORE,N/A,1
+2,uniform,100000,index,build_total,LOAD,L1 hit,2826
+2,uniform,100000,index,build_total,LOAD,L2 hit,73
+2,uniform,100000,index,build_total,LOAD,RAM hit,28
+2,uniform,100000,index,build_total,LOAD,"core, same node Any cache hit",69
+2,uniform,100000,index,build_total,STORE,L1 hit,1223
+2,uniform,100000,index,build_total,STORE,L2 hit,13
+2,uniform,100000,index,build_total,STORE,N/A,28
+2,uniform,100000,index,dense_refs,LOAD,L1 hit,13
+2,uniform,100000,index,dense_refs,STORE,L1 hit,30
+2,uniform,100000,index,node_init,LOAD,L1 hit,80
+2,uniform,100000,index,node_init,STORE,L1 hit,103
+2,uniform,100000,index,node_init,STORE,L2 hit,1
+2,uniform,100000,index,own_loop_other,LOAD,L1 hit,48
+2,uniform,100000,index,own_loop_other,STORE,L1 hit,29
+2,uniform,100000,index,own_summary,LOAD,L1 hit,108
+2,uniform,100000,index,own_summary,LOAD,L2 hit,2
+2,uniform,100000,index,own_summary,STORE,L1 hit,46
+2,uniform,100000,index,subtree_refit,LOAD,L1 hit,21
+2,uniform,100000,index,subtree_refit,STORE,L1 hit,6
+2,uniform,100000,index,topology_other,LOAD,L1 hit,76
+2,uniform,100000,index,topology_other,LOAD,L2 hit,2
+2,uniform,100000,index,topology_other,STORE,L1 hit,32

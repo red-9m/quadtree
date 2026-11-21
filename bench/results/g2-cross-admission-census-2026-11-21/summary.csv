@@ -1,0 +1,5 @@
+scene,n,calls,recursive_pct,charged,disjoint_pct_of_charged,empty_pct_of_calls,x_only_pct,y_only_pct,both_axes_pct,leaf_leaf_pct_of_disjoint,cross_exact_pct
+uniform,100000,346812,85.98,342166,85.98,1.34,28.41,28.30,43.29,55.61,69.91
+split-line,10000,41784,85.81,39300,86.86,5.94,27.39,27.73,44.88,54.93,62.52
+split-line-translated,100000,382758,85.55,352374,88.35,7.94,26.39,26.12,47.49,53.35,56.67
+mixed-size,100000,341868,86.07,337331,86.13,1.33,28.25,28.19,43.56,56.25,20.51

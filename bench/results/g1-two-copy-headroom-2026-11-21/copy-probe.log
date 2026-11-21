@@ -1,0 +1,4 @@
+Control reports the same current pair and publishes fresh identity and extent.
+Copying a disjoint box suppresses the old pair without changing candidate charge.
+Scratch branch active: overlapping current payloads/boxes/filters report, but identity and extent stay stale.
+Copying a disjoint box suppresses the old pair without changing candidate charge.

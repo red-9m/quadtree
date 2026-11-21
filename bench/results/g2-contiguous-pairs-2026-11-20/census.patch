@@ -1,0 +1,72 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -567,6 +567,12 @@
+     std::is_lvalue_reference_v<std::ranges::range_reference_t<R>> &&
+     std::same_as<std::remove_cvref_t<std::ranges::range_reference_t<R>>, P>;
+ 
++inline std::uint64_t eligibleRangeTests[3][4]{};
++inline unsigned eligibilityScope = 0;
++inline unsigned eligibilityRange = 0;
++inline std::uint32_t groupEnd = 0;
++inline std::uint64_t groupCandidates[2]{};
++
+ struct AcceptAll
+ {
+     template<typename... Args>
+@@ -2650,6 +2656,8 @@
+             context.filtered();
+             return;
+         }
++        if (detail::eligibilityScope == 2)
++            detail::eligibilityRange = node.linear ? (node.ownCount >= 8 ? 3u : node.ownCount >= 4 ? 2u : 1u) : 0u;
+         for (std::uint32_t i = node.head; i != none && context.active(); i = nextItem(node, i))
+             callback(i);
+         if (node.firstChild != none)
+@@ -2750,7 +2758,12 @@
+             context.filtered();
+             return false;
+         }
+-        if (!context.candidate() || !detail::overlaps(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary))
++        if (!context.candidate())
++            return false;
++        ++detail::eligibleRangeTests[detail::eligibilityScope][detail::eligibilityRange];
++        if (detail::eligibilityScope < 2 && b < detail::groupEnd)
++            ++detail::groupCandidates[detail::eligibilityScope];
++        if (!detail::overlaps(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary))
+             return false;
+         if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
+         {
+@@ -3049,6 +3062,7 @@
+         for (std::uint32_t a = mNodes[holder].head; a != none && context.active(); a = nextItem(mNodes[holder], a))
+         {
+             auto candidate = [&](std::uint32_t b) noexcept { testPair(a, b, false, context, visitor, predicate); };
++            detail::eligibilityScope = 2;
+             walk(subtree, mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
+         }
+     }
+@@ -3068,6 +3082,9 @@
+             context.filtered();
+             return;
+         }
++        detail::eligibilityScope = 1;
++        detail::eligibilityRange = right.linear ? (right.ownCount >= 8 ? 3u : right.ownCount >= 4 ? 2u : 1u) : 0u;
++        detail::groupEnd = right.linear ? right.head + (right.ownCount & ~3u) : 0;
+         for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+             for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+                 testPair(i, j, false, context, visitor, predicate);
+@@ -3094,9 +3111,15 @@
+             context.filtered();
+             return;
+         }
++        detail::eligibilityScope = 0;
+         for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
++        {
++            const auto rest = node.linear ? node.head + node.ownCount - a - 1 : 0;
++            detail::eligibilityRange = node.linear ? (rest >= 8 ? 3u : rest >= 4 ? 2u : 1u) : 0u;
++            detail::groupEnd = node.linear ? a + 1 + (rest & ~3u) : 0;
+             for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
+                 testPair(a, b, false, context, visitor, predicate);
++        }
+         if (node.firstChild == none)
+             return;
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)

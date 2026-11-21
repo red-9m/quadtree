@@ -1,0 +1,14 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2264,6 +2264,11 @@
+             if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
+                 count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
+             {
++                // DIAGNOSTIC ONLY. Reuse the old singleton, ignoring new input.
++                // This deliberately violates build state and handle semantics.
++                if constexpr (std::same_as<T, std::int32_t> && std::same_as<Payload, std::uint32_t>)
++                    if (count == 1 && size() == 1 && !handles && mConfig.extent == Extent::Snapshot)
++                        return Status::Ok;
+                 if (auto result = buildFlatInteger(std::ranges::data(range), static_cast<std::uint32_t>(count), handles))
+                     return *result;
+             }

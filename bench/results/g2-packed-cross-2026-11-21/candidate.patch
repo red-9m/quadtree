@@ -1,0 +1,46 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -4,6 +4,9 @@
+ #include <numeric>
+ #include <ranges>
+ #include <span>
++#if defined(__SSE2__)
++#include <emmintrin.h>
++#endif
+ 
+ #include "../quadtree-index.h"
+ 
+@@ -3092,6 +3095,24 @@
+         }
+     }
+ 
++    static bool crossNodeOverlap(const Box<T>& a, const Box<T>& b) noexcept
++    {
++#if defined(__SSE2__)
++        if constexpr (std::same_as<T, std::int32_t>)
++        {
++            static_assert(sizeof(Box<T>) == sizeof(__m128i) && offsetof(Box<T>, minX) == 0 &&
++                offsetof(Box<T>, minY) == 4 && offsetof(Box<T>, maxX) == 8 && offsetof(Box<T>, maxY) == 12);
++            __m128i left, right;
++            std::memcpy(&left, &a, sizeof(left));
++            std::memcpy(&right, &b, sizeof(right));
++            // Compare each minimum to the opposite maximum; equal endpoints still overlap.
++            const auto separated = _mm_cmpgt_epi32(_mm_unpacklo_epi64(left, right), _mm_unpackhi_epi64(right, left));
++            return _mm_movemask_epi8(separated) == 0;
++        }
++#endif
++        return detail::closedOverlap(a, b);
++    }
++
+     template<typename Visitor, typename Predicate>
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -3100,7 +3121,7 @@
+         const Node& right = mNodes[b];
+         if (!context.active() || left.count == 0 || right.count == 0 || !context.node())
+             return;
+-        if (!detail::closedOverlap(left.bounds, right.bounds))
++        if (!crossNodeOverlap(left.bounds, right.bounds))
+             return;
+         if (!detail::compatible(left.summary, right.summary))
+         {

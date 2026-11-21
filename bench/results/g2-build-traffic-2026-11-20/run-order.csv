@@ -1,0 +1,17 @@
+block,scene,n,engine,event,setting,start
+1,uniform,100000,index,cycles,2999,2026-11-20T15:53:39+02:00
+1,uniform,100000,index,ibs,640016,2026-11-20T15:53:41+02:00
+1,split-line-translated,100000,index,cycles,2999,2026-11-20T15:53:43+02:00
+1,split-line-translated,100000,index,ibs,640016,2026-11-20T15:53:45+02:00
+1,uniform,100000,index-ordered,cycles,2999,2026-11-20T15:53:47+02:00
+1,uniform,100000,index-ordered,ibs,640016,2026-11-20T15:53:49+02:00
+1,split-line-translated,100000,index-ordered,cycles,2999,2026-11-20T15:53:51+02:00
+1,split-line-translated,100000,index-ordered,ibs,640016,2026-11-20T15:53:53+02:00
+2,split-line-translated,100000,index-ordered,ibs,710000,2026-11-20T15:53:55+02:00
+2,split-line-translated,100000,index-ordered,cycles,3469,2026-11-20T15:53:58+02:00
+2,uniform,100000,index-ordered,ibs,710000,2026-11-20T15:54:00+02:00
+2,uniform,100000,index-ordered,cycles,3469,2026-11-20T15:54:02+02:00
+2,split-line-translated,100000,index,ibs,710000,2026-11-20T15:54:04+02:00
+2,split-line-translated,100000,index,cycles,3469,2026-11-20T15:54:06+02:00
+2,uniform,100000,index,ibs,710000,2026-11-20T15:54:08+02:00
+2,uniform,100000,index,cycles,3469,2026-11-20T15:54:10+02:00

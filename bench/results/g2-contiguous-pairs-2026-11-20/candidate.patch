@@ -1,0 +1,96 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3054,6 +3054,73 @@
+     }
+ 
+     template<typename Visitor, typename Predicate>
++    void testOwnRange(std::uint32_t a, const Node& target, std::uint32_t begin,
++        Context& context, Visitor& visitor, Predicate& predicate) const noexcept
++    {
++        if constexpr (std::same_as<T, std::int32_t> && std::same_as<Predicate, detail::AcceptAll>)
++        {
++            if (begin != none && target.linear)
++            {
++                const auto end = target.head + target.ownCount;
++                auto b = begin;
++                const auto source = mEntries.mBoxes[a];
++                const auto filter = mEntries.mMeta[a].filter;
++                const bool closed = mConfig.boundary == Boundary::TouchInclusive ||
++                    source.minX == source.maxX || source.minY == source.maxY;
++                const auto classify = [&](std::uint32_t i) noexcept -> unsigned
++                {
++                    if (!detail::compatible(filter, mEntries.mMeta[i].filter))
++                        return 0;
++                    const auto& box = mEntries.mBoxes[i];
++                    if (!detail::closedOverlap(source, box))
++                        return 1;
++                    return (closed || box.minX == box.maxX || box.minY == box.maxY ||
++                        (source.minX < box.maxX && box.minX < source.maxX &&
++                         source.minY < box.maxY && box.minY < source.maxY)) ? 3u : 1u;
++                };
++                for (; end - b >= 4 && context.active() && context.remaining.candidateTests >= 4; b += 4)
++                {
++                    const unsigned x = classify(b), y = classify(b + 1), z = classify(b + 2), w = classify(b + 3);
++                    if (((x | y | z | w) & 2u) == 0)
++                    {
++                        const auto candidates = x + y + z + w;
++                        auto& remaining = context.remaining.candidateTests;
++                        if (remaining != std::numeric_limits<std::uint64_t>::max())
++                            remaining -= candidates;
++                        if constexpr (Instrumented)
++                        {
++                            auto& c = context.result.counters;
++                            const auto max = std::numeric_limits<std::uint64_t>::max();
++                            c.candidateTests += std::min<std::uint64_t>(candidates, max - c.candidateTests);
++                            c.filterRejections += std::min<std::uint64_t>(4 - candidates, max - c.filterRejections);
++                        }
++                    }
++                    else
++                    {
++                        // Commit charges and callbacks in order; do not charge
++                        // the remainder of a group if the visitor stops.
++                        const unsigned outcomes[]{x, y, z, w};
++                        for (unsigned lane = 0; lane < 4 && context.active(); ++lane)
++                            if (outcomes[lane] == 0)
++                                context.filtered();
++                            else
++                            {
++                                context.candidate(); // The group fits the remaining budget.
++                                if (outcomes[lane] == 3)
++                                    reportPair(a, b + lane, false, context, visitor);
++                            }
++                    }
++                }
++                for (; b < end && context.active(); ++b)
++                    testPair(a, b, false, context, visitor, predicate);
++                return;
++            }
++        }
++        for (auto b = begin; b != none && context.active(); b = nextItem(target, b))
++            testPair(a, b, false, context, visitor, predicate);
++    }
++
++    template<typename Visitor, typename Predicate>
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+     {
+@@ -3069,8 +3136,7 @@
+             return;
+         }
+         for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+-            for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+-                testPair(i, j, false, context, visitor, predicate);
++            testOwnRange(i, right, right.head, context, visitor, predicate);
+         if (right.firstChild != none)
+             for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+                 itemsVsSubtree(a, right.firstChild + q, context, visitor, predicate);
+@@ -3095,8 +3161,7 @@
+             return;
+         }
+         for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
+-            for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
+-                testPair(a, b, false, context, visitor, predicate);
++            testOwnRange(a, node, nextItem(node, a), context, visitor, predicate);
+         if (node.firstChild == none)
+             return;
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)

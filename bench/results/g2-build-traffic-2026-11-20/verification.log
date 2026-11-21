@@ -1,0 +1,2 @@
+16 Release captures match the staged gate rows: fixtures, pairs, checksums, work, footprint and cold allocations.
+All captures completed with zero warm allocations; build and pair cycle samples and IBS coverage verified.

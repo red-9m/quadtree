@@ -1,0 +1,74 @@
+--- a/quadtree-index.h
++++ b/quadtree-index.h
+@@ -1133,11 +1133,10 @@
+         return false;
+     }
+ 
+-    // Hash insertion; false (nothing changed) if it would exceed the bound.
+-    bool hashInsert(std::uint64_t rank) noexcept
++    // Hash insertion; false (nothing changed except probe stats) if it would exceed the bound.
++    bool hashInsertAt(std::uint64_t rank, std::size_t i) noexcept
+     {
+         const std::size_t mask = mRankCapacity - 1;
+-        std::size_t i = homeOf(rank);
+         for (std::uint32_t distance = 0; distance <= Traits::rankProbeLimit; ++distance)
+         {
+             ++mRankStats.probes;
+@@ -1151,6 +1150,8 @@
+         return false;
+     }
+ 
++    bool hashInsert(std::uint64_t rank) noexcept { return hashInsertAt(rank, homeOf(rank)); }
++
+     // Adds a rank whose metadata is already live and which is not present.
+     void insertRank(std::uint64_t rank) noexcept
+     {
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2328,7 +2328,45 @@
+                 return Status::Ok;
+             }
+         }
+-        for (i = 0; i < count; ++i)
++        i = 0;
++#if defined(__GNUC__) || defined(__clang__)
++        if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&
++            std::is_trivially_copy_constructible_v<Payload>)
++        {
++            constexpr std::size_t rankAhead = 32;
++            if (bulk_order && ranked == count && count >= 2 * rankAhead && !mEntries.mRankTree)
++            {
++                const auto prepareHome = [&](std::size_t at) noexcept
++                {
++                    const auto home = mEntries.homeOf(*descriptors[bulk_order[at]].rank);
++                    __builtin_prefetch(mEntries.mRanks + home, 0, 3);
++                    return home;
++                };
++                std::size_t homes[rankAhead];
++                for (std::size_t j = 0; j < rankAhead; ++j)
++                    homes[j] = prepareHome(j);
++                for (; i < count && !mEntries.mRankTree; ++i)
++                {
++                    auto& queued = homes[i % rankAhead];
++                    const auto home = queued;
++                    if (count - i > rankAhead)
++                        queued = prepareHome(i + rankAhead);
++                    const auto input = bulk_order[i];
++                    const auto& descriptor = descriptors[input];
++                    const auto dense = static_cast<std::uint32_t>(i);
++                    constructBuildEntry<Consume>(dense, boxes[input], descriptor, true);
++                    ++mEntries.mSize;
++                    ++mEntries.mSlotsUsed;
++                    if (!mEntries.hashInsertAt(*descriptor.rank, home))
++                        mEntries.buildRankTree();
++                    ++mEntries.mRankCount;
++                    if (handles)
++                        (*handles)[input] = detail::HandleAccess::make<Store>(owner, dense, 0);
++                }
++            }
++        }
++#endif
++        for (; i < count; ++i)
+         {
+ #if defined(__GNUC__) || defined(__clang__)
+             if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&

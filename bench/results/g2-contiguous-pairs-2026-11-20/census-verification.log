@@ -1,0 +1,9 @@
+uniform 10000 self/cross length 4+: 57.34%; complete groups: 47.42%
+uniform 100000 self/cross length 4+: 77.98%; complete groups: 61.70%
+split-line 10000 self/cross length 4+: 64.90%; complete groups: 52.62%
+split-line 100000 self/cross length 4+: 71.58%; complete groups: 57.01%
+split-line-translated 10000 self/cross length 4+: 65.18%; complete groups: 53.04%
+split-line-translated 100000 self/cross length 4+: 69.36%; complete groups: 55.45%
+mixed-size 10000 self/cross length 4+: 32.68%; complete groups: 27.06%
+mixed-size 100000 self/cross length 4+: 22.75%; complete groups: 18.32%
+All eight count-only rows reconcile with the staged gate work and results.

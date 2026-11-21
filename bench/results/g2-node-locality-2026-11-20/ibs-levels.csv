@@ -1,0 +1,229 @@
+block,scene,engine,function,group,level,samples
+1,uniform,index,crossPairs,pair_total,L1 hit,6743
+1,uniform,index,crossPairs,pair_total,L2 hit,27
+1,uniform,index,crossPairs,pair_total,RAM hit,2
+1,uniform,index,crossPairs,pair_total,"core, same node Any cache hit",3
+1,uniform,index,crossPairs,function_total,L1 hit,2384
+1,uniform,index,crossPairs,function_total,L2 hit,9
+1,uniform,index,crossPairs,function_total,RAM hit,2
+1,uniform,index,crossPairs,function_total,"core, same node Any cache hit",1
+1,uniform,index,crossPairs,requested_fields,L1 hit,525
+1,uniform,index,crossPairs,requested_fields,L2 hit,9
+1,uniform,index,crossPairs,requested_fields,RAM hit,2
+1,uniform,index,crossPairs,requested_fields,"core, same node Any cache hit",1
+1,uniform,index,crossPairs,other_node_fields,L1 hit,312
+1,uniform,index,crossPairs,bounds,L1 hit,353
+1,uniform,index,crossPairs,bounds,L2 hit,5
+1,uniform,index,crossPairs,bounds,RAM hit,1
+1,uniform,index,crossPairs,count,L1 hit,152
+1,uniform,index,crossPairs,count,L2 hit,4
+1,uniform,index,crossPairs,count,RAM hit,1
+1,uniform,index,crossPairs,count,"core, same node Any cache hit",1
+1,uniform,index,crossPairs,firstChild,L1 hit,20
+1,uniform,index,crossPairs,head,L1 hit,39
+1,uniform,index,crossPairs,linear,L1 hit,108
+1,uniform,index,crossPairs,ownCount,L1 hit,122
+1,uniform,index,crossPairs,summary,L1 hit,43
+1,split-line-translated,index,crossPairs,pair_total,L1 hit,5991
+1,split-line-translated,index,crossPairs,pair_total,L2 hit,33
+1,split-line-translated,index,crossPairs,pair_total,RAM hit,3
+1,split-line-translated,index,crossPairs,pair_total,"core, same node Any cache hit",8
+1,split-line-translated,index,crossPairs,function_total,L1 hit,2168
+1,split-line-translated,index,crossPairs,function_total,L2 hit,17
+1,split-line-translated,index,crossPairs,function_total,RAM hit,2
+1,split-line-translated,index,crossPairs,function_total,"core, same node Any cache hit",4
+1,split-line-translated,index,crossPairs,requested_fields,L1 hit,487
+1,split-line-translated,index,crossPairs,requested_fields,L2 hit,16
+1,split-line-translated,index,crossPairs,requested_fields,RAM hit,2
+1,split-line-translated,index,crossPairs,requested_fields,"core, same node Any cache hit",3
+1,split-line-translated,index,crossPairs,other_node_fields,L1 hit,260
+1,split-line-translated,index,crossPairs,other_node_fields,L2 hit,1
+1,split-line-translated,index,crossPairs,bounds,L1 hit,333
+1,split-line-translated,index,crossPairs,bounds,L2 hit,11
+1,split-line-translated,index,crossPairs,bounds,"core, same node Any cache hit",2
+1,split-line-translated,index,crossPairs,count,L1 hit,134
+1,split-line-translated,index,crossPairs,count,L2 hit,5
+1,split-line-translated,index,crossPairs,count,RAM hit,2
+1,split-line-translated,index,crossPairs,count,"core, same node Any cache hit",1
+1,split-line-translated,index,crossPairs,firstChild,L1 hit,20
+1,split-line-translated,index,crossPairs,head,L1 hit,36
+1,split-line-translated,index,crossPairs,linear,L1 hit,105
+1,split-line-translated,index,crossPairs,ownCount,L1 hit,87
+1,split-line-translated,index,crossPairs,summary,L1 hit,32
+1,split-line-translated,index,crossPairs,summary,L2 hit,1
+1,uniform,index-ordered,walkOrdered,pair_total,L1 hit,4363
+1,uniform,index-ordered,walkOrdered,pair_total,L2 hit,169
+1,uniform,index-ordered,walkOrdered,pair_total,RAM hit,9
+1,uniform,index-ordered,walkOrdered,pair_total,"core, same node Any cache hit",275
+1,uniform,index-ordered,walkOrdered,function_total,L1 hit,3193
+1,uniform,index-ordered,walkOrdered,function_total,L2 hit,129
+1,uniform,index-ordered,walkOrdered,function_total,RAM hit,5
+1,uniform,index-ordered,walkOrdered,function_total,"core, same node Any cache hit",199
+1,uniform,index-ordered,walkOrdered,requested_fields,L1 hit,584
+1,uniform,index-ordered,walkOrdered,requested_fields,L2 hit,115
+1,uniform,index-ordered,walkOrdered,requested_fields,RAM hit,3
+1,uniform,index-ordered,walkOrdered,requested_fields,"core, same node Any cache hit",142
+1,uniform,index-ordered,walkOrdered,other_node_fields,L1 hit,344
+1,uniform,index-ordered,walkOrdered,other_node_fields,L2 hit,8
+1,uniform,index-ordered,walkOrdered,other_node_fields,"core, same node Any cache hit",13
+1,uniform,index-ordered,walkOrdered,bounds,L1 hit,376
+1,uniform,index-ordered,walkOrdered,bounds,L2 hit,77
+1,uniform,index-ordered,walkOrdered,bounds,RAM hit,3
+1,uniform,index-ordered,walkOrdered,bounds,"core, same node Any cache hit",101
+1,uniform,index-ordered,walkOrdered,count,L1 hit,145
+1,uniform,index-ordered,walkOrdered,count,L2 hit,36
+1,uniform,index-ordered,walkOrdered,count,"core, same node Any cache hit",37
+1,uniform,index-ordered,walkOrdered,firstChild,L1 hit,63
+1,uniform,index-ordered,walkOrdered,firstChild,L2 hit,2
+1,uniform,index-ordered,walkOrdered,firstChild,"core, same node Any cache hit",4
+1,uniform,index-ordered,walkOrdered,head,L1 hit,110
+1,uniform,index-ordered,walkOrdered,head,L2 hit,3
+1,uniform,index-ordered,walkOrdered,head,"core, same node Any cache hit",2
+1,uniform,index-ordered,walkOrdered,linear,L1 hit,55
+1,uniform,index-ordered,walkOrdered,ownCount,L1 hit,66
+1,uniform,index-ordered,walkOrdered,summary,L1 hit,113
+1,uniform,index-ordered,walkOrdered,summary,L2 hit,5
+1,uniform,index-ordered,walkOrdered,summary,"core, same node Any cache hit",11
+1,split-line-translated,index-ordered,walkOrdered,pair_total,L1 hit,4591
+1,split-line-translated,index-ordered,walkOrdered,pair_total,L2 hit,193
+1,split-line-translated,index-ordered,walkOrdered,pair_total,RAM hit,6
+1,split-line-translated,index-ordered,walkOrdered,pair_total,"core, same node Any cache hit",322
+1,split-line-translated,index-ordered,walkOrdered,function_total,L1 hit,3529
+1,split-line-translated,index-ordered,walkOrdered,function_total,L2 hit,162
+1,split-line-translated,index-ordered,walkOrdered,function_total,RAM hit,2
+1,split-line-translated,index-ordered,walkOrdered,function_total,"core, same node Any cache hit",255
+1,split-line-translated,index-ordered,walkOrdered,requested_fields,L1 hit,676
+1,split-line-translated,index-ordered,walkOrdered,requested_fields,L2 hit,147
+1,split-line-translated,index-ordered,walkOrdered,requested_fields,RAM hit,2
+1,split-line-translated,index-ordered,walkOrdered,requested_fields,"core, same node Any cache hit",204
+1,split-line-translated,index-ordered,walkOrdered,other_node_fields,L1 hit,360
+1,split-line-translated,index-ordered,walkOrdered,other_node_fields,L2 hit,8
+1,split-line-translated,index-ordered,walkOrdered,other_node_fields,"core, same node Any cache hit",19
+1,split-line-translated,index-ordered,walkOrdered,bounds,L1 hit,438
+1,split-line-translated,index-ordered,walkOrdered,bounds,L2 hit,94
+1,split-line-translated,index-ordered,walkOrdered,bounds,RAM hit,1
+1,split-line-translated,index-ordered,walkOrdered,bounds,"core, same node Any cache hit",149
+1,split-line-translated,index-ordered,walkOrdered,count,L1 hit,171
+1,split-line-translated,index-ordered,walkOrdered,count,L2 hit,49
+1,split-line-translated,index-ordered,walkOrdered,count,RAM hit,1
+1,split-line-translated,index-ordered,walkOrdered,count,"core, same node Any cache hit",52
+1,split-line-translated,index-ordered,walkOrdered,firstChild,L1 hit,67
+1,split-line-translated,index-ordered,walkOrdered,firstChild,L2 hit,4
+1,split-line-translated,index-ordered,walkOrdered,firstChild,"core, same node Any cache hit",3
+1,split-line-translated,index-ordered,walkOrdered,head,L1 hit,134
+1,split-line-translated,index-ordered,walkOrdered,head,L2 hit,3
+1,split-line-translated,index-ordered,walkOrdered,head,"core, same node Any cache hit",8
+1,split-line-translated,index-ordered,walkOrdered,linear,L1 hit,50
+1,split-line-translated,index-ordered,walkOrdered,ownCount,L1 hit,50
+1,split-line-translated,index-ordered,walkOrdered,summary,L1 hit,126
+1,split-line-translated,index-ordered,walkOrdered,summary,L2 hit,5
+1,split-line-translated,index-ordered,walkOrdered,summary,"core, same node Any cache hit",11
+2,split-line-translated,index-ordered,walkOrdered,pair_total,L1 hit,4077
+2,split-line-translated,index-ordered,walkOrdered,pair_total,L2 hit,191
+2,split-line-translated,index-ordered,walkOrdered,pair_total,RAM hit,2
+2,split-line-translated,index-ordered,walkOrdered,pair_total,"core, same node Any cache hit",278
+2,split-line-translated,index-ordered,walkOrdered,function_total,L1 hit,3158
+2,split-line-translated,index-ordered,walkOrdered,function_total,L2 hit,170
+2,split-line-translated,index-ordered,walkOrdered,function_total,RAM hit,2
+2,split-line-translated,index-ordered,walkOrdered,function_total,"core, same node Any cache hit",224
+2,split-line-translated,index-ordered,walkOrdered,requested_fields,L1 hit,559
+2,split-line-translated,index-ordered,walkOrdered,requested_fields,L2 hit,145
+2,split-line-translated,index-ordered,walkOrdered,requested_fields,RAM hit,1
+2,split-line-translated,index-ordered,walkOrdered,requested_fields,"core, same node Any cache hit",168
+2,split-line-translated,index-ordered,walkOrdered,other_node_fields,L1 hit,339
+2,split-line-translated,index-ordered,walkOrdered,other_node_fields,L2 hit,8
+2,split-line-translated,index-ordered,walkOrdered,other_node_fields,"core, same node Any cache hit",12
+2,split-line-translated,index-ordered,walkOrdered,bounds,L1 hit,392
+2,split-line-translated,index-ordered,walkOrdered,bounds,L2 hit,97
+2,split-line-translated,index-ordered,walkOrdered,bounds,RAM hit,1
+2,split-line-translated,index-ordered,walkOrdered,bounds,"core, same node Any cache hit",116
+2,split-line-translated,index-ordered,walkOrdered,count,L1 hit,117
+2,split-line-translated,index-ordered,walkOrdered,count,L2 hit,46
+2,split-line-translated,index-ordered,walkOrdered,count,"core, same node Any cache hit",51
+2,split-line-translated,index-ordered,walkOrdered,firstChild,L1 hit,50
+2,split-line-translated,index-ordered,walkOrdered,firstChild,L2 hit,2
+2,split-line-translated,index-ordered,walkOrdered,firstChild,"core, same node Any cache hit",1
+2,split-line-translated,index-ordered,walkOrdered,head,L1 hit,108
+2,split-line-translated,index-ordered,walkOrdered,head,L2 hit,3
+2,split-line-translated,index-ordered,walkOrdered,head,"core, same node Any cache hit",3
+2,split-line-translated,index-ordered,walkOrdered,linear,L1 hit,39
+2,split-line-translated,index-ordered,walkOrdered,ownCount,L1 hit,62
+2,split-line-translated,index-ordered,walkOrdered,summary,L1 hit,130
+2,split-line-translated,index-ordered,walkOrdered,summary,L2 hit,5
+2,split-line-translated,index-ordered,walkOrdered,summary,"core, same node Any cache hit",9
+2,uniform,index-ordered,walkOrdered,pair_total,L1 hit,4092
+2,uniform,index-ordered,walkOrdered,pair_total,L2 hit,136
+2,uniform,index-ordered,walkOrdered,pair_total,RAM hit,8
+2,uniform,index-ordered,walkOrdered,pair_total,"core, same node Any cache hit",269
+2,uniform,index-ordered,walkOrdered,function_total,L1 hit,2980
+2,uniform,index-ordered,walkOrdered,function_total,L2 hit,109
+2,uniform,index-ordered,walkOrdered,function_total,RAM hit,5
+2,uniform,index-ordered,walkOrdered,function_total,"core, same node Any cache hit",197
+2,uniform,index-ordered,walkOrdered,requested_fields,L1 hit,549
+2,uniform,index-ordered,walkOrdered,requested_fields,L2 hit,98
+2,uniform,index-ordered,walkOrdered,requested_fields,RAM hit,3
+2,uniform,index-ordered,walkOrdered,requested_fields,"core, same node Any cache hit",132
+2,uniform,index-ordered,walkOrdered,other_node_fields,L1 hit,328
+2,uniform,index-ordered,walkOrdered,other_node_fields,L2 hit,5
+2,uniform,index-ordered,walkOrdered,other_node_fields,"core, same node Any cache hit",12
+2,uniform,index-ordered,walkOrdered,bounds,L1 hit,398
+2,uniform,index-ordered,walkOrdered,bounds,L2 hit,70
+2,uniform,index-ordered,walkOrdered,bounds,RAM hit,3
+2,uniform,index-ordered,walkOrdered,bounds,"core, same node Any cache hit",86
+2,uniform,index-ordered,walkOrdered,count,L1 hit,99
+2,uniform,index-ordered,walkOrdered,count,L2 hit,27
+2,uniform,index-ordered,walkOrdered,count,"core, same node Any cache hit",45
+2,uniform,index-ordered,walkOrdered,firstChild,L1 hit,52
+2,uniform,index-ordered,walkOrdered,firstChild,L2 hit,1
+2,uniform,index-ordered,walkOrdered,firstChild,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,head,L1 hit,107
+2,uniform,index-ordered,walkOrdered,head,L2 hit,1
+2,uniform,index-ordered,walkOrdered,head,"core, same node Any cache hit",3
+2,uniform,index-ordered,walkOrdered,linear,L1 hit,47
+2,uniform,index-ordered,walkOrdered,linear,"core, same node Any cache hit",1
+2,uniform,index-ordered,walkOrdered,ownCount,L1 hit,54
+2,uniform,index-ordered,walkOrdered,summary,L1 hit,120
+2,uniform,index-ordered,walkOrdered,summary,L2 hit,4
+2,uniform,index-ordered,walkOrdered,summary,"core, same node Any cache hit",8
+2,split-line-translated,index,crossPairs,pair_total,L1 hit,5354
+2,split-line-translated,index,crossPairs,pair_total,L2 hit,27
+2,split-line-translated,index,crossPairs,pair_total,"core, same node Any cache hit",3
+2,split-line-translated,index,crossPairs,function_total,L1 hit,1952
+2,split-line-translated,index,crossPairs,function_total,L2 hit,15
+2,split-line-translated,index,crossPairs,function_total,"core, same node Any cache hit",2
+2,split-line-translated,index,crossPairs,requested_fields,L1 hit,454
+2,split-line-translated,index,crossPairs,requested_fields,L2 hit,13
+2,split-line-translated,index,crossPairs,requested_fields,"core, same node Any cache hit",2
+2,split-line-translated,index,crossPairs,other_node_fields,L1 hit,252
+2,split-line-translated,index,crossPairs,other_node_fields,L2 hit,1
+2,split-line-translated,index,crossPairs,bounds,L1 hit,321
+2,split-line-translated,index,crossPairs,bounds,L2 hit,9
+2,split-line-translated,index,crossPairs,bounds,"core, same node Any cache hit",2
+2,split-line-translated,index,crossPairs,count,L1 hit,121
+2,split-line-translated,index,crossPairs,count,L2 hit,4
+2,split-line-translated,index,crossPairs,firstChild,L1 hit,12
+2,split-line-translated,index,crossPairs,head,L1 hit,32
+2,split-line-translated,index,crossPairs,linear,L1 hit,98
+2,split-line-translated,index,crossPairs,ownCount,L1 hit,92
+2,split-line-translated,index,crossPairs,summary,L1 hit,30
+2,split-line-translated,index,crossPairs,summary,L2 hit,1
+2,uniform,index,crossPairs,pair_total,L1 hit,6159
+2,uniform,index,crossPairs,pair_total,L2 hit,25
+2,uniform,index,crossPairs,pair_total,RAM hit,2
+2,uniform,index,crossPairs,pair_total,"core, same node Any cache hit",1
+2,uniform,index,crossPairs,function_total,L1 hit,2243
+2,uniform,index,crossPairs,function_total,L2 hit,13
+2,uniform,index,crossPairs,requested_fields,L1 hit,487
+2,uniform,index,crossPairs,requested_fields,L2 hit,10
+2,uniform,index,crossPairs,other_node_fields,L1 hit,335
+2,uniform,index,crossPairs,other_node_fields,L2 hit,1
+2,uniform,index,crossPairs,bounds,L1 hit,360
+2,uniform,index,crossPairs,bounds,L2 hit,7
+2,uniform,index,crossPairs,count,L1 hit,104
+2,uniform,index,crossPairs,count,L2 hit,3
+2,uniform,index,crossPairs,firstChild,L1 hit,23
+2,uniform,index,crossPairs,head,L1 hit,27
+2,uniform,index,crossPairs,linear,L1 hit,140
+2,uniform,index,crossPairs,linear,L2 hit,1
+2,uniform,index,crossPairs,ownCount,L1 hit,127
+2,uniform,index,crossPairs,summary,L1 hit,41

@@ -1,0 +1,181 @@
+block,scene,n,owner,work,pc,period,pct_of_pairs,inline_locations
+1,uniform,100000,self,exact,0x9b8e1,196643236,3.133,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,self,exact,0x9ba9e,191818835,3.057,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,cross,node_loop,0x9b248,181327284,2.889,quadtree-index-impl.h:539 | quadtree-index-impl.h:2630 | quadtree-index-impl.h:3107
+1,uniform,100000,cross,node_loop,0x9aeca,139953727,2.230,quadtree-index-impl.h:3101
+1,uniform,100000,cross,exact,0x11db0,118970497,1.896,quadtree-index-impl.h:2792
+1,uniform,100000,self,node_loop,0x9b9c3,117135215,1.867,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3137
+1,uniform,100000,cross,exact,0x11d38,101636843,1.620,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,exact,0x11ca0,97304855,1.551,quadtree-index-impl.h:2777
+1,uniform,100000,cross,exact,0x11cc6,91291293,1.455,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,uniform,100000,holder,node_loop,0x9a4ab,89874854,1.432,quadtree-index-impl.h:3093
+1,uniform,100000,cross,exact,0x11da0,88473439,1.410,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,uniform,100000,self,exact,0x9b8c7,77663478,1.238,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,uniform,100000,cross,node_loop,0x9b1bb,76148918,1.213,quadtree-index-impl.h:3121
+1,uniform,100000,cross,exact,0x11cb5,74727790,1.191,quadtree-index-impl.h:2777
+1,uniform,100000,cross,node_loop,0x9b208,73156866,1.166,quadtree-index-impl.h:3123
+1,uniform,100000,cross,exact,0x11cc2,71494901,1.139,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,uniform,100000,holder,node_loop,0x9a487,70054285,1.116,quadtree-index-impl.h:3080
+1,uniform,100000,cross,exact,0x11da8,68625551,1.094,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,node_loop,0x9aecd,67054840,1.069,quadtree-index-impl.h:3101
+1,uniform,100000,cross,node_loop,0x9b02c,65266356,1.040,quadtree-index-impl.h:2806 | quadtree-index-impl.h:3112
+1,uniform,100000,cross,exact,0x11d02,62372085,0.994,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,exact,0x11cd3,60853031,0.970,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,uniform,100000,cross,node_loop,0x9b00d,59439252,0.947,quadtree-index-impl.h:3111
+1,uniform,100000,holder,node_loop,0x9a2f8,57854993,0.922,quadtree-index-impl.h:2687
+1,uniform,100000,cross,exact,0x11d20,56519765,0.901,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,exact,0x11d85,55002702,0.876,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,self,node_loop,0x9b9d5,53294936,0.849,quadtree-index-impl.h:3137
+1,uniform,100000,cross,node_loop,0x9af1b,53276247,0.849,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+1,uniform,100000,cross,exact,0x11d2c,48476266,0.772,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,uniform,100000,cross,node_loop,0x9b211,44250265,0.705,quadtree-index-impl.h:3123
+1,split-line,10000,cross,node_loop,0x9b248,196259405,2.878,quadtree-index-impl.h:539 | quadtree-index-impl.h:2630 | quadtree-index-impl.h:3107
+1,split-line,10000,cross,node_loop,0x9aeca,179572255,2.633,quadtree-index-impl.h:3101
+1,split-line,10000,self,exact,0x9b8e1,173667491,2.546,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,exact,0x9ba9e,170969775,2.507,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,cross,node_loop,0x9b208,135240424,1.983,quadtree-index-impl.h:3123
+1,split-line,10000,cross,node_loop,0x9b1bb,123311720,1.808,quadtree-index-impl.h:3121
+1,split-line,10000,holder,node_loop,0x9a4ab,104979750,1.539,quadtree-index-impl.h:3093
+1,split-line,10000,self,exact,0x9b8c7,97245019,1.426,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line,10000,self,node_loop,0x9b9c3,92872810,1.362,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3137
+1,split-line,10000,cross,exact,0x11da8,91338488,1.339,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,report,0x9b254,91281509,1.338,quadtree-index-impl.h:2770 | quadtree-index-impl.h:2797 | quadtree-index-impl.h:2807 | quadtree-index-impl.h:3112
+1,split-line,10000,cross,node_loop,0x9af3c,85060236,1.247,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+1,split-line,10000,holder,node_loop,0x9a487,82276280,1.206,quadtree-index-impl.h:3080
+1,split-line,10000,cross,node_loop,0x9aecd,80593303,1.182,quadtree-index-impl.h:3101
+1,split-line,10000,cross,exact,0x11db0,78971197,1.158,quadtree-index-impl.h:2792
+1,split-line,10000,cross,node_loop,0x9b02c,74634277,1.094,quadtree-index-impl.h:2806 | quadtree-index-impl.h:3112
+1,split-line,10000,cross,exact,0x11d38,71480784,1.048,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,exact,0x11cc6,71479399,1.048,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line,10000,cross,node_loop,0x9b211,67078744,0.983,quadtree-index-impl.h:3123
+1,split-line,10000,cross,exact,0x11da0,64191355,0.941,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,exact,0x11cc2,63866788,0.936,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line,10000,holder,node_loop,0x9a0d0,60838867,0.892,quadtree-index-impl.h:2673
+1,split-line,10000,holder,node_loop,0x9a2f8,60803128,0.891,quadtree-index-impl.h:2687
+1,split-line,10000,cross,node_loop,0x9aee4,59406516,0.871,quadtree-index-impl.h:3101
+1,split-line,10000,cross,node_loop,0x9b054,53389855,0.783,quadtree-index-impl.h:1830 | quadtree-index-impl.h:3110
+1,split-line,10000,cross,exact,0x11cd3,53368887,0.782,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line,10000,cross,node_loop,0x9b35a,53178680,0.780,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3110
+1,split-line,10000,cross,node_loop,0x9aead,51767257,0.759,quadtree-index-impl.h:3101
+1,split-line,10000,cross,exact,0x11d2f,51612165,0.757,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line,10000,cross,node_loop,0x9b04b,48607888,0.713,quadtree-index-impl.h:1830 | quadtree-index-impl.h:3110
+1,split-line-translated,100000,cross,node_loop,0x9aeca,190543655,3.203,quadtree-index-impl.h:3101
+1,split-line-translated,100000,self,exact,0x9b8e1,185814527,3.124,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,cross,node_loop,0x9b208,113983290,1.916,quadtree-index-impl.h:3123
+1,split-line-translated,100000,self,exact,0x9ba9e,109621034,1.843,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,cross,node_loop,0x9b248,108091554,1.817,quadtree-index-impl.h:539 | quadtree-index-impl.h:2630 | quadtree-index-impl.h:3107
+1,split-line-translated,100000,self,exact,0x9b8c7,97495476,1.639,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+1,split-line-translated,100000,self,node_loop,0x9b9c3,79244748,1.332,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3137
+1,split-line-translated,100000,cross,node_loop,0x9b1bb,76125793,1.280,quadtree-index-impl.h:3121
+1,split-line-translated,100000,cross,report,0x13287c,74732482,1.256,quadtree-index-impl.h:1433
+1,split-line-translated,100000,cross,node_loop,0x9aecd,74642018,1.255,quadtree-index-impl.h:3101
+1,split-line-translated,100000,holder,node_loop,0x9a4ab,71369541,1.200,quadtree-index-impl.h:3093
+1,split-line-translated,100000,holder,report,0x13287c,67007917,1.126,quadtree-index-impl.h:1433
+1,split-line-translated,100000,holder,node_loop,0x9a487,65403900,1.099,quadtree-index-impl.h:3080
+1,split-line-translated,100000,cross,exact,0x11cc6,62459809,1.050,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,report,0x9b254,61072341,1.027,quadtree-index-impl.h:2770 | quadtree-index-impl.h:2797 | quadtree-index-impl.h:2807 | quadtree-index-impl.h:3112
+1,split-line-translated,100000,holder,node_loop,0x9a2f8,56391043,0.948,quadtree-index-impl.h:2687
+1,split-line-translated,100000,cross,exact,0x11db0,56176058,0.944,quadtree-index-impl.h:2792
+1,split-line-translated,100000,cross,exact,0x11d38,53264486,0.895,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,node_loop,0x9b35a,51816328,0.871,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3110
+1,split-line-translated,100000,cross,node_loop,0x9af1b,51761740,0.870,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+1,split-line-translated,100000,cross,exact,0x11cc2,50391102,0.847,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,node_loop,0x9af2d,50146106,0.843,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+1,split-line-translated,100000,cross,exact,0x11ca0,48796460,0.820,quadtree-index-impl.h:2777
+1,split-line-translated,100000,cross,node_loop,0x9b02c,48762443,0.820,quadtree-index-impl.h:2806 | quadtree-index-impl.h:3112
+1,split-line-translated,100000,cross,exact,0x11da0,48560837,0.816,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,self,node_loop,0x9b9d5,47276419,0.795,quadtree-index-impl.h:3137
+1,split-line-translated,100000,cross,node_loop,0x9aead,45697388,0.768,quadtree-index-impl.h:3101
+1,split-line-translated,100000,cross,node_loop,0x9b00d,45677183,0.768,quadtree-index-impl.h:3111
+1,split-line-translated,100000,cross,exact,0x11da8,45559062,0.766,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+1,split-line-translated,100000,cross,node_loop,0x9af3c,44227264,0.743,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,split-line-translated,100000,self,exact,0x9b8e1,215396837,3.670,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,node_loop,0x9aeca,199802602,3.404,quadtree-index-impl.h:3101
+2,split-line-translated,100000,cross,node_loop,0x9b248,140447064,2.393,quadtree-index-impl.h:539 | quadtree-index-impl.h:2630 | quadtree-index-impl.h:3107
+2,split-line-translated,100000,self,exact,0x9ba9e,123553940,2.105,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,node_loop,0x9b208,92126197,1.570,quadtree-index-impl.h:3123
+2,split-line-translated,100000,holder,node_loop,0x9a4ab,85411047,1.455,quadtree-index-impl.h:3093
+2,split-line-translated,100000,cross,node_loop,0x9b1bb,82871685,1.412,quadtree-index-impl.h:3121
+2,split-line-translated,100000,self,exact,0x9b8c7,81475043,1.388,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,self,node_loop,0x9b9c3,80183799,1.366,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3137
+2,split-line-translated,100000,cross,node_loop,0x9aecd,76152741,1.298,quadtree-index-impl.h:3101
+2,split-line-translated,100000,cross,report,0x9b254,75054855,1.279,quadtree-index-impl.h:2770 | quadtree-index-impl.h:2797 | quadtree-index-impl.h:2807 | quadtree-index-impl.h:3112
+2,split-line-translated,100000,cross,exact,0x11cc6,68244002,1.163,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line-translated,100000,cross,report,0x13287c,57817266,0.985,quadtree-index-impl.h:1433
+2,split-line-translated,100000,holder,node_loop,0x9a487,55241541,0.941,quadtree-index-impl.h:3080
+2,split-line-translated,100000,cross,exact,0x11d38,55199055,0.941,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,holder,report,0x13287c,53844152,0.917,quadtree-index-impl.h:1433
+2,split-line-translated,100000,cross,exact,0x11db0,52645527,0.897,quadtree-index-impl.h:2792
+2,split-line-translated,100000,cross,node_loop,0x9af3c,51352658,0.875,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,split-line-translated,100000,holder,node_loop,0x9a2f8,51284296,0.874,quadtree-index-impl.h:2687
+2,split-line-translated,100000,cross,node_loop,0x9b04b,48675849,0.829,quadtree-index-impl.h:1830 | quadtree-index-impl.h:3110
+2,split-line-translated,100000,cross,exact,0x11da0,48506456,0.827,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,node_loop,0x9b35a,47547811,0.810,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3110
+2,split-line-translated,100000,cross,exact,0x11da8,47255756,0.805,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line-translated,100000,cross,exact,0x11ca0,46088973,0.785,quadtree-index-impl.h:2777
+2,split-line-translated,100000,cross,exact,0x11cc2,44780169,0.763,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line-translated,100000,self,exact,0x9ba6d,44719263,0.762,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line-translated,100000,cross,node_loop,0x9aee4,44686600,0.761,quadtree-index-impl.h:3101
+2,split-line-translated,100000,cross,node_loop,0x9b211,44563872,0.759,quadtree-index-impl.h:3123
+2,split-line-translated,100000,cross,exact,0x11cb5,41900414,0.714,quadtree-index-impl.h:2777
+2,split-line-translated,100000,holder,node_loop,0x9a0d0,40909326,0.697,quadtree-index-impl.h:2673
+2,split-line,10000,self,exact,0x9b8e1,218153127,3.213,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,node_loop,0x9aeca,205645578,3.028,quadtree-index-impl.h:3101
+2,split-line,10000,self,exact,0x9ba9e,174661278,2.572,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,node_loop,0x9b248,167328314,2.464,quadtree-index-impl.h:539 | quadtree-index-impl.h:2630 | quadtree-index-impl.h:3107
+2,split-line,10000,cross,node_loop,0x9b1bb,110447908,1.626,quadtree-index-impl.h:3121
+2,split-line,10000,cross,node_loop,0x9b208,109991272,1.620,quadtree-index-impl.h:3123
+2,split-line,10000,holder,node_loop,0x9a4ab,101237019,1.491,quadtree-index-impl.h:3093
+2,split-line,10000,self,node_loop,0x9b9c3,90523662,1.333,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3137
+2,split-line,10000,cross,report,0x9b254,85407301,1.258,quadtree-index-impl.h:2770 | quadtree-index-impl.h:2797 | quadtree-index-impl.h:2807 | quadtree-index-impl.h:3112
+2,split-line,10000,holder,node_loop,0x9a487,85178597,1.254,quadtree-index-impl.h:3080
+2,split-line,10000,cross,exact,0x11da8,83610528,1.231,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line,10000,self,exact,0x9b8c7,82964930,1.222,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,split-line,10000,cross,node_loop,0x9af3c,81396620,1.199,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,split-line,10000,cross,node_loop,0x9aecd,76151858,1.121,quadtree-index-impl.h:3101
+2,split-line,10000,cross,node_loop,0x9b35a,75877834,1.117,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3110
+2,split-line,10000,holder,node_loop,0x9a2f8,74936722,1.104,quadtree-index-impl.h:2687
+2,split-line,10000,cross,exact,0x11cc6,64607570,0.951,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line,10000,cross,exact,0x11cc2,64509564,0.950,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,split-line,10000,self,node_loop,0x9b9d5,64479326,0.950,quadtree-index-impl.h:3137
+2,split-line,10000,cross,node_loop,0x9b211,63166774,0.930,quadtree-index-impl.h:3123
+2,split-line,10000,cross,node_loop,0x9b04b,63164539,0.930,quadtree-index-impl.h:1830 | quadtree-index-impl.h:3110
+2,split-line,10000,holder,node_loop,0x9a0d0,59547868,0.877,quadtree-index-impl.h:2673
+2,split-line,10000,cross,node_loop,0x9b02c,59332520,0.874,quadtree-index-impl.h:2806 | quadtree-index-impl.h:3112
+2,split-line,10000,cross,exact,0x11db0,57830399,0.852,quadtree-index-impl.h:2792
+2,split-line,10000,cross,node_loop,0x9af2d,55246480,0.814,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,split-line,10000,cross,exact,0x11da0,54008370,0.795,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,split-line,10000,cross,exact,0x11ca0,53838868,0.793,quadtree-index-impl.h:2777
+2,split-line,10000,cross,node_loop,0x9aefb,52693804,0.776,quadtree-index-impl.h:2598 | quadtree-index-impl.h:2604 | quadtree-index-impl.h:3101
+2,split-line,10000,cross,node_loop,0x9af1b,52570001,0.774,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,split-line,10000,cross,exact,0x11d38,51224816,0.754,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,self,exact,0x9b8e1,207688466,3.305,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,self,exact,0x9ba9e,184495887,2.936,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,cross,node_loop,0x9aeca,176608673,2.811,quadtree-index-impl.h:3101
+2,uniform,100000,cross,node_loop,0x9b248,150073828,2.388,quadtree-index-impl.h:539 | quadtree-index-impl.h:2630 | quadtree-index-impl.h:3107
+2,uniform,100000,cross,exact,0x11da8,111778484,1.779,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,exact,0x11db0,98579664,1.569,quadtree-index-impl.h:2792
+2,uniform,100000,cross,node_loop,0x9b02c,94897948,1.510,quadtree-index-impl.h:2806 | quadtree-index-impl.h:3112
+2,uniform,100000,self,node_loop,0x9b9c3,94577765,1.505,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3137
+2,uniform,100000,cross,exact,0x11cc6,93325431,1.485,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,uniform,100000,self,exact,0x9b8c7,88164566,1.403,quadtree-index-impl.h:391 | quadtree-index-impl.h:2782 | quadtree-index-impl.h:2806 | quadtree-index-impl.h:3138
+2,uniform,100000,cross,node_loop,0x9b208,86896443,1.383,quadtree-index-impl.h:3123
+2,uniform,100000,cross,node_loop,0x9b1bb,77613239,1.235,quadtree-index-impl.h:3121
+2,uniform,100000,holder,node_loop,0x9a4ab,76397528,1.216,quadtree-index-impl.h:3093
+2,uniform,100000,cross,exact,0x11cc2,73640405,1.172,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,uniform,100000,cross,exact,0x11d38,72452678,1.153,quadtree-index-impl.h:390 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,exact,0x11da0,70952263,1.129,quadtree-index-impl.h:393 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,exact,0x11ca0,65872332,1.048,quadtree-index-impl.h:2777
+2,uniform,100000,cross,node_loop,0x9b35a,65700974,1.046,quadtree-index-impl.h:1832 | quadtree-index-impl.h:3110
+2,uniform,100000,holder,node_loop,0x9a2f8,64339149,1.024,quadtree-index-impl.h:2687
+2,uniform,100000,holder,node_loop,0x9a487,63280927,1.007,quadtree-index-impl.h:3080
+2,uniform,100000,cross,node_loop,0x9af3c,63262091,1.007,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,uniform,100000,cross,node_loop,0x9b00d,61951347,0.986,quadtree-index-impl.h:3111
+2,uniform,100000,cross,exact,0x11cd3,60624201,0.965,quadtree-index-impl.h:371 | quadtree-index-impl.h:2777
+2,uniform,100000,cross,exact,0x11cb5,59397454,0.945,quadtree-index-impl.h:2777
+2,uniform,100000,cross,node_loop,0x9af1b,56551278,0.900,quadtree-index-impl.h:384 | quadtree-index-impl.h:3103
+2,uniform,100000,cross,exact,0x11d02,56474849,0.899,quadtree-index-impl.h:539 | quadtree-index-impl.h:2601 | quadtree-index-impl.h:2627 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,node_loop,0x9aecd,55176035,0.878,quadtree-index-impl.h:3101
+2,uniform,100000,cross,report,0x9b254,55125205,0.877,quadtree-index-impl.h:2770 | quadtree-index-impl.h:2797 | quadtree-index-impl.h:2807 | quadtree-index-impl.h:3112
+2,uniform,100000,cross,exact,0x11d20,55094830,0.877,quadtree-index-impl.h:388 | quadtree-index-impl.h:2782
+2,uniform,100000,cross,node_loop,0x9b211,52546426,0.836,quadtree-index-impl.h:3123

@@ -1,0 +1,35 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3122,6 +3122,15 @@
+                     crossPairs(left.firstChild + q, right.firstChild + r, context, visitor, predicate);
+     }
+ 
++#if __has_cpp_attribute(gnu::noinline)
++    [[gnu::noinline]]
++#endif
++    bool selfPairQualifies(std::uint32_t a, std::uint32_t b, Context& context,
++        detail::AcceptAll& predicate) const noexcept
++    {
++        return pairQualifies(a, b, false, context, predicate);
++    }
++
+     template<typename Visitor, typename Predicate>
+     void selfPairs(std::uint32_t n, Context& context, Visitor& visitor, Predicate& predicate) const noexcept
+     {
+@@ -3135,7 +3144,15 @@
+         }
+         for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
+             for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
+-                testPair(a, b, false, context, visitor, predicate);
++            {
++                if constexpr (std::same_as<T, std::int32_t> && std::same_as<Predicate, detail::AcceptAll>)
++                {
++                    if (selfPairQualifies(a, b, context, predicate))
++                        reportPair(a, b, false, context, visitor);
++                }
++                else
++                    testPair(a, b, false, context, visitor, predicate);
++            }
+         if (node.firstChild == none)
+             return;
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)

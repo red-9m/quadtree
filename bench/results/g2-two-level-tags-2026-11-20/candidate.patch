@@ -1,0 +1,165 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -685,10 +685,10 @@
+     }
+     std::pair<std::uint32_t*, std::uint8_t*> tempPermutation(std::size_t count) noexcept
+     {
+-        static_assert(sizeof(detail::SpatialKey) >= 2 * sizeof(std::uint32_t) + sizeof(std::uint8_t));
++        static_assert(sizeof(detail::SpatialKey) >= 2 * (sizeof(std::uint32_t) + sizeof(std::uint8_t)));
+         auto* data = mTemp.data();
+         auto* ids = ::new (data) std::uint32_t[2 * count];
+-        auto* tags = ::new (data + 2 * count * sizeof(std::uint32_t)) std::uint8_t[count];
++        auto* tags = ::new (data + 2 * count * sizeof(std::uint32_t)) std::uint8_t[2 * count];
+         return {ids, tags};
+     }
+     std::uint32_t mEpoch = 0;
+@@ -1587,11 +1587,27 @@
+         return count;
+     }
+ 
+-    // Top-down bulk plan for int32. Stable permutations and tags use compact
+-    // temporary streams. Only internal nodes write records to the key array.
++    struct BulkRoute
++    {
++        detail::Split<T> split;
++        std::uint32_t width, height;
++
++        explicit BulkRoute(const Cell& cell) noexcept requires std::same_as<T, std::int32_t>:
++            split(cell), width(detail::span(cell.box.minX, cell.box.maxX) / (split.splitX ? 2u : 1u)),
++            height(detail::span(cell.box.minY, cell.box.maxY) / (split.splitY ? 2u : 1u)) {}
++
++        bool fits(std::uint32_t w, std::uint32_t h) const noexcept { return w <= width && h <= height; }
++        std::uint32_t quadrant(T x, T y) const noexcept
++        {
++            return (split.splitX && x >= split.x ? 1u : 0u) | (split.splitY && y >= split.y ? 2u : 0u);
++        }
++    };
++
++    // Top-down bulk plan for int32. Even-depth passes compute both tags;
++    // their scatter carries the second tag to each odd child in stable order.
+     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
+         const Box<T>* boxes, std::uint32_t* src, std::uint32_t* dst, std::uint32_t* order,
+-        Key* keys, std::uint8_t* tags,
++        Key* keys, std::uint8_t* tags, std::uint8_t* childTags,
+         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
+         requires std::same_as<T, std::int32_t>
+     {
+@@ -1603,34 +1619,45 @@
+         };
+         if (end - begin <= mConfig.splitThreshold || depth == mConfig.maxDepth)
+             return finish();
+-        const detail::Split<T> split(cell);
++        const BulkRoute route(cell);
++        const auto& split = route.split;
+         if (!split.progress())
+             return finish();
+-        const auto w = detail::span(cell.box.minX, cell.box.maxX);
+-        const auto h = detail::span(cell.box.minY, cell.box.maxY);
+-        const auto fits_width = split.splitX ? w / 2 : w;
+-        const auto fits_height = split.splitY ? h / 2 : h;
++        const bool cached = (depth & 1u) != 0;
++        const auto* sourceTags = cached ? childTags : tags;
+         std::uint32_t count[5]{};
+-        for (auto i = begin; i < end; ++i)
++        if (cached)
++        {
++            for (auto i = begin; i < end; ++i)
++                ++count[childTags[i]];
++        }
++        else
+         {
++            const BulkRoute children[4]{BulkRoute(split.child(cell, 0)), BulkRoute(split.child(cell, 1)),
++                BulkRoute(split.child(cell, 2)), BulkRoute(split.child(cell, 3))};
++            for (auto i = begin; i < end; ++i)
++            {
+ #if defined(__GNUC__) || defined(__clang__)
+-            constexpr std::uint32_t ahead = 16;
+-            if (end - i > ahead)
+-                __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
++                constexpr std::uint32_t ahead = 16;
++                if (end - i > ahead)
++                    __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
+ #endif
+-            const auto& box = boxes[src[i]];
+-            const auto width = detail::span(box.minX, box.maxX);
+-            const auto height = detail::span(box.minY, box.maxY);
+-            std::uint32_t b = 0;
+-            if (width <= fits_width && height <= fits_height)
+-            {
+-                const auto x = box.minX + static_cast<T>(width / 2);
+-                const auto y = box.minY + static_cast<T>(height / 2);
+-                b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+-                    (split.splitY && y >= split.y ? 2u : 0u));
++                const auto& box = boxes[src[i]];
++                const auto width = detail::span(box.minX, box.maxX);
++                const auto height = detail::span(box.minY, box.maxY);
++                std::uint32_t b = 0, child = 0;
++                if (route.fits(width, height))
++                {
++                    const auto x = box.minX + static_cast<T>(width / 2);
++                    const auto y = box.minY + static_cast<T>(height / 2);
++                    const auto q = route.quadrant(x, y);
++                    b = 1 + q;
++                    if (children[q].fits(width, height))
++                        child = 1 + children[q].quadrant(x, y);
++                }
++                tags[i] = static_cast<std::uint8_t>(b | (child << 3));
++                ++count[b];
+             }
+-            tags[i] = static_cast<std::uint8_t>(b);
+-            ++count[b];
+         }
+         const auto movable = end - begin - count[0];
+         if (movable <= mConfig.splitThreshold)
+@@ -1644,7 +1671,7 @@
+             bool seen = false, distinct = false;
+             for (auto i = begin; i < end; ++i)
+             {
+-                if (tags[i] == 0)
++                if ((sourceTags[i] & 7u) == 0)
+                     continue;
+                 const auto key = makeKey(cell, depth, 0, boxes[src[i]]);
+                 if (!seen) { first = key; seen = true; }
+@@ -1662,15 +1689,30 @@
+         const std::uint32_t edges[5]{begin + count[0], begin + count[0] + count[1],
+             begin + count[0] + count[1] + count[2], end - count[4], end};
+         std::uint32_t next[5]{begin, edges[0], edges[1], edges[2], edges[3]};
+-        for (auto i = begin; i < end; ++i)
+-            dst[next[tags[i]]++] = src[i];
++        if (cached)
++        {
++            for (auto i = begin; i < end; ++i)
++                dst[next[childTags[i]]++] = src[i];
++        }
++        else
++        {
++            for (auto i = begin; i < end; ++i)
++            {
++                const auto tag = tags[i];
++                const auto b = tag & 7u;
++                const auto j = next[b]++;
++                dst[j] = src[i];
++                if (b != 0)
++                    childTags[j] = static_cast<std::uint8_t>(tag >> 3);
++            }
++        }
+         if (dst != order)
+             std::copy(dst + begin, dst + edges[0], order + begin);
+         std::uint32_t children = 0;
+         for (std::uint32_t q = 0; q < 4; ++q)
+         {
+             if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
+-                dst, src, order, keys, tags, planCapacity, plans, overflow))
++                dst, src, order, keys, tags, childTags, planCapacity, plans, overflow))
+                 children |= 1u << q;
+             if (overflow)
+                 return false;
+@@ -2278,7 +2320,7 @@
+                 std::size_t plans = 0;
+                 bool overflow = false;
+                 planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, order, order + count, order,
+-                    scratch->mKeys.data(), tags, std::min(count, nodeLimit), plans, overflow);
++                    scratch->mKeys.data(), tags, tags + count, std::min(count, nodeLimit), plans, overflow);
+                 if (overflow && plans == nodeLimit)
+                     return Status::CapacityExhausted;
+                 if (!overflow)

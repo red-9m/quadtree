@@ -1,0 +1,68 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2788,6 +2788,48 @@
+         return context.result;
+     }
+ 
++    void radixPartnerRow(Workspace<T>& scratch, std::uint32_t count) const noexcept
++    {
++        auto* row = scratch.mRow.data();
++        auto* keys = scratch.mKeys.data();
++        auto* temp = scratch.mTemp.data();
++        std::uint32_t counts[8][256]{};
++        // Cache each rank once; all subsequent passes touch only scratch.
++        for (std::uint32_t i = 0; i < count; ++i)
++        {
++            const auto entry = row[i];
++            const auto rank = mEntries.mMeta[entry].rank;
++            keys[i].hi = rank;
++            keys[i].entry = entry;
++            for (unsigned byte = 0; byte < 8; ++byte)
++                ++counts[byte][(rank >> (8 * byte)) & 255u];
++        }
++        for (unsigned byte = 0; byte < 8; ++byte)
++        {
++            const auto shift = 8 * byte;
++            auto& bucket = counts[byte];
++            if (bucket[(keys[0].hi >> shift) & 255u] == count)
++                continue;
++            std::uint32_t offset = 0;
++            for (auto& size : bucket)
++            {
++                const auto previous = offset;
++                offset += size;
++                size = previous;
++            }
++            for (std::uint32_t i = 0; i < count; ++i)
++            {
++                const auto rank = keys[i].hi;
++                const auto dst = bucket[(rank >> shift) & 255u]++;
++                temp[dst].hi = rank;
++                temp[dst].entry = keys[i].entry;
++            }
++            std::swap(keys, temp);
++        }
++        for (std::uint32_t i = 0; i < count; ++i)
++            row[i] = keys[i].entry;
++    }
++
+     template<typename Visitor, typename Predicate>
+     void orderedSelf(Workspace<T>& scratch, bool movedOnly, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -2822,7 +2864,15 @@
+                 scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
+             if (!context.active())
+                 return; // An unfinished row is discarded, never emitted as a non-prefix.
+-            sortRanks(scratch.mRow.data(), count);
++            if constexpr (std::same_as<T, std::int32_t>)
++            {
++                if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.mTemp.capacity())
++                    radixPartnerRow(scratch, static_cast<std::uint32_t>(count));
++                else
++                    sortRanks(scratch.mRow.data(), count);
++            }
++            else
++                sortRanks(scratch.mRow.data(), count);
+             for (std::size_t j = 0; j < count && context.active(); ++j)
+                 reportPair(a, scratch.mRow[j], true, context, visitor);
+         }

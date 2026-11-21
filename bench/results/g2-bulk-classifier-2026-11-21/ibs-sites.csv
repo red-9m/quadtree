@@ -1,0 +1,1064 @@
+block,scene,n,engine,phase,pc,op,level,samples
+1,uniform,100000,index,classify_loop,0x146ba4,N/A,N/A,84
+1,uniform,100000,index,classify_loop,0x146baa,N/A,N/A,78
+1,uniform,100000,index,classify_loop,0x146bae,N/A,N/A,89
+1,uniform,100000,index,classify_loop,0x146bba,N/A,N/A,102
+1,uniform,100000,index,classify_loop,0x14725c,N/A,N/A,78
+1,uniform,100000,index,classify_loop,0x147262,N/A,N/A,56
+1,uniform,100000,index,classify_loop,0x147266,N/A,N/A,72
+1,uniform,100000,index,classify_loop,0x147272,N/A,N/A,64
+1,uniform,100000,index,gather,0x146bd7,LOAD,L1 hit,87
+1,uniform,100000,index,gather,0x146bd7,N/A,N/A,2
+1,uniform,100000,index,gather,0x146bda,N/A,N/A,96
+1,uniform,100000,index,gather,0x146bde,N/A,N/A,94
+1,uniform,100000,index,gather,0x146be1,LOAD,L1 hit,110
+1,uniform,100000,index,gather,0x146be4,LOAD,L1 hit,86
+1,uniform,100000,index,gather,0x146be4,LOAD,L2 hit,2
+1,uniform,100000,index,gather,0x146be7,LOAD,L1 hit,88
+1,uniform,100000,index,gather,0x146bea,LOAD,L1 hit,90
+1,uniform,100000,index,gather,0x14728e,LOAD,L1 hit,70
+1,uniform,100000,index,gather,0x147290,N/A,N/A,63
+1,uniform,100000,index,gather,0x147294,N/A,N/A,73
+1,uniform,100000,index,gather,0x147297,LOAD,L1 hit,74
+1,uniform,100000,index,gather,0x147297,LOAD,L2 hit,5
+1,uniform,100000,index,gather,0x147299,LOAD,L1 hit,62
+1,uniform,100000,index,gather,0x147299,LOAD,L2 hit,3
+1,uniform,100000,index,gather,0x147299,LOAD,RAM hit,1
+1,uniform,100000,index,gather,0x14729c,LOAD,L1 hit,64
+1,uniform,100000,index,gather,0x14729c,LOAD,L2 hit,5
+1,uniform,100000,index,gather,0x1472a0,LOAD,L1 hit,56
+1,uniform,100000,index,gather,0x1472a0,LOAD,L2 hit,2
+1,uniform,100000,index,gather,0x1472a0,LOAD,RAM hit,2
+1,uniform,100000,index,geometry,0x146bed,N/A,N/A,84
+1,uniform,100000,index,geometry,0x146bf0,N/A,N/A,95
+1,uniform,100000,index,geometry,0x146bf2,N/A,N/A,89
+1,uniform,100000,index,geometry,0x146bf6,N/A,N/A,82
+1,uniform,100000,index,geometry,0x146bfb,N/A,N/A,101
+1,uniform,100000,index,geometry,0x146bfe,LOAD,L1 hit,93
+1,uniform,100000,index,geometry,0x146bfe,LOAD,L2 hit,1
+1,uniform,100000,index,geometry,0x146c03,N/A,N/A,78
+1,uniform,100000,index,geometry,0x146c05,N/A,N/A,94
+1,uniform,100000,index,geometry,0x146c07,N/A,N/A,81
+1,uniform,100000,index,geometry,0x146c0a,N/A,N/A,84
+1,uniform,100000,index,geometry,0x146c0d,LOAD,L1 hit,82
+1,uniform,100000,index,geometry,0x146c11,N/A,N/A,79
+1,uniform,100000,index,geometry,0x146c15,N/A,N/A,101
+1,uniform,100000,index,geometry,0x146c17,N/A,N/A,93
+1,uniform,100000,index,geometry,0x146c19,LOAD,L1 hit,114
+1,uniform,100000,index,geometry,0x146c1d,N/A,N/A,77
+1,uniform,100000,index,geometry,0x146c20,N/A,N/A,92
+1,uniform,100000,index,geometry,0x146c23,N/A,N/A,85
+1,uniform,100000,index,geometry,0x146c25,N/A,N/A,93
+1,uniform,100000,index,geometry,0x146c28,N/A,N/A,68
+1,uniform,100000,index,geometry,0x146c2b,N/A,N/A,75
+1,uniform,100000,index,geometry,0x146c2d,N/A,N/A,114
+1,uniform,100000,index,geometry,0x1472a3,N/A,N/A,52
+1,uniform,100000,index,geometry,0x1472a5,N/A,N/A,63
+1,uniform,100000,index,geometry,0x1472a8,N/A,N/A,67
+1,uniform,100000,index,geometry,0x1472ac,N/A,N/A,61
+1,uniform,100000,index,geometry,0x1472b1,N/A,N/A,53
+1,uniform,100000,index,geometry,0x1472b4,LOAD,L1 hit,76
+1,uniform,100000,index,geometry,0x1472b9,N/A,N/A,70
+1,uniform,100000,index,geometry,0x1472bb,N/A,N/A,64
+1,uniform,100000,index,geometry,0x1472bd,N/A,N/A,67
+1,uniform,100000,index,geometry,0x1472c0,N/A,N/A,67
+1,uniform,100000,index,geometry,0x1472c2,LOAD,L1 hit,59
+1,uniform,100000,index,geometry,0x1472c6,N/A,N/A,63
+1,uniform,100000,index,geometry,0x1472ca,N/A,N/A,65
+1,uniform,100000,index,geometry,0x1472cc,N/A,N/A,60
+1,uniform,100000,index,geometry,0x1472cf,LOAD,L1 hit,59
+1,uniform,100000,index,geometry,0x1472d3,N/A,N/A,70
+1,uniform,100000,index,geometry,0x1472d6,N/A,N/A,75
+1,uniform,100000,index,geometry,0x1472d9,N/A,N/A,66
+1,uniform,100000,index,geometry,0x1472db,N/A,N/A,65
+1,uniform,100000,index,geometry,0x1472de,N/A,N/A,57
+1,uniform,100000,index,geometry,0x1472e1,N/A,N/A,71
+1,uniform,100000,index,geometry,0x1472e3,N/A,N/A,57
+1,uniform,100000,index,histogram,0x146bb2,LOAD,L1 hit,77
+1,uniform,100000,index,histogram,0x146bb2,N/A,N/A,89
+1,uniform,100000,index,histogram,0x14726a,LOAD,L1 hit,75
+1,uniform,100000,index,histogram,0x14726a,N/A,N/A,62
+1,uniform,100000,index,prefetch,0x146bbf,N/A,N/A,64
+1,uniform,100000,index,prefetch,0x146bc2,N/A,N/A,105
+1,uniform,100000,index,prefetch,0x146bc4,N/A,N/A,81
+1,uniform,100000,index,prefetch,0x146bc9,N/A,N/A,44
+1,uniform,100000,index,prefetch,0x146bcc,LOAD,L1 hit,77
+1,uniform,100000,index,prefetch,0x146bcc,LOAD,L2 hit,1
+1,uniform,100000,index,prefetch,0x146bcf,N/A,N/A,78
+1,uniform,100000,index,prefetch,0x146bd3,LOAD,L1 hit,35
+1,uniform,100000,index,prefetch,0x146bd3,LOAD,L2 hit,16
+1,uniform,100000,index,prefetch,0x146bd3,LOAD,RAM hit,1
+1,uniform,100000,index,prefetch,0x146bd3,LOAD,"core, same node Any cache hit",17
+1,uniform,100000,index,prefetch,0x147277,N/A,N/A,51
+1,uniform,100000,index,prefetch,0x14727c,N/A,N/A,61
+1,uniform,100000,index,prefetch,0x14727f,N/A,N/A,61
+1,uniform,100000,index,prefetch,0x147281,LOAD,L1 hit,63
+1,uniform,100000,index,prefetch,0x147281,LOAD,L2 hit,1
+1,uniform,100000,index,prefetch,0x147286,N/A,N/A,60
+1,uniform,100000,index,prefetch,0x14728a,LOAD,L1 hit,33
+1,uniform,100000,index,prefetch,0x14728a,LOAD,L2 hit,23
+1,uniform,100000,index,prefetch,0x14728a,LOAD,RAM hit,1
+1,uniform,100000,index,prefetch,0x14728a,LOAD,"core, same node Any cache hit",17
+1,uniform,100000,index,scatter,0x146e20,LOAD,L1 hit,52
+1,uniform,100000,index,scatter,0x146e25,N/A,N/A,134
+1,uniform,100000,index,scatter,0x146e2a,LOAD,L1 hit,54
+1,uniform,100000,index,scatter,0x146e2e,LOAD,L1 hit,68
+1,uniform,100000,index,scatter,0x146e35,N/A,N/A,64
+1,uniform,100000,index,scatter,0x146e39,N/A,N/A,61
+1,uniform,100000,index,scatter,0x146e39,STORE,L1 hit,67
+1,uniform,100000,index,scatter,0x146e41,LOAD,L1 hit,73
+1,uniform,100000,index,scatter,0x146e46,LOAD,L1 hit,68
+1,uniform,100000,index,scatter,0x146e4d,N/A,N/A,59
+1,uniform,100000,index,scatter,0x146e51,N/A,N/A,67
+1,uniform,100000,index,scatter,0x146e51,STORE,L1 hit,69
+1,uniform,100000,index,scatter,0x146e59,LOAD,L1 hit,77
+1,uniform,100000,index,scatter,0x146e5d,N/A,N/A,55
+1,uniform,100000,index,scatter,0x146e61,N/A,N/A,67
+1,uniform,100000,index,scatter,0x146e61,STORE,L1 hit,80
+1,uniform,100000,index,scatter,0x146e64,N/A,N/A,52
+1,uniform,100000,index,scatter,0x146e64,STORE,L1 hit,63
+1,uniform,100000,index,scatter,0x146e67,N/A,N/A,75
+1,uniform,100000,index,scatter,0x146e8a,LOAD,L1 hit,2
+1,uniform,100000,index,scatter,0x147440,LOAD,L1 hit,25
+1,uniform,100000,index,scatter,0x147445,LOAD,L1 hit,33
+1,uniform,100000,index,scatter,0x147449,N/A,N/A,23
+1,uniform,100000,index,scatter,0x14744d,LOAD,L1 hit,21
+1,uniform,100000,index,scatter,0x147454,N/A,N/A,22
+1,uniform,100000,index,scatter,0x147458,N/A,N/A,29
+1,uniform,100000,index,scatter,0x147458,STORE,L1 hit,22
+1,uniform,100000,index,scatter,0x14745c,N/A,N/A,22
+1,uniform,100000,index,scatter,0x14745c,STORE,L1 hit,24
+1,uniform,100000,index,scatter,0x147464,N/A,N/A,23
+1,uniform,100000,index,scatter,0x147469,N/A,N/A,2
+1,uniform,100000,index,scatter,0x147470,LOAD,L1 hit,1
+1,uniform,100000,index,scatter,0x147470,N/A,N/A,1
+1,uniform,100000,index,tag_store,0x146ba7,STORE,L1 hit,72
+1,uniform,100000,index,tag_store,0x14725f,STORE,L1 hit,51
+1,uniform,100000,index,tag_store,0x14725f,STORE,L2 hit,1
+1,split-line,10000,index,classify_loop,0x146ba4,N/A,N/A,95
+1,split-line,10000,index,classify_loop,0x146baa,N/A,N/A,90
+1,split-line,10000,index,classify_loop,0x146bae,N/A,N/A,96
+1,split-line,10000,index,classify_loop,0x146bba,N/A,N/A,97
+1,split-line,10000,index,classify_loop,0x14725c,N/A,N/A,83
+1,split-line,10000,index,classify_loop,0x147262,N/A,N/A,73
+1,split-line,10000,index,classify_loop,0x147266,N/A,N/A,64
+1,split-line,10000,index,classify_loop,0x147272,N/A,N/A,76
+1,split-line,10000,index,gather,0x146bd7,LOAD,L1 hit,90
+1,split-line,10000,index,gather,0x146bda,N/A,N/A,74
+1,split-line,10000,index,gather,0x146bde,N/A,N/A,92
+1,split-line,10000,index,gather,0x146be1,LOAD,L1 hit,93
+1,split-line,10000,index,gather,0x146be4,LOAD,L1 hit,87
+1,split-line,10000,index,gather,0x146be7,LOAD,L1 hit,96
+1,split-line,10000,index,gather,0x146bea,LOAD,L1 hit,91
+1,split-line,10000,index,gather,0x146bea,LOAD,L2 hit,1
+1,split-line,10000,index,gather,0x14728e,LOAD,L1 hit,67
+1,split-line,10000,index,gather,0x147290,N/A,N/A,73
+1,split-line,10000,index,gather,0x147294,N/A,N/A,64
+1,split-line,10000,index,gather,0x147297,LOAD,L1 hit,67
+1,split-line,10000,index,gather,0x147297,LOAD,L2 hit,5
+1,split-line,10000,index,gather,0x147299,LOAD,L1 hit,63
+1,split-line,10000,index,gather,0x147299,LOAD,L2 hit,4
+1,split-line,10000,index,gather,0x14729c,LOAD,L1 hit,58
+1,split-line,10000,index,gather,0x14729c,LOAD,L2 hit,1
+1,split-line,10000,index,gather,0x1472a0,LOAD,L1 hit,60
+1,split-line,10000,index,gather,0x1472a0,LOAD,L2 hit,4
+1,split-line,10000,index,geometry,0x146bed,N/A,N/A,82
+1,split-line,10000,index,geometry,0x146bf0,N/A,N/A,81
+1,split-line,10000,index,geometry,0x146bf2,N/A,N/A,81
+1,split-line,10000,index,geometry,0x146bf6,N/A,N/A,95
+1,split-line,10000,index,geometry,0x146bfb,N/A,N/A,77
+1,split-line,10000,index,geometry,0x146bfe,LOAD,L1 hit,96
+1,split-line,10000,index,geometry,0x146c03,N/A,N/A,101
+1,split-line,10000,index,geometry,0x146c05,N/A,N/A,84
+1,split-line,10000,index,geometry,0x146c07,N/A,N/A,87
+1,split-line,10000,index,geometry,0x146c0a,N/A,N/A,107
+1,split-line,10000,index,geometry,0x146c0d,LOAD,L1 hit,87
+1,split-line,10000,index,geometry,0x146c11,N/A,N/A,89
+1,split-line,10000,index,geometry,0x146c15,N/A,N/A,91
+1,split-line,10000,index,geometry,0x146c17,N/A,N/A,102
+1,split-line,10000,index,geometry,0x146c19,LOAD,L1 hit,104
+1,split-line,10000,index,geometry,0x146c1d,N/A,N/A,90
+1,split-line,10000,index,geometry,0x146c20,N/A,N/A,87
+1,split-line,10000,index,geometry,0x146c23,N/A,N/A,95
+1,split-line,10000,index,geometry,0x146c25,N/A,N/A,92
+1,split-line,10000,index,geometry,0x146c28,N/A,N/A,98
+1,split-line,10000,index,geometry,0x146c2b,N/A,N/A,99
+1,split-line,10000,index,geometry,0x146c2d,N/A,N/A,87
+1,split-line,10000,index,geometry,0x1472a3,N/A,N/A,69
+1,split-line,10000,index,geometry,0x1472a5,N/A,N/A,76
+1,split-line,10000,index,geometry,0x1472a8,N/A,N/A,80
+1,split-line,10000,index,geometry,0x1472ac,N/A,N/A,57
+1,split-line,10000,index,geometry,0x1472b1,N/A,N/A,58
+1,split-line,10000,index,geometry,0x1472b4,LOAD,L1 hit,84
+1,split-line,10000,index,geometry,0x1472b9,N/A,N/A,62
+1,split-line,10000,index,geometry,0x1472bb,N/A,N/A,70
+1,split-line,10000,index,geometry,0x1472bd,N/A,N/A,71
+1,split-line,10000,index,geometry,0x1472c0,N/A,N/A,66
+1,split-line,10000,index,geometry,0x1472c2,LOAD,L1 hit,77
+1,split-line,10000,index,geometry,0x1472c6,N/A,N/A,78
+1,split-line,10000,index,geometry,0x1472ca,N/A,N/A,79
+1,split-line,10000,index,geometry,0x1472cc,N/A,N/A,60
+1,split-line,10000,index,geometry,0x1472cf,LOAD,L1 hit,68
+1,split-line,10000,index,geometry,0x1472d3,N/A,N/A,68
+1,split-line,10000,index,geometry,0x1472d6,N/A,N/A,88
+1,split-line,10000,index,geometry,0x1472d9,N/A,N/A,60
+1,split-line,10000,index,geometry,0x1472db,N/A,N/A,57
+1,split-line,10000,index,geometry,0x1472de,N/A,N/A,72
+1,split-line,10000,index,geometry,0x1472e1,N/A,N/A,68
+1,split-line,10000,index,geometry,0x1472e3,N/A,N/A,68
+1,split-line,10000,index,histogram,0x146bb2,LOAD,L1 hit,96
+1,split-line,10000,index,histogram,0x146bb2,N/A,N/A,79
+1,split-line,10000,index,histogram,0x14726a,LOAD,L1 hit,68
+1,split-line,10000,index,histogram,0x14726a,N/A,N/A,63
+1,split-line,10000,index,prefetch,0x146bbf,N/A,N/A,100
+1,split-line,10000,index,prefetch,0x146bc2,N/A,N/A,86
+1,split-line,10000,index,prefetch,0x146bc4,N/A,N/A,75
+1,split-line,10000,index,prefetch,0x146bc9,N/A,N/A,61
+1,split-line,10000,index,prefetch,0x146bcc,LOAD,L1 hit,42
+1,split-line,10000,index,prefetch,0x146bcf,N/A,N/A,65
+1,split-line,10000,index,prefetch,0x146bd3,LOAD,L1 hit,48
+1,split-line,10000,index,prefetch,0x146bd3,LOAD,L2 hit,17
+1,split-line,10000,index,prefetch,0x147277,N/A,N/A,69
+1,split-line,10000,index,prefetch,0x14727c,N/A,N/A,74
+1,split-line,10000,index,prefetch,0x14727f,N/A,N/A,61
+1,split-line,10000,index,prefetch,0x147281,LOAD,L1 hit,71
+1,split-line,10000,index,prefetch,0x147281,LOAD,L2 hit,1
+1,split-line,10000,index,prefetch,0x147286,N/A,N/A,77
+1,split-line,10000,index,prefetch,0x14728a,LOAD,L1 hit,52
+1,split-line,10000,index,prefetch,0x14728a,LOAD,L2 hit,22
+1,split-line,10000,index,prefetch,0x14728a,LOAD,"core, same node Any cache hit",1
+1,split-line,10000,index,scatter,0x146e20,LOAD,L1 hit,61
+1,split-line,10000,index,scatter,0x146e20,N/A,N/A,1
+1,split-line,10000,index,scatter,0x146e25,N/A,N/A,136
+1,split-line,10000,index,scatter,0x146e2a,LOAD,L1 hit,63
+1,split-line,10000,index,scatter,0x146e2a,LOAD,L2 hit,1
+1,split-line,10000,index,scatter,0x146e2e,LOAD,L1 hit,81
+1,split-line,10000,index,scatter,0x146e35,N/A,N/A,69
+1,split-line,10000,index,scatter,0x146e39,N/A,N/A,78
+1,split-line,10000,index,scatter,0x146e39,STORE,L1 hit,68
+1,split-line,10000,index,scatter,0x146e41,LOAD,L1 hit,69
+1,split-line,10000,index,scatter,0x146e46,LOAD,L1 hit,61
+1,split-line,10000,index,scatter,0x146e4d,N/A,N/A,70
+1,split-line,10000,index,scatter,0x146e51,N/A,N/A,72
+1,split-line,10000,index,scatter,0x146e51,STORE,L1 hit,81
+1,split-line,10000,index,scatter,0x146e59,LOAD,L1 hit,70
+1,split-line,10000,index,scatter,0x146e59,LOAD,L2 hit,1
+1,split-line,10000,index,scatter,0x146e5d,N/A,N/A,62
+1,split-line,10000,index,scatter,0x146e61,N/A,N/A,69
+1,split-line,10000,index,scatter,0x146e61,STORE,L1 hit,66
+1,split-line,10000,index,scatter,0x146e61,STORE,L2 hit,1
+1,split-line,10000,index,scatter,0x146e64,N/A,N/A,70
+1,split-line,10000,index,scatter,0x146e64,STORE,L1 hit,78
+1,split-line,10000,index,scatter,0x146e64,STORE,L2 hit,2
+1,split-line,10000,index,scatter,0x146e67,N/A,N/A,70
+1,split-line,10000,index,scatter,0x146e8a,LOAD,L1 hit,1
+1,split-line,10000,index,scatter,0x146eae,N/A,N/A,1
+1,split-line,10000,index,scatter,0x147440,LOAD,L1 hit,21
+1,split-line,10000,index,scatter,0x147445,LOAD,L1 hit,22
+1,split-line,10000,index,scatter,0x147449,N/A,N/A,26
+1,split-line,10000,index,scatter,0x14744d,LOAD,L1 hit,23
+1,split-line,10000,index,scatter,0x147454,N/A,N/A,22
+1,split-line,10000,index,scatter,0x147458,N/A,N/A,25
+1,split-line,10000,index,scatter,0x147458,STORE,L1 hit,29
+1,split-line,10000,index,scatter,0x14745c,N/A,N/A,20
+1,split-line,10000,index,scatter,0x14745c,STORE,L1 hit,23
+1,split-line,10000,index,scatter,0x147464,N/A,N/A,24
+1,split-line,10000,index,scatter,0x147469,N/A,N/A,2
+1,split-line,10000,index,scatter,0x147470,LOAD,L1 hit,3
+1,split-line,10000,index,scatter,0x147470,N/A,N/A,1
+1,split-line,10000,index,tag_store,0x146ba7,STORE,L1 hit,111
+1,split-line,10000,index,tag_store,0x14725f,STORE,L1 hit,66
+1,split-line-translated,100000,index,classify_loop,0x146ba4,N/A,N/A,94
+1,split-line-translated,100000,index,classify_loop,0x146baa,N/A,N/A,121
+1,split-line-translated,100000,index,classify_loop,0x146bae,N/A,N/A,95
+1,split-line-translated,100000,index,classify_loop,0x146bba,N/A,N/A,96
+1,split-line-translated,100000,index,classify_loop,0x14725c,N/A,N/A,73
+1,split-line-translated,100000,index,classify_loop,0x147262,N/A,N/A,75
+1,split-line-translated,100000,index,classify_loop,0x147266,N/A,N/A,84
+1,split-line-translated,100000,index,classify_loop,0x147272,N/A,N/A,91
+1,split-line-translated,100000,index,gather,0x146bd7,LOAD,L1 hit,86
+1,split-line-translated,100000,index,gather,0x146bd7,N/A,N/A,2
+1,split-line-translated,100000,index,gather,0x146bda,N/A,N/A,98
+1,split-line-translated,100000,index,gather,0x146bde,N/A,N/A,106
+1,split-line-translated,100000,index,gather,0x146be1,LOAD,L1 hit,86
+1,split-line-translated,100000,index,gather,0x146be1,LOAD,L2 hit,2
+1,split-line-translated,100000,index,gather,0x146be4,LOAD,L1 hit,92
+1,split-line-translated,100000,index,gather,0x146be4,LOAD,RAM hit,1
+1,split-line-translated,100000,index,gather,0x146be7,LOAD,L1 hit,97
+1,split-line-translated,100000,index,gather,0x146be7,LOAD,RAM hit,1
+1,split-line-translated,100000,index,gather,0x146bea,LOAD,L1 hit,92
+1,split-line-translated,100000,index,gather,0x14728e,LOAD,L1 hit,63
+1,split-line-translated,100000,index,gather,0x147290,N/A,N/A,55
+1,split-line-translated,100000,index,gather,0x147294,N/A,N/A,85
+1,split-line-translated,100000,index,gather,0x147297,LOAD,L1 hit,70
+1,split-line-translated,100000,index,gather,0x147297,LOAD,L2 hit,2
+1,split-line-translated,100000,index,gather,0x147299,LOAD,L1 hit,77
+1,split-line-translated,100000,index,gather,0x147299,LOAD,L2 hit,3
+1,split-line-translated,100000,index,gather,0x14729c,LOAD,L1 hit,69
+1,split-line-translated,100000,index,gather,0x1472a0,LOAD,L1 hit,76
+1,split-line-translated,100000,index,gather,0x1472a0,LOAD,L2 hit,2
+1,split-line-translated,100000,index,geometry,0x146bed,N/A,N/A,104
+1,split-line-translated,100000,index,geometry,0x146bf0,N/A,N/A,89
+1,split-line-translated,100000,index,geometry,0x146bf2,N/A,N/A,96
+1,split-line-translated,100000,index,geometry,0x146bf6,N/A,N/A,98
+1,split-line-translated,100000,index,geometry,0x146bfb,N/A,N/A,95
+1,split-line-translated,100000,index,geometry,0x146bfe,LOAD,L1 hit,99
+1,split-line-translated,100000,index,geometry,0x146c03,N/A,N/A,108
+1,split-line-translated,100000,index,geometry,0x146c05,N/A,N/A,102
+1,split-line-translated,100000,index,geometry,0x146c07,N/A,N/A,129
+1,split-line-translated,100000,index,geometry,0x146c0a,N/A,N/A,96
+1,split-line-translated,100000,index,geometry,0x146c0d,LOAD,L1 hit,120
+1,split-line-translated,100000,index,geometry,0x146c11,N/A,N/A,90
+1,split-line-translated,100000,index,geometry,0x146c15,N/A,N/A,78
+1,split-line-translated,100000,index,geometry,0x146c17,N/A,N/A,91
+1,split-line-translated,100000,index,geometry,0x146c19,LOAD,L1 hit,114
+1,split-line-translated,100000,index,geometry,0x146c1d,N/A,N/A,113
+1,split-line-translated,100000,index,geometry,0x146c20,N/A,N/A,98
+1,split-line-translated,100000,index,geometry,0x146c23,N/A,N/A,94
+1,split-line-translated,100000,index,geometry,0x146c25,N/A,N/A,102
+1,split-line-translated,100000,index,geometry,0x146c28,N/A,N/A,104
+1,split-line-translated,100000,index,geometry,0x146c2b,N/A,N/A,95
+1,split-line-translated,100000,index,geometry,0x146c2d,N/A,N/A,107
+1,split-line-translated,100000,index,geometry,0x1472a3,N/A,N/A,72
+1,split-line-translated,100000,index,geometry,0x1472a5,N/A,N/A,87
+1,split-line-translated,100000,index,geometry,0x1472a8,N/A,N/A,80
+1,split-line-translated,100000,index,geometry,0x1472ac,N/A,N/A,64
+1,split-line-translated,100000,index,geometry,0x1472b1,N/A,N/A,72
+1,split-line-translated,100000,index,geometry,0x1472b4,LOAD,L1 hit,81
+1,split-line-translated,100000,index,geometry,0x1472b9,N/A,N/A,77
+1,split-line-translated,100000,index,geometry,0x1472bb,N/A,N/A,70
+1,split-line-translated,100000,index,geometry,0x1472bd,N/A,N/A,84
+1,split-line-translated,100000,index,geometry,0x1472c0,N/A,N/A,73
+1,split-line-translated,100000,index,geometry,0x1472c2,LOAD,L1 hit,71
+1,split-line-translated,100000,index,geometry,0x1472c6,N/A,N/A,79
+1,split-line-translated,100000,index,geometry,0x1472ca,N/A,N/A,77
+1,split-line-translated,100000,index,geometry,0x1472cc,N/A,N/A,69
+1,split-line-translated,100000,index,geometry,0x1472cf,LOAD,L1 hit,78
+1,split-line-translated,100000,index,geometry,0x1472d3,N/A,N/A,66
+1,split-line-translated,100000,index,geometry,0x1472d6,N/A,N/A,87
+1,split-line-translated,100000,index,geometry,0x1472d9,N/A,N/A,79
+1,split-line-translated,100000,index,geometry,0x1472db,N/A,N/A,79
+1,split-line-translated,100000,index,geometry,0x1472de,N/A,N/A,75
+1,split-line-translated,100000,index,geometry,0x1472e1,N/A,N/A,83
+1,split-line-translated,100000,index,geometry,0x1472e3,N/A,N/A,78
+1,split-line-translated,100000,index,histogram,0x146bb2,LOAD,L1 hit,91
+1,split-line-translated,100000,index,histogram,0x146bb2,N/A,N/A,95
+1,split-line-translated,100000,index,histogram,0x14726a,LOAD,L1 hit,77
+1,split-line-translated,100000,index,histogram,0x14726a,N/A,N/A,81
+1,split-line-translated,100000,index,prefetch,0x146bbf,N/A,N/A,97
+1,split-line-translated,100000,index,prefetch,0x146bc2,N/A,N/A,95
+1,split-line-translated,100000,index,prefetch,0x146bc4,N/A,N/A,112
+1,split-line-translated,100000,index,prefetch,0x146bc9,N/A,N/A,79
+1,split-line-translated,100000,index,prefetch,0x146bcc,LOAD,L1 hit,80
+1,split-line-translated,100000,index,prefetch,0x146bcf,N/A,N/A,78
+1,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,L1 hit,34
+1,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,L2 hit,20
+1,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,"core, same node Any cache hit",12
+1,split-line-translated,100000,index,prefetch,0x147277,N/A,N/A,69
+1,split-line-translated,100000,index,prefetch,0x14727c,N/A,N/A,67
+1,split-line-translated,100000,index,prefetch,0x14727f,N/A,N/A,75
+1,split-line-translated,100000,index,prefetch,0x147281,LOAD,L1 hit,66
+1,split-line-translated,100000,index,prefetch,0x147286,N/A,N/A,81
+1,split-line-translated,100000,index,prefetch,0x14728a,LOAD,L1 hit,39
+1,split-line-translated,100000,index,prefetch,0x14728a,LOAD,L2 hit,15
+1,split-line-translated,100000,index,prefetch,0x14728a,LOAD,RAM hit,1
+1,split-line-translated,100000,index,prefetch,0x14728a,LOAD,"core, same node Any cache hit",8
+1,split-line-translated,100000,index,scatter,0x146e20,LOAD,L1 hit,78
+1,split-line-translated,100000,index,scatter,0x146e25,N/A,N/A,160
+1,split-line-translated,100000,index,scatter,0x146e2a,LOAD,L1 hit,72
+1,split-line-translated,100000,index,scatter,0x146e2a,LOAD,L2 hit,3
+1,split-line-translated,100000,index,scatter,0x146e2e,LOAD,L1 hit,82
+1,split-line-translated,100000,index,scatter,0x146e35,N/A,N/A,75
+1,split-line-translated,100000,index,scatter,0x146e39,N/A,N/A,71
+1,split-line-translated,100000,index,scatter,0x146e39,STORE,L1 hit,79
+1,split-line-translated,100000,index,scatter,0x146e41,LOAD,L1 hit,93
+1,split-line-translated,100000,index,scatter,0x146e46,LOAD,L1 hit,78
+1,split-line-translated,100000,index,scatter,0x146e4d,N/A,N/A,87
+1,split-line-translated,100000,index,scatter,0x146e51,N/A,N/A,83
+1,split-line-translated,100000,index,scatter,0x146e51,STORE,L1 hit,101
+1,split-line-translated,100000,index,scatter,0x146e59,LOAD,L1 hit,63
+1,split-line-translated,100000,index,scatter,0x146e59,LOAD,L2 hit,1
+1,split-line-translated,100000,index,scatter,0x146e5d,N/A,N/A,67
+1,split-line-translated,100000,index,scatter,0x146e61,N/A,N/A,85
+1,split-line-translated,100000,index,scatter,0x146e61,STORE,L1 hit,65
+1,split-line-translated,100000,index,scatter,0x146e61,STORE,L2 hit,4
+1,split-line-translated,100000,index,scatter,0x146e64,N/A,N/A,82
+1,split-line-translated,100000,index,scatter,0x146e64,STORE,L1 hit,85
+1,split-line-translated,100000,index,scatter,0x146e64,STORE,L2 hit,2
+1,split-line-translated,100000,index,scatter,0x146e67,N/A,N/A,88
+1,split-line-translated,100000,index,scatter,0x146e8a,LOAD,L1 hit,1
+1,split-line-translated,100000,index,scatter,0x146ea7,LOAD,L1 hit,1
+1,split-line-translated,100000,index,scatter,0x146eae,N/A,N/A,1
+1,split-line-translated,100000,index,scatter,0x147440,LOAD,L1 hit,26
+1,split-line-translated,100000,index,scatter,0x147445,LOAD,L1 hit,16
+1,split-line-translated,100000,index,scatter,0x147449,N/A,N/A,28
+1,split-line-translated,100000,index,scatter,0x14744d,LOAD,L1 hit,24
+1,split-line-translated,100000,index,scatter,0x147454,N/A,N/A,32
+1,split-line-translated,100000,index,scatter,0x147458,N/A,N/A,23
+1,split-line-translated,100000,index,scatter,0x147458,STORE,L1 hit,24
+1,split-line-translated,100000,index,scatter,0x14745c,N/A,N/A,29
+1,split-line-translated,100000,index,scatter,0x14745c,STORE,L1 hit,26
+1,split-line-translated,100000,index,scatter,0x147464,N/A,N/A,29
+1,split-line-translated,100000,index,scatter,0x147469,N/A,N/A,1
+1,split-line-translated,100000,index,scatter,0x147470,LOAD,L1 hit,3
+1,split-line-translated,100000,index,tag_store,0x146ba7,STORE,L1 hit,102
+1,split-line-translated,100000,index,tag_store,0x14725f,STORE,L1 hit,62
+1,split-line-translated,100000,index,tag_store,0x14725f,STORE,L2 hit,1
+1,split-line-translated,100000,index-ordered,classify_loop,0x146ba4,N/A,N/A,24
+1,split-line-translated,100000,index-ordered,classify_loop,0x146baa,N/A,N/A,28
+1,split-line-translated,100000,index-ordered,classify_loop,0x146bae,N/A,N/A,35
+1,split-line-translated,100000,index-ordered,classify_loop,0x146bba,N/A,N/A,34
+1,split-line-translated,100000,index-ordered,classify_loop,0x14725c,N/A,N/A,26
+1,split-line-translated,100000,index-ordered,classify_loop,0x147262,N/A,N/A,18
+1,split-line-translated,100000,index-ordered,classify_loop,0x147266,N/A,N/A,22
+1,split-line-translated,100000,index-ordered,classify_loop,0x147272,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,gather,0x146bd7,LOAD,L1 hit,28
+1,split-line-translated,100000,index-ordered,gather,0x146bda,N/A,N/A,26
+1,split-line-translated,100000,index-ordered,gather,0x146bde,N/A,N/A,30
+1,split-line-translated,100000,index-ordered,gather,0x146be1,LOAD,L1 hit,37
+1,split-line-translated,100000,index-ordered,gather,0x146be4,LOAD,L1 hit,28
+1,split-line-translated,100000,index-ordered,gather,0x146be7,LOAD,L1 hit,23
+1,split-line-translated,100000,index-ordered,gather,0x146bea,LOAD,L1 hit,21
+1,split-line-translated,100000,index-ordered,gather,0x14728e,LOAD,L1 hit,21
+1,split-line-translated,100000,index-ordered,gather,0x147290,N/A,N/A,24
+1,split-line-translated,100000,index-ordered,gather,0x147294,N/A,N/A,17
+1,split-line-translated,100000,index-ordered,gather,0x147297,LOAD,L1 hit,13
+1,split-line-translated,100000,index-ordered,gather,0x147299,LOAD,L1 hit,22
+1,split-line-translated,100000,index-ordered,gather,0x147299,LOAD,L2 hit,1
+1,split-line-translated,100000,index-ordered,gather,0x14729c,LOAD,L1 hit,19
+1,split-line-translated,100000,index-ordered,gather,0x14729c,LOAD,L2 hit,2
+1,split-line-translated,100000,index-ordered,gather,0x1472a0,LOAD,L1 hit,20
+1,split-line-translated,100000,index-ordered,gather,0x1472a0,LOAD,L2 hit,2
+1,split-line-translated,100000,index-ordered,geometry,0x146bed,N/A,N/A,31
+1,split-line-translated,100000,index-ordered,geometry,0x146bf0,N/A,N/A,34
+1,split-line-translated,100000,index-ordered,geometry,0x146bf2,N/A,N/A,26
+1,split-line-translated,100000,index-ordered,geometry,0x146bf6,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x146bfb,N/A,N/A,26
+1,split-line-translated,100000,index-ordered,geometry,0x146bfe,LOAD,L1 hit,28
+1,split-line-translated,100000,index-ordered,geometry,0x146c03,N/A,N/A,31
+1,split-line-translated,100000,index-ordered,geometry,0x146c05,N/A,N/A,30
+1,split-line-translated,100000,index-ordered,geometry,0x146c07,N/A,N/A,33
+1,split-line-translated,100000,index-ordered,geometry,0x146c0a,N/A,N/A,30
+1,split-line-translated,100000,index-ordered,geometry,0x146c0d,LOAD,L1 hit,25
+1,split-line-translated,100000,index-ordered,geometry,0x146c11,N/A,N/A,25
+1,split-line-translated,100000,index-ordered,geometry,0x146c15,N/A,N/A,24
+1,split-line-translated,100000,index-ordered,geometry,0x146c17,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x146c19,LOAD,L1 hit,26
+1,split-line-translated,100000,index-ordered,geometry,0x146c1d,N/A,N/A,17
+1,split-line-translated,100000,index-ordered,geometry,0x146c20,N/A,N/A,35
+1,split-line-translated,100000,index-ordered,geometry,0x146c23,N/A,N/A,23
+1,split-line-translated,100000,index-ordered,geometry,0x146c25,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x146c28,N/A,N/A,27
+1,split-line-translated,100000,index-ordered,geometry,0x146c2b,N/A,N/A,26
+1,split-line-translated,100000,index-ordered,geometry,0x146c2d,N/A,N/A,28
+1,split-line-translated,100000,index-ordered,geometry,0x1472a3,N/A,N/A,14
+1,split-line-translated,100000,index-ordered,geometry,0x1472a5,N/A,N/A,15
+1,split-line-translated,100000,index-ordered,geometry,0x1472a8,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x1472ac,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x1472b1,N/A,N/A,17
+1,split-line-translated,100000,index-ordered,geometry,0x1472b4,LOAD,L1 hit,21
+1,split-line-translated,100000,index-ordered,geometry,0x1472b9,N/A,N/A,18
+1,split-line-translated,100000,index-ordered,geometry,0x1472bb,N/A,N/A,16
+1,split-line-translated,100000,index-ordered,geometry,0x1472bd,N/A,N/A,22
+1,split-line-translated,100000,index-ordered,geometry,0x1472c0,N/A,N/A,22
+1,split-line-translated,100000,index-ordered,geometry,0x1472c2,LOAD,L1 hit,29
+1,split-line-translated,100000,index-ordered,geometry,0x1472c6,N/A,N/A,17
+1,split-line-translated,100000,index-ordered,geometry,0x1472ca,N/A,N/A,23
+1,split-line-translated,100000,index-ordered,geometry,0x1472cc,N/A,N/A,23
+1,split-line-translated,100000,index-ordered,geometry,0x1472cf,LOAD,L1 hit,26
+1,split-line-translated,100000,index-ordered,geometry,0x1472d3,N/A,N/A,25
+1,split-line-translated,100000,index-ordered,geometry,0x1472d6,N/A,N/A,21
+1,split-line-translated,100000,index-ordered,geometry,0x1472d9,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x1472db,N/A,N/A,20
+1,split-line-translated,100000,index-ordered,geometry,0x1472de,N/A,N/A,27
+1,split-line-translated,100000,index-ordered,geometry,0x1472e1,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,geometry,0x1472e3,N/A,N/A,22
+1,split-line-translated,100000,index-ordered,histogram,0x146bb2,LOAD,L1 hit,31
+1,split-line-translated,100000,index-ordered,histogram,0x146bb2,N/A,N/A,27
+1,split-line-translated,100000,index-ordered,histogram,0x14726a,LOAD,L1 hit,27
+1,split-line-translated,100000,index-ordered,histogram,0x14726a,N/A,N/A,30
+1,split-line-translated,100000,index-ordered,prefetch,0x146bbf,N/A,N/A,29
+1,split-line-translated,100000,index-ordered,prefetch,0x146bc2,N/A,N/A,18
+1,split-line-translated,100000,index-ordered,prefetch,0x146bc4,N/A,N/A,48
+1,split-line-translated,100000,index-ordered,prefetch,0x146bc9,N/A,N/A,25
+1,split-line-translated,100000,index-ordered,prefetch,0x146bcc,LOAD,L1 hit,22
+1,split-line-translated,100000,index-ordered,prefetch,0x146bcf,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,L1 hit,12
+1,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,L2 hit,3
+1,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,"core, same node Any cache hit",3
+1,split-line-translated,100000,index-ordered,prefetch,0x147277,N/A,N/A,25
+1,split-line-translated,100000,index-ordered,prefetch,0x14727c,N/A,N/A,31
+1,split-line-translated,100000,index-ordered,prefetch,0x14727f,N/A,N/A,22
+1,split-line-translated,100000,index-ordered,prefetch,0x147281,LOAD,L1 hit,19
+1,split-line-translated,100000,index-ordered,prefetch,0x147286,N/A,N/A,23
+1,split-line-translated,100000,index-ordered,prefetch,0x14728a,LOAD,L1 hit,5
+1,split-line-translated,100000,index-ordered,prefetch,0x14728a,LOAD,L2 hit,8
+1,split-line-translated,100000,index-ordered,prefetch,0x14728a,LOAD,"core, same node Any cache hit",5
+1,split-line-translated,100000,index-ordered,scatter,0x146e20,LOAD,L1 hit,17
+1,split-line-translated,100000,index-ordered,scatter,0x146e25,N/A,N/A,47
+1,split-line-translated,100000,index-ordered,scatter,0x146e2a,LOAD,L1 hit,20
+1,split-line-translated,100000,index-ordered,scatter,0x146e2e,LOAD,L1 hit,29
+1,split-line-translated,100000,index-ordered,scatter,0x146e35,N/A,N/A,18
+1,split-line-translated,100000,index-ordered,scatter,0x146e39,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,scatter,0x146e39,STORE,L1 hit,25
+1,split-line-translated,100000,index-ordered,scatter,0x146e41,LOAD,L1 hit,12
+1,split-line-translated,100000,index-ordered,scatter,0x146e46,LOAD,L1 hit,21
+1,split-line-translated,100000,index-ordered,scatter,0x146e4d,N/A,N/A,19
+1,split-line-translated,100000,index-ordered,scatter,0x146e51,N/A,N/A,25
+1,split-line-translated,100000,index-ordered,scatter,0x146e51,STORE,L1 hit,19
+1,split-line-translated,100000,index-ordered,scatter,0x146e59,LOAD,L1 hit,22
+1,split-line-translated,100000,index-ordered,scatter,0x146e5d,N/A,N/A,22
+1,split-line-translated,100000,index-ordered,scatter,0x146e61,N/A,N/A,20
+1,split-line-translated,100000,index-ordered,scatter,0x146e61,STORE,L1 hit,23
+1,split-line-translated,100000,index-ordered,scatter,0x146e64,N/A,N/A,25
+1,split-line-translated,100000,index-ordered,scatter,0x146e64,STORE,L1 hit,21
+1,split-line-translated,100000,index-ordered,scatter,0x146e67,N/A,N/A,17
+1,split-line-translated,100000,index-ordered,scatter,0x147440,LOAD,L1 hit,11
+1,split-line-translated,100000,index-ordered,scatter,0x147445,LOAD,L1 hit,8
+1,split-line-translated,100000,index-ordered,scatter,0x147449,N/A,N/A,6
+1,split-line-translated,100000,index-ordered,scatter,0x14744d,LOAD,L1 hit,9
+1,split-line-translated,100000,index-ordered,scatter,0x147454,N/A,N/A,13
+1,split-line-translated,100000,index-ordered,scatter,0x147458,N/A,N/A,10
+1,split-line-translated,100000,index-ordered,scatter,0x147458,STORE,L1 hit,4
+1,split-line-translated,100000,index-ordered,scatter,0x14745c,N/A,N/A,5
+1,split-line-translated,100000,index-ordered,scatter,0x14745c,STORE,L1 hit,8
+1,split-line-translated,100000,index-ordered,scatter,0x147464,N/A,N/A,3
+1,split-line-translated,100000,index-ordered,scatter,0x147469,N/A,N/A,1
+1,split-line-translated,100000,index-ordered,scatter,0x147470,N/A,N/A,1
+1,split-line-translated,100000,index-ordered,tag_store,0x146ba7,STORE,L1 hit,27
+1,split-line-translated,100000,index-ordered,tag_store,0x14725f,STORE,L1 hit,16
+2,split-line-translated,100000,index-ordered,classify_loop,0x146ba4,N/A,N/A,26
+2,split-line-translated,100000,index-ordered,classify_loop,0x146baa,N/A,N/A,26
+2,split-line-translated,100000,index-ordered,classify_loop,0x146bae,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,classify_loop,0x146bba,N/A,N/A,26
+2,split-line-translated,100000,index-ordered,classify_loop,0x14725c,N/A,N/A,11
+2,split-line-translated,100000,index-ordered,classify_loop,0x147262,N/A,N/A,24
+2,split-line-translated,100000,index-ordered,classify_loop,0x147266,N/A,N/A,15
+2,split-line-translated,100000,index-ordered,classify_loop,0x147272,N/A,N/A,17
+2,split-line-translated,100000,index-ordered,gather,0x146bd7,LOAD,L1 hit,30
+2,split-line-translated,100000,index-ordered,gather,0x146bda,N/A,N/A,22
+2,split-line-translated,100000,index-ordered,gather,0x146bde,N/A,N/A,20
+2,split-line-translated,100000,index-ordered,gather,0x146be1,LOAD,L1 hit,26
+2,split-line-translated,100000,index-ordered,gather,0x146be4,LOAD,L1 hit,29
+2,split-line-translated,100000,index-ordered,gather,0x146be7,LOAD,L1 hit,19
+2,split-line-translated,100000,index-ordered,gather,0x146bea,LOAD,L1 hit,30
+2,split-line-translated,100000,index-ordered,gather,0x14728e,LOAD,L1 hit,18
+2,split-line-translated,100000,index-ordered,gather,0x147290,N/A,N/A,16
+2,split-line-translated,100000,index-ordered,gather,0x147294,N/A,N/A,18
+2,split-line-translated,100000,index-ordered,gather,0x147297,LOAD,L1 hit,15
+2,split-line-translated,100000,index-ordered,gather,0x147297,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,gather,0x147299,LOAD,L1 hit,16
+2,split-line-translated,100000,index-ordered,gather,0x147299,LOAD,L2 hit,2
+2,split-line-translated,100000,index-ordered,gather,0x14729c,LOAD,L1 hit,23
+2,split-line-translated,100000,index-ordered,gather,0x14729c,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,gather,0x14729c,LOAD,"core, same node Any cache hit",1
+2,split-line-translated,100000,index-ordered,gather,0x1472a0,LOAD,L1 hit,19
+2,split-line-translated,100000,index-ordered,gather,0x1472a0,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,geometry,0x146ba2,N/A,N/A,1
+2,split-line-translated,100000,index-ordered,geometry,0x146bed,N/A,N/A,26
+2,split-line-translated,100000,index-ordered,geometry,0x146bf0,N/A,N/A,22
+2,split-line-translated,100000,index-ordered,geometry,0x146bf2,N/A,N/A,21
+2,split-line-translated,100000,index-ordered,geometry,0x146bf6,N/A,N/A,27
+2,split-line-translated,100000,index-ordered,geometry,0x146bfb,N/A,N/A,27
+2,split-line-translated,100000,index-ordered,geometry,0x146bfe,LOAD,L1 hit,24
+2,split-line-translated,100000,index-ordered,geometry,0x146c03,N/A,N/A,31
+2,split-line-translated,100000,index-ordered,geometry,0x146c05,N/A,N/A,34
+2,split-line-translated,100000,index-ordered,geometry,0x146c07,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,geometry,0x146c0a,N/A,N/A,25
+2,split-line-translated,100000,index-ordered,geometry,0x146c0d,LOAD,L1 hit,22
+2,split-line-translated,100000,index-ordered,geometry,0x146c11,N/A,N/A,26
+2,split-line-translated,100000,index-ordered,geometry,0x146c15,N/A,N/A,21
+2,split-line-translated,100000,index-ordered,geometry,0x146c17,N/A,N/A,31
+2,split-line-translated,100000,index-ordered,geometry,0x146c19,LOAD,L1 hit,25
+2,split-line-translated,100000,index-ordered,geometry,0x146c1d,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,geometry,0x146c20,N/A,N/A,24
+2,split-line-translated,100000,index-ordered,geometry,0x146c23,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,geometry,0x146c25,N/A,N/A,17
+2,split-line-translated,100000,index-ordered,geometry,0x146c28,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,geometry,0x146c2b,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,geometry,0x146c2d,N/A,N/A,27
+2,split-line-translated,100000,index-ordered,geometry,0x1472a3,N/A,N/A,12
+2,split-line-translated,100000,index-ordered,geometry,0x1472a5,N/A,N/A,16
+2,split-line-translated,100000,index-ordered,geometry,0x1472a8,N/A,N/A,22
+2,split-line-translated,100000,index-ordered,geometry,0x1472ac,N/A,N/A,17
+2,split-line-translated,100000,index-ordered,geometry,0x1472b1,N/A,N/A,19
+2,split-line-translated,100000,index-ordered,geometry,0x1472b4,LOAD,L1 hit,9
+2,split-line-translated,100000,index-ordered,geometry,0x1472b9,N/A,N/A,19
+2,split-line-translated,100000,index-ordered,geometry,0x1472bb,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,geometry,0x1472bd,N/A,N/A,22
+2,split-line-translated,100000,index-ordered,geometry,0x1472c0,N/A,N/A,20
+2,split-line-translated,100000,index-ordered,geometry,0x1472c2,LOAD,L1 hit,24
+2,split-line-translated,100000,index-ordered,geometry,0x1472c6,N/A,N/A,20
+2,split-line-translated,100000,index-ordered,geometry,0x1472ca,N/A,N/A,22
+2,split-line-translated,100000,index-ordered,geometry,0x1472cc,N/A,N/A,17
+2,split-line-translated,100000,index-ordered,geometry,0x1472cf,LOAD,L1 hit,20
+2,split-line-translated,100000,index-ordered,geometry,0x1472d3,N/A,N/A,18
+2,split-line-translated,100000,index-ordered,geometry,0x1472d6,N/A,N/A,20
+2,split-line-translated,100000,index-ordered,geometry,0x1472d9,N/A,N/A,16
+2,split-line-translated,100000,index-ordered,geometry,0x1472db,N/A,N/A,18
+2,split-line-translated,100000,index-ordered,geometry,0x1472de,N/A,N/A,16
+2,split-line-translated,100000,index-ordered,geometry,0x1472e1,N/A,N/A,18
+2,split-line-translated,100000,index-ordered,geometry,0x1472e3,N/A,N/A,25
+2,split-line-translated,100000,index-ordered,histogram,0x146bb2,LOAD,L1 hit,17
+2,split-line-translated,100000,index-ordered,histogram,0x146bb2,N/A,N/A,28
+2,split-line-translated,100000,index-ordered,histogram,0x14726a,LOAD,L1 hit,27
+2,split-line-translated,100000,index-ordered,histogram,0x14726a,N/A,N/A,25
+2,split-line-translated,100000,index-ordered,prefetch,0x146bbf,N/A,N/A,20
+2,split-line-translated,100000,index-ordered,prefetch,0x146bc2,N/A,N/A,25
+2,split-line-translated,100000,index-ordered,prefetch,0x146bc4,N/A,N/A,27
+2,split-line-translated,100000,index-ordered,prefetch,0x146bc9,N/A,N/A,20
+2,split-line-translated,100000,index-ordered,prefetch,0x146bcc,LOAD,L1 hit,21
+2,split-line-translated,100000,index-ordered,prefetch,0x146bcf,N/A,N/A,13
+2,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,L1 hit,8
+2,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,RAM hit,1
+2,split-line-translated,100000,index-ordered,prefetch,0x146bd3,LOAD,"core, same node Any cache hit",3
+2,split-line-translated,100000,index-ordered,prefetch,0x147277,N/A,N/A,26
+2,split-line-translated,100000,index-ordered,prefetch,0x14727c,N/A,N/A,17
+2,split-line-translated,100000,index-ordered,prefetch,0x14727f,N/A,N/A,21
+2,split-line-translated,100000,index-ordered,prefetch,0x147281,LOAD,L1 hit,17
+2,split-line-translated,100000,index-ordered,prefetch,0x147286,N/A,N/A,19
+2,split-line-translated,100000,index-ordered,prefetch,0x14728a,LOAD,L1 hit,7
+2,split-line-translated,100000,index-ordered,prefetch,0x14728a,LOAD,L2 hit,4
+2,split-line-translated,100000,index-ordered,prefetch,0x14728a,LOAD,"core, same node Any cache hit",3
+2,split-line-translated,100000,index-ordered,scatter,0x146e20,LOAD,L1 hit,25
+2,split-line-translated,100000,index-ordered,scatter,0x146e25,N/A,N/A,33
+2,split-line-translated,100000,index-ordered,scatter,0x146e2a,LOAD,L1 hit,17
+2,split-line-translated,100000,index-ordered,scatter,0x146e2e,LOAD,L1 hit,24
+2,split-line-translated,100000,index-ordered,scatter,0x146e35,N/A,N/A,16
+2,split-line-translated,100000,index-ordered,scatter,0x146e39,N/A,N/A,19
+2,split-line-translated,100000,index-ordered,scatter,0x146e39,STORE,L1 hit,18
+2,split-line-translated,100000,index-ordered,scatter,0x146e41,LOAD,L1 hit,17
+2,split-line-translated,100000,index-ordered,scatter,0x146e41,LOAD,L2 hit,1
+2,split-line-translated,100000,index-ordered,scatter,0x146e46,LOAD,L1 hit,22
+2,split-line-translated,100000,index-ordered,scatter,0x146e4d,N/A,N/A,21
+2,split-line-translated,100000,index-ordered,scatter,0x146e51,N/A,N/A,21
+2,split-line-translated,100000,index-ordered,scatter,0x146e51,STORE,L1 hit,19
+2,split-line-translated,100000,index-ordered,scatter,0x146e59,LOAD,L1 hit,16
+2,split-line-translated,100000,index-ordered,scatter,0x146e5d,N/A,N/A,22
+2,split-line-translated,100000,index-ordered,scatter,0x146e61,N/A,N/A,17
+2,split-line-translated,100000,index-ordered,scatter,0x146e61,STORE,L1 hit,23
+2,split-line-translated,100000,index-ordered,scatter,0x146e61,STORE,L2 hit,2
+2,split-line-translated,100000,index-ordered,scatter,0x146e64,N/A,N/A,19
+2,split-line-translated,100000,index-ordered,scatter,0x146e64,STORE,L1 hit,19
+2,split-line-translated,100000,index-ordered,scatter,0x146e64,STORE,L2 hit,1
+2,split-line-translated,100000,index-ordered,scatter,0x146e67,N/A,N/A,18
+2,split-line-translated,100000,index-ordered,scatter,0x147440,LOAD,L1 hit,1
+2,split-line-translated,100000,index-ordered,scatter,0x147445,LOAD,L1 hit,10
+2,split-line-translated,100000,index-ordered,scatter,0x147449,N/A,N/A,3
+2,split-line-translated,100000,index-ordered,scatter,0x14744d,LOAD,L1 hit,4
+2,split-line-translated,100000,index-ordered,scatter,0x147454,N/A,N/A,9
+2,split-line-translated,100000,index-ordered,scatter,0x147458,N/A,N/A,9
+2,split-line-translated,100000,index-ordered,scatter,0x147458,STORE,L1 hit,9
+2,split-line-translated,100000,index-ordered,scatter,0x14745c,N/A,N/A,5
+2,split-line-translated,100000,index-ordered,scatter,0x14745c,STORE,L1 hit,5
+2,split-line-translated,100000,index-ordered,scatter,0x147464,N/A,N/A,2
+2,split-line-translated,100000,index-ordered,scatter,0x147469,N/A,N/A,2
+2,split-line-translated,100000,index-ordered,scatter,0x147470,LOAD,L1 hit,1
+2,split-line-translated,100000,index-ordered,tag_store,0x146ba7,STORE,L1 hit,33
+2,split-line-translated,100000,index-ordered,tag_store,0x146ba7,STORE,L2 hit,1
+2,split-line-translated,100000,index-ordered,tag_store,0x14725f,STORE,L1 hit,22
+2,split-line-translated,100000,index,classify_loop,0x146ba4,N/A,N/A,76
+2,split-line-translated,100000,index,classify_loop,0x146baa,N/A,N/A,87
+2,split-line-translated,100000,index,classify_loop,0x146bae,N/A,N/A,83
+2,split-line-translated,100000,index,classify_loop,0x146bba,N/A,N/A,97
+2,split-line-translated,100000,index,classify_loop,0x14725c,N/A,N/A,84
+2,split-line-translated,100000,index,classify_loop,0x147262,N/A,N/A,52
+2,split-line-translated,100000,index,classify_loop,0x147266,N/A,N/A,70
+2,split-line-translated,100000,index,classify_loop,0x147272,N/A,N/A,61
+2,split-line-translated,100000,index,gather,0x146bd7,LOAD,L1 hit,111
+2,split-line-translated,100000,index,gather,0x146bd7,N/A,N/A,1
+2,split-line-translated,100000,index,gather,0x146bda,N/A,N/A,97
+2,split-line-translated,100000,index,gather,0x146bde,N/A,N/A,87
+2,split-line-translated,100000,index,gather,0x146be1,LOAD,L1 hit,87
+2,split-line-translated,100000,index,gather,0x146be4,LOAD,L1 hit,97
+2,split-line-translated,100000,index,gather,0x146be7,LOAD,L1 hit,79
+2,split-line-translated,100000,index,gather,0x146bea,LOAD,L1 hit,84
+2,split-line-translated,100000,index,gather,0x14728e,LOAD,L1 hit,73
+2,split-line-translated,100000,index,gather,0x147290,N/A,N/A,72
+2,split-line-translated,100000,index,gather,0x147294,N/A,N/A,73
+2,split-line-translated,100000,index,gather,0x147297,LOAD,L1 hit,54
+2,split-line-translated,100000,index,gather,0x147297,LOAD,L2 hit,6
+2,split-line-translated,100000,index,gather,0x147299,LOAD,L1 hit,58
+2,split-line-translated,100000,index,gather,0x147299,LOAD,L2 hit,1
+2,split-line-translated,100000,index,gather,0x14729c,LOAD,L1 hit,72
+2,split-line-translated,100000,index,gather,0x14729c,LOAD,L2 hit,3
+2,split-line-translated,100000,index,gather,0x14729c,LOAD,"core, same node Any cache hit",1
+2,split-line-translated,100000,index,gather,0x1472a0,LOAD,L1 hit,51
+2,split-line-translated,100000,index,gather,0x1472a0,LOAD,L2 hit,1
+2,split-line-translated,100000,index,geometry,0x146ba0,N/A,N/A,1
+2,split-line-translated,100000,index,geometry,0x146bed,N/A,N/A,102
+2,split-line-translated,100000,index,geometry,0x146bf0,N/A,N/A,85
+2,split-line-translated,100000,index,geometry,0x146bf2,N/A,N/A,86
+2,split-line-translated,100000,index,geometry,0x146bf6,N/A,N/A,99
+2,split-line-translated,100000,index,geometry,0x146bfb,N/A,N/A,91
+2,split-line-translated,100000,index,geometry,0x146bfe,LOAD,L1 hit,91
+2,split-line-translated,100000,index,geometry,0x146c03,N/A,N/A,97
+2,split-line-translated,100000,index,geometry,0x146c05,N/A,N/A,91
+2,split-line-translated,100000,index,geometry,0x146c07,N/A,N/A,80
+2,split-line-translated,100000,index,geometry,0x146c0a,N/A,N/A,89
+2,split-line-translated,100000,index,geometry,0x146c0d,LOAD,L1 hit,96
+2,split-line-translated,100000,index,geometry,0x146c11,N/A,N/A,85
+2,split-line-translated,100000,index,geometry,0x146c15,N/A,N/A,91
+2,split-line-translated,100000,index,geometry,0x146c17,N/A,N/A,90
+2,split-line-translated,100000,index,geometry,0x146c19,LOAD,L1 hit,111
+2,split-line-translated,100000,index,geometry,0x146c1d,N/A,N/A,95
+2,split-line-translated,100000,index,geometry,0x146c20,N/A,N/A,88
+2,split-line-translated,100000,index,geometry,0x146c23,N/A,N/A,98
+2,split-line-translated,100000,index,geometry,0x146c25,N/A,N/A,97
+2,split-line-translated,100000,index,geometry,0x146c28,N/A,N/A,94
+2,split-line-translated,100000,index,geometry,0x146c2b,N/A,N/A,129
+2,split-line-translated,100000,index,geometry,0x146c2d,N/A,N/A,110
+2,split-line-translated,100000,index,geometry,0x1472a3,N/A,N/A,57
+2,split-line-translated,100000,index,geometry,0x1472a5,N/A,N/A,58
+2,split-line-translated,100000,index,geometry,0x1472a8,N/A,N/A,71
+2,split-line-translated,100000,index,geometry,0x1472ac,N/A,N/A,83
+2,split-line-translated,100000,index,geometry,0x1472b1,N/A,N/A,74
+2,split-line-translated,100000,index,geometry,0x1472b4,LOAD,L1 hit,68
+2,split-line-translated,100000,index,geometry,0x1472b9,N/A,N/A,76
+2,split-line-translated,100000,index,geometry,0x1472bb,N/A,N/A,72
+2,split-line-translated,100000,index,geometry,0x1472bd,N/A,N/A,58
+2,split-line-translated,100000,index,geometry,0x1472c0,N/A,N/A,65
+2,split-line-translated,100000,index,geometry,0x1472c2,LOAD,L1 hit,75
+2,split-line-translated,100000,index,geometry,0x1472c6,N/A,N/A,60
+2,split-line-translated,100000,index,geometry,0x1472ca,N/A,N/A,75
+2,split-line-translated,100000,index,geometry,0x1472cc,N/A,N/A,76
+2,split-line-translated,100000,index,geometry,0x1472cf,LOAD,L1 hit,61
+2,split-line-translated,100000,index,geometry,0x1472d3,N/A,N/A,77
+2,split-line-translated,100000,index,geometry,0x1472d6,N/A,N/A,64
+2,split-line-translated,100000,index,geometry,0x1472d9,N/A,N/A,83
+2,split-line-translated,100000,index,geometry,0x1472db,N/A,N/A,71
+2,split-line-translated,100000,index,geometry,0x1472de,N/A,N/A,65
+2,split-line-translated,100000,index,geometry,0x1472e1,N/A,N/A,71
+2,split-line-translated,100000,index,geometry,0x1472e3,N/A,N/A,66
+2,split-line-translated,100000,index,histogram,0x146bb2,LOAD,L1 hit,105
+2,split-line-translated,100000,index,histogram,0x146bb2,N/A,N/A,92
+2,split-line-translated,100000,index,histogram,0x14726a,LOAD,L1 hit,70
+2,split-line-translated,100000,index,histogram,0x14726a,N/A,N/A,77
+2,split-line-translated,100000,index,prefetch,0x146bbf,N/A,N/A,96
+2,split-line-translated,100000,index,prefetch,0x146bc2,N/A,N/A,99
+2,split-line-translated,100000,index,prefetch,0x146bc4,N/A,N/A,93
+2,split-line-translated,100000,index,prefetch,0x146bc9,N/A,N/A,60
+2,split-line-translated,100000,index,prefetch,0x146bcc,LOAD,L1 hit,76
+2,split-line-translated,100000,index,prefetch,0x146bcf,N/A,N/A,75
+2,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,L1 hit,38
+2,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,L2 hit,19
+2,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,RAM hit,1
+2,split-line-translated,100000,index,prefetch,0x146bd3,LOAD,"core, same node Any cache hit",13
+2,split-line-translated,100000,index,prefetch,0x147277,N/A,N/A,68
+2,split-line-translated,100000,index,prefetch,0x14727c,N/A,N/A,79
+2,split-line-translated,100000,index,prefetch,0x14727f,N/A,N/A,73
+2,split-line-translated,100000,index,prefetch,0x147281,LOAD,L1 hit,76
+2,split-line-translated,100000,index,prefetch,0x147281,LOAD,L2 hit,1
+2,split-line-translated,100000,index,prefetch,0x147286,N/A,N/A,73
+2,split-line-translated,100000,index,prefetch,0x14728a,LOAD,L1 hit,36
+2,split-line-translated,100000,index,prefetch,0x14728a,LOAD,L2 hit,25
+2,split-line-translated,100000,index,prefetch,0x14728a,LOAD,RAM hit,1
+2,split-line-translated,100000,index,prefetch,0x14728a,LOAD,"core, same node Any cache hit",22
+2,split-line-translated,100000,index,scatter,0x146e20,LOAD,L1 hit,62
+2,split-line-translated,100000,index,scatter,0x146e25,N/A,N/A,137
+2,split-line-translated,100000,index,scatter,0x146e2a,LOAD,L1 hit,67
+2,split-line-translated,100000,index,scatter,0x146e2a,LOAD,L2 hit,1
+2,split-line-translated,100000,index,scatter,0x146e2e,LOAD,L1 hit,73
+2,split-line-translated,100000,index,scatter,0x146e35,N/A,N/A,82
+2,split-line-translated,100000,index,scatter,0x146e39,N/A,N/A,63
+2,split-line-translated,100000,index,scatter,0x146e39,STORE,L1 hit,56
+2,split-line-translated,100000,index,scatter,0x146e41,LOAD,L1 hit,58
+2,split-line-translated,100000,index,scatter,0x146e46,LOAD,L1 hit,57
+2,split-line-translated,100000,index,scatter,0x146e4d,N/A,N/A,74
+2,split-line-translated,100000,index,scatter,0x146e51,N/A,N/A,66
+2,split-line-translated,100000,index,scatter,0x146e51,STORE,L1 hit,72
+2,split-line-translated,100000,index,scatter,0x146e59,LOAD,L1 hit,66
+2,split-line-translated,100000,index,scatter,0x146e59,LOAD,L2 hit,2
+2,split-line-translated,100000,index,scatter,0x146e5d,N/A,N/A,74
+2,split-line-translated,100000,index,scatter,0x146e61,N/A,N/A,60
+2,split-line-translated,100000,index,scatter,0x146e61,STORE,L1 hit,82
+2,split-line-translated,100000,index,scatter,0x146e61,STORE,L2 hit,2
+2,split-line-translated,100000,index,scatter,0x146e64,N/A,N/A,62
+2,split-line-translated,100000,index,scatter,0x146e64,STORE,L1 hit,57
+2,split-line-translated,100000,index,scatter,0x146e64,STORE,L2 hit,4
+2,split-line-translated,100000,index,scatter,0x146e67,N/A,N/A,74
+2,split-line-translated,100000,index,scatter,0x146e8a,LOAD,L1 hit,1
+2,split-line-translated,100000,index,scatter,0x146eae,STORE,L1 hit,1
+2,split-line-translated,100000,index,scatter,0x147440,LOAD,L1 hit,16
+2,split-line-translated,100000,index,scatter,0x147445,LOAD,L1 hit,19
+2,split-line-translated,100000,index,scatter,0x147449,N/A,N/A,27
+2,split-line-translated,100000,index,scatter,0x14744d,LOAD,L1 hit,17
+2,split-line-translated,100000,index,scatter,0x147454,N/A,N/A,19
+2,split-line-translated,100000,index,scatter,0x147458,N/A,N/A,14
+2,split-line-translated,100000,index,scatter,0x147458,STORE,L1 hit,35
+2,split-line-translated,100000,index,scatter,0x14745c,N/A,N/A,17
+2,split-line-translated,100000,index,scatter,0x14745c,STORE,L1 hit,19
+2,split-line-translated,100000,index,scatter,0x147464,N/A,N/A,22
+2,split-line-translated,100000,index,scatter,0x147469,N/A,N/A,2
+2,split-line-translated,100000,index,tag_store,0x146ba7,STORE,L1 hit,81
+2,split-line-translated,100000,index,tag_store,0x14725f,STORE,L1 hit,63
+2,split-line-translated,100000,index,tag_store,0x14725f,STORE,L2 hit,2
+2,split-line,10000,index,classify_loop,0x146ba4,N/A,N/A,91
+2,split-line,10000,index,classify_loop,0x146baa,N/A,N/A,95
+2,split-line,10000,index,classify_loop,0x146bae,N/A,N/A,78
+2,split-line,10000,index,classify_loop,0x146bba,N/A,N/A,89
+2,split-line,10000,index,classify_loop,0x14725c,N/A,N/A,58
+2,split-line,10000,index,classify_loop,0x147262,N/A,N/A,75
+2,split-line,10000,index,classify_loop,0x147266,N/A,N/A,58
+2,split-line,10000,index,classify_loop,0x147272,N/A,N/A,68
+2,split-line,10000,index,gather,0x146bd7,LOAD,L1 hit,70
+2,split-line,10000,index,gather,0x146bd7,N/A,N/A,1
+2,split-line,10000,index,gather,0x146bda,N/A,N/A,81
+2,split-line,10000,index,gather,0x146bde,N/A,N/A,77
+2,split-line,10000,index,gather,0x146be1,LOAD,L1 hit,89
+2,split-line,10000,index,gather,0x146be1,LOAD,L2 hit,2
+2,split-line,10000,index,gather,0x146be4,LOAD,L1 hit,87
+2,split-line,10000,index,gather,0x146be7,LOAD,L1 hit,87
+2,split-line,10000,index,gather,0x146bea,LOAD,L1 hit,94
+2,split-line,10000,index,gather,0x14728e,LOAD,L1 hit,53
+2,split-line,10000,index,gather,0x147290,N/A,N/A,66
+2,split-line,10000,index,gather,0x147294,N/A,N/A,41
+2,split-line,10000,index,gather,0x147297,LOAD,L1 hit,58
+2,split-line,10000,index,gather,0x147297,LOAD,L2 hit,4
+2,split-line,10000,index,gather,0x147299,LOAD,L1 hit,56
+2,split-line,10000,index,gather,0x147299,LOAD,L2 hit,3
+2,split-line,10000,index,gather,0x147299,LOAD,"core, same node Any cache hit",1
+2,split-line,10000,index,gather,0x14729c,LOAD,L1 hit,66
+2,split-line,10000,index,gather,0x14729c,LOAD,L2 hit,3
+2,split-line,10000,index,gather,0x1472a0,LOAD,L1 hit,47
+2,split-line,10000,index,gather,0x1472a0,LOAD,L2 hit,1
+2,split-line,10000,index,geometry,0x146bed,N/A,N/A,78
+2,split-line,10000,index,geometry,0x146bf0,N/A,N/A,87
+2,split-line,10000,index,geometry,0x146bf2,N/A,N/A,73
+2,split-line,10000,index,geometry,0x146bf6,N/A,N/A,94
+2,split-line,10000,index,geometry,0x146bfb,N/A,N/A,87
+2,split-line,10000,index,geometry,0x146bfe,LOAD,L1 hit,93
+2,split-line,10000,index,geometry,0x146c03,N/A,N/A,71
+2,split-line,10000,index,geometry,0x146c05,N/A,N/A,80
+2,split-line,10000,index,geometry,0x146c07,N/A,N/A,82
+2,split-line,10000,index,geometry,0x146c0a,N/A,N/A,84
+2,split-line,10000,index,geometry,0x146c0d,LOAD,L1 hit,107
+2,split-line,10000,index,geometry,0x146c11,N/A,N/A,100
+2,split-line,10000,index,geometry,0x146c15,N/A,N/A,88
+2,split-line,10000,index,geometry,0x146c17,N/A,N/A,90
+2,split-line,10000,index,geometry,0x146c19,LOAD,L1 hit,91
+2,split-line,10000,index,geometry,0x146c1d,N/A,N/A,94
+2,split-line,10000,index,geometry,0x146c20,N/A,N/A,93
+2,split-line,10000,index,geometry,0x146c23,N/A,N/A,79
+2,split-line,10000,index,geometry,0x146c25,N/A,N/A,95
+2,split-line,10000,index,geometry,0x146c28,N/A,N/A,85
+2,split-line,10000,index,geometry,0x146c2b,N/A,N/A,88
+2,split-line,10000,index,geometry,0x146c2d,N/A,N/A,95
+2,split-line,10000,index,geometry,0x1472a3,N/A,N/A,60
+2,split-line,10000,index,geometry,0x1472a5,N/A,N/A,73
+2,split-line,10000,index,geometry,0x1472a8,N/A,N/A,63
+2,split-line,10000,index,geometry,0x1472ac,N/A,N/A,60
+2,split-line,10000,index,geometry,0x1472b1,N/A,N/A,63
+2,split-line,10000,index,geometry,0x1472b4,LOAD,L1 hit,66
+2,split-line,10000,index,geometry,0x1472b9,N/A,N/A,74
+2,split-line,10000,index,geometry,0x1472bb,N/A,N/A,52
+2,split-line,10000,index,geometry,0x1472bd,N/A,N/A,61
+2,split-line,10000,index,geometry,0x1472c0,N/A,N/A,73
+2,split-line,10000,index,geometry,0x1472c2,LOAD,L1 hit,67
+2,split-line,10000,index,geometry,0x1472c6,N/A,N/A,61
+2,split-line,10000,index,geometry,0x1472ca,N/A,N/A,63
+2,split-line,10000,index,geometry,0x1472cc,N/A,N/A,60
+2,split-line,10000,index,geometry,0x1472cf,LOAD,L1 hit,63
+2,split-line,10000,index,geometry,0x1472d3,N/A,N/A,62
+2,split-line,10000,index,geometry,0x1472d6,N/A,N/A,51
+2,split-line,10000,index,geometry,0x1472d9,N/A,N/A,50
+2,split-line,10000,index,geometry,0x1472db,N/A,N/A,68
+2,split-line,10000,index,geometry,0x1472de,N/A,N/A,60
+2,split-line,10000,index,geometry,0x1472e1,N/A,N/A,52
+2,split-line,10000,index,geometry,0x1472e3,N/A,N/A,67
+2,split-line,10000,index,histogram,0x146bb2,LOAD,L1 hit,78
+2,split-line,10000,index,histogram,0x146bb2,N/A,N/A,86
+2,split-line,10000,index,histogram,0x14726a,LOAD,L1 hit,68
+2,split-line,10000,index,histogram,0x14726a,N/A,N/A,49
+2,split-line,10000,index,prefetch,0x146bbf,N/A,N/A,85
+2,split-line,10000,index,prefetch,0x146bc2,N/A,N/A,94
+2,split-line,10000,index,prefetch,0x146bc4,N/A,N/A,79
+2,split-line,10000,index,prefetch,0x146bc9,N/A,N/A,48
+2,split-line,10000,index,prefetch,0x146bcc,LOAD,L1 hit,64
+2,split-line,10000,index,prefetch,0x146bcf,N/A,N/A,50
+2,split-line,10000,index,prefetch,0x146bd3,LOAD,L1 hit,34
+2,split-line,10000,index,prefetch,0x146bd3,LOAD,L2 hit,18
+2,split-line,10000,index,prefetch,0x147277,N/A,N/A,57
+2,split-line,10000,index,prefetch,0x14727c,N/A,N/A,56
+2,split-line,10000,index,prefetch,0x14727f,N/A,N/A,71
+2,split-line,10000,index,prefetch,0x147281,LOAD,L1 hit,55
+2,split-line,10000,index,prefetch,0x147286,N/A,N/A,63
+2,split-line,10000,index,prefetch,0x14728a,LOAD,L1 hit,61
+2,split-line,10000,index,prefetch,0x14728a,LOAD,L2 hit,15
+2,split-line,10000,index,scatter,0x146e20,LOAD,L1 hit,56
+2,split-line,10000,index,scatter,0x146e25,N/A,N/A,137
+2,split-line,10000,index,scatter,0x146e2a,LOAD,L1 hit,55
+2,split-line,10000,index,scatter,0x146e2e,LOAD,L1 hit,61
+2,split-line,10000,index,scatter,0x146e35,N/A,N/A,71
+2,split-line,10000,index,scatter,0x146e39,N/A,N/A,64
+2,split-line,10000,index,scatter,0x146e39,STORE,L1 hit,65
+2,split-line,10000,index,scatter,0x146e41,LOAD,L1 hit,64
+2,split-line,10000,index,scatter,0x146e46,LOAD,L1 hit,69
+2,split-line,10000,index,scatter,0x146e4d,N/A,N/A,57
+2,split-line,10000,index,scatter,0x146e51,N/A,N/A,78
+2,split-line,10000,index,scatter,0x146e51,STORE,L1 hit,75
+2,split-line,10000,index,scatter,0x146e59,LOAD,L1 hit,47
+2,split-line,10000,index,scatter,0x146e59,LOAD,L2 hit,2
+2,split-line,10000,index,scatter,0x146e5d,N/A,N/A,69
+2,split-line,10000,index,scatter,0x146e61,N/A,N/A,62
+2,split-line,10000,index,scatter,0x146e61,STORE,L1 hit,71
+2,split-line,10000,index,scatter,0x146e61,STORE,L2 hit,5
+2,split-line,10000,index,scatter,0x146e64,N/A,N/A,54
+2,split-line,10000,index,scatter,0x146e64,STORE,L1 hit,68
+2,split-line,10000,index,scatter,0x146e67,N/A,N/A,75
+2,split-line,10000,index,scatter,0x146e8a,N/A,N/A,1
+2,split-line,10000,index,scatter,0x146ea7,LOAD,L1 hit,1
+2,split-line,10000,index,scatter,0x146eae,N/A,N/A,1
+2,split-line,10000,index,scatter,0x147440,LOAD,L1 hit,17
+2,split-line,10000,index,scatter,0x147445,LOAD,L1 hit,18
+2,split-line,10000,index,scatter,0x147449,N/A,N/A,26
+2,split-line,10000,index,scatter,0x14744d,LOAD,L1 hit,18
+2,split-line,10000,index,scatter,0x147454,N/A,N/A,21
+2,split-line,10000,index,scatter,0x147458,N/A,N/A,20
+2,split-line,10000,index,scatter,0x147458,STORE,L1 hit,17
+2,split-line,10000,index,scatter,0x14745c,N/A,N/A,22
+2,split-line,10000,index,scatter,0x14745c,STORE,L1 hit,20
+2,split-line,10000,index,scatter,0x147464,N/A,N/A,11
+2,split-line,10000,index,scatter,0x147469,N/A,N/A,4
+2,split-line,10000,index,scatter,0x147470,LOAD,L1 hit,1
+2,split-line,10000,index,scatter,0x147470,N/A,N/A,1
+2,split-line,10000,index,tag_store,0x146ba7,STORE,L1 hit,77
+2,split-line,10000,index,tag_store,0x14725f,STORE,L1 hit,61
+2,uniform,100000,index,classify_loop,0x146ba4,N/A,N/A,105
+2,uniform,100000,index,classify_loop,0x146baa,N/A,N/A,82
+2,uniform,100000,index,classify_loop,0x146bae,N/A,N/A,75
+2,uniform,100000,index,classify_loop,0x146bba,N/A,N/A,73
+2,uniform,100000,index,classify_loop,0x14725c,N/A,N/A,68
+2,uniform,100000,index,classify_loop,0x147262,N/A,N/A,65
+2,uniform,100000,index,classify_loop,0x147266,N/A,N/A,51
+2,uniform,100000,index,classify_loop,0x147272,N/A,N/A,53
+2,uniform,100000,index,gather,0x146bd7,LOAD,L1 hit,74
+2,uniform,100000,index,gather,0x146bd7,LOAD,L2 hit,1
+2,uniform,100000,index,gather,0x146bda,N/A,N/A,75
+2,uniform,100000,index,gather,0x146bde,N/A,N/A,82
+2,uniform,100000,index,gather,0x146be1,LOAD,L1 hit,91
+2,uniform,100000,index,gather,0x146be1,LOAD,L2 hit,1
+2,uniform,100000,index,gather,0x146be4,LOAD,L1 hit,93
+2,uniform,100000,index,gather,0x146be7,LOAD,L1 hit,85
+2,uniform,100000,index,gather,0x146be7,LOAD,L2 hit,1
+2,uniform,100000,index,gather,0x146be7,LOAD,RAM hit,1
+2,uniform,100000,index,gather,0x146bea,LOAD,L1 hit,83
+2,uniform,100000,index,gather,0x146bea,LOAD,L2 hit,1
+2,uniform,100000,index,gather,0x14728e,LOAD,L1 hit,59
+2,uniform,100000,index,gather,0x147290,N/A,N/A,62
+2,uniform,100000,index,gather,0x147294,N/A,N/A,61
+2,uniform,100000,index,gather,0x147297,LOAD,L1 hit,55
+2,uniform,100000,index,gather,0x147297,LOAD,L2 hit,1
+2,uniform,100000,index,gather,0x147299,LOAD,L1 hit,50
+2,uniform,100000,index,gather,0x147299,LOAD,L2 hit,9
+2,uniform,100000,index,gather,0x14729c,LOAD,L1 hit,46
+2,uniform,100000,index,gather,0x14729c,LOAD,L2 hit,1
+2,uniform,100000,index,gather,0x1472a0,LOAD,L1 hit,52
+2,uniform,100000,index,gather,0x1472a0,LOAD,L2 hit,2
+2,uniform,100000,index,gather,0x1472a0,LOAD,"core, same node Any cache hit",1
+2,uniform,100000,index,geometry,0x146bed,N/A,N/A,81
+2,uniform,100000,index,geometry,0x146bf0,N/A,N/A,82
+2,uniform,100000,index,geometry,0x146bf2,N/A,N/A,75
+2,uniform,100000,index,geometry,0x146bf6,N/A,N/A,78
+2,uniform,100000,index,geometry,0x146bfb,N/A,N/A,84
+2,uniform,100000,index,geometry,0x146bfe,LOAD,L1 hit,81
+2,uniform,100000,index,geometry,0x146c03,N/A,N/A,71
+2,uniform,100000,index,geometry,0x146c05,N/A,N/A,72
+2,uniform,100000,index,geometry,0x146c07,N/A,N/A,87
+2,uniform,100000,index,geometry,0x146c0a,N/A,N/A,86
+2,uniform,100000,index,geometry,0x146c0d,LOAD,L1 hit,75
+2,uniform,100000,index,geometry,0x146c11,N/A,N/A,66
+2,uniform,100000,index,geometry,0x146c15,N/A,N/A,60
+2,uniform,100000,index,geometry,0x146c17,N/A,N/A,59
+2,uniform,100000,index,geometry,0x146c19,LOAD,L1 hit,90
+2,uniform,100000,index,geometry,0x146c19,LOAD,"core, same node Any cache hit",1
+2,uniform,100000,index,geometry,0x146c1d,N/A,N/A,96
+2,uniform,100000,index,geometry,0x146c20,N/A,N/A,76
+2,uniform,100000,index,geometry,0x146c23,N/A,N/A,101
+2,uniform,100000,index,geometry,0x146c25,N/A,N/A,82
+2,uniform,100000,index,geometry,0x146c28,N/A,N/A,80
+2,uniform,100000,index,geometry,0x146c2b,N/A,N/A,82
+2,uniform,100000,index,geometry,0x146c2d,N/A,N/A,76
+2,uniform,100000,index,geometry,0x1472a3,N/A,N/A,67
+2,uniform,100000,index,geometry,0x1472a5,N/A,N/A,55
+2,uniform,100000,index,geometry,0x1472a8,N/A,N/A,63
+2,uniform,100000,index,geometry,0x1472ac,N/A,N/A,65
+2,uniform,100000,index,geometry,0x1472b1,N/A,N/A,62
+2,uniform,100000,index,geometry,0x1472b4,LOAD,L1 hit,61
+2,uniform,100000,index,geometry,0x1472b9,N/A,N/A,72
+2,uniform,100000,index,geometry,0x1472bb,N/A,N/A,54
+2,uniform,100000,index,geometry,0x1472bd,N/A,N/A,62
+2,uniform,100000,index,geometry,0x1472c0,N/A,N/A,61
+2,uniform,100000,index,geometry,0x1472c2,LOAD,L1 hit,61
+2,uniform,100000,index,geometry,0x1472c6,N/A,N/A,54
+2,uniform,100000,index,geometry,0x1472ca,N/A,N/A,61
+2,uniform,100000,index,geometry,0x1472cc,N/A,N/A,73
+2,uniform,100000,index,geometry,0x1472cf,LOAD,L1 hit,53
+2,uniform,100000,index,geometry,0x1472d3,N/A,N/A,61
+2,uniform,100000,index,geometry,0x1472d6,N/A,N/A,69
+2,uniform,100000,index,geometry,0x1472d9,N/A,N/A,64
+2,uniform,100000,index,geometry,0x1472db,N/A,N/A,76
+2,uniform,100000,index,geometry,0x1472de,N/A,N/A,55
+2,uniform,100000,index,geometry,0x1472e1,N/A,N/A,58
+2,uniform,100000,index,geometry,0x1472e3,N/A,N/A,49
+2,uniform,100000,index,histogram,0x146bb2,LOAD,L1 hit,97
+2,uniform,100000,index,histogram,0x146bb2,N/A,N/A,88
+2,uniform,100000,index,histogram,0x14726a,LOAD,L1 hit,81
+2,uniform,100000,index,histogram,0x14726a,N/A,N/A,47
+2,uniform,100000,index,prefetch,0x146bbf,N/A,N/A,75
+2,uniform,100000,index,prefetch,0x146bc2,N/A,N/A,74
+2,uniform,100000,index,prefetch,0x146bc4,N/A,N/A,66
+2,uniform,100000,index,prefetch,0x146bc9,N/A,N/A,67
+2,uniform,100000,index,prefetch,0x146bcc,LOAD,L1 hit,77
+2,uniform,100000,index,prefetch,0x146bcc,LOAD,L2 hit,1
+2,uniform,100000,index,prefetch,0x146bcf,N/A,N/A,72
+2,uniform,100000,index,prefetch,0x146bd3,LOAD,L1 hit,31
+2,uniform,100000,index,prefetch,0x146bd3,LOAD,L2 hit,10
+2,uniform,100000,index,prefetch,0x146bd3,LOAD,"core, same node Any cache hit",11
+2,uniform,100000,index,prefetch,0x147277,N/A,N/A,65
+2,uniform,100000,index,prefetch,0x14727c,N/A,N/A,60
+2,uniform,100000,index,prefetch,0x14727f,N/A,N/A,55
+2,uniform,100000,index,prefetch,0x147281,LOAD,L1 hit,64
+2,uniform,100000,index,prefetch,0x147286,N/A,N/A,51
+2,uniform,100000,index,prefetch,0x14728a,LOAD,L1 hit,22
+2,uniform,100000,index,prefetch,0x14728a,LOAD,L2 hit,17
+2,uniform,100000,index,prefetch,0x14728a,LOAD,"core, same node Any cache hit",13
+2,uniform,100000,index,scatter,0x146e20,LOAD,L1 hit,57
+2,uniform,100000,index,scatter,0x146e20,LOAD,L2 hit,1
+2,uniform,100000,index,scatter,0x146e25,N/A,N/A,122
+2,uniform,100000,index,scatter,0x146e2a,LOAD,L1 hit,69
+2,uniform,100000,index,scatter,0x146e2a,LOAD,L2 hit,1
+2,uniform,100000,index,scatter,0x146e2e,LOAD,L1 hit,45
+2,uniform,100000,index,scatter,0x146e35,N/A,N/A,59
+2,uniform,100000,index,scatter,0x146e39,N/A,N/A,69
+2,uniform,100000,index,scatter,0x146e39,STORE,L1 hit,71
+2,uniform,100000,index,scatter,0x146e41,LOAD,L1 hit,50
+2,uniform,100000,index,scatter,0x146e46,LOAD,L1 hit,50
+2,uniform,100000,index,scatter,0x146e4d,N/A,N/A,52
+2,uniform,100000,index,scatter,0x146e51,N/A,N/A,65
+2,uniform,100000,index,scatter,0x146e51,STORE,L1 hit,44
+2,uniform,100000,index,scatter,0x146e59,LOAD,L1 hit,52
+2,uniform,100000,index,scatter,0x146e5d,N/A,N/A,58
+2,uniform,100000,index,scatter,0x146e61,N/A,N/A,63
+2,uniform,100000,index,scatter,0x146e61,STORE,L1 hit,53
+2,uniform,100000,index,scatter,0x146e61,STORE,L2 hit,1
+2,uniform,100000,index,scatter,0x146e61,STORE,N/A,1
+2,uniform,100000,index,scatter,0x146e64,N/A,N/A,61
+2,uniform,100000,index,scatter,0x146e64,STORE,L1 hit,55
+2,uniform,100000,index,scatter,0x146e67,N/A,N/A,51
+2,uniform,100000,index,scatter,0x146e9e,LOAD,L1 hit,1
+2,uniform,100000,index,scatter,0x147440,LOAD,L1 hit,20
+2,uniform,100000,index,scatter,0x147445,LOAD,L1 hit,19
+2,uniform,100000,index,scatter,0x147449,N/A,N/A,20
+2,uniform,100000,index,scatter,0x14744d,LOAD,L1 hit,30
+2,uniform,100000,index,scatter,0x147454,N/A,N/A,26
+2,uniform,100000,index,scatter,0x147458,N/A,N/A,25
+2,uniform,100000,index,scatter,0x147458,STORE,L1 hit,23
+2,uniform,100000,index,scatter,0x14745c,N/A,N/A,19
+2,uniform,100000,index,scatter,0x14745c,STORE,L1 hit,24
+2,uniform,100000,index,scatter,0x147464,N/A,N/A,26
+2,uniform,100000,index,scatter,0x147469,N/A,N/A,1
+2,uniform,100000,index,scatter,0x147470,LOAD,L1 hit,2
+2,uniform,100000,index,tag_store,0x146ba7,STORE,L1 hit,87
+2,uniform,100000,index,tag_store,0x14725f,STORE,L1 hit,61

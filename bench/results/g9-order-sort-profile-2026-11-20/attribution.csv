@@ -1,0 +1,7 @@
+run,scene,warm_reps,pair_samples,pair_pct_process,source_sort_pct_pairs,row_sort_pct_pairs,unresolved_sort_pct_pairs,row_pct_resolved_sort
+1-mixed-size,mixed-size,13,7195,84.28,3.29,27.68,0.00,89.37
+1-split-line-translated,split-line-translated,39,5451,66.86,12.74,2.09,0.00,14.10
+2-split-line-translated,split-line-translated,39,6366,67.43,12.54,1.87,0.00,12.99
+2-mixed-size,mixed-size,14,8545,84.65,3.48,26.75,0.00,88.48
+3-mixed-size,mixed-size,13,9358,83.88,3.46,27.18,0.00,88.69
+3-split-line-translated,split-line-translated,39,7219,67.09,12.70,1.85,0.00,12.69

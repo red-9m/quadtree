@@ -1,0 +1,32 @@
+
+control
+void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const::{lambda(auto:1 const&, auto:2 const&)#1}, QuadTree::detail::AcceptAll>(QuadTree::Workspace<int>&, bool, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&, QuadTree::detail::AcceptAll&) const::{lambda(unsigned int)#1}>(QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Node const&, QuadTree::Box<int> const&, QuadTree::Filter, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&) const
+   1e30b:	call   72c0 <__popcountdi2@plt>
+   1e46d:	call   72c0 <__popcountdi2@plt>
+void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const::{lambda(auto:1 const&, auto:2 const&)#1}, QuadTree::detail::AcceptAll>(QuadTree::Workspace<int>&, bool, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&, QuadTree::detail::AcceptAll&) const::{lambda(unsigned int)#1}>(QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Node const&, QuadTree::Box<int> const&, QuadTree::Filter, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&) const
+   1e7cb:	call   72c0 <__popcountdi2@plt>
+   1e92d:	call   72c0 <__popcountdi2@plt>
+
+inline
+void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const::{lambda(auto:1 const&, auto:2 const&)#1}, QuadTree::detail::AcceptAll>(QuadTree::Workspace<int>&, bool, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&, QuadTree::detail::AcceptAll&) const::{lambda(unsigned int)#1}>(QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Node const&, QuadTree::Box<int> const&, QuadTree::Filter, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&) const
+   1e46c:	movabs $0x4332322132212110,%rdi
+   1e5f7:	movabs $0x4332322132212110,%rax
+void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const::{lambda(auto:1 const&, auto:2 const&)#1}, QuadTree::detail::AcceptAll>(QuadTree::Workspace<int>&, bool, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&, QuadTree::detail::AcceptAll&) const::{lambda(unsigned int)#1}>(QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Node const&, QuadTree::Box<int> const&, QuadTree::Filter, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&) const
+   1e93c:	movabs $0x4332322132212110,%rdi
+   1eac7:	movabs $0x4332322132212110,%rax
+
+candidate
+void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, false>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const::{lambda(auto:1 const&, auto:2 const&)#1}, QuadTree::detail::AcceptAll>(QuadTree::Workspace<int>&, bool, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&, QuadTree::detail::AcceptAll&) const::{lambda(unsigned int)#1}>(QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Node const&, QuadTree::Box<int> const&, QuadTree::Filter, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&) const
+   1e46c:	movabs $0x4332322132212110,%rdi
+   1e5f7:	movabs $0x4332322132212110,%rax
+void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::PairSink&, unsigned long) const::{lambda(auto:1 const&, auto:2 const&)#1}, QuadTree::detail::AcceptAll>(QuadTree::Workspace<int>&, bool, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&, QuadTree::detail::AcceptAll&) const::{lambda(unsigned int)#1}>(QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Node const&, QuadTree::Box<int> const&, QuadTree::Filter, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::Context&, (anonymous namespace)::PairSink&) const
+   1e93c:	movabs $0x4332322132212110,%rdi
+   1eac7:	movabs $0x4332322132212110,%rax
+
+lookahead planBulk
+  145c8e:	prefetcht0 (%r14,%rax,1)
+  145d82:	prefetcht0 (%r14,%rax,1)
+
+candidate planBulk
+  145c8e:	prefetcht0 (%r14,%rax,1)
+  145d82:	prefetcht0 (%r14,%rax,1)

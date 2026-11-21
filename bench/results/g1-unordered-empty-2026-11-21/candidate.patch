@@ -1,0 +1,56 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1194,12 +1194,17 @@
+             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>
+     QueryResult forEachPair(Visitor&& visitor, QueryOptions<T> options = {}, Predicate&& predicate = {}) const noexcept
+     {
++        if (!options.ordered)
++        {
++            if (empty())
++                return {};
++            return forEachNonemptyUnorderedPair(visitor, options.budget, predicate);
++        }
+         if (size() < 2)
+-            return {options.ordered && !allRanked() ? Status::MissingRank : Status::Ok, {}};
+-        if (options.ordered && !allRanked())
++            return {!allRanked() ? Status::MissingRank : Status::Ok, {}};
++        if (!allRanked())
+             return {Status::MissingRank, {}};
+         Context context(options.budget);
+-        if (options.ordered)
+         {
+             Workspace<T> local(resource());
+             Workspace<T>* scratch = options.workspace ? options.workspace : &local;
+@@ -1209,9 +1214,22 @@
+             typename Workspace<T>::Use use(*scratch);
+             orderedSelf(*scratch, false, context, visitor, predicate);
+         }
+-        else if (mRoot != none)
++        return context.result;
++    }
++
++private:
++    template<typename Visitor, typename Predicate>
++#if defined(__GNUC__) || defined(__clang__)
++    [[gnu::noinline]]
++#endif
++    QueryResult forEachNonemptyUnorderedPair(Visitor& visitor, WorkBudget budget, Predicate& predicate) const noexcept
++    {
++        if (size() == 1)
++            return {};
++        Context context(budget);
++        if (mRoot != none)
+             selfPairs(mRoot, context, visitor, predicate);
+-        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
++        else if (size() <= 4 && budget.candidateTests >= size() * (size() - 1) / 2)
+             tinyPairs(context, visitor, predicate);
+         else
+             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
+@@ -1220,6 +1238,7 @@
+         return context.result;
+     }
+ 
++public:
+     template<typename Visitor, typename Predicate = detail::AcceptAll>
+         requires std::is_nothrow_invocable_r_v<Visit, Visitor&, const View&, const View&> &&
+             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>

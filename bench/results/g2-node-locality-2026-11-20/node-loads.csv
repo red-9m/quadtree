@@ -1,0 +1,23 @@
+function,field,node_offset,pcs
+crossPairs,count,100,9adc6 9addd
+crossPairs,bounds,20,9ae1b 9ae30
+crossPairs,bounds,24,9ae3c 9ae48
+crossPairs,bounds,28,9ae17 9ae2d
+crossPairs,bounds,32,9ae39 9ae45
+crossPairs,firstChild,92,9afa1 9b010
+crossPairs,summary,56,9ae51 9ae63
+crossPairs,summary,64,9ae55 9ae5f
+crossPairs,head,96,9ae6d 9aed0
+crossPairs,ownCount,104,9af40 9b24b
+crossPairs,linear,117,9af32 9af50
+walkOrdered,count,100,1e7b7 1e800 1e850 1e8a9 1e908 1e9c0
+walkOrdered,bounds,20,1e7d0 1e81c 1e87a 1e8cc 1ea0b
+walkOrdered,bounds,24,1e7f1 1e839 1e898 1ea25
+walkOrdered,bounds,28,1e7c6 1e813 1e869 1e8c3 1e9f7
+walkOrdered,bounds,32,1e7e4 1e82d 1e88b 1ea14
+walkOrdered,firstChild,92,1e78e
+walkOrdered,summary,56,1e678
+walkOrdered,summary,64,1e66e
+walkOrdered,head,96,1e687 1e77c
+walkOrdered,ownCount,104,1e774
+walkOrdered,linear,117,1e769

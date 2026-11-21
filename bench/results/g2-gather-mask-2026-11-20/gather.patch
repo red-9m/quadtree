@@ -1,0 +1,61 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -1610,27 +1610,40 @@
+         const auto h = detail::span(cell.box.minY, cell.box.maxY);
+         const auto fits_width = split.splitX ? w / 2 : w;
+         const auto fits_height = split.splitY ? h / 2 : h;
+-        std::uint32_t count[5]{};
+-        for (auto i = begin; i < end; ++i)
++        const auto classify = [&](const Box<T>& box) noexcept -> std::uint8_t
+         {
+-#if defined(__GNUC__) || defined(__clang__)
+-            constexpr std::uint32_t ahead = 16;
+-            if (end - i > ahead)
+-                __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
+-#endif
+-            const auto& box = boxes[src[i]];
+             const auto width = detail::span(box.minX, box.maxX);
+             const auto height = detail::span(box.minY, box.maxY);
+-            std::uint32_t b = 0;
+-            if (width <= fits_width && height <= fits_height)
+-            {
+-                const auto x = box.minX + static_cast<T>(width / 2);
+-                const auto y = box.minY + static_cast<T>(height / 2);
+-                b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+-                    (split.splitY && y >= split.y ? 2u : 0u));
+-            }
+-            tags[i] = static_cast<std::uint8_t>(b);
+-            ++count[b];
++            if (width > fits_width || height > fits_height)
++                return 0;
++            const auto x = box.minX + static_cast<T>(width / 2);
++            const auto y = box.minY + static_cast<T>(height / 2);
++            return static_cast<std::uint8_t>(1 + ((split.splitX && x >= split.x ? 1u : 0u) |
++                (split.splitY && y >= split.y ? 2u : 0u)));
++        };
++        std::uint32_t count[5]{};
++        auto pos = begin;
++        // Present four independent gathers to the scheduler before updating
++        // the shared histogram. Scatter still sees the same tag stream.
++        for (; end - pos >= 4; pos += 4)
++        {
++            const auto a = boxes[src[pos]], b = boxes[src[pos + 1]];
++            const auto c = boxes[src[pos + 2]], d = boxes[src[pos + 3]];
++            const auto ta = classify(a), tb = classify(b), tc = classify(c), td = classify(d);
++            tags[pos] = ta;
++            tags[pos + 1] = tb;
++            tags[pos + 2] = tc;
++            tags[pos + 3] = td;
++            ++count[ta];
++            ++count[tb];
++            ++count[tc];
++            ++count[td];
++        }
++        for (; pos < end; ++pos)
++        {
++            const auto tag = classify(boxes[src[pos]]);
++            tags[pos] = tag;
++            ++count[tag];
+         }
+         const auto movable = end - begin - count[0];
+         if (movable <= mConfig.splitThreshold)

@@ -1,0 +1,5 @@
+scene,n,groups,ids,adjacent_same_pct,shuffled_same_pct,recent_2_pct_ids,recent_4_pct_ids,recent_8_pct_ids,single_bin_ids,non_single_adjacent_same_pct,max_run,half_paired_pct_ids,half_pairs_same_tag_pct
+uniform,10000,1003,57626,25.01,24.99,42.56,65.81,85.10,0,25.01,8,99.04,24.87
+uniform,100000,8106,726690,24.94,25.00,43.03,66.68,86.85,0,24.94,11,99.37,24.90
+split-line-translated,10000,985,67718,37.05,36.74,51.85,71.28,87.51,4956,32.00,2612,99.26,36.22
+split-line-translated,100000,9217,850050,35.42,35.40,51.50,71.94,88.50,50216,31.31,25256,99.42,35.38

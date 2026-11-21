@@ -1,0 +1,17 @@
+block,kind,engine,scene,event,start,start_tctl_millidegrees,finish
+1,control,index,uniform,cycles,2026-11-21T08:06:38+02:00,39875,2026-11-21T08:06:40+02:00
+1,candidate,index,uniform,cycles,2026-11-21T08:06:41+02:00,62000,2026-11-21T08:06:43+02:00
+1,control,index,split-line-translated,cycles,2026-11-21T08:06:44+02:00,64375,2026-11-21T08:06:46+02:00
+1,control,index,split-line-translated,ibs,2026-11-21T08:06:46+02:00,65750,2026-11-21T08:06:49+02:00
+1,candidate,index,split-line-translated,cycles,2026-11-21T08:06:50+02:00,65250,2026-11-21T08:06:52+02:00
+1,candidate,index,split-line-translated,ibs,2026-11-21T08:06:52+02:00,66250,2026-11-21T08:06:55+02:00
+1,control,index-ordered,split-line-translated,cycles,2026-11-21T08:06:56+02:00,66375,2026-11-21T08:06:58+02:00
+1,candidate,index-ordered,split-line-translated,cycles,2026-11-21T08:06:58+02:00,65125,2026-11-21T08:07:01+02:00
+2,candidate,index-ordered,split-line-translated,cycles,2026-11-21T08:07:21+02:00,40000,2026-11-21T08:07:24+02:00
+2,control,index-ordered,split-line-translated,cycles,2026-11-21T08:07:24+02:00,58875,2026-11-21T08:07:27+02:00
+2,candidate,index,split-line-translated,cycles,2026-11-21T08:07:27+02:00,61625,2026-11-21T08:07:30+02:00
+2,candidate,index,split-line-translated,ibs,2026-11-21T08:07:30+02:00,64375,2026-11-21T08:07:32+02:00
+2,control,index,split-line-translated,cycles,2026-11-21T08:07:33+02:00,65125,2026-11-21T08:07:36+02:00
+2,control,index,split-line-translated,ibs,2026-11-21T08:07:36+02:00,65500,2026-11-21T08:07:38+02:00
+2,candidate,index,uniform,cycles,2026-11-21T08:07:39+02:00,65375,2026-11-21T08:07:41+02:00
+2,control,index,uniform,cycles,2026-11-21T08:07:42+02:00,65625,2026-11-21T08:07:44+02:00

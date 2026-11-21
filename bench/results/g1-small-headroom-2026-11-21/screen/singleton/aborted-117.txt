@@ -1,0 +1,1 @@
+Stopped quiet preflight for unmatched 117-control: Tctl settled below 39 C. No control sample taken. Keep the unmatched candidate, exclude this comparison, and rerun both at a naturally cold start.

@@ -1,0 +1,2 @@
+1080 warm samples, 18 processes, 72 rows: fixtures, pair checksums, work, allocations and footprint match.
+Each treatment ran twice in each block position. All warmed library rows allocate zero.
