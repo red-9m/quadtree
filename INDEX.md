@@ -12,8 +12,10 @@ documented exceptions for very small snapshots and two 10²–10³ G2 rows. `int
 functionally supported: they pass the same correctness, allocation and
 portability checks. Their snapshot builds are not yet performance-accepted. On
 the [release run](bench/results/release-acceptance-2026-11-21/README.md), G2
-ratios reach 2.7–5.1× (`int64`) and 2.4–11.5× (`float`/`double`) the best
-baseline, against 2–4× limits. Persistent motion passes every applicable hard
+ratios reach 2.4–11.5× (`float`/`double`) the best baseline, against 2–4×
+limits. `int64` now uses the integer fast paths
+([recheck](bench/results/int64-staged-2026-11-21/README.md)): it fails one G2
+row (`uniform` 10⁵, 2.14×), with five rows unresolved near their limits. Persistent motion passes every applicable hard
 gate for every type.
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a

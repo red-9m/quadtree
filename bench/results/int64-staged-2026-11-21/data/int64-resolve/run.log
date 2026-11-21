@@ -1,0 +1,74 @@
+# date: 2026-11-21T20:13:43Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293767 GHz, 7.9 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int64 --engines=index,index-ordered,brute,sweep,grid --scenes=split-line,split-line-translated,uniform --sizes=100,1000,10000,100000 --small-sizes= --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/int64-staged-2026-11-21/data/int64-resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/int64-staged-2026-11-21/data/int64-resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int64      100     1 brute               5.076     2.0     2.70 [2.65-2.76]          4950          81     0.00         3 ok
+uniform                                  int64      100     1 sweep               1.970     2.0     1.05 [1.03-1.07]           636          81     0.00         5 ok
+uniform                                  int64      100     1 grid                1.880     2.0     1.00 [1.00-1.00]           274          81     0.00         6 ok
+uniform                                  int64      100     1 index               5.962     2.0     3.17 [3.11-3.24]           612          81     0.00        32 ok
+uniform                                  int64      100     1 index-ordered        8.604     2.0     4.58 [4.49-4.67]           312          81     0.00        38 ok
+uniform                                  int64     1000     1 brute             814.366     2.0  39.99 [39.18-40.81]        499500         734     0.00        32 ok
+uniform                                  int64     1000     1 sweep              69.044     2.0     3.39 [3.32-3.46]         20194         734     0.00        51 ok
+uniform                                  int64     1000     1 grid               20.367     2.0     1.00 [1.00-1.00]          3130         734     0.00        67 ok
+uniform                                  int64     1000     1 index              82.545     2.1     4.05 [3.97-4.14]          7341         734     0.00       333 ok
+uniform                                  int64     1000     1 index-ordered      203.241     2.0    9.98 [9.78-10.18]          3360         734     0.00       378 ok
+uniform                                  int64    10000     1 brute           99326.601     2.0 168.37 [165.01-171.78]      49995000        7525     0.00       322 ok
+uniform                                  int64    10000     1 sweep            2057.932     2.0     3.49 [3.42-3.56]        644061        7525     0.00       517 ok
+uniform                                  int64    10000     1 grid              589.952     2.0     1.00 [1.00-1.00]         31491        7525     0.00       666 ok
+uniform                                  int64    10000     1 index            1085.636     2.0     1.84 [1.80-1.88]         51231        7525     0.00      3392 ok
+uniform                                  int64    10000     1 index-ordered     2814.875     2.1     4.77 [4.67-4.87]         31633        7525     0.00      4031 ok
+uniform                                  int64   100000     1 brute                   -       -                    -     200056769        2925     0.00      3222 capped
+uniform                                  int64   100000     1 sweep           46756.234     2.0     7.13 [6.98-7.28]      20226787       73905     0.00      5175 ok
+uniform                                  int64   100000     1 grid             6560.123     2.1     1.00 [1.00-1.00]        310440       73905     0.00      6670 ok
+uniform                                  int64   100000     1 index           14044.408     2.0     2.14 [2.10-2.19]        788738       73905     0.00     32663 ok
+uniform                                  int64   100000     1 index-ordered    43588.879     2.1     6.65 [6.51-6.79]        383603       73905     0.00     38029 ok
+split-line                               int64      100     1 brute               4.949     2.0     3.15 [3.09-3.22]          4950          38     0.00         3 ok
+split-line                               int64      100     1 sweep               1.570     2.0     1.00 [1.00-1.00]           400          38     0.00         5 ok
+split-line                               int64      100     1 grid                2.024     2.0     1.29 [1.26-1.32]           143          38     0.00        12 ok
+split-line                               int64      100     1 index               6.019     2.1     3.83 [3.76-3.91]           478          38     0.00        33 ok
+split-line                               int64      100     1 index-ordered        9.408     2.0     5.99 [5.87-6.11]           312          38     0.00        38 ok
+split-line                               int64     1000     1 brute             800.751     2.0  34.72 [34.01-35.44]        499500         843     0.00        32 ok
+split-line                               int64     1000     1 sweep              70.856     2.1     3.07 [3.01-3.14]         21333         843     0.00        51 ok
+split-line                               int64     1000     1 grid               23.065     2.0     1.00 [1.00-1.00]          2959         843     0.00        98 ok
+split-line                               int64     1000     1 index              89.879     2.0     3.90 [3.82-3.98]          7914         843     0.00       330 ok
+split-line                               int64     1000     1 index-ordered      223.334     2.0     9.68 [9.49-9.88]          3858         843     0.00       375 ok
+split-line                               int64    10000     1 brute           98174.827     2.0 163.83 [160.56-167.17]      49995000        7261     0.00       322 ok
+split-line                               int64    10000     1 sweep            1888.226     2.0     3.15 [3.09-3.22]        642882        7261     0.00       517 ok
+split-line                               int64    10000     1 grid              599.255     2.0     1.00 [1.00-1.00]         24510        7261     0.00      1199 ok
+split-line                               int64    10000     1 index            1173.464     2.0     1.96 [1.92-2.00]         58619        7261     0.00      3382 ok
+split-line                               int64    10000     1 index-ordered     3081.380     2.1     5.14 [5.04-5.25]         37061        7261     0.00      4021 ok
+split-line                               int64   100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line                               int64   100000     1 sweep           61692.703     2.0     7.85 [7.68-8.01]      28769913      105137     0.00      5175 ok
+split-line                               int64   100000     1 grid             7864.329     2.1     1.00 [1.00-1.00]        329471      105137     0.00     11807 ok
+split-line                               int64   100000     1 index           14530.457     2.0     1.85 [1.81-1.89]        681627      105137     0.00     33377 ok
+split-line                               int64   100000     1 index-ordered    50117.624     2.0     6.37 [6.24-6.51]        429581      105137     0.00     38743 ok
+split-line-translated                    int64      100     1 brute               4.916     2.0     3.12 [3.05-3.19]          4950          38     0.00         3 ok
+split-line-translated                    int64      100     1 sweep               1.576     2.1     1.00 [1.00-1.00]           400          38     0.00         5 ok
+split-line-translated                    int64      100     1 grid                2.060     2.2     1.31 [1.28-1.34]           146          38     0.00        12 ok
+split-line-translated                    int64      100     1 index               6.437     2.1     4.08 [4.00-4.17]           456          38     0.00        34 ok
+split-line-translated                    int64      100     1 index-ordered        9.601     2.0     6.09 [5.97-6.22]           330          38     0.00        39 ok
+split-line-translated                    int64     1000     1 brute             802.496     2.0  35.12 [34.40-35.86]        499500         843     0.00        32 ok
+split-line-translated                    int64     1000     1 sweep              66.064     2.0     2.89 [2.83-2.95]         21332         843     0.00        51 ok
+split-line-translated                    int64     1000     1 grid               22.848     2.0     1.00 [1.00-1.00]          2893         843     0.00        98 ok
+split-line-translated                    int64     1000     1 index              87.722     2.0     3.84 [3.76-3.92]          7375         843     0.00       334 ok
+split-line-translated                    int64     1000     1 index-ordered      224.751     2.0    9.84 [9.64-10.04]          3660         843     0.00       379 ok
+split-line-translated                    int64    10000     1 brute           98062.885     2.0 163.39 [160.11-166.74]      49995000        7261     0.00       322 ok
+split-line-translated                    int64    10000     1 sweep            1890.614     2.0     3.15 [3.09-3.21]        642879        7261     0.00       517 ok
+split-line-translated                    int64    10000     1 grid              600.198     2.0     1.00 [1.00-1.00]         23819        7261     0.00      1196 ok
+split-line-translated                    int64    10000     1 index            1152.585     2.0     1.92 [1.88-1.96]         55720        7261     0.00      3380 ok
+split-line-translated                    int64    10000     1 index-ordered     3127.886     2.0     5.21 [5.10-5.32]         36779        7261     0.00      4019 ok
+split-line-translated                    int64   100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line-translated                    int64   100000     1 sweep           61758.178     2.0     8.50 [8.32-8.67]      28769910      105137     0.00      5175 ok
+split-line-translated                    int64   100000     1 grid             7269.586     2.1     1.00 [1.00-1.00]        324504      105137     0.00     11788 ok
+split-line-translated                    int64   100000     1 index           14263.398     2.0     1.96 [1.92-2.00]        625694      105137     0.00     33392 ok
+split-line-translated                    int64   100000     1 index-ordered    50678.054     2.0     6.97 [6.83-7.12]        422813      105137     0.00     38758 ok

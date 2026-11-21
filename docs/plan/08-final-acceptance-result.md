@@ -14,6 +14,10 @@
 - **Portability:** hosted [Portability #2](https://github.com/red-9m/quadtree/actions/runs/44913550921) passes all nine jobs on `a72bc80` ([06 result](06-portability-result.md)). MSVC is deferred.
 - **Calibration:** two identical processes agree on 98.0% of rows, so the 2% snapshot term holds ([four-type run](../../bench/results/release-acceptance-2026-11-21/README.md#calibration)). The persistent 3% term was not re-validated.
 
+## Recheck after `df2cfeb`
+
+`df2cfeb` enables the integer bulk planner and ordered paths for `int64`; the `int32` snapshot code is unchanged apart from alignment. A [full `int32` recheck](../../bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb) on that commit passes every hard gate within the same exceptions; `split-line-translated` 10⁵ passes again under the pre-specified two-process pooling. Hosted Portability #5 passes 9/9. **The `int32` acceptance holds on `df2cfeb`.**
+
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.
