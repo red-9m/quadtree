@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: [09 — other coordinate types](docs/plan/09-other-coordinate-types.md).** The `int32` release is [accepted](docs/plan/08-final-acceptance-result.md) on `a72bc80`, with owner-accepted G1/G2 exceptions. `int64`, `float` and `double` are functionally supported, but their performance acceptance belongs to 09. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: 09 — decide on staging the [`int64` candidate](bench/results/int64-bulk-plan-2026-11-21/README.md#handoff).** Enabling the integer bulk planner and ordered paths for `int64` takes it from 11 G2 fails to 1 (`uniform` 10⁵, 2.09×), with 4 unresolved. G9 passes 15/15 and the `int32` snapshot code is unchanged. The candidate is not staged yet. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -29,20 +29,20 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
 | [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope). All hard gates pass, with the accepted G1 (0–4 entries) and G2 (`int32` 10²/10³ rows) exceptions; the G2 10⁵ row passes by pre-specified pooling. | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`int32` confirmation](bench/results/release-int32-2026-11-21/README.md) · [Four-type run](bench/results/release-acceptance-2026-11-21/README.md) |
-| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | Next: G2 for `int64`/`float`/`double`, G1 for `float`/`double` | [Four-type baseline](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | In progress: `int64` candidate validated, not staged. G2 1 fail (`uniform` 10⁵) + 4 unresolved; G9 pass. `float`/`double` not started. | [`int64` candidate](bench/results/int64-bulk-plan-2026-11-21/README.md) · [Four-type baseline](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: Task 09 — other coordinate types
+### Fresh session: Task 09 — `int64`
 
-Work in `/home/dima/src/quadtree.git`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md) in full and the [four-type release run](bench/results/release-acceptance-2026-11-21/README.md#blocking-and-unresolved-rows).
+Work in `/home/dima/src/quadtree.git`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md) and [the `int64` candidate handoff](bench/results/int64-bulk-plan-2026-11-21/README.md#handoff).
 
-**Next deliverable:** a phase attribution per type before any code change. For `int64`, `float` and `double`, compare `prepare_median_ns` and `pairs_median_ns` against `int32` on the G2 rows, from the release run's `library-rows.csv`. Confirm or reject the hypothesis that these types fall back to generic, non-`int32` paths: check the `std::same_as<T, std::int32_t>` and `!FloatCoordinate<T>` branches in `detail/quadtree-index-impl.h`. Pick the single largest measured cost for the first candidate.
+**State:** [int64-paths.patch](bench/results/int64-bulk-plan-2026-11-21/int64-paths.patch) is validated but not in the repository. It passes the equivalence and budget-contract probes, CTest, fuzz, and the `int32` codegen check. The scratch tree is the path in `/tmp/quadtree-int64.current`.
 
-Keep `int32` code generation unchanged or re-verified. The `int32` release evidence must stay valid.
+**Open decisions:** (1) stage the patch: commit it, run hosted CI, and recheck `int32`; (2) extend the `int32` G2 exception rows to `int64`; (3) design work for `uniform` 10⁵, where box size is the remaining gap. `float`/`double` come after `int64`.
 
 ### Update the handoff after the session
 

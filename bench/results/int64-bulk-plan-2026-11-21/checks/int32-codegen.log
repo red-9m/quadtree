@@ -1,0 +1,4 @@
+47 control / 47 candidate int32 symbols; 47 shared
+2 differ
+DIFFERENT (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> >
+DIFFERENT (anonymous namespace)::PersistentRunner<bench::LibraryIndex<int, true>, int>::pass(std::vector<QuadTree::Box<int>, std::allocator<QuadTree::Box<int> >
