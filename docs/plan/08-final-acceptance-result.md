@@ -1,0 +1,21 @@
+# 08 · Release acceptance result
+
+**`int32` release accepted (2026-11-21)** on release candidate `a72bc80`: runtime/benchmark code built from `64675e6`, identical code, benchmark `.text` `97d8835e…`. Scope per [the brief](08-final-acceptance.md): performance sign-off covers `int32` only. `int64`, `float` and `double` are functionally supported and remain under [Task 09](09-other-coordinate-types.md).
+
+## Exit criteria
+
+- **Hard gates (`int32`):** all pass on the [`int32` confirmation](../../bench/results/release-int32-2026-11-21/README.md) (snapshot and persistent, 1,952/1,952 rows). Owner-accepted exceptions apply:
+  - G1, 0–4 entries, upper bound ≤ 3.5×: [02 result](02-g1-small-snapshots-result.md).
+  - G2 `split-line-translated` 10² and `uniform` 10³, upper bound ≤ 4.5×: [brief](08-final-acceptance.md).
+
+  G2 `split-line-translated` 10⁵ resolves to pass under the [pre-specified three-process pooling](../../bench/results/release-int32-2026-11-21/pooling-rule.md). No hard interval is left unresolved outside these.
+- **Correctness:** no cross-check failure and no `NONDETERMINISTIC` result in any stage of either run. Release CTest is 21/21 and the full differential fuzz passes ([promotion record](../../bench/results/promotion-2026-11-21/README.md)).
+- **Allocations and memory:** zero warm allocations on every library row of all four types (G6), with cold peaks published.
+- **Portability:** hosted [Portability #2](https://github.com/red-9m/quadtree/actions/runs/44913550921) passes all nine jobs on `a72bc80` ([06 result](06-portability-result.md)). MSVC is deferred.
+- **Calibration:** two identical processes agree on 98.0% of rows, so the 2% snapshot term holds ([four-type run](../../bench/results/release-acceptance-2026-11-21/README.md#calibration)). The persistent 3% term was not re-validated.
+
+## Evidence
+
+- [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.
+- [`int32` confirmation](../../bench/results/release-int32-2026-11-21/README.md): the sign-off run.
+- [Rejected `int32` G2 fix attempt](../../bench/results/int32-g2-planbulk-2026-11-21/README.md): the evidence behind the G2 exception.

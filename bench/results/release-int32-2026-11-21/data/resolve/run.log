@@ -1,0 +1,44 @@
+# date: 2026-11-21T18:04:31Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293774 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int32 --engines=index,index-ordered,brute,sweep,grid --scenes=split-line-translated,uniform --sizes=100,1000,100000 --small-sizes= --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/release-int32-2026-11-21/data/resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/release-int32-2026-11-21/data/resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int32      100     1 brute               4.232     2.1     2.41 [2.36-2.46]          4950          81     0.00         1 ok
+uniform                                  int32      100     1 sweep               1.833     2.0     1.04 [1.02-1.06]           636          81     0.00         2 ok
+uniform                                  int32      100     1 grid                1.758     2.0     1.00 [1.00-1.00]           274          81     0.00         5 ok
+uniform                                  int32      100     1 index               5.378     2.1     3.06 [3.00-3.12]           612          81     0.00        26 ok
+uniform                                  int32      100     1 index-ordered        8.518     2.0     4.85 [4.75-4.94]           312          81     0.00        31 ok
+uniform                                  int32     1000     1 brute             766.527     2.1  40.46 [39.62-41.31]        499500         734     0.00        16 ok
+uniform                                  int32     1000     1 sweep              68.113     2.0     3.60 [3.52-3.67]         20194         734     0.00        28 ok
+uniform                                  int32     1000     1 grid               18.947     2.1     1.00 [1.00-1.00]          3130         734     0.00        51 ok
+uniform                                  int32     1000     1 index              75.059     2.4     3.96 [3.86-4.05]          7341         734     0.00       269 ok
+uniform                                  int32     1000     1 index-ordered      201.331     2.0  10.63 [10.41-10.85]          3360         734     0.00       314 ok
+uniform                                  int32   100000     1 brute                   -       -                    -     200056769        2925     0.00      1660 capped
+uniform                                  int32   100000     1 sweep           46733.806     2.0     7.30 [7.16-7.45]      20226787       73905     0.00      2832 ok
+uniform                                  int32   100000     1 grid             6400.970     2.0     1.00 [1.00-1.00]        310440       73905     0.00      5108 ok
+uniform                                  int32   100000     1 index           12107.285     2.0     1.89 [1.85-1.93]        788738       73905     0.00     26456 ok
+uniform                                  int32   100000     1 index-ordered    40855.672     2.1     6.38 [6.25-6.52]        383603       73905     0.00     31821 ok
+split-line-translated                    int32      100     1 brute               4.338     2.1     3.02 [2.96-3.09]          4950          38     0.00         1 ok
+split-line-translated                    int32      100     1 sweep               1.434     2.0     1.00 [1.00-1.00]           400          38     0.00         2 ok
+split-line-translated                    int32      100     1 grid                1.883     2.0     1.31 [1.29-1.34]           146          38     0.00        10 ok
+split-line-translated                    int32      100     1 index               5.977     2.0     4.17 [4.08-4.25]           456          38     0.00        27 ok
+split-line-translated                    int32      100     1 index-ordered        9.399     2.0     6.55 [6.42-6.69]           330          38     0.00        33 ok
+split-line-translated                    int32     1000     1 brute             742.415     2.1  35.00 [34.27-35.75]        499500         843     0.00        16 ok
+split-line-translated                    int32     1000     1 sweep              64.430     2.0     3.04 [2.98-3.10]         21332         843     0.00        28 ok
+split-line-translated                    int32     1000     1 grid               21.209     2.0     1.00 [1.00-1.00]          2893         843     0.00        83 ok
+split-line-translated                    int32     1000     1 index              79.896     2.0     3.77 [3.69-3.84]          7375         843     0.00       270 ok
+split-line-translated                    int32     1000     1 index-ordered      220.480     2.0  10.39 [10.18-10.61]          3660         843     0.00       314 ok
+split-line-translated                    int32   100000     1 brute                   -       -                    -     200056769        4056     0.00      1660 capped
+split-line-translated                    int32   100000     1 sweep           61182.405     2.0     9.57 [9.37-9.78]      28769910      105137     0.00      2832 ok
+split-line-translated                    int32   100000     1 grid             6393.000     2.1     1.00 [1.00-1.00]        324504      105137     0.00     10226 ok
+split-line-translated                    int32   100000     1 index           12490.580     2.0     1.95 [1.91-2.00]        625694      105137     0.00     26976 ok
+split-line-translated                    int32   100000     1 index-ordered    47289.285     2.0     7.40 [7.24-7.56]        422813      105137     0.00     32342 ok

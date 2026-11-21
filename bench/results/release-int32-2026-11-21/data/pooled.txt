@@ -1,0 +1,4 @@
+bench/results/release-acceptance-2026-11-21/data/resolve-int32: 1.936 [1.881-1.992] h=0.0287
+bench/results/release-int32-2026-11-21/data/resolve: 1.954 [1.897-2.012] h=0.0294
+bench/results/release-int32-2026-11-21/data/resolve-2: 1.946 [1.890-2.003] h=0.0290
+pooled: 1.945 [1.913-1.978] -> pass

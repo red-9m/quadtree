@@ -455,6 +455,8 @@ targets. Timing never waives correctness, allocation or memory gates.
 
 **Accepted release exception (G1, 2026-11-21).** The G1 limit is unchanged, and rows of 0–4 entries still report `FAIL`. By owner decision, release sign-off accepts them when their upper bound is ≤ 3.5× brute. The remaining gap is fixed per-rebuild work the contract requires. See [the decision record](../docs/plan/02-g1-small-snapshots-result.md).
 
+**Accepted release exception (G2, `int32`, 2026-11-21).** The G2 limits are unchanged. By owner decision, `int32` `split-line-translated` n=10² and `uniform` n=10³ do not block release while their upper bound is ≤ 4.5× the best baseline. See [the 08 brief](../docs/plan/08-final-acceptance.md).
+
 **Amendment before first use (G3).** The provisional form limited raw
 candidates to 15× per tenfold n. The published data showed that the fixtures'
 output itself grows ×8.6–44 per tenfold n (`mixed-size` large boxes scale with

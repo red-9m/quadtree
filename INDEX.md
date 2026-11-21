@@ -6,8 +6,9 @@ Do not include the legacy `quadtree.h` in the same translation unit.
 
 The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
-**Performance scope.** Performance acceptance covers `int32` coordinates only;
-it is in progress for this release. `int64`, `float` and `double` are
+**Performance scope.** Performance acceptance covers `int32` coordinates only
+and [passed for this release](docs/plan/08-final-acceptance-result.md), with
+documented exceptions for very small snapshots and two 10²–10³ G2 rows. `int64`, `float` and `double` are
 functionally supported: they pass the same correctness, allocation and
 portability checks. Their snapshot builds are not yet performance-accepted. On
 the [release run](bench/results/release-acceptance-2026-11-21/README.md), G2
