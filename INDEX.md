@@ -287,7 +287,7 @@ need no workspace. A supplied but unused workspace is not grown.
 
 - `entries`: rank order, partner row, membership stamps, selection flags.
 - `movedEntries`: normalized submitted handles.
-- `buildEntries`: captured descriptors and two key-sort buffers.
+- `buildEntries`: captured boxes, build descriptors and two key-sort buffers.
 
 `Workspace` is non-copyable, allocation-free/nothrow movable with the same
 resource rules as Index. Never move or reuse an active workspace. Concurrent or
@@ -397,7 +397,7 @@ headers):
 - Rank cells: 16 bytes, typically 2–4 cells per ranked entry, minimum 8 cells.
 - Incremental descriptors: 48 bytes per reserved descriptor (two keys).
 - Build workspace: 104 bytes per entry for int32/float; 120 for int64/double
-  (captured descriptor plus two keys). It contains no payload objects.
+  (captured box, descriptor and two keys). It contains no payload objects.
 - Query workspace: 13 bytes per reserved entry plus 4 per reserved moved handle.
 
 `stats()` exposes actual retained bytes/capacities and node/reference/key/handle

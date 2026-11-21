@@ -1419,8 +1419,9 @@ void workspaceAllocationFailures()
     using I = Tree<int>;
     constexpr QuadTree::WorkspaceReservation larger{11, 7, 13};
     constexpr std::array requestBytes{11 * sizeof(std::uint32_t), 11 * sizeof(std::uint32_t), 7 * sizeof(std::uint32_t),
-        11 * sizeof(std::uint32_t), 11 * sizeof(std::uint8_t), 13 * sizeof(QuadTree::detail::Descriptor<int>),
-        13 * sizeof(QuadTree::detail::SpatialKey), 13 * sizeof(QuadTree::detail::SpatialKey)};
+        11 * sizeof(std::uint32_t), 11 * sizeof(std::uint8_t), 13 * sizeof(Box<int>),
+        13 * sizeof(QuadTree::detail::Descriptor), 13 * sizeof(QuadTree::detail::SpatialKey),
+        13 * sizeof(QuadTree::detail::SpatialKey)};
     auto made = I::create();
     REQUIRE(made.ok());
     auto tree = std::move(made).value();
@@ -1480,7 +1481,8 @@ void appendStoreRequests(std::vector<AllocationRequest>& requests, std::size_t e
 
 void appendBuildScratchRequests(std::vector<AllocationRequest>& requests, std::size_t count)
 {
-    requests.insert(requests.end(), {{"build descriptors", count * sizeof(QuadTree::detail::Descriptor<int>)},
+    requests.insert(requests.end(), {{"build boxes", count * sizeof(Box<int>)},
+        {"build descriptors", count * sizeof(QuadTree::detail::Descriptor)},
         {"build keys", count * sizeof(QuadTree::detail::SpatialKey)}, {"build temp", count * sizeof(QuadTree::detail::SpatialKey)}});
 }
 

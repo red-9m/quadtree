@@ -5,6 +5,7 @@
 // macros, and restore the macros before any other headers can see them.
 #include <algorithm>
 #include <atomic>
+#include <bit>
 #include <concepts>
 #include <cstddef>
 #include <cstdint>
