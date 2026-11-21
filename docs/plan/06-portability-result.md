@@ -1,6 +1,6 @@
 # 06 · Portability CI evidence
 
-**Implemented; hosted run pending.** The [Portability workflow](../../.github/workflows/portability.yml) has six Linux compiler/configuration jobs and three Linux instrumentation jobs. All nine passed locally with the Ubuntu 24.04 toolchain versions selected by the workflow. The workflow is still local; push the release worktree to a branch or open a PR, then link the green Actions run here before marking 06 done. MSVC is deferred until explicitly requested and is not an acceptance gate.
+**Done.** [GitHub Actions run 44730920573](https://github.com/red-9m/quadtree/actions/runs/44730920573) passed all nine Linux jobs on `quadtree-index` at `57d30dcc49cff7de5563f46625b385cc145861cb` on 2026-11-20. The six GCC/libstdc++, Clang/libstdc++, and Clang/libc++ Debug/Release jobs verified strict builds, the exception-disabled tests, and relocated consumers. ASan/UBSan, libstdc++ debug mode, and TSan also passed. MSVC is deferred until explicitly requested and is not an acceptance gate.
 
 ## Ubuntu 24.04 matrix rehearsal · 2026-11-20
 
