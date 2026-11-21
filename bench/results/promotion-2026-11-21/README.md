@@ -34,5 +34,5 @@ The [Task 02 exception](../../../docs/plan/02-g1-small-snapshots-result.md) note
 
 ## Still required before 08 sign-off
 
-1. **Hosted CI:** push branch `quadtree-index` and rerun the [portability workflow](../../../.github/workflows/portability.yml) on that commit or later. The [06 evidence](../../../docs/plan/06-portability-result.md) covers `57d30dc`, which predates this source. This needs a push by the repository owner.
+1. ~~**Hosted CI:**~~ Done. [Portability #2](https://github.com/red-9m/quadtree/actions/runs/44913550921) passed all nine jobs on `a72bc80`.
 2. **Full 08 matrix:** run the calibrated full matrix on the committed revision, per the [08 brief](../../../docs/plan/08-final-acceptance.md).

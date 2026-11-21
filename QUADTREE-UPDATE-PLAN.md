@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: [08 — push and rerun hosted CI, then the full matrix](bench/results/promotion-2026-11-21/README.md#still-required-before-08-sign-off).** The promoted G2/G9 source is committed (`e73f6c5`). Its benchmark `.text` is byte-identical to the evidence, and local CTest, fuzz and portability pass. Task 02 is an [accepted G1 exception](docs/plan/02-g1-small-snapshots-result.md). MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: [08 — full acceptance matrix](docs/plan/08-final-acceptance.md).** The release candidate `a72bc80` contains the promoted G2/G9 source. Hosted [Portability #2](https://github.com/red-9m/quadtree/actions/runs/44913550921) passes all nine jobs on it, and the benchmark `.text` is byte-identical to the G1/G2/G9 evidence. Task 02 is an [accepted G1 exception](docs/plan/02-g1-small-snapshots-result.md). MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -26,9 +26,9 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [03 · Representative snapshots](docs/plan/03-g2-snapshot-cost.md) | Done for the measured `int32` slice; two-stream + source radix + packed cross-item, [promoted](bench/results/promotion-2026-11-21/README.md) in `e73f6c5`. G2/G9 pass 15/15 at nine and 45 rounds; translated 100,000 was inconclusive on both at 15. Broader coverage remains with 08. | [45-round confirmation](bench/results/g2-packed-cross-item-confirm-2026-11-21/README.md) · [9/15 matched screen](bench/results/g2-packed-cross-item-2026-11-21/README.md#frozen-g1g2g9-screen) · [Uncertainty audit](bench/results/g2-translated-uncertainty-2026-11-21/README.md) · [Exact instruction profile](bench/results/g2-exact-eligibility-profile-2026-11-21/README.md) · [Item census](bench/results/g2-item-eligibility-census-2026-11-21/README.md) · [Source-radix screen](bench/results/g9-two-scatter-source-radix-2026-11-21/README.md) · [Two-stream screen](bench/results/g2-two-scatter-2026-11-21/README.md) |
 | [04 · Verification gaps](docs/plan/04-verification-gaps.md) | Done; platform and acceptance checks remain with 06/08 | [Coverage record and reproduction](docs/plan/04-verification-coverage.md) · [Nonthrowing API checks](docs/plan/04-verification-coverage.md#nonthrowing-api-checks) |
 | [05 · Installable package](docs/plan/05-package.md) | Done; source and relocated install verified | [Consumer and install evidence](docs/plan/05-package-result.md) |
-| [06 · Portability CI](docs/plan/06-portability-ci.md) | Done; all nine hosted Linux jobs passed. MSVC deferred. | [Hosted run and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
+| [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
-| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | In progress: release-candidate source committed (`e73f6c5`) and verified locally; needs hosted CI and the full matrix | [Promotion record](bench/results/promotion-2026-11-21/README.md) · [Frozen gates and G1 exception](bench/MANIFEST.md#frozen-acceptance-limits) |
+| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | In progress: release candidate `a72bc80` committed, verified locally and passing hosted CI; needs the full matrix | [Promotion record](bench/results/promotion-2026-11-21/README.md) · [Frozen gates and G1 exception](bench/MANIFEST.md#frozen-acceptance-limits) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
@@ -39,10 +39,9 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 
 Work in `/home/dima/src/quadtree.git`. Read [the Task 08 brief](docs/plan/08-final-acceptance.md), including its accepted G1 exception, and [the promotion record](bench/results/promotion-2026-11-21/README.md).
 
-**State:** the release-candidate source is committed as `e73f6c5` on branch `quadtree-index`. Its benchmark `.text` is byte-identical to the G1/G2/G9 evidence binary. Release CTest is 21/21, and full fuzz and local GCC/Clang portability pass.
+**State:** the release candidate is `a72bc80` on branch `quadtree-index`, pushed; it contains the promoted G2/G9 source from `e73f6c5`. Its benchmark `.text` is byte-identical to the G1/G2/G9 evidence binary. Release CTest is 21/21, full fuzz passes, and hosted [Portability #2](https://github.com/red-9m/quadtree/actions/runs/44913550921) passes 9/9.
 
-1. **Owner action:** push `quadtree-index` and confirm the [portability workflow](.github/workflows/portability.yml) passes on the pushed head. Record the run in [the 06 result](docs/plan/06-portability-result.md).
-2. **Next deliverable:** on the committed revision, calibrate and run the full 08 matrix from the brief: all coordinate types, scenes and sizes, including 10², persistent 64-step passes, moved-set and G5. Publish raw samples, gate files and row reconciliation. G1 rows of 0–4 entries follow the accepted exception (upper bound ≤ 3.5×); everything else is gated unchanged.
+**Next deliverable:** on that revision, calibrate and run the full 08 matrix from the brief: all coordinate types, scenes and sizes, including 10², persistent 64-step passes, moved-set and G5. Publish raw samples, gate files and row reconciliation. G1 rows of 0–4 entries follow the accepted exception (upper bound ≤ 3.5×); everything else is gated unchanged.
 
 Do not change thresholds or algorithms in 08. Publish blocking rows instead.
 

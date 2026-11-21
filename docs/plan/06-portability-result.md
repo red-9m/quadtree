@@ -2,6 +2,16 @@
 
 **Done.** [GitHub Actions run 44730920573](https://github.com/red-9m/quadtree/actions/runs/44730920573) passed all nine Linux jobs on `quadtree-index` at `57d30dcc49cff7de5563f46625b385cc145861cb` on 2026-11-20. The six GCC/libstdc++, Clang/libstdc++, and Clang/libc++ Debug/Release jobs verified strict builds, the exception-disabled tests, and relocated consumers. ASan/UBSan, libstdc++ debug mode, and TSan also passed. MSVC is deferred until explicitly requested and is not an acceptance gate.
 
+**Release candidate:** [GitHub Actions run 44913550921](https://github.com/red-9m/quadtree/actions/runs/44913550921) (Portability #2) passed all nine jobs on `a72bc80` on 2026-11-21. This commit contains the promoted G2/G9 source from `e73f6c5`.
+
+| Toolchain | Debug | Release |
+|---|---|---|
+| GCC/libstdc++ | success | success |
+| Clang/libstdc++ | success | success |
+| Clang/libc++ | success | success |
+
+ASan/UBSan, `stl-debug` and TSan (all Debug) also succeeded.
+
 ## Ubuntu 24.04 matrix rehearsal · 2026-11-20
 
 Local rootless container, not GitHub Actions. [Compiler flags and CTest logs](portability-ubuntu24-2026-11-20/checks.log) · [Package versions and tested input hashes](portability-ubuntu24-2026-11-20/environment.txt).
