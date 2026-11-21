@@ -1590,13 +1590,13 @@ private:
         return count;
     }
 
-    // Top-down bulk plan for int32. Stable permutations and tags use compact
+    // Top-down bulk plan for integer coordinates. Stable permutations and tags use compact
     // temporary streams. Only internal nodes write records to the key array.
     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
         const Box<T>* boxes, std::uint32_t* src, std::uint32_t* dst, std::uint32_t* order,
         Key* keys, std::uint8_t* tags,
         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
-        requires std::same_as<T, std::int32_t>
+        requires IntegerCoordinate<T>
     {
         const auto finish = [&]() noexcept
         {
@@ -2301,7 +2301,7 @@ private:
         if (count > mConfig.smallSetThreshold)
         {
             const Cell cell{*next_extent};
-            if constexpr (std::same_as<T, std::int32_t>)
+            if constexpr (IntegerCoordinate<T>)
             {
                 auto [order, tags] = scratch->tempPermutation(count);
                 for (i = 0; i < count; ++i)
@@ -2364,7 +2364,7 @@ private:
         for (i = 0; i < count; ++i)
         {
 #if defined(__GNUC__) || defined(__clang__)
-            if constexpr (!Consume && !Projected && std::same_as<T, std::int32_t> &&
+            if constexpr (!Consume && !Projected && IntegerCoordinate<T> &&
                 std::is_trivially_copy_constructible_v<Payload>)
             {
                 if (node_count != 0 && ranked == 0)
@@ -2981,7 +2981,7 @@ private:
         const auto sourceCount = size();
         for (std::uint32_t i = 0; i < sourceCount; ++i)
             scratch.mOrder[i] = i;
-        if constexpr (std::same_as<T, std::int32_t>)
+        if constexpr (IntegerCoordinate<T>)
         {
             // Reuse only already reserved build scratch; smaller queries keep index sort.
             if (!movedOnly && sourceCount >= 4096 && sourceCount <= scratch.mKeys.capacity() &&
@@ -3004,7 +3004,7 @@ private:
                 if (pairQualifies(a, b, true, context, predicate))
                     scratch.mRow[count++] = b;
             };
-            if constexpr (std::same_as<T, std::int32_t>)
+            if constexpr (IntegerCoordinate<T>)
             {
                 if (!movedOnly && mRoot != none)
                 {
@@ -3019,7 +3019,7 @@ private:
                 scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
             if (!context.active())
                 return; // An unfinished row is discarded, never emitted as a non-prefix.
-            if constexpr (std::same_as<T, std::int32_t>)
+            if constexpr (IntegerCoordinate<T>)
             {
                 if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.tempKeyCapacity())
                     radixRankOrder(scratch, scratch.mRow.data(), static_cast<std::uint32_t>(count));
