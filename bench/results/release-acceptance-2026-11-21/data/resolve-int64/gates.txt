@@ -1,0 +1,32 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot int64 clustered n=100 vs best baseline (sweep)                                 3.159 [3.070-3.251]     <= 4 pass
+G2   hard snapshot int64 clustered n=1000 vs best baseline (grid)                                 1.966 [1.910-2.025]     <= 4 pass
+G2   hard snapshot int64 clustered n=100000 vs best baseline (grid)                               1.959 [1.904-2.016]     <= 2 inconclusive
+G2   hard snapshot int64 mixed-size n=100 vs best baseline (sweep)                                4.076 [3.962-4.195]     <= 4 inconclusive
+G2   hard snapshot int64 mixed-size n=1000 vs best baseline (grid)                                2.535 [2.453-2.620]     <= 4 pass
+G2   hard snapshot int64 mixed-size n=100000 vs best baseline (grid)                              1.387 [1.348-1.427]     <= 2 pass
+G2   hard snapshot int64 uniform n=100 vs best baseline (grid)                                    3.982 [3.870-4.097]     <= 4 inconclusive
+G2   hard snapshot int64 uniform n=1000 vs best baseline (grid)                                   4.789 [4.655-4.928]     <= 4 FAIL
+G2   hard snapshot int64 uniform n=100000 vs best baseline (grid)                                 3.193 [3.104-3.285]     <= 2 FAIL
+G3   hard snapshot int64 mixed-size n=1000 candidates/(pairs+n) vs n=100                                        0.664   <= 1.5 pass
+G6   hard snapshot int64 clustered n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int64 mixed-size n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int64 mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int64 mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=100 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot int64 clustered n=1000 vs unordered (index)                                    2.612 [2.539-2.688]     <= 4 pass
+G9   hard snapshot int64 clustered n=100000 vs unordered (index)                                  2.763 [2.686-2.842]     <= 4 pass
+G9   hard snapshot int64 mixed-size n=1000 vs unordered (index)                                   2.704 [2.628-2.783]     <= 4 pass
+G9   hard snapshot int64 mixed-size n=100000 vs unordered (index)                                 3.985 [3.873-4.099]     <= 4 inconclusive
+G9   hard snapshot int64 uniform n=1000 vs unordered (index)                                      2.788 [2.709-2.869]     <= 4 pass
+G9   hard snapshot int64 uniform n=100000 vs unordered (index)                                    2.815 [2.736-2.896]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard      4     2     3
+  G3 hard      1     0     0
+  G6 hard      9     0     0
+  G9 hard      5     0     1
+gates: FAIL (candidates: snapshot index, persistent index, ordered index-ordered vs index)

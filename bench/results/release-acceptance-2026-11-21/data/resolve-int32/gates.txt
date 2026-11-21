@@ -1,0 +1,24 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot int32 split-line-translated n=100 vs best baseline (sweep)                     4.176 [4.058-4.296]     <= 4 FAIL
+G2   hard snapshot int32 split-line-translated n=1000 vs best baseline (grid)                     3.742 [3.636-3.851]     <= 4 pass
+G2   hard snapshot int32 split-line-translated n=100000 vs best baseline (grid)                   1.936 [1.881-1.992]     <= 2 pass
+G2   hard snapshot int32 uniform n=100 vs best baseline (grid)                                    3.018 [2.933-3.104]     <= 4 pass
+G2   hard snapshot int32 uniform n=1000 vs best baseline (grid)                                   3.929 [3.820-4.043]     <= 4 inconclusive
+G2   hard snapshot int32 uniform n=100000 vs best baseline (grid)                                 1.919 [1.865-1.974]     <= 2 pass
+G3   hard snapshot int32 split-line-translated n=1000 candidates/(pairs+n) vs n=100                             1.211   <= 1.5 pass
+G6   hard snapshot int32 split-line-translated n=100 allocations per warm step                                  0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot int32 split-line-translated n=1000 vs unordered (index)                        2.756 [2.679-2.836]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=100000 vs unordered (index)                      3.770 [3.664-3.880]     <= 4 pass
+G9   hard snapshot int32 uniform n=1000 vs unordered (index)                                      2.708 [2.632-2.786]     <= 4 pass
+G9   hard snapshot int32 uniform n=100000 vs unordered (index)                                    3.363 [3.267-3.462]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard      4     1     1
+  G3 hard      1     0     0
+  G6 hard      6     0     0
+  G9 hard      4     0     0
+gates: FAIL (candidates: snapshot index, persistent index, ordered index-ordered vs index)
