@@ -1216,7 +1216,7 @@ public:
         else
             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
-                    testPair(a, b, false, context, visitor, predicate);
+                    testPair<FloatCoordinate<T>>(a, b, false, context, visitor, predicate);
         return context.result;
     }
 
@@ -1590,13 +1590,26 @@ private:
         return count;
     }
 
-    // Top-down bulk plan for integer coordinates. Stable permutations and tags use compact
-    // temporary streams. Only internal nodes write records to the key array.
+    // Largest child extent along one axis, as Split::fits computes it. For integers the
+    // smaller half of an exact midpoint split is the unsigned span / 2.
+    static auto fitSpan(bool split, decltype(detail::span(T{}, T{})) whole, T lo, T mid, T hi) noexcept
+    {
+        if constexpr (IntegerCoordinate<T>)
+            return split ? whole / 2 : whole;
+        else
+            return split ? std::min(detail::span(lo, mid), detail::span(mid, hi)) : whole;
+    }
+
+    // Top-down bulk plan. Stable permutations and tags use compact temporary streams.
+    // Only internal nodes write records to the key array. Placement matches makeKey:
+    // integers use exact unsigned halving, floats evaluate Split::fits/quadrant per entry.
+    // NearMid: every coordinate lies within +-max/2, so std::midpoint is (lo + hi) / 2 (its
+    // overflow-free branch in libstdc++ and libc++). Integers ignore it.
+    template<bool NearMid = false>
     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
         const Box<T>* boxes, std::uint32_t* src, std::uint32_t* dst, std::uint32_t* order,
         Key* keys, std::uint8_t* tags,
         std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
-        requires IntegerCoordinate<T>
     {
         const auto finish = [&]() noexcept
         {
@@ -1611,8 +1624,8 @@ private:
             return finish();
         const auto w = detail::span(cell.box.minX, cell.box.maxX);
         const auto h = detail::span(cell.box.minY, cell.box.maxY);
-        const auto fits_width = split.splitX ? w / 2 : w;
-        const auto fits_height = split.splitY ? h / 2 : h;
+        const auto fits_width = fitSpan(split.splitX, w, cell.box.minX, split.x, cell.box.maxX);
+        const auto fits_height = fitSpan(split.splitY, h, cell.box.minY, split.y, cell.box.maxY);
         const auto length = end - begin;
         const auto middle = length < 32 ? begin : begin + length / 2;
         std::uint32_t count[5]{}, lowerCount[5]{};
@@ -1631,10 +1644,20 @@ private:
                 std::uint32_t b = 0;
                 if (width <= fits_width && height <= fits_height)
                 {
-                    const auto x = box.minX + static_cast<T>(width / 2);
-                    const auto y = box.minY + static_cast<T>(height / 2);
-                    b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
-                        (split.splitY && y >= split.y ? 2u : 0u));
+                    if constexpr (IntegerCoordinate<T>)
+                    {
+                        const auto x = box.minX + static_cast<T>(width / 2);
+                        const auto y = box.minY + static_cast<T>(height / 2);
+                        b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) |
+                            (split.splitY && y >= split.y ? 2u : 0u));
+                    }
+                    else if constexpr (NearMid)
+                    {
+                        const T x = (box.minX + box.maxX) / 2, y = (box.minY + box.maxY) / 2;
+                        b = 1 + ((split.splitX && x >= split.x ? 1u : 0u) | (split.splitY && y >= split.y ? 2u : 0u));
+                    }
+                    else
+                        b = 1 + split.quadrant(box);
                 }
                 tags[i] = static_cast<std::uint8_t>(b);
                 ++bins[b];
@@ -1702,7 +1725,7 @@ private:
         std::uint32_t children = 0;
         for (std::uint32_t q = 0; q < 4; ++q)
         {
-            if (planBulk(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
+            if (planBulk<NearMid>(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
                 dst, src, order, keys, tags, planCapacity, plans, overflow))
                 children |= 1u << q;
             if (overflow)
@@ -2255,7 +2278,7 @@ private:
             scratch->mKeys.capacity() < count || scratch->tempKeyCapacity() < count)
             return Status::InsufficientWorkspace;
         typename Workspace<T>::Use use(*scratch);
-        if constexpr (!Projected && !Consume && !FloatCoordinate<T> &&
+        if constexpr (!Projected && !Consume &&
             std::ranges::contiguous_range<R> &&
             std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
             std::is_trivially_copy_constructible_v<Payload> && std::is_trivially_destructible_v<Payload> &&
@@ -2301,7 +2324,6 @@ private:
         if (count > mConfig.smallSetThreshold)
         {
             const Cell cell{*next_extent};
-            if constexpr (IntegerCoordinate<T>)
             {
                 auto [order, tags] = scratch->tempPermutation(count);
                 for (i = 0; i < count; ++i)
@@ -2309,8 +2331,22 @@ private:
                 const auto nodeLimit = (mConfig.maxNodes - 1) / 4;
                 std::size_t plans = 0;
                 bool overflow = false;
-                planBulk(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, order, order + count, order,
-                    scratch->mKeys.data(), tags, std::min(count, nodeLimit), plans, overflow);
+                const auto plan = [&](auto nearMid) noexcept
+                {
+                    planBulk<decltype(nearMid)::value>(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, order,
+                        order + count, order, scratch->mKeys.data(), tags, std::min(count, nodeLimit), plans, overflow);
+                };
+                if constexpr (FloatCoordinate<T>)
+                {
+                    constexpr T limit = std::numeric_limits<T>::max() / 2;
+                    const auto& e = *next_extent;
+                    if (-limit <= e.minX && e.maxX <= limit && -limit <= e.minY && e.maxY <= limit)
+                        plan(std::true_type{});
+                    else
+                        plan(std::false_type{});
+                }
+                else
+                    plan(std::false_type{});
                 if (overflow && plans == nodeLimit)
                     return Status::CapacityExhausted;
                 if (!overflow)
@@ -2364,8 +2400,7 @@ private:
         for (i = 0; i < count; ++i)
         {
 #if defined(__GNUC__) || defined(__clang__)
-            if constexpr (!Consume && !Projected && IntegerCoordinate<T> &&
-                std::is_trivially_copy_constructible_v<Payload>)
+            if constexpr (!Consume && !Projected && std::is_trivially_copy_constructible_v<Payload>)
             {
                 if (node_count != 0 && ranked == 0)
                 {
@@ -2413,23 +2448,44 @@ private:
         return Status::Ok;
     }
 
-    // Warm, unranked integer boxes need no descriptor copy: validated edges are
-    // already canonical. The commit neither allocates nor invokes client code.
+    // Adding +0 maps -0 to +0 and leaves every other finite value unchanged (normalizeZero).
+    static Box<T> canonicalZero(Box<T> box) noexcept requires FloatCoordinate<T>
+    {
+        return {box.minX + T(0), box.minY + T(0), box.maxX + T(0), box.maxY + T(0)};
+    }
+
+    // Warm, unranked contiguous boxes need no descriptor copy: integer edges are
+    // already canonical, floats store their canonical copy (signed zeros normalized).
+    // The commit neither allocates nor invokes client code.
     // A ranked entry delegates to the general path before any state changes.
     std::optional<Status> buildFlatInteger(const BuildEntry<Payload, T>* input, std::uint32_t count,
         std::optional<std::span<HandleType>> handles) noexcept
     {
+        // Same acceptance as detail::canonicalize; floats use one branch-free test per box.
+        const auto valid = [](Box<T>& box) noexcept
+        {
+            if constexpr (FloatCoordinate<T>)
+            {
+                constexpr T lo = std::numeric_limits<T>::lowest(), hi = std::numeric_limits<T>::max();
+                const bool ok = (box.minX >= lo) & (box.minY >= lo) & (box.maxX <= hi) & (box.maxY <= hi) &
+                    (box.minX <= box.maxX) & (box.minY <= box.maxY);
+                box = canonicalZero(box);
+                return ok;
+            }
+            else
+                return detail::canonicalize(box);
+        };
         auto extent = input[0].rect;
         if (input[0].rank)
             return std::nullopt;
-        if (!detail::canonicalize(extent))
+        if (!valid(extent))
             return Status::InvalidGeometry;
         for (std::uint32_t i = 1; i < count; ++i)
         {
             auto box = input[i].rect;
             if (input[i].rank)
                 return std::nullopt;
-            if (!detail::canonicalize(box))
+            if (!valid(box))
                 return Status::InvalidGeometry;
             extent = detail::unite(extent, box);
         }
@@ -2452,7 +2508,12 @@ private:
         else
         {
             for (std::size_t i = 0; i < count; ++i)
-                std::construct_at(mEntries.mBoxes + i, input[i].rect);
+            {
+                if constexpr (FloatCoordinate<T>)
+                    std::construct_at(mEntries.mBoxes + i, canonicalZero(input[i].rect)); // Validated above.
+                else
+                    std::construct_at(mEntries.mBoxes + i, input[i].rect);
+            }
             for (std::size_t i = 0; i < count; ++i)
                 std::construct_at(mEntries.mPayloads + i, input[i].payload);
             for (std::uint32_t i = 0; i < count; ++i)
@@ -2792,6 +2853,31 @@ private:
             return _mm_movemask_epi8(_mm_cmpeq_epi32(lo, hi)) == 0 || boundary == Boundary::TouchInclusive ||
                 a.minX == a.maxX || a.minY == a.maxY || b.minX == b.maxX || b.minY == b.maxY;
         }
+        else if constexpr (std::same_as<T, float>)
+        {
+            // Same lanes as int32. Stored floats are finite and signed zeros are canonical.
+            static_assert(sizeof(Box<T>) == sizeof(__m128) && offsetof(Box<T>, minX) == 0 &&
+                offsetof(Box<T>, minY) == 4 && offsetof(Box<T>, maxX) == 8 && offsetof(Box<T>, maxY) == 12);
+            const auto left = _mm_loadu_ps(&a.minX), right = _mm_loadu_ps(&b.minX);
+            const auto lo = _mm_movelh_ps(left, right); // a.min, b.min
+            const auto hi = _mm_movehl_ps(left, right); // b.max, a.max
+            if (_mm_movemask_ps(_mm_cmpgt_ps(lo, hi)) != 0)
+                return false;
+            return _mm_movemask_ps(_mm_cmpeq_ps(lo, hi)) == 0 || boundary == Boundary::TouchInclusive ||
+                a.minX == a.maxX || a.minY == a.maxY || b.minX == b.maxX || b.minY == b.maxY;
+        }
+        else if constexpr (std::same_as<T, double>)
+        {
+            static_assert(sizeof(Box<T>) == 2 * sizeof(__m128d) && offsetof(Box<T>, minX) == 0 &&
+                offsetof(Box<T>, minY) == 8 && offsetof(Box<T>, maxX) == 16 && offsetof(Box<T>, maxY) == 24);
+            const auto aMin = _mm_loadu_pd(&a.minX), aMax = _mm_loadu_pd(&a.maxX);
+            const auto bMin = _mm_loadu_pd(&b.minX), bMax = _mm_loadu_pd(&b.maxX);
+            if (_mm_movemask_pd(_mm_or_pd(_mm_cmpgt_pd(aMin, bMax), _mm_cmpgt_pd(bMin, aMax))) != 0)
+                return false;
+            return _mm_movemask_pd(_mm_or_pd(_mm_cmpeq_pd(aMin, bMax), _mm_cmpeq_pd(bMin, aMax))) == 0 ||
+                boundary == Boundary::TouchInclusive ||
+                a.minX == a.maxX || a.minY == a.maxY || b.minX == b.maxX || b.minY == b.maxY;
+        }
 #endif
         return detail::overlaps(a, b, boundary);
     }
@@ -2981,15 +3067,10 @@ private:
         const auto sourceCount = size();
         for (std::uint32_t i = 0; i < sourceCount; ++i)
             scratch.mOrder[i] = i;
-        if constexpr (IntegerCoordinate<T>)
-        {
-            // Reuse only already reserved build scratch; smaller queries keep index sort.
-            if (!movedOnly && sourceCount >= 4096 && sourceCount <= scratch.mKeys.capacity() &&
-                sourceCount <= scratch.tempKeyCapacity())
-                radixRankOrder(scratch, scratch.mOrder.data(), static_cast<std::uint32_t>(sourceCount));
-            else
-                sortRanks(scratch.mOrder.data(), sourceCount);
-        }
+        // Reuse only already reserved build scratch; smaller queries keep index sort.
+        if (!movedOnly && sourceCount >= 4096 && sourceCount <= scratch.mKeys.capacity() &&
+            sourceCount <= scratch.tempKeyCapacity())
+            radixRankOrder(scratch, scratch.mOrder.data(), static_cast<std::uint32_t>(sourceCount));
         else
             sortRanks(scratch.mOrder.data(), sourceCount);
         for (std::size_t i = 0; i + 1 < size() && context.active(); ++i)
@@ -3004,28 +3085,18 @@ private:
                 if (pairQualifies(a, b, true, context, predicate))
                     scratch.mRow[count++] = b;
             };
-            if constexpr (IntegerCoordinate<T>)
+            if (!movedOnly && mRoot != none)
             {
-                if (!movedOnly && mRoot != none)
-                {
-                    const auto& root = mNodes[mRoot];
-                    if (root.count != 0 && context.node() && detail::closedOverlap(mEntries.mBoxes[a], root.bounds))
-                        walkOrdered(root, mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
-                }
-                else
-                    scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
+                const auto& root = mNodes[mRoot];
+                if (root.count != 0 && context.node() && detail::closedOverlap(mEntries.mBoxes[a], root.bounds))
+                    walkOrdered(root, mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
             }
             else
                 scan(mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
             if (!context.active())
                 return; // An unfinished row is discarded, never emitted as a non-prefix.
-            if constexpr (IntegerCoordinate<T>)
-            {
-                if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.tempKeyCapacity())
-                    radixRankOrder(scratch, scratch.mRow.data(), static_cast<std::uint32_t>(count));
-                else
-                    sortRanks(scratch.mRow.data(), count);
-            }
+            if (!movedOnly && count >= 128 && count <= scratch.mKeys.capacity() && count <= scratch.tempKeyCapacity())
+                radixRankOrder(scratch, scratch.mRow.data(), static_cast<std::uint32_t>(count));
             else
                 sortRanks(scratch.mRow.data(), count);
             for (std::size_t j = 0; j < count && context.active(); ++j)
