@@ -1,0 +1,64 @@
+# date: 2026-11-22T03:04:09Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293765 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=float --engines=index,index-ordered,brute,sweep,grid --scenes=uniform,clustered,split-line,mixed-size --sizes=10000,100000 --small-sizes=0 --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/float-staged-2026-11-21/data/float-resolve-2/results.csv --raw=/home/dima/src/quadtree.git/bench/results/float-staged-2026-11-21/data/float-resolve-2/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  float        0  1024 brute               0.005     2.0     1.09 [1.06-1.11]             0           0     0.00         0 ok
+uniform                                  float        0  1024 sweep               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  float        0  1024 grid                0.008     2.0     1.65 [1.62-1.68]             0           0     0.00         0 ok
+uniform                                  float        0  1024 index               0.011     3.5     2.14 [2.06-2.21]             0           0     0.00         0 ok
+uniform                                  float        0  1024 index-ordered        0.011     3.4     2.14 [2.07-2.21]             0           0     0.00         0 ok
+uniform                                  float    10000     1 brute          114907.572     2.0 195.79 [191.89-199.77]      49995000        7525     0.00       166 ok
+uniform                                  float    10000     1 sweep            2430.534     2.0     4.14 [4.06-4.23]        644061        7525     0.00       283 ok
+uniform                                  float    10000     1 grid              586.899     2.0     1.00 [1.00-1.00]         31491        7525     0.00       509 ok
+uniform                                  float    10000     1 index            1141.487     2.0     1.94 [1.91-1.98]         51231        7525     0.00      2735 ok
+uniform                                  float    10000     1 index-ordered     3087.048     2.1     5.26 [5.15-5.37]         31633        7525     0.00      3374 ok
+uniform                                  float   100000     1 brute                   -       -                    -     200056769        2925     0.00      1660 capped
+uniform                                  float   100000     1 sweep           51369.556     2.0     7.65 [7.50-7.81]      20226787       73905     0.00      2832 ok
+uniform                                  float   100000     1 grid             6710.771     2.0     1.00 [1.00-1.00]        310440       73905     0.00      5108 ok
+uniform                                  float   100000     1 index           13236.805     2.0     1.97 [1.93-2.01]        790406       73905     0.00     26447 ok
+uniform                                  float   100000     1 index-ordered    45117.056     2.0     6.72 [6.59-6.86]        384207       73905     0.00     31812 ok
+clustered                                float        0  1024 brute               0.005     2.0     1.09 [1.07-1.11]             0           0     0.00         0 ok
+clustered                                float        0  1024 sweep               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                float        0  1024 grid                0.008     2.0     1.65 [1.62-1.68]             0           0     0.00         0 ok
+clustered                                float        0  1024 index               0.011     3.4     2.13 [2.06-2.21]             0           0     0.00         0 ok
+clustered                                float        0  1024 index-ordered        0.011     3.3     2.14 [2.07-2.21]             0           0     0.00         0 ok
+clustered                                float    10000     1 brute          116293.911     2.0  81.82 [80.20-83.48]      49995000       33557     0.00       166 ok
+clustered                                float    10000     1 sweep            2878.731     2.0     2.03 [1.99-2.07]        772497       33557     0.00       283 ok
+clustered                                float    10000     1 grid             1421.321     2.0     1.00 [1.00-1.00]        120945       33557     0.00       509 ok
+clustered                                float    10000     1 index            1943.002     2.1     1.37 [1.34-1.40]        212254       33557     0.00      2603 ok
+clustered                                float    10000     1 index-ordered     5042.175     2.0     3.55 [3.48-3.62]        119076       33557     0.00      3242 ok
+clustered                                float   100000     1 brute                   -       -                    -     200056769       13784     0.00      1660 capped
+clustered                                float   100000     1 sweep           56745.232     2.0     3.69 [3.62-3.77]      21181030      337133     0.00      2832 ok
+clustered                                float   100000     1 grid            15372.934     2.0     1.00 [1.00-1.00]       1232900      337133     0.00      5108 ok
+clustered                                float   100000     1 index           19263.933     2.0     1.25 [1.23-1.28]       2085669      337133     0.00     26149 ok
+clustered                                float   100000     1 index-ordered    64561.999     2.0     4.20 [4.11-4.29]       1119167      337133     0.00     31515 ok
+split-line                               float    10000     1 brute          113011.203     2.0 196.02 [192.12-200.00]      49995000        7261     0.00       166 ok
+split-line                               float    10000     1 sweep            2390.484     2.0     4.15 [4.06-4.23]        642882        7261     0.00       283 ok
+split-line                               float    10000     1 grid              576.545     2.0     1.00 [1.00-1.00]         24510        7261     0.00      1042 ok
+split-line                               float    10000     1 index            1249.104     2.0     2.17 [2.12-2.21]         58619        7261     0.00      2728 ok
+split-line                               float    10000     1 index-ordered     3375.900     2.0     5.86 [5.74-5.98]         37061        7261     0.00      3367 ok
+split-line                               float   100000     1 brute                   -       -                    -     200056769        4056     0.00      1660 capped
+split-line                               float   100000     1 sweep           77696.770     2.2  11.27 [11.02-11.52]      28769913      105137     0.00      2832 ok
+split-line                               float   100000     1 grid             6893.555     2.0     1.00 [1.00-1.00]        329471      105137     0.00     10244 ok
+split-line                               float   100000     1 index           13973.864     2.0     2.03 [1.99-2.07]        681627      105137     0.00     26966 ok
+split-line                               float   100000     1 index-ordered    51411.394     2.0     7.46 [7.31-7.61]        429581      105137     0.00     32331 ok
+mixed-size                               float    10000     1 brute          117031.874     2.0  86.37 [84.66-88.12]      49995000       46479     0.00       166 ok
+mixed-size                               float    10000     1 sweep            3640.994     2.0     2.69 [2.63-2.74]        891391       46479     0.00       283 ok
+mixed-size                               float    10000     1 grid             1354.951     2.0     1.00 [1.00-1.00]         92997       46479     0.00       502 ok
+mixed-size                               float    10000     1 index            1910.929     2.0     1.41 [1.38-1.44]        101984       46479     0.00      2724 ok
+mixed-size                               float    10000     1 index-ordered     5597.843     2.1     4.13 [4.05-4.22]        151047       46479     0.00      3363 ok
+mixed-size                               float   100000     1 brute                   -       -                    -     200056769       85597     0.00      1660 capped
+mixed-size                               float   100000     1 sweep          119536.740     2.0     3.48 [3.41-3.55]      33985904     2054380     0.00      2832 ok
+mixed-size                               float   100000     1 grid            34389.672     2.0     1.00 [1.00-1.00]       2734376     2054380     0.00      6044 ok
+mixed-size                               float   100000     1 index           41447.724     2.0     1.21 [1.18-1.23]       2969328     2054380     0.00     26374 ok
+mixed-size                               float   100000     1 index-ordered   160710.411     2.0     4.67 [4.58-4.77]       6309269     2054380     0.00     31740 ok

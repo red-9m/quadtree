@@ -14,6 +14,8 @@ ASan/UBSan, `stl-debug` and TSan (all Debug) also succeeded.
 
 **After `int64` staging:** [Portability #5](https://github.com/red-9m/quadtree/actions/runs/44939019888) passed all nine jobs on `df2cfeb` (2026-11-21).
 
+**After `float`/`double` staging:** [Portability #7](https://github.com/red-9m/quadtree/actions/runs/44968233000) passed all nine jobs on `d52dbe1` (2026-11-22).
+
 ## Ubuntu 24.04 matrix rehearsal · 2026-11-20
 
 Local rootless container, not GitHub Actions. [Compiler flags and CTest logs](portability-ubuntu24-2026-11-20/checks.log) · [Package versions and tested input hashes](portability-ubuntu24-2026-11-20/environment.txt).

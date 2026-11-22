@@ -1,0 +1,16 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot int32 clustered n=0 vs brute force (brute)                                     2.100 [2.028-2.175]     <= 2 FAIL
+G1   hard snapshot int32 uniform n=0 vs brute force (brute)                                       2.100 [2.028-2.175]     <= 2 FAIL
+G2   hard snapshot int32 clustered n=100 vs best baseline (sweep)                                 2.428 [2.359-2.498]     <= 4 pass
+G2   hard snapshot int32 split-line-translated n=100 vs best baseline (sweep)                     3.829 [3.721-3.940]     <= 4 pass
+G2   hard snapshot int32 uniform n=100 vs best baseline (grid)                                    2.938 [2.854-3.026]     <= 4 pass
+G6   hard snapshot int32 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=100 allocations per warm step                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100 allocations per warm step                                                0.000     <= 0 pass
+summary (pass / fail / inconclusive):
+  G1 hard      0     2     0
+  G2 hard      3     0     0
+  G6 hard      5     0     0
+gates: FAIL (candidates: snapshot index, persistent index, ordered index-ordered vs index)

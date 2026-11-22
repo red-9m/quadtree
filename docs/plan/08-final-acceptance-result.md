@@ -18,6 +18,8 @@
 
 `df2cfeb` enables the integer bulk planner and ordered paths for `int64`; the `int32` snapshot code is unchanged apart from alignment. A [full `int32` recheck](../../bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb) on that commit passes every hard gate within the same exceptions; `split-line-translated` 10⁵ passes again under the pre-specified two-process pooling. Hosted Portability #5 passes 9/9. **The `int32` acceptance holds on `df2cfeb`.**
 
+`d52dbe1` adds the `float`/`double` fast paths; it changes `int32` build code generation but not its results. The [recheck on `d52dbe1`](../../bench/results/float-staged-2026-11-21/README.md#results) passes every `int32` hard gate. G2 now passes on all 20 rows, so neither G2 exception row is needed in that run; G1 0–4 entries remain within the accepted exception. Hosted Portability #7 passes 9/9. **The `int32` acceptance holds on `d52dbe1`.**
+
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.

@@ -1,0 +1,1 @@
+--model=snapshot --types=float --engines=index,index-ordered,brute,sweep,grid --scenes=uniform,clustered,split-line,mixed-size --sizes=10000,100000 --small-sizes=0 --rounds=45

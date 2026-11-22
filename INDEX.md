@@ -8,15 +8,13 @@ The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
 **Performance scope.** Performance acceptance covers `int32` coordinates only
 and [passed for this release](docs/plan/08-final-acceptance-result.md), with
-documented exceptions for very small snapshots and two 10²–10³ G2 rows. `int64`, `float` and `double` are
-functionally supported: they pass the same correctness, allocation and
-portability checks. Their snapshot builds are not yet performance-accepted. On
-the [release run](bench/results/release-acceptance-2026-11-21/README.md), G2
-ratios reach 2.4–11.5× (`float`/`double`) the best baseline, against 2–4×
-limits. `int64` now uses the integer fast paths
-([recheck](bench/results/int64-staged-2026-11-21/README.md)): it fails one G2
-row (`uniform` 10⁵, 2.14×), with five rows unresolved near their limits. Persistent motion passes every applicable hard
-gate for every type.
+documented exceptions for very small snapshots and two 10²–10³ G2 rows.
+`int64`, `float` and `double` are functionally supported: they pass the same
+correctness, allocation and portability checks, but are not yet
+performance-accepted. On their slowest G2 rows the
+[latest recheck](bench/results/float-staged-2026-11-21/README.md) measures
+2.1–4.5× the best baseline for `float`/`double` and 2.1× for `int64`, against
+2–4× limits. Persistent motion passes every applicable hard gate for every type.
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs

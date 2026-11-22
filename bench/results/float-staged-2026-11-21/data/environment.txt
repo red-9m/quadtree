@@ -1,0 +1,27 @@
+40588cdaecb7e81859e16fbab741415687b7a70f
+Linux r9 7.3.0-1-custom #1 SMP PREEMPT_DYNAMIC Mon, 19 Oct 2026 00:11:47 +0000 x86_64 GNU/Linux
+Model name:                              AMD Ryzen 9 5900HS with Radeon Graphics
+c++ (GCC) 16.2.1 20260810
+cmake version 4.4.2
+178495ba35695aefe9c321e569d2277f06db3b90
+CPU affinity: 6; monitor CPU: 0
+/sys/devices/system/clocksource/clocksource0/current_clocksource:hpet
+/sys/devices/system/cpu/cpu6/topology/thread_siblings_list:6-7
+/sys/firmware/acpi/platform_profile:performance
+/sys/devices/system/cpu/cpufreq/policy0/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy1/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy10/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy11/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy12/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy13/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy14/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy15/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy2/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy3/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy4/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy5/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy6/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy7/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy8/energy_performance_preference:performance
+/sys/devices/system/cpu/cpufreq/policy9/energy_performance_preference:performance
+/sys/class/power_supply/AC0/online:1

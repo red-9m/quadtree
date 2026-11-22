@@ -1,0 +1,37 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot double clustered n=0 vs brute force (brute)                                    2.077 [2.008-2.148]     <= 2 FAIL
+G1   hard snapshot double uniform n=0 vs brute force (brute)                                      2.058 [1.989-2.129]     <= 2 inconclusive
+G2   hard snapshot double clustered n=100 vs best baseline (sweep)                                2.741 [2.664-2.820]     <= 4 pass
+G2   hard snapshot double clustered n=10000 vs best baseline (grid)                               1.386 [1.347-1.425]     <= 2 pass
+G2   hard snapshot double clustered n=100000 vs best baseline (grid)                              1.341 [1.302-1.382]     <= 2 pass
+G2   hard snapshot double split-line n=100 vs best baseline (sweep)                               4.014 [3.901-4.130]     <= 4 inconclusive
+G2   hard snapshot double split-line n=10000 vs best baseline (grid)                              2.159 [2.098-2.221]     <= 2 FAIL
+G2   hard snapshot double split-line n=100000 vs best baseline (grid)                             2.054 [1.994-2.116]     <= 2 inconclusive
+G2   hard snapshot double uniform n=100 vs best baseline (sweep)                                  3.270 [3.178-3.364]     <= 4 pass
+G2   hard snapshot double uniform n=10000 vs best baseline (grid)                                 1.939 [1.885-1.995]     <= 2 pass
+G2   hard snapshot double uniform n=100000 vs best baseline (grid)                                2.173 [2.112-2.237]     <= 2 FAIL
+G3   hard snapshot double split-line n=100000 candidates/(pairs+n) vs n=10000                                   0.978   <= 1.5 pass
+G6   hard snapshot double clustered n=0 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double clustered n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double clustered n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double split-line n=100 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double split-line n=10000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double split-line n=100000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot double uniform n=0 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double uniform n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double uniform n=100000 allocations per warm step                                            0.000     <= 0 pass
+G9   hard snapshot double clustered n=10000 vs unordered (index)                                  2.643 [2.568-2.719]     <= 4 pass
+G9   hard snapshot double clustered n=100000 vs unordered (index)                                 3.291 [3.195-3.390]     <= 4 pass
+G9   hard snapshot double split-line n=10000 vs unordered (index)                                 2.786 [2.707-2.867]     <= 4 pass
+G9   hard snapshot double split-line n=100000 vs unordered (index)                                3.685 [3.582-3.792]     <= 4 pass
+G9   hard snapshot double uniform n=10000 vs unordered (index)                                    2.771 [2.691-2.853]     <= 4 pass
+G9   hard snapshot double uniform n=100000 vs unordered (index)                                   3.347 [3.252-3.444]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard      0     1     1
+  G2 hard      5     2     2
+  G3 hard      1     0     0
+  G6 hard     11     0     0
+  G9 hard      6     0     0
+gates: FAIL (candidates: snapshot index, persistent index, ordered index-ordered vs index)
