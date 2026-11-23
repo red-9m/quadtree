@@ -36,7 +36,7 @@ The control is the `d52dbe1` release binary. Order: control → candidate per ty
 
 | Type | `--diff` geomean | Final G2 (20) | Final G9 (15) | G1 0–4 entries |
 |---|---:|---|---|---|
-| `int32` | 0.988 | **20 pass** | 15 pass | accepted exception (≤ 3.29 upper) |
+| `int32` | 0.988 | **20 pass** | 15 pass | accepted exception (≤ 3.26 upper) |
 | `int64` | 0.997 | 18 pass, 1 fail (`uniform` 10⁵ 2.13), 1 inconclusive (`split-line-translated` 10² 4.03 [3.95–4.11]) | 15 pass | fail, ≤ 3.10 upper |
 | `float` | 0.955 | 19 pass, 1 inconclusive (`uniform` 10³ 4.02 [3.94–4.11]) | 14 pass, 1 inconclusive (`split-line-translated` 10⁵ 4.01) | fail or inconclusive, ≤ 3.45 upper |
 | `double` | 0.957 | 17 pass, 1 fail (`uniform` 10³ 4.18 [4.09–4.27]), 2 inconclusive (`split-line-translated` 10³ 3.97, `uniform` 10⁵ 2.00) | 14 pass, 1 inconclusive (3.98) | fail, ≤ 3.68 upper (`uniform` n=1) |
