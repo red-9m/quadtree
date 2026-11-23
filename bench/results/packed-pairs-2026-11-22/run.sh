@@ -21,7 +21,7 @@ args_for() {
     local rest=${1#*-}
     local type=${rest%%-*}
     case $rest in
-        *-resolve) echo --model=snapshot --types=$type --engines=$snapshot_engines ${QT_RESOLVE_ARGS:?} --rounds=45 ;;
+        *-resolve|*-resolve-2) echo --model=snapshot --types=$type --engines=$snapshot_engines ${QT_RESOLVE_ARGS:?} --rounds=45 ;;
         *) echo --model=snapshot --types=$type --engines=$snapshot_engines ;;
     esac
 }

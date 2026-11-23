@@ -71,6 +71,15 @@
                  return false;
              descriptor.payload = std::addressof(entry.payload);
              descriptor.filter = entry.filter;
+@@ -3082,7 +3089,7 @@
+                 if (mEntries.mMeta[b].rank <= mEntries.mMeta[a].rank ||
+                     (movedOnly && scratch.mMembership[a] != scratch.mEpoch && scratch.mMembership[b] != scratch.mEpoch))
+                     return;
+-                if (pairQualifies(a, b, true, context, predicate))
++                if (pairQualifies<true>(a, b, true, context, predicate))
+                     scratch.mRow[count++] = b;
+             };
+             if (!movedOnly && mRoot != none)
 @@ -3185,7 +3192,7 @@
          }
          for (std::uint32_t a = mNodes[holder].head; a != none && context.active(); a = nextItem(mNodes[holder], a))
