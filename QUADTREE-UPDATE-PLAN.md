@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: 09 — owner decision** on the [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md#results): close 09 with the remaining gaps, extend the exceptions, or continue optimizing. `7cfbebe` (packed pair tests; CI #10 9/9) is the branch head, and **the `int32` acceptance holds on it**. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: none open.** The `int32` release is [accepted](docs/plan/08-final-acceptance-result.md) and holds on head `7cfbebe` (CI #10 9/9). [Task 09](docs/plan/09-other-coordinate-types-result.md) is closed as is again (owner, 2026-11-23): `int64`/`float`/`double` are functionally supported, not performance-accepted, with published gaps. Further work needs an explicit request: reopen 09, MSVC portability, or the legacy safety patch. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -29,33 +29,21 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
 | [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope) on `a72bc80`, rechecked on [`df2cfeb`](bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb), [`d52dbe1`](bench/results/float-staged-2026-11-21/README.md#results) and head [`7cfbebe`](bench/results/packed-staged-2026-11-23/README.md#results) (every hard gate, no G2 exception row needed). | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md) |
-| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Reopened** (owner, 2026-11-22). Staged: `df2cfeb`, `d52dbe1`, `7cfbebe` (packed pair tests). Staged recheck of `7cfbebe` complete. G2: `float` 0 fail / 1 unresolved, `double` 1 / 4, `int64` 2 / 3, all within about 8% of limits; `float` G9 1 unresolved; G1 0–4 entries outside any exception. **Awaiting owner decision.** | [Current gaps](docs/plan/09-other-coordinate-types-result.md#current-gaps-7cfbebe) · [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md) · [Packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) · [Closure record (pre-reopen)](docs/plan/09-other-coordinate-types-result.md) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Closed as is again** (owner, 2026-11-23) on `7cfbebe`; first closed on `d52dbe1`, reopened 2026-11-22. Staged: `df2cfeb`, `d52dbe1`, `7cfbebe`. `int64`/`float`/`double` are functionally supported, not performance-accepted. Open speed rows, all within about 8% of limits: G2 `float` 0 fail / 1 unresolved, `double` 1 / 4, `int64` 2 / 3; `float` G9 1 unresolved; G1 0–4 entries outside any exception. | [Result and published gaps](docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe) · [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md) · [Packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: Task 09 — owner decision after the `7cfbebe` recheck
+### Fresh session: no open task
 
-Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md), the [09 result](docs/plan/09-other-coordinate-types-result.md#current-gaps-7cfbebe) and the [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md).
+Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`, head after `7cfbebe`. Every task in the table is done, closed with evidence, or deferred. Do not start benchmark or runtime work without an explicit request. Candidates:
+- **Reopen 09:** start from [the 09 result](docs/plan/09-other-coordinate-types-result.md#reopening): ranked options (`int64` rebased snapshot path, `double` float prefilter, confirming the `int64` 10² fail) and rejected attempts. Pre-specify each run's resolution rule, keep frozen limits, and recheck the `int32` acceptance after any change.
+- **MSVC:** deferred in [06](docs/plan/06-portability-result.md).
+- **Legacy API:** [safety patch](docs/plan/legacy-safety.md), only if asked.
 
-**State:**
-- **Commits:** `7cfbebe` adds packed overlap tests in `selfPairs`, `itemsVsSubtree` and `orderedSelf`, plus branch-free float Box capture. Hosted Portability #10 passes 9/9 on it.
-- **Recheck:** complete under the committed [resolution rule](bench/results/packed-staged-2026-11-23/resolution-rule.md): 5-round snapshot and persistent matrices for all four types, then two 45-round resolves per type ([final-status.txt](bench/results/packed-staged-2026-11-23/data/final-status.txt)).
-- **Acceptance:** the `int32` release acceptance **holds on `7cfbebe`** ([08 result](docs/plan/08-final-acceptance-result.md)). Every persistent hard gate passes for every type.
-- **Open rows (non-`int32`):** G2 fails are `int64` `split-line-translated` 10² (4.29×, a 5-round matrix verdict; 4.03 in the candidate), `int64` `uniform` 10⁵ (2.16×) and `double` `uniform` 10³ (4.23×). 8 G2 rows plus `float` G9 `split-line-translated` 10⁵ remain unresolved at 1–2% from their limits. G1 0–4 entries fail for all three types, with `double` n=1 up to 3.58× upper.
-
-**Next deliverable: owner decision**, one of:
-1. Close 09 with these gaps published.
-2. Extend the G1/G2 (and `float` G9) exceptions to these types.
-3. Continue optimizing. Rejected so far: packed node-bound tests (G9 4.0–4.2 at 10⁵), `splitThreshold` 12/16, per-entry inline midpoint, branch-free scalar `int64` overlap.
-
-Any new run needs its resolution rule pre-specified and committed before it starts. Do not change the frozen limits or an existing `resolution-rule.md`.
-
-**Work directories** (pointers in `~/.cache/*.current`):
-- `~/.cache/quadtree-staged3.current`: the `7cfbebe` recheck build.
-- `~/.cache/quadtree-float2.current`: candidate scratch, with `control` = `d52dbe1` and `candidate` = `c3`.
+**Work directories** (pointers in `~/.cache/*.current`): `quadtree-staged3` is the `7cfbebe` recheck build; `quadtree-float2` is candidate scratch (`control` = `d52dbe1`, `candidate` = `c3`).
 
 ### Update the handoff after the session
 

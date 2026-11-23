@@ -62,9 +62,6 @@ Pooled values are from the two 45-round processes; matrix values keep their 5-ro
 
 Against the [`d52dbe1` recheck](../float-staged-2026-11-21/README.md#results), G2 fails drop from 8 to 0 for `float` and from 8 to 1 for `double`. `int64` goes from 1 fail to 2. Its pair test is unchanged by this commit (it falls back to `detail::overlaps`). The new `split-line-translated` 10² fail is a 5-round matrix verdict of 4.29; the same row was 4.03 [3.95–4.11] in the candidate and 4.03 unresolved on `d52dbe1`. Under the rule the matrix verdict stands. The `float` G9 row was also inconclusive in the candidate (4.01). Every open row is within about 8% of its limit.
 
-## Next
+## Decision
 
-Owner decision for Task 09:
-1. Close 09 again with these gaps published.
-2. Extend the G1/G2 (and `float` G9) exceptions to `int64`/`float`/`double`.
-3. Continue optimizing: `int64` `uniform` 10⁵ (32-byte box), `double` `uniform` 10³, and the rows within 1–2% of their limits.
+**Owner, 2026-11-23: close Task 09 as is again** with these gaps published ([09 result](../../../docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe)). Every open row is a speed ratio; correctness and every non-ratio hard gate pass. Limits and exceptions are unchanged.

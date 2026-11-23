@@ -10,8 +10,9 @@ pooled nodes, a direct small-set path, and persistent moved-set enumeration.
 and [passed for this release](docs/plan/08-final-acceptance-result.md), with
 documented exceptions for very small snapshots and two 10²–10³ G2 rows.
 `int64`, `float` and `double` are functionally supported: they pass the same
-correctness, allocation and portability checks, but are not yet
-performance-accepted. On their slowest G2 rows the
+correctness, allocation and portability checks, but are not
+performance-accepted ([published gaps](docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe)).
+On their slowest G2 rows the
 [latest recheck](bench/results/packed-staged-2026-11-23/README.md#results)
 (`7cfbebe`) measures 4.02× for `float` (unresolved), 4.23× for `double` and
 2.16–4.29× for `int64`, against 2–4× limits; every open row is within about 8%
