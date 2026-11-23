@@ -2454,6 +2454,21 @@ private:
         return {box.minX + T(0), box.minY + T(0), box.maxX + T(0), box.maxY + T(0)};
     }
 
+    // Same acceptance and result as detail::canonicalize; floats use one branch-free test per box.
+    static bool canonicalBox(Box<T>& box) noexcept
+    {
+        if constexpr (FloatCoordinate<T>)
+        {
+            constexpr T lo = std::numeric_limits<T>::lowest(), hi = std::numeric_limits<T>::max();
+            const bool ok = (box.minX >= lo) & (box.minY >= lo) & (box.maxX <= hi) & (box.maxY <= hi) &
+                (box.minX <= box.maxX) & (box.minY <= box.maxY);
+            box = canonicalZero(box);
+            return ok;
+        }
+        else
+            return detail::canonicalize(box);
+    }
+
     // Warm, unranked contiguous boxes need no descriptor copy: integer edges are
     // already canonical, floats store their canonical copy (signed zeros normalized).
     // The commit neither allocates nor invokes client code.
@@ -2461,31 +2476,17 @@ private:
     std::optional<Status> buildFlatInteger(const BuildEntry<Payload, T>* input, std::uint32_t count,
         std::optional<std::span<HandleType>> handles) noexcept
     {
-        // Same acceptance as detail::canonicalize; floats use one branch-free test per box.
-        const auto valid = [](Box<T>& box) noexcept
-        {
-            if constexpr (FloatCoordinate<T>)
-            {
-                constexpr T lo = std::numeric_limits<T>::lowest(), hi = std::numeric_limits<T>::max();
-                const bool ok = (box.minX >= lo) & (box.minY >= lo) & (box.maxX <= hi) & (box.maxY <= hi) &
-                    (box.minX <= box.maxX) & (box.minY <= box.maxY);
-                box = canonicalZero(box);
-                return ok;
-            }
-            else
-                return detail::canonicalize(box);
-        };
         auto extent = input[0].rect;
         if (input[0].rank)
             return std::nullopt;
-        if (!valid(extent))
+        if (!canonicalBox(extent))
             return Status::InvalidGeometry;
         for (std::uint32_t i = 1; i < count; ++i)
         {
             auto box = input[i].rect;
             if (input[i].rank)
                 return std::nullopt;
-            if (!valid(box))
+            if (!canonicalBox(box))
                 return Status::InvalidGeometry;
             extent = detail::unite(extent, box);
         }
@@ -2545,7 +2546,13 @@ private:
         }
         else
         {
-            if (!detail::normalize(entry.rect, box))
+            if constexpr (FloatCoordinate<T> && std::same_as<std::remove_cvref_t<decltype(entry.rect)>, Box<T>>)
+            {
+                box = entry.rect;
+                if (!canonicalBox(box))
+                    return false;
+            }
+            else if (!detail::normalize(entry.rect, box))
                 return false;
             descriptor.payload = std::addressof(entry.payload);
             descriptor.filter = entry.filter;
@@ -3082,7 +3089,7 @@ private:
                 if (mEntries.mMeta[b].rank <= mEntries.mMeta[a].rank ||
                     (movedOnly && scratch.mMembership[a] != scratch.mEpoch && scratch.mMembership[b] != scratch.mEpoch))
                     return;
-                if (pairQualifies(a, b, true, context, predicate))
+                if (pairQualifies<true>(a, b, true, context, predicate))
                     scratch.mRow[count++] = b;
             };
             if (!movedOnly && mRoot != none)
@@ -3185,7 +3192,7 @@ private:
         }
         for (std::uint32_t a = mNodes[holder].head; a != none && context.active(); a = nextItem(mNodes[holder], a))
         {
-            auto candidate = [&](std::uint32_t b) noexcept { testPair(a, b, false, context, visitor, predicate); };
+            auto candidate = [&](std::uint32_t b) noexcept { testPair<true>(a, b, false, context, visitor, predicate); };
             walk(subtree, mEntries.mBoxes[a], mEntries.mMeta[a].filter, context, candidate);
         }
     }
@@ -3233,7 +3240,7 @@ private:
         }
         for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
             for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
-                testPair(a, b, false, context, visitor, predicate);
+                testPair<true>(a, b, false, context, visitor, predicate);
         if (node.firstChild == none)
             return;
         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
