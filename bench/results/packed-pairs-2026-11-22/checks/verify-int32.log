@@ -1,0 +1,13 @@
+int32 equivalence extremes: match 8b6da9ac3b5c5f91
+int32 equivalence uniform 1000: match 87547e79f11b56ce
+int32 equivalence uniform 10000: match c339e7a7d5fd7ec6
+int32 equivalence uniform 100000: match 54582e0b868e764f
+int32 equivalence clustered 1000: match adb55b04252b2424
+int32 equivalence clustered 100000: match 3bfe98e273320927
+int32 equivalence split-line 1000: match 053bd1046194e840
+int32 equivalence split-line 100000: match 3385b9a1da8039d0
+int32 equivalence split-line-translated 1000: match db5606e5f1685809
+int32 equivalence split-line-translated 100000: match 09216336f5178ec1
+int32 equivalence mixed-size 1000: match 54533b592ede527b
+int32 equivalence mixed-size 100000: match e50a838d1a589384
+int32 dense-order: exact match 941f3592c312be79
