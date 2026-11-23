@@ -12,10 +12,10 @@ documented exceptions for very small snapshots and two 10²–10³ G2 rows.
 `int64`, `float` and `double` are functionally supported: they pass the same
 correctness, allocation and portability checks, but are not yet
 performance-accepted. On their slowest G2 rows the
-[latest recheck](bench/results/float-staged-2026-11-21/README.md) measures
-2.1–4.5× the best baseline for `float`/`double` and 2.1× for `int64`, against
-2–4× limits. Persistent motion passes every applicable hard gate for every type.
-These figures are from `d52dbe1`; a recheck of the newer `7cfbebe` is in progress.
+[latest recheck](bench/results/packed-staged-2026-11-23/README.md#results)
+(`7cfbebe`) measures 4.02× for `float` (unresolved), 4.23× for `double` and
+2.16–4.29× for `int64`, against 2–4× limits; every open row is within about 8%
+of its limit. Persistent motion passes every applicable hard gate for every type.
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs

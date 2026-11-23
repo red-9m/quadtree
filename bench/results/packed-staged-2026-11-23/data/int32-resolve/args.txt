@@ -1,0 +1,1 @@
+--model=snapshot --types=int32 --engines=index,index-ordered,brute,sweep,grid --scenes=uniform,clustered --sizes= --small-sizes=0 --rounds=45

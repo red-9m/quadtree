@@ -20,7 +20,13 @@
 
 `d52dbe1` adds the `float`/`double` fast paths; it changes `int32` build code generation but not its results. The [recheck on `d52dbe1`](../../bench/results/float-staged-2026-11-21/README.md#results) passes every `int32` hard gate. G2 now passes on all 20 rows, so neither G2 exception row is needed in that run; G1 0–4 entries remain within the accepted exception. Hosted Portability #7 passes 9/9. **The `int32` acceptance holds on `d52dbe1`.**
 
-**Pending on `7cfbebe`** (packed pair tests, the current branch head). The hosted CI passes and the 5-round `int32` snapshot matrix passes G2 20/20, G9 15/15 and G3/G4/G6, with G1 1–4 entries inside the exception. The persistent stages and the n=0 G1 resolve were interrupted, so the [recheck](../../bench/results/packed-staged-2026-11-23/README.md) must finish before acceptance can be claimed on `7cfbebe`.
+`7cfbebe` adds packed pair tests to `selfPairs`, `itemsVsSubtree` and `orderedSelf`. The [recheck on `7cfbebe`](../../bench/results/packed-staged-2026-11-23/README.md#results) passes every `int32` hard gate:
+- **Snapshot:** G2 20/20 in the 5-round matrix, so neither G2 exception row is needed. G3, G4, G6 and G9 15/15 pass. G1 8–64 entries pass.
+- **G1 0–4 entries:** within the ≤ 3.5× exception (upper ≤ 3.11). n=0 pools to 2.08× over two 45-round processes.
+- **Persistent:** G6 216, G7 120, G8a 12, G8b 4 and G8c 24 pass.
+- **Correctness and CI:** every process exits 0, so cross-checks and determinism are clean. Hosted Portability #10 passes 9/9.
+
+**The `int32` acceptance holds on `7cfbebe`.**
 
 ## Evidence
 

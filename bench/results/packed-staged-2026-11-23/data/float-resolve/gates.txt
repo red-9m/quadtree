@@ -1,0 +1,35 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot float clustered n=0 vs brute force (brute)                                     1.873 [1.810-1.938]     <= 2 pass
+G1   hard snapshot float uniform n=0 vs brute force (brute)                                       1.907 [1.843-1.974]     <= 2 pass
+G2   hard snapshot float clustered n=1000 vs best baseline (grid)                                 1.478 [1.434-1.523]     <= 4 pass
+G2   hard snapshot float clustered n=100000 vs best baseline (grid)                               1.238 [1.203-1.273]     <= 2 pass
+G2   hard snapshot float mixed-size n=1000 vs best baseline (grid)                                1.972 [1.908-2.037]     <= 4 pass
+G2   hard snapshot float mixed-size n=100000 vs best baseline (grid)                              1.081 [1.051-1.112]     <= 2 pass
+G2   hard snapshot float split-line-translated n=1000 vs best baseline (grid)                     3.884 [3.767-4.005]     <= 4 inconclusive
+G2   hard snapshot float split-line-translated n=100000 vs best baseline (grid)                   1.829 [1.777-1.884]     <= 2 pass
+G2   hard snapshot float uniform n=1000 vs best baseline (grid)                                   4.042 [3.911-4.178]     <= 4 inconclusive
+G2   hard snapshot float uniform n=100000 vs best baseline (grid)                                 1.817 [1.766-1.869]     <= 2 pass
+G6   hard snapshot float clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot float clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot float uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot float clustered n=1000 vs unordered (index)                                    2.975 [2.888-3.064]     <= 4 pass
+G9   hard snapshot float clustered n=100000 vs unordered (index)                                  3.196 [3.106-3.288]     <= 4 pass
+G9   hard snapshot float mixed-size n=1000 vs unordered (index)                                   3.090 [2.998-3.184]     <= 4 pass
+G9   hard snapshot float mixed-size n=100000 vs unordered (index)                                 3.867 [3.758-3.980]     <= 4 pass
+G9   hard snapshot float split-line-translated n=1000 vs unordered (index)                        2.961 [2.871-3.054]     <= 4 pass
+G9   hard snapshot float split-line-translated n=100000 vs unordered (index)                      4.050 [3.934-4.169]     <= 4 inconclusive
+G9   hard snapshot float uniform n=1000 vs unordered (index)                                      2.831 [2.741-2.923]     <= 4 pass
+G9   hard snapshot float uniform n=100000 vs unordered (index)                                    3.481 [3.383-3.582]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard      2     0     0
+  G2 hard      6     0     2
+  G6 hard     10     0     0
+  G9 hard      7     0     1
+gates: INCONCLUSIVE (candidates: snapshot index, persistent index, ordered index-ordered vs index)
