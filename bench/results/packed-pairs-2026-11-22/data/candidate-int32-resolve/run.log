@@ -1,0 +1,24 @@
+# date: 2026-11-23T05:10:21Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293751 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int32 --engines=index,index-ordered,brute,sweep,grid --scenes=uniform,clustered --sizes= --small-sizes=0 --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/packed-pairs-2026-11-22/data/candidate-int32-resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/packed-pairs-2026-11-22/data/candidate-int32-resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int32        0  1024 brute               0.005     2.0     1.00 [0.98-1.02]             0           0     0.00         0 ok
+uniform                                  int32        0  1024 sweep               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  int32        0  1024 grid                0.008     2.0     1.62 [1.59-1.66]             0           0     0.00         0 ok
+uniform                                  int32        0  1024 index               0.011     2.7     2.05 [1.99-2.11]             0           0     0.00         0 ok
+uniform                                  int32        0  1024 index-ordered        0.011     4.1     2.07 [1.99-2.15]             0           0     0.00         0 ok
+clustered                                int32        0  1024 brute               0.005     2.1     1.00 [0.98-1.02]             0           0     0.00         0 ok
+clustered                                int32        0  1024 sweep               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                int32        0  1024 grid                0.008     2.0     1.63 [1.59-1.66]             0           0     0.00         0 ok
+clustered                                int32        0  1024 index               0.011     2.7     2.05 [2.00-2.11]             0           0     0.00         0 ok
+clustered                                int32        0  1024 index-ordered        0.011     4.1     2.07 [1.99-2.15]             0           0     0.00         0 ok

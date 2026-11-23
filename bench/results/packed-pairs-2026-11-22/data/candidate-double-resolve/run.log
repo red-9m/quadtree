@@ -1,0 +1,84 @@
+# date: 2026-11-23T05:06:32Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293749 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=double --engines=index,index-ordered,brute,sweep,grid --scenes=uniform,clustered,split-line,split-line-translated --sizes=100,1000,100000 --small-sizes=0 --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/packed-pairs-2026-11-22/data/candidate-double-resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/packed-pairs-2026-11-22/data/candidate-double-resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  double       0  1024 brute               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  double       0  1024 sweep               0.005     2.0     1.09 [1.07-1.11]             0           0     0.00         0 ok
+uniform                                  double       0  1024 grid                0.008     2.0     1.61 [1.58-1.64]             0           0     0.00         0 ok
+uniform                                  double       0  1024 index               0.010     3.2     2.09 [2.03-2.16]             0           0     0.00         0 ok
+uniform                                  double       0  1024 index-ordered        0.011     2.9     2.16 [2.10-2.23]             0           0     0.00         0 ok
+uniform                                  double     100     1 brute               5.183     2.0     2.91 [2.84-2.98]          4950          81     0.00         3 ok
+uniform                                  double     100     1 sweep               1.786     2.0     1.00 [0.98-1.03]           636          81     0.00         5 ok
+uniform                                  double     100     1 grid                1.785     2.5     1.00 [1.00-1.00]           274          81     0.00         6 ok
+uniform                                  double     100     1 index               5.180     2.1     2.91 [2.83-2.98]           598          81     0.00        32 ok
+uniform                                  double     100     1 index-ordered        8.539     2.0     4.79 [4.67-4.91]           312          81     0.00        38 ok
+uniform                                  double    1000     1 brute             945.695     2.0  51.52 [50.47-52.60]        499500         734     0.00        32 ok
+uniform                                  double    1000     1 sweep              80.023     2.0     4.36 [4.27-4.45]         20194         734     0.00        51 ok
+uniform                                  double    1000     1 grid               18.357     2.1     1.00 [1.00-1.00]          3130         734     0.00        67 ok
+uniform                                  double    1000     1 index              76.609     2.0     4.17 [4.09-4.26]          8334         734     0.00       331 ok
+uniform                                  double    1000     1 index-ordered      220.963     2.1  12.04 [11.78-12.30]          3603         734     0.00       376 ok
+uniform                                  double  100000     1 brute                   -       -                    -     200056769        2925     0.00      3222 capped
+uniform                                  double  100000     1 sweep           54451.321     2.0     8.14 [7.97-8.31]      20226787       73905     0.00      5175 ok
+uniform                                  double  100000     1 grid             6690.620     2.0     1.00 [1.00-1.00]        310440       73905     0.00      6670 ok
+uniform                                  double  100000     1 index           13423.939     2.0     2.01 [1.96-2.05]        790406       73905     0.00     32651 ok
+uniform                                  double  100000     1 index-ordered    47266.883     2.0     7.06 [6.92-7.21]        384207       73905     0.00     38016 ok
+clustered                                double       0  1024 brute               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                double       0  1024 sweep               0.005     2.0     1.09 [1.07-1.11]             0           0     0.00         0 ok
+clustered                                double       0  1024 grid                0.008     2.0     1.61 [1.58-1.64]             0           0     0.00         0 ok
+clustered                                double       0  1024 index               0.010     3.1     2.09 [2.03-2.16]             0           0     0.00         0 ok
+clustered                                double       0  1024 index-ordered        0.011     2.9     2.16 [2.10-2.22]             0           0     0.00         0 ok
+clustered                                double     100     1 brute               6.441     2.0     1.28 [1.26-1.31]          4950         713     0.00         3 ok
+clustered                                double     100     1 sweep               5.015     2.0     1.00 [1.00-1.00]          2674         713     0.00         5 ok
+clustered                                double     100     1 grid                6.319     2.1     1.26 [1.23-1.29]          2070         713     0.00         6 ok
+clustered                                double     100     1 index              13.831     2.7     2.75 [2.68-2.82]          3532         713     0.00        29 ok
+clustered                                double     100     1 index-ordered       18.736     2.0     3.74 [3.66-3.81]          1971         713     0.00        34 ok
+clustered                                double    1000     1 brute            1010.257     2.0  13.03 [12.73-13.34]        499500        2999     0.00        32 ok
+clustered                                double    1000     1 sweep             106.525     2.0     1.37 [1.34-1.41]         25028        2999     0.00        51 ok
+clustered                                double    1000     1 grid               77.582     2.4     1.00 [1.00-1.00]         10412        2999     0.00        67 ok
+clustered                                double    1000     1 index             121.996     2.0     1.57 [1.54-1.61]         12438        2999     0.00       333 ok
+clustered                                double    1000     1 index-ordered      346.154     2.0     4.47 [4.36-4.57]          8196        2999     0.00       378 ok
+clustered                                double  100000     1 brute                   -       -                    -     200056769       13784     0.00      3222 capped
+clustered                                double  100000     1 sweep           59093.242     2.0     3.83 [3.75-3.91]      21181030      337133     0.00      5175 ok
+clustered                                double  100000     1 grid            15423.215     2.1     1.00 [1.00-1.00]       1232900      337133     0.00      6670 ok
+clustered                                double  100000     1 index           20717.356     2.1     1.34 [1.32-1.37]       2085669      337133     0.00     32234 ok
+clustered                                double  100000     1 index-ordered    65647.142     2.1     4.26 [4.17-4.34]       1119167      337133     0.00     37600 ok
+split-line                               double     100     1 brute               5.040     2.0     3.37 [3.30-3.44]          4950          38     0.00         3 ok
+split-line                               double     100     1 sweep               1.496     2.0     1.00 [1.00-1.00]           400          38     0.00         5 ok
+split-line                               double     100     1 grid                1.752     2.5     1.17 [1.14-1.20]           143          38     0.00        12 ok
+split-line                               double     100     1 index               5.404     2.0     3.61 [3.54-3.68]           478          38     0.00        33 ok
+split-line                               double     100     1 index-ordered        9.475     2.0     6.33 [6.20-6.46]           312          38     0.00        38 ok
+split-line                               double    1000     1 brute             915.632     2.0  44.01 [43.06-44.98]        499500         843     0.00        32 ok
+split-line                               double    1000     1 sweep              81.985     2.1     3.94 [3.85-4.03]         21333         843     0.00        51 ok
+split-line                               double    1000     1 grid               20.814     2.2     1.00 [1.00-1.00]          2959         843     0.00        98 ok
+split-line                               double    1000     1 index              80.134     2.0     3.85 [3.77-3.94]          7914         843     0.00       330 ok
+split-line                               double    1000     1 index-ordered      241.344     2.1  11.60 [11.35-11.86]          3858         843     0.00       375 ok
+split-line                               double  100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line                               double  100000     1 sweep           74592.972     2.1    9.88 [9.66-10.10]      28769913      105137     0.00      5175 ok
+split-line                               double  100000     1 grid             7553.573     2.1     1.00 [1.00-1.00]        329471      105137     0.00     11807 ok
+split-line                               double  100000     1 index           13734.372     2.1     1.82 [1.78-1.86]        681627      105137     0.00     33377 ok
+split-line                               double  100000     1 index-ordered    52546.459     2.0     6.96 [6.81-7.11]        429581      105137     0.00     38743 ok
+split-line-translated                    double     100     1 brute               5.039     2.0     3.45 [3.38-3.52]          4950          38     0.00         3 ok
+split-line-translated                    double     100     1 sweep               1.463     2.0     1.00 [1.00-1.00]           400          38     0.00         5 ok
+split-line-translated                    double     100     1 grid                1.672     2.0     1.14 [1.12-1.17]           146          38     0.00        12 ok
+split-line-translated                    double     100     1 index               5.812     2.0     3.97 [3.89-4.06]           456          38     0.00        34 ok
+split-line-translated                    double     100     1 index-ordered        9.515     2.0     6.51 [6.38-6.64]           330          38     0.00        39 ok
+split-line-translated                    double    1000     1 brute             915.090     2.0  45.63 [44.65-46.62]        499500         843     0.00        32 ok
+split-line-translated                    double    1000     1 sweep              81.674     2.1     4.07 [3.98-4.16]         21332         843     0.00        51 ok
+split-line-translated                    double    1000     1 grid               20.063     2.2     1.00 [1.00-1.00]          2893         843     0.00        98 ok
+split-line-translated                    double    1000     1 index              80.273     2.0     4.00 [3.92-4.09]          7375         843     0.00       334 ok
+split-line-translated                    double    1000     1 index-ordered      238.352     2.1  11.88 [11.62-12.15]          3660         843     0.00       379 ok
+split-line-translated                    double  100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line-translated                    double  100000     1 sweep           74698.340     2.0    9.96 [9.75-10.18]      28769910      105137     0.00      5175 ok
+split-line-translated                    double  100000     1 grid             7500.506     2.1     1.00 [1.00-1.00]        324504      105137     0.00     11788 ok
+split-line-translated                    double  100000     1 index           13850.647     2.0     1.85 [1.81-1.89]        625694      105137     0.00     33392 ok
+split-line-translated                    double  100000     1 index-ordered    54633.693     2.0     7.29 [7.13-7.44]        422813      105137     0.00     38758 ok
