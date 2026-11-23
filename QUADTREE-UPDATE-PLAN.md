@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: 09 — decide the [remaining non-`int32` rows](bench/results/float-staged-2026-11-21/README.md#next).** The `float`/`double` paths are staged (`d52dbe1`, CI 9/9) and the `int32` acceptance holds on that commit. `float`/`double` G2 is down to 8 fails per type and `int64` to 1, each within ~15% of its limit; their G1 rows are in the `int32` exception range. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: none open.** The `int32` release is [accepted](docs/plan/08-final-acceptance-result.md) on `d52dbe1`. [Task 09](docs/plan/09-other-coordinate-types-result.md) is closed as is: `int64`/`float`/`double` are functionally supported, faster, and not performance-accepted, with published gaps. Further work needs an explicit request: reopen 09, MSVC portability, or the legacy safety patch. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -29,23 +29,19 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
 | [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope; rechecked on [`df2cfeb`](bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb) and [`d52dbe1`](bench/results/float-staged-2026-11-21/README.md#results)). All hard gates pass, with the accepted G1 (0–4 entries) and G2 (`int32` 10²/10³ rows) exceptions; the G2 10⁵ row passes by pre-specified pooling. | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`int32` confirmation](bench/results/release-int32-2026-11-21/README.md) · [Four-type run](bench/results/release-acceptance-2026-11-21/README.md) |
-| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | In progress: `int64` (`df2cfeb`) and `float`/`double` (`d52dbe1`) fast paths staged. G2 fails: `int64` 1, `float`/`double` 8 each (≤ ~15% over); G1 0–4 entries outside any exception; everything else passes. | [Staged recheck](bench/results/float-staged-2026-11-21/README.md) · [`float`/`double` candidate](bench/results/float-bulk-plan-2026-11-21/README.md) · [`int64` candidate](bench/results/int64-bulk-plan-2026-11-21/README.md) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Closed as is** (owner, 2026-11-22). Fast paths staged (`df2cfeb`, `d52dbe1`); `int64`/`float`/`double` are functionally supported, not performance-accepted. G2 fails: `int64` 1, `float`/`double` 8 each (≤ ~15% over); G1 0–4 entries outside the exception. | [Result and published gaps](docs/plan/09-other-coordinate-types-result.md) · [Staged recheck](bench/results/float-staged-2026-11-21/README.md) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: Task 09 — remaining rows
+### Fresh session: no open task
 
-Work in `/home/dima/src/quadtree.git`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md) and [the staged recheck](bench/results/float-staged-2026-11-21/README.md).
-
-**State:** `d52dbe1` (pushed, CI 9/9) runs the bulk planner, flat build and packed overlap for every coordinate type. The `int32` acceptance holds; all 20 `int32` G2 rows pass. Remaining, from [final-status.txt](bench/results/float-staged-2026-11-21/data/final-status.txt):
-- **`float`/`double` G2:** 8 fails each (`split-line*` 10²–10⁴, `uniform` 10³, plus some 10⁵ rows), 4.16–4.51× against 4 and 2.08–2.18× against 2.
-- **`int64` G2:** `uniform` 10⁵ fails at 2.13×; 3 rows unresolved near their limits.
-- **G1:** the 0–4-entry rows of all three types fail, all ≤ 3.21× upper bound.
-
-**Owner decision needed:** (1) more speed work (about 10–15% for floats); (2) extend the G1/G2 exceptions to the other types; (3) close 09 with the published gaps.
+Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`, head after `d52dbe1`. Every task in the table is done, closed with evidence, or deferred. Do not start benchmark or runtime work without an explicit request. Candidates:
+- **Reopen 09:** `float`/`double` G2 needs about 10–15% more speed, `int64` `uniform` 10⁵ about 7%. Start from [the 09 result](docs/plan/09-other-coordinate-types-result.md#reopening) and recheck the `int32` acceptance after any change.
+- **MSVC:** deferred in [06](docs/plan/06-portability-result.md).
+- **Legacy API:** [safety patch](docs/plan/legacy-safety.md), only if asked.
 
 ### Update the handoff after the session
 
