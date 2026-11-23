@@ -174,8 +174,9 @@ const entry views `{handle, rect, payload, filter, optional rank}`. A view lasts
 only for the callback; borrowed references last until the next non-const
 operation, move, or destruction. Retain handles, not views/references.
 
-All operations return `QueryResult {status, counters}`. `complete()`/`ok()` mean
-`status == Ok`. `Stopped` includes the entry/pair whose callback returned Stop.
+Visitor and iterator overloads return `QueryResult {status, counters}`.
+`complete()`/`ok()` mean `status == Ok`. `Stopped` includes the entry/pair whose
+callback returned Stop.
 
 - `query(geometry, visitor, options, predicate)` reports each geometric match
   once. Its predicate takes one view. Without an explicit filter it includes
@@ -204,7 +205,18 @@ All operations return `QueryResult {status, counters}`. `complete()`/`ok()` mean
   views and early stop. Small sets have no nodes.
 - `queryTo(geometry, outputIterator, options)` appends handles;
   `pairsTo(outputIterator, options)` appends handle pairs. Neither clears output.
-  Client output-sized storage/allocations are explicitly outside library bounds.
+  Output iterator operations must not throw or overrun their storage.
+- Pass a `std::span<IndexType::HandleType>` to `queryTo` or a
+  `std::span<IndexType::HandlePair>` to `pairsTo` for bounded output instead.
+  `HandlePair` is `std::pair<HandleType, HandleType>`. These overloads write from
+  element zero and return `CollectResult {status, count, counters}`. `count` is
+  the number of elements written, even without instrumentation; elements beyond
+  `count` are untouched. Exactly filling the span can succeed. The first result
+  that does not fit stops traversal with `InsufficientOutput`; when instrumented,
+  `counters.reports` includes that extra result. On any non-`Ok` status, do not
+  use the prefix as a complete result. Output writes never allocate; ordered
+  calls still follow the usual workspace rules. Pass a span, not a raw pointer
+  or C array, to select the bounded overload.
 
 Filters default to all bits. Pair eligibility requires both
 `(a.category & b.mask) != 0` and `(b.category & a.mask) != 0`.
@@ -468,7 +480,8 @@ Failure/status matrix (success is `Ok`; results are `[[nodiscard]]`):
 - Query/enumeration: `Stopped`, `BudgetExhausted`; geometry-taking calls also
   `InvalidGeometry`; ordered/rank-bound calls also `MissingRank`; scratch-using
   prepared calls also `InsufficientWorkspace`; convenience calls also
-  `AllocationFailed`/`SizeLimitExceeded`.
+  `AllocationFailed`/`SizeLimitExceeded`. Bounded span collectors return
+  `InsufficientOutput` instead of `Stopped`.
 - Moved sets additionally: `DuplicateHandle`.
 - Cross trees additionally: `IncompatiblePolicy`, `InvalidArgument` (same tree).
   Selections additionally: `InvalidArgument` (overlap).

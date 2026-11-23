@@ -67,6 +67,7 @@ struct SceneInfo
     std::size_t maxEntries; // Larger sizes are skipped and reported as capped
     bool smallSizes;        // Also run the batched 0-64 entry sizes
     std::string_view description;
+    bool optIn = false;     // Keep supplementary rows out of default runs
 };
 
 inline constexpr std::size_t kUncapped = ~std::size_t(0);
@@ -84,6 +85,8 @@ inline constexpr SceneInfo kScenes[] = {
     {"pile", Boundary::Default, 4096, false, "all boxes overlap"},
     {"disjoint", Boundary::Default, kUncapped, false, "separated lattice, zero pairs"},
     {"outliers", Boundary::Default, kUncapped, false, "uniform plus 1% far outliers"},
+    {"small-world-8", Boundary::Default, 4096, true, "8x8 boxes in a 600x400 world", true},
+    {"small-world-mixed", Boundary::Default, 4096, true, "4-64 unit sides in a 600x400 world", true},
 };
 
 inline const SceneInfo* findScene(std::string_view name) noexcept
@@ -249,6 +252,18 @@ inline std::vector<IBox> generate(std::string_view name, std::size_t n, std::uin
             const std::int64_t bh = rng.uniform(8, 32);
             const std::int64_t x = rng.uniform(0, w - bw);
             const std::int64_t y = rng.uniform(0, w - bh);
+            boxes.push_back(make(x, y, bw, bh));
+        }
+    }
+    else if (name == "small-world-8" || name == "small-world-mixed")
+    {
+        const bool mixed = name == "small-world-mixed";
+        for (std::size_t i = 0; i < n; ++i)
+        {
+            const std::int64_t bw = mixed ? rng.uniform(4, 64) : 8;
+            const std::int64_t bh = mixed ? rng.uniform(4, 64) : 8;
+            const std::int64_t x = rng.uniform(0, 600 - bw);
+            const std::int64_t y = rng.uniform(0, 400 - bh);
             boxes.push_back(make(x, y, bw, bh));
         }
     }

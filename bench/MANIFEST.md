@@ -73,6 +73,37 @@ uses an installed Box2D ≥ 3.2 instead; the Arch package 3.2.0-1.1 is built
 without `NDEBUG` (asserts and validation active in `b2DynamicTree_MoveProxy`)
 and is not a release baseline.
 
+### Small-world broadphase (opt-in)
+
+```sh
+build-bench/bench/quadtree-bench --types=int32 --scenes=small-world-8,small-world-mixed \
+  --engines=brute,index,index-ordered --small-sizes=1,2,4,8,16,32,64 \
+  --sizes=128,256,512,1024,2048,4096 --csv=small-world.csv
+```
+
+Both scenes use a fixed 600×400 spawn area. `small-world-8` uses 8×8 boxes
+for comparison with the consumer probe; `small-world-mixed` draws each side
+independently from 4–64. The ordered adapter assigns unique ranks. The full pair
+pass times counting and checksumming pairs, not writing a pair buffer, narrow
+phase, or dispatch. Small-size counts in the CSV are batch totals; divide by
+batch size for mean pairs per scene.
+
+Local results at 4096 entries, seed 1 (Ryzen 9 5900HS, GCC 16.2.1, Release `-O3`,
+`powersave` governor and `power` energy preference). Times are median / p95 ms for
+rebuild plus the full pair pass. Both Index variants matched the brute-force
+pair counts and checksums.
+
+| Scene | Pairs | Index unordered (ms) | Index ordered (ms) | Brute force (ms) |
+|---|---:|---:|---:|---:|
+| `small-world-8` | 8,086 | 0.55 / 0.56 | 1.29 / 1.33 | 15.32 / 15.71 |
+| `small-world-mixed` | 172,095 | 4.99 / 5.05 | 11.66 / 11.93 | 21.63 / 22.06 |
+
+The 1 ms target at 4096 applies only to unordered `small-world-8`, and is not a
+release gate. The mixed fixture is a density stress case: total box area is
+about 20× the world area on average, and this seed reports 21× as many pairs as
+the 8×8 fixture. Neither fixture runs by default or changes the frozen timing
+gates.
+
 ## Method
 
 - **Timer:** on x86-64 with an invariant TSC, `rdtsc` calibrated against
@@ -155,8 +186,8 @@ identical scene hashes, pair sets and candidate counts.
   `h = mix64(h ^ value)`; batches fold member hashes with `h = mix64(h ^ member)`.
 - **Coordinate mapping:** `static_cast<T>` of the integer edge. Exact for every
   scene except `outliers` in `float` (values up to 2²⁹ round to nearest).
-- **World side:** `S(n) = 32 * ceil(sqrt(max(n, 1)))`, about 1024 square units
-  per entry. Boxes are `{x, y, x + w, y + h}`.
+- **Default world side:** `S(n) = 32 * ceil(sqrt(max(n, 1)))`, about 1024 square
+  units per entry. Boxes are `{x, y, x + w, y + h}`.
 
 Draws happen in the order listed.
 
@@ -174,8 +205,10 @@ Draws happen in the order listed.
 | `pile` | default | `{512 - U(1,400), 512 - U(1,400), 512 + U(1,400), 512 + U(1,400)}` in draw order left, right, bottom, top; all pairs overlap; capped at 4096 |
 | `disjoint` | default | Lattice cell 32, `c = ceil(sqrt(n))`; `x = 32 (i mod c) + U(0,15)`, `y = 32 (i div c) + U(0,15)`, `w = U(1,16)`, `h = U(1,16)`; zero pairs |
 | `outliers` | default | As `uniform`, then `U(0,99) == 0` moves the origin: `x = ±U(2^28, 2^29)`, `y = ±U(2^28, 2^29)` (sign draw `U(0,1)`, then magnitude, for x then y) |
+| `small-world-8` (opt-in) | default | `w = h = 8`, `x = U(0,600-w)`, `y = U(0,400-h)`; capped at 4096 |
+| `small-world-mixed` (opt-in) | default | `w = U(4,64)`, `h = U(4,64)`, `x = U(0,600-w)`, `y = U(0,400-h)`; capped at 4096 |
 
-Sizes: 0, 1, 2, 4, 8, 16, 32, 64 (batched; `uniform`, `clustered`) and
+Default sizes: 0, 1, 2, 4, 8, 16, 32, 64 (batched; `uniform`, `clustered`) and
 10², 10³, 10⁴, 10⁵. Default types: `int32`, `float`; all four in `--quick`.
 
 ## Persistent model

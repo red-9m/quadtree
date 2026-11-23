@@ -580,9 +580,11 @@ void contracts()
         {.ordered = true, .workspace = &unprepared}).complete());
     CHECK(tree.forEachPair([](const auto&, const auto&) noexcept { return Stop; }).status == Status::Stopped);
     std::vector<std::pair<I::HandleType, I::HandleType>> pairs(1);
+    pairs.reserve(2);
     CHECK(tree.pairsTo(std::back_inserter(pairs)).complete());
     CHECK(pairs.size() == 2); // Append, never clear caller output.
     std::vector<I::HandleType> hits(1);
+    hits.reserve(3);
     CHECK(tree.queryTo(Box<int>{0, 0, 10, 10}, std::back_inserter(hits)).complete());
     CHECK(hits.size() == 3);
     auto missing = tree.insert(Box<int>{0, 0, 1, 1}, 3);
@@ -616,6 +618,78 @@ void contracts()
         CHECK(snapshot.build(point) == Status::Ok);
         CHECK(snapshot.extent() == point[0].rect);
     }
+}
+
+template<bool Instrumented>
+void boundedCollection()
+{
+    using I = QuadTree::Index<int, int, QuadTree::Checked, Instrumented>;
+    using Handle = typename I::HandleType;
+    using HandlePair = typename I::HandlePair;
+    TestResource resource;
+    constexpr Box<int> box{0, 0, 8, 8};
+    auto made = I::create({}, &resource);
+    REQUIRE(made.ok());
+    auto tree = std::move(made).value();
+    QuadTree::Workspace<int> workspace(&resource), unprepared(&resource);
+    REQUIRE(workspace.reserve(3) == Status::Ok);
+    const auto a = tree.insert(box, 30, {}, 3);
+    const auto b = tree.insert(box, 10, {}, 1);
+    const auto c = tree.insert(box, 20, {}, 2);
+    REQUIRE(a.ok() && b.ok() && c.ok());
+
+    resource.failAll = true;
+    const auto allocations = resource.allocations;
+    for (bool ordered : {false, true})
+    {
+        const auto options = QuadTree::QueryOptions<int>{.ordered = ordered, .workspace = ordered ? &workspace : nullptr};
+        const std::array hits = ordered ? std::array{b.handle, c.handle, a.handle} : std::array{a.handle, b.handle, c.handle};
+        const std::array pairs{HandlePair{hits[0], hits[1]}, HandlePair{hits[0], hits[2]}, HandlePair{hits[1], hits[2]}};
+        for (std::size_t capacity = 0; capacity <= 4; ++capacity)
+        {
+            std::array<Handle, 4> output_hits{};
+            std::array<HandlePair, 4> output_pairs{};
+            const auto query = tree.queryTo(box, std::span(output_hits).first(capacity), options);
+            const auto self = tree.pairsTo(std::span(output_pairs).first(capacity), options);
+            const std::size_t written = std::min(capacity, hits.size());
+            const auto status = capacity < hits.size() ? Status::InsufficientOutput : Status::Ok;
+            const auto reports = Instrumented ? std::min(capacity + 1, hits.size()) : 0;
+            for (const auto& result : {query, self})
+            {
+                CHECK(result.status == status && result.complete() == (status == Status::Ok));
+                CHECK(result.count == written && result.counters.reports == reports);
+            }
+            for (std::size_t i = 0; i < output_hits.size(); ++i)
+            {
+                CHECK(output_hits[i] == (i < written ? hits[i] : Handle{}));
+                CHECK(output_pairs[i] == (i < written ? pairs[i] : HandlePair{}));
+            }
+        }
+        const auto no_hits = tree.queryTo(Box<int>{20, 20, 30, 30}, std::span<Handle>{}, options);
+        CHECK(no_hits.complete() && no_hits.count == 0);
+    }
+
+    std::array<Handle, 3> hits{};
+    std::array<HandlePair, 3> pairs{};
+    const auto invalid = tree.queryTo(Rect<int>{0, 0, -1, 1}, std::span(hits));
+    CHECK(invalid.status == Status::InvalidGeometry && invalid.count == 0);
+    const auto no_query_space = tree.queryTo(box, std::span(hits), {.ordered = true, .workspace = &unprepared});
+    const auto no_pair_space = tree.pairsTo(std::span(pairs), {.ordered = true, .workspace = &unprepared});
+    CHECK(no_query_space.status == Status::InsufficientWorkspace && no_query_space.count == 0);
+    CHECK(no_pair_space.status == Status::InsufficientWorkspace && no_pair_space.count == 0);
+    CHECK(hits == decltype(hits){} && pairs == decltype(pairs){});
+
+    const auto query_budget = tree.queryTo(box, std::span(hits), {.budget = {.candidateTests = 1}});
+    const auto pair_budget = tree.pairsTo(std::span(pairs), {.budget = {.candidateTests = 1}});
+    CHECK(query_budget.status == Status::BudgetExhausted && query_budget.count == 1 && hits[0] == a.handle);
+    CHECK(pair_budget.status == Status::BudgetExhausted && pair_budget.count == 1);
+    CHECK((pairs[0] == HandlePair{a.handle, b.handle}));
+    CHECK(hits[1] == Handle{} && pairs[1] == HandlePair{});
+
+    tree.clear();
+    const auto empty = tree.pairsTo(std::span<HandlePair>{});
+    CHECK(empty.complete() && empty.count == 0);
+    CHECK(resource.allocations == allocations);
 }
 
 void budgets()
@@ -2912,7 +2986,8 @@ static_assert(sizeof(Tree<int>::HandleType) == 16 && std::is_trivially_copyable_
 
 int main()
 {
-    contracts(); fixedRootContacts(); budgets(); orderedPermutations();
+    contracts(); boundedCollection<true>(); boundedCollection<false>();
+    fixedRootContacts(); budgets(); orderedPermutations();
     crossAndSelections(); crossPrefixes<true>(); crossPrefixes<false>(); crossAfterMutations();
     selectionPrefixes<true>(); selectionPrefixes<false>();
     filterPolicyTruthTable(); filterPruningWork();

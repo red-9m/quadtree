@@ -61,8 +61,13 @@ file(GENERATE OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/bench-build-info.h CO
 #define QT_BENCH_FLAGS \"${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}: ${CMAKE_CXX_FLAGS} ${QT_BENCH_CONFIG_FLAGS} ${QT_BENCH_TARGET_FLAGS}\"
 ")
 
-# Smoke run: every scene, type and engine once; fails if engines disagree.
+# Smoke run: standard scenes, every type and engine; fails if engines disagree.
 add_test(NAME bench-smoke COMMAND quadtree-bench --quick)
+
+# Opt-in game fixtures: cross-check both snapshot modes against brute force.
+add_test(NAME bench-small-world-check COMMAND quadtree-bench --model=snapshot --types=int32
+    --scenes=small-world-8,small-world-mixed --engines=brute,index,index-ordered
+    --small-sizes= --sizes=1,64,4096 --rounds=1 --min-time=0 --min-reps=1 --max-reps=1)
 
 # Persistent cross-check over full 64-step passes (split, merge and refit paths):
 # every engine against brute force on all workloads.

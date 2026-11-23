@@ -57,6 +57,16 @@ struct [[nodiscard]] QueryResult
     bool complete() const noexcept { return status == Status::Ok; }
 };
 
+struct [[nodiscard]] CollectResult
+{
+    Status status = Status::Ok;
+    std::size_t count = 0; // Elements written, even with instrumentation disabled
+    Counters counters = {};
+
+    bool ok() const noexcept { return status == Status::Ok; }
+    bool complete() const noexcept { return status == Status::Ok; }
+};
+
 struct IndexStats
 {
     std::size_t entries = 0;
@@ -803,6 +813,7 @@ class Index
 
 public:
     using HandleType = typename Store::HandleType;
+    using HandlePair = std::pair<HandleType, HandleType>;
     using View = typename Store::View;
     using InsertResultType = typename Store::InsertResultType;
     using PayloadType = Payload;
@@ -1404,12 +1415,37 @@ public:
             { *output++ = entry.handle; return Continue; }, options);
     }
 
-    template<typename Output> requires requires(Output output, std::pair<HandleType, HandleType> pair)
-        { *output++ = pair; }
+    template<typename Output> requires requires(Output output, HandlePair pair) { *output++ = pair; }
     QueryResult pairsTo(Output output, QueryOptions<T> options = {}) const noexcept
     {
         return forEachPair([&](const View& a, const View& b) noexcept
-            { *output++ = std::pair{a.handle, b.handle}; return Continue; }, options);
+            { *output++ = HandlePair{a.handle, b.handle}; return Continue; }, options);
+    }
+
+    // Bounded output; use the written prefix only on complete().
+    template<typename G> requires detail::Geometry<G, T>
+    CollectResult queryTo(const G& geometry, std::span<HandleType> out, QueryOptions<T> options = {}) const noexcept
+    {
+        std::size_t count = 0;
+        const auto result = query(geometry, [&](const View& entry) noexcept
+        {
+            if (count == out.size()) return Stop;
+            out[count++] = entry.handle;
+            return Continue;
+        }, options);
+        return {result.status == Status::Stopped ? Status::InsufficientOutput : result.status, count, result.counters};
+    }
+
+    CollectResult pairsTo(std::span<HandlePair> out, QueryOptions<T> options = {}) const noexcept
+    {
+        std::size_t count = 0;
+        const auto result = forEachPair([&](const View& a, const View& b) noexcept
+        {
+            if (count == out.size()) return Stop;
+            out[count++] = HandlePair{a.handle, b.handle};
+            return Continue;
+        }, options);
+        return {result.status == Status::Stopped ? Status::InsufficientOutput : result.status, count, result.counters};
     }
 
 private:

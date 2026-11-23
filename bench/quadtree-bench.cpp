@@ -132,7 +132,7 @@ void usage()
         "  --model=M             snapshot, persistent or all (default snapshot)\n"
         "  --quick               smoke run of both models: few sizes and steps, all types\n"
         "  --types=LIST          int32,int64,float,double or all (default int32,float)\n"
-        "  --scenes=LIST         scene names (default all; --list shows them)\n"
+        "  --scenes=LIST         scene names (default excludes opt-in scenes; see --list)\n"
         "  --engines=LIST        brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat,qt-classic,qt-loose,\n"
         "                        qt-loose-sort,qt-refs,\n"
         "                        qt-refs-ordered,grid-ordered,index,index-ordered (default all)\n"
@@ -281,7 +281,8 @@ bool parse(int argc, char** argv, Options& options)
         {
             std::printf("snapshot scenes:\n");
             for (const SceneInfo& scene : kScenes)
-                std::printf("  %-22s %s\n", std::string(scene.name).c_str(), std::string(scene.description).c_str());
+                std::printf("  %-22s %s%s\n", std::string(scene.name).c_str(), std::string(scene.description).c_str(),
+                    scene.optIn ? " (opt-in)" : "");
             std::printf("persistent scenes:");
             for (const std::string_view scene : kPersistentScenes)
                 std::printf(" %s", std::string(scene).c_str());
@@ -881,7 +882,7 @@ void runSnapshot(std::string_view type, const Options& options, std::vector<Resu
 {
     for (const SceneInfo& scene : kScenes)
     {
-        if (!selected(options.scenes, scene.name))
+        if ((scene.optIn && options.scenes.empty()) || !selected(options.scenes, scene.name))
             continue;
         if (scene.smallSizes)
             for (const std::size_t n : options.smallSizes)
