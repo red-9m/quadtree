@@ -20,6 +20,8 @@
 
 `d52dbe1` adds the `float`/`double` fast paths; it changes `int32` build code generation but not its results. The [recheck on `d52dbe1`](../../bench/results/float-staged-2026-11-21/README.md#results) passes every `int32` hard gate. G2 now passes on all 20 rows, so neither G2 exception row is needed in that run; G1 0–4 entries remain within the accepted exception. Hosted Portability #7 passes 9/9. **The `int32` acceptance holds on `d52dbe1`.**
 
+**Pending on `7cfbebe`** (packed pair tests, the current branch head). The hosted CI passes and the 5-round `int32` snapshot matrix passes G2 20/20, G9 15/15 and G3/G4/G6, with G1 1–4 entries inside the exception. The persistent stages and the n=0 G1 resolve were interrupted, so the [recheck](../../bench/results/packed-staged-2026-11-23/README.md) must finish before acceptance can be claimed on `7cfbebe`.
+
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.

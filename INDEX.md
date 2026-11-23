@@ -15,6 +15,7 @@ performance-accepted. On their slowest G2 rows the
 [latest recheck](bench/results/float-staged-2026-11-21/README.md) measures
 2.1–4.5× the best baseline for `float`/`double` and 2.1× for `int64`, against
 2–4× limits. Persistent motion passes every applicable hard gate for every type.
+These figures are from `d52dbe1`; a recheck of the newer `7cfbebe` is in progress.
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs

@@ -1,5 +1,7 @@
 # 09 · Other coordinate types: result
 
+**Reopened (owner, 2026-11-22); this record describes the closure state at `d52dbe1`.** Subsequent work: [packed-pairs candidate](../../bench/results/packed-pairs-2026-11-22/README.md), staged as `7cfbebe`, with its [recheck in progress](../../bench/results/packed-staged-2026-11-23/README.md).
+
 **Closed as is (owner decision, 2026-11-22).** `int64`, `float` and `double` ship as functionally supported coordinate types, with their performance gaps published. They are **not** performance-accepted. The frozen limits are unchanged, and no G1/G2 exception extends beyond `int32`.
 
 ## What shipped

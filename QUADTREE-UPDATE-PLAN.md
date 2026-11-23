@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: 09 (reopened) — stage the [packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md#handoff).** It leaves non-`int32` G2 at `int64` 1 fail, `double` 1 fail and 4 unresolved rows within 1% of their limits; `float` has no G2 failure. `int32` passes all G2 rows outright. Recheck `int32` acceptance when staging. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: 09 — finish the [interrupted `7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md#resume).** `7cfbebe` (packed pair tests; pushed; CI #10 9/9) is the branch head, but only its snapshot matrices ran: the persistent stages and the pooled resolves are missing. **The `int32` acceptance is established on `d52dbe1`, not yet on `7cfbebe`.** MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -28,20 +28,34 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [05 · Installable package](docs/plan/05-package.md) | Done; source and relocated install verified | [Consumer and install evidence](docs/plan/05-package-result.md) |
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
-| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope; rechecked on [`df2cfeb`](bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb) and [`d52dbe1`](bench/results/float-staged-2026-11-21/README.md#results)). All hard gates pass, with the accepted G1 (0–4 entries) and G2 (`int32` 10²/10³ rows) exceptions; the G2 10⁵ row passes by pre-specified pooling. | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`int32` confirmation](bench/results/release-int32-2026-11-21/README.md) · [Four-type run](bench/results/release-acceptance-2026-11-21/README.md) |
-| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Reopened** (owner, 2026-11-22). Staged: `df2cfeb`, `d52dbe1`. Validated, not staged: [packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md), which leaves G2 `int64` 1 fail, `double` 1 fail, 4 unresolved rows; G1 0–4 entries remain outside the exception. | [Packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) · [Closure record and gaps](docs/plan/09-other-coordinate-types-result.md) |
+| [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope) on `a72bc80`, rechecked on [`df2cfeb`](bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb) and [`d52dbe1`](bench/results/float-staged-2026-11-21/README.md#results). **Recheck on head `7cfbebe` incomplete:** snapshot matrix passes, persistent stages and resolves pending. | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`7cfbebe` partial recheck](bench/results/packed-staged-2026-11-23/README.md) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Reopened** (owner, 2026-11-22). Staged: `df2cfeb`, `d52dbe1`, `7cfbebe` (packed pair tests). Candidate verdicts: G2 `float` 0 fails, `double` 1, `int64` 1; G1 0–4 entries outside any exception. Staged recheck of `7cfbebe` interrupted. | [`7cfbebe` partial recheck](bench/results/packed-staged-2026-11-23/README.md) · [Packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) · [Closure record (pre-reopen)](docs/plan/09-other-coordinate-types-result.md) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: no open task
+### Fresh session: Task 09 — finish the `7cfbebe` recheck
 
-Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`, head after `d52dbe1`. Every task in the table is done, closed with evidence, or deferred. Do not start benchmark or runtime work without an explicit request. Candidates:
-- **Reopen 09:** `float`/`double` G2 needs about 10–15% more speed, `int64` `uniform` 10⁵ about 7%. Start from [the 09 result](docs/plan/09-other-coordinate-types-result.md#reopening) and recheck the `int32` acceptance after any change.
-- **MSVC:** deferred in [06](docs/plan/06-portability-result.md).
-- **Legacy API:** [safety patch](docs/plan/legacy-safety.md), only if asked.
+Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`. Read [the 09 brief](docs/plan/09-other-coordinate-types.md), the [packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) and the [interrupted recheck](bench/results/packed-staged-2026-11-23/README.md).
+
+**State:**
+- **Commits:** `7cfbebe` adds packed overlap tests in `selfPairs`, `itemsVsSubtree` and `orderedSelf`, plus branch-free float Box capture. It is pushed, and hosted Portability #10 passes 9/9 on it.
+- **Recheck:** its run and pooled resolution rule are committed ([resolution-rule.md](bench/results/packed-staged-2026-11-23/resolution-rule.md)). Only the four 5-round snapshot matrices ran. The first persistent stage was killed (exit 143); its directory is renamed `int32-persistent-aborted`.
+- **Acceptance:** the `int32` release acceptance is established on `d52dbe1`; on `7cfbebe` it is **pending**.
+
+**Next deliverable:** follow [Resume](bench/results/packed-staged-2026-11-23/README.md#resume) on an idle machine.
+1. Persistent stages for all four types (~2 h).
+2. Two 45-round resolves per type, using the `QT_RESOLVE_ARGS` listed there.
+3. `resolve.py`.
+4. Complete the recheck README; update the 06 (CI #10) and 08 records (re-establish `int32` on `7cfbebe`, or report the blocking row); update the 09 closure record and `INDEX.md` gap figures.
+
+**After that, owner decision:** close 09 again with the remaining gaps (`int64` `uniform` 10⁵ about 2.1×; `double` `uniform` 10³ about 4.1–4.2×; rows within 1–2% of limits; G1 0–4 entries for the non-`int32` types), extend exceptions, or continue optimization. Rejected so far: packed node-bound tests (G9 4.0–4.2 at 10⁵), `splitThreshold` 12/16, per-entry inline midpoint, branch-free scalar `int64` overlap.
+
+**Work directories** (`/tmp` pointers were lost in a reboot; pointers are now in `~/.cache/*.current`):
+- `~/.cache/quadtree-staged3.current`: the `7cfbebe` recheck build.
+- `~/.cache/quadtree-float2.current`: candidate scratch, with `control` = `d52dbe1` and `candidate` = `c3`.
 
 ### Update the handoff after the session
 
