@@ -1,0 +1,182 @@
+diff --git a/detail/quadtree-index-impl.h b/detail/quadtree-index-impl.h
+index 6a6a197..e125ac2 100644
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2333,6 +2333,23 @@ private:
+         }
+         if (count == 1 && mConfig.smallSetThreshold != 0)
+             return buildSingle<Consume, Projected>(*std::ranges::begin(range), accessor, handles);
++        // Warm spatial commits can gather a trivial contiguous BuildEntry directly,
++        // rather than copying metadata and chasing a dependent payload pointer.
++        if constexpr (std::same_as<T, std::int64_t> && !Consume && !Projected &&
++            std::ranges::contiguous_range<R> && std::same_as<std::ranges::range_value_t<R>, BuildEntry<Payload, T>> &&
++            std::is_trivially_copyable_v<Payload> && !requires { Policy::acquireIdentity(); })
++        {
++            if (!handles && count > mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
++                count <= mEntries.mSlotCapacity && count <= mReferences.capacity())
++                return buildCaptured<true, Consume, Projected>(range, accessor, handles, count, scratch);
++        }
++        return buildCaptured<false, Consume, Projected>(range, accessor, handles, count, scratch);
++    }
++
++    template<bool Direct, bool Consume, bool Projected, typename R, typename Accessor>
++    Status buildCaptured(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
++        std::size_t count, Workspace<T>* scratch) noexcept
++    {
+         auto* boxes = scratch->mBuildBoxes.data();
+         auto* descriptors = scratch->mDescriptors.data();
+         auto* ranks = scratch->tempRanks(count);
+@@ -2342,9 +2359,19 @@ private:
+         for (auto& entry : range)
+         {
+             auto& box = boxes[i];
+-            auto& descriptor = descriptors[i];
+-            if (!captureBuildEntry<Projected>(entry, accessor, box, descriptor))
+-                return Status::InvalidGeometry;
++            if constexpr (Direct)
++            {
++                if (!detail::normalize(entry.rect, box))
++                    return Status::InvalidGeometry;
++                if (entry.rank) ranks[ranked++] = *entry.rank;
++            }
++            else
++            {
++                auto& descriptor = descriptors[i];
++                if (!captureBuildEntry<Projected>(entry, accessor, box, descriptor))
++                    return Status::InvalidGeometry;
++                if (descriptor.rank) ranks[ranked++] = *descriptor.rank;
++            }
+             if (mConfig.extent == Extent::Fixed)
+             {
+                 if (!detail::contains(*next_extent, box))
+@@ -2352,8 +2379,6 @@ private:
+             }
+             else
+                 next_extent = next_extent ? detail::unite(*next_extent, box) : box;
+-            if (descriptor.rank)
+-                ranks[ranked++] = *descriptor.rank;
+             ++i;
+         }
+         // Independent preparation: no payload moves, topology mutation, or output writes.
+@@ -2409,6 +2434,13 @@ private:
+         {
+             return bulk_order ? bulk_order[dense] : scratch->mKeys[dense].entry;
+         };
++        if constexpr (Direct)
++        {
++            // If a different shape needs growth, capture metadata before invoking
++            // the resource, as in the general path. Nothing is published yet.
++            if (node_count > mNodes.capacity() || Store::rankCapacityFor(ranked) > mEntries.mRankCapacity)
++                return buildCaptured<false, Consume, Projected>(range, accessor, handles, count, scratch);
++        }
+         const Status storage = prepareReplacement(count, ranked, node_count);
+         if (storage != Status::Ok)
+             return storage;
+@@ -2449,20 +2481,34 @@ private:
+                     if (count - i > descriptorAhead)
+                     {
+                         const auto future = spatialEntry(i + descriptorAhead);
+-                        __builtin_prefetch(&boxes[future], 0, 3);
+-                        __builtin_prefetch(&descriptors[future], 0, 3);
+-                        __builtin_prefetch(&descriptors[future].payload, 0, 3);
++                        if constexpr (Direct)
++                            __builtin_prefetch(std::ranges::data(range) + future, 0, 3);
++                        else
++                        {
++                            __builtin_prefetch(&boxes[future], 0, 3);
++                            __builtin_prefetch(&descriptors[future], 0, 3);
++                            __builtin_prefetch(&descriptors[future].payload, 0, 3);
++                        }
+                     }
+-                    if (count - i > payloadAhead)
+-                        __builtin_prefetch(descriptors[spatialEntry(i + payloadAhead)].payload, 0, 3);
++                    if constexpr (!Direct)
++                        if (count - i > payloadAhead)
++                            __builtin_prefetch(descriptors[spatialEntry(i + payloadAhead)].payload, 0, 3);
+                 }
+             }
+ #endif
+             // Spatially sorted dense entries keep snapshot geometry contiguous.
+             const std::uint32_t input = node_count == 0 ? static_cast<std::uint32_t>(i) : spatialEntry(i);
+-            const auto& descriptor = descriptors[input];
+             const auto dense = static_cast<std::uint32_t>(i);
+-            constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
++            const auto& descriptor = [&]() noexcept -> decltype(auto)
++            {
++                if constexpr (Direct) return (std::ranges::data(range)[input]);
++                else return (descriptors[input]);
++            }();
++            if constexpr (Direct)
++                constructBuildEntry<false>(dense, descriptor.rect,
++                    {descriptor.filter, descriptor.rank, std::addressof(descriptor.payload)}, descriptor.rank.has_value());
++            else
++                constructBuildEntry<Consume>(dense, boxes[input], descriptor, descriptor.rank.has_value());
+             ++mEntries.mSize;
+             ++mEntries.mSlotsUsed;
+             if (descriptor.rank)
+@@ -3285,6 +3331,15 @@ private:
+         }
+     }
+ 
++    template<typename Visitor, typename Predicate>
++    void crossItemPairs(const Node& left, const Node& right, Context& context, Visitor& visitor,
++        Predicate& predicate) const noexcept
++    {
++        for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
++            for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
++                testPair<true>(i, j, false, context, visitor, predicate);
++    }
++
+     template<typename Visitor, typename Predicate>
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -3300,9 +3355,19 @@ private:
+             context.filtered();
+             return;
+         }
+-        for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+-            for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+-                testPair<true>(i, j, false, context, visitor, predicate);
++        if constexpr (std::same_as<Predicate, NarrowPairs>)
++        {
++            if (left.linear && right.linear)
++            {
++                for (std::uint32_t i = 0; i < left.ownCount && context.active(); ++i)
++                    for (std::uint32_t j = 0; j < right.ownCount && context.active(); ++j)
++                        testPair<true>(left.head + i, right.head + j, false, context, visitor, predicate);
++            }
++            else
++                crossItemPairs(left, right, context, visitor, predicate);
++        }
++        else
++            crossItemPairs(left, right, context, visitor, predicate);
+         if (right.firstChild != none)
+             for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+                 itemsVsSubtree(a, right.firstChild + q, context, visitor, predicate);
+@@ -3326,9 +3391,23 @@ private:
+             context.filtered();
+             return;
+         }
+-        for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
+-            for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
+-                testPair<true>(a, b, false, context, visitor, predicate);
++        const auto linked = [&]() noexcept
++        {
++            for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
++                for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
++                    testPair<true>(a, b, false, context, visitor, predicate);
++        };
++        if constexpr (std::same_as<Predicate, NarrowPairs>)
++        {
++            if (node.linear)
++            {
++                for (std::uint32_t i = 0; i < node.ownCount && context.active(); ++i)
++                    for (std::uint32_t j = i + 1; j < node.ownCount && context.active(); ++j)
++                        testPair<true>(node.head + i, node.head + j, false, context, visitor, predicate);
++            }
++            else linked();
++        }
++        else linked();
+         if (node.firstChild == none)
+             return;
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)

@@ -1,0 +1,70 @@
+diff --git a/detail/quadtree-index-impl.h b/detail/quadtree-index-impl.h
+index 6a6a197..76d6442 100644
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3285,6 +3285,15 @@ private:
+         }
+     }
+ 
++    template<typename Visitor, typename Predicate>
++    void crossItemPairs(const Node& left, const Node& right, Context& context, Visitor& visitor,
++        Predicate& predicate) const noexcept
++    {
++        for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
++            for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
++                testPair<true>(i, j, false, context, visitor, predicate);
++    }
++
+     template<typename Visitor, typename Predicate>
+     void crossPairs(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -3300,9 +3309,19 @@ private:
+             context.filtered();
+             return;
+         }
+-        for (std::uint32_t i = left.head; i != none && context.active(); i = nextItem(left, i))
+-            for (std::uint32_t j = right.head; j != none && context.active(); j = nextItem(right, j))
+-                testPair<true>(i, j, false, context, visitor, predicate);
++        if constexpr (std::same_as<Predicate, NarrowPairs>)
++        {
++            if (left.linear && right.linear)
++            {
++                for (std::uint32_t i = 0; i < left.ownCount && context.active(); ++i)
++                    for (std::uint32_t j = 0; j < right.ownCount && context.active(); ++j)
++                        testPair<true>(left.head + i, right.head + j, false, context, visitor, predicate);
++            }
++            else
++                crossItemPairs(left, right, context, visitor, predicate);
++        }
++        else
++            crossItemPairs(left, right, context, visitor, predicate);
+         if (right.firstChild != none)
+             for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
+                 itemsVsSubtree(a, right.firstChild + q, context, visitor, predicate);
+@@ -3326,9 +3345,23 @@ private:
+             context.filtered();
+             return;
+         }
+-        for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
+-            for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
+-                testPair<true>(a, b, false, context, visitor, predicate);
++        const auto linked = [&]() noexcept
++        {
++            for (std::uint32_t a = node.head; a != none && context.active(); a = nextItem(node, a))
++                for (std::uint32_t b = nextItem(node, a); b != none && context.active(); b = nextItem(node, b))
++                    testPair<true>(a, b, false, context, visitor, predicate);
++        };
++        if constexpr (std::same_as<Predicate, NarrowPairs>)
++        {
++            if (node.linear)
++            {
++                for (std::uint32_t i = 0; i < node.ownCount && context.active(); ++i)
++                    for (std::uint32_t j = i + 1; j < node.ownCount && context.active(); ++j)
++                        testPair<true>(node.head + i, node.head + j, false, context, visitor, predicate);
++            }
++            else linked();
++        }
++        else linked();
+         if (node.firstChild == none)
+             return;
+         for (std::uint32_t q = 0; q < 4 && context.active(); ++q)
