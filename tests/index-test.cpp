@@ -349,6 +349,47 @@ void randomized(Boundary boundary, QuadTree::Extent extent)
     for (const auto& record : records) CHECK(!tree.valid(record.handle));
 }
 
+// Compare the full-pair fast path to the ordinary predicate traversal at
+// candidate-budget and visitor-stop boundaries, including filtered mutations.
+void int64PairPrefixes()
+{
+    using T = std::int64_t;
+    auto made = Tree<T>::create({.splitThreshold = 3, .mergeThreshold = 1, .smallSetThreshold = 0});
+    REQUIRE(made.ok());
+    auto& tree = made.value();
+    std::vector<QuadTree::BuildEntry<int, T>> entries;
+    for (int i = 0; i < 30; ++i)
+    {
+        const T x = ((i % 6) - 2) * 9, y = (i / 6) * 9;
+        entries.push_back({{x, y, x + 13, y + 13}, int(i), {std::uint64_t(4 | (i & 1)), 6}, std::uint64_t(i)});
+    }
+    std::vector<Tree<T>::HandleType> handles(entries.size());
+    const auto check = [&]()
+    {
+        for (bool ordered : {false, true})
+            for (std::uint64_t limit = 0; limit <= 256; ++limit)
+                for (unsigned stop : {0u, 1u, 8u})
+                {
+                    std::vector<Pair> expected, actual;
+                    const auto visit = [&](auto& dst) { return [&](const auto& a, const auto& b) noexcept
+                    { dst.emplace_back(a.payload, b.payload); return dst.size() == stop ? Stop : Continue; }; };
+                    QuadTree::QueryOptions<T> options{.ordered = ordered, .budget = {.candidateTests = limit}};
+                    const auto a = tree.forEachPair(visit(expected), options, [](const auto&, const auto&) noexcept { return true; });
+                    const auto b = tree.forEachPair(visit(actual), options);
+                    CHECK(a.status == b.status && expected == actual);
+                    CHECK(a.counters.candidateTests == b.counters.candidateTests && a.counters.reports == b.counters.reports);
+                    CHECK(a.counters.nodeVisits == b.counters.nodeVisits && a.counters.filterRejections == b.counters.filterRejections);
+                }
+    };
+    REQUIRE(tree.build(entries, handles) == Status::Ok);
+    check();
+    REQUIRE(tree.setFilter(handles[7], {0, 0}) == Status::Ok);
+    check();
+    REQUIRE(tree.build(entries, handles) == Status::Ok);
+    REQUIRE(tree.insert(entries[7].rect, 30, {0, 0}, 30).ok());
+    check();
+}
+
 // Pair identities on translated snapshots, including low-word wrap, the
 // narrow-span cutoff, large boxes, and growth beyond the narrow span.
 void translatedInt64Snapshots()
@@ -3047,7 +3088,7 @@ int main()
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();
     pairWorkspaceGrowth(); coincidentMotion(); concurrency(); uninstrumented();
     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();
-    translatedInt64Snapshots();
+    translatedInt64Snapshots(); int64PairPrefixes();
     for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
         for (auto extent : {QuadTree::Extent::Fixed, QuadTree::Extent::Adaptive, QuadTree::Extent::Snapshot})
         {
