@@ -1,0 +1,54 @@
+{
+  "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271",
+  "head_sha": "a58cff8f04bae51115335cc333e8e3460f36158a",
+  "status": "completed",
+  "conclusion": "success",
+  "updated_at": "2026-11-25T00:10:40Z",
+  "jobs": [
+    {
+      "name": "Clang/libstdc++ / Debug",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874575997"
+    },
+    {
+      "name": "Clang/libc++ / Debug",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576354"
+    },
+    {
+      "name": "GCC/libstdc++ / Debug",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576432"
+    },
+    {
+      "name": "Clang/libstdc++ / Release",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576494"
+    },
+    {
+      "name": "stl-debug / Debug",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576528"
+    },
+    {
+      "name": "tsan / Debug",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576536"
+    },
+    {
+      "name": "GCC/libstdc++ / Release",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576564"
+    },
+    {
+      "name": "asan-ubsan / Debug",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576653"
+    },
+    {
+      "name": "Clang/libc++ / Release",
+      "conclusion": "success",
+      "html_url": "https://github.com/red-9m/quadtree/actions/runs/45515742271/job/138874576699"
+    }
+  ]
+}
