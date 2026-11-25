@@ -1,0 +1,7 @@
+# Candidate validation rule (before measurement)
+
+Candidate `a58cff8f04bae51115335cc333e8e3460f36158a`, validation branch only. Rebuild from `git archive` in Release with pinned Box2D, run CTest and hosted portability. Use the staged `7cfbebe` run protocol (CPU 6, performance profile/EPP, quiet starts <=40 C, power restoration, unchanged fixtures, round and cap settings). Run full int32 and int64 snapshot and 64-step persistent matrices. Publish samples, gates, environment, source and text hash. The local screen is not part of the verdict.
+
+For each inconclusive hard snapshot row in the five-round matrix, run exactly two fresh 45-round processes selected by scene and size; pool the ratios and interval half-widths by the staged rule. Decide only the originally inconclusive rows from these processes. A clear matrix pass or fail stands. Use only the published int32 exceptions and caps. No retry for a clear failure; inconclusive is not a pass. Invalid/missing evidence blocks, never passes.
+
+Require the int64 G2 uniform n=100000 upper bound <=2.00, all previously passing int64 hard rows to pass (reference: packed-staged-2026-11-23 final status), int32 release acceptance unchanged, clean correctness/allocation checks, and hosted CI. Existing int64 G1 gaps are not new exceptions. Record other known int64 speed gaps separately. No automatic merge or release of a coordinate type. If the target or another required gate decisively blocks, hold promotion; other measurements may still be completed for diagnosis.
