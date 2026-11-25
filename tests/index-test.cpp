@@ -364,7 +364,9 @@ void int64PairPrefixes()
         entries.push_back({{x, y, x + 13, y + 13}, int(i), {std::uint64_t(4 | (i & 1)), 6}, std::uint64_t(i)});
     }
     std::vector<Tree<T>::HandleType> handles(entries.size());
-    const auto check = [&]()
+    QuadTree::Workspace<T> scratch;
+    REQUIRE(scratch.reserve(entries.size() + 1) == Status::Ok);
+    const auto check = [&](bool limitNodes = false)
     {
         for (bool ordered : {false, true})
             for (std::uint64_t limit = 0; limit <= 256; ++limit)
@@ -373,7 +375,9 @@ void int64PairPrefixes()
                     std::vector<Pair> expected, actual;
                     const auto visit = [&](auto& dst) { return [&](const auto& a, const auto& b) noexcept
                     { dst.emplace_back(a.payload, b.payload); return dst.size() == stop ? Stop : Continue; }; };
-                    QuadTree::QueryOptions<T> options{.ordered = ordered, .budget = {.candidateTests = limit}};
+                    QuadTree::QueryOptions<T> options{.ordered = ordered, .workspace = &scratch};
+                    if (limitNodes) options.budget.nodeVisits = limit;
+                    else options.budget.candidateTests = limit;
                     const auto a = tree.forEachPair(visit(expected), options, [](const auto&, const auto&) noexcept { return true; });
                     const auto b = tree.forEachPair(visit(actual), options);
                     CHECK(a.status == b.status && expected == actual);
@@ -383,11 +387,43 @@ void int64PairPrefixes()
     };
     REQUIRE(tree.build(entries, handles) == Status::Ok);
     check();
+    check(true);
     REQUIRE(tree.setFilter(handles[7], {0, 0}) == Status::Ok);
     check();
     REQUIRE(tree.build(entries, handles) == Status::Ok);
     REQUIRE(tree.insert(entries[7].rect, 30, {0, 0}, 30).ok());
     check();
+}
+
+// Long ordered rows span both bitmap levels; sparse points between the long
+// rows must not inherit any of their marks. Full-width ranks are not ordinals.
+void int64LongRows()
+{
+    using T = std::int64_t;
+    auto made = Tree<T>::create({});
+    REQUIRE(made.ok());
+    auto& tree = made.value();
+    std::vector<QuadTree::BuildEntry<int, T>> input;
+    for (int i = 0; i < 4200; ++i)
+    {
+        const T x = i % 100, y = i / 100;
+        const Box<T> box = i % 131 == 0 ? Box<T>{0, y, 100, 50} : Box<T>{x, y, x, y};
+        input.push_back({box, int(i), {}, std::uint64_t(i) * UINT64_C(0x9e3779b97f4a7c15)});
+    }
+    QuadTree::Workspace<T> scratch;
+    REQUIRE(scratch.reserve(input.size()) == Status::Ok);
+    REQUIRE(tree.build(input, {.workspace = &scratch}) == Status::Ok);
+    for (unsigned stop : {0u, 128u, 5000u})
+    {
+        std::vector<Pair> a, b;
+        const auto visit = [&](auto& dst) { return [&](const auto& x, const auto& y) noexcept
+        { dst.emplace_back(x.payload, y.payload); return dst.size() == stop ? Stop : Continue; }; };
+        QuadTree::QueryOptions<T> opts{.ordered = true, .workspace = &scratch};
+        const auto ref = tree.forEachPair(visit(a), opts, [](const auto&, const auto&) noexcept { return true; });
+        const auto got = tree.forEachPair(visit(b), opts);
+        CHECK(ref.status == got.status && a == b);
+        CHECK(ref.counters.candidateTests == got.counters.candidateTests && ref.counters.nodeVisits == got.counters.nodeVisits);
+    }
 }
 
 // Pair identities on translated snapshots, including low-word wrap, the
@@ -3088,7 +3124,7 @@ int main()
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();
     pairWorkspaceGrowth(); coincidentMotion(); concurrency(); uninstrumented();
     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();
-    translatedInt64Snapshots(); int64PairPrefixes();
+    translatedInt64Snapshots(); int64PairPrefixes(); int64LongRows();
     for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
         for (auto extent : {QuadTree::Extent::Fixed, QuadTree::Extent::Adaptive, QuadTree::Extent::Snapshot})
         {
