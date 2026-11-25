@@ -1,0 +1,3 @@
+stage,start,finish,start_tctl_millidegrees,finish_tctl_millidegrees,exit
+int64-snapshot,2026-11-25T21:28:36+02:00,2026-11-25T21:30:50+02:00,39875,69625,0
+int32-snapshot,2026-11-25T21:31:17+02:00,2026-11-25T21:33:28+02:00,39375,69625,0
