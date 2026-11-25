@@ -1,0 +1,19 @@
+# date: 2026-11-24T23:58:51Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293769 GHz, 7.9 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --engines=index,index-ordered,brute,sweep,grid --types=int32 --rounds=45 --scenes=clustered --sizes= --small-sizes=1 --csv=bench/results/int64-uniform-rebase/final/int32-followup/G1-1.csv --raw=bench/results/int64-uniform-rebase/final/int32-followup/G1-1.raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+clustered                                int32        1  1024 brute               0.006     2.1     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                int32        1  1024 sweep               0.009     2.0     1.35 [1.33-1.38]             0           0     0.00         0 ok
+clustered                                int32        1  1024 grid                0.038     2.0     5.93 [5.81-6.06]             0           0     0.00         0 ok
+clustered                                int32        1  1024 index               0.019     2.3     2.97 [2.89-3.04]             0           0     0.00         0 ok
+clustered                                int32        1  1024 index-ordered        0.028     2.4     4.33 [4.23-4.43]             0           0     0.00         0 ok

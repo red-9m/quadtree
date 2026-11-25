@@ -1,0 +1,11 @@
+6a7fe810e3a9b5eac5bafbd96dc5f24437cc73db
+Linux r9 7.3.0-1-custom #1 SMP PREEMPT_DYNAMIC Mon, 19 Oct 2026 00:11:47 +0000 x86_64 GNU/Linux
+c++ (GCC) 16.2.1 20260810
+Copyright (C) 2026 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+/sys/devices/system/cpu/cpu6/cpufreq/scaling_governor:powersave
+/sys/devices/system/cpu/cpu6/cpufreq/energy_performance_preference:power
+/sys/devices/system/cpu/cpu6/cpufreq/boost:1
+Model name:                              AMD Ryzen 9 5900HS with Radeon Graphics

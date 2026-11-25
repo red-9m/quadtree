@@ -1,0 +1,19 @@
+# date: 2026-11-24T23:58:51Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293769 GHz, 7.9 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --engines=index,index-ordered,brute,sweep,grid --types=int32 --rounds=45 --scenes=clustered --sizes= --small-sizes=1 --csv=bench/results/int64-uniform-rebase/final/int32-followup/G1-1.csv --raw=bench/results/int64-uniform-rebase/final/int32-followup/G1-1.raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+model,scene,boundary,type,n,batch,workload,mode,engine,status,rounds,reps,estimate_ns,err_ns,round_err_ns,vs_best,vs_best_lo,vs_best_hi,median_ns,p95_ns,min_ns,prepare_median_ns,pairs_median_ns,init_ns,candidates,node_visits,cell_tests,references,max_refs,pairs,checksum,allocs_per_step,cold_allocs,peak_bytes,retained_bytes,scene_hash
+snapshot,clustered,default,int32,1,1024,-,full,brute,ok,45,990,6.5,0.1,0.0,1.0000,1.0000,1.0000,6,6,6,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,2,17,17,d273bdde68b374ba
+snapshot,clustered,default,int32,1,1024,-,full,sweep,ok,45,990,8.7,0.2,0.0,1.3530,1.3250,1.3816,8,8,8,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,4,29,29,d273bdde68b374ba
+snapshot,clustered,default,int32,1,1024,-,full,grid,ok,45,990,38.3,0.8,0.1,5.9325,5.8101,6.0576,38,39,37,-1,-1,-1.0,0,0,0,1024,0,0,ddd4e928c0d0b7dd,0.000,6,61,61,d273bdde68b374ba
+snapshot,clustered,default,int32,1,1024,-,full,index,ok,45,990,19.1,0.4,0.2,2.9654,2.8941,3.0386,18,20,18,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,9,220,220,d273bdde68b374ba
+snapshot,clustered,default,int32,1,1024,-,full,index-ordered,ok,45,990,28.0,0.7,0.4,4.3294,4.2275,4.4338,28,30,26,-1,-1,-1.0,0,0,0,1024,1,0,ddd4e928c0d0b7dd,0.000,14,361,361,d273bdde68b374ba

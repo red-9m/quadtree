@@ -1,0 +1,90 @@
+diff --git a/detail/quadtree-index-impl.h b/detail/quadtree-index-impl.h
+index cf9c7f0..6a6a197 100644
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -785,6 +785,10 @@ class Index
+     using Key = detail::SpatialKey;
+     static constexpr std::uint32_t none = detail::kNone;
+ 
++    // Internal dispatch tag: both axis spans fit in INT32_MAX. All endpoint
++    // differences therefore fit in a signed lane, irrespective of origin.
++    struct NarrowPairs : detail::AcceptAll {};
++
+     struct Reference
+     {
+         std::uint32_t node = none;
+@@ -1218,10 +1222,10 @@ public:
+             if (prepared != Status::Ok)
+                 return {prepared, {}};
+             typename Workspace<T>::Use use(*scratch);
+-            orderedSelf(*scratch, false, context, visitor, predicate);
++            withPairKernel(predicate, [&](auto& kernel) noexcept { orderedSelf(*scratch, false, context, visitor, kernel); });
+         }
+         else if (mRoot != none)
+-            selfPairs(mRoot, context, visitor, predicate);
++            withPairKernel(predicate, [&](auto& kernel) noexcept { selfPairs(mRoot, context, visitor, kernel); });
+         else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+             tinyPairs(context, visitor, predicate);
+         else
+@@ -2925,6 +2929,50 @@ private:
+         return detail::overlaps(a, b, boundary);
+     }
+ 
++    template<typename Predicate, typename Run>
++    void withPairKernel(Predicate& predicate, Run run) const noexcept
++    {
++#if defined(__SSE2__)
++        if constexpr (std::same_as<T, std::int64_t> && std::same_as<Predicate, detail::AcceptAll>)
++        {
++            if (mRoot != none)
++            {
++                const auto& e = mNodes[mRoot].bounds;
++                constexpr auto limit = std::numeric_limits<std::int32_t>::max();
++                if (detail::span(e.minX, e.maxX) <= limit && detail::span(e.minY, e.maxY) <= limit)
++                {
++                    NarrowPairs narrow;
++                    return run(narrow);
++                }
++            }
++        }
++#endif
++        run(predicate);
++    }
++
++#if defined(__SSE2__)
++    static bool narrowOverlap(const Box<T>& a, const Box<T>& b, Boundary boundary) noexcept
++        requires std::same_as<T, std::int64_t>
++    {
++        // Subtract low words modulo 2^32. Each difference is the exact signed
++        // gap because withPairKernel checked the joint span before traversal.
++        const auto pack = [](const Box<T>& box) noexcept
++        {
++            __m128 lo, hi;
++            std::memcpy(&lo, &box.minX, sizeof(lo));
++            std::memcpy(&hi, &box.maxX, sizeof(hi));
++            return _mm_castps_si128(_mm_shuffle_ps(lo, hi, _MM_SHUFFLE(2, 0, 2, 0)));
++        };
++        const auto x = pack(a), y = pack(b);
++        const auto gap = _mm_sub_epi32(_mm_unpackhi_epi64(y, x), _mm_unpacklo_epi64(x, y));
++        if (_mm_movemask_ps(_mm_castsi128_ps(gap)) != 0)
++            return false;
++        return _mm_movemask_epi8(_mm_cmpeq_epi32(gap, _mm_setzero_si128())) == 0 ||
++            boundary == Boundary::TouchInclusive || a.minX == a.maxX || a.minY == a.maxY ||
++            b.minX == b.maxX || b.minY == b.maxY;
++    }
++#endif
++
+     template<bool PackedCross = false, typename Predicate>
+     bool pairQualifies(std::uint32_t a, std::uint32_t b, bool ordered, Context& context, Predicate& predicate) const noexcept
+     {
+@@ -2933,6 +2981,10 @@ private:
+             context.filtered();
+             return false;
+         }
++#if defined(__SSE2__)
++        if constexpr (std::same_as<Predicate, NarrowPairs>)
++            return context.candidate() && narrowOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary);
++#endif
+         if (!context.candidate() || !(PackedCross && std::same_as<Predicate, detail::AcceptAll> ?
+             packedCrossItemOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary) :
+             detail::overlaps(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary)))

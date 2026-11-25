@@ -1,0 +1,7 @@
+# Task 09 targeted screen
+
+Control: `6a7fe81`, Release, CPU 6. Per binary, run two independent 45-round processes (`--model=snapshot --types=int64 --scenes=uniform --sizes=100000 --small-sizes= --engines=index,index-ordered,brute,sweep,grid`). Keep raw and summary CSVs. Pool each process's G2 gate ratio and log half-width as in `../packed-staged-2026-11-23/resolve.py`: mean log ratio, quadrature sum of log half-widths divided by two. Pass only if upper bound <=2; fail if lower bound >2; otherwise inconclusive. No reruns to select a favorable interval. If control passes, stop; otherwise screen a candidate. A row pass is not acceptance. Do not promote without broader recheck.
+
+Follow-up after the unordered-only and combined screens: test the cheaper pair-only kernel in both ordered and unordered traversal. Same two-process target rule, plus one default 5-round snapshot matrix per type (`int64`, `int32`) over all five representative scenes as a regression screen. Report all verdicts; no exceptions added and no claim of release acceptance.
+
+Before the int32 follow-up: the five-round matrix does not resolve the existing 3.5× G1 exception cap for clustered n=1 or the 4× G9 gate for mixed-size n=100000. Run exactly two fresh 45-round processes per row, same engines, and use the same log pooling on that row's G1 or G9 ratio. Keep the original matrix verdicts. Compare upper bounds against 3.5 (exception only, not a G1 pass) and 4, respectively. No additional retries.

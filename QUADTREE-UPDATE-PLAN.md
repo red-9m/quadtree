@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**Next: none open.** The `int32` release is [accepted](docs/plan/08-final-acceptance-result.md) and holds on head `7cfbebe` (CI #10 9/9). [Task 09](docs/plan/09-other-coordinate-types-result.md) is closed as is again (owner, 2026-11-23): `int64`/`float`/`double` are functionally supported, not performance-accepted, with published gaps. Further work needs an explicit request: reopen 09, MSVC portability, or the legacy safety patch. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**Next: review the Task 09 release-protocol decision before promotion.** The [local-screen winner](bench/results/int64-uniform-rebase/README.md) is frozen as `a58cff8`. [Validation, run status and handoff](bench/results/int64-narrow-acceptance/README.md). The published `int32` release remains [accepted on `7cfbebe`](docs/plan/08-final-acceptance-result.md); `int64`/`float`/`double` remain functionally supported, not performance-accepted. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -29,17 +29,16 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 | [06 · Portability CI](docs/plan/06-portability-result.md) | Done; all nine hosted Linux jobs passed on `57d30dc` and on release candidate `a72bc80`. MSVC deferred. | [Hosted runs and local evidence](docs/plan/06-portability-result.md) · [Workflow](.github/workflows/portability.yml) |
 | [07 · Release docs and example](docs/plan/07-release-docs.md) | Done; runtime quick start and exact cross-pair example verified | [Example and link verification](docs/plan/07-release-docs-result.md) |
 | [08 · Final acceptance](docs/plan/08-final-acceptance.md) | **Done for `int32`** (release scope) on `a72bc80`, rechecked on [`df2cfeb`](bench/results/int64-staged-2026-11-21/README.md#int32-on-df2cfeb), [`d52dbe1`](bench/results/float-staged-2026-11-21/README.md#results) and head [`7cfbebe`](bench/results/packed-staged-2026-11-23/README.md#results) (every hard gate, no G2 exception row needed). | [Sign-off](docs/plan/08-final-acceptance-result.md) · [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md) |
-| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Closed as is again** (owner, 2026-11-23) on `7cfbebe`; first closed on `d52dbe1`, reopened 2026-11-22. Staged: `df2cfeb`, `d52dbe1`, `7cfbebe`. `int64`/`float`/`double` are functionally supported, not performance-accepted. Open speed rows, all within about 8% of limits: G2 `float` 0 fail / 1 unresolved, `double` 1 / 4, `int64` 2 / 3; `float` G9 1 unresolved; G1 0–4 entries outside any exception. | [Result and published gaps](docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe) · [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md) · [Packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) |
+| [09 · Other coordinate types](docs/plan/09-other-coordinate-types.md) | **Reopened for the `int64` uniform 10⁵ candidate** ([release-protocol validation](bench/results/int64-narrow-acceptance/README.md), no promotion). Previously closed as is (owner, 2026-11-23) on `7cfbebe`; first closed on `d52dbe1`, reopened 2026-11-22. Staged: `df2cfeb`, `d52dbe1`, `7cfbebe`. `int64`/`float`/`double` are functionally supported, not performance-accepted. Open speed rows, all within about 8% of limits: G2 `float` 0 fail / 1 unresolved, `double` 1 / 4, `int64` 2 / 3; `float` G9 1 unresolved; G1 0–4 entries outside any exception. | [Result and published gaps](docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe) · [`7cfbebe` recheck](bench/results/packed-staged-2026-11-23/README.md) · [Packed-pairs candidate](bench/results/packed-pairs-2026-11-22/README.md) |
 | [Legacy safety patch](docs/plan/legacy-safety.md) | Only when asked about shipping or fixing the legacy API | [Old header](quadtree.h), not the runtime implementation |
 
 **Archive lookup only:** use the [original plan](docs/plan/archive/QUADTREE-UPDATE-PLAN.md) if a brief cites a requirement or a contract is unclear. Search its stable ID (for example, `rg -n 'QT-FR-13' docs/plan/archive/QUADTREE-UPDATE-PLAN.md`) and read the defining paragraph. §11 is historical sequencing, not current status; §13 is out of scope. Leave the archive unchanged.
 
 ## Session handoff
 
-### Fresh session: no open task
+### Fresh session: Task 09 candidate validation
 
-Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`, head after `7cfbebe`. Every task in the table is done, closed with evidence, or deferred. Do not start benchmark or runtime work without an explicit request. Candidates:
-- **Reopen 09:** start from [the 09 result](docs/plan/09-other-coordinate-types-result.md#reopening): ranked options (`int64` rebased snapshot path, `double` float prefilter, confirming the `int64` 10² fail) and rejected attempts. Pre-specify each run's resolution rule, keep frozen limits, and recheck the `int32` acceptance after any change.
+Work in `/home/dima/src/quadtree.git`, branch `validate/int64-narrow-pairs`. Start from [the validation handoff](bench/results/int64-narrow-acceptance/README.md); do not restart an active run. `~/.cache/quadtree-release-i64.current` points to the clean archive build and run log. No `int64` G1 exception has been granted. Other work remains out of scope:
 - **MSVC:** deferred in [06](docs/plan/06-portability-result.md).
 - **Legacy API:** [safety patch](docs/plan/legacy-safety.md), only if asked.
 

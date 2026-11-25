@@ -1,0 +1,179 @@
+diff --git a/detail/quadtree-index-impl.h b/detail/quadtree-index-impl.h
+index cf9c7f0..15256f3 100644
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -785,6 +785,10 @@ class Index
+     using Key = detail::SpatialKey;
+     static constexpr std::uint32_t none = detail::kNone;
+ 
++    // Internal dispatch tag: both axis spans fit in INT32_MAX. All endpoint
++    // differences therefore fit in a signed lane, irrespective of origin.
++    struct NarrowPairs : detail::AcceptAll {};
++
+     struct Reference
+     {
+         std::uint32_t node = none;
+@@ -1221,7 +1225,22 @@ public:
+             orderedSelf(*scratch, false, context, visitor, predicate);
+         }
+         else if (mRoot != none)
++        {
++#if defined(__SSE2__)
++            if constexpr (std::same_as<T, std::int64_t> && std::same_as<Predicate, detail::AcceptAll>)
++            {
++                const auto& e = mNodes[mRoot].bounds;
++                constexpr auto limit = std::numeric_limits<std::int32_t>::max();
++                if (detail::span(e.minX, e.maxX) <= limit && detail::span(e.minY, e.maxY) <= limit)
++                {
++                    NarrowPairs narrow;
++                    selfPairs(mRoot, context, visitor, narrow);
++                    return context.result;
++                }
++            }
++#endif
+             selfPairs(mRoot, context, visitor, predicate);
++        }
+         else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
+             tinyPairs(context, visitor, predicate);
+         else
+@@ -1641,11 +1660,17 @@ private:
+     // integers use exact unsigned halving, floats evaluate Split::fits/quadrant per entry.
+     // NearMid: every coordinate lies within +-max/2, so std::midpoint is (lo + hi) / 2 (its
+     // overflow-free branch in libstdc++ and libc++). Integers ignore it.
+-    template<bool NearMid = false>
++    struct NarrowPlacement
++    {
++        std::uint32_t x, y; // Low words of the exact midpoint, modulo 2^32.
++        std::uint16_t width, height;
++    };
++
++    template<bool NearMid = false, typename Compact = std::nullptr_t>
+     bool planBulk(const Cell& cell, std::uint32_t depth, std::uint32_t begin, std::uint32_t end,
+         const Box<T>* boxes, std::uint32_t* src, std::uint32_t* dst, std::uint32_t* order,
+         Key* keys, std::uint8_t* tags,
+-        std::size_t planCapacity, std::size_t& plans, bool& overflow) const noexcept
++        std::size_t planCapacity, std::size_t& plans, bool& overflow, Compact compact = nullptr) const noexcept
+     {
+         const auto finish = [&]() noexcept
+         {
+@@ -1672,8 +1697,24 @@ private:
+ #if defined(__GNUC__) || defined(__clang__)
+                 constexpr std::uint32_t ahead = 16;
+                 if (end - i > ahead)
+-                    __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
++                {
++                    if constexpr (std::same_as<Compact, std::nullptr_t>)
++                        __builtin_prefetch(&boxes[src[i + ahead]], 0, 3);
++                    else
++                        __builtin_prefetch(&compact[src[i + ahead]], 0, 3);
++                }
+ #endif
++                if constexpr (!std::same_as<Compact, std::nullptr_t>)
++                {
++                    const auto& p = compact[src[i]];
++                    const bool right = split.splitX && std::int32_t(p.x - std::uint32_t(split.x)) >= 0;
++                    const bool upper = split.splitY && std::int32_t(p.y - std::uint32_t(split.y)) >= 0;
++                    const unsigned b = p.width <= fits_width && p.height <= fits_height ?
++                        1u + unsigned(right) + 2u * unsigned(upper) : 0u;
++                    tags[i] = static_cast<std::uint8_t>(b);
++                    ++bins[b];
++                    continue;
++                }
+                 const auto& box = boxes[src[i]];
+                 const auto width = detail::span(box.minX, box.maxX);
+                 const auto height = detail::span(box.minY, box.maxY);
+@@ -1762,7 +1803,7 @@ private:
+         for (std::uint32_t q = 0; q < 4; ++q)
+         {
+             if (planBulk<NearMid>(split.child(cell, q), depth + 1, edges[q], edges[q + 1], boxes,
+-                dst, src, order, keys, tags, planCapacity, plans, overflow))
++                dst, src, order, keys, tags, planCapacity, plans, overflow, compact))
+                 children |= 1u << q;
+             if (overflow)
+                 return false;
+@@ -2367,10 +2408,10 @@ private:
+                 const auto nodeLimit = (mConfig.maxNodes - 1) / 4;
+                 std::size_t plans = 0;
+                 bool overflow = false;
+-                const auto plan = [&](auto nearMid) noexcept
++                const auto plan = [&]<typename Mid, typename Compact = std::nullptr_t>(Mid nearMid, Compact compact = nullptr) noexcept
+                 {
+                     planBulk<decltype(nearMid)::value>(cell, 0, 0, static_cast<std::uint32_t>(count), boxes, order,
+-                        order + count, order, scratch->mKeys.data(), tags, std::min(count, nodeLimit), plans, overflow);
++                        order + count, order, scratch->mKeys.data(), tags, std::min(count, nodeLimit), plans, overflow, compact);
+                 };
+                 if constexpr (FloatCoordinate<T>)
+                 {
+@@ -2381,6 +2422,30 @@ private:
+                     else
+                         plan(std::false_type{});
+                 }
++                else if constexpr (std::same_as<T, std::int64_t>)
++                {
++                    constexpr auto limit = std::numeric_limits<std::int32_t>::max();
++                    const auto& e = cell.box;
++                    bool narrow = detail::span(e.minX, e.maxX) <= limit && detail::span(e.minY, e.maxY) <= limit;
++                    NarrowPlacement* compact = nullptr;
++                    if (narrow)
++                    {
++                        // First 9 bytes/entry are the permutation and tags. The
++                        // aligned second half of the existing scratch holds placement.
++                        static_assert(sizeof(Key) >= 24 && sizeof(NarrowPlacement) == 12);
++                        compact = ::new (scratch->mTemp.data() + count * 12) NarrowPlacement[count];
++                        for (std::size_t j = 0; j < count; ++j)
++                        {
++                            const auto& box = boxes[j];
++                            const auto w = detail::span(box.minX, box.maxX), h = detail::span(box.minY, box.maxY);
++                            if (w > UINT16_MAX || h > UINT16_MAX) { narrow = false; break; }
++                            compact[j] = {std::uint32_t(box.minX) + std::uint32_t(w / 2),
++                                std::uint32_t(box.minY) + std::uint32_t(h / 2), std::uint16_t(w), std::uint16_t(h)};
++                        }
++                    }
++                    if (narrow) plan(std::false_type{}, compact);
++                    else plan(std::false_type{});
++                }
+                 else
+                     plan(std::false_type{});
+                 if (overflow && plans == nodeLimit)
+@@ -2925,6 +2990,29 @@ private:
+         return detail::overlaps(a, b, boundary);
+     }
+ 
++#if defined(__SSE2__)
++    static bool narrowOverlap(const Box<T>& a, const Box<T>& b, Boundary boundary) noexcept
++        requires std::same_as<T, std::int64_t>
++    {
++        // Subtract low words modulo 2^32. Each difference is the exact signed
++        // gap because forEachPair checked the joint span before traversal.
++        const auto pack = [](const Box<T>& box) noexcept
++        {
++            __m128 lo, hi;
++            std::memcpy(&lo, &box.minX, sizeof(lo));
++            std::memcpy(&hi, &box.maxX, sizeof(hi));
++            return _mm_castps_si128(_mm_shuffle_ps(lo, hi, _MM_SHUFFLE(2, 0, 2, 0)));
++        };
++        const auto x = pack(a), y = pack(b);
++        const auto gap = _mm_sub_epi32(_mm_unpackhi_epi64(y, x), _mm_unpacklo_epi64(x, y));
++        if (_mm_movemask_ps(_mm_castsi128_ps(gap)) != 0)
++            return false;
++        return _mm_movemask_epi8(_mm_cmpeq_epi32(gap, _mm_setzero_si128())) == 0 ||
++            boundary == Boundary::TouchInclusive || a.minX == a.maxX || a.minY == a.maxY ||
++            b.minX == b.maxX || b.minY == b.maxY;
++    }
++#endif
++
+     template<bool PackedCross = false, typename Predicate>
+     bool pairQualifies(std::uint32_t a, std::uint32_t b, bool ordered, Context& context, Predicate& predicate) const noexcept
+     {
+@@ -2933,6 +3021,11 @@ private:
+             context.filtered();
+             return false;
+         }
++#if defined(__SSE2__)
++        if constexpr (std::same_as<Predicate, NarrowPairs>)
++            return context.candidate() && narrowOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary);
++        else
++#endif
+         if (!context.candidate() || !(PackedCross && std::same_as<Predicate, detail::AcceptAll> ?
+             packedCrossItemOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary) :
+             detail::overlaps(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary)))

@@ -1,0 +1,19 @@
+# date: 2026-11-24T23:56:04Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293770 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --engines=index,index-ordered,brute,sweep,grid --types=int64 --scenes=uniform --sizes=100000 --small-sizes= --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/int64-uniform-rebase/final/1.csv --raw=/home/dima/src/quadtree.git/bench/results/int64-uniform-rebase/final/1.raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+model,scene,boundary,type,n,batch,workload,mode,engine,status,rounds,reps,estimate_ns,err_ns,round_err_ns,vs_best,vs_best_lo,vs_best_hi,median_ns,p95_ns,min_ns,prepare_median_ns,pairs_median_ns,init_ns,candidates,node_visits,cell_tests,references,max_refs,pairs,checksum,allocs_per_step,cold_allocs,peak_bytes,retained_bytes,scene_hash
+snapshot,uniform,default,int64,100000,1,-,full,brute,capped,0,0,-1.0,-1.0,-1.0,-1.0000,-1.0000,-1.0000,-1,-1,-1,-1,-1,-1.0,200056769,0,0,0,0,2925,1bee0dfab7a52a3f,0.000,2,3300000,3300000,e077e5c6bd810b22
+snapshot,uniform,default,int64,100000,1,-,full,sweep,ok,45,90,47039620.0,941615.1,39352.3,7.0896,6.9414,7.2410,46987011,47464162,46716320,5978696,41050614,-1.0,20226787,0,0,0,0,73905,47126aad363c014b,0.000,4,5300000,5300000,e077e5c6bd810b22
+snapshot,uniform,default,int64,100000,1,-,full,grid,ok,45,135,6636723.2,140416.9,45809.0,1.0000,1.0000,1.0000,6611631,7354163,6422755,2668838,3931040,-1.0,310440,0,0,224643,0,73905,47126aad363c014b,0.000,6,6830836,6830836,e077e5c6bd810b22
+snapshot,uniform,default,int64,100000,1,-,full,index,ok,45,135,12919606.5,262658.6,47149.0,1.9470,1.9058,1.9892,12915090,13691697,12640081,6609196,6299922,-1.0,788738,426273,0,100000,1,73905,47126aad363c014b,0.000,11,33447400,33447400,e077e5c6bd810b22
+snapshot,uniform,default,int64,100000,1,-,full,index-ordered,ok,45,112,44607190.9,943616.8,307395.5,6.7213,6.5744,6.8714,44481431,46063678,42384332,12447167,31878680,-1.0,383603,3405732,0,100000,1,73905,47126aad363c014b,0.000,16,38941704,38941704,e077e5c6bd810b22
