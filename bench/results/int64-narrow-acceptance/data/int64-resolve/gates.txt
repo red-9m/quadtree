@@ -1,0 +1,20 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot int64 clustered n=0 vs brute force (brute)                                     2.120 [2.048-2.195]     <= 2 FAIL
+G1   hard snapshot int64 uniform n=0 vs brute force (brute)                                       2.120 [2.048-2.195]     <= 2 FAIL
+G2   hard snapshot int64 clustered n=100000 vs best baseline (grid)                               1.370 [1.331-1.411]     <= 2 pass
+G2   hard snapshot int64 split-line n=100000 vs best baseline (grid)                              1.785 [1.735-1.836]     <= 2 pass
+G2   hard snapshot int64 uniform n=100000 vs best baseline (grid)                                 1.988 [1.932-2.046]     <= 2 inconclusive
+G6   hard snapshot int64 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int64 split-line n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot int64 clustered n=100000 vs unordered (index)                                  3.154 [3.061-3.251]     <= 4 pass
+G9   hard snapshot int64 split-line n=100000 vs unordered (index)                                 3.679 [3.576-3.785]     <= 4 pass
+G9   hard snapshot int64 uniform n=100000 vs unordered (index)                                    3.426 [3.330-3.525]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard      0     2     0
+  G2 hard      2     0     1
+  G6 hard      5     0     0
+  G9 hard      3     0     0
+gates: FAIL (candidates: snapshot index, persistent index, ordered index-ordered vs index)

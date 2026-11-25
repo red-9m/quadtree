@@ -1,0 +1,39 @@
+# date: 2026-11-25T00:15:45Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293767 GHz, 7.9 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int64 --engines=index,index-ordered,brute,sweep,grid --scenes=clustered,split-line,uniform --sizes=100000 --small-sizes=0 --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/int64-narrow-acceptance/data/int64-resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/int64-narrow-acceptance/data/int64-resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int64        0  1024 brute               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  int64        0  1024 sweep               0.005     2.0     1.09 [1.06-1.11]             0           0     0.00         0 ok
+uniform                                  int64        0  1024 grid                0.008     2.0     1.61 [1.58-1.64]             0           0     0.00         0 ok
+uniform                                  int64        0  1024 index               0.011     3.2     2.12 [2.06-2.19]             0           0     0.00         0 ok
+uniform                                  int64        0  1024 index-ordered        0.011     3.6     2.15 [2.08-2.23]             0           0     0.00         0 ok
+uniform                                  int64   100000     1 brute                   -       -                    -     200056769        2925     0.00      3222 capped
+uniform                                  int64   100000     1 sweep           46615.131     2.0     7.25 [7.10-7.40]      20226787       73905     0.00      5175 ok
+uniform                                  int64   100000     1 grid             6430.630     2.0     1.00 [1.00-1.00]        310440       73905     0.00      6670 ok
+uniform                                  int64   100000     1 index           12785.887     2.0     1.99 [1.95-2.03]        788738       73905     0.00     32663 ok
+uniform                                  int64   100000     1 index-ordered    43801.620     2.0     6.81 [6.67-6.95]        383603       73905     0.00     38029 ok
+clustered                                int64        0  1024 brute               0.005     2.0     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                int64        0  1024 sweep               0.005     2.0     1.09 [1.06-1.11]             0           0     0.00         0 ok
+clustered                                int64        0  1024 grid                0.008     2.0     1.61 [1.57-1.64]             0           0     0.00         0 ok
+clustered                                int64        0  1024 index               0.011     3.2     2.13 [2.06-2.20]             0           0     0.00         0 ok
+clustered                                int64        0  1024 index-ordered        0.011     3.6     2.15 [2.08-2.23]             0           0     0.00         0 ok
+clustered                                int64   100000     1 brute                   -       -                    -     200056769       13784     0.00      3222 capped
+clustered                                int64   100000     1 sweep           50453.587     2.0     3.55 [3.48-3.62]      21181030      337133     0.00      5175 ok
+clustered                                int64   100000     1 grid            14212.224     2.1     1.00 [1.00-1.00]       1232900      337133     0.00      6670 ok
+clustered                                int64   100000     1 index           19472.675     2.0     1.37 [1.34-1.40]       2082027      337133     0.00     32246 ok
+clustered                                int64   100000     1 index-ordered    61426.513     2.2     4.32 [4.23-4.41]       1118427      337133     0.00     37611 ok
+split-line                               int64   100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line                               int64   100000     1 sweep           61442.693     2.0     8.19 [8.03-8.36]      28769913      105137     0.00      5175 ok
+split-line                               int64   100000     1 grid             7502.959     2.0     1.00 [1.00-1.00]        329471      105137     0.00     11807 ok
+split-line                               int64   100000     1 index           13392.707     2.0     1.79 [1.75-1.82]        681627      105137     0.00     33377 ok
+split-line                               int64   100000     1 index-ordered    49266.865     2.0     6.57 [6.43-6.70]        429581      105137     0.00     38743 ok

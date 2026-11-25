@@ -1,0 +1,24 @@
+# date: 2026-11-25T00:18:27Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293773 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int32 --engines=index,index-ordered,brute,sweep,grid --scenes=clustered,uniform --sizes= --small-sizes=0 --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/int64-narrow-acceptance/data/int32-resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/int64-narrow-acceptance/data/int32-resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+model,scene,boundary,type,n,batch,workload,mode,engine,status,rounds,reps,estimate_ns,err_ns,round_err_ns,vs_best,vs_best_lo,vs_best_hi,median_ns,p95_ns,min_ns,prepare_median_ns,pairs_median_ns,init_ns,candidates,node_visits,cell_tests,references,max_refs,pairs,checksum,allocs_per_step,cold_allocs,peak_bytes,retained_bytes,scene_hash
+snapshot,uniform,default,int32,0,1024,-,full,brute,ok,45,990,5.2,0.1,0.0,1.0000,1.0000,1.0000,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,int32,0,1024,-,full,sweep,ok,45,990,5.2,0.1,0.0,1.0002,0.9804,1.0204,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,int32,0,1024,-,full,grid,ok,45,990,8.4,0.2,0.0,1.6229,1.5907,1.6557,8,8,8,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,int32,0,1024,-,full,index,ok,45,990,10.8,0.4,0.3,2.0682,2.0003,2.1385,11,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,uniform,default,int32,0,1024,-,full,index-ordered,ok,45,990,10.7,0.4,0.3,2.0558,1.9882,2.1257,9,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,int32,0,1024,-,full,brute,ok,45,990,5.2,0.1,0.0,1.0000,1.0000,1.0000,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,int32,0,1024,-,full,sweep,ok,45,990,5.2,0.1,0.0,1.0002,0.9804,1.0204,5,5,5,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,int32,0,1024,-,full,grid,ok,45,990,8.4,0.2,0.0,1.6228,1.5907,1.6556,8,8,8,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,int32,0,1024,-,full,index,ok,45,990,10.8,0.4,0.3,2.0667,1.9987,2.1370,11,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000
+snapshot,clustered,default,int32,0,1024,-,full,index-ordered,ok,45,990,10.7,0.4,0.3,2.0534,1.9870,2.1220,9,11,9,-1,-1,-1.0,0,0,0,0,0,0,ddd4e928c0d0b7dd,0.000,0,0,0,0000000000000000

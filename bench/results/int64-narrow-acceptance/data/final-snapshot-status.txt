@@ -1,0 +1,22 @@
+== int32
+  G1  snapshot int32 clustered n=0 vs brute force (brute)                    accepted-exception pooled 2.077 [2.017-2.139] from 2.077 [1.992-2.165], 2.077 [1.992-2.165]
+  G1  snapshot int32 clustered n=1 vs brute force (brute)                    accepted-exception 3.094 [2.877-3.327]
+  G1  snapshot int32 clustered n=2 vs brute force (brute)                    accepted-exception 2.698 [2.594-2.807]
+  G1  snapshot int32 clustered n=4 vs brute force (brute)                    accepted-exception 2.691 [2.609-2.776]
+  G1  snapshot int32 uniform n=0 vs brute force (brute)                      accepted-exception pooled 2.077 [2.017-2.139] from 2.077 [1.992-2.165], 2.077 [1.992-2.165]
+  G1  snapshot int32 uniform n=1 vs brute force (brute)                      accepted-exception 3.046 [2.859-3.246]
+  G1  snapshot int32 uniform n=2 vs brute force (brute)                      accepted-exception 2.736 [2.64-2.835]
+  G1  snapshot int32 uniform n=4 vs brute force (brute)                      accepted-exception 2.885 [2.787-2.986]
+  summary: G1 accepted-exception 8, G1 pass 8, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
+== int64
+  G1  snapshot int64 clustered n=0 vs brute force (brute)                    fail               pooled 2.120 [2.069-2.173] from 2.120 [2.048-2.195], 2.120 [2.048-2.195]
+  G1  snapshot int64 clustered n=1 vs brute force (brute)                    fail               2.797 [2.67-2.93]
+  G1  snapshot int64 clustered n=2 vs brute force (brute)                    fail               2.354 [2.261-2.452]
+  G1  snapshot int64 clustered n=4 vs brute force (brute)                    fail               2.536 [2.455-2.62]
+  G1  snapshot int64 uniform n=0 vs brute force (brute)                      fail               pooled 2.120 [2.069-2.173] from 2.120 [2.048-2.195], 2.120 [2.048-2.195]
+  G1  snapshot int64 uniform n=1 vs brute force (brute)                      fail               2.838 [2.686-2.999]
+  G1  snapshot int64 uniform n=2 vs brute force (brute)                      fail               2.382 [2.298-2.469]
+  G1  snapshot int64 uniform n=4 vs brute force (brute)                      fail               2.833 [2.752-2.917]
+  G2  snapshot int64 uniform n=100000 vs best baseline                       inconclusive       pooled 1.976 [1.936-2.016] from 1.988 [1.932-2.046], 1.964 [1.909-2.021]
+  G9  snapshot int64 split-line n=100000 vs unordered (index)                pass               pooled 3.719 [3.645-3.795] from 3.679 [3.576-3.785], 3.760 [3.654-3.870]
+  summary: G1 fail 8, G1 pass 8, G2 inconclusive 1, G2 pass 19, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
