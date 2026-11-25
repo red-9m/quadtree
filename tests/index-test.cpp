@@ -349,6 +349,54 @@ void randomized(Boundary boundary, QuadTree::Extent extent)
     for (const auto& record : records) CHECK(!tree.valid(record.handle));
 }
 
+// Pair identities on translated snapshots, including low-word wrap, the
+// narrow-span cutoff, large boxes, and growth beyond the narrow span.
+void translatedInt64Snapshots()
+{
+    using T = std::int64_t;
+    for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
+        for (T origin : {T(INT64_MIN), -(T(1) << 40) - 16, (T(1) << 40) + INT32_MAX - 16})
+            for (T span : {T(INT32_MAX), T(INT32_MAX) + 1})
+                for (T width : {T(65535), T(65536)})
+                {
+                    QuadTree::Config<T> config;
+                    config.boundary = boundary;
+                    config.smallSetThreshold = 0;
+                    config.mergeThreshold = 0;
+                    config.splitThreshold = 2;
+                    auto made = Tree<T>::create(config);
+                    REQUIRE(made.ok());
+                    auto& tree = made.value();
+                    std::vector<QuadTree::BuildEntry<int, T>> input;
+                    std::vector<Record<T>> records;
+                    const auto add = [&](Box<T> box)
+                    {
+                        const auto rank = input.size();
+                        input.push_back({box, int(rank), {}, rank});
+                        records.push_back({box, int(rank), {}, rank, {}});
+                    };
+                    for (T i = 0; i < 16; ++i)
+                    {
+                        const T x = origin + i * 8;
+                        add({x, x, x + 8, x + 8});
+                        add({x, x, x, x});
+                    }
+                    add({origin, origin, origin + width, origin + width});
+                    add({origin + span, origin, origin + span, origin});
+                    std::vector<Tree<T>::HandleType> handles(input.size());
+                    QuadTree::Workspace<T> workspace;
+                    REQUIRE(workspace.reserve(input.size() + 1) == Status::Ok);
+                    REQUIRE(tree.build(input, handles, {.workspace = &workspace}) == Status::Ok);
+                    for (std::size_t i = 0; i < records.size(); ++i) records[i].handle = handles[i];
+                    verify(tree, records, workspace);
+                    const Box<T> far{origin, origin, origin + (T(1) << 33), origin};
+                    const auto inserted = tree.insert(far, int(input.size()), {}, input.size());
+                    REQUIRE(inserted.ok());
+                    records.push_back({far, int(input.size()), {}, input.size(), inserted.handle});
+                    verify(tree, records, workspace);
+                }
+}
+
 template<typename T>
 void numeric()
 {
@@ -2999,6 +3047,7 @@ int main()
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();
     pairWorkspaceGrowth(); coincidentMotion(); concurrency(); uninstrumented();
     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();
+    translatedInt64Snapshots();
     for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
         for (auto extent : {QuadTree::Extent::Fixed, QuadTree::Extent::Adaptive, QuadTree::Extent::Snapshot})
         {
