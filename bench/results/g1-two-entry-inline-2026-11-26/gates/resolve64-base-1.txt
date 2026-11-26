@@ -1,0 +1,21 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot int64 split-line n=100 vs best baseline (sweep)                                3.261 [3.166-3.358]     <= 4 pass
+G2   hard snapshot int64 split-line n=100000 vs best baseline (grid)                              1.717 [1.662-1.773]     <= 2 pass
+G2   hard snapshot int64 split-line-translated n=100 vs best baseline (sweep)                     3.496 [3.394-3.602]     <= 4 pass
+G2   hard snapshot int64 split-line-translated n=100000 vs best baseline (grid)                   1.845 [1.788-1.903]     <= 2 pass
+G4   hard snapshot int64 split-line-translated n=100 candidates vs split-line                                   0.954    x/1.5 pass
+G4   hard snapshot int64 split-line-translated n=100 time vs split-line                           1.085 [1.053-1.119]    x/1.5 pass
+G4   hard snapshot int64 split-line-translated n=100000 candidates vs split-line                                0.918    x/1.5 pass
+G4   hard snapshot int64 split-line-translated n=100000 time vs split-line                        0.974 [0.946-1.003]    x/1.5 pass
+G6   hard snapshot int64 split-line n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int64 split-line n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int64 split-line-translated n=100 allocations per warm step                                  0.000     <= 0 pass
+G6   hard snapshot int64 split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G9   hard snapshot int64 split-line n=100000 vs unordered (index)                                 3.416 [3.317-3.517]     <= 4 pass
+G9   hard snapshot int64 split-line-translated n=100000 vs unordered (index)                      3.451 [3.353-3.552]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard      4     0     0
+  G4 hard      4     0     0
+  G6 hard      4     0     0
+  G9 hard      2     0     0
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

@@ -1,0 +1,40 @@
+--- a/bench/bench-index.h	2026-11-26 13:30:17.499180892 +0200
++++ b/bench/bench-index.h	2026-11-26 13:12:55.807722389 +0200
+@@ -11,6 +11,10 @@
+ #include <span>
+ #include <string_view>
+ #include <vector>
++#include <typeinfo>
++#ifndef QT_DIAG_T
++#define QT_DIAG_T "f"
++#endif
+ 
+ #include "bench-memory.h"
+ #include "bench-persistent.h"
+@@ -62,7 +66,16 @@
+             mInput[i] = {boxes[i], id, {}, Ordered ? std::optional<std::uint64_t>(mix64(id ^ 0x72616e6bu)) : std::nullopt};
+         }
+         require(mTree->build(mInput, {.workspace = &mWorkspace}));
++        if (!mDiag && boxes.size() == 2 && std::getenv("QT_DIAG") && std::string_view(QT_DIAG_T) == std::string_view(typeid(T).name()) && !Ordered)
++        {
++            mDiag = true;
++            auto lo = [](const void* p) { return (unsigned)((std::uintptr_t)p & 0xfff); };
++            std::fprintf(stderr, "DIAG in=%03x scene=%03x boxes=%03x pay=%03x meta=%03x slots=%03x idx=%03x ws=%03x stack=%03x\n",
++                lo(mInput.data()), lo(boxes.data()), lo(mTree->dbgAddr(0)), lo(mTree->dbgAddr(1)), lo(mTree->dbgAddr(2)), lo(mTree->dbgAddr(3)),
++                lo(mTree->dbgAddr(4)), lo(&mWorkspace), lo(__builtin_frame_address(0)));
++        }
+     }
++    bool mDiag = false;
+ 
+     void reset(const EngineSetup<T>& setup)
+     {
+--- a/detail/quadtree-index-impl.h	2026-11-26 12:57:05.155045632 +0200
++++ b/detail/quadtree-index-impl.h	2026-11-26 13:13:14.675098847 +0200
+@@ -1216,6 +1216,7 @@
+         return regionQuery(geometry, queryFilter, visitor, options, predicate);
+     }
+ 
++    const void* dbgAddr(int k) const noexcept { return k == 0 ? (const void*)mEntries.mBoxes : k == 1 ? (const void*)mEntries.mPayloads : k == 2 ? (const void*)mEntries.mMeta : k == 3 ? (const void*)mEntries.mSlots : (const void*)this; }
+     template<typename Visitor, typename Predicate = detail::AcceptAll>
+         requires std::is_nothrow_invocable_r_v<Visit, Visitor&, const View&, const View&> &&
+             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>

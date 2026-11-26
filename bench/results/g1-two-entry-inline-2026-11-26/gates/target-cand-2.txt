@@ -1,0 +1,53 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot double clustered n=0 vs brute force (brute)                                    0.920 [0.877-0.965]     <= 2 pass
+G1   hard snapshot double clustered n=1 vs brute force (brute)                                    1.727 [1.663-1.795]     <= 2 pass
+G1   hard snapshot double clustered n=2 vs brute force (brute)                                    1.647 [1.593-1.702]     <= 2 pass
+G1   hard snapshot float clustered n=0 vs brute force (brute)                                     0.796 [0.757-0.837]     <= 2 pass
+G1   hard snapshot float clustered n=1 vs brute force (brute)                                     1.529 [1.481-1.577]     <= 2 pass
+G1   hard snapshot float clustered n=2 vs brute force (brute)                                     1.781 [1.734-1.828]     <= 2 pass
+G1   hard snapshot int32 clustered n=0 vs brute force (brute)                                     0.830 [0.790-0.872]     <= 2 pass
+G1   hard snapshot int32 clustered n=1 vs brute force (brute)                                     1.569 [1.518-1.622]     <= 2 pass
+G1   hard snapshot int32 clustered n=2 vs brute force (brute)                                     1.496 [1.448-1.546]     <= 2 pass
+G1   hard snapshot int64 clustered n=0 vs brute force (brute)                                     0.920 [0.877-0.965]     <= 2 pass
+G1   hard snapshot int64 clustered n=1 vs brute force (brute)                                     1.603 [1.554-1.654]     <= 2 pass
+G1   hard snapshot int64 clustered n=2 vs brute force (brute)                                     1.600 [1.520-1.684]     <= 2 pass
+G1   hard snapshot double uniform n=0 vs brute force (brute)                                      0.920 [0.877-0.965]     <= 2 pass
+G1   hard snapshot double uniform n=1 vs brute force (brute)                                      1.788 [1.668-1.916]     <= 2 pass
+G1   hard snapshot double uniform n=2 vs brute force (brute)                                      1.581 [1.531-1.631]     <= 2 pass
+G1   hard snapshot float uniform n=0 vs brute force (brute)                                       0.796 [0.757-0.837]     <= 2 pass
+G1   hard snapshot float uniform n=1 vs brute force (brute)                                       1.514 [1.467-1.563]     <= 2 pass
+G1   hard snapshot float uniform n=2 vs brute force (brute)                                       1.648 [1.598-1.700]     <= 2 pass
+G1   hard snapshot int32 uniform n=0 vs brute force (brute)                                       0.827 [0.786-0.870]     <= 2 pass
+G1   hard snapshot int32 uniform n=1 vs brute force (brute)                                       1.569 [1.518-1.622]     <= 2 pass
+G1   hard snapshot int32 uniform n=2 vs brute force (brute)                                       1.573 [1.486-1.664]     <= 2 pass
+G1   hard snapshot int64 uniform n=0 vs brute force (brute)                                       0.920 [0.877-0.965]     <= 2 pass
+G1   hard snapshot int64 uniform n=1 vs brute force (brute)                                       1.565 [1.517-1.615]     <= 2 pass
+G1   hard snapshot int64 uniform n=2 vs brute force (brute)                                       1.607 [1.534-1.685]     <= 2 pass
+G6   hard snapshot double clustered n=0 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=1 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=2 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot float clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot double uniform n=0 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=1 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=2 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot float uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot float uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+summary (pass / fail / inconclusive):
+  G1 hard     24     0     0
+  G6 hard     24     0     0
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

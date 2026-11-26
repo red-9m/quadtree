@@ -1244,9 +1244,12 @@ public:
 private:
     enum class PairOutcome { Miss, Rejected, Reported, Stopped };
 
+    // Inline the single candidate and the client callbacks into forEachPair: an
+    // out-of-line call keeps visitor state in memory on the hit path. Only this
+    // two-entry path is flattened; traversal keeps its own inlining.
     template<typename Visitor, typename Predicate>
-#if __has_cpp_attribute(gnu::noinline)
-    [[gnu::noinline]] // Isolate the single candidate without passing the full traversal result.
+#if __has_cpp_attribute(gnu::always_inline) && __has_cpp_attribute(gnu::flatten)
+    [[gnu::always_inline, gnu::flatten]]
 #endif
     PairOutcome visitSinglePair(Visitor& visitor, Predicate& predicate) const noexcept
     {
@@ -2572,8 +2575,9 @@ private:
         return {box.minX + T(0), box.minY + T(0), box.maxX + T(0), box.maxY + T(0)};
     }
 
-    // Same acceptance and result as detail::canonicalize; floats use one branch-free test per box.
-    static bool canonicalBox(Box<T>& box) noexcept
+    // Same acceptance as detail::canonicalize, without copying the box; floats use
+    // one branch-free test per box.
+    static bool validBox(const Box<T>& box) noexcept
     {
         if constexpr (FloatCoordinate<T>)
         {
@@ -2586,7 +2590,6 @@ private:
                 const auto edges = _mm_loadu_ps(&box.minX);
                 const auto lower = _mm_movelh_ps(_mm_set1_ps(lo), edges);
                 const auto upper = _mm_movehl_ps(_mm_set1_ps(hi), edges);
-                box = canonicalZero(box);
                 return _mm_movemask_ps(_mm_and_ps(_mm_cmple_ps(lower, edges), _mm_cmple_ps(edges, upper))) == 15;
             }
             else
@@ -2594,18 +2597,37 @@ private:
                 static_assert(sizeof(Box<T>) == 2 * sizeof(__m128d) && offsetof(Box<T>, maxX) == 2 * sizeof(T));
                 const auto min = _mm_loadu_pd(&box.minX), max = _mm_loadu_pd(&box.maxX);
                 const auto finite = _mm_and_pd(_mm_cmple_pd(_mm_set1_pd(lo), min), _mm_cmple_pd(max, _mm_set1_pd(hi)));
-                box = canonicalZero(box);
                 return _mm_movemask_pd(_mm_and_pd(finite, _mm_cmple_pd(min, max))) == 3;
             }
 #else
-            const bool ok = (box.minX >= lo) & (box.minY >= lo) & (box.maxX <= hi) & (box.maxY <= hi) &
+            return (box.minX >= lo) & (box.minY >= lo) & (box.maxX <= hi) & (box.maxY <= hi) &
                 (box.minX <= box.maxX) & (box.minY <= box.maxY);
-            box = canonicalZero(box);
-            return ok;
 #endif
         }
         else
+            return (box.minX <= box.maxX) & (box.minY <= box.maxY);
+    }
+
+    // Same acceptance and result as detail::canonicalize.
+    static bool canonicalBox(Box<T>& box) noexcept
+    {
+        if constexpr (FloatCoordinate<T>)
+        {
+            const bool ok = validBox(box);
+            box = canonicalZero(box);
+            return ok;
+        }
+        else
             return detail::canonicalize(box);
+    }
+
+    // Stored geometry of a validated box: integer edges are already canonical.
+    static Box<T> storedBox(const Box<T>& box) noexcept
+    {
+        if constexpr (FloatCoordinate<T>)
+            return canonicalZero(box);
+        else
+            return box;
     }
 
     // Warm, unranked contiguous boxes need no descriptor copy: integer edges are
@@ -2617,20 +2639,21 @@ private:
         std::optional<std::span<HandleType>> handles) noexcept
     {
         const auto count = FixedCount ? FixedCount : length;
-        auto extent = input[0].rect;
-        if (input[0].rank)
-            return std::nullopt;
-        if (!canonicalBox(extent))
+        // The general path also rejects any invalid box, ranked or not, so the
+        // order of these two checks does not change the result.
+        if (!validBox(input[0].rect))
             return Status::InvalidGeometry;
+        bool ranked = input[0].rank.has_value();
+        auto extent = storedBox(input[0].rect);
         for (std::uint32_t i = 1; i < count; ++i)
         {
-            auto box = input[i].rect;
-            if (input[i].rank)
-                return std::nullopt;
-            if (!canonicalBox(box))
+            if (!validBox(input[i].rect))
                 return Status::InvalidGeometry;
-            extent = detail::unite(extent, box);
+            ranked |= input[i].rank.has_value();
+            extent = detail::unite(extent, storedBox(input[i].rect));
         }
+        if (ranked)
+            return std::nullopt;
         const auto owner = detail::acquireModuleIdentityInline();
         if (owner == 0)
             return Status::IdentityExhausted;
@@ -2642,7 +2665,7 @@ private:
         mExtent = extent;
         if (count == 1)
         {
-            std::construct_at(mEntries.mBoxes, extent);
+            std::construct_at(mEntries.mBoxes, extent); // The extent of one box is that box.
             std::construct_at(mEntries.mPayloads, input[0].payload);
             std::construct_at(mEntries.mMeta, typename Store::Meta{input[0].filter, 0, 0, false});
             std::construct_at(mEntries.mSlots, typename Store::Slot{0, 0});
@@ -2650,12 +2673,7 @@ private:
         else
         {
             for (std::size_t i = 0; i < count; ++i)
-            {
-                if constexpr (FloatCoordinate<T>)
-                    std::construct_at(mEntries.mBoxes + i, canonicalZero(input[i].rect)); // Validated above.
-                else
-                    std::construct_at(mEntries.mBoxes + i, input[i].rect);
-            }
+                std::construct_at(mEntries.mBoxes + i, storedBox(input[i].rect)); // Validated above.
             for (std::size_t i = 0; i < count; ++i)
                 std::construct_at(mEntries.mPayloads + i, input[i].payload);
             for (std::uint32_t i = 0; i < count; ++i)

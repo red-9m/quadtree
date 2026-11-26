@@ -1,0 +1,32 @@
+# dc26b4f T=float
+clustered n=2 offset=2d0 15.98 ns/scene
+clustered n=2 offset=f90 16.07 ns/scene
+clustered n=2 offset=fa0 23.12 ns/scene
+clustered n=2 offset=fb0 22.86 ns/scene
+clustered n=2 offset=fc0 26.17 ns/scene
+clustered n=2 offset=fd0 15.96 ns/scene
+clustered n=2 offset=fe0 22.85 ns/scene
+# dc26b4f T=int32_t
+clustered n=2 offset=2d0 15.01 ns/scene
+clustered n=2 offset=f90 14.90 ns/scene
+clustered n=2 offset=fa0 17.53 ns/scene
+clustered n=2 offset=fb0 18.00 ns/scene
+clustered n=2 offset=fc0 22.46 ns/scene
+clustered n=2 offset=fd0 14.94 ns/scene
+clustered n=2 offset=fe0 17.65 ns/scene
+# candidate T=float
+clustered n=2 offset=2d0 16.67 ns/scene
+clustered n=2 offset=f90 16.83 ns/scene
+clustered n=2 offset=fa0 21.92 ns/scene
+clustered n=2 offset=fb0 21.57 ns/scene
+clustered n=2 offset=fc0 24.95 ns/scene
+clustered n=2 offset=fd0 16.75 ns/scene
+clustered n=2 offset=fe0 21.51 ns/scene
+# candidate T=int32_t
+clustered n=2 offset=2d0 13.11 ns/scene
+clustered n=2 offset=f90 13.19 ns/scene
+clustered n=2 offset=fa0 16.72 ns/scene
+clustered n=2 offset=fb0 17.12 ns/scene
+clustered n=2 offset=fc0 21.37 ns/scene
+clustered n=2 offset=fd0 13.16 ns/scene
+clustered n=2 offset=fe0 16.24 ns/scene

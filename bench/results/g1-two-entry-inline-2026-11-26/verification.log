@@ -1,0 +1,22 @@
+# GCC 16.2.1, Clang 22.1.8
+# candidate library = dc26b4f + this commit; control = dc26b4f
+
+## CTest (GCC Release, all targets): see ctest.log
+100% tests passed out of 22
+
+## Clang index-test (index-test.cpp + index-test-tu2.cpp with QUADTREE_TEST_DEBUG_HEADER), -O2
+clang [-U__SSE2__ -fno-exceptions]: index-test: 0 failures
+clang [default]: index-test: 0 failures
+
+## Unordered self-pair transcript (../g1-two-direct-result-2026-11-21/semantics-probe.cpp, 29,600 lines)
+control -O3   448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79
+candidate -O3 448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79
+candidate -O1 ASan+UBSan 448f16fd95d845cfd9d3ecb462b395ff8b608aeafb469e54d29f43ba833b2a79
+
+## Flat replacement transcript (flat-build-probe.cpp: 0-6 entries, invalid/NaN/inf/-0/extreme edges, ranks, handles; 160,000 builds)
+control -O2 (GCC)               56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2
+candidate -O2 (GCC)             56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2
+candidate -O1 ASan+UBSan (GCC)  56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2
+control Clang -U__SSE2__ -fno-exceptions   56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2
+candidate Clang -U__SSE2__ -fno-exceptions 56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2
+statuses (candidate):  68064 s=0; 530 s=12; 91406 s=2;
