@@ -28,6 +28,10 @@
 
 **The `int32` acceptance holds on `7cfbebe`.**
 
+## Current candidate: validation pending
+
+`c13e498` includes the [four-entry G1 change](../../bench/results/g1-four-entry-flat-2026-11-26/README.md) and the [ordered `int32` G9 change](../../bench/results/g9-int32-ordered-common-2026-11-26/README.md). G9 passes 15/15 in the candidate snapshot matrix; `split-line-translated` 10⁵ passes there and in three independent 45-round runs. This does not extend the historical sign-off: the full release rerun and hosted portability checks are pending. See [SESSION-HANDOFF.md](../../SESSION-HANDOFF.md) for reproducible build hashes and next steps.
+
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.
