@@ -123,5 +123,5 @@ put the directory containing `quadtree-index.h` on the include path and keep
 ## Reference and limits
 
 - [Runtime API and examples](INDEX.md) · [Build/input ownership](INDEX.md#build-and-input-ownership) · [Workspace and reservation](INDEX.md#reservation-workspace-and-allocation)
-- [Measured limitations](bench/results/current-snapshot-2026-11-18/README.md): measured snapshot rows miss G1 and G2; release performance acceptance is not complete.
+- [Performance scope](INDEX.md#runtime-index): `int32` is performance-accepted with a very-small-snapshot exception; `int64`, `float` and `double` are functionally supported, not performance-accepted.
 - [Migration guide](INDEX.md#migration) · [Legacy `Tree` documentation](docs/legacy.md). The legacy `quadtree.h` is a separate API, not a compatibility layer or part of the installed runtime package. Do not include both API headers in one translation unit.

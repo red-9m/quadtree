@@ -6,22 +6,18 @@ Do not include the legacy `quadtree.h` in the same translation unit.
 
 The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
-**Performance scope.** Performance acceptance covers `int32` coordinates only
-and [passed for this release](docs/plan/08-final-acceptance-result.md), with
-documented exceptions for very small snapshots and two 10²–10³ G2 rows.
-`int64`, `float` and `double` are functionally supported: they pass the same
-correctness, allocation and portability checks, but are not
-performance-accepted ([published gaps](docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe)).
-On their slowest G2 rows the
-[latest recheck](bench/results/packed-staged-2026-11-23/README.md#results)
-(`7cfbebe`) measures 4.02× for `float` (unresolved), 4.23× for `double` and
-2.16–4.29× for `int64`, against 2–4× limits; every open row is within about 8%
-of its limit. Persistent motion passes every applicable hard gate for every type.
+**Performance scope.** Release performance acceptance covers `int32`
+coordinates only. In the [final patch recheck](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/bench/results/int64-threaded-acceptance/README.md),
+`int32` passes the hard gates with the existing G1 exception for very small
+snapshots; no G2 exception is needed. The `int64` patch passes its target,
+all G2 and G9 rows, and all persistent hard gates, but eight G1 rows still fail.
+`int64`, `float` and `double` remain functionally supported, not
+performance-accepted. See the earlier [published gaps for `float` and `double`](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe).
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs
 loop on the reference machine. This is an
-[accepted G1 exception](docs/plan/02-g1-small-snapshots-result.md). Callers
+[accepted G1 exception](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/docs/plan/02-g1-small-snapshots-result.md). Callers
 that rebuild tiny sets very often may test them directly.
 
 ## Types and creation

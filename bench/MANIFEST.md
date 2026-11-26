@@ -1,6 +1,6 @@
 # Benchmark manifest (DRAFT)
 
-Phase 1 gate of the [original update plan](../docs/plan/archive/QUADTREE-UPDATE-PLAN.md#10-verification-and-acceptance) (sections 10 and 11). Status:
+Phase 1 gate of the [original update plan](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/docs/plan/archive/QUADTREE-UPDATE-PLAN.md#10-verification-and-acceptance) (sections 10 and 11). Status:
 
 | Step | Content | State |
 |---|---|---|
@@ -9,18 +9,19 @@ Phase 1 gate of the [original update plan](../docs/plan/archive/QUADTREE-UPDATE-
 | 3 | Straddling/mixed-size prototypes, ordered (QT-FR-24) vs unordered, persistent loose tree (3b) | done |
 | 4 | Frozen limits, gate evaluator, published raw results | done |
 
-Acceptance limits are frozen (see "Frozen acceptance limits"); published
-results are under `bench/results/`.
+Acceptance limits are frozen (see "Frozen acceptance limits"); published raw
+results are in the [benchmark archive](https://github.com/red-9m/quadtree/tree/40cc3443ff0c505d97bbf51685ab5d1065844fe5/bench/results).
 
 The library engines `index` and `index-ordered` now run alongside the prototypes
 in both models (`bench-index.h`). They use `QuadTree::Resource` allocations
 counted by the harness, prepared workspace, and the library's exact budgets.
-See `results/index-development/README.md`: correctness and reserved allocation
-checks pass, but G1/G2 and some inconclusive timing gates remain open. These
-measurements do not declare release acceptance.
+The [development run](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/bench/results/index-development/README.md)
+reported passing correctness and reserved allocation checks but did not
+establish release acceptance. See [performance scope](../INDEX.md#runtime-index)
+for the subsequent release verdict.
 
-Follow-up mutation/ordered moved-set fixes have targeted before/after results in
-`results/index-fixes/README.md`. Run `quadtree-index-regression-bench` for those
+Follow-up mutation/ordered moved-set fixes have [targeted before/after results](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/bench/results/index-fixes/README.md).
+Run `quadtree-index-regression-bench` for those
 batched fixtures; its CTest checks results/allocations, not timing thresholds.
 
 `quadtree-index-fuzz` is a randomized differential fuzzer for the library
@@ -486,9 +487,9 @@ targets. Timing never waives correctness, allocation or memory gates.
 
 ¹ `uniform`, `clustered`, `split-line`, `split-line-translated`, `mixed-size`.
 
-**Accepted release exception (G1, 2026-11-21).** The G1 limit is unchanged, and rows of 0–4 entries still report `FAIL`. By owner decision, release sign-off accepts them when their upper bound is ≤ 3.5× brute. The remaining gap is fixed per-rebuild work the contract requires. See [the decision record](../docs/plan/02-g1-small-snapshots-result.md).
+**Accepted release exception (G1, 2026-11-21).** The G1 limit is unchanged, and rows of 0–4 entries still report `FAIL`. By owner decision, release sign-off accepts them when their upper bound is ≤ 3.5× brute. The remaining gap is fixed per-rebuild work the contract requires. See [the decision record](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/docs/plan/02-g1-small-snapshots-result.md).
 
-**Accepted release exception (G2, `int32`, 2026-11-21).** The G2 limits are unchanged. By owner decision, `int32` `split-line-translated` n=10² and `uniform` n=10³ do not block release while their upper bound is ≤ 4.5× the best baseline. See [the 08 brief](../docs/plan/08-final-acceptance.md).
+**Accepted release exception (G2, `int32`, 2026-11-21).** The G2 limits are unchanged. By owner decision, `int32` `split-line-translated` n=10² and `uniform` n=10³ do not block release while their upper bound is ≤ 4.5× the best baseline. See [the 08 brief](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/docs/plan/08-final-acceptance.md).
 
 **Amendment before first use (G3).** The provisional form limited raw
 candidates to 15× per tenfold n. The published data showed that the fixtures'
@@ -531,9 +532,9 @@ ratio stays published as a soft target, so losses to it remain visible.
 
 ## Published results
 
-`bench/results/2026-11-18-ryzen9-5900hs/`: snapshot (int32, float) and
-persistent (int32, float) runs over all scenes, workloads and engines, raw
-samples, gate verdicts and calibration; see its README. With the prototype
+[November 18 Ryzen 9 run](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/bench/results/2026-11-18-ryzen9-5900hs/README.md):
+snapshot (int32, float) and persistent (int32, float) runs over all scenes,
+workloads and engines, raw samples, gate verdicts and calibration. With the prototype
 candidates the hard gates fail only where the implementation work is already
 known: the small-set path (G1), pooled node storage (G6), and ordered mode on
 `mixed-size` 10⁵ (G9). G2–G4, G7 and G8 pass against the frozen limits.
