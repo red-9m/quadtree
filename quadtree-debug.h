@@ -1,9 +1,8 @@
 #pragma once
 
-#include <memory>
+#include <cstddef>
 #include <iostream>
-
-#include "test-types.h"
+#include <string>
 #include "quadtree.h"
 
 template<typename RectT>
@@ -34,11 +33,11 @@ void debugPrintTree(QuadTree::Tree<ItemT, RectT>& tree)
         } else
         {
             std::string offset;
-            offset.insert(0, level * 4, ' ');
+            offset.insert(0, static_cast<std::size_t>(level) * 4, ' ');
             if (type == 0)
                 std::cout << offset << "Node" << quadrant << " (" << hasChildren << ") " << debugPrintRect(rect) << " items: ";
             else
-                std::cout << debugPrintRect((*item)->rect.quadRect) << " ";
+                std::cout << debugPrintRect((*item)->rect) << " ";
         }
     };
 

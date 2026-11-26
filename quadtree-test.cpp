@@ -1,9 +1,13 @@
+#include <algorithm>
 #include <chrono>
-#include <iostream>
-#include <vector>
-#include <random>
-#include <memory>
+#include <cstddef>
 #include <functional>
+#include <iostream>
+#include <memory>
+#include <random>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "test-types.h"
 #include "quadtree.h"
@@ -17,8 +21,12 @@ constexpr auto testDelim = "----------------------------------------------------
 template<typename RectT>
 bool altRectIntersects(const RectLocal<RectT>* rect1, const RectLocal<RectT>* rect2)
 {
+    if (rect1->w1 == 0 || rect1->h1 == 0 || rect2->w1 == 0 || rect2->h1 == 0)
+        return !(
+            rect1->x1 > rect2->x1 + rect2->w1 || rect1->x1 + rect1->w1 < rect2->x1 ||
+            rect1->y1 > rect2->y1 + rect2->h1 || rect1->y1 + rect1->h1 < rect2->y1);
+
     return !(
-        rect1->w1 == 0 || rect1->h1 == 0 || rect2->w1 == 0 || rect2->h1 == 0 ||
         rect1->x1 >= rect2->x1 + rect2->w1 || rect1->x1 + rect1->w1 <= rect2->x1 ||
         rect1->y1 >= rect2->y1 + rect2->h1 || rect1->y1 + rect1->h1 <= rect2->y1);
 }
@@ -32,10 +40,11 @@ std::vector<Item<RectT>> generateRandomNodes(std::size_t n)
     auto items = std::vector<Item<RectT>>(n);
     for (auto i = std::size_t(0); i < n; ++i)
     {
-        items[i].rect.localRect.x1 = static_cast<RectT>(100 * originDistribution(generator));
-        items[i].rect.localRect.y1 =  static_cast<RectT>(100 * originDistribution(generator));
-        items[i].rect.localRect.w1 =  static_cast<RectT>(std::min(100.0f - items[i].rect.localRect.x1, 100.0f * sizeDistribution(generator)));
-        items[i].rect.localRect.h1 =  static_cast<RectT>(std::min(100.0f - items[i].rect.localRect.y1, 100.0f * sizeDistribution(generator)));
+        auto& rect = items[i].rect;
+        rect.x = static_cast<RectT>(100 * originDistribution(generator));
+        rect.y = static_cast<RectT>(100 * originDistribution(generator));
+        rect.w = static_cast<RectT>(std::min(100.0f - static_cast<float>(rect.x), 100.0f * sizeDistribution(generator)));
+        rect.h = static_cast<RectT>(std::min(100.0f - static_cast<float>(rect.y), 100.0f * sizeDistribution(generator)));
         items[i].id = i;
     }
 
@@ -47,7 +56,7 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
 {
     auto getRect = [](const ItemT& item) -> const QuadTree::Rect<RectT>&
     {
-        return item->rect.quadRect;
+        return item->rect;
     };
 
 #ifdef _DEBUG
@@ -96,10 +105,14 @@ void quadTree(std::function<ItemT(Item<RectT>&)> addFunc, const std::string& run
     std::cout << "QuadTree queryAll items: " << query_all_res.size() << std::endl;
 
     query_res.clear();
+    const auto local_query = toLocal(query_rect);
     start = std::chrono::steady_clock::now();
     for (auto& item : items)
-        if (altRectIntersects(&item.rect.localRect, (RectLocal<RectT>*)&query_rect))
+    {
+        const auto local_rect = toLocal(item.rect);
+        if (altRectIntersects(&local_rect, &local_query))
             query_res.push_back(addFunc(item));
+    }
     auto duration4 = std::chrono::steady_clock::now() - start;
     std::cout << "Alt. query time        : " << std::chrono::duration_cast<std::chrono::microseconds>(duration4).count() << "(µs)" << std::endl;
     std::cout << "Alt. query items       : " << query_res.size() << std::endl;
@@ -110,7 +123,7 @@ void quadTreeSimple(const std::string& runName)
     typedef Item<int>* TreeItemT;
     auto getRect = [](const TreeItemT& item) -> const QuadTree::Rect<int>&
     {
-        return item->rect.quadRect;
+        return item->rect;
     };
 
     constexpr std::size_t node_items = 1;
@@ -118,13 +131,13 @@ void quadTreeSimple(const std::string& runName)
 
     auto tree = QuadTree::Tree<TreeItemT, int>({0, 0, 100, 100}, getRect, node_items, depth);
     std::vector<Item<int>> items{
-        {{{10, 10, 3, 3}}, 1},
-        {{{60, 10, 3, 3}}, 2},
-        {{{10, 60, 3, 3}}, 3},
-        {{{60, 60, 3, 3}}, 4},
-        {{{11, 11, 50, 50}}, 5},
-        {{{11, 11, 50, 3}}, 6},
-        {{{11, 11, 3, 50}}, 7},
+        {{10, 10, 3, 3}, 1},
+        {{60, 10, 3, 3}, 2},
+        {{10, 60, 3, 3}, 3},
+        {{60, 60, 3, 3}, 4},
+        {{11, 11, 50, 50}, 5},
+        {{11, 11, 50, 3}, 6},
+        {{11, 11, 3, 50}, 7},
     };
 
     for (auto& item : items)
