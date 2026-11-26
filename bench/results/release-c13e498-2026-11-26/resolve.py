@@ -1,0 +1,61 @@
+#!/usr/bin/env python3
+"""Apply resolution-rule.md to one model: pool the two 45-round processes for every hard row that was
+inconclusive in its matrix; report final status per type with the 08 exceptions (int32 only).
+usage: resolve.py DATA snapshot|persistent"""
+import math
+import re
+import sys
+from collections import Counter
+from pathlib import Path
+
+data, model = Path(sys.argv[1]), sys.argv[2]
+matrix_stage, repeats = {'snapshot': ('snapshot', ('resolve', 'resolve-2')),
+                         'persistent': ('persistent', ('presolve', 'presolve-2'))}[model]
+LINE = re.compile(r'^(G\d+[a-z]?)\s+(hard|soft)\s+(.*?)\s{2,}(\S+)(?: \[(\S+)-(\S+)\])?\s+(<=|x/)\s*(\S+) (pass|FAIL|inconclusive)$')
+G2_EXC = re.compile(r'^snapshot int32 (split-line-translated n=100|uniform n=1000) vs best baseline')
+G1_SMALL = re.compile(r'^snapshot (\S+) (uniform|clustered) n=([0-4]) vs brute force')
+
+
+def gates(path):
+    rows = {}
+    for line in path.read_text().splitlines():
+        if (m := LINE.match(line)) and m[2] == 'hard':
+            # The best-baseline engine may differ between processes; the row is the same.
+            subject = re.sub(r'(vs best baseline|vs dynamic tree) \([^)]+\)$', r'\1', m[3])
+            rows[m[1], subject] = (float(m[4]), float(m[5]) if m[5] else None, float(m[6]) if m[6] else None,
+                                   float(m[8]), m[7], m[9])
+    return rows
+
+
+for t in ('int32', 'float', 'double', 'int64'):
+    matrix = gates(data / f'{t}-{matrix_stage}' / 'gates.txt')
+    needed = any(r[-1] == 'inconclusive' for r in matrix.values())
+    reruns = [gates(data / f'{t}-{s}' / 'gates.txt') for s in repeats] if needed else []
+    final = Counter()
+    print(f'== {t} {model}')
+    for key, (v, lo, hi, limit, op, verdict) in sorted(matrix.items()):
+        gate, subject = key
+        status, upper, note = {'pass': 'pass', 'FAIL': 'fail', 'inconclusive': 'inconclusive'}[verdict], hi, ''
+        if verdict == 'inconclusive':
+            got = [r[key] for r in reruns if key in r]
+            assert len(got) == 2, (t, key)
+            logs = [math.log(g[0]) for g in got]
+            hs = [(math.log(g[2]) - math.log(g[1])) / 2 for g in got]
+            m, h = sum(logs) / 2, math.sqrt(sum(x * x for x in hs)) / 2
+            plo, phi = math.exp(m - h), math.exp(m + h)
+            low_limit = 1 / limit if op == 'x/' else 0
+            status = ('pass' if low_limit <= plo and phi <= limit else 'fail'
+                      if plo > limit or phi < low_limit else 'inconclusive')
+            upper = phi
+            note = (f' matrix {v:.3f} [{lo:.3f}-{hi:.3f}]; pooled {math.exp(m):.3f} [{plo:.3f}-{phi:.3f}] from ' +
+                    ', '.join(f'{g[0]:.3f} [{g[1]:.3f}-{g[2]:.3f}]' for g in got))
+        if status != 'pass':
+            if t == 'int32' and gate == 'G1' and G1_SMALL.match(subject) and upper is not None and upper <= 3.5:
+                status = 'accepted-exception'
+            elif t == 'int32' and gate == 'G2' and G2_EXC.match(subject) and upper is not None and upper <= 4.5:
+                status = 'accepted-exception'
+        final[gate, status] += 1
+        if status != 'pass' or note:
+            shown = f' {v:.3f} [{lo}-{hi}]' if lo is not None else f' {v:.3f}'
+            print(f'  {gate:3} {subject[:72]:72} {status:18}{note or shown}')
+    print('  summary:', ', '.join(f'{g} {s} {n}' for (g, s), n in sorted(final.items())))
