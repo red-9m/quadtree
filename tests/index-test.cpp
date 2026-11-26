@@ -2024,14 +2024,14 @@ void preparedFloatBoxes()
     auto made = Tree<T>::create();
     REQUIRE(made.ok());
     auto tree = std::move(made).value();
-    REQUIRE(tree.reserve({.entries = 3}) == Status::Ok);
+    REQUIRE(tree.reserve({.entries = 4}) == Status::Ok);
     QuadTree::Workspace<T> scratch;
-    REQUIRE(scratch.reserve({0, 0, 3}) == Status::Ok);
+    REQUIRE(scratch.reserve({0, 0, 4}) == Status::Ok);
     const T zero = -T(0), limit = std::numeric_limits<T>::max();
-    std::array<QuadTree::BuildEntry<int, T>, 3> entries{{{{zero, zero, zero, zero}, 0},
-        {{-limit, -limit, limit, limit}, 1}, {{1, 2, 3, 4}, 2}}};
-    std::array<typename Tree<T>::HandleType, 3> handles{};
-    for (std::size_t n : {1u, 2u, 3u})
+    std::array<QuadTree::BuildEntry<int, T>, 4> entries{{{{zero, zero, zero, zero}, 0},
+        {{-limit, -limit, limit, limit}, 1}, {{1, 2, 3, 4}, 2}, {{zero, -2, 3, 5}, 3}}};
+    std::array<typename Tree<T>::HandleType, 4> handles{};
+    for (std::size_t n : {1u, 2u, 3u, 4u})
     {
         auto input = std::span(entries).first(n);
         REQUIRE(tree.build(input, handles, {.workspace = &scratch}) == Status::Ok);
@@ -2155,6 +2155,55 @@ void tinyPairs()
             const auto filtered = tree.forEachPair(stop, {.budget = {.candidateTests = budget}});
             CHECK(filtered.complete() && filtered.counters.filterRejections == 1 && filtered.counters.candidateTests == 0);
         }
+    }
+}
+
+void tinyInt64PairSpans()
+{
+    using T = std::int64_t;
+    using E = QuadTree::BuildEntry<int, T>;
+    constexpr T lo = std::numeric_limits<T>::min(), hi = std::numeric_limits<T>::max();
+    constexpr T narrow = std::numeric_limits<std::int32_t>::max();
+    const std::array<std::pair<T, T>, 4> endpoints{{{lo, lo + narrow}, {hi - narrow - 1, hi},
+        {7, 7 + (T(1) << 32)}, {lo, hi}}};
+    for (const auto boundary : {Boundary::Default, Boundary::TouchInclusive})
+    {
+        TestResource resource;
+        auto made = Tree<T>::create({.boundary = boundary}, &resource);
+        REQUIRE(made.ok());
+        auto tree = std::move(made).value();
+        REQUIRE(tree.reserve({.entries = 4}) == Status::Ok);
+        QuadTree::Workspace<T> scratch(&resource);
+        REQUIRE(scratch.reserve({0, 0, 4}) == Status::Ok);
+        const auto allocations = resource.allocations;
+        for (const auto& [base, far] : endpoints)
+            for (const bool transpose : {false, true})
+            {
+                std::array<E, 4> input{{{{base, 0, base + 4, 4}, 0}, {{base + 4, 0, base + 8, 4}, 1},
+                    {{base + 4, 2, base + 4, 2}, 2}, {{far, 2, far, 2}, 3}}};
+                if (transpose)
+                    for (auto& entry : input)
+                    {
+                        std::swap(entry.rect.minX, entry.rect.minY);
+                        std::swap(entry.rect.maxX, entry.rect.maxY);
+                    }
+                REQUIRE(tree.build(input, {.workspace = &scratch}) == Status::Ok);
+                std::array<Pair, 6> expected{}, actual{};
+                std::size_t n = 0, seen = 0;
+                for (std::size_t a = 0; a < input.size(); ++a)
+                    for (std::size_t b = a + 1; b < input.size(); ++b)
+                        if (overlap(input[a].rect, input[b].rect, boundary))
+                            expected[n++] = {input[a].payload, input[b].payload};
+                const auto result = tree.forEachPair([&](const auto& a, const auto& b) noexcept
+                {
+                    REQUIRE(seen < actual.size());
+                    actual[seen++] = {a.payload, b.payload};
+                    return Continue;
+                }, {.budget = {.candidateTests = 6, .nodeVisits = 0}});
+                CHECK(result.complete() && result.counters.candidateTests == 6 && result.counters.nodeVisits == 0);
+                CHECK(actual == expected && seen == n && result.counters.reports == n);
+            }
+        CHECK(resource.allocations == allocations);
     }
 }
 
@@ -3163,7 +3212,8 @@ int main()
     filterPolicyTruthTable(); filterPruningWork();
     hardCapacity(); isolatedCapacity(); referenceGrowthFailure(); workspaceAllocationFailures();
     indexBufferAllocationFailures(); failureInjection();
-    rebuildPeaks(); preparedSmallBuild(); preparedFloatBoxes<float>(); preparedFloatBoxes<double>(); tinyPairs(); identities();
+    rebuildPeaks(); preparedSmallBuild(); preparedFloatBoxes<float>(); preparedFloatBoxes<double>();
+    tinyPairs(); tinyInt64PairSpans(); identities();
     payloadsAndMoves(); stagedSelfRebuild(); moveOnlyBuildAllocationFailures();
     cacheAndChurn(); movedPredicateCache(); mutationWork(); coarseAncestorCaches();
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();

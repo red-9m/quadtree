@@ -1,0 +1,38 @@
+Building sem-base (g++ -O3)
+70564 sem-base.txt
+a369be53201b94b2b83cf43d7ed9d0b4409a7884f7531d65836234c5010cd9c1  sem-base.txt
+Building sem-cand (g++ -O3)
+70564 sem-cand.txt
+a369be53201b94b2b83cf43d7ed9d0b4409a7884f7531d65836234c5010cd9c1  sem-cand.txt
+Building sem-san-base (clang++ -O1 -fsanitize=address,undefined -fno-omit-frame-pointer)
+70564 sem-san-base.txt
+a369be53201b94b2b83cf43d7ed9d0b4409a7884f7531d65836234c5010cd9c1  sem-san-base.txt
+Building sem-san-cand (clang++ -O1 -fsanitize=address,undefined -fno-omit-frame-pointer)
+70564 sem-san-cand.txt
+a369be53201b94b2b83cf43d7ed9d0b4409a7884f7531d65836234c5010cd9c1  sem-san-cand.txt
+Building sem-scalar (clang++ -O2 -U__SSE2__ -fno-exceptions)
+70564 sem-scalar.txt
+a369be53201b94b2b83cf43d7ed9d0b4409a7884f7531d65836234c5010cd9c1  sem-scalar.txt
+Building flat-base (g++ -O2)
+160000 flat-base.txt
+56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2  flat-base.txt
+Building flat-san-base (clang++ -O1 -fsanitize=address,undefined -fno-omit-frame-pointer)
+160000 flat-san-base.txt
+56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2  flat-san-base.txt
+Building flat-scalar-base (clang++ -O2 -U__SSE2__ -fno-exceptions)
+160000 flat-scalar-base.txt
+56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2  flat-scalar-base.txt
+Building flat-cand (g++ -O2)
+160000 flat-cand.txt
+56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2  flat-cand.txt
+Building flat-san-cand (clang++ -O1 -fsanitize=address,undefined -fno-omit-frame-pointer)
+160000 flat-san-cand.txt
+56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2  flat-san-cand.txt
+Building flat-scalar-cand (clang++ -O2 -U__SSE2__ -fno-exceptions)
+160000 flat-scalar-cand.txt
+56ce0d6941bd88a7833c7cf05cda29e89c9367f7f6de6eb6ed16f9197510e1d2  flat-scalar-cand.txt
+Clang index-test (default)
+index-test: 0 failures
+Clang index-test (scalar)
+index-test: 0 failures
+ALL VERIFIED

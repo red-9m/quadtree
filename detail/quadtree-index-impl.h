@@ -1238,6 +1238,10 @@ public:
                 .predicateCalls = Instrumented && predicated && outcome != PairOutcome::Miss,
                 .reports = Instrumented && outcome >= PairOutcome::Reported}};
         }
+        // Three or four flat entries: at most three or six candidates, respectively.
+        if (size() <= 4 && !options.ordered && mRoot == none &&
+            options.budget.candidateTests >= (size() == 4 ? 6u : 3u))
+            return tinyPairs(visitor, predicate);
         return traversePairs(visitor, options, predicate);
     }
 
@@ -1266,7 +1270,11 @@ private:
         return control == Stop ? PairOutcome::Stopped : PairOutcome::Reported;
     }
 
+    // Keep traversal state out of the short paths in forEachPair.
     template<typename Visitor, typename Predicate>
+#if __has_cpp_attribute(gnu::noinline)
+    [[gnu::noinline]]
+#endif
     QueryResult traversePairs(Visitor& visitor, QueryOptions<T> options, Predicate& predicate) const noexcept
     {
         if (options.ordered && !allRanked())
@@ -1284,8 +1292,6 @@ private:
         }
         else if (mRoot != none)
             withPairKernel(predicate, [&](auto& kernel) noexcept { selfPairs(mRoot, context, visitor, kernel); });
-        else if (size() <= 4 && options.budget.candidateTests >= size() * (size() - 1) / 2)
-            tinyPairs(context, visitor, predicate);
         else
             for (std::uint32_t a = 0; a < size() && context.active(); ++a)
                 for (std::uint32_t b = a + 1; b < size() && context.active(); ++b)
@@ -2394,7 +2400,8 @@ private:
                 const auto* input = std::ranges::data(range);
                 const auto n = static_cast<std::uint32_t>(count);
                 auto result = n == 1 ? buildFlatInteger<1>(input, n, handles) :
-                    n == 2 ? buildFlatInteger<2>(input, n, handles) : buildFlatInteger(input, n, handles);
+                    n == 2 ? buildFlatInteger<2>(input, n, handles) :
+                    n == 4 ? buildFlatInteger<4>(input, n, handles) : buildFlatInteger(input, n, handles);
                 if (result)
                     return *result;
             }
@@ -3080,7 +3087,7 @@ private:
         requires std::same_as<T, std::int64_t>
     {
         // Subtract low words modulo 2^32. Each difference is the exact signed
-        // gap because withPairKernel checked the joint span before traversal.
+        // gap because the caller checked the joint span before traversal.
         const auto pack = [](const Box<T>& box) noexcept
         {
             __m128 lo, hi;
@@ -3143,43 +3150,70 @@ private:
             reportPair(a, b, ordered, context, visitor);
     }
 
-    template<typename Visitor, typename Predicate>
-    void tinyPairs(Context& context, Visitor& visitor, Predicate& predicate) const noexcept
+    bool tinyOverlap(const Box<T>& a, const Box<T>& b, [[maybe_unused]] bool narrow) const noexcept
     {
+#if defined(__SSE2__)
+        if constexpr (std::same_as<T, std::int64_t>)
+            if (narrow)
+                return narrowOverlap(a, b, mConfig.boundary);
+#endif
+        return packedCrossItemOverlap(a, b, mConfig.boundary);
+    }
+
+    // The caller checked that every possible pair fits the budget. Inline the
+    // views and client callbacks here without adding to the caller's frame.
+    template<typename Visitor, typename Predicate>
+#if __has_cpp_attribute(gnu::noinline) && __has_cpp_attribute(gnu::flatten)
+    [[gnu::noinline, gnu::flatten]]
+#endif
+    QueryResult tinyPairs(Visitor& visitor, Predicate& predicate) const noexcept
+    {
+        QueryResult result;
         const auto count = mEntries.mSize;
         const auto* boxes = mEntries.mBoxes;
         const auto* meta = mEntries.mMeta;
+        bool narrow = false;
+#if defined(__SSE2__)
+        if constexpr (std::same_as<T, std::int64_t>)
+        {
+            // The index extent encloses every box. Check that both axes' gaps fit in int32.
+            constexpr auto limit = std::numeric_limits<std::int32_t>::max();
+            narrow = mExtent && detail::span(mExtent->minX, mExtent->maxX) <= limit &&
+                detail::span(mExtent->minY, mExtent->maxY) <= limit;
+        }
+#endif
         for (std::uint32_t a = 0; a + 1 < count; ++a)
             for (std::uint32_t b = a + 1; b < count; ++b)
             {
                 if (!detail::compatible(meta[a].filter, meta[b].filter))
                 {
-                    context.filtered();
+                    if constexpr (Instrumented)
+                        ++result.counters.filterRejections;
                     continue;
                 }
-                // The caller checked that every possible pair fits the budget.
                 if constexpr (Instrumented)
-                    ++context.result.counters.candidateTests;
-                const auto& x = boxes[a];
-                const auto& y = boxes[b];
-                // Strict overlap always qualifies; only contact needs the boundary and degeneracy checks.
-                if (!(x.minX < y.maxX && y.minX < x.maxX && x.minY < y.maxY && y.minY < x.maxY) &&
-                    !(detail::closedOverlap(x, y) && (mConfig.boundary == Boundary::TouchInclusive ||
-                        x.minX == x.maxX || x.minY == x.maxY || y.minX == y.maxX || y.minY == y.maxY)))
+                    ++result.counters.candidateTests;
+                if (!tinyOverlap(boxes[a], boxes[b], narrow))
                     continue;
                 auto first = a, second = b;
                 orient(first, second, false);
                 const View left = view(first), right = view(second);
                 if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
                 {
-                    context.predicate();
+                    if constexpr (Instrumented)
+                        ++result.counters.predicateCalls;
                     if (!std::invoke(predicate, left, right))
                         continue;
                 }
-                context.report(std::invoke(visitor, left, right));
-                if (!context.active())
-                    return;
+                if constexpr (Instrumented)
+                    ++result.counters.reports;
+                if (std::invoke(visitor, left, right) == Stop)
+                {
+                    result.status = Status::Stopped;
+                    return result;
+                }
             }
+        return result;
     }
 
     template<typename G, typename Visitor, typename Predicate>

@@ -1,0 +1,17 @@
+run,binary,engine,type,scene,n,cycles_per_scene,instructions_per_scene,branch_misses_per_scene
+repeat,control,index,int32,uniform,4,236.88,1079.10,0.32
+repeat,candidate,index,int32,uniform,4,160.70,735.87,0.10
+repeat,control,index,int64,uniform,4,243.02,1082.87,0.29
+repeat,candidate,index,int64,uniform,4,175.55,805.83,0.04
+repeat,control,index,float,uniform,4,245.49,1134.02,0.27
+repeat,candidate,index,float,uniform,4,154.87,740.74,0.03
+repeat,control,index,double,uniform,4,259.57,1137.82,0.28
+repeat,candidate,index,double,uniform,4,159.59,769.41,0.03
+repeat,control,index,int64,clustered,4,226.23,994.22,0.36
+repeat,candidate,index,int64,clustered,4,171.49,774.64,0.04
+initial,control,index,int64,uniform,4,239.33,1082.88,0.28
+initial,scalar-variant,index,int64,uniform,4,216.75,906.05,0.06
+initial,candidate,index,int64,uniform,4,175.34,805.86,0.04
+initial,control,index,int64,clustered,4,226.23,994.25,0.37
+initial,scalar-variant,index,int64,clustered,4,206.16,860.61,0.12
+initial,candidate,index,int64,clustered,4,168.93,774.64,0.04

@@ -1,0 +1,9 @@
+ordered walk: /tmp/g14/control 1f030 len=4ad
+ordered walk: /tmp/g14/candidate 20010 len=4ad
+same normalized instructions
+ordered traverse: /tmp/g14/control f3a10 len=8a6
+ordered traverse: /tmp/g14/candidate f5be0 len=8a6
+same normalized instructions
+int32 build: /tmp/g14/control 104640 len=230c
+int32 build: /tmp/g14/candidate 1066b0 len=231c
+same normalized instructions
