@@ -1,0 +1,41 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot int64 clustered n=1000 vs best baseline (grid)                                 2.224 [2.147-2.303]     <= 4 pass
+G2   hard snapshot int64 clustered n=100000 vs best baseline (grid)                               1.193 [1.158-1.230]     <= 2 pass
+G2   hard snapshot int64 mixed-size n=1000 vs best baseline (grid)                                2.732 [2.640-2.827]     <= 4 pass
+G2   hard snapshot int64 mixed-size n=100000 vs best baseline (grid)                              1.071 [1.040-1.102]     <= 2 pass
+G2   hard snapshot int64 split-line n=1000 vs best baseline (grid)                                3.004 [2.907-3.103]     <= 4 pass
+G2   hard snapshot int64 split-line n=100000 vs best baseline (grid)                              1.702 [1.651-1.755]     <= 2 pass
+G2   hard snapshot int64 split-line-translated n=1000 vs best baseline (grid)                     3.006 [2.883-3.133]     <= 4 pass
+G2   hard snapshot int64 split-line-translated n=100000 vs best baseline (grid)                   1.783 [1.729-1.839]     <= 2 pass
+G2   hard snapshot int64 uniform n=1000 vs best baseline (grid)                                   3.193 [3.094-3.295]     <= 4 pass
+G2   hard snapshot int64 uniform n=100000 vs best baseline (grid)                                 1.855 [1.802-1.910]     <= 2 pass
+G4   hard snapshot int64 split-line-translated n=1000 candidates vs split-line                                  0.932    x/1.5 pass
+G4   hard snapshot int64 split-line-translated n=1000 time vs split-line                          1.000 [0.971-1.030]    x/1.5 pass
+G4   hard snapshot int64 split-line-translated n=100000 candidates vs split-line                                0.918    x/1.5 pass
+G4   hard snapshot int64 split-line-translated n=100000 time vs split-line                        0.996 [0.966-1.027]    x/1.5 pass
+G6   hard snapshot int64 clustered n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int64 clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int64 mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int64 mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int64 split-line n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int64 split-line n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int64 split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot int64 split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int64 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot int64 clustered n=1000 vs unordered (index)                                    2.954 [2.862-3.048]     <= 4 pass
+G9   hard snapshot int64 clustered n=100000 vs unordered (index)                                  3.047 [2.949-3.148]     <= 4 pass
+G9   hard snapshot int64 mixed-size n=1000 vs unordered (index)                                   2.577 [2.488-2.669]     <= 4 pass
+G9   hard snapshot int64 mixed-size n=100000 vs unordered (index)                                 2.789 [2.710-2.869]     <= 4 pass
+G9   hard snapshot int64 split-line n=1000 vs unordered (index)                                   2.414 [2.321-2.511]     <= 4 pass
+G9   hard snapshot int64 split-line n=100000 vs unordered (index)                                 3.494 [3.385-3.608]     <= 4 pass
+G9   hard snapshot int64 split-line-translated n=1000 vs unordered (index)                        2.388 [2.313-2.465]     <= 4 pass
+G9   hard snapshot int64 split-line-translated n=100000 vs unordered (index)                      3.420 [3.318-3.526]     <= 4 pass
+G9   hard snapshot int64 uniform n=1000 vs unordered (index)                                      2.406 [2.336-2.478]     <= 4 pass
+G9   hard snapshot int64 uniform n=100000 vs unordered (index)                                    3.225 [3.122-3.332]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard     10     0     0
+  G4 hard      4     0     0
+  G6 hard     10     0     0
+  G9 hard     10     0     0
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

@@ -3,9 +3,13 @@
 import csv
 import json
 import re
+import sys
 from pathlib import Path
 
-here = Path(__file__).resolve().parent
+base = Path(__file__).resolve().parent
+here = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else base
+screen = base / (sys.argv[2] if len(sys.argv) > 2 else 'common')
+source = (here / 'source-head.txt').read_text().strip() if here != base else '679a2b2106815ac459f8d2d12a0a7ed9905eb033'
 data = here / 'data'
 ref = here.parent / 'packed-staged-2026-11-23' / 'data'
 blocks = []
@@ -34,7 +38,7 @@ def subjects(file):
 
 target = ('G2', 'snapshot int64 uniform n=100000 vs best baseline')
 for name in ('matrix', 'first', 'second'):
-    require(gates(here / 'common' / f'{name}.gates').get(target) == 'pass', f'{name}: target screen')
+    require(gates(screen / f'{name}.gates').get(target) == 'pass', f'{name}: target screen')
 require(gates(data / 'int64-snapshot' / 'gates.txt').get(target) == 'pass', 'release matrix: int64 target')
 old_final = subjects(here.parent / 'int64-narrow-acceptance' / 'data' / 'final-snapshot-status.txt')
 new_final = subjects(data / 'final-snapshot-status.txt')
@@ -59,7 +63,7 @@ for s in stages:
 require((data / 'power-after.txt').read_bytes() == (data / 'power-before.txt').read_bytes(), 'power settings not restored')
 require('100% tests passed out of 22' in (here / 'ctest.log').read_text(), 'CTest')
 ci = json.loads((here / 'ci.json').read_text())
-require(ci['head_sha'] == '679a2b2106815ac459f8d2d12a0a7ed9905eb033' and ci['conclusion'] == 'success'
+require(ci['head_sha'] == source and ci['conclusion'] == 'success'
         and len(ci['jobs']) == 9 and all(j['conclusion'] == 'success' for j in ci['jobs']), 'hosted portability')
 print('HOLD' if blocks else 'ELIGIBLE FOR PATCH PROMOTION (not int64 type acceptance)')
 for b in blocks: print('-', b)

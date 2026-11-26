@@ -1,0 +1,9 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot int64 uniform n=100000 vs best baseline (grid)                                 1.869 [1.815-1.925]     <= 2 pass
+G6   hard snapshot int64 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot int64 uniform n=100000 vs unordered (index)                                    3.215 [3.123-3.310]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard      1     0     0
+  G6 hard      1     0     0
+  G9 hard      1     0     0
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

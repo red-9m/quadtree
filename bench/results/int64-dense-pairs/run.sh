@@ -6,12 +6,15 @@ set -euo pipefail
 export LC_ALL=C
 here=$(dirname "$(realpath "$0")")
 w=$(realpath "$1") out=$(realpath -m "$2"); shift 2
+record=${QT_VALIDATION_DIR:-$here}
+candidate=679a2b2106815ac459f8d2d12a0a7ed9905eb033
+if [[ $record != "$here" ]]; then candidate=$(<"$record/source-head.txt"); fi
 stages=("$@"); ((${#stages[@]})) || stages=(int32-snapshot int64-snapshot int32-persistent int64-persistent)
 exe="$w/build/bench/quadtree-bench"
 mkdir -p "$out"
 stage_dir=$(mktemp -d)
 objcopy --dump-section ".text=$stage_dir/bench.text" "$exe" "$stage_dir/copy"
-(cd "$stage_dir" && sha256sum -c "$here/text.sha256") > "$out/text-check-$(date +%s).log"
+(cd "$stage_dir" && sha256sum -c "$record/text.sha256") > "$out/text-check-$(date +%s).log"
 rm -rf "$stage_dir"
 [[ $(git -C "$w/box2d" rev-parse HEAD) == 178495ba35695aefe9c321e569d2277f06db3b90 ]]
 
@@ -47,7 +50,7 @@ trap 'exit 130' INT
 trap 'exit 143' TERM
 for f in "${files[@]}"; do printf 'performance\n' > "$f"; done
 {
-    printf 'candidate: 679a2b2106815ac459f8d2d12a0a7ed9905eb033\nharness: '; git -C "$here" rev-parse HEAD; uname -a; lscpu | grep '^Model name:'
+    printf 'candidate: %s\nharness: ' "$candidate"; git -C "$here" rev-parse HEAD; uname -a; lscpu | grep '^Model name:'
     c++ --version | head -1; cmake --version | head -1; git -C "$w/box2d" rev-parse HEAD
     printf 'CPU affinity: 6; monitor CPU: 0\n'
     grep -H . "$clock" "$siblings" "${files[@]}" /sys/class/power_supply/*/online

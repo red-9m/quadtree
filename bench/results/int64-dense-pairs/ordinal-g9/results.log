@@ -1,0 +1,64 @@
+# date: 2026-11-25T19:36:07Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293772 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int64 --engines=index,index-ordered,brute,sweep,grid --scenes=uniform,clustered,mixed-size,split-line,split-line-translated --sizes=1000,100000 --small-sizes= --rounds=5 --csv=bench/results/int64-dense-pairs/ordinal-g9/results.csv --raw=bench/results/int64-dense-pairs/ordinal-g9/results.raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int64     1000     1 brute             816.046     2.1  40.64 [39.69-41.62]        499500         734     0.00        32 ok
+uniform                                  int64     1000     1 sweep              67.184     2.0     3.35 [3.25-3.44]         20194         734     0.00        51 ok
+uniform                                  int64     1000     1 grid               20.079     2.6     1.00 [1.00-1.00]          3130         734     0.00        67 ok
+uniform                                  int64     1000     1 index              64.938     2.1     3.23 [3.15-3.32]          7341         734     0.00       333 ok
+uniform                                  int64     1000     1 index-ordered      198.895     3.5    9.90 [9.59-10.23]          3360         734     0.00       378 ok
+uniform                                  int64   100000     1 brute                   -       -                    -     200056769        2925     0.00      3222 capped
+uniform                                  int64   100000     1 sweep           47012.833     2.0     7.19 [7.05-7.34]      20226787       73905     0.00      5175 ok
+uniform                                  int64   100000     1 grid             6535.006     2.1     1.00 [1.00-1.00]        310440       73905     0.00      6670 ok
+uniform                                  int64   100000     1 index           12136.364     2.6     1.86 [1.81-1.90]        788738       73905     0.00     32663 ok
+uniform                                  int64   100000     1 index-ordered    42097.815     2.5     6.44 [6.27-6.61]        383603       73905     0.00     38029 ok
+clustered                                int64     1000     1 brute             865.000     2.2  23.14 [22.58-23.73]        499500        2999     0.00        32 ok
+clustered                                int64     1000     1 sweep              87.906     2.1     2.35 [2.29-2.41]         25028        2999     0.00        51 ok
+clustered                                int64     1000     1 grid               37.376     2.6     1.00 [1.00-1.00]         10412        2999     0.00        67 ok
+clustered                                int64     1000     1 index              84.839     2.1     2.27 [2.21-2.33]         12438        2999     0.00       333 ok
+clustered                                int64     1000     1 index-ordered      310.600     2.1     8.31 [8.09-8.54]          8196        2999     0.00       378 ok
+clustered                                int64   100000     1 brute                   -       -                    -     200056769       13784     0.00      3222 capped
+clustered                                int64   100000     1 sweep           50992.535     2.1     3.59 [3.51-3.66]      21181030      337133     0.00      5175 ok
+clustered                                int64   100000     1 grid            14215.709     2.0     1.00 [1.00-1.00]       1232900      337133     0.00      6670 ok
+clustered                                int64   100000     1 index           17169.811     2.2     1.21 [1.18-1.23]       2082027      337133     0.00     32246 ok
+clustered                                int64   100000     1 index-ordered    60401.198     2.9     4.25 [4.12-4.38]       1118427      337133     0.00     37611 ok
+split-line                               int64     1000     1 brute             799.935     2.2  35.22 [34.39-36.07]        499500         843     0.00        32 ok
+split-line                               int64     1000     1 sweep              69.853     2.1     3.08 [3.01-3.14]         21333         843     0.00        51 ok
+split-line                               int64     1000     1 grid               22.710     2.1     1.00 [1.00-1.00]          2959         843     0.00        98 ok
+split-line                               int64     1000     1 index              69.199     2.1     3.05 [2.98-3.11]          7914         843     0.00       330 ok
+split-line                               int64     1000     1 index-ordered      214.834     2.3     9.46 [9.24-9.68]          3858         843     0.00       375 ok
+split-line                               int64   100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line                               int64   100000     1 sweep           65501.082    10.0     8.78 [7.94-9.72]      28769913      105137     0.00      5175 ok
+split-line                               int64   100000     1 grid             7441.031     2.1     1.00 [1.00-1.00]        329471      105137     0.00     11807 ok
+split-line                               int64   100000     1 index           12944.223     2.6     1.74 [1.69-1.79]        681627      105137     0.00     33377 ok
+split-line                               int64   100000     1 index-ordered    49180.812     2.2     6.61 [6.47-6.75]        429581      105137     0.00     38743 ok
+split-line-translated                    int64     1000     1 brute             802.621     2.1  35.45 [34.66-36.26]        499500         843     0.00        32 ok
+split-line-translated                    int64     1000     1 sweep              64.676     2.0     2.86 [2.79-2.92]         21332         843     0.00        51 ok
+split-line-translated                    int64     1000     1 grid               22.638     2.2     1.00 [1.00-1.00]          2893         843     0.00        98 ok
+split-line-translated                    int64     1000     1 index              70.243     2.0     3.10 [3.03-3.18]          7375         843     0.00       334 ok
+split-line-translated                    int64     1000     1 index-ordered      217.224     3.0     9.59 [9.32-9.88]          3660         843     0.00       379 ok
+split-line-translated                    int64   100000     1 brute                   -       -                    -     200056769        4056     0.00      3222 capped
+split-line-translated                    int64   100000     1 sweep           61796.625     2.0     8.53 [8.36-8.71]      28769910      105137     0.00      5175 ok
+split-line-translated                    int64   100000     1 grid             7241.112     2.0     1.00 [1.00-1.00]        324504      105137     0.00     11788 ok
+split-line-translated                    int64   100000     1 index           12793.378     2.0     1.77 [1.73-1.80]        625694      105137     0.00     33392 ok
+split-line-translated                    int64   100000     1 index-ordered    48654.070     2.1     6.72 [6.57-6.88]        422813      105137     0.00     38758 ok
+mixed-size                               int64     1000     1 brute             866.346     2.0  25.95 [25.35-26.56]        499500        2977     0.00        32 ok
+mixed-size                               int64     1000     1 sweep              96.418     2.1     2.89 [2.81-2.96]         26694        2977     0.00        51 ok
+mixed-size                               int64     1000     1 grid               33.389     2.4     1.00 [1.00-1.00]          7075        2977     0.00        65 ok
+mixed-size                               int64     1000     1 index              90.988     2.2     2.73 [2.66-2.80]          9683        2977     0.00       331 ok
+mixed-size                               int64     1000     1 index-ordered      287.244     2.0     8.60 [8.39-8.82]          8823        2977     0.00       376 ok
+mixed-size                               int64   100000     1 brute                   -       -                    -     200056769       85597     0.00      3222 capped
+mixed-size                               int64   100000     1 sweep           98330.594     2.0     2.88 [2.79-2.98]      33985904     2054380     0.00      5175 ok
+mixed-size                               int64   100000     1 grid            34093.470     3.3     1.00 [1.00-1.00]       2734376     2054380     0.00      7607 ok
+mixed-size                               int64   100000     1 index           36330.925     2.1     1.07 [1.03-1.10]       2968141     2054380     0.00     32553 ok
+mixed-size                               int64   100000     1 index-ordered   147390.911     2.1     4.32 [4.18-4.47]       6308583     2054380     0.00     37918 ok

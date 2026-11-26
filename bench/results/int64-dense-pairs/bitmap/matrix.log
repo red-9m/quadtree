@@ -1,0 +1,19 @@
+# date: 2026-11-25T19:44:21Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293776 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=int64 --scenes=uniform --sizes=100000 --small-sizes= --engines=index,index-ordered,brute,sweep,grid --rounds=5 --csv=/home/dima/src/quadtree.git/bench/results/int64-dense-pairs/bitmap/matrix.csv --raw=/home/dima/src/quadtree.git/bench/results/int64-dense-pairs/bitmap/matrix.raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  int64   100000     1 brute                   -       -                    -     200056769        2925     0.00      3222 capped
+uniform                                  int64   100000     1 sweep           46636.271     2.0     7.20 [7.05-7.34]      20226787       73905     0.00      5175 ok
+uniform                                  int64   100000     1 grid             6481.574     2.1     1.00 [1.00-1.00]        310440       73905     0.00      6670 ok
+uniform                                  int64   100000     1 index           12206.344     3.1     1.88 [1.83-1.94]        788738       73905     0.00     32663 ok
+uniform                                  int64   100000     1 index-ordered    43118.141     3.8     6.65 [6.42-6.89]        383603       73905     0.00     38029 ok

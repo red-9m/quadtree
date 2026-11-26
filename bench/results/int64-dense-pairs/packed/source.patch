@@ -1,0 +1,114 @@
+diff --git a/detail/quadtree-index-impl.h b/detail/quadtree-index-impl.h
+index f06aea2..89ec1a6 100644
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -2813,15 +2813,16 @@ private:
+     }
+ 
+     // The caller has screened geometry and charged this nonempty node.
+-    template<typename Callback>
++    template<bool Common = false, typename Callback>
+     void walkOrdered(const Node& node, const Box<T>& box, Filter filter, Context& context,
+         Callback& callback) const noexcept
+     {
+-        if (!detail::compatible(filter, node.summary))
+-        {
+-            context.filtered();
+-            return;
+-        }
++        if constexpr (!Common)
++            if (!detail::compatible(filter, node.summary))
++            {
++                context.filtered();
++                return;
++            }
+         for (std::uint32_t i = node.head; i != none && context.active(); i = nextItem(node, i))
+             callback(i);
+         if (node.firstChild == none || !context.active())
+@@ -2846,7 +2847,7 @@ private:
+             // in DFS order, never precharging siblings beyond that child.
+             if (!context.nodes(countChildren(occupied & through)))
+                 return;
+-            walkOrdered(children[q], box, filter, context, callback);
++            walkOrdered<Common>(children[q], box, filter, context, callback);
+             if (!context.active())
+                 return;
+             occupied &= ~through;
+@@ -3171,6 +3172,65 @@ private:
+             order[i] = keys[i].entry;
+     }
+ 
++#if defined(__SSE2__)
++    // Ordered queries revisit spatially adjacent entries for many rank rows.
++    // Reuse the build scratch for both their inverse ranks and exact low-word
++    // geometry. One record fits in the bytes already reserved for one key.
++    struct OrderedBox
++    {
++        std::uint32_t gapTerms[4]; // -minX, -minY, maxX, maxY, modulo 2^32
++        std::uint32_t ordinal;
++        std::int32_t threshold; // -1 for closed contact, otherwise 0
++    };
++    static_assert(sizeof(OrderedBox) <= sizeof(Key) && alignof(OrderedBox) <= alignof(Key));
++    template<typename Visitor>
++    void orderedCommon(Workspace<T>& scratch, Context& context, Visitor& visitor) const noexcept
++        requires std::same_as<T, std::int64_t>
++    {
++        const auto n = static_cast<std::uint32_t>(size());
++        auto* records = ::new (scratch.mTemp.data()) OrderedBox[n];
++        for (std::uint32_t i = 0; i < n; ++i) records[scratch.mOrder[i]].ordinal = i;
++        for (std::uint32_t i = 0; i < n; ++i)
++        {
++            const auto& box = mEntries.mBoxes[i];
++            auto& r = records[i];
++            r.gapTerms[0] = 0u - static_cast<std::uint32_t>(box.minX);
++            r.gapTerms[1] = 0u - static_cast<std::uint32_t>(box.minY);
++            r.gapTerms[2] = static_cast<std::uint32_t>(box.maxX);
++            r.gapTerms[3] = static_cast<std::uint32_t>(box.maxY);
++            r.threshold = mConfig.boundary == Boundary::TouchInclusive || box.minX == box.maxX || box.minY == box.maxY ? -1 : 0;
++        }
++        const auto terms = [](const OrderedBox& r) noexcept
++        { __m128i v; std::memcpy(&v, r.gapTerms, sizeof(v)); return v; };
++        for (std::uint32_t i = 0; i + 1 < n && context.active(); ++i)
++        {
++            const auto a = scratch.mOrder[i];
++            const auto& box = mEntries.mBoxes[a];
++            std::uint32_t count = 0;
++            const auto source = _mm_shuffle_epi32(terms(records[a]), _MM_SHUFFLE(1, 0, 3, 2));
++            const auto threshold = records[a].threshold;
++            auto candidate = [&](std::uint32_t b) noexcept
++            {
++                const auto& other = records[b];
++                if (other.ordinal <= i || !context.candidate()) return;
++                const auto gaps = _mm_add_epi32(source, terms(other));
++                const auto hit = _mm_cmpgt_epi32(gaps, _mm_set1_epi32(threshold | other.threshold));
++                if (_mm_movemask_ps(_mm_castsi128_ps(hit)) == 15) scratch.mRow[count++] = other.ordinal;
++            };
++            // The root contains this source, and all filters share a common bit.
++            if (context.node()) walkOrdered<true>(mNodes[mRoot], box, {}, context, candidate);
++            if (!context.active()) return;
++            auto* row = scratch.mRow.data();
++            std::sort(row, row + count);
++            for (std::uint32_t j = 0; j < count && context.active(); ++j)
++            {
++                const View left = view(a), right = view(scratch.mOrder[row[j]]);
++                context.report(std::invoke(visitor, left, right));
++            }
++        }
++    }
++#endif
++
+     template<typename Visitor, typename Predicate>
+     void orderedSelf(Workspace<T>& scratch, bool movedOnly, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -3184,6 +3244,11 @@ private:
+             radixRankOrder(scratch, scratch.mOrder.data(), static_cast<std::uint32_t>(sourceCount));
+         else
+             sortRanks(scratch.mOrder.data(), sourceCount);
++#if defined(__SSE2__)
++        if constexpr (std::same_as<Predicate, CommonBitPairs>)
++            if (!movedOnly && sourceCount <= scratch.mTemp.capacity() / sizeof(OrderedBox))
++                return orderedCommon(scratch, context, visitor);
++#endif
+         for (std::size_t i = 0; i + 1 < size() && context.active(); ++i)
+         {
+             const std::uint32_t a = scratch.mOrder[i];

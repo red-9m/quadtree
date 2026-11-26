@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run once, from a clean archive build. Each run.sh invocation restores power settings.
 set -euo pipefail
-here=$(dirname "$(realpath "$0")"); w=$(realpath "$1"); out="$here/data"
+here=$(dirname "$(realpath "$0")"); w=$(realpath "$1"); export QT_VALIDATION_DIR=$(realpath "${2:-$here}"); out="$QT_VALIDATION_DIR/data"
 run() { bash "$here/run.sh" "$w" "$out" "$@"; }
 run int64-snapshot int32-snapshot
 for t in int64 int32; do
