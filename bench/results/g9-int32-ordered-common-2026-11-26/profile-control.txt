@@ -1,0 +1,12 @@
+# Sampled user-mode cycles, int32 split-line-translated n=100000, engine index-ordered
+# Total Lost Samples: 0
+# Samples: 5K of event 'cycles:u'
+    52.74%  [.] void QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::walkOrdered<false, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::orderedSelf<bench::LibraryIndex<int, true>::
+     9.26%  [.] QuadTree::Status QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::buildGeneral<false, false, std::vector<QuadTree::BuildEntry<unsigned int, int, QuadTree::Box<int> >, std::allocato
+     8.85%  [.] QuadTree::QueryResult QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::traversePairs<bench::LibraryIndex<int, true>::pairs<(anonymous namespace)::PairSink>((anonymous namespace)::P
+     6.59%  [.] bool QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::planBulk<false>(QuadTree::detail::Cell<int> const&, unsigned int, unsigned int, unsigned int, QuadTree::Box<int> const*, unsig
+     5.37%  [.] QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::radixRankOrder(QuadTree::Workspace<int>&, unsigned int*, unsigned int) const [clone .isra.0]
+     5.29%  [.] bool QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::pairQualifies<true, QuadTree::detail::AcceptAll>(unsigned int, unsigned int, bool, QuadTree::Index<unsigned int, int, QuadTree
+     3.64%  [.] QuadTree::detail::uniqueBuildRanks(unsigned long*, unsigned long*, unsigned int)
+     3.24%  [.] QuadTree::detail::EntryStore<int, unsigned int, QuadTree::Unchecked, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true> >::insertRank(unsigned long)
+     1.31%  [.] void QuadTree::detail::introPartition<unsigned int, QuadTree::Index<unsigned int, int, QuadTree::Unchecked, true>::sortRanks(unsigned int*, unsigned long) const::{lambda(unsigned int, unsigned i

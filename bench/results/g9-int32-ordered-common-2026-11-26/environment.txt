@@ -1,0 +1,24 @@
+HEAD and runtime SHA-256 recorded with the G1 and G9 patches applied.
+GCC Release, CMake QUADTREE_BUILD_BENCHMARKS=ON, QUADTREE_BENCH_NATIVE=OFF.
+
+2026-11-26T21:21:50+02:00
+Linux r9 7.3.0-1-custom #1 SMP PREEMPT_DYNAMIC Mon, 19 Oct 2026 00:11:47 +0000 x86_64 GNU/Linux
+Model name:                              AMD Ryzen 9 5900HS with Radeon Graphics
+gcc (GCC) 16.2.1 20260810
+clang version 22.1.8
+cmake version 4.4.2
+/sys/firmware/acpi/platform_profile:performance
+/sys/devices/system/clocksource/clocksource0/current_clocksource:hpet
+/sys/devices/system/cpu/cpu6/topology/thread_siblings_list:6-7
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor:powersave
+/sys/devices/system/cpu/cpu0/cpufreq/energy_performance_preference:performance
+/sys/devices/system/cpu/cpu6/cpufreq/scaling_governor:powersave
+/sys/devices/system/cpu/cpu6/cpufreq/energy_performance_preference:performance
+/sys/devices/system/cpu/cpu7/cpufreq/scaling_governor:powersave
+/sys/devices/system/cpu/cpu7/cpufreq/energy_performance_preference:performance
+2090617b229d379ff82cd4ae929aa026598e33c801a69de3fe8222203ba960e2  /tmp/g9t/control
+f7d8968a68ac97be29a7d28626dfaa9874069c2d66c6392c9f0a31cceaf7394c  /tmp/g9t/candidate
+455132cf46b5a5fbcd05bab54d99fe501c0209690b7ee63cf6a0876a0a7e1e0e  /tmp/g9t/control.h
+0264f71b739185170ffc47bd5ce7d475d8a260c2ce85ee18ef107962c056b58a  detail/quadtree-index-impl.h
+95c9178a257f34cf1d2bf8c5c1fca4c4cb3cdf32
+ffec747b27a2267016f8d0240d658c82d187fb2271fa0f69fcbe53fbc067180d  /tmp/g14/build/_deps/box2d-subbuild/box2d-populate-prefix/src/v3.2.0.tar.gz

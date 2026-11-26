@@ -395,35 +395,60 @@ void int64PairPrefixes()
     check();
 }
 
-// Long ordered rows span both bitmap levels; sparse points between the long
-// rows must not inherit any of their marks. Full-width ranks are not ordinals.
-void int64LongRows()
+// Long ordered rows span both bitmap levels; sparse rows must not inherit
+// their marks. Compare the fast and general walks, including partial rows.
+template<typename T>
+void orderedIntegerRows()
 {
-    using T = std::int64_t;
-    auto made = Tree<T>::create({});
+    TestResource resource;
+    auto made = Tree<T>::create({}, &resource);
     REQUIRE(made.ok());
     auto& tree = made.value();
+    const T origin = std::numeric_limits<T>::max() - 200;
     std::vector<QuadTree::BuildEntry<int, T>> input;
     for (int i = 0; i < 4200; ++i)
     {
-        const T x = i % 100, y = i / 100;
-        const Box<T> box = i % 131 == 0 ? Box<T>{0, y, 100, 50} : Box<T>{x, y, x, y};
-        input.push_back({box, int(i), {}, std::uint64_t(i) * UINT64_C(0x9e3779b97f4a7c15)});
+        const T x = origin + i % 100, y = i / 100;
+        const Box<T> box = i % 131 == 0 ? Box<T>{origin, y, origin + 100, 50} : Box<T>{x, y, x, y};
+        input.push_back({box, i, {std::uint64_t(4 | (i & 1)), 6}, std::uint64_t(i) * UINT64_C(0x9e3779b97f4a7c15)});
     }
-    QuadTree::Workspace<T> scratch;
+    std::vector<typename Tree<T>::HandleType> handles(input.size());
+    QuadTree::Workspace<T> scratch(&resource), queryOnly(&resource);
     REQUIRE(scratch.reserve(input.size()) == Status::Ok);
-    REQUIRE(tree.build(input, {.workspace = &scratch}) == Status::Ok);
-    for (unsigned stop : {0u, 128u, 5000u})
+    REQUIRE(queryOnly.reserve({input.size(), 0, 0}) == Status::Ok);
+    REQUIRE(tree.build(input, handles, {.workspace = &scratch}) == Status::Ok);
+    const auto check = [&](QuadTree::Workspace<T>& workspace, QuadTree::WorkBudget budget, unsigned stop)
     {
+        const auto allocations = resource.allocations;
         std::vector<Pair> a, b;
         const auto visit = [&](auto& dst) { return [&](const auto& x, const auto& y) noexcept
-        { dst.emplace_back(x.payload, y.payload); return dst.size() == stop ? Stop : Continue; }; };
-        QuadTree::QueryOptions<T> opts{.ordered = true, .workspace = &scratch};
+        {
+            CHECK(x.rank && y.rank && *x.rank < *y.rank);
+            dst.emplace_back(x.payload, y.payload);
+            return dst.size() == stop ? Stop : Continue;
+        }; };
+        const QuadTree::QueryOptions<T> opts{.ordered = true, .workspace = &workspace, .budget = budget};
         const auto ref = tree.forEachPair(visit(a), opts, [](const auto&, const auto&) noexcept { return true; });
         const auto got = tree.forEachPair(visit(b), opts);
         CHECK(ref.status == got.status && a == b);
         CHECK(ref.counters.candidateTests == got.counters.candidateTests && ref.counters.nodeVisits == got.counters.nodeVisits);
-    }
+        CHECK(ref.counters.filterRejections == got.counters.filterRejections && got.counters.reports == b.size());
+        CHECK(got.counters.predicateCalls == 0 && resource.allocations == allocations);
+    };
+    for (unsigned stop : {0u, 128u, 5000u})
+        check(scratch, {}, stop);
+    for (const QuadTree::WorkBudget budget : {QuadTree::WorkBudget{.candidateTests = 0},
+        QuadTree::WorkBudget{.candidateTests = 4500}, QuadTree::WorkBudget{.nodeVisits = 4096}})
+        check(scratch, budget, 0);
+    check(queryOnly, {}, 0); // No build scratch to borrow.
+    REQUIRE(tree.remove(handles.back()) == Status::Ok);
+    check(scratch, {}, 0); // A non-contiguous node uses the incremental walk.
+    REQUIRE(tree.setFilter(handles[131], {0, 0}) == Status::Ok);
+    check(scratch, {}, 0); // No common filter bit.
+    REQUIRE(tree.setFilter(handles[131], input[131].filter) == Status::Ok);
+    constexpr T far = std::numeric_limits<T>::min();
+    REQUIRE(tree.update(handles[0], Box<T>{far, 0, far, 0}) == Status::Ok);
+    check(scratch, {}, 0); // Full-width span, beyond the signed-lane proof.
 }
 
 // Pair identities on translated snapshots, including low-word wrap, the
@@ -3219,7 +3244,8 @@ int main()
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();
     pairWorkspaceGrowth(); coincidentMotion(); concurrency(); uninstrumented();
     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();
-    translatedInt64Snapshots(); int64PairPrefixes(); int64LongRows();
+    translatedInt64Snapshots(); int64PairPrefixes();
+    orderedIntegerRows<std::int32_t>(); orderedIntegerRows<std::int64_t>();
     for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
         for (auto extent : {QuadTree::Extent::Fixed, QuadTree::Extent::Adaptive, QuadTree::Extent::Snapshot})
         {

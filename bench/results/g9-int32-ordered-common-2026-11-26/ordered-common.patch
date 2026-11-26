@@ -1,0 +1,61 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3365,7 +3365,6 @@
+         std::uint32_t terms[4]; // Same opposing-edge encoding as OrderedBox.
+         std::uint32_t head, count, escape;
+     };
+-    static_assert(alignof(ThreadNode) <= alignof(Box<std::int64_t>));
+
+     static void gapTerms(const Box<T>& box, std::uint32_t (&terms)[4]) noexcept
+     {
+@@ -3394,10 +3393,32 @@
+         return true;
+     }
+
++    // The int32 ordered path proves compatibility here rather than adding work
++    // to every snapshot build or maintaining a cached proof through mutations.
++    bool canOrderCommon32() const noexcept requires std::same_as<T, std::int32_t>
++    {
++        if (mRoot == none)
++            return false;
++        const auto& e = mNodes[mRoot].bounds;
++        constexpr auto limit = std::numeric_limits<std::int32_t>::max();
++        if (detail::span(e.minX, e.maxX) > limit || detail::span(e.minY, e.maxY) > limit)
++            return false;
++        std::uint64_t common = ~std::uint64_t(0);
++        for (std::size_t i = 0; i < size(); ++i)
++        {
++            const auto filter = mEntries.mMeta[i].filter;
++            common &= filter.category & filter.mask;
++            if (!common)
++                return false;
++        }
++        return true;
++    }
++
+     template<typename Visitor>
+     void orderedCommon(Workspace<T>& scratch, Context& context, Visitor& visitor) const noexcept
+-        requires std::same_as<T, std::int64_t>
++        requires IntegerCoordinate<T>
+     {
++        static_assert(alignof(ThreadNode) <= alignof(Box<T>));
+         const auto n = static_cast<std::uint32_t>(size());
+         const auto words = 1 + (n - 1) / 64, groups = 1 + (words - 1) / 64;
+         auto* bits = scratch.mKeys.data(); // Paired build reservation with mTemp.
+@@ -3499,8 +3520,16 @@
+             sortRanks(scratch.mOrder.data(), sourceCount);
+ #if defined(__SSE2__)
+         if constexpr (std::same_as<Predicate, CommonBitPairs>)
++        {
+             if (!movedOnly && sourceCount <= scratch.mTemp.capacity() / sizeof(OrderedBox))
+                 return orderedCommon(scratch, context, visitor);
++        }
++        else if constexpr (std::same_as<T, std::int32_t> && std::same_as<Predicate, detail::AcceptAll>)
++        {
++            if (!movedOnly && sourceCount >= 4096 && sourceCount <= scratch.mTemp.capacity() / sizeof(OrderedBox) &&
++                canOrderCommon32())
++                return orderedCommon(scratch, context, visitor);
++        }
+ #endif
+         for (std::size_t i = 0; i + 1 < size() && context.active(); ++i)
+         {
