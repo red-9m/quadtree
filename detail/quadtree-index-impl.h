@@ -1221,8 +1221,51 @@ public:
             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>
     QueryResult forEachPair(Visitor&& visitor, QueryOptions<T> options = {}, Predicate&& predicate = {}) const noexcept
     {
-        if (size() < 2)
+        if (empty())
+            return {};
+        if (size() == 1)
             return {options.ordered && !allRanked() ? Status::MissingRank : Status::Ok, {}};
+        if (size() == 2 && !options.ordered && mRoot == none)
+        {
+            // Only one possible candidate. Resolve a miss without setting up traversal state.
+            if (!detail::compatible(mEntries.mMeta[0].filter, mEntries.mMeta[1].filter))
+                return {Status::Ok, {.filterRejections = Instrumented}};
+            if (!options.budget.candidateTests)
+                return {Status::BudgetExhausted, {}};
+            const auto outcome = visitSinglePair(visitor, predicate);
+            constexpr bool predicated = !std::same_as<std::remove_reference_t<Predicate>, detail::AcceptAll>;
+            return {outcome == PairOutcome::Stopped ? Status::Stopped : Status::Ok, {.candidateTests = Instrumented,
+                .predicateCalls = Instrumented && predicated && outcome != PairOutcome::Miss,
+                .reports = Instrumented && outcome >= PairOutcome::Reported}};
+        }
+        return traversePairs(visitor, options, predicate);
+    }
+
+private:
+    enum class PairOutcome { Miss, Rejected, Reported, Stopped };
+
+    template<typename Visitor, typename Predicate>
+#if __has_cpp_attribute(gnu::noinline)
+    [[gnu::noinline]] // Isolate the single candidate without passing the full traversal result.
+#endif
+    PairOutcome visitSinglePair(Visitor& visitor, Predicate& predicate) const noexcept
+    {
+        if (!packedCrossItemOverlap(mEntries.mBoxes[0], mEntries.mBoxes[1], mConfig.boundary))
+            return PairOutcome::Miss;
+        const View a = view(0), b = view(1);
+        const bool swapped = entryKey(1) < entryKey(0);
+        const View& left = swapped ? b : a;
+        const View& right = swapped ? a : b;
+        if constexpr (!std::same_as<Predicate, detail::AcceptAll>)
+            if (!std::invoke(predicate, left, right))
+                return PairOutcome::Rejected;
+        const Visit control = std::invoke(visitor, left, right);
+        return control == Stop ? PairOutcome::Stopped : PairOutcome::Reported;
+    }
+
+    template<typename Visitor, typename Predicate>
+    QueryResult traversePairs(Visitor& visitor, QueryOptions<T> options, Predicate& predicate) const noexcept
+    {
         if (options.ordered && !allRanked())
             return {Status::MissingRank, {}};
         Context context(options.budget);
@@ -1247,6 +1290,7 @@ public:
         return context.result;
     }
 
+public:
     template<typename Visitor, typename Predicate = detail::AcceptAll>
         requires std::is_nothrow_invocable_r_v<Visit, Visitor&, const View&, const View&> &&
             std::is_nothrow_invocable_r_v<bool, Predicate&, const View&, const View&>
@@ -2322,12 +2366,16 @@ private:
     }
 
     template<bool Consume, bool Projected, typename R, typename Accessor>
+#if __has_cpp_attribute(gnu::always_inline)
+    [[gnu::always_inline]]
+#endif
     Status buildPrepared(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
         std::size_t count, Workspace<T>& workspace) noexcept
     {
         auto* scratch = &workspace;
-        if (scratch->buildBoxCapacity() < count || scratch->mDescriptors.capacity() < count ||
-            scratch->mKeys.capacity() < count || scratch->tempKeyCapacity() < count)
+        // Workspace::reserve grows boxes, descriptors, keys and temp storage together,
+        // committing all four only on success. One capacity check covers the group.
+        if (scratch->mDescriptors.capacity() < count)
             return Status::InsufficientWorkspace;
         typename Workspace<T>::Use use(*scratch);
         if constexpr (!Projected && !Consume &&
@@ -2339,10 +2387,25 @@ private:
             if (count <= mConfig.smallSetThreshold && count <= mEntries.mCapacity &&
                 count <= mEntries.mSlotCapacity && mConfig.extent != Extent::Fixed)
             {
-                if (auto result = buildFlatInteger(std::ranges::data(range), static_cast<std::uint32_t>(count), handles))
+                // Specialize the shortest replacements; keep the general build frame off the warm path.
+                const auto* input = std::ranges::data(range);
+                const auto n = static_cast<std::uint32_t>(count);
+                auto result = n == 1 ? buildFlatInteger<1>(input, n, handles) :
+                    n == 2 ? buildFlatInteger<2>(input, n, handles) : buildFlatInteger(input, n, handles);
+                if (result)
                     return *result;
             }
         }
+        return buildGeneral<Consume, Projected>(range, accessor, handles, count, scratch);
+    }
+
+    template<bool Consume, bool Projected, typename R, typename Accessor>
+#if __has_cpp_attribute(gnu::noinline)
+    [[gnu::noinline]]
+#endif
+    Status buildGeneral(R& range, Accessor& accessor, std::optional<std::span<HandleType>> handles,
+        std::size_t count, Workspace<T>* scratch) noexcept
+    {
         if (count == 1 && mConfig.smallSetThreshold != 0)
             return buildSingle<Consume, Projected>(*std::ranges::begin(range), accessor, handles);
         auto* boxes = ::new (scratch->mBuildBoxes.data()) Box<T>[count];
@@ -2515,10 +2578,31 @@ private:
         if constexpr (FloatCoordinate<T>)
         {
             constexpr T lo = std::numeric_limits<T>::lowest(), hi = std::numeric_limits<T>::max();
+#if defined(__SSE2__)
+            // Validate both axes as lo <= min <= max <= hi. Ordered comparisons reject NaNs.
+            if constexpr (std::same_as<T, float>)
+            {
+                static_assert(sizeof(Box<T>) == sizeof(__m128) && offsetof(Box<T>, maxX) == 2 * sizeof(T));
+                const auto edges = _mm_loadu_ps(&box.minX);
+                const auto lower = _mm_movelh_ps(_mm_set1_ps(lo), edges);
+                const auto upper = _mm_movehl_ps(_mm_set1_ps(hi), edges);
+                box = canonicalZero(box);
+                return _mm_movemask_ps(_mm_and_ps(_mm_cmple_ps(lower, edges), _mm_cmple_ps(edges, upper))) == 15;
+            }
+            else
+            {
+                static_assert(sizeof(Box<T>) == 2 * sizeof(__m128d) && offsetof(Box<T>, maxX) == 2 * sizeof(T));
+                const auto min = _mm_loadu_pd(&box.minX), max = _mm_loadu_pd(&box.maxX);
+                const auto finite = _mm_and_pd(_mm_cmple_pd(_mm_set1_pd(lo), min), _mm_cmple_pd(max, _mm_set1_pd(hi)));
+                box = canonicalZero(box);
+                return _mm_movemask_pd(_mm_and_pd(finite, _mm_cmple_pd(min, max))) == 3;
+            }
+#else
             const bool ok = (box.minX >= lo) & (box.minY >= lo) & (box.maxX <= hi) & (box.maxY <= hi) &
                 (box.minX <= box.maxX) & (box.minY <= box.maxY);
             box = canonicalZero(box);
             return ok;
+#endif
         }
         else
             return detail::canonicalize(box);
@@ -2528,9 +2612,11 @@ private:
     // already canonical, floats store their canonical copy (signed zeros normalized).
     // The commit neither allocates nor invokes client code.
     // A ranked entry delegates to the general path before any state changes.
-    std::optional<Status> buildFlatInteger(const BuildEntry<Payload, T>* input, std::uint32_t count,
+    template<std::uint32_t FixedCount = 0>
+    std::optional<Status> buildFlatInteger(const BuildEntry<Payload, T>* input, std::uint32_t length,
         std::optional<std::span<HandleType>> handles) noexcept
     {
+        const auto count = FixedCount ? FixedCount : length;
         auto extent = input[0].rect;
         if (input[0].rank)
             return std::nullopt;

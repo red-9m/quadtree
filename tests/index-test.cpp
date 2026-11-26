@@ -2018,6 +2018,51 @@ void preparedSmallBuild()
     CHECK(resource.allocations == allocations);
 }
 
+template<typename T>
+void preparedFloatBoxes()
+{
+    auto made = Tree<T>::create();
+    REQUIRE(made.ok());
+    auto tree = std::move(made).value();
+    REQUIRE(tree.reserve({.entries = 3}) == Status::Ok);
+    QuadTree::Workspace<T> scratch;
+    REQUIRE(scratch.reserve({0, 0, 3}) == Status::Ok);
+    const T zero = -T(0), limit = std::numeric_limits<T>::max();
+    std::array<QuadTree::BuildEntry<int, T>, 3> entries{{{{zero, zero, zero, zero}, 0},
+        {{-limit, -limit, limit, limit}, 1}, {{1, 2, 3, 4}, 2}}};
+    std::array<typename Tree<T>::HandleType, 3> handles{};
+    for (std::size_t n : {1u, 2u, 3u})
+    {
+        auto input = std::span(entries).first(n);
+        REQUIRE(tree.build(input, handles, {.workspace = &scratch}) == Status::Ok);
+        const auto stored = tree.rect(handles[0]);
+        CHECK(!std::signbit(stored.minX) && !std::signbit(stored.maxX) &&
+            !std::signbit(stored.minY) && !std::signbit(stored.maxY));
+        const auto extent = tree.extent();
+        CHECK(extent == (n == 1 ? stored : entries[1].rect));
+        const auto committed = handles;
+        auto& last = input.back().rect;
+        const auto original = last;
+        const auto reject = [&]
+        {
+            CHECK(tree.build(input, handles, {.workspace = &scratch}) == Status::InvalidGeometry);
+            CHECK(handles == committed && tree.valid(handles[n - 1]) && tree.extent() == extent);
+            last = original;
+        };
+        last = {1, 0, 0, 0};
+        reject();
+        last = {0, 1, 0, 0};
+        reject();
+        for (auto field : {&Box<T>::minX, &Box<T>::minY, &Box<T>::maxX, &Box<T>::maxY})
+            for (T bad : {std::numeric_limits<T>::quiet_NaN(), std::numeric_limits<T>::infinity(),
+                -std::numeric_limits<T>::infinity()})
+            {
+                last.*field = bad;
+                reject();
+            }
+    }
+}
+
 void tinyPairs()
 {
     for (const auto boundary : {Boundary::Default, Boundary::TouchInclusive})
@@ -3118,7 +3163,7 @@ int main()
     filterPolicyTruthTable(); filterPruningWork();
     hardCapacity(); isolatedCapacity(); referenceGrowthFailure(); workspaceAllocationFailures();
     indexBufferAllocationFailures(); failureInjection();
-    rebuildPeaks(); preparedSmallBuild(); tinyPairs(); identities();
+    rebuildPeaks(); preparedSmallBuild(); preparedFloatBoxes<float>(); preparedFloatBoxes<double>(); tinyPairs(); identities();
     payloadsAndMoves(); stagedSelfRebuild(); moveOnlyBuildAllocationFailures();
     cacheAndChurn(); movedPredicateCache(); mutationWork(); coarseAncestorCaches();
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();
