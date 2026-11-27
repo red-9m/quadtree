@@ -12,7 +12,7 @@
   - First run, persistent: G6 216, G7 120, G8a 12, G8b 4 and G8c 24 pass.
   - No exception used.
   - The first calibration pair reached 94.3%, below the 95% target. By owner decision, the calibration pair and the `int32` snapshot matrix were rerun under the same rule. The rerun reached 98.3%, and every `int32` snapshot hard gate passed in the matrix without repeats.
-- **All four types:** G0 and G6 pass, all persistent hard gates pass, and all 6,944 expected engine rows are present. CTest passes 22/22, and hosted [Portability #21](https://github.com/red-9m/quadtree/actions/runs/45887625703) passes 9/9 on the exact SHA.
+- **All four types:** G0 and G6 pass, all persistent hard gates pass, and all 6,944 expected engine rows are present. CTest passes 22/22, the full differential fuzz passes 20/20 (seeds 1–40, 1500 steps), and hosted [Portability #21](https://github.com/red-9m/quadtree/actions/runs/45887625703) passes 9/9 on the exact SHA.
 - **Non-`int32` timing (Task 09, not blocking):** `float` G2 `uniform` 10³ and G9 `split-line-translated` 10⁵, and `double` G2 `uniform` 10³/10⁵, remain inconclusive after pooling. No row fails, and `int64` passes everything.
 
 ## Next

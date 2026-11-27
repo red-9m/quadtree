@@ -8,7 +8,7 @@ The first calibration pair missed its target, so the [pre-specified rule](resolu
 - **`int32` persistent:** G6 216, G7 120, G8a 12, G8b 4, G8c 24, all pass.
 - **All types:** every benchmark process exits 0, so there is no `MISMATCH`, `NONDETERMINISTIC` or `UNORDERED` result (G0). Zero warm allocations on all 1,112 G6 rows. Persistent hard gates pass for every type.
 - **Calibration:** the first pair, `calib-a`/`calib-b`, agreed on 281/298 rows (94.3%), below the ≥ 95% target. The rerun pair agrees on **293/298 (98.3%)**. A supplementary pair, `calib-c`/`calib-d`, agreed on 291/298 (97.7%) but is not used for the decision.
-- **CTest** [22/22](ctest.log). **Hosted [Portability #21](https://github.com/red-9m/quadtree/actions/runs/45887625703)** passes 9/9 on exactly `c13e498` ([ci.json](ci.json)).
+- **CTest** [22/22](ctest.log). **Full differential fuzz** [passes 20/20](fuzz.log): all four types × 5 scenes, seeds 1–40, 1500 steps, unordered and ordered pairs against a brute-force oracle. It ran on the archive build's `quadtree-index-fuzz` (`0324fede…`) before promotion, the same coverage as the [2026-11-21 promotion](../promotion-2026-11-21/README.md). **Hosted [Portability #21](https://github.com/red-9m/quadtree/actions/runs/45887625703)** passes 9/9 on exactly `c13e498` ([ci.json](ci.json)).
 - **Non-`int32` timing (published, not blocking):** `float` G2 `uniform` 10³ and G9 `split-line-translated` 10⁵ stay inconclusive; `double` G2 `uniform` 10³ and 10⁵ stay inconclusive. No row fails.
 
 ## Source, build and environment
