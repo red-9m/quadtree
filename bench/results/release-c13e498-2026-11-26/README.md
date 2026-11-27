@@ -1,11 +1,13 @@
 # 08 · Release validation of `c13e498` (2026-11-26/27)
 
-**Every hard gate passes for `int32`, with no exception rows needed.** The calibration pair missed its target, so under the [pre-specified rule](resolution-rule.md) `int32` timing sign-off is **withheld pending an owner decision** (see [Decision](#decision)). Correctness, allocation, memory, CTest and portability checks pass for all four coordinate types.
+**`int32` release acceptance holds on `c13e498`.** Every `int32` hard gate passes, with no exception rows needed. Correctness, allocation, memory, CTest and portability checks pass for all four coordinate types.
+
+The first calibration pair missed its target, so the [pre-specified rule](resolution-rule.md) withheld sign-off. By owner decision, the calibration pair and the `int32` snapshot matrix were [rerun](#rerun-calibration-pair-and-int32-snapshot-matrix) under the same rule. The rerun reached 98.3% calibration agreement, and every `int32` snapshot hard gate passed in its 5-round matrix. See [Decision](#decision).
 
 - **`int32` snapshot** (after the rule's repeats): G1 16/16, G2 20/20, G3 9, G4 8, G6 62, G9 15/15 pass. The G1 0–4-entry and G2 small-tree exceptions are not used.
 - **`int32` persistent:** G6 216, G7 120, G8a 12, G8b 4, G8c 24, all pass.
 - **All types:** every benchmark process exits 0, so there is no `MISMATCH`, `NONDETERMINISTIC` or `UNORDERED` result (G0). Zero warm allocations on all 1,112 G6 rows. Persistent hard gates pass for every type.
-- **Calibration:** `calib-a`/`calib-b` agree on **281/298 rows (94.3%)**, below the ≥ 95% target. A supplementary pair run after the matrices, `calib-c`/`calib-d`, agrees on 291/298 (97.7%).
+- **Calibration:** the first pair, `calib-a`/`calib-b`, agreed on 281/298 rows (94.3%), below the ≥ 95% target. The rerun pair agrees on **293/298 (98.3%)**. A supplementary pair, `calib-c`/`calib-d`, agreed on 291/298 (97.7%) but is not used for the decision.
 - **CTest** [22/22](ctest.log). **Hosted [Portability #21](https://github.com/red-9m/quadtree/actions/runs/45887625703)** passes 9/9 on exactly `c13e498` ([ci.json](ci.json)).
 - **Non-`int32` timing (published, not blocking):** `float` G2 `uniform` 10³ and G9 `split-line-translated` 10⁵ stay inconclusive; `double` G2 `uniform` 10³ and 10⁵ stay inconclusive. No row fails.
 
@@ -100,20 +102,34 @@ During the `int32` matrix's `uniform` 10⁵ row, both `index` and `grid` had ele
 - **Library timing, work and memory** ([library-rows.csv](data/library-rows.csv)): for every `index`/`index-ordered` row, the estimate, error, median, p95, phase medians, candidates, node visits, pairs, checksum, warm and cold allocations, cold peak and retained bytes. No row has a nonzero warm allocation count. Largest cold peaks: 39.7 MB snapshot (`double split-line-translated` 10⁵ `index-ordered`) and 49.7 MB persistent (`double uniform` 10⁵ `churn-10%/full` `index-ordered`), the same as earlier runs.
 - **Raw data per stage:** `results.csv`, `raw.csv.gz` (all samples), `gates.txt`, `run.log`, `time.log`, `args.txt`, `exit.txt` (benchmark and gate-evaluator exits), `quiet-start.csv`, `path-lengths.txt`.
 
+## Rerun: calibration pair and `int32` snapshot matrix
+
+**Owner decision (2026-11-27):** option 2, a fresh calibration pair plus the `int32` snapshot matrix under the same rule. The [rerun rule](rerun-rule.md) and [rerun.sh](rerun.sh) were committed (`4d121a5`) before the rerun started. Same binary, hash checks, power settings, CPU 6 and quiet starts. The host was idle apart from the session shell. Output: [`data-rerun/`](data-rerun/).
+
+| Stage | When (11-27) | Start / max Tctl | Exit (bench, gates) |
+|---|---|---|---|
+| `calib-a` | 04:34:53–04:37:02 | 32.5 / 68.3 °C | 0, 0 |
+| `calib-b` | 04:37:22–04:39:31 | 39.9 / 69.8 °C | 0, 0 |
+| `int32-snapshot` | 04:39:53–04:42:03 | 39.8 / 70.3 °C | 0, 0 |
+
+- **Calibration** ([diff](data-rerun/calib-diff.txt)): **293 same, 1 faster, 4 slower of 298 (98.3%)**; geometric mean 1.001. The five differing rows are 3.6–9.6% apart. Both calibration processes also pass every `int32` snapshot hard gate.
+- **`int32` snapshot matrix** ([gates](data-rerun/int32-snapshot/gates.txt), [final status](data-rerun/final-snapshot-status.txt)): G1 16, G2 20, G3 9, G4 8, G6 62 and G9 15, **all pass in the 5-round matrix**. No row needed a repeat, and no exception was used.
+  - G1 worst 0–4 entries: `uniform` n=4 1.855 [1.785–1.927]. Worst 8–64: `clustered` n=8 1.519 [1.476–1.564] (limit 2).
+  - G2 exception rows pass outright: `split-line-translated` 10² 3.662 [3.545–3.784] and `uniform` 10³ 3.793 [3.686–3.904] (limit 4). 10⁴–10⁵ worst: `split-line-translated` 10⁵ 1.901 [1.847–1.957]; `uniform` 10⁵ 1.856 [1.803–1.911] (limit 2).
+  - G9 worst: `split-line-translated` 10⁵ 3.421 [3.317–3.529] (limit 4).
+- **Paths:** `results.csv`/`raw.csv` are 106/102 characters.
+- **Not affected:** the first run's snapshot verdicts above stay as published. Nothing is pooled across the two runs.
+
 ## Decision
 
-**Per the rule:** "Below [95%], timing verdicts are published but `int32` timing sign-off is withheld." `calib-a`/`calib-b` reached 94.3%, so this run does **not** extend the `int32` release sign-off by itself. Everything else the rule requires holds:
-- every `int32` hard gate passes, with no exception rows and no open rows;
-- G0 and G6 pass for all four types;
-- CTest passes 22/22, and hosted Portability passes 9/9 on the exact SHA.
+**First run.** Per the rule: "Below [95%], timing verdicts are published but `int32` timing sign-off is withheld." `calib-a`/`calib-b` reached 94.3%, so the first run alone did not extend the sign-off. `calib-c`/`calib-d` (97.7%) were outside the rule and are published only as additional evidence.
 
-`calib-c`/`calib-d` were not part of the rule. They are published as additional evidence that the 2% snapshot process term holds on this host when it is quiet.
+**After the rerun:** the conditions of [rerun-rule.md](rerun-rule.md) hold, so **`int32` release acceptance extends to `c13e498`.**
+- calibration 98.3% ≥ 95%;
+- every `int32` snapshot hard gate passes in the rerun matrix;
+- from the first run: every `int32` persistent hard gate, G0 and G6 for all four types, CTest 22/22 and hosted Portability #21 9/9 on the exact SHA.
 
-**Owner decision needed**, one of:
-1. Accept `calib-c`/`calib-d` (97.7%) as the calibration for this candidate, given the documented thermal event in `calib-b`. The run then signs off `int32` on `c13e498`.
-2. Require a fresh calibration pair plus an `int32` snapshot matrix under the same rule before sign-off.
-
-The historical sign-off (`7cfbebe`) is unchanged until that decision.
+`int64`, `float` and `double` remain functionally supported and outside performance sign-off (Task 09). Their open timing rows are listed above.
 
 ## Reproduction
 
@@ -122,3 +138,4 @@ The historical sign-off (`7cfbebe`) is unchanged until that decision.
 3. Run `bash matrices.sh WORK data`. To resume after an aborted persistent stage, set `QT_FROM=persistent`.
 4. Supplementary calibration: `bash run.sh WORK data calib-c calib-d`, then `quadtree-bench --diff=data/calib-c/results.csv,data/calib-d/results.csv`.
 5. Summaries: `python3 summarize.py data`. Hosted CI record: `python3 collect-ci.py .`.
+6. Rerun: `bash rerun.sh WORK data-rerun`.

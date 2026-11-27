@@ -28,14 +28,17 @@
 
 **The `int32` acceptance holds on `7cfbebe`.**
 
-## Current candidate `c13e498`: gates pass, sign-off awaits an owner decision
+## Recheck on `c13e498`
 
-`c13e498` includes the [four-entry G1 change](../../bench/results/g1-four-entry-flat-2026-11-26/README.md) and the [ordered `int32` G9 change](../../bench/results/g9-int32-ordered-common-2026-11-26/README.md). The [full release validation](../../bench/results/release-c13e498-2026-11-26/README.md) ran all four types under a [pre-specified rule](../../bench/results/release-c13e498-2026-11-26/resolution-rule.md):
-- **`int32`:** every snapshot and persistent hard gate passes. G1 16/16, G2 20/20 and G9 15/15, so neither exception is used.
-- **All types:** G0 and G6 pass. CTest passes 22/22, and hosted Portability #21 passes 9/9 on the exact SHA.
-- **Calibration:** the pair agreed on 94.3% of rows, below the 95% target. The rule therefore withholds `int32` timing sign-off. A supplementary quiet pair reached 97.7%.
+`c13e498` adds the [four-entry G1 change](../../bench/results/g1-four-entry-flat-2026-11-26/README.md) and the [ordered `int32` G9 change](../../bench/results/g9-int32-ordered-common-2026-11-26/README.md). The [full release validation](../../bench/results/release-c13e498-2026-11-26/README.md) covered all four types under a [pre-specified rule](../../bench/results/release-c13e498-2026-11-26/resolution-rule.md).
 
-The historical sign-off stays on `7cfbebe` until the owner decides: accept the supplementary calibration, or require a fresh calibration and `int32` matrix ([decision](../../bench/results/release-c13e498-2026-11-26/README.md#decision)).
+- **Snapshot (`int32`):** G1 16/16, G2 20/20 and G9 15/15 pass, so neither the G1 0–4 nor the G2 exception is used. G3, G4 and G6 pass.
+- **Persistent (`int32`):** G6 216, G7 120, G8a 12, G8b 4 and G8c 24 pass.
+- **All four types:** G0 and G6 pass.
+- **CTest and CI:** CTest 22/22. Hosted [Portability #21](https://github.com/red-9m/quadtree/actions/runs/45887625703) passes 9/9 on the exact SHA.
+- **Calibration:** the first pair agreed on 94.3% (target ≥ 95%), so the rule withheld sign-off. By owner decision, the calibration pair and the `int32` snapshot matrix were [rerun under the same rule](../../bench/results/release-c13e498-2026-11-26/rerun-rule.md). The rerun reached 98.3%, and every `int32` snapshot hard gate passed in the 5-round matrix with no repeats.
+
+**The `int32` acceptance holds on `c13e498`.**
 
 ## Evidence
 
