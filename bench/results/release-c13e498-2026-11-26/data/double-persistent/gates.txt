@@ -1,0 +1,384 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G6   hard persistent double clustered n=1000 churn-1%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 churn-1%/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 churn-10%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 churn-10%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-1%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-1%/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-10%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-10%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-single/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 teleport-1%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 teleport-1%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 teleport-10%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=1000 teleport-10%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 churn-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 churn-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 churn-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 churn-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-single/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 small-single/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 teleport-1%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 teleport-1%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 teleport-10%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double clustered n=10000 teleport-10%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 churn-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 churn-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 churn-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 churn-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-100%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-single/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 small-single/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 teleport-1%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 teleport-1%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 teleport-10%/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double clustered n=100000 teleport-10%/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 churn-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 churn-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 churn-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 churn-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-single/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 small-single/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 teleport-1%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 teleport-1%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 teleport-10%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=1000 teleport-10%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 churn-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 churn-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 churn-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 churn-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-100%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-single/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-single/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 teleport-1%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 teleport-1%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 teleport-10%/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 teleport-10%/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 churn-1%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 churn-1%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 churn-10%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 churn-10%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 noop-100%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-1%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-1%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-10%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-10%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-100%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-single/full allocations per step                          0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 small-single/moved allocations per step                         0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 static/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 static/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 teleport-1%/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 teleport-1%/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 teleport-10%/full allocations per step                          0.000     <= 0 pass
+G6   hard persistent double mixed-size n=100000 teleport-10%/moved allocations per step                         0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 churn-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 churn-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 churn-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 churn-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 noop-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-single/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 small-single/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 teleport-1%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 teleport-1%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 teleport-10%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=1000 teleport-10%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 churn-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 churn-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 churn-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 churn-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 noop-100%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-100%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-single/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-single/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 teleport-1%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 teleport-1%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 teleport-10%/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 teleport-10%/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 churn-1%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 churn-1%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 churn-10%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 churn-10%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 noop-100%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-1%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-1%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-10%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-10%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-100%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-single/full allocations per step                          0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 small-single/moved allocations per step                         0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 static/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 static/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 teleport-1%/full allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 teleport-1%/moved allocations per step                          0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 teleport-10%/full allocations per step                          0.000     <= 0 pass
+G6   hard persistent double split-line n=100000 teleport-10%/moved allocations per step                         0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 churn-1%/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 churn-1%/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 churn-10%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 churn-10%/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 noop-100%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-1%/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-1%/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-10%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-10%/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-100%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-single/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 small-single/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 static/full allocations per step                                     0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 static/moved allocations per step                                    0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 teleport-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 teleport-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 teleport-10%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=1000 teleport-10%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 churn-1%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 churn-1%/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 churn-10%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 churn-10%/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 noop-100%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-1%/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-1%/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-10%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-10%/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-single/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 small-single/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 static/full allocations per step                                    0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 static/moved allocations per step                                   0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 teleport-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 teleport-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 teleport-10%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double uniform n=10000 teleport-10%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 churn-1%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 churn-1%/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 churn-10%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 churn-10%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 noop-100%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-1%/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-1%/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-10%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-10%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-100%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-single/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 static/full allocations per step                                   0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 static/moved allocations per step                                  0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 teleport-1%/full allocations per step                              0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 teleport-1%/moved allocations per step                             0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 teleport-10%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent double uniform n=100000 teleport-10%/moved allocations per step                            0.000     <= 0 pass
+G7   soft persistent double clustered n=1000 churn-1%/full vs grid (grid)                         1.605 [1.527-1.688]     <= 4 pass
+G7   soft persistent double clustered n=1000 churn-10%/full vs grid (grid)                        2.031 [1.945-2.121]     <= 4 pass
+G7   soft persistent double clustered n=1000 noop-100%/full vs grid (grid)                        2.768 [2.631-2.912]     <= 4 pass
+G7   soft persistent double clustered n=1000 small-1%/full vs grid (grid)                         2.523 [2.394-2.659]     <= 4 pass
+G7   soft persistent double clustered n=1000 small-10%/full vs grid (grid)                        1.665 [1.585-1.749]     <= 4 pass
+G7   soft persistent double clustered n=1000 small-100%/full vs grid (grid)                       2.516 [2.405-2.632]     <= 4 pass
+G7   soft persistent double clustered n=1000 small-single/full vs grid (grid)                     2.874 [2.736-3.018]     <= 4 pass
+G7   soft persistent double clustered n=1000 static/full vs grid (grid)                           2.956 [2.825-3.092]     <= 4 pass
+G7   soft persistent double clustered n=1000 teleport-1%/full vs grid (grid)                      2.615 [2.495-2.741]     <= 4 pass
+G7   soft persistent double clustered n=1000 teleport-10%/full vs grid (grid)                     1.845 [1.767-1.927]     <= 4 pass
+G7   soft persistent double clustered n=10000 churn-1%/full vs grid (grid)                        1.491 [1.412-1.573]     <= 4 pass
+G7   soft persistent double clustered n=10000 churn-10%/full vs grid (grid)                       2.217 [2.121-2.318]     <= 4 pass
+G7   soft persistent double clustered n=10000 noop-100%/full vs grid (grid)                       1.358 [1.301-1.417]     <= 4 pass
+G7   soft persistent double clustered n=10000 small-1%/full vs grid (grid)                        1.342 [1.285-1.402]     <= 4 pass
+G7   soft persistent double clustered n=10000 small-10%/full vs grid (grid)                       1.491 [1.428-1.557]     <= 4 pass
+G7   soft persistent double clustered n=10000 small-100%/full vs grid (grid-rebuild)              3.154 [3.003-3.313]     <= 4 pass
+G7   soft persistent double clustered n=10000 small-single/full vs grid (grid)                    1.328 [1.272-1.386]     <= 4 pass
+G7   soft persistent double clustered n=10000 static/full vs grid (grid)                          1.322 [1.266-1.379]     <= 4 pass
+G7   soft persistent double clustered n=10000 teleport-1%/full vs grid (grid)                     1.352 [1.296-1.412]     <= 4 pass
+G7   soft persistent double clustered n=10000 teleport-10%/full vs grid (grid)                    1.558 [1.493-1.626]     <= 4 pass
+G7   soft persistent double clustered n=100000 churn-1%/full vs grid (grid)                       1.434 [1.373-1.498]     <= 4 pass
+G7   soft persistent double clustered n=100000 churn-10%/full vs grid (grid-rebuild)              2.345 [2.244-2.449]     <= 4 pass
+G7   soft persistent double clustered n=100000 noop-100%/full vs grid (grid)                      1.405 [1.342-1.472]     <= 4 pass
+G7   soft persistent double clustered n=100000 small-1%/full vs grid (grid)                       1.249 [1.098-1.422]     <= 4 pass
+G7   soft persistent double clustered n=100000 small-10%/full vs grid (grid)                      1.496 [1.433-1.563]     <= 4 pass
+G7   soft persistent double clustered n=100000 small-100%/full vs grid (grid-rebuild)             4.679 [4.455-4.915]     <= 4 FAIL
+G7   soft persistent double clustered n=100000 small-single/full vs grid (grid)                   1.206 [1.149-1.265]     <= 4 pass
+G7   soft persistent double clustered n=100000 static/full vs grid (grid)                         1.278 [1.213-1.347]     <= 4 pass
+G7   soft persistent double clustered n=100000 teleport-1%/full vs grid (grid)                    1.235 [1.179-1.293]     <= 4 pass
+G7   soft persistent double clustered n=100000 teleport-10%/full vs grid (grid)                   1.577 [1.498-1.661]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 churn-1%/full vs grid (grid)                        1.395 [1.334-1.458]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 churn-10%/full vs grid (grid)                       1.413 [1.352-1.477]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 noop-100%/full vs grid (grid)                       3.024 [2.886-3.168]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 small-1%/full vs grid (grid)                        2.728 [2.610-2.851]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 small-10%/full vs grid (grid)                       1.714 [1.639-1.792]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 small-100%/full vs grid (grid)                      1.974 [1.888-2.063]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 small-single/full vs grid (grid)                    3.297 [3.146-3.455]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 static/full vs grid (grid)                          3.222 [3.038-3.417]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 teleport-1%/full vs grid (grid)                     2.764 [2.617-2.919]     <= 4 pass
+G7   soft persistent double mixed-size n=1000 teleport-10%/full vs grid (grid)                    1.446 [1.382-1.513]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 churn-1%/full vs grid (grid)                       1.426 [1.366-1.488]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 churn-10%/full vs grid (grid)                      1.587 [1.521-1.656]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 noop-100%/full vs grid (grid)                      1.413 [1.354-1.474]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 small-1%/full vs grid (grid)                       1.395 [1.337-1.455]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 small-10%/full vs grid (grid)                      1.503 [1.440-1.568]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 small-100%/full vs grid (grid)                     2.275 [2.180-2.374]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 small-single/full vs grid (grid)                   1.383 [1.326-1.443]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 static/full vs grid (grid)                         1.386 [1.328-1.447]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 teleport-1%/full vs grid (grid)                    1.416 [1.356-1.478]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 teleport-10%/full vs grid (grid)                   1.544 [1.474-1.617]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 churn-1%/full vs grid (grid)                      1.715 [1.643-1.791]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 churn-10%/full vs grid (grid-rebuild)             1.785 [1.709-1.865]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 noop-100%/full vs grid (grid)                     1.774 [1.700-1.852]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 small-1%/full vs grid (grid)                      1.662 [1.593-1.734]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 small-10%/full vs grid (grid)                     1.743 [1.670-1.819]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 small-100%/full vs grid (grid)                    2.345 [2.244-2.450]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 small-single/full vs grid (grid)                  1.655 [1.586-1.728]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 static/full vs grid (grid)                        1.655 [1.586-1.727]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 teleport-1%/full vs grid (grid)                   1.681 [1.611-1.754]     <= 4 pass
+G7   soft persistent double mixed-size n=100000 teleport-10%/full vs grid (grid)                  1.901 [1.732-2.085]     <= 4 pass
+G7   soft persistent double split-line n=1000 churn-1%/full vs grid (grid)                        3.571 [3.400-3.751]     <= 4 pass
+G7   soft persistent double split-line n=1000 churn-10%/full vs grid (grid)                       2.122 [1.989-2.264]     <= 4 pass
+G7   soft persistent double split-line n=1000 noop-100%/full vs grid (grid)                       3.606 [3.440-3.781]     <= 4 pass
+G7   soft persistent double split-line n=1000 small-1%/full vs grid (grid)                        4.106 [3.854-4.374]     <= 4 inconclusive
+G7   soft persistent double split-line n=1000 small-10%/full vs grid (grid)                       3.296 [3.156-3.442]     <= 4 pass
+G7   soft persistent double split-line n=1000 small-100%/full vs grid (grid)                      2.943 [2.809-3.084]     <= 4 pass
+G7   soft persistent double split-line n=1000 small-single/full vs grid (grid)                    4.443 [4.254-4.640]     <= 4 FAIL
+G7   soft persistent double split-line n=1000 static/full vs grid (grid)                          4.406 [4.222-4.599]     <= 4 FAIL
+G7   soft persistent double split-line n=1000 teleport-1%/full vs grid (grid)                     4.037 [3.856-4.225]     <= 4 inconclusive
+G7   soft persistent double split-line n=1000 teleport-10%/full vs grid (grid)                    3.366 [3.185-3.558]     <= 4 pass
+G7   soft persistent double split-line n=10000 churn-1%/full vs grid (grid)                       2.223 [2.121-2.331]     <= 4 pass
+G7   soft persistent double split-line n=10000 churn-10%/full vs grid (grid)                      2.267 [2.159-2.379]     <= 4 pass
+G7   soft persistent double split-line n=10000 noop-100%/full vs grid (grid)                      2.150 [2.056-2.247]     <= 4 pass
+G7   soft persistent double split-line n=10000 small-1%/full vs grid (grid)                       2.178 [2.085-2.274]     <= 4 pass
+G7   soft persistent double split-line n=10000 small-10%/full vs grid (grid)                      2.390 [2.281-2.506]     <= 4 pass
+G7   soft persistent double split-line n=10000 small-100%/full vs grid (grid)                     3.802 [3.639-3.972]     <= 4 pass
+G7   soft persistent double split-line n=10000 small-single/full vs grid (grid)                   2.160 [2.067-2.258]     <= 4 pass
+G7   soft persistent double split-line n=10000 static/full vs grid (grid)                         2.135 [2.044-2.230]     <= 4 pass
+G7   soft persistent double split-line n=10000 teleport-1%/full vs grid (grid)                    2.172 [2.080-2.268]     <= 4 pass
+G7   soft persistent double split-line n=10000 teleport-10%/full vs grid (grid)                   2.440 [2.333-2.552]     <= 4 pass
+G7   soft persistent double split-line n=100000 churn-1%/full vs grid (grid)                      1.900 [1.697-2.127]     <= 4 pass
+G7   soft persistent double split-line n=100000 churn-10%/full vs grid (grid)                     1.991 [1.895-2.092]     <= 4 pass
+G7   soft persistent double split-line n=100000 noop-100%/full vs grid (grid)                     2.161 [2.045-2.285]     <= 4 pass
+G7   soft persistent double split-line n=100000 small-1%/full vs grid (grid)                      1.786 [1.700-1.877]     <= 4 pass
+G7   soft persistent double split-line n=100000 small-10%/full vs grid (grid)                     2.415 [2.046-2.851]     <= 4 pass
+G7   soft persistent double split-line n=100000 small-100%/full vs grid (grid)                    5.758 [5.404-6.136]     <= 4 FAIL
+G7   soft persistent double split-line n=100000 small-single/full vs grid (grid)                  1.928 [1.815-2.048]     <= 4 pass
+G7   soft persistent double split-line n=100000 static/full vs grid (grid)                        1.963 [1.866-2.064]     <= 4 pass
+G7   soft persistent double split-line n=100000 teleport-1%/full vs grid (grid)                   1.889 [1.799-1.983]     <= 4 pass
+G7   soft persistent double split-line n=100000 teleport-10%/full vs grid (grid)                  2.192 [2.093-2.295]     <= 4 pass
+G7   soft persistent double uniform n=1000 churn-1%/full vs grid (grid)                           3.234 [2.989-3.499]     <= 4 pass
+G7   soft persistent double uniform n=1000 churn-10%/full vs grid (grid)                          2.070 [1.976-2.168]     <= 4 pass
+G7   soft persistent double uniform n=1000 noop-100%/full vs grid (grid)                          3.747 [3.433-4.089]     <= 4 inconclusive
+G7   soft persistent double uniform n=1000 small-1%/full vs grid (grid)                           4.633 [4.432-4.842]     <= 4 FAIL
+G7   soft persistent double uniform n=1000 small-10%/full vs grid (grid)                          3.206 [3.072-3.346]     <= 4 pass
+G7   soft persistent double uniform n=1000 small-100%/full vs grid (grid)                         2.719 [2.604-2.839]     <= 4 pass
+G7   soft persistent double uniform n=1000 small-single/full vs grid (grid)                       5.019 [4.797-5.252]     <= 4 FAIL
+G7   soft persistent double uniform n=1000 static/full vs grid (grid)                             5.028 [4.808-5.258]     <= 4 FAIL
+G7   soft persistent double uniform n=1000 teleport-1%/full vs grid (grid)                        3.952 [3.781-4.132]     <= 4 inconclusive
+G7   soft persistent double uniform n=1000 teleport-10%/full vs grid (grid)                       2.627 [2.510-2.749]     <= 4 pass
+G7   soft persistent double uniform n=10000 churn-1%/full vs grid (grid)                          1.960 [1.872-2.051]     <= 4 pass
+G7   soft persistent double uniform n=10000 churn-10%/full vs grid (grid)                         2.183 [2.084-2.287]     <= 4 pass
+G7   soft persistent double uniform n=10000 noop-100%/full vs grid (grid)                         1.925 [1.841-2.014]     <= 4 pass
+G7   soft persistent double uniform n=10000 small-1%/full vs grid (grid)                          1.905 [1.822-1.992]     <= 4 pass
+G7   soft persistent double uniform n=10000 small-10%/full vs grid (grid)                         2.202 [2.106-2.301]     <= 4 pass
+G7   soft persistent double uniform n=10000 small-100%/full vs grid (grid)                        3.510 [3.364-3.663]     <= 4 pass
+G7   soft persistent double uniform n=10000 small-single/full vs grid (grid)                      1.884 [1.803-1.968]     <= 4 pass
+G7   soft persistent double uniform n=10000 static/full vs grid (grid)                            1.865 [1.784-1.950]     <= 4 pass
+G7   soft persistent double uniform n=10000 teleport-1%/full vs grid (grid)                       1.925 [1.840-2.014]     <= 4 pass
+G7   soft persistent double uniform n=10000 teleport-10%/full vs grid (grid)                      2.187 [2.093-2.284]     <= 4 pass
+G7   soft persistent double uniform n=100000 churn-1%/full vs grid (grid)                         2.157 [2.047-2.272]     <= 4 pass
+G7   soft persistent double uniform n=100000 churn-10%/full vs grid (grid-rebuild)                2.347 [2.246-2.453]     <= 4 pass
+G7   soft persistent double uniform n=100000 noop-100%/full vs grid (grid)                        2.331 [2.220-2.447]     <= 4 pass
+G7   soft persistent double uniform n=100000 small-1%/full vs grid (grid)                         2.266 [2.006-2.560]     <= 4 pass
+G7   soft persistent double uniform n=100000 small-10%/full vs grid (grid)                        2.878 [2.751-3.011]     <= 4 pass
+G7   soft persistent double uniform n=100000 small-100%/full vs grid (grid-rebuild)               5.773 [5.463-6.101]     <= 4 FAIL
+G7   soft persistent double uniform n=100000 small-single/full vs grid (grid)                     2.113 [2.023-2.208]     <= 4 pass
+G7   soft persistent double uniform n=100000 static/full vs grid (grid)                           2.102 [1.986-2.224]     <= 4 pass
+G7   soft persistent double uniform n=100000 teleport-1%/full vs grid (grid)                      2.414 [2.312-2.521]     <= 4 pass
+G7   soft persistent double uniform n=100000 teleport-10%/full vs grid (grid)                     3.222 [3.086-3.365]     <= 4 pass
+G8a  hard persistent double clustered n=1000 static/moved ns per step                          19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double clustered n=10000 static/moved ns per step                         19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double clustered n=100000 static/moved ns per step                        19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double mixed-size n=1000 static/moved ns per step                         19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double mixed-size n=10000 static/moved ns per step                        19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double mixed-size n=100000 static/moved ns per step                       19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double split-line n=1000 static/moved ns per step                         19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double split-line n=10000 static/moved ns per step                        19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double split-line n=100000 static/moved ns per step                       20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent double uniform n=1000 static/moved ns per step                            20.000 [19.400-20.600]  <= 1000 pass
+G8a  hard persistent double uniform n=10000 static/moved ns per step                           19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double uniform n=100000 static/moved ns per step                          19.900 [19.200-20.600]  <= 1000 pass
+G8b  hard persistent double clustered n=100000 small-single/moved vs n=1000                       0.772 [0.735-0.811]     <= 4 pass
+G8b  hard persistent double mixed-size n=100000 small-single/moved vs n=1000                      3.458 [3.277-3.650]     <= 4 pass
+G8b  hard persistent double split-line n=100000 small-single/moved vs n=1000                      1.526 [1.430-1.628]     <= 4 pass
+G8b  hard persistent double uniform n=100000 small-single/moved vs n=1000                         1.475 [1.354-1.608]     <= 4 pass
+G8c  soft persistent double clustered n=1000 small-1%/moved vs grid (grid)                        2.376 [2.266-2.491]     <= 4 pass
+G8c  soft persistent double clustered n=1000 teleport-1%/moved vs grid (grid)                     2.855 [2.627-3.102]     <= 4 pass
+G8c  soft persistent double clustered n=10000 small-1%/moved vs grid (grid)                       3.679 [3.523-3.841]     <= 4 pass
+G8c  soft persistent double clustered n=10000 teleport-1%/moved vs grid (grid)                    3.522 [3.357-3.695]     <= 4 pass
+G8c  soft persistent double clustered n=100000 small-1%/moved vs grid (grid)                      3.310 [3.155-3.472]     <= 4 pass
+G8c  soft persistent double clustered n=100000 teleport-1%/moved vs grid (grid)                   3.901 [3.573-4.259]     <= 4 inconclusive
+G8c  soft persistent double mixed-size n=1000 small-1%/moved vs grid (grid)                       2.045 [1.950-2.145]     <= 4 pass
+G8c  soft persistent double mixed-size n=1000 teleport-1%/moved vs grid (grid)                    2.691 [2.568-2.819]     <= 4 pass
+G8c  soft persistent double mixed-size n=10000 small-1%/moved vs grid (grid)                      4.031 [3.780-4.298]     <= 4 inconclusive
+G8c  soft persistent double mixed-size n=10000 teleport-1%/moved vs grid (grid)                   2.595 [2.391-2.817]     <= 4 pass
+G8c  soft persistent double mixed-size n=100000 small-1%/moved vs grid (grid)                     3.378 [3.059-3.730]     <= 4 pass
+G8c  soft persistent double mixed-size n=100000 teleport-1%/moved vs grid (grid)                  1.956 [1.852-2.065]     <= 4 pass
+G8c  soft persistent double split-line n=1000 small-1%/moved vs grid (grid)                       3.517 [3.313-3.734]     <= 4 pass
+G8c  soft persistent double split-line n=1000 teleport-1%/moved vs grid (grid)                    2.438 [2.318-2.564]     <= 4 pass
+G8c  soft persistent double split-line n=10000 small-1%/moved vs grid (grid)                      5.044 [4.651-5.471]     <= 4 FAIL
+G8c  soft persistent double split-line n=10000 teleport-1%/moved vs grid (grid)                   4.019 [3.818-4.230]     <= 4 inconclusive
+G8c  soft persistent double split-line n=100000 small-1%/moved vs grid (grid)                     5.367 [5.020-5.737]     <= 4 FAIL
+G8c  soft persistent double split-line n=100000 teleport-1%/moved vs grid (grid)                  3.393 [3.073-3.746]     <= 4 pass
+G8c  soft persistent double uniform n=1000 small-1%/moved vs grid (grid)                          2.913 [2.773-3.059]     <= 4 pass
+G8c  soft persistent double uniform n=1000 teleport-1%/moved vs grid (grid)                       2.597 [2.480-2.721]     <= 4 pass
+G8c  soft persistent double uniform n=10000 small-1%/moved vs grid (grid)                         3.873 [3.581-4.188]     <= 4 inconclusive
+G8c  soft persistent double uniform n=10000 teleport-1%/moved vs grid (grid)                      3.458 [3.240-3.691]     <= 4 pass
+G8c  soft persistent double uniform n=100000 small-1%/moved vs grid (grid)                        4.232 [3.952-4.532]     <= 4 inconclusive
+G8c  soft persistent double uniform n=100000 teleport-1%/moved vs grid (grid)                     4.457 [4.164-4.770]     <= 4 FAIL
+summary (pass / fail / inconclusive):
+  G6 hard    216     0     0
+  G7 soft    108     8     4
+  G8a hard    12     0     0
+  G8b hard     4     0     0
+  G8c soft    16     3     5
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

@@ -1,0 +1,23 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot double clustered n=1 vs brute force (brute)                                    2.062 [1.924-2.209]     <= 2 inconclusive
+G1   hard snapshot double uniform n=1 vs brute force (brute)                                      2.030 [1.886-2.186]     <= 2 inconclusive
+G2   hard snapshot double clustered n=1000 vs best baseline (grid)                                1.422 [1.380-1.466]     <= 4 pass
+G2   hard snapshot double clustered n=100000 vs best baseline (grid)                              1.315 [1.278-1.353]     <= 2 pass
+G2   hard snapshot double uniform n=1000 vs best baseline (grid)                                  3.991 [3.870-4.116]     <= 4 inconclusive
+G2   hard snapshot double uniform n=100000 vs best baseline (grid)                                1.989 [1.932-2.047]     <= 2 inconclusive
+G6   hard snapshot double clustered n=1 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double clustered n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double uniform n=1 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double uniform n=100000 allocations per warm step                                            0.000     <= 0 pass
+G9   hard snapshot double clustered n=1000 vs unordered (index)                                   3.116 [3.027-3.208]     <= 4 pass
+G9   hard snapshot double clustered n=100000 vs unordered (index)                                 3.101 [3.013-3.190]     <= 4 pass
+G9   hard snapshot double uniform n=1000 vs unordered (index)                                     2.913 [2.831-2.998]     <= 4 pass
+G9   hard snapshot double uniform n=100000 vs unordered (index)                                   3.494 [3.394-3.597]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard      0     0     2
+  G2 hard      2     0     2
+  G6 hard      6     0     0
+  G9 hard      4     0     0
+gates: INCONCLUSIVE (candidates: snapshot index, persistent index, ordered index-ordered vs index)

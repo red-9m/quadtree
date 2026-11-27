@@ -28,9 +28,14 @@
 
 **The `int32` acceptance holds on `7cfbebe`.**
 
-## Current candidate: validation pending
+## Current candidate `c13e498`: gates pass, sign-off awaits an owner decision
 
-`c13e498` includes the [four-entry G1 change](../../bench/results/g1-four-entry-flat-2026-11-26/README.md) and the [ordered `int32` G9 change](../../bench/results/g9-int32-ordered-common-2026-11-26/README.md). G9 passes 15/15 in the candidate snapshot matrix; `split-line-translated` 10⁵ passes there and in three independent 45-round runs. This does not extend the historical sign-off: the full release rerun and hosted portability checks are pending. See [SESSION-HANDOFF.md](../../SESSION-HANDOFF.md) for reproducible build hashes and next steps.
+`c13e498` includes the [four-entry G1 change](../../bench/results/g1-four-entry-flat-2026-11-26/README.md) and the [ordered `int32` G9 change](../../bench/results/g9-int32-ordered-common-2026-11-26/README.md). The [full release validation](../../bench/results/release-c13e498-2026-11-26/README.md) ran all four types under a [pre-specified rule](../../bench/results/release-c13e498-2026-11-26/resolution-rule.md):
+- **`int32`:** every snapshot and persistent hard gate passes. G1 16/16, G2 20/20 and G9 15/15, so neither exception is used.
+- **All types:** G0 and G6 pass. CTest passes 22/22, and hosted Portability #21 passes 9/9 on the exact SHA.
+- **Calibration:** the pair agreed on 94.3% of rows, below the 95% target. The rule therefore withholds `int32` timing sign-off. A supplementary quiet pair reached 97.7%.
+
+The historical sign-off stays on `7cfbebe` until the owner decides: accept the supplementary calibration, or require a fresh calibration and `int32` matrix ([decision](../../bench/results/release-c13e498-2026-11-26/README.md#decision)).
 
 ## Evidence
 

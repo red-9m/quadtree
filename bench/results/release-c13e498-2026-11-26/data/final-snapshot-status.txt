@@ -1,0 +1,16 @@
+== int32 snapshot
+  G2  snapshot int32 split-line-translated n=100000 vs best baseline           pass               matrix 1.710 [1.388-2.106]; pooled 1.891 [1.853-1.930] from 1.894 [1.841-1.950], 1.888 [1.834-1.943]
+  G2  snapshot int32 uniform n=100000 vs best baseline                         pass               matrix 2.035 [1.938-2.138]; pooled 1.864 [1.827-1.902] from 1.865 [1.813-1.919], 1.864 [1.812-1.918]
+  summary: G1 pass 16, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
+== float snapshot
+  G2  snapshot float uniform n=1000 vs best baseline                           inconclusive       matrix 3.928 [3.768-4.096]; pooled 4.023 [3.939-4.110] from 4.049 [3.925-4.177], 3.998 [3.884-4.116]
+  G9  snapshot float mixed-size n=100000 vs unordered (index)                  pass               matrix 3.945 [3.823-4.072]; pooled 3.903 [3.825-3.984] from 3.894 [3.784-4.007], 3.913 [3.801-4.027]
+  G9  snapshot float split-line-translated n=100000 vs unordered (index)       inconclusive       matrix 3.992 [3.875-4.112]; pooled 4.031 [3.950-4.113] from 3.985 [3.873-4.100], 4.077 [3.961-4.197]
+  summary: G1 pass 16, G2 inconclusive 1, G2 pass 19, G3 pass 9, G4 pass 8, G6 pass 62, G9 inconclusive 1, G9 pass 14
+== double snapshot
+  G1  snapshot double clustered n=1 vs brute force (brute)                     pass               matrix 2.061 [1.511-2.810]; pooled 1.895 [1.822-1.971] from 2.062 [1.924-2.209], 1.742 [1.678-1.810]
+  G2  snapshot double uniform n=1000 vs best baseline                          inconclusive       matrix 4.080 [3.957-4.206]; pooled 3.966 [3.880-4.055] from 3.991 [3.870-4.116], 3.942 [3.819-4.069]
+  G2  snapshot double uniform n=100000 vs best baseline                        inconclusive       matrix 1.969 [1.906-2.033]; pooled 1.982 [1.942-2.024] from 1.989 [1.932-2.047], 1.976 [1.920-2.035]
+  summary: G1 pass 16, G2 inconclusive 2, G2 pass 18, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
+== int64 snapshot
+  summary: G1 pass 16, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15

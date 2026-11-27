@@ -1,0 +1,24 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot float mixed-size n=1000 vs best baseline (grid)                                1.862 [1.806-1.920]     <= 4 pass
+G2   hard snapshot float mixed-size n=100000 vs best baseline (grid)                              1.081 [1.050-1.112]     <= 2 pass
+G2   hard snapshot float split-line-translated n=1000 vs best baseline (grid)                     3.869 [3.750-3.992]     <= 4 pass
+G2   hard snapshot float split-line-translated n=100000 vs best baseline (grid)                   1.885 [1.830-1.942]     <= 2 pass
+G2   hard snapshot float uniform n=1000 vs best baseline (grid)                                   4.049 [3.925-4.177]     <= 4 inconclusive
+G2   hard snapshot float uniform n=100000 vs best baseline (grid)                                 1.776 [1.726-1.827]     <= 2 pass
+G6   hard snapshot float mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot float uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot float mixed-size n=1000 vs unordered (index)                                   3.179 [3.088-3.272]     <= 4 pass
+G9   hard snapshot float mixed-size n=100000 vs unordered (index)                                 3.894 [3.784-4.007]     <= 4 inconclusive
+G9   hard snapshot float split-line-translated n=1000 vs unordered (index)                        2.897 [2.807-2.989]     <= 4 pass
+G9   hard snapshot float split-line-translated n=100000 vs unordered (index)                      3.985 [3.873-4.100]     <= 4 inconclusive
+G9   hard snapshot float uniform n=1000 vs unordered (index)                                      2.806 [2.719-2.896]     <= 4 pass
+G9   hard snapshot float uniform n=100000 vs unordered (index)                                    3.553 [3.453-3.656]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard      5     0     1
+  G6 hard      6     0     0
+  G9 hard      4     0     2
+gates: INCONCLUSIVE (candidates: snapshot index, persistent index, ordered index-ordered vs index)

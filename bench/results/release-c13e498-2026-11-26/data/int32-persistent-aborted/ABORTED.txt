@@ -1,0 +1,1 @@
+Aborted: host shutdown at 2026-11-26 22:37 (last -x: "shutdown system down ... Thu Nov 26 22:37 - 01:05"); the stage started 22:30:29 and received SIGTERM. Not evidence; rerun from scratch with the same arguments after reboot (boot 2026-11-27 01:05).

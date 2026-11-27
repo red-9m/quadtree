@@ -1,0 +1,44 @@
+# date: 2026-11-26T20:28:17Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293780 GHz, 7.9 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=snapshot --types=double --engines=index,index-ordered,brute,sweep,grid --scenes=clustered,uniform --sizes=1000,100000 --small-sizes=1 --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/release-c13e498-2026-11-26/data/double-resolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/release-c13e498-2026-11-26/data/double-resolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+uniform                                  double       1  1024 brute               0.007     2.5     1.00 [1.00-1.00]             0           0     0.00         0 ok
+uniform                                  double       1  1024 sweep               0.010     2.1     1.49 [1.45-1.52]             0           0     0.00         0 ok
+uniform                                  double       1  1024 grid                0.037     2.0     5.66 [5.53-5.80]             0           0     0.00         0 ok
+uniform                                  double       1  1024 index               0.013     7.0     1.98 [1.85-2.12]             0           0     0.00         0 ok
+uniform                                  double       1  1024 index-ordered        0.020     3.5     3.07 [2.96-3.19]             0           0     0.00         0 ok
+uniform                                  double    1000     1 brute             951.964     2.0  50.98 [49.80-52.18]        499500         734     0.00        32 ok
+uniform                                  double    1000     1 sweep              80.552     2.1     4.31 [4.21-4.42]         20194         734     0.00        51 ok
+uniform                                  double    1000     1 grid               18.690     2.3     1.00 [1.00-1.00]          3130         734     0.00        67 ok
+uniform                                  double    1000     1 index              74.591     2.0     3.99 [3.90-4.09]          8334         734     0.00       331 ok
+uniform                                  double    1000     1 index-ordered      217.284     2.0  11.63 [11.36-11.91]          3603         734     0.00       376 ok
+uniform                                  double  100000     1 brute                   -       -                    -     200056769        2925     0.00      3222 capped
+uniform                                  double  100000     1 sweep           54564.845     2.0     8.18 [8.01-8.35]      20226787       73905     0.00      5175 ok
+uniform                                  double  100000     1 grid             6671.840     2.0     1.00 [1.00-1.00]        310440       73905     0.00      6670 ok
+uniform                                  double  100000     1 index           13267.908     2.1     1.99 [1.95-2.03]        790406       73905     0.00     32651 ok
+uniform                                  double  100000     1 index-ordered    46360.172     2.0     6.95 [6.81-7.09]        384207       73905     0.00     38016 ok
+clustered                                double       1  1024 brute               0.007     2.1     1.00 [1.00-1.00]             0           0     0.00         0 ok
+clustered                                double       1  1024 sweep               0.010     2.1     1.50 [1.47-1.53]             0           0     0.00         0 ok
+clustered                                double       1  1024 grid                0.037     2.0     5.72 [5.61-5.84]             0           0     0.00         0 ok
+clustered                                double       1  1024 index               0.013     6.9     2.00 [1.88-2.14]             0           0     0.00         0 ok
+clustered                                double       1  1024 index-ordered        0.020     3.9     3.10 [2.98-3.22]             0           0     0.00         0 ok
+clustered                                double    1000     1 brute            1010.176     2.0  12.87 [12.58-13.15]        499500        2999     0.00        32 ok
+clustered                                double    1000     1 sweep             105.870     2.0     1.35 [1.32-1.38]         25028        2999     0.00        51 ok
+clustered                                double    1000     1 grid               78.563     2.2     1.00 [1.00-1.00]         10412        2999     0.00        67 ok
+clustered                                double    1000     1 index             111.726     2.0     1.42 [1.39-1.46]         12438        2999     0.00       333 ok
+clustered                                double    1000     1 index-ordered      348.163     2.1     4.43 [4.33-4.53]          8196        2999     0.00       378 ok
+clustered                                double  100000     1 brute                   -       -                    -     200056769       13784     0.00      3222 capped
+clustered                                double  100000     1 sweep           58860.915     2.0     3.79 [3.72-3.87]      21181030      337133     0.00      5175 ok
+clustered                                double  100000     1 grid            15514.570     2.0     1.00 [1.00-1.00]       1232900      337133     0.00      6670 ok
+clustered                                double  100000     1 index           20406.612     2.0     1.32 [1.29-1.34]       2085669      337133     0.00     32234 ok
+clustered                                double  100000     1 index-ordered    63273.373     2.0     4.08 [4.00-4.16]       1119167      337133     0.00     37600 ok

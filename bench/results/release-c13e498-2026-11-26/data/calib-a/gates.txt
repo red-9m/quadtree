@@ -1,0 +1,139 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot int32 clustered n=0 vs brute force (brute)                                     0.856 [0.829-0.883]     <= 2 pass
+G1   hard snapshot int32 clustered n=1 vs brute force (brute)                                     1.346 [0.925-1.958]     <= 2 pass
+G1   hard snapshot int32 clustered n=16 vs brute force (brute)                                    1.390 [1.351-1.431]     <= 2 pass
+G1   hard snapshot int32 clustered n=2 vs brute force (brute)                                     1.472 [1.420-1.526]     <= 2 pass
+G1   hard snapshot int32 clustered n=32 vs brute force (brute)                                    1.314 [1.277-1.352]     <= 2 pass
+G1   hard snapshot int32 clustered n=4 vs brute force (brute)                                     1.809 [1.743-1.877]     <= 2 pass
+G1   hard snapshot int32 clustered n=64 vs brute force (brute)                                    1.357 [1.319-1.396]     <= 2 pass
+G1   hard snapshot int32 clustered n=8 vs brute force (brute)                                     1.529 [1.484-1.575]     <= 2 pass
+G1   hard snapshot int32 uniform n=0 vs brute force (brute)                                       0.811 [0.772-0.853]     <= 2 pass
+G1   hard snapshot int32 uniform n=1 vs brute force (brute)                                       1.615 [1.526-1.710]     <= 2 pass
+G1   hard snapshot int32 uniform n=16 vs brute force (brute)                                      1.172 [1.137-1.207]     <= 2 pass
+G1   hard snapshot int32 uniform n=2 vs brute force (brute)                                       1.606 [1.227-2.102]     <= 2 inconclusive
+G1   hard snapshot int32 uniform n=32 vs brute force (brute)                                      1.073 [1.042-1.105]     <= 2 pass
+G1   hard snapshot int32 uniform n=4 vs brute force (brute)                                       1.651 [1.214-2.244]     <= 2 inconclusive
+G1   hard snapshot int32 uniform n=64 vs brute force (brute)                                      1.124 [1.092-1.157]     <= 2 pass
+G1   hard snapshot int32 uniform n=8 vs brute force (brute)                                       1.424 [1.383-1.467]     <= 2 pass
+G2   hard snapshot int32 clustered n=100 vs best baseline (sweep)                                 2.427 [2.342-2.516]     <= 4 pass
+G2   hard snapshot int32 clustered n=1000 vs best baseline (grid)                                 2.984 [2.871-3.102]     <= 4 pass
+G2   hard snapshot int32 clustered n=10000 vs best baseline (grid)                                1.405 [1.365-1.446]     <= 2 pass
+G2   hard snapshot int32 clustered n=100000 vs best baseline (grid)                               1.338 [1.299-1.379]     <= 2 pass
+G2   hard snapshot int32 mixed-size n=100 vs best baseline (sweep)                                3.037 [2.928-3.150]     <= 4 pass
+G2   hard snapshot int32 mixed-size n=1000 vs best baseline (grid)                                3.089 [2.991-3.191]     <= 4 pass
+G2   hard snapshot int32 mixed-size n=10000 vs best baseline (grid)                               1.321 [1.283-1.359]     <= 2 pass
+G2   hard snapshot int32 mixed-size n=100000 vs best baseline (grid)                              1.084 [1.050-1.119]     <= 2 pass
+G2   hard snapshot int32 split-line n=100 vs best baseline (sweep)                                3.394 [3.290-3.501]     <= 4 pass
+G2   hard snapshot int32 split-line n=1000 vs best baseline (grid)                                3.589 [3.479-3.702]     <= 4 pass
+G2   hard snapshot int32 split-line n=10000 vs best baseline (grid)                               1.829 [1.777-1.883]     <= 2 pass
+G2   hard snapshot int32 split-line n=100000 vs best baseline (grid)                              1.777 [1.719-1.837]     <= 2 pass
+G2   hard snapshot int32 split-line-translated n=100 vs best baseline (sweep)                     3.688 [3.574-3.807]     <= 4 pass
+G2   hard snapshot int32 split-line-translated n=1000 vs best baseline (grid)                     3.592 [3.485-3.704]     <= 4 pass
+G2   hard snapshot int32 split-line-translated n=10000 vs best baseline (grid)                    1.802 [1.750-1.854]     <= 2 pass
+G2   hard snapshot int32 split-line-translated n=100000 vs best baseline (grid)                   1.879 [1.825-1.934]     <= 2 pass
+G2   hard snapshot int32 uniform n=100 vs best baseline (grid)                                    2.864 [2.759-2.974]     <= 4 pass
+G2   hard snapshot int32 uniform n=1000 vs best baseline (grid)                                   3.763 [3.643-3.887]     <= 4 pass
+G2   hard snapshot int32 uniform n=10000 vs best baseline (grid)                                  1.759 [1.708-1.810]     <= 2 pass
+G2   hard snapshot int32 uniform n=100000 vs best baseline (grid)                                 1.904 [1.840-1.970]     <= 2 pass
+G3   hard snapshot int32 mixed-size n=1000 candidates/(pairs+n) vs n=100                                        0.664   <= 1.5 pass
+G3   hard snapshot int32 mixed-size n=10000 candidates/(pairs+n) vs n=1000                                      0.742   <= 1.5 pass
+G3   hard snapshot int32 mixed-size n=100000 candidates/(pairs+n) vs n=10000                                    0.763   <= 1.5 pass
+G3   hard snapshot int32 split-line n=1000 candidates/(pairs+n) vs n=100                                        1.240   <= 1.5 pass
+G3   hard snapshot int32 split-line n=10000 candidates/(pairs+n) vs n=1000                                      0.791   <= 1.5 pass
+G3   hard snapshot int32 split-line n=100000 candidates/(pairs+n) vs n=10000                                    0.978   <= 1.5 pass
+G3   hard snapshot int32 split-line-translated n=1000 candidates/(pairs+n) vs n=100                             1.211   <= 1.5 pass
+G3   hard snapshot int32 split-line-translated n=10000 candidates/(pairs+n) vs n=1000                           0.807   <= 1.5 pass
+G3   hard snapshot int32 split-line-translated n=100000 candidates/(pairs+n) vs n=10000                         0.945   <= 1.5 pass
+G4   hard snapshot int32 split-line-translated n=100 candidates vs split-line                                   0.954    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100 time vs split-line                           1.070 [1.036-1.106]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=1000 candidates vs split-line                                  0.932    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=1000 time vs split-line                          0.991 [0.960-1.023]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=10000 candidates vs split-line                                 0.951    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=10000 time vs split-line                         0.976 [0.949-1.005]    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100000 candidates vs split-line                                0.918    x/1.5 pass
+G4   hard snapshot int32 split-line-translated n=100000 time vs split-line                        0.955 [0.924-0.986]    x/1.5 pass
+G6   hard snapshot int32 clustered n=0 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=1 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=16 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=2 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=32 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=4 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=64 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 clustered n=8 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 disjoint n=100000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 long-thin n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 mixed-size n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 outliers n=100000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 pile n=100 allocations per warm step                                                   0.000     <= 0 pass
+G6   hard snapshot int32 pile n=1000 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 points n=100 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 points n=1000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 points n=10000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 points n=100000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 split-line n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=100 allocations per warm step                                  0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=10000 allocations per warm step                                0.000     <= 0 pass
+G6   hard snapshot int32 split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=100 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=1000 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=10000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 tiles n=100000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=100 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=1000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=10000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot int32 tiles-touch n=100000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=0 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=10000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=16 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=2 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=32 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=4 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=64 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot int32 uniform n=8 allocations per warm step                                                  0.000     <= 0 pass
+G9   hard snapshot int32 clustered n=1000 vs unordered (index)                                    3.017 [2.928-3.108]     <= 4 pass
+G9   hard snapshot int32 clustered n=10000 vs unordered (index)                                   1.841 [1.790-1.894]     <= 4 pass
+G9   hard snapshot int32 clustered n=100000 vs unordered (index)                                  2.583 [2.501-2.667]     <= 4 pass
+G9   hard snapshot int32 mixed-size n=1000 vs unordered (index)                                   3.144 [3.039-3.253]     <= 4 pass
+G9   hard snapshot int32 mixed-size n=10000 vs unordered (index)                                  2.200 [2.137-2.266]     <= 4 pass
+G9   hard snapshot int32 mixed-size n=100000 vs unordered (index)                                 2.678 [2.597-2.760]     <= 4 pass
+G9   hard snapshot int32 split-line n=1000 vs unordered (index)                                   2.859 [2.770-2.952]     <= 4 pass
+G9   hard snapshot int32 split-line n=10000 vs unordered (index)                                  2.339 [2.269-2.412]     <= 4 pass
+G9   hard snapshot int32 split-line n=100000 vs unordered (index)                                 3.405 [3.293-3.521]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=1000 vs unordered (index)                        2.872 [2.782-2.964]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=10000 vs unordered (index)                       2.352 [2.284-2.421]     <= 4 pass
+G9   hard snapshot int32 split-line-translated n=100000 vs unordered (index)                      3.583 [3.230-3.973]     <= 4 pass
+G9   hard snapshot int32 uniform n=1000 vs unordered (index)                                      2.802 [2.702-2.905]     <= 4 pass
+G9   hard snapshot int32 uniform n=10000 vs unordered (index)                                     2.300 [2.233-2.368]     <= 4 pass
+G9   hard snapshot int32 uniform n=100000 vs unordered (index)                                    3.021 [2.918-3.128]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard     14     0     2
+  G2 hard     20     0     0
+  G3 hard      9     0     0
+  G4 hard      8     0     0
+  G6 hard     62     0     0
+  G9 hard     15     0     0
+gates: INCONCLUSIVE (candidates: snapshot index, persistent index, ordered index-ordered vs index)

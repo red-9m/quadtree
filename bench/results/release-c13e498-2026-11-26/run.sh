@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # c13e498 release validation: same staged power, timing and quiet-start protocol as packed-staged-2026-11-23.
 # usage: run.sh WORK OUT [STAGE...]
-#   stage = calib-a | calib-b | <int32|int64|float|double>-<snapshot|persistent|resolve|resolve-2|presolve|presolve-2>
+#   stage = calib-a | calib-b | calib-c | calib-d (supplementary, after the matrices) | <int32|int64|float|double>-<snapshot|persistent|resolve|resolve-2|presolve|presolve-2>
 # WORK/build/bench/quadtree-bench must be the Release build of source-head.txt (archive build, fetched Box2D).
 set -euo pipefail
 export LC_ALL=C
@@ -24,7 +24,7 @@ snapshot_engines=index,index-ordered,brute,sweep,grid
 persistent_engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat
 args_for() {
     case $1 in
-        calib-a|calib-b) echo --model=snapshot --types=int32 --engines=$snapshot_engines; return ;;
+        calib-a|calib-b|calib-c|calib-d) echo --model=snapshot --types=int32 --engines=$snapshot_engines; return ;;
     esac
     local type=${1%%-*}
     case ${1#*-} in
