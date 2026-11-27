@@ -1,8 +1,8 @@
-# Handoff: `int32` release acceptance holds on `c13e498`; promotion pending
+# Handoff: `int32` release acceptance holds on `c13e498`; promoted
 
 ## Repo state
 
-- Branch `quadtree-index` in `/home/dima/src/quadtree.git`. The tested runtime is `c13e498`; later commits change only results and docs. Local commits are not pushed to `origin/quadtree-index`, which is still at `95c9178`. For hosted CI, `c13e498` was pushed as `origin/validate/int32-ordered-common`. Leave untracked `build-review/` alone.
+- Branch `quadtree-index` in `/home/dima/src/quadtree.git`. The tested runtime is `c13e498`; later commits change only results and docs. `origin/quadtree-index` was fast-forwarded from `95c9178` to `f249039` (2026-11-27). [Portability #22](https://github.com/red-9m/quadtree/actions/runs/45930658113) passes 9/9 on that head. The branch is not merged into `main`. For hosted CI, `c13e498` was pushed as `origin/validate/int32-ordered-common`. Leave untracked `build-review/` alone.
 - Validation record: [`bench/results/release-c13e498-2026-11-26/`](bench/results/release-c13e498-2026-11-26/README.md). Both the [rule](bench/results/release-c13e498-2026-11-26/resolution-rule.md) (`13629a3`) and the [rerun rule](bench/results/release-c13e498-2026-11-26/rerun-rule.md) (`4d121a5`) were committed before their stages ran.
 
 ## Result
@@ -17,7 +17,7 @@
 
 ## Next
 
-1. **Promote `c13e498`**, with owner approval for any push or merge: push `quadtree-index` (runtime plus evidence commits) and follow the earlier promotion pattern (`promote/quadtree-index`, `docs/plan` records).
+1. **Merge to `main` (owner decision):** `quadtree-index` is 50+ commits ahead of `origin/main` and has not been merged. Do not merge without approval.
 2. **Task 09 (optional):** the four inconclusive non-`int32` timing rows above.
 3. **Task 02 follow-up (optional):** `float clustered n=2` placement sensitivity. It passed in this release matrix (1.496 [1.440–1.554]).
 

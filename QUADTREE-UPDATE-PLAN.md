@@ -1,6 +1,6 @@
 # QuadTree update: remaining work
 
-**`int32` release acceptance holds on `c13e498` (2026-11-27); promotion of `c13e498` pending.** `a58cff8` was [held on G2](bench/results/int64-narrow-acceptance/data/decision.txt). `679a2b2` [closed G2 but failed G9](bench/results/int64-dense-pairs/data/decision.txt). Successor `c629592` is integrated into `quadtree-index` after the [full `int32`/`int64` patch recheck](bench/results/int64-threaded-acceptance/README.md). The `int32` release acceptance was [last extended to `c13e498`](docs/plan/08-final-acceptance-result.md#recheck-on-c13e498) (previously `7cfbebe`); `int64`/`float`/`double` remain functionally supported, not performance-accepted. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
+**`int32` release acceptance holds on `c13e498` (2026-11-27). The candidate was promoted: `origin/quadtree-index` fast-forwarded to `f249039`, and [Portability #22](https://github.com/red-9m/quadtree/actions/runs/45930658113) passes 9/9.** `a58cff8` was [held on G2](bench/results/int64-narrow-acceptance/data/decision.txt). `679a2b2` [closed G2 but failed G9](bench/results/int64-dense-pairs/data/decision.txt). Successor `c629592` is integrated into `quadtree-index` after the [full `int32`/`int64` patch recheck](bench/results/int64-threaded-acceptance/README.md). The `int32` release acceptance was [last extended to `c13e498`](docs/plan/08-final-acceptance-result.md#recheck-on-c13e498) (previously `7cfbebe`); `int64`/`float`/`double` remain functionally supported, not performance-accepted. MSVC is out of scope until explicitly requested. For a new AI session, this index and one task brief are the starting context.
 
 ## How to use this plan
 
@@ -36,11 +36,11 @@ The [runtime API](INDEX.md), adaptive tree, bulk loader, and ordered/cross/moved
 
 ## Session handoff
 
-### Fresh session: `c13e498` accepted for `int32`, promotion pending
+### Fresh session: `c13e498` accepted for `int32` and promoted
 
 Work in `/home/dima/src/quadtree.git`, branch `quadtree-index`. Start with [SESSION-HANDOFF.md](SESSION-HANDOFF.md) for the tested commits, binary hashes, run order and watch items. The [Task 09 integration](bench/results/int64-threaded-acceptance/README.md) remains historical evidence. No exception extends beyond `int32`. MSVC is deferred in [06](docs/plan/06-portability-result.md); the [legacy safety patch](docs/plan/legacy-safety.md) stays out of scope unless requested.
 
-**Next:** Promote `c13e498` (push `quadtree-index` and its evidence; owner approval required for any push or merge). Task 09 owns the remaining non-`int32` timing rows: `float` G2 `uniform` 10³ and G9 `split-line-translated` 10⁵, and `double` G2 `uniform` 10³/10⁵, all inconclusive. Task 02 `float clustered n=2` placement follow-up is optional.
+**Next:** No release work is pending; merging `quadtree-index` into `main` needs an owner decision. Task 09 owns the remaining non-`int32` timing rows: `float` G2 `uniform` 10³ and G9 `split-line-translated` 10⁵, and `double` G2 `uniform` 10³/10⁵, all inconclusive. Task 02 `float clustered n=2` placement follow-up is optional.
 
 ### Update the handoff after the session
 
