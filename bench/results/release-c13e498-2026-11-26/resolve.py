@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Apply resolution-rule.md to one model: pool the two 45-round processes for every hard row that was
 inconclusive in its matrix; report final status per type with the 08 exceptions (int32 only).
-usage: resolve.py DATA snapshot|persistent"""
+usage: resolve.py DATA snapshot|persistent [TYPE...]   (default: all four types)"""
 import math
 import re
 import sys
@@ -27,7 +27,7 @@ def gates(path):
     return rows
 
 
-for t in ('int32', 'float', 'double', 'int64'):
+for t in sys.argv[3:] or ('int32', 'float', 'double', 'int64'):
     matrix = gates(data / f'{t}-{matrix_stage}' / 'gates.txt')
     needed = any(r[-1] == 'inconclusive' for r in matrix.values())
     reruns = [gates(data / f'{t}-{s}' / 'gates.txt') for s in repeats] if needed else []
