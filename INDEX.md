@@ -6,13 +6,13 @@ Do not include the legacy `quadtree.h` in the same translation unit.
 
 The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
-**Performance scope.** Release performance acceptance covers `int32`
-coordinates only. In the [final patch recheck](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/bench/results/int64-threaded-acceptance/README.md),
-`int32` passes the hard gates with the existing G1 exception for very small
-snapshots; no G2 exception is needed. The `int64` patch passes its target,
-all G2 and G9 rows, and all persistent hard gates, but eight G1 rows still fail.
-`int64`, `float` and `double` remain functionally supported, not
-performance-accepted. See the earlier [published gaps for `float` and `double`](https://github.com/red-9m/quadtree/blob/40cc3443ff0c505d97bbf51685ab5d1065844fe5/docs/plan/09-other-coordinate-types-result.md#published-gaps-7cfbebe).
+**Performance scope.** Release performance acceptance covers all four
+coordinate types: `int32`, `int64`, `float` and `double`. In the
+[four-type release validation](https://github.com/red-9m/quadtree/blob/d5577877051a3ddd11d7452da7eb81b731b6e256/bench/results/release-ce92ef5-2026-11-28/README.md)
+of `ce92ef5`, every hard snapshot and persistent gate passes for each type,
+with no repeats and without the `int32` exceptions below. Before `ce92ef5`,
+only `int32` was accepted; see the
+[Task 09 result](https://github.com/red-9m/quadtree/blob/d5577877051a3ddd11d7452da7eb81b731b6e256/docs/plan/09-other-coordinate-types-result.md).
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs
