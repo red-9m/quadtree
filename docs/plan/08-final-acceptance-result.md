@@ -1,6 +1,8 @@
 # 08 · Release acceptance result
 
-**`int32` release accepted (2026-11-21)** on release candidate `a72bc80`: runtime/benchmark code built from `64675e6`, identical code, benchmark `.text` `97d8835e…`. Scope per [the brief](08-final-acceptance.md): performance sign-off covers `int32` only. `int64`, `float` and `double` are functionally supported and remain under [Task 09](09-other-coordinate-types.md).
+**`int32` release accepted (2026-11-21)** on release candidate `a72bc80`: runtime/benchmark code built from `64675e6`, identical code, benchmark `.text` `97d8835e…`. Scope per [the brief](08-final-acceptance.md): performance sign-off covered `int32` only, with `int64`, `float` and `double` under [Task 09](09-other-coordinate-types.md).
+
+**Four-type acceptance (2026-11-28) on `ce92ef5`:** the [full release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md) passes every hard gate for all four coordinate types without repeats or exceptions; see [the recheck below](#recheck-on-ce92ef5).
 
 ## Exit criteria
 
@@ -40,8 +42,21 @@
 
 **The `int32` acceptance holds on `c13e498`.**
 
+## Recheck on `ce92ef5`
+
+`ce92ef5` adds the [common-filter pair kernels for `float`/`double`](../../bench/results/float-common-pairs-2026-11-27/README.md). The `int32` runtime paths are unchanged; `orderedCommon` becomes `noinline`, so the `int32` code generation stays independent of the new floating-point code. The [four-type release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md) ran under a [pre-specified rule](../../bench/results/release-ce92ef5-2026-11-28/resolution-rule.md).
+
+- **Snapshot, all four types:** G1 16/16, G2 20/20, G3 9, G4 8, G6 62 and G9 15/15 pass in the 5-round matrices, with no repeats and no exception rows.
+- **Persistent:** `int32` and `float` pass G6 216, G7 120, G8a 12, G8b 4 and G8c 24. `double` and `int64` pass G6 216, G8a 12 and G8b 4; they have no Box2D reference.
+- **G0 and G6:** every process exits 0. There are zero warm allocations on all 2,224 library rows.
+- **Calibration:** 97.7% (291/298).
+- **CTest, fuzz and CI:** CTest 22/22 and full differential fuzz 20/20 on the archive build. Hosted [Portability #24](https://github.com/red-9m/quadtree/actions/runs/46095847492) passes 9/9 on the exact SHA.
+
+**The `int32` acceptance holds on `ce92ef5`. `int64`, `float` and `double` are performance-accepted on `ce92ef5` (Task 09).**
+
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.
+- [Four-type validation of `ce92ef5`](../../bench/results/release-ce92ef5-2026-11-28/README.md): the four-type acceptance run.
 - [`int32` confirmation](../../bench/results/release-int32-2026-11-21/README.md): the sign-off run.
 - [Rejected `int32` G2 fix attempt](../../bench/results/int32-g2-planbulk-2026-11-21/README.md): the evidence behind the G2 exception.

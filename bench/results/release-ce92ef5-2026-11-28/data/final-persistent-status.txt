@@ -1,0 +1,8 @@
+== int32 persistent
+  summary: G6 pass 216, G7 pass 120, G8a pass 12, G8b pass 4, G8c pass 24
+== float persistent
+  summary: G6 pass 216, G7 pass 120, G8a pass 12, G8b pass 4, G8c pass 24
+== double persistent
+  summary: G6 pass 216, G8a pass 12, G8b pass 4
+== int64 persistent
+  summary: G6 pass 216, G8a pass 12, G8b pass 4

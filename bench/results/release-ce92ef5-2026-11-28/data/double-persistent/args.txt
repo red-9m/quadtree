@@ -1,0 +1,1 @@
+--model=persistent --types=double --engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat

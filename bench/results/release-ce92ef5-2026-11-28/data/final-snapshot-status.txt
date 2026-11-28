@@ -1,0 +1,8 @@
+== int32 snapshot
+  summary: G1 pass 16, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
+== float snapshot
+  summary: G1 pass 16, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
+== double snapshot
+  summary: G1 pass 16, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15
+== int64 snapshot
+  summary: G1 pass 16, G2 pass 20, G3 pass 9, G4 pass 8, G6 pass 62, G9 pass 15

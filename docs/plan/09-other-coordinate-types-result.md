@@ -1,12 +1,46 @@
 # 09 · Other coordinate types: result
 
-**Closed as is again (owner decision, 2026-11-23) on `7cfbebe`.** `int64`, `float` and `double` ship as functionally supported coordinate types, with their performance gaps published. They are **not** performance-accepted. The frozen limits are unchanged, and no G1/G2/G9 exception extends beyond `int32`.
+**Accepted (2026-11-28) on `ce92ef5`.** `int64`, `float` and `double` are performance-accepted. On the [four-type release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md), every type passes G1 16/16, G2 20/20, G9 15/15, G3, G4, G6 and every applicable persistent hard gate. The run needed no repeats and used no exceptions, under a [rule committed before it ran](../../bench/results/release-ce92ef5-2026-11-28/resolution-rule.md). `int32` passes every hard gate on the same run, so its release acceptance holds. The frozen limits are unchanged, and no exception extends beyond `int32`.
 
-Every open row is a speed ratio, within about 8% of its limit. Correctness (G0), work-count gates (G3/G4), zero warm allocations (G6) and every persistent hard gate pass for all four types.
+History:
+- First closed as is on `d52dbe1` (owner, 2026-11-22), then reopened the same day.
+- Closed as is again on `7cfbebe` (owner, 2026-11-23), with published gaps (below).
+- Reopened for the [common-filter pair kernels](#common-filter-pair-kernels-ce92ef5).
 
-History: first closed on `d52dbe1` (owner, 2026-11-22), reopened the same day, then the packed-pairs work was staged as `7cfbebe` and [rechecked](../../bench/results/packed-staged-2026-11-23/README.md).
+## Common-filter pair kernels (`ce92ef5`)
 
-## What shipped
+[Candidate evidence](../../bench/results/float-common-pairs-2026-11-27/README.md) · [release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md)
+
+- **Cause:** `float` and `double` had no common-filter fast path, which `int64` already had.
+  - At `c13e498`, unordered `int64` pairs at `uniform` 10³ took 31.8 µs; `float` took 43.7 µs and `double` 44.1 µs.
+  - Their ordered pairs used the general recursive walk.
+- **Change:**
+  - Bulk `float`/`double` builds record the common-filter-bit proof.
+  - Unordered full pairs use the `CommonBitPairs` kernel with the exact packed overlap test.
+  - Ordered full pairs use `orderedCommonFloat`, a compact ordered walk on float lanes. It is exact for `float`. For `double`, lanes are rounded toward −∞, every lane hit is rechecked exactly, and exact thread-node bounds keep node charges equal to the general walk's.
+  - `orderedCommon` becomes `noinline`, so `int32` code generation stays independent of this code.
+- **Effect, candidate vs `c13e498`, same machine:**
+
+  | Type | `index` 10²–10³ | `index` 10⁴–10⁵ | `index-ordered` 10²–10⁵ |
+  |---|---|---|---|
+  | `float` | 0.5–40% faster | 1.4–21% faster | 5–44% faster |
+  | `double` | 0–46% faster | 0.4–23% faster | 5–42% faster |
+  | `int32` | −1.3% to +1.2% | −1.0% to +2.0% | −5.3% to +4.4% |
+
+  Work counts, pair sequences and checksums are unchanged.
+- **Costs** (`pile` is published under G5; neither row is gated):
+  - `pile` unordered pairs: 19–28% slower for `float`/`double`, as for `int64`. `pile` ordered pairs: 33–80% faster.
+  - `int64` unordered: 1–7% slower at 10²–10⁴ from compiler inlining shifts. All `int64` gates still pass.
+- **Rows open at `c13e498`, now passing:**
+  - `float` G2 `uniform` 10³ and G9 `split-line-translated` 10⁵.
+  - `double` G2 `uniform` 10³ and 10⁵.
+  - They pass in the candidate matrix, in two 45-round processes and in the release matrix.
+
+Tightest rows in the release matrix, all passing:
+- G9 at 10⁵: `float split-line` 3.699 [3.586–3.815] and `double split-line-translated` 3.656 [3.539–3.777].
+- G2: `double split-line-translated` 10² 3.569 [3.455–3.687].
+
+## What shipped before `ce92ef5`
 
 | Commit | Change | Evidence |
 |---|---|---|
@@ -45,7 +79,7 @@ From [final-status.txt](../../bench/results/float-staged-2026-11-21/data/final-s
 | `float` | 8 pass; 0–4 entries fail or unresolved, ≤ 3.09× upper | 10 pass, 8 fail (4.16–4.48× at 10²–10³, 2.08–2.15× at 10⁴–10⁵), 2 unresolved | all pass |
 | `double` | 8 pass; 0–4 entries fail, ≤ 3.21× upper | 10 pass, 8 fail (4.19–4.51× at 10²–10³, 2.13–2.18× at 10⁴–10⁵), 2 unresolved | all pass |
 
-## Reopening
+## Reopening options at `7cfbebe` (superseded)
 
 Start from the `7cfbebe` evidence and keep the `int32` acceptance rechecked after any change. Pre-specify each run's resolution rule before it starts. Options, ranked by expected value:
 1. **`int64` rebased snapshot path (design change).** When a build's span fits in 32 bits, store offsets from the minimum and reuse the `int32` kernels. It stays exact, but it only helps such inputs, so publish that caveat. Persistent inserts that leave the range need a fallback.
