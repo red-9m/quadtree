@@ -1,13 +1,15 @@
-# Handoff: Task 09 accepted on `db0c820`; one `int32` row open for an owner decision
+# Handoff: all four coordinate types accepted on `db0c820`
 
 ## Status
 
-- **`int64`, `float`, `double`:** performance-accepted on `db0c820` (2026-11-28). Every hard snapshot and persistent gate passes ([validation](bench/results/release-db0c820-2026-11-28/README.md), [09 result](docs/plan/09-other-coordinate-types-result.md)).
-- **`int32`:** acceptance holds on `c13e498`, and `ce92ef5` passed every `int32` gate. On `db0c820`, every snapshot gate passes, but G8b `mixed-size` n=10⁵ `small-single/moved` stayed **open** under the rule: matrix 3.843 [2.903–5.086]; pooled repeats 3.901 [3.781–4.024], limit 4.
-  - A post-hoc diagnostic ([diag-g8b](bench/results/release-db0c820-2026-11-28/diag-g8b/)) shows `c13e498` and `ce92ef5` also measure 3.8–4.0 in the repeat-process shape.
-  - The `int32` code is instruction-identical to `ce92ef5`.
-- **Owner decision needed:** accept `int32` on `db0c820` on this evidence, or rerun under a new pre-specified rule. A rerun that reuses the same repeat design would likely end open again: the repeat processes run about 3.9 on every binary.
+- **Release:** `int32`, `int64`, `float` and `double` are performance-accepted on runtime `db0c820` (2026-11-28) ([validation](bench/results/release-db0c820-2026-11-28/README.md), [08 result](docs/plan/08-final-acceptance-result.md#recheck-on-db0c820), [09 result](docs/plan/09-other-coordinate-types-result.md)).
+  - `int64`, `float` and `double` pass every hard gate under the pre-specified rule.
+  - `int32` passes all but one hard gate. G8b `mixed-size` n=10⁵ `small-single/moved` stayed open under the rule: pooled 3.901 [3.781–4.024], limit 4.
+  - **Owner decision (2026-11-28):** accept `int32` on `db0c820` on that evidence.
+    - The `int32` code is instruction-identical to `ce92ef5`, which passed the row at 3.324.
+    - A [post-hoc diagnostic](bench/results/release-db0c820-2026-11-28/diag-g8b/) gives `c13e498` the same 3.8–4.0 in the repeat-process shape.
 - **Defect history:** `ce92ef5` passed its own validation. Its ordered `double` path then turned out to raise `FE_OVERFLOW`/`FE_INEXACT` on valid input, and SIGFPE when trapping is enabled ([fix evidence](bench/results/double-ordered-fp-flags-2026-11-28/README.md)). `db0c820` uses exception-free integer order keys, and `pairsRaiseNoFpFlags<T>` guards against a regression.
+- **No release work is pending.** The items below are optional or need an owner decision.
 
 ## Repo and branches
 
@@ -42,14 +44,14 @@
   - `floatCommonPairs<T>` covers contact, ulp gaps, signed zeros, subnormals, extremes and all rounding modes.
   - The fuzzer shares filter bit 8 on seeds where seed mod 7 = 3.
 
-## Next
+## Next (pick one; none is required)
 
-1. **Owner decision on the open `int32` G8b row** (above).
-2. **Merge `quadtree-index` into `main`:** owner decision. Do not merge or push other branches without approval.
-3. **Thinnest margins**, if more headroom is wanted:
-   - `int32` G2 `uniform` 10³: 3.829 [3.712–3.950].
-   - `int32` G1 n=4: upper ≤ 1.978.
-   - `float`/`double` G9 `split-line*` 10⁵: upper ≤ 3.82.
+1. **Merge `quadtree-index` into `main`:** owner decision. Do not merge or push other branches without approval.
+2. **G8b repeat design:** the repeat processes read about 0.5 higher than the full persistent matrix for every binary. Fix the method before the next release rule relies on G8b repeats.
+3. **Thinnest margins on `db0c820`**, if more headroom is wanted:
+   - `int32` G2 `uniform` 10³: 3.842 [3.718–3.970].
+   - `int32` G1 n=4: upper ≤ 1.932.
+   - `float`/`double` G9 `split-line` 10⁵: upper ≤ 3.863.
 4. **`pile` hit path for `commonRow`:** only worth it if it costs nothing on regular rows (see `bench/results/float-common-pairs-2026-11-27/variants/`).
 
 MSVC is deferred ([06](docs/plan/06-portability-result.md)). The [legacy safety patch](docs/plan/legacy-safety.md) is out of scope unless requested.

@@ -6,16 +6,15 @@ Do not include the legacy `quadtree.h` in the same translation unit.
 
 The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
-**Performance scope.** `int64`, `float` and `double` are performance-accepted
-on `db0c820`: in its
-[four-type release validation](https://github.com/red-9m/quadtree/blob/547d046331eeede9fbcd1de555b1d235b4f70c9a/bench/results/release-db0c820-2026-11-28/README.md)
-they pass every hard snapshot and persistent gate. `int32` is performance-accepted
-on `c13e498`, with the existing G1 exception for very small snapshots below.
-On `db0c820` it passes every `int32` snapshot gate, but one persistent row (G8b,
-1-entry moved step at n=10⁵ vs 10³) stays open under the validation rule. Its
-`int32` code is instruction-identical to `ce92ef5`, which passed every `int32`
-gate; see the
-[acceptance status](https://github.com/red-9m/quadtree/blob/547d046331eeede9fbcd1de555b1d235b4f70c9a/docs/plan/08-final-acceptance-result.md#recheck-on-db0c820).
+**Performance scope.** Release performance acceptance covers all four
+coordinate types: `int32`, `int64`, `float` and `double`, on `db0c820`
+([four-type release validation](https://github.com/red-9m/quadtree/blob/7b2b86d0eec2f48ae4c67861a806fca12bc85395/bench/results/release-db0c820-2026-11-28/README.md)).
+`int64`, `float` and `double` pass every hard gate. `int32` passes every
+snapshot gate and every persistent gate except one moved-step scaling row
+(G8b), which stayed inconclusive under the validation rule; `int32` is
+accepted on that row by owner decision
+([acceptance status](https://github.com/red-9m/quadtree/blob/7b2b86d0eec2f48ae4c67861a806fca12bc85395/docs/plan/08-final-acceptance-result.md#recheck-on-db0c820)).
+The `int32` G1 exception for very small snapshots below still applies.
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs
