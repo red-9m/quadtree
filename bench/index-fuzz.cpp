@@ -484,6 +484,18 @@ QuadTree::Config<T> configFor(std::uint64_t seed)
     return config;
 }
 
+// Every seventh seed shares filter bit 8 across its entries, so snapshot builds
+// take the common-filter pair kernels. One in eight filter changes drops the
+// bit, until the next build restores it on every entry.
+constexpr bool sharedFilterSeed(std::uint64_t seed) noexcept { return seed % 7 == 3; }
+
+Filter randomFilter(Rng& rng, std::uint64_t seed, bool mayDrop = false)
+{
+    const std::uint64_t category = rng.next() & 7, mask = rng.next() & 7;
+    const std::uint64_t shared = sharedFilterSeed(seed) && !(mayDrop && category == 0) ? 8 : 0;
+    return Filter{category | shared, mask | shared};
+}
+
 // Returns false on the first failing step.
 template<typename T>
 bool run(std::uint64_t seed, Scene scene, const Options& options)
@@ -520,7 +532,7 @@ bool run(std::uint64_t seed, Scene scene, const Options& options)
         if (records.empty() || (op < 80 && records.size() < options.maxEntries))
         {
             const Box<T> b = generate<T>(rng, scene);
-            const Filter filter{rng.next() & 7, rng.next() & 7};
+            const Filter filter = randomFilter(rng, seed);
             const auto rank = static_cast<std::uint64_t>(next_id) * 3 + 1;
             const auto inserted = tree.insert(b, next_id, filter, rank);
             CHECK(inserted.ok());
@@ -541,7 +553,7 @@ bool run(std::uint64_t seed, Scene scene, const Options& options)
         else if (op < 150)
         {
             auto& record = records[rng.below(records.size())];
-            record.filter = Filter{rng.next() & 7, rng.next() & 7};
+            record.filter = randomFilter(rng, seed, true);
             CHECK(tree.setFilter(record.handle, record.filter) == Status::Ok);
         }
         else if (op < 180)
@@ -555,8 +567,12 @@ bool run(std::uint64_t seed, Scene scene, const Options& options)
         else if (op < 190)
         {
             std::vector<QuadTree::BuildEntry<int, T>> input;
-            for (const auto& record : records)
+            for (auto& record : records)
+            {
+                if (sharedFilterSeed(seed))
+                    record.filter = Filter{record.filter.category | 8, record.filter.mask | 8};
                 input.push_back({record.box, record.id, record.filter, record.rank});
+            }
             std::vector<typename Tree<T>::HandleType> output(input.size());
             const bool consume = rng.below(2) == 0;
             const Status status = consume ?

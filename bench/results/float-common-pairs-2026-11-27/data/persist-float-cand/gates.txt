@@ -1,0 +1,43 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G6   hard persistent float mixed-size n=10000 small-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 small-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 teleport-1%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent float mixed-size n=10000 teleport-1%/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 small-1%/full allocations per step                                0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 small-1%/moved allocations per step                               0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 static/full allocations per step                                  0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 static/moved allocations per step                                 0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 teleport-1%/full allocations per step                             0.000     <= 0 pass
+G6   hard persistent float split-line n=10000 teleport-1%/moved allocations per step                            0.000     <= 0 pass
+G7   hard persistent float mixed-size n=10000 small-1%/full vs dynamic tree (b2tree)              0.324 [0.307-0.343]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 small-1%/full vs grid (grid)                        1.405 [1.344-1.468]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 static/full vs dynamic tree (b2tree)                0.319 [0.305-0.333]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 static/full vs grid (grid)                          1.389 [1.331-1.450]     <= 4 pass
+G7   hard persistent float mixed-size n=10000 teleport-1%/full vs dynamic tree (b2tree)           0.322 [0.309-0.336]     <= 2 pass
+G7   soft persistent float mixed-size n=10000 teleport-1%/full vs grid (grid)                     1.417 [1.358-1.479]     <= 4 pass
+G7   hard persistent float split-line n=10000 small-1%/full vs dynamic tree (b2tree)              0.428 [0.410-0.447]     <= 2 pass
+G7   soft persistent float split-line n=10000 small-1%/full vs grid (grid)                        2.123 [2.031-2.220]     <= 4 pass
+G7   hard persistent float split-line n=10000 static/full vs dynamic tree (b2tree)                0.427 [0.408-0.447]     <= 2 pass
+G7   soft persistent float split-line n=10000 static/full vs grid (grid)                          2.081 [1.992-2.174]     <= 4 pass
+G7   hard persistent float split-line n=10000 teleport-1%/full vs dynamic tree (b2tree)           0.423 [0.405-0.441]     <= 2 pass
+G7   soft persistent float split-line n=10000 teleport-1%/full vs grid (grid)                     2.120 [2.029-2.216]     <= 4 pass
+G8a  hard persistent float mixed-size n=10000 static/moved ns per step                         19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent float split-line n=10000 static/moved ns per step                         19.800 [19.000-20.600]  <= 1000 pass
+G8c  hard persistent float mixed-size n=10000 small-1%/moved vs dynamic tree (b2tree-fat)         1.038 [0.980-1.099]     <= 2 pass
+G8c  soft persistent float mixed-size n=10000 small-1%/moved vs grid (grid)                       4.157 [3.934-4.394]     <= 4 inconclusive
+G8c  hard persistent float mixed-size n=10000 teleport-1%/moved vs dynamic tree (b2tree)          1.026 [0.983-1.072]     <= 2 pass
+G8c  soft persistent float mixed-size n=10000 teleport-1%/moved vs grid (grid)                    2.611 [2.499-2.727]     <= 4 pass
+G8c  hard persistent float split-line n=10000 small-1%/moved vs dynamic tree (b2tree-fat)         1.153 [1.090-1.219]     <= 2 pass
+G8c  soft persistent float split-line n=10000 small-1%/moved vs grid (grid)                       4.784 [4.523-5.061]     <= 4 FAIL
+G8c  hard persistent float split-line n=10000 teleport-1%/moved vs dynamic tree (b2tree)          0.889 [0.847-0.932]     <= 2 pass
+G8c  soft persistent float split-line n=10000 teleport-1%/moved vs grid (grid)                    4.147 [3.930-4.376]     <= 4 inconclusive
+summary (pass / fail / inconclusive):
+  G6 hard     12     0     0
+  G7 hard      6     0     0
+  G7 soft      6     0     0
+  G8a hard     2     0     0
+  G8c hard     4     0     0
+  G8c soft     1     1     2
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

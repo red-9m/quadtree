@@ -1,0 +1,1 @@
+Host shutdown during matrix-float-cand (2026-11-27 ~23:23); rerun from scratch as ev3.

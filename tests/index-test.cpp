@@ -3,6 +3,7 @@
 
 #include <array>
 #include <bitset>
+#include <cfenv>
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
@@ -351,19 +352,19 @@ void randomized(Boundary boundary, QuadTree::Extent extent)
 
 // Compare the full-pair fast path to the ordinary predicate traversal at
 // candidate-budget and visitor-stop boundaries, including filtered mutations.
-void int64PairPrefixes()
+template<typename T>
+void pairPrefixes()
 {
-    using T = std::int64_t;
     auto made = Tree<T>::create({.splitThreshold = 3, .mergeThreshold = 1, .smallSetThreshold = 0});
     REQUIRE(made.ok());
     auto& tree = made.value();
     std::vector<QuadTree::BuildEntry<int, T>> entries;
     for (int i = 0; i < 30; ++i)
     {
-        const T x = ((i % 6) - 2) * 9, y = (i / 6) * 9;
+        const T x = T(((i % 6) - 2) * 9), y = T((i / 6) * 9);
         entries.push_back({{x, y, x + 13, y + 13}, int(i), {std::uint64_t(4 | (i & 1)), 6}, std::uint64_t(i)});
     }
-    std::vector<Tree<T>::HandleType> handles(entries.size());
+    std::vector<typename Tree<T>::HandleType> handles(entries.size());
     QuadTree::Workspace<T> scratch;
     REQUIRE(scratch.reserve(entries.size() + 1) == Status::Ok);
     const auto check = [&](bool limitNodes = false)
@@ -393,6 +394,132 @@ void int64PairPrefixes()
     REQUIRE(tree.build(entries, handles) == Status::Ok);
     REQUIRE(tree.insert(entries[7].rect, 30, {0, 0}, 30).ok());
     check();
+}
+
+// Floating-point common-filter pairs at exact contact, one-ulp gaps, signed
+// zeros, subnormals and the extremes. double rows prefilter on float lanes
+// rounded outward, which merges one-ulp gaps and overflows to infinity.
+template<typename T>
+void floatCommonPairs()
+{
+    const T huge = std::numeric_limits<T>::max(), tiny = std::numeric_limits<T>::denorm_min();
+    const T up = std::numeric_limits<T>::infinity();
+    for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
+        for (bool extremes : {false, true})
+        {
+            TestResource resource;
+            auto made = Tree<T>::create({.boundary = boundary, .splitThreshold = 4, .mergeThreshold = 1,
+                .smallSetThreshold = 0}, &resource);
+            REQUIRE(made.ok());
+            auto& tree = made.value();
+            std::vector<QuadTree::BuildEntry<int, T>> input;
+            std::vector<Record<T>> records;
+            const auto add = [&](T minX, T minY, T maxX, T maxY)
+            {
+                const auto id = static_cast<int>(input.size());
+                const auto rank = std::uint64_t(id + 1) * UINT64_C(0x9e3779b97f4a7c15);
+                input.push_back({Box<T>{minX, minY, maxX, maxY}, id, {}, rank});
+                const T zero = T(0); // Stored zeros are +0.
+                records.push_back({{minX + zero, minY + zero, maxX + zero, maxY + zero}, id, {}, rank, {}});
+            };
+            for (int i = 0; i < 40; ++i)
+            {
+                const T x = T(i % 8) * 3, y = T(i / 8) * 3, e = T(1) + x;
+                add(x, y, e, y + 1);                                       // Unit cells.
+                add(std::nextafter(e, up), y, e + 1, y + 1);               // One ulp right of the cell.
+                add(std::nextafter(e, up), y, std::nextafter(e, up), y + 1); // Its left edge.
+                add(e, y, e + 1, y + 1);                                   // Touches the cell.
+                add(e, y + T(0.5), e, y + T(0.5));                         // Point on its edge.
+                add(x, std::nextafter(y + 1, up), e, y + 2);               // One ulp above.
+                add(std::nextafter(x, -up), y - 1, std::nextafter(x, -up), y + 2); // Segment one ulp left.
+            }
+            add(T(-1), T(-1), T(-0.0), T(-0.0)); // Signed zeros touching the first cell.
+            add(T(-0.0), T(-0.0), tiny, tiny);
+            add(tiny, tiny, tiny + tiny, T(1));
+            add(std::nextafter(tiny + tiny, up), T(0), T(1), T(1));
+            add(T(-0.5), T(-0.5), T(30), T(30)); // Large box over many cells.
+            if (extremes)
+            {
+                // A ladder of scales, beyond the float range when T is double.
+                constexpr int top = std::numeric_limits<T>::max_exponent - 2;
+                for (int k = -top; k <= top; k += top / 16)
+                    for (T sign : {T(-1), T(1)})
+                    {
+                        const T at = sign * std::ldexp(T(1), k), end = sign * std::ldexp(T(1.5), k);
+                        const T lo = std::min(at, end), hi = std::max(at, end), next = std::nextafter(hi, up);
+                        add(lo, lo, hi, hi);
+                        add(next, lo, next, hi); // One ulp right.
+                        add(hi, lo, hi, hi);     // On the right edge.
+                    }
+            add(-huge, -huge, -huge, -huge);
+            add(-huge, -huge, std::nextafter(-huge, up), T(-1)); // Overflows float when T is double.
+            add(std::nextafter(huge, T(0)), T(0), huge, huge);
+            add(huge, huge, huge, huge);
+            add(huge / 4, T(0), huge / 2, T(1));
+            add(std::nextafter(huge / 2, up), T(0), huge, T(1));
+            }
+            std::vector<typename Tree<T>::HandleType> handles(input.size());
+            QuadTree::Workspace<T> scratch(&resource);
+            REQUIRE(scratch.reserve(input.size() + 1) == Status::Ok);
+            REQUIRE(tree.build(input, handles, {.workspace = &scratch}) == Status::Ok);
+            CHECK(tree.stats().nodes > 20);
+            for (std::size_t i = 0; i < records.size(); ++i) records[i].handle = handles[i];
+            verify(tree, records, scratch);
+            // Lane conversion must stay conservative in every rounding mode.
+            for (int mode : {FE_UPWARD, FE_DOWNWARD, FE_TOWARDZERO})
+            {
+                REQUIRE(std::fesetround(mode) == 0);
+                verify(tree, records, scratch);
+                REQUIRE(std::fesetround(FE_TONEAREST) == 0);
+            }
+            const auto check = [&](bool ordered, QuadTree::WorkBudget budget, unsigned stop)
+            {
+                const auto allocations = resource.allocations;
+                std::vector<Pair> a, b;
+                const auto visit = [&](auto& dst) { return [&](const auto& x, const auto& y) noexcept
+                {
+                    dst.emplace_back(x.payload, y.payload);
+                    return dst.size() == stop ? Stop : Continue;
+                }; };
+                const QuadTree::QueryOptions<T> opts{.ordered = ordered, .workspace = &scratch, .budget = budget};
+                const auto ref = tree.forEachPair(visit(a), opts, [](const auto&, const auto&) noexcept { return true; });
+                const auto got = tree.forEachPair(visit(b), opts);
+                CHECK(ref.status == got.status && a == b);
+                CHECK(ref.counters.candidateTests == got.counters.candidateTests && ref.counters.nodeVisits == got.counters.nodeVisits);
+                CHECK(ref.counters.filterRejections == got.counters.filterRejections && got.counters.reports == b.size());
+                CHECK(got.counters.predicateCalls == 0 && resource.allocations == allocations);
+            };
+            const auto checkAll = [&]
+            {
+                for (bool ordered : {false, true})
+                {
+                    for (unsigned stop : {0u, 1u, 37u})
+                        check(ordered, {}, stop);
+                    for (std::uint64_t limit : {0u, 1u, 50u, 700u})
+                    {
+                        check(ordered, {.candidateTests = limit}, 0);
+                        check(ordered, {.nodeVisits = limit}, 0);
+                    }
+                }
+            };
+            checkAll();
+            QuadTree::Workspace<T> queryOnly(&resource); // No build scratch to borrow.
+            REQUIRE(queryOnly.reserve({input.size(), 0, 0}) == Status::Ok);
+            std::vector<Pair> plain, borrowed;
+            const auto collect = [](auto& dst) { return [&dst](const auto& x, const auto& y) noexcept
+                { dst.emplace_back(x.payload, y.payload); return Continue; }; };
+            CHECK(tree.forEachPair(collect(plain), {.ordered = true, .workspace = &queryOnly}).complete());
+            CHECK(tree.forEachPair(collect(borrowed), {.ordered = true, .workspace = &scratch}).complete());
+            CHECK(plain == borrowed);
+            REQUIRE(tree.remove(handles[5]) == Status::Ok); // Non-contiguous own entries.
+            records.erase(records.begin() + 5);
+            verify(tree, records, scratch);
+            checkAll();
+            REQUIRE(tree.setFilter(handles[6], {0, 0}) == Status::Ok); // No common bit.
+            records[5].filter = {0, 0};
+            verify(tree, records, scratch);
+            checkAll();
+        }
 }
 
 // Long ordered rows span both bitmap levels; sparse rows must not inherit
@@ -3244,7 +3371,8 @@ int main()
     orderedMovedSources<true>(); orderedMovedSources<false>(); orderedMovedWork();
     pairWorkspaceGrowth(); coincidentMotion(); concurrency(); uninstrumented();
     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();
-    translatedInt64Snapshots(); int64PairPrefixes();
+    translatedInt64Snapshots(); pairPrefixes<std::int64_t>(); pairPrefixes<float>(); pairPrefixes<double>();
+    floatCommonPairs<float>(); floatCommonPairs<double>();
     orderedIntegerRows<std::int32_t>(); orderedIntegerRows<std::int64_t>();
     for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
         for (auto extent : {QuadTree::Extent::Fixed, QuadTree::Extent::Adaptive, QuadTree::Extent::Snapshot})

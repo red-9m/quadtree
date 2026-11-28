@@ -792,10 +792,15 @@ class Index
     using Key = detail::SpatialKey;
     static constexpr std::uint32_t none = detail::kNone;
 
-    // Internal dispatch tag: both axis spans fit in INT32_MAX. All endpoint
-    // differences therefore fit in a signed lane, irrespective of origin.
+    // Internal dispatch tags. NarrowPairs (int64): both axis spans fit in
+    // INT32_MAX, so all endpoint differences fit in a signed lane, irrespective
+    // of origin. CommonBitPairs: every pair is also filter-compatible; float
+    // and double use it without the span proof (see kernelOverlap).
     struct NarrowPairs : detail::AcceptAll {};
     struct CommonBitPairs : NarrowPairs {};
+    // Bulk builds record whether all entries share a filter bit. int32 instead
+    // proves it per large ordered query, keeping its snapshot builds unchanged.
+    static constexpr bool kBuildCommonBit = !std::same_as<T, std::int32_t>;
 
     struct Reference
     {
@@ -928,7 +933,7 @@ public:
         mNodes.commit(nodes);
         mReferences.commit(references);
         mExtent = next_extent;
-        if constexpr (std::same_as<T, std::int64_t>)
+        if constexpr (kBuildCommonBit)
             if (mRoot != none) mNodes[mRoot].commonFilterBit = false;
         commitMutation(dense, plan, none);
         return result;
@@ -1026,7 +1031,7 @@ public:
         mEntries.mMeta[dense].filter = entryFilter;
         if (mRoot != none)
         {
-            if constexpr (std::same_as<T, std::int64_t>) mNodes[mRoot].commonFilterBit = false;
+            if constexpr (kBuildCommonBit) mNodes[mRoot].commonFilterBit = false;
             changedItems(mReferences[dense].node, true);
             includeItem(mReferences[dense].node, dense);
             refitPath(mReferences[dense].node);
@@ -2438,7 +2443,7 @@ private:
             }
             else
                 next_extent = next_extent ? detail::unite(*next_extent, box) : box;
-            if constexpr (std::same_as<T, std::int64_t>) commonBits &= descriptor.filter.category & descriptor.filter.mask;
+            if constexpr (kBuildCommonBit) commonBits &= descriptor.filter.category & descriptor.filter.mask;
             if (descriptor.rank)
                 ranks[ranked++] = *descriptor.rank;
             ++i;
@@ -2567,7 +2572,7 @@ private:
             mActiveNodes = 1;
             mNodes[0] = Node{};
             mNodes[0].cell = Cell{*next_extent};
-            if constexpr (std::same_as<T, std::int64_t>) mNodes[0].commonFilterBit = commonBits != 0;
+            if constexpr (kBuildCommonBit) mNodes[0].commonFilterBit = commonBits != 0;
             const Key* plan = scratch->mKeys.data();
             materializeBulk(0, plan, node_count != 1, 0, static_cast<std::uint32_t>(count));
         }
@@ -3078,6 +3083,15 @@ private:
                 }
             }
         }
+        else if constexpr (FloatCoordinate<T> && std::same_as<Predicate, detail::AcceptAll>)
+        {
+            // Stored float geometry is finite with canonical zeros; no span proof is needed.
+            if (mRoot != none && mNodes[mRoot].commonFilterBit)
+            {
+                CommonBitPairs common;
+                return run(common);
+            }
+        }
 #endif
         run(predicate);
     }
@@ -3103,6 +3117,16 @@ private:
             boundary == Boundary::TouchInclusive || a.minX == a.maxX || a.minY == a.maxY ||
             b.minX == b.maxX || b.minY == b.maxY;
     }
+
+    // Exact entry overlap for a NarrowPairs kernel: int64 lanes need its span proof.
+    static bool kernelOverlap(const Box<T>& a, const Box<T>& b, Boundary boundary) noexcept
+        requires (!std::same_as<T, std::int32_t>)
+    {
+        if constexpr (std::same_as<T, std::int64_t>)
+            return narrowOverlap(a, b, boundary);
+        else
+            return packedCrossItemOverlap(a, b, boundary);
+    }
 #endif
 
     template<bool PackedCross = false, typename Predicate>
@@ -3118,7 +3142,7 @@ private:
         }
 #if defined(__SSE2__)
         if constexpr (std::derived_from<Predicate, NarrowPairs>)
-            return context.candidate() && narrowOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary);
+            return context.candidate() && kernelOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary);
 #endif
         if (!context.candidate() || !(PackedCross && std::same_as<Predicate, detail::AcceptAll> ?
             packedCrossItemOverlap(mEntries.mBoxes[a], mEntries.mBoxes[b], mConfig.boundary) :
@@ -3323,7 +3347,7 @@ private:
     // geometry. One record fits in the bytes already reserved for one key.
     struct OrderedBox
     {
-        std::uint32_t gapTerms[4]; // -minX, -minY, maxX, maxY, modulo 2^32
+        std::uint32_t gapTerms[4]; // -minX, -minY, maxX, maxY, modulo 2^32 (floatLanes for floating point)
         std::uint32_t ordinal;
         std::int32_t threshold; // -1 for closed contact, otherwise 0
     };
@@ -3414,7 +3438,13 @@ private:
         return true;
     }
 
+    // Out of line: inlining this walk into traversePairs let unrelated code
+    // shift register allocation of the general ordered path (int32 n=100 rows
+    // measured 5-11% slower). It runs once per query.
     template<typename Visitor>
+#if __has_cpp_attribute(gnu::noinline)
+    [[gnu::noinline]]
+#endif
     void orderedCommon(Workspace<T>& scratch, Context& context, Visitor& visitor) const noexcept
         requires IntegerCoordinate<T>
     {
@@ -3503,6 +3533,171 @@ private:
             }
         }
     }
+
+    // Ordered common-bit rows store (minX, minY, -maxX, -maxY) as float lanes in
+    // OrderedBox::gapTerms; negation is exact and stored zeros are +0. double
+    // rounds each lane toward -inf, so its closed lane test only admits extra
+    // candidates, which are rechecked exactly. Thread nodes keep exact double
+    // bounds: node visits and charges match the general walk.
+    static __m128 floatLanes(const Box<T>& box) noexcept requires FloatCoordinate<T>
+    {
+        if constexpr (std::same_as<T, float>)
+            return _mm_xor_ps(_mm_loadu_ps(&box.minX), _mm_setr_ps(0.0f, 0.0f, -0.0f, -0.0f));
+        else
+        {
+            const auto lo = _mm_loadu_pd(&box.minX), hi = _mm_xor_pd(_mm_loadu_pd(&box.maxX), _mm_set1_pd(-0.0));
+            const auto lanes = _mm_movelh_ps(_mm_cvtpd_ps(lo), _mm_cvtpd_ps(hi));
+            // In any rounding mode, step each lane above its exact value down one float:
+            // positive patterns (+inf too) decrement, negative ones (-0 included) increment.
+            const auto above = _mm_shuffle_ps(_mm_castpd_ps(_mm_cmpgt_pd(_mm_cvtps_pd(lanes), lo)),
+                _mm_castpd_ps(_mm_cmpgt_pd(_mm_cvtps_pd(_mm_movehl_ps(lanes, lanes)), hi)), _MM_SHUFFLE(2, 0, 2, 0));
+            const auto bits = _mm_castps_si128(lanes);
+            const auto step = _mm_or_si128(_mm_slli_epi32(_mm_srai_epi32(bits, 31), 1), _mm_set1_epi32(1));
+            return _mm_castsi128_ps(_mm_sub_epi32(bits, _mm_and_si128(step, _mm_castps_si128(above))));
+        }
+    }
+
+    struct ThreadBox
+    {
+        Box<T> bounds;
+        std::uint32_t head, count, escape;
+    };
+
+    // threadNodes for floating point: float lanes, or exact double bounds.
+    template<typename Thread>
+    bool threadFloatNodes(std::uint32_t id, Thread* out, std::uint32_t& used) const noexcept
+        requires FloatCoordinate<T>
+    {
+        const auto& node = mNodes[id];
+        if (node.count == 0) return true;
+        if (!node.linear) return false;
+        auto& dst = out[used++];
+        if constexpr (std::same_as<Thread, ThreadBox>)
+            dst.bounds = node.bounds;
+        else
+        {
+            const auto lanes = floatLanes(node.bounds);
+            std::memcpy(dst.terms, &lanes, sizeof(dst.terms));
+        }
+        dst.head = node.head;
+        dst.count = node.ownCount;
+        if (node.firstChild != none)
+            for (unsigned q = 0; q < 4; ++q)
+                if (!threadFloatNodes(node.firstChild + q, out, used)) return false;
+        dst.escape = used;
+        return true;
+    }
+
+    // Same rows, budgets, charges and fallback as orderedCommon.
+    template<typename Visitor>
+    void orderedCommonFloat(Workspace<T>& scratch, Context& context, Visitor& visitor) const noexcept
+        requires FloatCoordinate<T>
+    {
+        using Thread = std::conditional_t<std::same_as<T, double>, ThreadBox, ThreadNode>;
+        static_assert(alignof(Thread) <= alignof(Box<T>));
+        const auto n = static_cast<std::uint32_t>(size());
+        const auto words = 1 + (n - 1) / 64, groups = 1 + (words - 1) / 64;
+        auto* bits = scratch.mKeys.data(); // Paired build reservation with mTemp.
+        for (std::uint32_t j = 0; j < words; ++j) bits[j].hi = 0;
+        for (std::uint32_t j = 0; j < groups; ++j) bits[j].lo = 0;
+        Thread* nodes = nullptr;
+        std::uint32_t usedNodes = 0;
+        if (mActiveNodes <= scratch.mBuildBoxes.capacity() / sizeof(Thread))
+        {
+            nodes = ::new (scratch.mBuildBoxes.data()) Thread[mActiveNodes];
+            if (!threadFloatNodes(mRoot, nodes, usedNodes)) nodes = nullptr;
+        }
+        auto* records = ::new (scratch.mTemp.data()) OrderedBox[n];
+        for (std::uint32_t i = 0; i < n; ++i) records[scratch.mOrder[i]].ordinal = i;
+        for (std::uint32_t i = 0; i < n; ++i)
+        {
+            const auto& box = mEntries.mBoxes[i];
+            auto& r = records[i];
+            const auto lanes = floatLanes(box);
+            std::memcpy(r.gapTerms, &lanes, sizeof(r.gapTerms));
+            if constexpr (std::same_as<T, float>) // double rechecks contact exactly.
+                r.threshold = mConfig.boundary == Boundary::TouchInclusive || box.minX == box.maxX || box.minY == box.maxY ? -1 : 0;
+        }
+        const auto terms = [](const std::uint32_t (&lanes)[4]) noexcept
+        { __m128 v; std::memcpy(&v, lanes, sizeof(v)); return v; };
+        for (std::uint32_t i = 0; i + 1 < n && context.active(); ++i)
+        {
+            const auto a = scratch.mOrder[i];
+            const auto& box = mEntries.mBoxes[a];
+            std::uint32_t count = 0;
+            // (maxX, maxY, -minX, -minY): no lane of an overlapping box may exceed it.
+            const auto own = terms(records[a].gapTerms);
+            const auto source = _mm_xor_ps(_mm_shuffle_ps(own, own, _MM_SHUFFLE(1, 0, 3, 2)), _mm_set1_ps(-0.0f));
+            [[maybe_unused]] const std::int32_t threshold = std::same_as<T, float> ? records[a].threshold : 0;
+            const auto collect = [&](const OrderedBox& other, std::uint32_t b) noexcept
+            {
+                const auto lanes = terms(other.gapTerms);
+                if constexpr (std::same_as<T, float>)
+                {
+                    // Every lane strictly below, or equal under closed contact.
+                    const auto closed = _mm_castsi128_ps(_mm_set1_epi32(threshold | other.threshold));
+                    const auto hit = _mm_or_ps(_mm_cmplt_ps(lanes, source), _mm_and_ps(_mm_cmpeq_ps(lanes, source), closed));
+                    if (_mm_movemask_ps(hit) == 15) scratch.mRow[count++] = other.ordinal;
+                }
+                else if (_mm_movemask_ps(_mm_cmple_ps(lanes, source)) == 15 &&
+                    packedCrossItemOverlap(box, mEntries.mBoxes[b], mConfig.boundary))
+                    scratch.mRow[count++] = other.ordinal;
+            };
+            // Closed overlap with the source box, as in walkOrdered.
+            const auto disjoint = [&](const Thread& node) noexcept
+            {
+                if constexpr (std::same_as<T, float>)
+                    return _mm_movemask_ps(_mm_cmpgt_ps(terms(node.terms), source)) != 0;
+                else
+                    return _mm_movemask_pd(_mm_or_pd(_mm_cmpgt_pd(_mm_loadu_pd(&node.bounds.minX), _mm_loadu_pd(&box.maxX)),
+                        _mm_cmpgt_pd(_mm_loadu_pd(&box.minX), _mm_loadu_pd(&node.bounds.maxX)))) != 0;
+            };
+            if (nodes && context.remaining.nodeVisits >= usedNodes && context.remaining.candidateTests >= n - 1 - i)
+            {
+                std::uint32_t visits = 0, tests = 0;
+                for (std::uint32_t j = 0; j < usedNodes; )
+                {
+                    const auto& node = nodes[j];
+                    ++visits;
+                    if (disjoint(node))
+                    {
+                        j = node.escape;
+                        continue;
+                    }
+                    ++j;
+                    for (std::uint32_t k = 0; k < node.count; ++k)
+                    {
+                        const auto& other = records[node.head + k];
+                        if (other.ordinal > i) { ++tests; collect(other, node.head + k); }
+                    }
+                }
+                context.nodes(visits);
+                constexpr auto max = std::numeric_limits<std::uint64_t>::max();
+                if (context.remaining.candidateTests != max) context.remaining.candidateTests -= tests;
+                if constexpr (Instrumented)
+                {
+                    auto& total = context.result.counters.candidateTests;
+                    total += std::min<std::uint64_t>(tests, max - total);
+                }
+            }
+            else
+            {
+                auto candidate = [&](std::uint32_t b) noexcept
+                {
+                    if (records[b].ordinal > i && context.candidate()) collect(records[b], b);
+                };
+                if (context.node()) walkOrdered<true>(mNodes[mRoot], box, {}, context, candidate);
+            }
+            if (!context.active()) return;
+            auto* row = scratch.mRow.data();
+            orderOrdinalRow(row, count, bits, groups);
+            for (std::uint32_t j = 0; j < count && context.active(); ++j)
+            {
+                const View left = view(a), right = view(scratch.mOrder[row[j]]);
+                context.report(std::invoke(visitor, left, right));
+            }
+        }
+    }
 #endif
 
     template<typename Visitor, typename Predicate>
@@ -3522,7 +3717,12 @@ private:
         if constexpr (std::same_as<Predicate, CommonBitPairs>)
         {
             if (!movedOnly && sourceCount <= scratch.mTemp.capacity() / sizeof(OrderedBox))
-                return orderedCommon(scratch, context, visitor);
+            {
+                if constexpr (FloatCoordinate<T>)
+                    return orderedCommonFloat(scratch, context, visitor);
+                else
+                    return orderedCommon(scratch, context, visitor);
+            }
         }
         else if constexpr (std::same_as<T, std::int32_t> && std::same_as<Predicate, detail::AcceptAll>)
         {
@@ -3653,7 +3853,7 @@ private:
     // actually visited, including a pair whose callback stops the traversal.
     template<typename Visitor>
     void commonRow(std::uint32_t a, std::uint32_t begin, std::uint32_t length, Context& context,
-        Visitor& visitor) const noexcept requires std::same_as<T, std::int64_t>
+        Visitor& visitor) const noexcept requires (!std::same_as<T, std::int32_t>)
     {
         auto& budget = context.remaining.candidateTests;
         const auto count = static_cast<std::uint32_t>(std::min<std::uint64_t>(length, budget));
@@ -3662,7 +3862,7 @@ private:
         while (used < count)
         {
             const auto b = begin + used++;
-            if (narrowOverlap(box, mEntries.mBoxes[b], mConfig.boundary))
+            if (kernelOverlap(box, mEntries.mBoxes[b], mConfig.boundary))
             {
                 reportPair(a, b, false, context, visitor);
                 if (!context.active()) break;

@@ -1,0 +1,231 @@
+== matrix-double
+  base     : G1 hard     16     0     0; G2 hard     18     0     2; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     15     0     0
+  cand     : G1 hard     16     0     0; G2 hard     20     0     0; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     15     0     0
+  hard/soft rows not passing on both:
+    G2   snapshot double uniform n=1000 vs best baseline (grid)                 4.059 [3.941-4.181] inconclusive -> 3.486 [3.382-3.593] pass
+    G2   snapshot double uniform n=100000 vs best baseline (grid)               1.989 [1.929-2.050] inconclusive -> 1.858 [1.803-1.914] pass
+  library rows: 124, work/checksum differences: 0, non-ok rows (base): 14
+  index / index-ordered estimate (us) and phase medians, base -> cand:
+    clustered                1000 index              100.5 ->       82.5 (-17.9%)  prepare      32.9 ->      32.5  pairs      67.5 ->      49.8
+    clustered                1000 index-ordered      339.9 ->      253.8 (-25.3%)  prepare      53.7 ->      52.9  pairs     284.1 ->     201.3
+    clustered               10000 index             1869.8 ->     1594.3 (-14.7%)  prepare     438.7 ->     434.2  pairs    1429.7 ->    1158.3
+    clustered               10000 index-ordered     4782.8 ->     3665.3 (-23.4%)  prepare     628.6 ->     644.9  pairs    4140.3 ->    3017.9
+    clustered              100000 index            20406.5 ->    17606.2 (-13.7%)  prepare    7216.8 ->    7243.4  pairs   13215.7 ->   10371.1
+    clustered              100000 index-ordered    63369.8 ->    53930.5 (-14.9%)  prepare   12755.7 ->   12817.9  pairs   50402.9 ->   40893.7
+    disjoint                 1000 index               34.8 ->       35.2 ( +1.1%)  prepare      28.6 ->      28.8  pairs       6.3 ->       6.3
+    disjoint                 1000 index-ordered      133.7 ->      105.4 (-21.1%)  prepare      43.5 ->      44.4  pairs      89.5 ->      61.3
+    disjoint                10000 index              582.7 ->      577.5 ( -0.9%)  prepare     401.3 ->     400.2  pairs     180.1 ->     176.6
+    disjoint                10000 index-ordered     2296.5 ->     1998.9 (-13.0%)  prepare     565.7 ->     567.3  pairs    1719.6 ->    1421.3
+    disjoint               100000 index             7333.8 ->     6710.0 ( -8.5%)  prepare    5152.6 ->    5101.3  pairs    2110.1 ->    1599.0
+    disjoint               100000 index-ordered    36738.7 ->    32672.9 (-11.1%)  prepare   10487.7 ->   10440.6  pairs   26015.0 ->   21907.7
+    long-thin                1000 index              166.0 ->       88.2 (-46.8%)  prepare      23.8 ->      24.1  pairs     141.7 ->      64.1
+    long-thin                1000 index-ordered      348.7 ->      237.0 (-32.0%)  prepare      45.7 ->      46.1  pairs     302.5 ->     191.2
+    long-thin               10000 index             2016.8 ->     1548.5 (-23.2%)  prepare     354.8 ->     348.1  pairs    1658.6 ->    1198.1
+    long-thin               10000 index-ordered     4828.4 ->     3452.7 (-28.5%)  prepare     540.0 ->     543.7  pairs    4274.3 ->    2894.9
+    long-thin              100000 index            24699.6 ->    20257.1 (-18.0%)  prepare    6481.7 ->    6501.6  pairs   18223.9 ->   13733.2
+    long-thin              100000 index-ordered    66847.1 ->    56660.9 (-15.2%)  prepare   12290.8 ->   13222.3  pairs   53975.5 ->   43253.5
+    mixed-size               1000 index               99.4 ->       88.7 (-10.8%)  prepare      29.4 ->      29.9  pairs      69.8 ->      58.6
+    mixed-size               1000 index-ordered      321.1 ->      238.0 (-25.9%)  prepare      49.3 ->      48.5  pairs     270.2 ->     189.8
+    mixed-size              10000 index             1727.3 ->     1657.0 ( -4.1%)  prepare     389.2 ->     391.9  pairs    1336.7 ->    1261.9
+    mixed-size              10000 index-ordered     5281.6 ->     4018.1 (-23.9%)  prepare     588.2 ->     584.9  pairs    4694.7 ->    3429.2
+    mixed-size             100000 index            38857.1 ->    37025.4 ( -4.7%)  prepare    6455.4 ->    6570.3  pairs   32485.9 ->   30272.2
+    mixed-size             100000 index-ordered   146728.2 ->   104917.0 (-28.5%)  prepare   12101.4 ->   12241.7  pairs  134407.9 ->   92310.4
+    outliers                 1000 index              130.7 ->      124.0 ( -5.1%)  prepare      93.4 ->      93.4  pairs      37.2 ->      30.3
+    outliers                 1000 index-ordered      407.2 ->      232.7 (-42.8%)  prepare     113.4 ->     112.3  pairs     292.9 ->     120.5
+    outliers                10000 index             1547.0 ->     1462.3 ( -5.5%)  prepare     905.5 ->     904.5  pairs     640.7 ->     555.0
+    outliers                10000 index-ordered     4665.2 ->     3163.3 (-32.2%)  prepare    1107.3 ->    1084.9  pairs    3561.1 ->    2069.0
+    outliers               100000 index            18048.5 ->    17080.0 ( -5.4%)  prepare   11501.5 ->   11526.6  pairs    6490.5 ->    5550.6
+    outliers               100000 index-ordered    63353.8 ->    49110.9 (-22.5%)  prepare   17084.6 ->   17573.8  pairs   46460.6 ->   31500.1
+    pile                     1000 index             2754.9 ->     3293.3 (+19.5%)  prepare      11.2 ->      11.3  pairs    2744.0 ->    3280.2
+    pile                     1000 index-ordered    14378.2 ->     2968.2 (-79.4%)  prepare      34.8 ->      36.1  pairs   14337.8 ->    2931.7
+    points                   1000 index               55.8 ->       50.7 ( -9.3%)  prepare      30.1 ->      29.8  pairs      25.6 ->      20.7
+    points                   1000 index-ordered      174.5 ->      133.8 (-23.3%)  prepare      47.2 ->      47.5  pairs     127.5 ->      86.6
+    points                  10000 index              847.7 ->      804.2 ( -5.1%)  prepare     381.2 ->     389.4  pairs     465.6 ->     415.8
+    points                  10000 index-ordered     2719.7 ->     2255.1 (-17.1%)  prepare     565.9 ->     579.9  pairs    2142.6 ->    1665.7
+    points                 100000 index            11208.7 ->     9985.9 (-10.9%)  prepare    6522.8 ->    6327.2  pairs    4720.8 ->    3661.7
+    points                 100000 index-ordered    42750.0 ->    38962.5 ( -8.9%)  prepare   12373.5 ->   12278.7  pairs   30162.5 ->   26305.6
+    split-line               1000 index               77.6 ->       66.8 (-13.9%)  prepare      32.8 ->      32.6  pairs      44.5 ->      34.1
+    split-line               1000 index-ordered      230.6 ->      174.0 (-24.5%)  prepare      51.6 ->      51.1  pairs     178.9 ->     123.1
+    split-line              10000 index             1094.4 ->     1022.9 ( -6.5%)  prepare     432.3 ->     427.2  pairs     662.6 ->     595.7
+    split-line              10000 index-ordered     3268.3 ->     2768.2 (-15.3%)  prepare     618.2 ->     651.0  pairs    2644.9 ->    2112.7
+    split-line             100000 index            14031.1 ->    13908.9 ( -0.9%)  prepare    7110.0 ->    7542.5  pairs    6901.8 ->    6160.8
+    split-line             100000 index-ordered    53941.9 ->    50673.5 ( -6.1%)  prepare   12748.2 ->   13918.1  pairs   41086.3 ->   37221.5
+    split-line-translated    1000 index               77.7 ->       68.4 (-11.9%)  prepare      34.0 ->      33.8  pairs      43.5 ->      34.4
+    split-line-translated    1000 index-ordered      232.2 ->      173.2 (-25.4%)  prepare      52.9 ->      52.3  pairs     177.2 ->     121.3
+    split-line-translated   10000 index             1073.1 ->     1014.2 ( -5.5%)  prepare     433.3 ->     432.0  pairs     637.9 ->     582.2
+    split-line-translated   10000 index-ordered     3287.6 ->     2692.6 (-18.1%)  prepare     628.2 ->     610.3  pairs    2647.0 ->    2063.7
+    split-line-translated  100000 index            13771.1 ->    13192.4 ( -4.2%)  prepare    7233.2 ->    7233.9  pairs    6529.3 ->    5897.4
+    split-line-translated  100000 index-ordered    52794.2 ->    48754.1 ( -7.7%)  prepare   12710.7 ->   13546.1  pairs   40205.8 ->   35119.7
+    tiles                    1000 index               97.8 ->       75.7 (-22.6%)  prepare      28.6 ->      28.8  pairs      69.0 ->      46.7
+    tiles                    1000 index-ordered      237.9 ->      187.6 (-21.1%)  prepare      44.8 ->      45.3  pairs     192.6 ->     143.0
+    tiles                   10000 index             1149.1 ->     1039.4 ( -9.5%)  prepare     398.3 ->     401.7  pairs     750.1 ->     636.7
+    tiles                   10000 index-ordered     3703.5 ->     3111.7 (-16.0%)  prepare     561.1 ->     558.3  pairs    3138.0 ->    2541.9
+    tiles                  100000 index            13914.9 ->    12012.7 (-13.7%)  prepare    5740.6 ->    5755.5  pairs    8109.6 ->    6209.1
+    tiles                  100000 index-ordered    52398.8 ->    46538.8 (-11.2%)  prepare   10713.4 ->   10866.0  pairs   41391.4 ->   35663.3
+    tiles-touch              1000 index              109.0 ->       82.9 (-24.0%)  prepare      28.0 ->      28.3  pairs      80.7 ->      54.3
+    tiles-touch              1000 index-ordered      274.9 ->      222.8 (-19.0%)  prepare      45.5 ->      46.1  pairs     227.4 ->     177.6
+    tiles-touch             10000 index             1285.7 ->     1100.1 (-14.4%)  prepare     398.1 ->     403.0  pairs     886.0 ->     697.2
+    tiles-touch             10000 index-ordered     4074.8 ->     3549.6 (-12.9%)  prepare     573.7 ->     588.3  pairs    3493.3 ->    2956.0
+    tiles-touch            100000 index            15216.3 ->    13340.2 (-12.3%)  prepare    5724.4 ->    5817.4  pairs    9429.7 ->    7473.1
+    tiles-touch            100000 index-ordered    58602.6 ->    51713.1 (-11.8%)  prepare   10730.7 ->   11085.1  pairs   47518.2 ->   40519.8
+    uniform                  1000 index               73.7 ->       63.7 (-13.6%)  prepare      29.4 ->      29.9  pairs      44.2 ->      33.7
+    uniform                  1000 index-ordered      210.2 ->      163.4 (-22.3%)  prepare      48.4 ->      49.6  pairs     162.5 ->     115.1
+    uniform                 10000 index             1002.7 ->      963.4 ( -3.9%)  prepare     390.1 ->     394.1  pairs     612.6 ->     569.9
+    uniform                 10000 index-ordered     2947.9 ->     2509.2 (-14.9%)  prepare     577.7 ->     584.3  pairs    2360.4 ->    1913.6
+    uniform                100000 index            13238.9 ->    12409.2 ( -6.3%)  prepare    6525.1 ->    6607.8  pairs    6715.9 ->    5832.4
+    uniform                100000 index-ordered    45529.5 ->    41650.2 ( -8.5%)  prepare   12291.8 ->   12213.9  pairs   33315.0 ->   29057.9
+== matrix-float
+  base     : G1 hard     16     0     0; G2 hard     18     0     2; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     13     0     2
+  cand     : G1 hard     16     0     0; G2 hard     20     0     0; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     15     0     0
+  hard/soft rows not passing on both:
+    G2   snapshot float split-line-translated n=100 vs best baseline (sweep)    3.719 [3.456-4.003] inconclusive -> 3.214 [2.762-3.741] pass
+    G2   snapshot float uniform n=1000 vs best baseline (grid)                  3.915 [3.793-4.041] inconclusive -> 3.312 [3.171-3.459] pass
+    G9   snapshot float mixed-size n=100000 vs unordered (index)                3.922 [3.791-4.058] inconclusive -> 2.864 [2.769-2.962] pass
+    G9   snapshot float split-line-translated n=100000 vs unordered (index)     3.994 [3.873-4.119] inconclusive -> 3.721 [3.593-3.854] pass
+  library rows: 124, work/checksum differences: 0, non-ok rows (base): 14
+  index / index-ordered estimate (us) and phase medians, base -> cand:
+    clustered                1000 index               98.0 ->       82.8 (-15.5%)  prepare      32.5 ->      32.1  pairs      65.8 ->      50.6
+    clustered                1000 index-ordered      339.9 ->      240.7 (-29.2%)  prepare      60.6 ->      53.4  pairs     280.1 ->     186.6
+    clustered               10000 index             1857.8 ->     1592.7 (-14.3%)  prepare     436.1 ->     432.8  pairs    1419.6 ->    1156.6
+    clustered               10000 index-ordered     4659.8 ->     3442.4 (-26.1%)  prepare     628.4 ->     633.4  pairs    4029.5 ->    2806.2
+    clustered              100000 index            18997.0 ->    16141.7 (-15.0%)  prepare    5913.6 ->    5888.0  pairs   13044.0 ->   10234.6
+    clustered              100000 index-ordered    60159.3 ->    50380.8 (-16.3%)  prepare   11473.3 ->   11708.1  pairs   48446.9 ->   38491.5
+    disjoint                 1000 index               34.2 ->       33.8 ( -1.0%)  prepare      28.0 ->      27.8  pairs       6.1 ->       6.1
+    disjoint                 1000 index-ordered      141.5 ->      105.1 (-25.7%)  prepare      53.4 ->      45.8  pairs      89.5 ->      60.1
+    disjoint                10000 index              572.5 ->      568.9 ( -0.6%)  prepare     395.2 ->     394.9  pairs     176.8 ->     171.4
+    disjoint                10000 index-ordered     2252.8 ->     1886.3 (-16.3%)  prepare     557.9 ->     547.3  pairs    1682.8 ->    1324.6
+    disjoint               100000 index             6475.6 ->     6019.6 ( -7.0%)  prepare    4482.3 ->    4530.3  pairs    1967.9 ->    1510.2
+    disjoint               100000 index-ordered    34391.6 ->    30233.1 (-12.1%)  prepare    9725.6 ->   10024.7  pairs   24574.9 ->   20212.4
+    long-thin                1000 index              157.6 ->       94.4 (-40.1%)  prepare      23.4 ->      23.1  pairs     133.4 ->      71.1
+    long-thin                1000 index-ordered      345.7 ->      232.7 (-32.7%)  prepare      46.6 ->      46.1  pairs     295.6 ->     184.6
+    long-thin               10000 index             1961.1 ->     1557.0 (-20.6%)  prepare     342.8 ->     341.6  pairs    1617.2 ->    1213.8
+    long-thin               10000 index-ordered     4666.0 ->     3312.4 (-29.0%)  prepare     523.0 ->     544.6  pairs    4129.4 ->    2753.2
+    long-thin              100000 index            23268.9 ->    19284.7 (-17.1%)  prepare    5386.1 ->    5411.1  pairs   17805.8 ->   13859.6
+    long-thin              100000 index-ordered    62919.2 ->    51435.3 (-18.3%)  prepare   11154.2 ->   11283.2  pairs   51447.1 ->   39886.2
+    mixed-size               1000 index               96.5 ->       87.5 ( -9.4%)  prepare      29.0 ->      28.4  pairs      67.3 ->      58.6
+    mixed-size               1000 index-ordered      317.3 ->      230.8 (-27.2%)  prepare      48.9 ->      48.5  pairs     265.8 ->     181.3
+    mixed-size              10000 index             1708.3 ->     1627.8 ( -4.7%)  prepare     378.6 ->     376.9  pairs    1328.0 ->    1248.2
+    mixed-size              10000 index-ordered     5084.5 ->     3747.7 (-26.3%)  prepare     564.8 ->     593.5  pairs    4510.9 ->    3161.2
+    mixed-size             100000 index            37102.7 ->    35250.9 ( -5.0%)  prepare    5340.6 ->    5408.2  pairs   31796.4 ->   29692.0
+    mixed-size             100000 index-ordered   145530.3 ->   100946.6 (-30.6%)  prepare   10819.5 ->   12546.7  pairs  134330.4 ->   88536.8
+    outliers                 1000 index              132.0 ->      125.7 ( -4.8%)  prepare      92.4 ->      93.3  pairs      39.6 ->      32.2
+    outliers                 1000 index-ordered      415.2 ->      229.1 (-44.8%)  prepare     118.0 ->     113.1  pairs     298.4 ->     115.6
+    outliers                10000 index             1539.7 ->     1438.5 ( -6.6%)  prepare     896.1 ->     892.9  pairs     639.8 ->     543.3
+    outliers                10000 index-ordered     4607.1 ->     3011.8 (-34.6%)  prepare    1084.2 ->    1078.4  pairs    3507.9 ->    1916.9
+    outliers               100000 index            16368.3 ->    15423.7 ( -5.8%)  prepare   10060.9 ->   10056.9  pairs    6302.0 ->    5381.2
+    outliers               100000 index-ordered    60270.1 ->    43693.5 (-27.5%)  prepare   15660.1 ->   15884.2  pairs   44330.1 ->   27950.9
+    pile                     1000 index             2713.2 ->     3203.7 (+18.1%)  prepare      11.1 ->      10.9  pairs    2704.0 ->    3193.4
+    pile                     1000 index-ordered    13049.2 ->     2559.5 (-80.4%)  prepare      41.9 ->      37.9  pairs   12751.2 ->    2520.6
+    points                   1000 index               53.9 ->       49.3 ( -8.6%)  prepare      28.7 ->      28.5  pairs      25.0 ->      20.3
+    points                   1000 index-ordered      183.1 ->      133.7 (-27.0%)  prepare      51.2 ->      47.6  pairs     130.1 ->      85.2
+    points                  10000 index              843.1 ->      792.9 ( -5.9%)  prepare     379.8 ->     383.1  pairs     462.4 ->     407.7
+    points                  10000 index-ordered     2675.4 ->     2156.1 (-19.4%)  prepare     580.0 ->     580.0  pairs    2085.8 ->    1568.0
+    points                 100000 index             9819.0 ->     8732.4 (-11.1%)  prepare    5190.6 ->    5172.7  pairs    4585.1 ->    3569.7
+    points                 100000 index-ordered    39879.7 ->    35297.3 (-11.5%)  prepare   10848.4 ->   11383.9  pairs   28550.1 ->   23702.1
+    split-line               1000 index               75.0 ->       66.0 (-12.1%)  prepare      32.0 ->      31.5  pairs      43.3 ->      34.4
+    split-line               1000 index-ordered      232.2 ->      167.9 (-27.7%)  prepare      57.5 ->      50.4  pairs     176.5 ->     117.1
+    split-line              10000 index             1081.0 ->     1004.8 ( -7.0%)  prepare     420.1 ->     419.6  pairs     660.2 ->     583.0
+    split-line              10000 index-ordered     3198.5 ->     2553.3 (-20.2%)  prepare     647.4 ->     623.2  pairs    2558.2 ->    1924.1
+    split-line             100000 index            12653.9 ->    11674.4 ( -7.7%)  prepare    5872.9 ->    5864.8  pairs    6749.0 ->    5793.3
+    split-line             100000 index-ordered    48704.4 ->    43284.8 (-11.1%)  prepare   11453.5 ->   11718.6  pairs   37003.1 ->   31411.4
+    split-line-translated    1000 index               75.4 ->       67.0 (-11.2%)  prepare      33.3 ->      32.6  pairs      42.1 ->      34.2
+    split-line-translated    1000 index-ordered      232.6 ->      169.9 (-27.0%)  prepare      58.5 ->      54.8  pairs     174.9 ->     114.3
+    split-line-translated   10000 index             1053.2 ->      989.2 ( -6.1%)  prepare     416.0 ->     418.3  pairs     636.8 ->     569.6
+    split-line-translated   10000 index-ordered     3121.8 ->     2518.9 (-19.3%)  prepare     604.4 ->     610.2  pairs    2502.4 ->    1899.2
+    split-line-translated  100000 index            12290.6 ->    11607.3 ( -5.6%)  prepare    5892.7 ->    5930.3  pairs    6360.7 ->    5650.3
+    split-line-translated  100000 index-ordered    49089.0 ->    43194.3 (-12.0%)  prepare   11316.4 ->   12035.4  pairs   37294.5 ->   31011.2
+    tiles                    1000 index               95.2 ->       74.5 (-21.8%)  prepare      28.2 ->      27.6  pairs      66.7 ->      46.1
+    tiles                    1000 index-ordered      239.1 ->      161.8 (-32.3%)  prepare      51.5 ->      44.6  pairs     191.3 ->     116.1
+    tiles                   10000 index             1136.7 ->     1004.9 (-11.6%)  prepare     392.7 ->     391.6  pairs     741.0 ->     610.9
+    tiles                   10000 index-ordered     3573.8 ->     2641.1 (-26.1%)  prepare     548.3 ->     543.3  pairs    3010.2 ->    2081.8
+    tiles                  100000 index            12781.3 ->    10997.1 (-14.0%)  prepare    4974.7 ->    4970.6  pairs    7745.2 ->    6010.4
+    tiles                  100000 index-ordered    49601.9 ->    40350.1 (-18.7%)  prepare    9953.7 ->   10215.5  pairs   39614.3 ->   30269.6
+    tiles-touch              1000 index              106.3 ->       82.3 (-22.6%)  prepare      28.5 ->      28.0  pairs      77.4 ->      54.5
+    tiles-touch              1000 index-ordered      275.8 ->      213.8 (-22.5%)  prepare      54.8 ->      46.3  pairs     221.4 ->     167.2
+    tiles-touch             10000 index             1272.0 ->     1074.0 (-15.6%)  prepare     394.6 ->     398.8  pairs     877.4 ->     675.2
+    tiles-touch             10000 index-ordered     3953.6 ->     3242.2 (-18.0%)  prepare     568.4 ->     595.0  pairs    3388.7 ->    2644.7
+    tiles-touch            100000 index            14073.3 ->    12149.5 (-13.7%)  prepare    5032.5 ->    4974.7  pairs    8990.2 ->    7197.5
+    tiles-touch            100000 index-ordered    54484.4 ->    48131.8 (-11.7%)  prepare    9927.4 ->   10394.9  pairs   44437.8 ->   37623.8
+    uniform                  1000 index               73.4 ->       63.0 (-14.2%)  prepare      29.7 ->      28.9  pairs      43.6 ->      33.7
+    uniform                  1000 index-ordered      210.3 ->      152.5 (-27.5%)  prepare      48.0 ->      47.2  pairs     161.7 ->     105.4
+    uniform                 10000 index             1007.8 ->      941.3 ( -6.6%)  prepare     391.1 ->     382.0  pairs     615.2 ->     555.3
+    uniform                 10000 index-ordered     2916.4 ->     2347.9 (-19.5%)  prepare     618.4 ->     613.2  pairs    2286.1 ->    1740.5
+    uniform                100000 index            11925.9 ->    10907.5 ( -8.5%)  prepare    5335.3 ->    5296.8  pairs    6558.5 ->    5623.8
+    uniform                100000 index-ordered    42228.8 ->    37429.6 (-11.4%)  prepare   10862.1 ->   11447.1  pairs   31301.1 ->   26093.6
+== matrix-int32
+  base     : G1 hard     16     0     0; G2 hard     20     0     0; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     15     0     0
+  cand     : G1 hard     15     0     1; G2 hard     20     0     0; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     15     0     0
+  hard/soft rows not passing on both:
+    G1   snapshot int32 clustered n=4 vs brute force (brute)                    1.807 [1.747-1.870] pass         -> 1.959 [1.896-2.024] inconclusive
+  library rows: 124, work/checksum differences: 0, non-ok rows (base): 14
+  index / index-ordered estimate (us) and phase medians, base -> cand:
+    clustered                1000 index               97.5 ->      103.7 ( +6.4%)  prepare      31.9 ->      32.2  pairs      65.4 ->      71.4
+    clustered                1000 index-ordered      322.6 ->      326.0 ( +1.0%)  prepare      53.8 ->      53.6  pairs     267.4 ->     270.5
+    clustered               10000 index             1811.4 ->     1818.8 ( +0.4%)  prepare     412.9 ->     417.2  pairs    1395.7 ->    1399.9
+    clustered               10000 index-ordered     3373.4 ->     3350.5 ( -0.7%)  prepare     617.1 ->     606.5  pairs    2747.3 ->    2730.5
+    clustered              100000 index            18736.2 ->    18718.1 ( -0.1%)  prepare    5766.7 ->    5759.8  pairs   12967.2 ->   12956.8
+    clustered              100000 index-ordered    49647.5 ->    49743.9 ( +0.2%)  prepare   11786.4 ->   12499.3  pairs   37738.2 ->   37239.5
+    disjoint                 1000 index               34.4 ->       34.7 ( +1.0%)  prepare      28.2 ->      28.6  pairs       6.2 ->       6.2
+    disjoint                 1000 index-ordered      126.1 ->      137.1 ( +8.7%)  prepare      44.2 ->      51.0  pairs      82.1 ->      88.7
+    disjoint                10000 index              569.9 ->      568.1 ( -0.3%)  prepare     396.4 ->     397.6  pairs     173.3 ->     170.4
+    disjoint                10000 index-ordered     1807.1 ->     1832.6 ( +1.4%)  prepare     550.8 ->     560.2  pairs    1243.5 ->    1260.5
+    disjoint               100000 index             6452.8 ->     6403.1 ( -0.8%)  prepare    4478.0 ->    4389.9  pairs    1998.0 ->    1989.7
+    disjoint               100000 index-ordered    29459.2 ->    29332.7 ( -0.4%)  prepare    9841.9 ->    9793.0  pairs   19616.7 ->   19507.1
+    long-thin                1000 index              162.1 ->      162.0 ( -0.0%)  prepare      23.2 ->      23.3  pairs     138.9 ->     138.6
+    long-thin                1000 index-ordered      332.3 ->      339.4 ( +2.1%)  prepare      47.1 ->      51.1  pairs     283.6 ->     289.1
+    long-thin               10000 index             1943.3 ->     1943.2 ( -0.0%)  prepare     327.3 ->     327.2  pairs    1615.1 ->    1614.0
+    long-thin               10000 index-ordered     3266.8 ->     3257.0 ( -0.3%)  prepare     521.2 ->     509.5  pairs    2742.6 ->    2726.2
+    long-thin              100000 index            22807.8 ->    22751.0 ( -0.2%)  prepare    5177.0 ->    5172.9  pairs   17535.0 ->   17535.6
+    long-thin              100000 index-ordered    51511.7 ->    50703.6 ( -1.6%)  prepare   11550.3 ->   11285.9  pairs   39535.0 ->   39221.7
+    mixed-size               1000 index               97.1 ->       96.9 ( -0.1%)  prepare      29.5 ->      29.4  pairs      67.6 ->      67.6
+    mixed-size               1000 index-ordered      304.8 ->      310.7 ( +1.9%)  prepare      49.2 ->      49.7  pairs     255.9 ->     258.9
+    mixed-size              10000 index             1692.0 ->     1681.9 ( -0.6%)  prepare     385.2 ->     381.7  pairs    1304.4 ->    1298.1
+    mixed-size              10000 index-ordered     3700.9 ->     3669.8 ( -0.8%)  prepare     582.8 ->     571.8  pairs    3112.1 ->    3095.8
+    mixed-size             100000 index            36996.7 ->    37181.2 ( +0.5%)  prepare    5354.8 ->    5316.1  pairs   31624.7 ->   31772.7
+    mixed-size             100000 index-ordered    99573.8 ->    98677.4 ( -0.9%)  prepare   11658.1 ->   11734.7  pairs   87994.8 ->   86791.4
+    outliers                 1000 index              125.0 ->      123.9 ( -0.9%)  prepare      86.6 ->      86.5  pairs      38.3 ->      37.3
+    outliers                 1000 index-ordered      374.0 ->      382.7 ( +2.3%)  prepare     106.6 ->     113.8  pairs     265.6 ->     270.6
+    outliers                10000 index             1475.0 ->     1476.1 ( +0.1%)  prepare     849.4 ->     853.2  pairs     623.7 ->     622.2
+    outliers                10000 index-ordered     2904.4 ->     2919.1 ( +0.5%)  prepare    1042.0 ->    1073.3  pairs    1849.4 ->    1849.7
+    outliers               100000 index            15934.3 ->    15936.2 ( +0.0%)  prepare    9767.2 ->    9739.3  pairs    6170.3 ->    6189.8
+    outliers               100000 index-ordered    43197.9 ->    43424.9 ( +0.5%)  prepare   15753.6 ->   15662.4  pairs   27361.3 ->   27467.2
+    pile                     1000 index             2791.6 ->     2780.6 ( -0.4%)  prepare      10.9 ->      10.9  pairs    2780.9 ->    2768.5
+    pile                     1000 index-ordered    12648.1 ->    11872.2 ( -6.1%)  prepare      31.7 ->      32.6  pairs   12434.4 ->   11805.8
+    points                   1000 index               54.5 ->       54.7 ( +0.2%)  prepare      29.4 ->      29.4  pairs      25.0 ->      25.2
+    points                   1000 index-ordered      168.7 ->      176.5 ( +4.6%)  prepare      51.1 ->      54.7  pairs     117.9 ->     122.9
+    points                  10000 index              822.7 ->      818.7 ( -0.5%)  prepare     377.2 ->     374.2  pairs     445.3 ->     444.3
+    points                  10000 index-ordered     2068.1 ->     2057.2 ( -0.5%)  prepare     570.5 ->     567.0  pairs    1487.5 ->    1479.9
+    points                 100000 index             9661.7 ->     9644.3 ( -0.2%)  prepare    5137.4 ->    5125.2  pairs    4521.9 ->    4510.6
+    points                 100000 index-ordered    34085.1 ->    33927.2 ( -0.5%)  prepare   11088.8 ->   11120.2  pairs   22711.1 ->   22768.0
+    split-line               1000 index               75.0 ->       76.5 ( +2.0%)  prepare      31.8 ->      32.3  pairs      43.2 ->      44.2
+    split-line               1000 index-ordered      214.8 ->      225.2 ( +4.9%)  prepare      50.3 ->      57.7  pairs     165.1 ->     168.9
+    split-line              10000 index             1057.4 ->     1064.3 ( +0.6%)  prepare     419.4 ->     422.4  pairs     637.5 ->     642.1
+    split-line              10000 index-ordered     2473.3 ->     2488.3 ( +0.6%)  prepare     607.1 ->     610.8  pairs    1851.5 ->    1866.2
+    split-line             100000 index            12473.3 ->    12640.2 ( +1.3%)  prepare    5852.5 ->    5885.2  pairs    6632.8 ->    6643.6
+    split-line             100000 index-ordered    42690.9 ->    42504.1 ( -0.4%)  prepare   12029.0 ->   11847.9  pairs   30464.4 ->   30663.0
+    split-line-translated    1000 index               75.7 ->       75.5 ( -0.3%)  prepare      32.8 ->      32.9  pairs      42.5 ->      42.4
+    split-line-translated    1000 index-ordered      215.8 ->      223.1 ( +3.4%)  prepare      52.2 ->      53.4  pairs     162.2 ->     167.6
+    split-line-translated   10000 index             1037.5 ->     1028.0 ( -0.9%)  prepare     418.8 ->     412.3  pairs     616.5 ->     615.1
+    split-line-translated   10000 index-ordered     2455.6 ->     2432.9 ( -0.9%)  prepare     614.5 ->     594.5  pairs    1829.1 ->    1820.9
+    split-line-translated  100000 index            12163.6 ->    12099.2 ( -0.5%)  prepare    5907.9 ->    5840.4  pairs    6261.8 ->    6245.6
+    split-line-translated  100000 index-ordered    42378.9 ->    41829.2 ( -1.3%)  prepare   12110.6 ->   11734.9  pairs   30321.1 ->   30207.4
+    tiles                    1000 index               97.5 ->       96.3 ( -1.2%)  prepare      28.7 ->      28.4  pairs      68.7 ->      67.3
+    tiles                    1000 index-ordered      226.6 ->      231.6 ( +2.2%)  prepare      45.9 ->      52.4  pairs     181.2 ->     181.2
+    tiles                   10000 index             1140.7 ->     1132.9 ( -0.7%)  prepare     399.5 ->     397.3  pairs     740.9 ->     734.5
+    tiles                   10000 index-ordered     2563.2 ->     2576.4 ( +0.5%)  prepare     560.9 ->     573.5  pairs    1991.3 ->    1999.0
+    tiles                  100000 index            12663.1 ->    12679.6 ( +0.1%)  prepare    4840.4 ->    4898.1  pairs    7832.8 ->    7784.9
+    tiles                  100000 index-ordered    39819.0 ->    40113.5 ( +0.7%)  prepare   10250.7 ->   10188.4  pairs   29785.7 ->   29600.9
+    tiles-touch              1000 index              109.1 ->      108.6 ( -0.5%)  prepare      28.2 ->      28.1  pairs      80.5 ->      80.6
+    tiles-touch              1000 index-ordered      262.2 ->      265.0 ( +1.1%)  prepare      46.7 ->      47.1  pairs     213.8 ->     215.8
+    tiles-touch             10000 index             1290.0 ->     1291.7 ( +0.1%)  prepare     394.2 ->     396.3  pairs     894.5 ->     894.6
+    tiles-touch             10000 index-ordered     3079.5 ->     3068.0 ( -0.4%)  prepare     560.9 ->     570.7  pairs    2513.1 ->    2491.9
+    tiles-touch            100000 index            14181.7 ->    14156.6 ( -0.2%)  prepare    4906.6 ->    4931.4  pairs    9300.8 ->    9236.0
+    tiles-touch            100000 index-ordered    47173.4 ->    47152.4 ( -0.0%)  prepare   10141.6 ->   10121.0  pairs   37021.1 ->   36934.5
+    uniform                  1000 index               71.5 ->       71.6 ( +0.1%)  prepare      30.0 ->      29.9  pairs      41.7 ->      41.8
+    uniform                  1000 index-ordered      199.1 ->      209.5 ( +5.2%)  prepare      48.3 ->      56.3  pairs     150.9 ->     154.5
+    uniform                 10000 index              979.9 ->      983.3 ( +0.3%)  prepare     385.3 ->     387.6  pairs     594.1 ->     595.3
+    uniform                 10000 index-ordered     2297.1 ->     2289.2 ( -0.3%)  prepare     622.1 ->     583.1  pairs    1677.0 ->    1697.5
+    uniform                100000 index            11739.4 ->    11753.8 ( +0.1%)  prepare    5323.1 ->    5354.6  pairs    6431.4 ->    6407.4
+    uniform                100000 index-ordered    37074.4 ->    36934.9 ( -0.4%)  prepare   11238.0 ->   11327.0  pairs   25660.3 ->   25541.1
+== matrix-int64
+  cand     : G1 hard     16     0     0; G2 hard     20     0     0; G3 hard      9     0     0; G4 hard      8     0     0; G6 hard     62     0     0; G9 hard     15     0     0

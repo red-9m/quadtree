@@ -1,0 +1,80 @@
+# date: 2026-11-28T01:55:49Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293776 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=persistent --types=int64 --scenes=split-line,mixed-size --persistent-sizes=10000 --steps=64 --workloads=static,small-1%,teleport-1% --modes=full,moved --engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat --csv=/home/dima/.cache/qt-dev/ev3/persist-int64-cand/results.csv --raw=/home/dima/.cache/qt-dev/ev3/persist-int64-cand/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+split-line:static:full                   int64    10000     1 brute          119219.004     3.0 326.75 [316.04-337.82]     349965000       50827     0.00       496 time-capped
+split-line:static:full                   int64    10000     1 sweep            1399.098     3.0     3.83 [3.71-3.96]      41144448      464704     0.00       929 ok
+split-line:static:full                   int64    10000     1 grid              364.883     3.3     1.00 [1.00-1.00]       1568640      464704     0.00      1571 ok
+split-line:static:full                   int64    10000     1 grid-rebuild      598.774     3.4     1.64 [1.58-1.71]       1568640      464704     0.00      1814 ok
+split-line:static:full                   int64    10000     1 index             759.376     3.0     2.08 [2.02-2.15]       3751616      464704     0.00      3448 ok
+split-line:static:full                   int64    10000     1 index-ordered     3392.026     3.0     9.30 [9.00-9.60]       2371904      464704     0.00      3960 ok
+split-line:static:moved                  int64    10000     1 brute               0.020     4.1     1.00 [1.00-1.00]             0           0     0.00       496 ok
+split-line:static:moved                  int64    10000     1 sweep               0.020     3.0     1.01 [0.97-1.05]             0           0     0.00       929 ok
+split-line:static:moved                  int64    10000     1 grid                0.020     3.0     1.01 [0.97-1.05]             0           0     0.00      1571 ok
+split-line:static:moved                  int64    10000     1 index               0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      3448 ok
+split-line:static:moved                  int64    10000     1 index-ordered        0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      3960 ok
+split-line:small-1%:full                 int64    10000     1 brute          119144.061     3.0 322.88 [313.05-333.01]     349965000       50838     0.00       496 time-capped
+split-line:small-1%:full                 int64    10000     1 sweep            1440.858     3.0     3.90 [3.79-4.03]      40978740      461930     0.23      1025 ok
+split-line:small-1%:full                 int64    10000     1 grid              369.014     3.1     1.00 [1.00-1.00]       1561998      461930    10.34      1576 ok
+split-line:small-1%:full                 int64    10000     1 grid-rebuild      601.912     3.2     1.63 [1.58-1.68]       1561998      461930     0.03      1903 ok
+split-line:small-1%:full                 int64    10000     1 index             777.398     3.0     2.11 [2.04-2.17]       3692749      461930     0.00      3448 ok
+split-line:small-1%:full                 int64    10000     1 index-ordered     3403.535     3.1     9.22 [8.95-9.51]       2331853      461930     0.00      3960 ok
+split-line:small-1%:moved                int64    10000     1 brute            2900.430     3.0 361.19 [348.96-373.85]      63676800        6954     0.00       496 ok
+split-line:small-1%:moved                int64    10000     1 sweep              94.105     3.1  11.72 [11.33-12.12]        902085        6954     0.23      1025 ok
+split-line:small-1%:moved                int64    10000     1 grid                8.031     3.4     1.00 [1.00-1.00]         29710        6954    10.34      1576 ok
+split-line:small-1%:moved                int64    10000     1 index              40.579     5.7     5.05 [4.80-5.31]         40722        6954     0.00      3448 ok
+split-line:small-1%:moved                int64    10000     1 index-ordered       80.081     3.2    9.97 [9.64-10.32]         43785        6954     0.00      3960 ok
+split-line:teleport-1%:full              int64    10000     1 brute          119250.794     3.0 321.25 [311.39-331.42]     349965000       50046     0.00       496 time-capped
+split-line:teleport-1%:full              int64    10000     1 sweep            1449.119     3.2     3.90 [3.77-4.04]      40598147      457551     0.23      1025 ok
+split-line:teleport-1%:full              int64    10000     1 grid              371.215     3.1     1.00 [1.00-1.00]       1543248      457551   172.41      1620 ok
+split-line:teleport-1%:full              int64    10000     1 grid-rebuild      598.455     3.2     1.61 [1.56-1.67]       1543248      457551     0.05      1903 ok
+split-line:teleport-1%:full              int64    10000     1 index             783.027     3.1     2.11 [2.04-2.18]       3463502      457551     0.00      3448 ok
+split-line:teleport-1%:full              int64    10000     1 index-ordered     3393.735     3.1     9.14 [8.86-9.44]       2215606      457551     0.00      3960 ok
+split-line:teleport-1%:moved             int64    10000     1 brute            1997.367     3.1 174.77 [157.24-194.26]      63676800        1359     0.00       496 ok
+split-line:teleport-1%:moved             int64    10000     1 sweep              70.917     3.1     6.21 [5.55-6.94]        395768        1359     0.23      1025 ok
+split-line:teleport-1%:moved             int64    10000     1 grid               11.462    11.2     1.00 [1.00-1.00]          6096        1359   172.41      1620 ok
+split-line:teleport-1%:moved             int64    10000     1 index              39.846     3.1     3.49 [3.14-3.87]         16106        1359     0.00      3448 ok
+split-line:teleport-1%:moved             int64    10000     1 index-ordered       60.392     3.7     5.28 [4.69-5.96]         16753        1359     0.00      3960 ok
+mixed-size:static:full                   int64    10000     1 brute          122392.485     3.0 111.55 [108.23-114.97]     349965000      325353     0.00       496 time-capped
+mixed-size:static:full                   int64    10000     1 sweep            2289.627     3.0     2.09 [2.03-2.15]      57049024     2974656     0.00       929 ok
+mixed-size:static:full                   int64    10000     1 grid             1097.180     3.0     1.00 [1.00-1.00]       5951808     2974656     0.00       771 ok
+mixed-size:static:full                   int64    10000     1 grid-rebuild     1336.427     3.1     1.22 [1.18-1.26]       5951808     2974656     0.00      1273 ok
+mixed-size:static:full                   int64    10000     1 index            1563.307     3.0     1.42 [1.38-1.47]       6526976     2974656     0.00      3448 ok
+mixed-size:static:full                   int64    10000     1 index-ordered     6346.956     3.1     5.78 [5.61-5.97]       9667008     2974656     0.00      3960 ok
+mixed-size:static:moved                  int64    10000     1 brute               0.020     4.1     1.00 [1.00-1.00]             0           0     0.00       496 ok
+mixed-size:static:moved                  int64    10000     1 sweep               0.020     3.0     1.01 [0.97-1.05]             0           0     0.00       929 ok
+mixed-size:static:moved                  int64    10000     1 grid                0.020     3.0     1.01 [0.97-1.05]             0           0     0.00       771 ok
+mixed-size:static:moved                  int64    10000     1 index               0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      3448 ok
+mixed-size:static:moved                  int64    10000     1 index-ordered        0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      3960 ok
+mixed-size:small-1%:full                 int64    10000     1 brute          122369.929     3.0 111.40 [108.09-114.80]     349965000      325236     0.00       496 time-capped
+mixed-size:small-1%:full                 int64    10000     1 sweep            2341.764     3.0     2.13 [2.07-2.20]      57059607     2972660     0.23      1025 ok
+mixed-size:small-1%:full                 int64    10000     1 grid             1098.513     3.0     1.00 [1.00-1.00]       5951211     2972660     1.70       774 ok
+mixed-size:small-1%:full                 int64    10000     1 grid-rebuild     1337.947     3.1     1.22 [1.18-1.26]       5951211     2972660     0.08      1401 ok
+mixed-size:small-1%:full                 int64    10000     1 index            1593.132     3.0     1.45 [1.41-1.50]       6454129     2972660     0.00      3448 ok
+mixed-size:small-1%:full                 int64    10000     1 index-ordered     6366.356     3.0     5.80 [5.62-5.97]       9628572     2972660     0.00      3960 ok
+mixed-size:small-1%:moved                int64    10000     1 brute            2886.308     3.0 211.72 [204.06-219.67]      63676800       33908     0.00       496 ok
+mixed-size:small-1%:moved                int64    10000     1 sweep             344.719     3.1  25.29 [24.43-26.17]      15152553       33908     0.23      1025 ok
+mixed-size:small-1%:moved                int64    10000     1 grid               13.634     3.6     1.00 [1.00-1.00]         89323       33908     1.70       774 ok
+mixed-size:small-1%:moved                int64    10000     1 index              58.446     5.6     4.28 [4.04-4.54]        158801       33908     0.00      3448 ok
+mixed-size:small-1%:moved                int64    10000     1 index-ordered      696.726     3.2  51.11 [48.97-53.33]        151344       33908     0.00      3960 ok
+mixed-size:teleport-1%:full              int64    10000     1 brute          122390.443     3.0 110.53 [107.25-113.92]     349965000      325351     0.00       496 time-capped
+mixed-size:teleport-1%:full              int64    10000     1 sweep            2336.806     3.0     2.11 [2.05-2.18]      57042127     2973696     0.23      1025 ok
+mixed-size:teleport-1%:full              int64    10000     1 grid             1107.293     3.0     1.00 [1.00-1.00]       5945958     2973696    12.64       797 ok
+mixed-size:teleport-1%:full              int64    10000     1 grid-rebuild     1334.478     3.2     1.21 [1.17-1.25]       5945958     2973696     0.03      1401 ok
+mixed-size:teleport-1%:full              int64    10000     1 index            1616.269     3.6     1.46 [1.41-1.51]       6177130     2973696     0.00      3448 ok
+mixed-size:teleport-1%:full              int64    10000     1 index-ordered     6330.501     4.0     5.72 [5.49-5.95]       9578689     2973696     0.00      3960 ok
+mixed-size:teleport-1%:moved             int64    10000     1 brute            2921.391     3.0  64.60 [62.53-66.74]      63676800       76096     0.00       496 ok
+mixed-size:teleport-1%:moved             int64    10000     1 sweep             356.401     3.1     7.88 [7.64-8.13]      14574514       76096     0.23      1025 ok
+mixed-size:teleport-1%:moved             int64    10000     1 grid               45.224     3.2     1.00 [1.00-1.00]        139174       76096    12.64       797 ok
+mixed-size:teleport-1%:moved             int64    10000     1 index             114.376     3.3     2.53 [2.45-2.61]        212089       76096     0.00      3448 ok
+mixed-size:teleport-1%:moved             int64    10000     1 index-ordered      968.534     3.2  21.42 [20.70-22.16]        236402       76096     0.00      3960 ok

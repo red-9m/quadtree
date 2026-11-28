@@ -1,0 +1,8 @@
+clang version 22.1.8
+Clang index-test (default)
+index-test: 0 failures
+Clang index-test (scalar)
+index-test: 0 failures
+Clang index-test (sanitizer)
+index-test: 0 failures
+ALL VERIFIED

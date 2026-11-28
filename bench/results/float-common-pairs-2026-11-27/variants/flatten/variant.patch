@@ -1,0 +1,14 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3845,7 +3845,11 @@
+ #if defined(__SSE2__)
+     // Every pair in this contiguous row is filter-compatible. Charge the prefix
+     // actually visited, including a pair whose callback stops the traversal.
++    // Flatten the report: dense rows (piles) otherwise pay a call per pair.
+     template<typename Visitor>
++#if __has_cpp_attribute(gnu::flatten)
++    [[gnu::flatten]]
++#endif
+     void commonRow(std::uint32_t a, std::uint32_t begin, std::uint32_t length, Context& context,
+         Visitor& visitor) const noexcept requires (!std::same_as<T, std::int32_t>)
+     {

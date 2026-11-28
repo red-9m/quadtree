@@ -1,0 +1,30 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G2   hard snapshot double split-line-translated n=1000 vs best baseline (grid)                    3.397 [3.296-3.501]     <= 4 pass
+G2   hard snapshot double split-line-translated n=100000 vs best baseline (grid)                  1.919 [1.844-1.997]     <= 2 pass
+G2   hard snapshot float split-line-translated n=1000 vs best baseline (grid)                     3.328 [3.233-3.426]     <= 4 pass
+G2   hard snapshot float split-line-translated n=100000 vs best baseline (grid)                   1.709 [1.660-1.758]     <= 2 pass
+G2   hard snapshot double uniform n=1000 vs best baseline (grid)                                  3.501 [3.397-3.609]     <= 4 pass
+G2   hard snapshot double uniform n=100000 vs best baseline (grid)                                1.848 [1.796-1.902]     <= 2 pass
+G2   hard snapshot float uniform n=1000 vs best baseline (grid)                                   3.373 [3.275-3.474]     <= 4 pass
+G2   hard snapshot float uniform n=100000 vs best baseline (grid)                                 1.646 [1.600-1.694]     <= 2 pass
+G6   hard snapshot double split-line-translated n=1000 allocations per warm step                                0.000     <= 0 pass
+G6   hard snapshot double split-line-translated n=100000 allocations per warm step                              0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=1000 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot float split-line-translated n=100000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot double uniform n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double uniform n=100000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot float uniform n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot float uniform n=100000 allocations per warm step                                             0.000     <= 0 pass
+G9   hard snapshot double split-line-translated n=1000 vs unordered (index)                       2.619 [2.542-2.698]     <= 4 pass
+G9   hard snapshot double split-line-translated n=100000 vs unordered (index)                     3.690 [3.581-3.803]     <= 4 pass
+G9   hard snapshot float split-line-translated n=1000 vs unordered (index)                        2.575 [2.502-2.651]     <= 4 pass
+G9   hard snapshot float split-line-translated n=100000 vs unordered (index)                      3.728 [3.623-3.836]     <= 4 pass
+G9   hard snapshot double uniform n=1000 vs unordered (index)                                     2.692 [2.615-2.771]     <= 4 pass
+G9   hard snapshot double uniform n=100000 vs unordered (index)                                   3.454 [3.357-3.555]     <= 4 pass
+G9   hard snapshot float uniform n=1000 vs unordered (index)                                      2.615 [2.538-2.695]     <= 4 pass
+G9   hard snapshot float uniform n=100000 vs unordered (index)                                    3.406 [3.308-3.506]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G2 hard      8     0     0
+  G6 hard      8     0     0
+  G9 hard      8     0     0
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

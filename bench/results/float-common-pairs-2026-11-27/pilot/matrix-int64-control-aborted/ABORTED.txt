@@ -1,0 +1,1 @@
+Stopped during its quiet-start wait (no benchmark output) when the pilot was ended after the matrix stage; not evidence.

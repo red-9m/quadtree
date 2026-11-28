@@ -1,0 +1,31 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G6   hard persistent double mixed-size n=10000 small-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 small-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 teleport-1%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double mixed-size n=10000 teleport-1%/moved allocations per step                           0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-1%/full allocations per step                               0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 small-1%/moved allocations per step                              0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 static/full allocations per step                                 0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 static/moved allocations per step                                0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 teleport-1%/full allocations per step                            0.000     <= 0 pass
+G6   hard persistent double split-line n=10000 teleport-1%/moved allocations per step                           0.000     <= 0 pass
+G7   soft persistent double mixed-size n=10000 small-1%/full vs grid (grid)                       1.448 [1.385-1.513]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 static/full vs grid (grid)                         1.423 [1.364-1.486]     <= 4 pass
+G7   soft persistent double mixed-size n=10000 teleport-1%/full vs grid (grid)                    1.485 [1.421-1.551]     <= 4 pass
+G7   soft persistent double split-line n=10000 small-1%/full vs grid (grid)                       2.199 [2.105-2.296]     <= 4 pass
+G7   soft persistent double split-line n=10000 static/full vs grid (grid)                         2.177 [2.085-2.273]     <= 4 pass
+G7   soft persistent double split-line n=10000 teleport-1%/full vs grid (grid)                    2.197 [2.092-2.307]     <= 4 pass
+G8a  hard persistent double mixed-size n=10000 static/moved ns per step                        19.800 [19.000-20.600]  <= 1000 pass
+G8a  hard persistent double split-line n=10000 static/moved ns per step                        19.800 [19.000-20.600]  <= 1000 pass
+G8c  soft persistent double mixed-size n=10000 small-1%/moved vs grid (grid)                      4.224 [3.908-4.566]     <= 4 inconclusive
+G8c  soft persistent double mixed-size n=10000 teleport-1%/moved vs grid (grid)                   2.496 [2.366-2.632]     <= 4 pass
+G8c  soft persistent double split-line n=10000 small-1%/moved vs grid (grid)                      4.990 [4.773-5.217]     <= 4 FAIL
+G8c  soft persistent double split-line n=10000 teleport-1%/moved vs grid (grid)                   4.205 [4.020-4.399]     <= 4 FAIL
+summary (pass / fail / inconclusive):
+  G6 hard     12     0     0
+  G7 soft      6     0     0
+  G8a hard     2     0     0
+  G8c soft     1     2     1
+gates: PASS (candidates: snapshot index, persistent index, ordered index-ordered vs index)

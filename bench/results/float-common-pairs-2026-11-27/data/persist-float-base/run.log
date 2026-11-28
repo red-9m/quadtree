@@ -1,0 +1,104 @@
+# date: 2026-11-28T01:46:54Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293778 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=persistent --types=float --scenes=split-line,mixed-size --persistent-sizes=10000 --steps=64 --workloads=static,small-1%,teleport-1% --modes=full,moved --engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat --csv=/home/dima/.cache/qt-dev/ev3/persist-float-base/results.csv --raw=/home/dima/.cache/qt-dev/ev3/persist-float-base/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+split-line:static:full                   float    10000     1 brute          135346.641     3.0 381.41 [367.83-395.50]     299970000       43566     0.00       340 time-capped
+split-line:static:full                   float    10000     1 b2tree           1713.115     4.4     4.83 [4.64-5.01]        501248      464704     0.00      1317 ok
+split-line:static:full                   float    10000     1 b2tree-fat       1893.091     4.3     5.33 [5.16-5.52]        665216      464704     0.00      1473 ok
+split-line:static:full                   float    10000     1 sweep            1859.169     3.0     5.24 [5.05-5.43]      41144448      464704     0.00       616 ok
+split-line:static:full                   float    10000     1 grid              354.893     3.6     1.00 [1.00-1.00]       1568640      464704     0.00      1415 ok
+split-line:static:full                   float    10000     1 grid-rebuild      579.580     3.1     1.63 [1.58-1.69]       1568640      464704     0.00      1402 ok
+split-line:static:full                   float    10000     1 index             764.746     3.3     2.16 [2.09-2.22]       3751616      464704     0.00      2822 ok
+split-line:static:full                   float    10000     1 index-ordered     3282.423     4.6     9.25 [8.91-9.60]       2371904      464704     0.00      3334 ok
+split-line:static:moved                  float    10000     1 brute               0.020     4.6     1.00 [1.00-1.00]             0           0     0.00       340 ok
+split-line:static:moved                  float    10000     1 b2tree              0.020     4.1     1.01 [0.97-1.05]             0           0     0.00      1317 ok
+split-line:static:moved                  float    10000     1 b2tree-fat          0.020     4.1     1.01 [0.97-1.05]             0           0     0.00      1473 ok
+split-line:static:moved                  float    10000     1 sweep               0.020     3.3     1.02 [0.96-1.07]             0           0     0.00       616 ok
+split-line:static:moved                  float    10000     1 grid                0.020     3.0     1.02 [0.97-1.07]             0           0     0.00      1415 ok
+split-line:static:moved                  float    10000     1 index               0.020     4.1     1.01 [0.97-1.05]             0           0     0.00      2822 ok
+split-line:static:moved                  float    10000     1 index-ordered        0.020     3.0     1.02 [0.97-1.07]             0           0     0.00      3334 ok
+split-line:small-1%:full                 float    10000     1 brute          135355.464     3.0 371.08 [359.49-383.04]     299970000       43581     0.00       340 time-capped
+split-line:small-1%:full                 float    10000     1 b2tree           1809.665     3.2     4.96 [4.78-5.14]        498093      461930     0.00      1317 ok
+split-line:small-1%:full                 float    10000     1 b2tree-fat       1984.333     3.1     5.44 [5.26-5.63]        661499      461930     0.00      1473 ok
+split-line:small-1%:full                 float    10000     1 sweep            1906.835     3.0     5.23 [5.06-5.40]      40978740      461930     0.23       712 ok
+split-line:small-1%:full                 float    10000     1 grid              364.771     3.2     1.00 [1.00-1.00]       1561998      461930    10.34      1419 ok
+split-line:small-1%:full                 float    10000     1 grid-rebuild      582.848     3.0     1.60 [1.55-1.65]       1561998      461930     0.03      1491 ok
+split-line:small-1%:full                 float    10000     1 index             807.422     3.1     2.21 [2.14-2.29]       3692749      461930     0.00      2822 ok
+split-line:small-1%:full                 float    10000     1 index-ordered     3414.133     3.1     9.36 [9.05-9.68]       2331853      461930     0.00      3334 ok
+split-line:small-1%:moved                float    10000     1 brute            3248.155     3.0 412.64 [398.11-427.71]      63676800        6954     0.00       340 ok
+split-line:small-1%:moved                float    10000     1 b2tree             48.293     3.1     6.14 [5.93-6.35]          7661        6954     0.00      1317 ok
+split-line:small-1%:moved                float    10000     1 b2tree-fat         34.811     7.4     4.42 [4.06-4.80]         10855        6954     0.00      1473 ok
+split-line:small-1%:moved                float    10000     1 sweep             111.053     3.1  14.11 [13.60-14.64]        902085        6954     0.23       712 ok
+split-line:small-1%:moved                float    10000     1 grid                7.872     3.5     1.00 [1.00-1.00]         29710        6954    10.34      1419 ok
+split-line:small-1%:moved                float    10000     1 index              36.501     4.7     4.64 [4.44-4.85]         40722        6954     0.00      2822 ok
+split-line:small-1%:moved                float    10000     1 index-ordered       76.403     4.5    9.70 [9.16-10.27]         43785        6954     0.00      3334 ok
+split-line:teleport-1%:full              float    10000     1 brute          135395.806     3.0 368.11 [356.70-379.88]     299970000       42897     0.00       340 time-capped
+split-line:teleport-1%:full              float    10000     1 b2tree           1866.169     3.0     5.07 [4.91-5.25]        493604      457551     0.00      1317 ok
+split-line:teleport-1%:full              float    10000     1 b2tree-fat       2075.372     3.1     5.64 [5.46-5.83]        654721      457551     0.00      1473 ok
+split-line:teleport-1%:full              float    10000     1 sweep            1855.709     3.1     5.05 [4.88-5.22]      40598147      457551     0.23       712 ok
+split-line:teleport-1%:full              float    10000     1 grid              367.826     3.2     1.00 [1.00-1.00]       1543248      457551   172.41      1464 ok
+split-line:teleport-1%:full              float    10000     1 grid-rebuild      580.326     3.0     1.58 [1.53-1.63]       1543248      457551     0.05      1491 ok
+split-line:teleport-1%:full              float    10000     1 index             815.027     3.2     2.22 [2.15-2.28]       3463502      457551     0.00      2822 ok
+split-line:teleport-1%:full              float    10000     1 index-ordered     3436.166     3.0     9.34 [9.05-9.64]       2215606      457551     0.00      3334 ok
+split-line:teleport-1%:moved             float    10000     1 brute            2099.403     3.1 201.59 [194.14-209.32]      63676800        1359     0.00       340 ok
+split-line:teleport-1%:moved             float    10000     1 b2tree             48.979     3.0     4.70 [4.55-4.86]          1508        1359     0.00      1317 ok
+split-line:teleport-1%:moved             float    10000     1 b2tree-fat         50.025     3.1     4.80 [4.65-4.96]          2177        1359     0.00      1473 ok
+split-line:teleport-1%:moved             float    10000     1 sweep              82.847     3.1     7.95 [7.71-8.21]        395768        1359     0.23       712 ok
+split-line:teleport-1%:moved             float    10000     1 grid               10.415     3.5     1.00 [1.00-1.00]          6096        1359   172.41      1464 ok
+split-line:teleport-1%:moved             float    10000     1 index              43.507     3.8     4.18 [4.04-4.32]         16106        1359     0.00      2822 ok
+split-line:teleport-1%:moved             float    10000     1 index-ordered       65.564     3.4     6.30 [6.05-6.55]         16753        1359     0.00      3334 ok
+mixed-size:static:full                   float    10000     1 brute          140162.525     3.0 123.93 [120.14-127.84]     299970000      278874     0.00       340 time-capped
+mixed-size:static:full                   float    10000     1 b2tree           4970.420     3.6     4.39 [4.26-4.54]       3048128     2974656     0.00      1317 ok
+mixed-size:static:full                   float    10000     1 b2tree-fat       5365.749     3.6     4.74 [4.59-4.90]       3343744     2974656     0.00      1473 ok
+mixed-size:static:full                   float    10000     1 sweep            3113.815     3.0     2.75 [2.67-2.84]      57049024     2974656     0.00       616 ok
+mixed-size:static:full                   float    10000     1 grid             1131.019     3.1     1.00 [1.00-1.00]       5951808     2974656     0.00       614 ok
+mixed-size:static:full                   float    10000     1 grid-rebuild     1369.420     3.1     1.21 [1.17-1.25]       5951808     2974656     0.00       861 ok
+mixed-size:static:full                   float    10000     1 index            1648.041     3.2     1.46 [1.41-1.50]       6526976     2974656     0.00      2822 ok
+mixed-size:static:full                   float    10000     1 index-ordered     6187.792     3.5     5.47 [5.29-5.66]       9667008     2974656     0.00      3334 ok
+mixed-size:static:moved                  float    10000     1 brute               0.020     3.0     1.01 [0.97-1.05]             0           0     0.00       340 ok
+mixed-size:static:moved                  float    10000     1 b2tree              0.020     4.1     1.00 [1.00-1.00]             0           0     0.00      1317 ok
+mixed-size:static:moved                  float    10000     1 b2tree-fat          0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      1473 ok
+mixed-size:static:moved                  float    10000     1 sweep               0.020     3.0     1.01 [0.97-1.05]             0           0     0.00       616 ok
+mixed-size:static:moved                  float    10000     1 grid                0.020     3.0     1.01 [0.97-1.05]             0           0     0.00       614 ok
+mixed-size:static:moved                  float    10000     1 index               0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      2822 ok
+mixed-size:static:moved                  float    10000     1 index-ordered        0.020     4.1     1.00 [0.97-1.03]             0           0     0.00      3334 ok
+mixed-size:small-1%:full                 float    10000     1 brute          140100.446     3.0 124.27 [120.59-128.07]     299970000      278769     0.00       340 time-capped
+mixed-size:small-1%:full                 float    10000     1 b2tree           4986.521     3.1     4.42 [4.29-4.56]       3046011     2972660     0.00      1317 ok
+mixed-size:small-1%:full                 float    10000     1 b2tree-fat       5368.701     3.1     4.76 [4.62-4.91]       3341982     2972660     0.00      1473 ok
+mixed-size:small-1%:full                 float    10000     1 sweep            3165.083     3.0     2.81 [2.72-2.89]      57059607     2972660     0.23       712 ok
+mixed-size:small-1%:full                 float    10000     1 grid             1127.371     3.0     1.00 [1.00-1.00]       5951211     2972660     1.70       618 ok
+mixed-size:small-1%:full                 float    10000     1 grid-rebuild     1361.705     3.0     1.21 [1.17-1.24]       5951211     2972660     0.08       989 ok
+mixed-size:small-1%:full                 float    10000     1 index            1654.752     3.0     1.47 [1.42-1.51]       6454129     2972660     0.00      2822 ok
+mixed-size:small-1%:full                 float    10000     1 index-ordered     6190.642     3.0     5.49 [5.33-5.66]       9628572     2972660     0.00      3334 ok
+mixed-size:small-1%:moved                float    10000     1 brute            3289.879     3.0 238.15 [230.68-245.86]      63676800       33908     0.00       340 ok
+mixed-size:small-1%:moved                float    10000     1 b2tree             64.568     3.1     4.67 [4.53-4.82]         35067       33908     0.00      1317 ok
+mixed-size:small-1%:moved                float    10000     1 b2tree-fat         55.518     3.6     4.02 [3.88-4.16]         40450       33908     0.00      1473 ok
+mixed-size:small-1%:moved                float    10000     1 sweep             412.560     3.0  29.86 [28.94-30.82]      15152553       33908     0.23       712 ok
+mixed-size:small-1%:moved                float    10000     1 grid               13.815     3.2     1.00 [1.00-1.00]         89323       33908     1.70       618 ok
+mixed-size:small-1%:moved                float    10000     1 index              57.332     4.4     4.15 [3.96-4.35]        158801       33908     0.00      2822 ok
+mixed-size:small-1%:moved                float    10000     1 index-ordered      679.565     3.4  49.19 [47.64-50.78]        151344       33908     0.00      3334 ok
+mixed-size:teleport-1%:full              float    10000     1 brute          139984.527     3.0 123.28 [119.60-127.07]     299970000      278843     0.00       340 time-capped
+mixed-size:teleport-1%:full              float    10000     1 b2tree           4981.252     3.0     4.39 [4.25-4.52]       3047222     2973696     0.00      1317 ok
+mixed-size:teleport-1%:full              float    10000     1 b2tree-fat       5385.973     3.0     4.74 [4.60-4.89]       3343909     2973696     0.00      1473 ok
+mixed-size:teleport-1%:full              float    10000     1 sweep            3167.529     3.0     2.79 [2.71-2.88]      57042127     2973696     0.23       712 ok
+mixed-size:teleport-1%:full              float    10000     1 grid             1135.516     3.0     1.00 [1.00-1.00]       5945958     2973696    12.64       641 ok
+mixed-size:teleport-1%:full              float    10000     1 grid-rebuild     1364.098     3.0     1.20 [1.17-1.24]       5945958     2973696     0.03       989 ok
+mixed-size:teleport-1%:full              float    10000     1 index            1685.821     3.1     1.48 [1.44-1.53]       6177130     2973696     0.00      2822 ok
+mixed-size:teleport-1%:full              float    10000     1 index-ordered     6238.238     3.0     5.49 [5.33-5.66]       9578689     2973696     0.00      3334 ok
+mixed-size:teleport-1%:moved             float    10000     1 brute            3338.600     3.0  75.04 [72.79-77.35]      63676800       76096     0.00       340 ok
+mixed-size:teleport-1%:moved             float    10000     1 b2tree            112.985     3.4     2.54 [2.46-2.63]         77622       76096     0.00      1317 ok
+mixed-size:teleport-1%:moved             float    10000     1 b2tree-fat        118.397     3.1     2.66 [2.58-2.75]         84197       76096     0.00      1473 ok
+mixed-size:teleport-1%:moved             float    10000     1 sweep             427.413     3.1     9.61 [9.32-9.91]      14574514       76096     0.23       712 ok
+mixed-size:teleport-1%:moved             float    10000     1 grid               44.492     3.0     1.00 [1.00-1.00]        139174       76096    12.64       641 ok
+mixed-size:teleport-1%:moved             float    10000     1 index             114.931     3.1     2.58 [2.50-2.66]        212089       76096     0.00      2822 ok
+mixed-size:teleport-1%:moved             float    10000     1 index-ordered      934.877     3.0  21.01 [20.38-21.66]        236402       76096     0.00      3334 ok

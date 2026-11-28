@@ -27,7 +27,10 @@ batched fixtures; its CTest checks results/allocations, not timing thresholds.
 `quadtree-index-fuzz` is a randomized differential fuzzer for the library
 `Index` (int32, int64, float, double; `uniform`, `clustered`, `mixed`, `pile`,
 `outliers` scenes with full-range and near-limit boxes). Seeds also vary small-set,
-split/merge, depth, boundary and extent configuration. After every
+split/merge, depth, boundary and extent configuration. Every seventh seed
+(seed mod 7 = 3) shares a filter bit across its entries, so snapshot builds use
+the common-filter pair kernels; some filter changes drop the bit until the next
+build restores it. After every
 insert/update/setFilter/remove/build/shrink/clear step it checks the internal
 tree: own-list links, `nextItem` shortcut, counts, placement (`belongs`), exact
 subtree bounds/filter composition, conservative own summaries, and pooled node

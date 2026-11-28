@@ -1,0 +1,30 @@
+--- a/detail/quadtree-index-impl.h
++++ b/detail/quadtree-index-impl.h
+@@ -3166,6 +3166,18 @@
+         context.report(std::invoke(visitor, left, right));
+     }
+ 
++    // reportPair for commonRow hits: a call per pair dominates dense rows (piles).
++    template<typename Visitor>
++#if __has_cpp_attribute(gnu::always_inline)
++    [[gnu::always_inline]]
++#endif
++    void reportRowPair(std::uint32_t a, std::uint32_t b, Context& context, Visitor& visitor) const noexcept
++    {
++        orient(a, b, false);
++        const View left = view(a), right = view(b);
++        context.report(std::invoke(visitor, left, right));
++    }
++
+     template<bool PackedCross = false, typename Visitor, typename Predicate>
+     void testPair(std::uint32_t a, std::uint32_t b, bool ordered, Context& context, Visitor& visitor,
+         Predicate& predicate) const noexcept
+@@ -3858,7 +3870,7 @@
+             const auto b = begin + used++;
+             if (kernelOverlap(box, mEntries.mBoxes[b], mConfig.boundary))
+             {
+-                reportPair(a, b, false, context, visitor);
++                reportRowPair(a, b, context, visitor);
+                 if (!context.active()) break;
+             }
+         }

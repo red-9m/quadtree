@@ -1,0 +1,139 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G1   hard snapshot double clustered n=0 vs brute force (brute)                                    0.920 [0.806-1.050]     <= 2 pass
+G1   hard snapshot double clustered n=1 vs brute force (brute)                                    1.652 [1.594-1.711]     <= 2 pass
+G1   hard snapshot double clustered n=16 vs brute force (brute)                                   0.635 [0.617-0.654]     <= 2 pass
+G1   hard snapshot double clustered n=2 vs brute force (brute)                                    1.406 [1.354-1.460]     <= 2 pass
+G1   hard snapshot double clustered n=32 vs brute force (brute)                                   0.567 [0.550-0.583]     <= 2 pass
+G1   hard snapshot double clustered n=4 vs brute force (brute)                                    1.550 [1.506-1.595]     <= 2 pass
+G1   hard snapshot double clustered n=64 vs brute force (brute)                                   0.571 [0.554-0.588]     <= 2 pass
+G1   hard snapshot double clustered n=8 vs brute force (brute)                                    0.628 [0.609-0.647]     <= 2 pass
+G1   hard snapshot double uniform n=0 vs brute force (brute)                                      0.860 [0.834-0.887]     <= 2 pass
+G1   hard snapshot double uniform n=1 vs brute force (brute)                                      1.667 [1.600-1.736]     <= 2 pass
+G1   hard snapshot double uniform n=16 vs brute force (brute)                                     0.508 [0.493-0.524]     <= 2 pass
+G1   hard snapshot double uniform n=2 vs brute force (brute)                                      1.569 [1.435-1.716]     <= 2 pass
+G1   hard snapshot double uniform n=32 vs brute force (brute)                                     0.441 [0.428-0.453]     <= 2 pass
+G1   hard snapshot double uniform n=4 vs brute force (brute)                                      1.629 [1.572-1.687]     <= 2 pass
+G1   hard snapshot double uniform n=64 vs brute force (brute)                                     0.455 [0.442-0.469]     <= 2 pass
+G1   hard snapshot double uniform n=8 vs brute force (brute)                                      0.597 [0.580-0.614]     <= 2 pass
+G2   hard snapshot double clustered n=100 vs best baseline (sweep)                                2.726 [2.503-2.969]     <= 4 pass
+G2   hard snapshot double clustered n=1000 vs best baseline (grid)                                2.747 [2.625-2.875]     <= 4 pass
+G2   hard snapshot double clustered n=10000 vs best baseline (grid)                               1.305 [1.268-1.342]     <= 2 pass
+G2   hard snapshot double clustered n=100000 vs best baseline (grid)                              1.316 [1.279-1.354]     <= 2 pass
+G2   hard snapshot double mixed-size n=100 vs best baseline (sweep)                               3.172 [3.064-3.283]     <= 4 pass
+G2   hard snapshot double mixed-size n=1000 vs best baseline (grid)                               3.179 [3.078-3.283]     <= 4 pass
+G2   hard snapshot double mixed-size n=10000 vs best baseline (grid)                              1.268 [1.232-1.305]     <= 2 pass
+G2   hard snapshot double mixed-size n=100000 vs best baseline (grid)                             1.106 [1.073-1.141]     <= 2 pass
+G2   hard snapshot double split-line n=100 vs best baseline (sweep)                               3.424 [3.273-3.581]     <= 4 pass
+G2   hard snapshot double split-line n=1000 vs best baseline (grid)                               3.752 [3.632-3.876]     <= 4 pass
+G2   hard snapshot double split-line n=10000 vs best baseline (grid)                              1.837 [1.784-1.891]     <= 2 pass
+G2   hard snapshot double split-line n=100000 vs best baseline (grid)                             1.800 [1.748-1.854]     <= 2 pass
+G2   hard snapshot double split-line-translated n=100 vs best baseline (sweep)                    3.730 [3.580-3.887]     <= 4 pass
+G2   hard snapshot double split-line-translated n=1000 vs best baseline (grid)                    3.706 [3.546-3.873]     <= 4 pass
+G2   hard snapshot double split-line-translated n=10000 vs best baseline (grid)                   1.788 [1.736-1.841]     <= 2 pass
+G2   hard snapshot double split-line-translated n=100000 vs best baseline (grid)                  1.852 [1.793-1.913]     <= 2 pass
+G2   hard snapshot double uniform n=100 vs best baseline (grid)                                   2.916 [2.749-3.094]     <= 4 pass
+G2   hard snapshot double uniform n=1000 vs best baseline (grid)                                  3.996 [3.863-4.133]     <= 4 inconclusive
+G2   hard snapshot double uniform n=10000 vs best baseline (grid)                                 1.670 [1.618-1.724]     <= 2 pass
+G2   hard snapshot double uniform n=100000 vs best baseline (grid)                                1.909 [1.761-2.070]     <= 2 inconclusive
+G3   hard snapshot double mixed-size n=1000 candidates/(pairs+n) vs n=100                                       0.652   <= 1.5 pass
+G3   hard snapshot double mixed-size n=10000 candidates/(pairs+n) vs n=1000                                     0.705   <= 1.5 pass
+G3   hard snapshot double mixed-size n=100000 candidates/(pairs+n) vs n=10000                                   0.763   <= 1.5 pass
+G3   hard snapshot double split-line n=1000 candidates/(pairs+n) vs n=100                                       1.240   <= 1.5 pass
+G3   hard snapshot double split-line n=10000 candidates/(pairs+n) vs n=1000                                     0.791   <= 1.5 pass
+G3   hard snapshot double split-line n=100000 candidates/(pairs+n) vs n=10000                                   0.978   <= 1.5 pass
+G3   hard snapshot double split-line-translated n=1000 candidates/(pairs+n) vs n=100                            1.211   <= 1.5 pass
+G3   hard snapshot double split-line-translated n=10000 candidates/(pairs+n) vs n=1000                          0.807   <= 1.5 pass
+G3   hard snapshot double split-line-translated n=100000 candidates/(pairs+n) vs n=10000                        0.945   <= 1.5 pass
+G4   hard snapshot double split-line-translated n=100 candidates vs split-line                                  0.954    x/1.5 pass
+G4   hard snapshot double split-line-translated n=100 time vs split-line                          1.068 [1.015-1.125]    x/1.5 pass
+G4   hard snapshot double split-line-translated n=1000 candidates vs split-line                                 0.932    x/1.5 pass
+G4   hard snapshot double split-line-translated n=1000 time vs split-line                         1.001 [0.968-1.035]    x/1.5 pass
+G4   hard snapshot double split-line-translated n=10000 candidates vs split-line                                0.951    x/1.5 pass
+G4   hard snapshot double split-line-translated n=10000 time vs split-line                        0.975 [0.946-1.005]    x/1.5 pass
+G4   hard snapshot double split-line-translated n=100000 candidates vs split-line                               0.918    x/1.5 pass
+G4   hard snapshot double split-line-translated n=100000 time vs split-line                       0.998 [0.970-1.027]    x/1.5 pass
+G6   hard snapshot double clustered n=0 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=1 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double clustered n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double clustered n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double clustered n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double clustered n=16 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double clustered n=2 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=32 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double clustered n=4 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double clustered n=64 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double clustered n=8 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double disjoint n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double disjoint n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double disjoint n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double disjoint n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double long-thin n=100 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double long-thin n=1000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double long-thin n=10000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double long-thin n=100000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double mixed-size n=100 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double mixed-size n=1000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double mixed-size n=10000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double mixed-size n=100000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot double outliers n=100 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double outliers n=1000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double outliers n=10000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double outliers n=100000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double pile n=100 allocations per warm step                                                  0.000     <= 0 pass
+G6   hard snapshot double pile n=1000 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double points n=100 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot double points n=1000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double points n=10000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double points n=100000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double split-line n=100 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double split-line n=1000 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double split-line n=10000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double split-line n=100000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot double split-line-translated n=100 allocations per warm step                                 0.000     <= 0 pass
+G6   hard snapshot double split-line-translated n=1000 allocations per warm step                                0.000     <= 0 pass
+G6   hard snapshot double split-line-translated n=10000 allocations per warm step                               0.000     <= 0 pass
+G6   hard snapshot double split-line-translated n=100000 allocations per warm step                              0.000     <= 0 pass
+G6   hard snapshot double tiles n=100 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double tiles n=1000 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot double tiles n=10000 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double tiles n=100000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double tiles-touch n=100 allocations per warm step                                           0.000     <= 0 pass
+G6   hard snapshot double tiles-touch n=1000 allocations per warm step                                          0.000     <= 0 pass
+G6   hard snapshot double tiles-touch n=10000 allocations per warm step                                         0.000     <= 0 pass
+G6   hard snapshot double tiles-touch n=100000 allocations per warm step                                        0.000     <= 0 pass
+G6   hard snapshot double uniform n=0 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=1 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=100 allocations per warm step                                               0.000     <= 0 pass
+G6   hard snapshot double uniform n=1000 allocations per warm step                                              0.000     <= 0 pass
+G6   hard snapshot double uniform n=10000 allocations per warm step                                             0.000     <= 0 pass
+G6   hard snapshot double uniform n=100000 allocations per warm step                                            0.000     <= 0 pass
+G6   hard snapshot double uniform n=16 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot double uniform n=2 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=32 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot double uniform n=4 allocations per warm step                                                 0.000     <= 0 pass
+G6   hard snapshot double uniform n=64 allocations per warm step                                                0.000     <= 0 pass
+G6   hard snapshot double uniform n=8 allocations per warm step                                                 0.000     <= 0 pass
+G9   hard snapshot double clustered n=1000 vs unordered (index)                                   3.378 [3.273-3.487]     <= 4 pass
+G9   hard snapshot double clustered n=10000 vs unordered (index)                                  2.587 [2.509-2.668]     <= 4 pass
+G9   hard snapshot double clustered n=100000 vs unordered (index)                                 3.218 [3.127-3.313]     <= 4 pass
+G9   hard snapshot double mixed-size n=1000 vs unordered (index)                                  3.194 [3.099-3.292]     <= 4 pass
+G9   hard snapshot double mixed-size n=10000 vs unordered (index)                                 3.054 [2.966-3.145]     <= 4 pass
+G9   hard snapshot double mixed-size n=100000 vs unordered (index)                                3.676 [3.563-3.793]     <= 4 pass
+G9   hard snapshot double split-line n=1000 vs unordered (index)                                  2.979 [2.889-3.071]     <= 4 pass
+G9   hard snapshot double split-line n=10000 vs unordered (index)                                 3.002 [2.913-3.093]     <= 4 pass
+G9   hard snapshot double split-line n=100000 vs unordered (index)                                3.914 [3.794-4.037]     <= 4 inconclusive
+G9   hard snapshot double split-line-translated n=1000 vs unordered (index)                       2.963 [2.870-3.059]     <= 4 pass
+G9   hard snapshot double split-line-translated n=10000 vs unordered (index)                      3.081 [2.992-3.174]     <= 4 pass
+G9   hard snapshot double split-line-translated n=100000 vs unordered (index)                     3.871 [3.753-3.993]     <= 4 pass
+G9   hard snapshot double uniform n=1000 vs unordered (index)                                     2.840 [2.754-2.929]     <= 4 pass
+G9   hard snapshot double uniform n=10000 vs unordered (index)                                    2.946 [2.842-3.055]     <= 4 pass
+G9   hard snapshot double uniform n=100000 vs unordered (index)                                   3.485 [3.250-3.737]     <= 4 pass
+summary (pass / fail / inconclusive):
+  G1 hard     16     0     0
+  G2 hard     18     0     2
+  G3 hard      9     0     0
+  G4 hard      8     0     0
+  G6 hard     62     0     0
+  G9 hard     14     0     1
+gates: INCONCLUSIVE (candidates: snapshot index, persistent index, ordered index-ordered vs index)
