@@ -1,0 +1,12 @@
+workspace: /home/dima/.cache/quadtree-release-db0c820.G9F0 (clean git archive of db0c82025d200dabf6de1005fa06180326142af2)
+CMAKE_BUILD_TYPE:STRING=Release
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+FETCHCONTENT_SOURCE_DIR_BOX2D:PATH=
+QUADTREE_BENCH_NATIVE:BOOL=OFF
+QUADTREE_BUILD_BENCHMARKS:BOOL=ON
+c++ (GCC) 16.2.1 20260810
+cmake version 4.4.2
+e015f86dac364ae1e658ec3f7698013212b69c293d4fac0f28f8b672a41f6337  build/bench/quadtree-bench
+257d26283bbcc1441058f4186507b5f28d3d70c00581ecfd17f8a61bdb1282ab  bench.text
+ffec747b27a2267016f8d0240d658c82d187fb2271fa0f69fcbe53fbc067180d  build/_deps/box2d-subbuild/box2d-populate-prefix/src/v3.2.0.tar.gz
+81b2795b7b333e87fb9977d5fa4bda66f42e93198a2053280209984625b2d605  src/detail/quadtree-index-impl.h

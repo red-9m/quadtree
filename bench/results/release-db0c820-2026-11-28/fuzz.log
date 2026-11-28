@@ -1,0 +1,22 @@
+int32  uniform   seeds 1-40, 1500 steps: ok
+int32  clustered seeds 1-40, 1500 steps: ok
+int32  mixed     seeds 1-40, 1500 steps: ok
+int32  pile      seeds 1-40, 1500 steps: ok
+int32  outliers  seeds 1-40, 1500 steps: ok
+int64  uniform   seeds 1-40, 1500 steps: ok
+int64  clustered seeds 1-40, 1500 steps: ok
+int64  mixed     seeds 1-40, 1500 steps: ok
+int64  pile      seeds 1-40, 1500 steps: ok
+int64  outliers  seeds 1-40, 1500 steps: ok
+float  uniform   seeds 1-40, 1500 steps: ok
+float  clustered seeds 1-40, 1500 steps: ok
+float  mixed     seeds 1-40, 1500 steps: ok
+float  pile      seeds 1-40, 1500 steps: ok
+float  outliers  seeds 1-40, 1500 steps: ok
+double uniform   seeds 1-40, 1500 steps: ok
+double clustered seeds 1-40, 1500 steps: ok
+double mixed     seeds 1-40, 1500 steps: ok
+double pile      seeds 1-40, 1500 steps: ok
+double outliers  seeds 1-40, 1500 steps: ok
+exit 0
+488f2cd758586490a48c409965e1075c9275a70e7929d56ea3f0ea0bf5bd4b0b  bench/quadtree-index-fuzz
