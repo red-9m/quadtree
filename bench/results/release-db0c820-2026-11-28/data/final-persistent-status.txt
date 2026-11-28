@@ -1,0 +1,9 @@
+== int32 persistent
+  G8b persistent int32 mixed-size n=100000 small-single/moved vs n=1000        inconclusive       matrix 3.843 [2.903-5.086]; pooled 3.901 [3.781-4.024] from 3.863 [3.695-4.039], 3.939 [3.771-4.114]
+  summary: G6 pass 216, G7 pass 120, G8a pass 12, G8b inconclusive 1, G8b pass 3, G8c pass 24
+== float persistent
+  summary: G6 pass 216, G7 pass 120, G8a pass 12, G8b pass 4, G8c pass 24
+== double persistent
+  summary: G6 pass 216, G8a pass 12, G8b pass 4
+== int64 persistent
+  summary: G6 pass 216, G8a pass 12, G8b pass 4

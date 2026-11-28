@@ -1,15 +1,17 @@
 # 09 · Other coordinate types: result
 
-**Accepted (2026-11-28) on `ce92ef5`.** `int64`, `float` and `double` are performance-accepted. On the [four-type release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md), every type passes G1 16/16, G2 20/20, G9 15/15, G3, G4, G6 and every applicable persistent hard gate. The run needed no repeats and used no exceptions, under a [rule committed before it ran](../../bench/results/release-ce92ef5-2026-11-28/resolution-rule.md). `int32` passes every hard gate on the same run, so its release acceptance holds. The frozen limits are unchanged, and no exception extends beyond `int32`.
+**Accepted (2026-11-28) on `db0c820`.** `int64`, `float` and `double` are performance-accepted. On the [four-type release validation](../../bench/results/release-db0c820-2026-11-28/README.md), each passes G1 16/16, G2 20/20, G9 15/15, G3, G4, G6 and every applicable persistent hard gate. No exceptions were used, under a [rule committed before the run](../../bench/results/release-db0c820-2026-11-28/resolution-rule.md). The frozen limits are unchanged, and no exception extends beyond `int32`.
+
+`ce92ef5` first passed the same validation. Its ordered `double` path then turned out to [raise floating-point exceptions](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md) on valid input, so acceptance moved to the fix, `db0c820`. On `db0c820`, one `int32` persistent row is open under the rule; see the [08 result](08-final-acceptance-result.md#recheck-on-db0c820).
 
 History:
 - First closed as is on `d52dbe1` (owner, 2026-11-22), then reopened the same day.
 - Closed as is again on `7cfbebe` (owner, 2026-11-23), with published gaps (below).
-- Reopened for the [common-filter pair kernels](#common-filter-pair-kernels-ce92ef5).
+- Reopened for the [common-filter pair kernels](#common-filter-pair-kernels-ce92ef5), accepted on `db0c820` after the floating-point exception fix.
 
-## Common-filter pair kernels (`ce92ef5`)
+## Common-filter pair kernels (`ce92ef5`, fixed in `db0c820`)
 
-[Candidate evidence](../../bench/results/float-common-pairs-2026-11-27/README.md) · [release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md)
+[Candidate evidence](../../bench/results/float-common-pairs-2026-11-27/README.md) · [`ce92ef5` validation](../../bench/results/release-ce92ef5-2026-11-28/README.md) · [`double` fix](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md) · [`db0c820` validation](../../bench/results/release-db0c820-2026-11-28/README.md)
 
 - **Cause:** `float` and `double` had no common-filter fast path, which `int64` already had.
   - At `c13e498`, unordered `int64` pairs at `uniform` 10³ took 31.8 µs; `float` took 43.7 µs and `double` 44.1 µs.
@@ -17,7 +19,7 @@ History:
 - **Change:**
   - Bulk `float`/`double` builds record the common-filter-bit proof.
   - Unordered full pairs use the `CommonBitPairs` kernel with the exact packed overlap test.
-  - Ordered full pairs use `orderedCommonFloat`, a compact ordered walk on float lanes. It is exact for `float`. For `double`, lanes are rounded toward −∞, every lane hit is rechecked exactly, and exact thread-node bounds keep node charges equal to the general walk's.
+  - Ordered full pairs use `orderedCommonFloat`, a compact ordered walk on float lanes. It is exact for `float`. For `double`, lanes are integer order keys (since `db0c820`; `ce92ef5` converted to `float`, which raised FP exceptions), every lane hit is rechecked exactly, and exact thread-node bounds keep node charges equal to the general walk's.
   - `orderedCommon` becomes `noinline`, so `int32` code generation stays independent of this code.
 - **Effect, candidate vs `c13e498`, same machine:**
 
@@ -36,9 +38,9 @@ History:
   - `double` G2 `uniform` 10³ and 10⁵.
   - They pass in the candidate matrix, in two 45-round processes and in the release matrix.
 
-Tightest rows in the release matrix, all passing:
-- G9 at 10⁵: `float split-line` 3.699 [3.586–3.815] and `double split-line-translated` 3.656 [3.539–3.777].
-- G2: `double split-line-translated` 10² 3.569 [3.455–3.687].
+Tightest rows in the `db0c820` matrix, all passing:
+- G9 at 10⁵: `float split-line` 3.693 [3.579–3.811] and `double split-line` 3.668 [3.484–3.863].
+- G2: `float split-line-translated` 10² 3.559 [3.448–3.673].
 
 ## What shipped before `ce92ef5`
 

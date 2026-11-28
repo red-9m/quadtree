@@ -2,7 +2,10 @@
 
 **`int32` release accepted (2026-11-21)** on release candidate `a72bc80`: runtime/benchmark code built from `64675e6`, identical code, benchmark `.text` `97d8835e…`. Scope per [the brief](08-final-acceptance.md): performance sign-off covered `int32` only, with `int64`, `float` and `double` under [Task 09](09-other-coordinate-types.md).
 
-**Four-type acceptance (2026-11-28) on `ce92ef5`:** the [full release validation](../../bench/results/release-ce92ef5-2026-11-28/README.md) passes every hard gate for all four coordinate types without repeats or exceptions; see [the recheck below](#recheck-on-ce92ef5).
+**Current status (2026-11-28):**
+- **`int64`, `float`, `double`:** performance-accepted on `db0c820` ([validation](../../bench/results/release-db0c820-2026-11-28/README.md)).
+- **`int32`:** acceptance holds on `c13e498` and passed every gate on `ce92ef5`. On `db0c820`, one persistent G8b row stayed open under the rule, so extending acceptance to `db0c820` needs an owner decision ([below](#recheck-on-db0c820)).
+- **`ce92ef5`:** passed every gate for all four types, but its ordered `double` path [raised floating-point exceptions](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md). `db0c820` fixes that.
 
 ## Exit criteria
 
@@ -52,11 +55,26 @@
 - **Calibration:** 97.7% (291/298).
 - **CTest, fuzz and CI:** CTest 22/22 and full differential fuzz 20/20 on the archive build. Hosted [Portability #24](https://github.com/red-9m/quadtree/actions/runs/46095847492) passes 9/9 on the exact SHA.
 
-**The `int32` acceptance holds on `ce92ef5`. `int64`, `float` and `double` are performance-accepted on `ce92ef5` (Task 09).**
+**The `int32` acceptance holds on `ce92ef5`.** All four types passed on it. However, `ce92ef5`'s ordered `double` queries raise `FE_OVERFLOW`/`FE_INEXACT` on valid input, and fault with SIGFPE when trapping is enabled. So its `int64`/`float`/`double` acceptance was moved to the fixed commit, `db0c820`.
+
+## Recheck on `db0c820`
+
+`db0c820` replaces the `double` lane conversion with exception-free integer order keys ([fix evidence](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md)). Every `int32` `Index` function is instruction-identical to `ce92ef5`. The [validation](../../bench/results/release-db0c820-2026-11-28/README.md) used the same [pre-specified rule](../../bench/results/release-db0c820-2026-11-28/resolution-rule.md).
+
+- **Snapshot, all four types:** G1 16/16, G2 20/20, G3 9, G4 8, G6 62 and G9 15/15 pass in the 5-round matrices.
+- **Persistent:**
+  - `float`: G6 216, G7 120, G8a 12, G8b 4, G8c 24 pass.
+  - `double`, `int64`: G6 216, G8a 12, G8b 4 pass.
+  - `int32`: everything passes except G8b `mixed-size` n=10⁵ `small-single/moved`. Matrix 3.843 [2.903–5.086]; pooled over the rule's two 45-round repeats 3.901 [3.781–4.024], limit 4, so the row stays **open**.
+  - A post-hoc diagnostic, not used by the rule, ran the repeats' arguments on the `c13e498` and `ce92ef5` binaries. They give the same 3.8–4.0 in that process shape (the full matrices gave 3.32–3.37 there).
+- **Other checks:** G0 and G6 pass. Calibration 99.0%. CTest 22/22, full fuzz 20/20, hosted [Portability #27](https://github.com/red-9m/quadtree/actions/runs/46138155025) 9/9.
+
+**`int64`, `float` and `double` are performance-accepted on `db0c820` (Task 09).** Under the rule, the `int32` acceptance stays on `c13e498` (and `ce92ef5`). Extending it to `db0c820` is an owner decision: accept on this evidence, or rerun under a new pre-specified rule.
 
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.
-- [Four-type validation of `ce92ef5`](../../bench/results/release-ce92ef5-2026-11-28/README.md): the four-type acceptance run.
+- [Four-type validation of `ce92ef5`](../../bench/results/release-ce92ef5-2026-11-28/README.md), superseded for `double` by the fix.
+- [Four-type validation of `db0c820`](../../bench/results/release-db0c820-2026-11-28/README.md): Task 09 acceptance; one `int32` persistent row open.
 - [`int32` confirmation](../../bench/results/release-int32-2026-11-21/README.md): the sign-off run.
 - [Rejected `int32` G2 fix attempt](../../bench/results/int32-g2-planbulk-2026-11-21/README.md): the evidence behind the G2 exception.

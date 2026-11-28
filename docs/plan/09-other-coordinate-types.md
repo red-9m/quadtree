@@ -1,6 +1,6 @@
 # 09 · Performance acceptance for `int64`, `float` and `double`
 
-**Status: done.** Accepted on `ce92ef5` (2026-11-28); see the [result](09-other-coordinate-types-result.md).
+**Status: done.** Accepted on `db0c820` (2026-11-28); see the [result](09-other-coordinate-types-result.md).
 
 **Goal:** meet G1 and G2 for `int64`, `float` and `double` snapshots, then rerun the full [08](08-final-acceptance.md) matrix for those types. Follows the `int32` release (owner decision, 2026-11-21). Requirements: `QT-NFR-01`–`QT-NFR-03`, `QT-NFR-11`.
 

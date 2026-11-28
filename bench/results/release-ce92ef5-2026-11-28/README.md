@@ -1,5 +1,7 @@
 # 08 · Four-type release validation of `ce92ef5` (2026-11-28)
 
+> **Superseded.** After this run, ordered `double` queries on `ce92ef5` were found to [raise floating-point exceptions](../double-ordered-fp-flags-2026-11-28/README.md) (`FE_OVERFLOW`/`FE_INEXACT`, SIGFPE when trapping) on valid input. The fix is `db0c820`, and acceptance is decided by its own [release validation](../release-db0c820-2026-11-28/README.md). The measurements below stand as recorded.
+
 **`int32`, `int64`, `float` and `double` all meet the [pre-specified rule](resolution-rule.md) on `ce92ef5`.** Every hard snapshot and persistent gate passes outright for all four types in the 5-round and 64-step matrices. No row needed a repeat, and no exception was used. The `int32` release acceptance therefore extends to `ce92ef5`. Task 09's exit criteria hold for `int64`, `float` and `double`.
 
 | Type | G1 (16) | G2 (20) | G9 (15) | G3 / G4 / G6 snapshot | Persistent hard gates |

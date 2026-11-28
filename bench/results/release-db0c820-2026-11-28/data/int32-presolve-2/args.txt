@@ -1,0 +1,1 @@
+--model=persistent --types=int32 --engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat --scenes=mixed-size --persistent-sizes=1000,100000 --workloads=small-single --modes=moved --rounds=45

@@ -1,0 +1,8 @@
+gate kind subject                                                                                      value [95% CI]    limit verdict
+G6   hard persistent int32 mixed-size n=1000 small-single/moved allocations per step                            0.000     <= 0 pass
+G6   hard persistent int32 mixed-size n=100000 small-single/moved allocations per step                          0.000     <= 0 pass
+G8b  hard persistent int32 mixed-size n=100000 small-single/moved vs n=1000                       3.863 [3.695-4.039]     <= 4 inconclusive
+summary (pass / fail / inconclusive):
+  G6 hard      2     0     0
+  G8b hard     0     0     1
+gates: INCONCLUSIVE (candidates: snapshot index, persistent index, ordered index-ordered vs index)

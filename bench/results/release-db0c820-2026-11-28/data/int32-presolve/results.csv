@@ -1,0 +1,28 @@
+# date: 2026-11-28T13:20:00Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293772 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=persistent --types=int32 --engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat --scenes=mixed-size --persistent-sizes=1000,100000 --workloads=small-single --modes=moved --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/release-db0c820-2026-11-28/data/int32-presolve/results.csv --raw=/home/dima/src/quadtree.git/bench/results/release-db0c820-2026-11-28/data/int32-presolve/raw.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+model,scene,boundary,type,n,batch,workload,mode,engine,status,rounds,reps,estimate_ns,err_ns,round_err_ns,vs_best,vs_best_lo,vs_best_hi,median_ns,p95_ns,min_ns,prepare_median_ns,pairs_median_ns,init_ns,candidates,node_visits,cell_tests,references,max_refs,pairs,checksum,allocs_per_step,cold_allocs,peak_bytes,retained_bytes,scene_hash
+persistent,mixed-size,default,int32,1000,1,small-single,moved,brute,ok,45,2880,1563.6,49.5,15.8,22.4389,21.7299,23.1710,1562,1833,1242,10,1542,3011.3,63936,0,0,0,0,163,eb2e925503cce707,0.000,0,31280,29232,6b95fc5addccbce7
+persistent,mixed-size,default,int32,1000,1,small-single,moved,b2tree,ok,45,2880,330.9,10.0,1.4,4.7506,4.6056,4.9001,330,430,240,230,100,311502.9,168,1272,0,0,0,163,eb2e925503cce707,0.000,0,131464,129416,6b95fc5addccbce7
+persistent,mixed-size,default,int32,1000,1,small-single,moved,b2tree-fat,ok,45,2880,250.1,8.2,3.4,3.5874,3.4670,3.7119,260,430,30,80,90,307271.8,189,1346,0,0,0,163,eb2e925503cce707,0.000,0,147464,145416,6b95fc5addccbce7
+persistent,mixed-size,default,int32,1000,1,small-single,moved,sweep,ok,45,2880,3326.1,102.1,21.5,47.7470,46.2645,49.2770,3316,3616,3196,2665,651,38367.9,35939,0,0,0,0,163,eb2e925503cce707,0.172,11,64632,58488,6b95fc5addccbce7
+persistent,mixed-size,default,int32,1000,1,small-single,moved,grid,ok,45,2880,69.7,2.1,0.5,1.0000,1.0000,1.0000,70,180,20,20,40,53205.9,552,0,0,0,0,163,eb2e925503cce707,0.047,3,62220,62172,6b95fc5addccbce7
+persistent,mixed-size,default,int32,1000,1,small-single,moved,index,ok,45,2880,227.7,7.4,2.9,3.2659,3.1601,3.3752,230,400,180,70,150,170942.0,831,1132,0,64000,0,163,eb2e925503cce707,0.000,0,289712,289712,6b95fc5addccbce7
+persistent,mixed-size,default,int32,1000,1,small-single,moved,index-ordered,ok,45,2880,336.0,10.7,3.6,4.8214,4.6672,4.9806,330,591,250,70,260,190836.8,897,2264,0,64000,0,163,eb2e925503cce707,0.000,0,322480,322480,6b95fc5addccbce7
+persistent,mixed-size,default,int32,100000,1,small-single,moved,brute,ok,45,2880,169807.9,5112.7,434.0,1137.2253,1102.9396,1172.5767,169710,182133,162266,10,169690,387538.9,6399936,0,0,0,0,1097,85212a58ae6d4927,0.000,0,3286568,3024424,0c50222f299c1ffa
+persistent,mixed-size,default,int32,100000,1,small-single,moved,b2tree,ok,45,2880,767.2,23.4,4.0,5.1376,4.9808,5.2994,771,1142,691,490,270,64174459.4,1131,5049,0,0,0,1097,85212a58ae6d4927,0.000,0,13286752,13024608,0c50222f299c1ffa
+persistent,mixed-size,default,int32,100000,1,small-single,moved,b2tree-fat,ok,45,2880,724.3,22.0,3.4,4.8505,4.7037,5.0020,721,1112,190,460,280,63872729.7,1167,5135,0,0,0,1097,85212a58ae6d4927,0.000,0,14886752,14624608,0c50222f299c1ffa
+persistent,mixed-size,default,int32,100000,1,small-single,moved,sweep,ok,45,2880,317225.7,9551.9,818.4,2124.4995,2060.7578,2190.2128,317068,342145,307830,301048,15639,7473972.1,608518,0,0,0,0,1097,85212a58ae6d4927,0.281,18,6835304,6048872,0c50222f299c1ffa
+persistent,mixed-size,default,int32,100000,1,small-single,moved,grid,ok,45,2880,149.3,4.5,0.7,1.0000,1.0000,1.0000,150,350,90,20,130,7199047.4,1709,0,0,0,0,1097,85212a58ae6d4927,0.000,0,7935768,7935640,0c50222f299c1ffa
+persistent,mixed-size,default,int32,100000,1,small-single,moved,index,ok,45,2880,879.6,26.7,4.3,5.8899,5.7119,6.0735,881,1342,751,110,761,30413699.6,5132,2851,0,6400000,0,1097,85212a58ae6d4927,0.000,0,28900712,28900712,0c50222f299c1ffa
+persistent,mixed-size,default,int32,100000,1,small-single,moved,index-ordered,ok,45,2880,1369.6,42.2,9.8,9.1698,8.8885,9.4600,1372,2013,1192,120,1242,35647928.0,5235,5702,0,6400000,0,1097,85212a58ae6d4927,0.000,0,33095016,33095016,0c50222f299c1ffa

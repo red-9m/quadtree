@@ -1,0 +1,28 @@
+# date: 2026-11-28T13:26:22Z
+# cpu: AMD Ryzen 9 5900HS with Radeon Graphics
+# timer: rdtsc 3.293770 GHz, 7.8 ns per read; clock source hpet
+# governor: powersave
+# energy preference: performance
+# compiler: gcc 16.2.1 20260810
+# config: Release
+# flags: GNU 16.2.1:  -O3 -DNDEBUG -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+# optimized: yes
+# box2d: pinned v3.2.0 source, built as Release
+# seed: 1
+# args: --model=persistent --types=int32 --engines=index,index-ordered,brute,sweep,grid,grid-rebuild,b2tree,b2tree-fat --scenes=mixed-size --persistent-sizes=1000,100000 --workloads=small-single --modes=moved --rounds=45 --csv=/home/dima/src/quadtree.git/bench/results/release-db0c820-2026-11-28/diag-g8b/data/c13e-3/results.csv
+# times: ns per step; snapshot counts are batch totals, persistent counts are pass totals
+scene[:workload:mode]                    type         n batch engine            time_us  +-err%     vs_best [95% CI]    candidates       pairs alloc/st  peak_KiB status
+mixed-size:small-single:moved            int32     1000     1 brute               1.576     3.2  22.46 [21.76-23.19]         63936         163     0.00        30 ok
+mixed-size:small-single:moved            int32     1000     1 b2tree              0.332     3.0     4.73 [4.59-4.88]           168         163     0.00       128 ok
+mixed-size:small-single:moved            int32     1000     1 b2tree-fat          0.251     3.3     3.57 [3.45-3.69]           189         163     0.00       144 ok
+mixed-size:small-single:moved            int32     1000     1 sweep               3.353     3.4  47.77 [46.21-49.39]         35939         163     0.17        63 ok
+mixed-size:small-single:moved            int32     1000     1 grid                0.070     3.0     1.00 [1.00-1.00]           552         163     0.05        60 ok
+mixed-size:small-single:moved            int32     1000     1 index               0.221     3.0     3.15 [3.05-3.24]           831         163     0.00       282 ok
+mixed-size:small-single:moved            int32     1000     1 index-ordered        0.330     3.0     4.70 [4.56-4.85]           897         163     0.00       314 ok
+mixed-size:small-single:moved            int32   100000     1 brute             172.134     3.0 1283.26 [1230.56-1338.22]       6399936        1097     0.00      3209 ok
+mixed-size:small-single:moved            int32   100000     1 b2tree              0.753     3.1     5.61 [5.41-5.83]          1131        1097     0.00     12975 ok
+mixed-size:small-single:moved            int32   100000     1 b2tree-fat          0.707     3.1     5.27 [5.07-5.47]          1167        1097     0.00     14537 ok
+mixed-size:small-single:moved            int32   100000     1 sweep             304.870     3.2 2271.11 [2191.36-2353.77]        608518        1097     0.28      6675 ok
+mixed-size:small-single:moved            int32   100000     1 grid                0.135     4.2     1.00 [1.00-1.00]          1709        1097     0.00      7749 ok
+mixed-size:small-single:moved            int32   100000     1 index               0.843     3.4     6.27 [6.06-6.50]          5132        1097     0.00     28223 ok
+mixed-size:small-single:moved            int32   100000     1 index-ordered        1.305     4.3    9.68 [9.28-10.10]          5235        1097     0.00     32319 ok
