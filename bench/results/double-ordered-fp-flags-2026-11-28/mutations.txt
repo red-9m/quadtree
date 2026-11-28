@@ -1,0 +1,6 @@
+index-test results with one deliberate defect each (fixed header otherwise):
+  double prefilter without the exact recheck            76 failures
+  order keys without the negative magnitude flip      4059 failures
+  max lanes not inverted (~key)                        4115 failures
+  fixed header                                            0 failures
+The new pairsRaiseNoFpFlags<T> test fails on ce92ef5 (22 failures: FE_OVERFLOW/FE_INEXACT on ordered double queries).

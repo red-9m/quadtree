@@ -1,6 +1,6 @@
 # `float`/`double` common-filter pair kernels (Task 09)
 
-**Every `float` and `double` snapshot hard gate passes in the candidate's 5-round matrix: G1 16, G2 20, G3 9, G4 8, G6 62 and G9 15 for each type.** That includes the four rows left inconclusive at `c13e498`. Each also passes in two separate 45-round processes, where the control stays inconclusive. `int32` and `int64` pass every snapshot hard gate on both binaries. Work counters, pair counts and checksums match the control on every uncapped library row, and warm allocations stay zero. This is candidate evidence; acceptance needs the full four-type release validation of the committed source.
+**Every `float` and `double` snapshot hard gate passes in the candidate's 5-round matrix: G1 16, G2 20, G3 9, G4 8, G6 62 and G9 15 for each type.** That includes the four rows left inconclusive at `c13e498`. Each also passes in two separate 45-round processes. On the control in the same run, those four rows are inconclusive in 7 of their 12 results (matrix plus two 45-round processes each). The other 5 pass: `float` G2 `uniform` 10³ in the matrix and one 45-round process, and `double` G2 `uniform` 10⁵ in both 45-round processes. `int32` and `int64` pass every snapshot hard gate on both binaries. Work counters, pair counts and checksums match the control on every uncapped library row, and warm allocations stay zero. This is candidate evidence; acceptance needs the full four-type release validation of the committed source.
 
 ## Task 09 rows
 
@@ -63,6 +63,7 @@ Estimate change, candidate vs control, excluding `pile`:
   - Threaded DFS nodes in reserved build-box scratch, and 24-byte rank-ordinal records in reserved build-key scratch.
   - `float` records hold exact lanes (minX, minY, −maxX, −maxY). Strict or closed contact follows the existing per-entry threshold.
   - `double` records hold the same lanes rounded toward −∞ to `float`, so the lane test can only admit extra candidates. This holds in any rounding mode: each converted lane is checked and stepped down one float if it landed above its value. Each lane hit is rechecked exactly with `packedCrossItemOverlap`.
+    - **Defect (found after acceptance):** `_mm_cvtpd_ps` raises `FE_OVERFLOW`/`FE_INEXACT` on valid finite input, so with trapping enabled an ordered `double` query faults with SIGFPE. The [fix](../double-ordered-fp-flags-2026-11-28/README.md) replaces the conversion with exception-free integer order keys.
   - `double` thread nodes keep exact bounds, so node visits and charges equal the general walk's.
   - Rank order, candidate and node charges, unfinished-row discard, Stop, and fallback all match `orderedCommon`.
 - **Fallback:** moved-set queries, custom predicates, no common bit, missing build scratch, non-contiguous nodes, budgets that cannot cover a row, and non-SSE2 builds keep the existing paths.

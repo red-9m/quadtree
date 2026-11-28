@@ -396,9 +396,53 @@ void pairPrefixes()
     check();
 }
 
+// Pair queries only compare stored finite geometry. They must not raise
+// floating-point exception flags, which a trapping environment turns into
+// faults on valid input. Covers the fast and general paths, ordered or not.
+template<typename T>
+void pairsRaiseNoFpFlags()
+{
+    const T huge = std::numeric_limits<T>::max(), tiny = std::numeric_limits<T>::denorm_min();
+    std::vector<T> values{huge, -huge, tiny, -tiny, T(1) / T(3), std::numeric_limits<T>::min() / T(3)};
+    if constexpr (std::same_as<T, double>)
+        values.insert(values.end(), {1e100, -1e100, 1e-100, 1e39, 3.4028235677973366e38});
+    else
+        values.insert(values.end(), {1e30f, -1e30f, 1e-30f});
+    for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
+        for (const T at : values)
+            for (bool common : {true, false})
+            {
+                auto made = Tree<T>::create({.boundary = boundary, .smallSetThreshold = 0});
+                REQUIRE(made.ok());
+                auto& tree = made.value();
+                // Two coincident points plus disjoint companions; one pair overlaps.
+                std::vector<QuadTree::BuildEntry<int, T>> input;
+                const Filter filter = common ? Filter{} : Filter{1, 1};
+                input.push_back({Box<T>{at, at, at, at}, 0, {}, 1});
+                input.push_back({Box<T>{at, at, at, at}, 1, filter, 2});
+                const T other = at > T(0) ? -huge : huge;
+                for (int i = 0; i < 6; ++i)
+                    input.push_back({Box<T>{other, T(i), other, T(i)}, 2 + i, {2, 2}, std::uint64_t(3 + i)});
+                QuadTree::Workspace<T> scratch;
+                REQUIRE(scratch.reserve(input.size()) == Status::Ok);
+                REQUIRE(tree.build(input, {.workspace = &scratch}) == Status::Ok);
+                for (bool ordered : {false, true})
+                {
+                    std::size_t reports = 0;
+                    REQUIRE(std::feclearexcept(FE_ALL_EXCEPT) == 0);
+                    const auto result = tree.forEachPair([&](const auto& a, const auto& b) noexcept
+                        { reports += a.payload + b.payload == 1; return Continue; },
+                        {.ordered = ordered, .workspace = &scratch});
+                    const int raised = std::fetestexcept(FE_ALL_EXCEPT);
+                    CHECK(raised == 0);
+                    CHECK(result.complete() && reports == 1);
+                }
+            }
+}
+
 // Floating-point common-filter pairs at exact contact, one-ulp gaps, signed
-// zeros, subnormals and the extremes. double rows prefilter on float lanes
-// rounded outward, which merges one-ulp gaps and overflows to infinity.
+// zeros, subnormals and the extremes. double rows prefilter on truncated order keys,
+// which merge one-ulp gaps.
 template<typename T>
 void floatCommonPairs()
 {
@@ -465,7 +509,7 @@ void floatCommonPairs()
             CHECK(tree.stats().nodes > 20);
             for (std::size_t i = 0; i < records.size(); ++i) records[i].handle = handles[i];
             verify(tree, records, scratch);
-            // Lane conversion must stay conservative in every rounding mode.
+            // Ordered lanes must not depend on the rounding mode.
             for (int mode : {FE_UPWARD, FE_DOWNWARD, FE_TOWARDZERO})
             {
                 REQUIRE(std::fesetround(mode) == 0);
@@ -3372,7 +3416,7 @@ int main()
     pairWorkspaceGrowth(); coincidentMotion(); concurrency(); uninstrumented();
     numeric<std::int32_t>(); numeric<std::int64_t>(); numeric<float>(); numeric<double>();
     translatedInt64Snapshots(); pairPrefixes<std::int64_t>(); pairPrefixes<float>(); pairPrefixes<double>();
-    floatCommonPairs<float>(); floatCommonPairs<double>();
+    floatCommonPairs<float>(); floatCommonPairs<double>(); pairsRaiseNoFpFlags<float>(); pairsRaiseNoFpFlags<double>();
     orderedIntegerRows<std::int32_t>(); orderedIntegerRows<std::int64_t>();
     for (auto boundary : {Boundary::Default, Boundary::TouchInclusive})
         for (auto extent : {QuadTree::Extent::Fixed, QuadTree::Extent::Adaptive, QuadTree::Extent::Snapshot})

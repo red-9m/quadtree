@@ -1,0 +1,10 @@
+prev (base): ce92ef5 release binary; next (cand): working tree with runtime.patch, committed with this directory.
+GCC 16.2.1 Release, QUADTREE_BENCH_NATIVE=OFF; HPET; CPU 6, quiet starts; data/ from reproduce.sh (../float-common-pairs-2026-11-27/reproduce.sh, stages matrix targets).
+f1d1694a2e13a9cb36140418363ad647eaa6aa831bebdc1bc9fd16e1afc2fba2  prev
+e015f86dac364ae1e658ec3f7698013212b69c293d4fac0f28f8b672a41f6337  next
+f4905252e1cc1ca1331b19b729a0266beeced286ca7e0ab2adf6bddbaae9a5be  prev .text
+257d26283bbcc1441058f4186507b5f28d3d70c00581ecfd17f8a61bdb1282ab  next .text
+81b2795b7b333e87fb9977d5fa4bda66f42e93198a2053280209984625b2d605  detail/quadtree-index-impl.h (next)
+8c653e4f5ed61a1154f7c34a0e09a8da7665cc04782f61d92dc468fcdb7e2217  detail/quadtree-index-impl.h (ce92ef5)
+c++ (GCC) 16.2.1 20260810
+clang version 22.1.8

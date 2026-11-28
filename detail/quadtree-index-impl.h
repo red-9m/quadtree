@@ -3347,7 +3347,7 @@ private:
     // geometry. One record fits in the bytes already reserved for one key.
     struct OrderedBox
     {
-        std::uint32_t gapTerms[4]; // -minX, -minY, maxX, maxY, modulo 2^32 (floatLanes for floating point)
+        std::uint32_t gapTerms[4]; // -minX, -minY, maxX, maxY, modulo 2^32 (orderedLanes for floating point)
         std::uint32_t ordinal;
         std::int32_t threshold; // -1 for closed contact, otherwise 0
     };
@@ -3534,26 +3534,35 @@ private:
         }
     }
 
-    // Ordered common-bit rows store (minX, minY, -maxX, -maxY) as float lanes in
-    // OrderedBox::gapTerms; negation is exact and stored zeros are +0. double
-    // rounds each lane toward -inf, so its closed lane test only admits extra
-    // candidates, which are rechecked exactly. Thread nodes keep exact double
-    // bounds: node visits and charges match the general walk.
-    static __m128 floatLanes(const Box<T>& box) noexcept requires FloatCoordinate<T>
+    // Ordered common-bit rows keep four 32-bit lanes per entry in
+    // OrderedBox::gapTerms; no lane of an overlapping box exceeds the source's.
+    // float: the bits of (minX, minY, -maxX, -maxY), exact. Negation only flips
+    // sign bits and stored zeros are +0. double: order keys (key(minX),
+    // key(minY), ~key(maxX), ~key(maxY)) compared as signed integers, where
+    // key() is the high word of the sign-magnitude-to-two's-complement image
+    // of the double. It is monotone, so the closed lane test only admits extra
+    // candidates, which are rechecked exactly. Both use bit operations only and
+    // raise no floating-point exceptions. Thread nodes keep exact double bounds:
+    // node visits and charges match the general walk.
+    static __m128i orderedLanes(const Box<T>& box) noexcept requires FloatCoordinate<T>
     {
         if constexpr (std::same_as<T, float>)
-            return _mm_xor_ps(_mm_loadu_ps(&box.minX), _mm_setr_ps(0.0f, 0.0f, -0.0f, -0.0f));
+        {
+            __m128i bits;
+            std::memcpy(&bits, &box, sizeof(bits));
+            constexpr int sign = std::numeric_limits<std::int32_t>::min();
+            return _mm_xor_si128(bits, _mm_setr_epi32(0, 0, sign, sign));
+        }
         else
         {
-            const auto lo = _mm_loadu_pd(&box.minX), hi = _mm_xor_pd(_mm_loadu_pd(&box.maxX), _mm_set1_pd(-0.0));
-            const auto lanes = _mm_movelh_ps(_mm_cvtpd_ps(lo), _mm_cvtpd_ps(hi));
-            // In any rounding mode, step each lane above its exact value down one float:
-            // positive patterns (+inf too) decrement, negative ones (-0 included) increment.
-            const auto above = _mm_shuffle_ps(_mm_castpd_ps(_mm_cmpgt_pd(_mm_cvtps_pd(lanes), lo)),
-                _mm_castpd_ps(_mm_cmpgt_pd(_mm_cvtps_pd(_mm_movehl_ps(lanes, lanes)), hi)), _MM_SHUFFLE(2, 0, 2, 0));
-            const auto bits = _mm_castps_si128(lanes);
-            const auto step = _mm_or_si128(_mm_slli_epi32(_mm_srai_epi32(bits, 31), 1), _mm_set1_epi32(1));
-            return _mm_castsi128_ps(_mm_sub_epi32(bits, _mm_and_si128(step, _mm_castps_si128(above))));
+            __m128i lo, hi;
+            std::memcpy(&lo, &box.minX, sizeof(lo));
+            std::memcpy(&hi, &box.maxX, sizeof(hi));
+            const auto high = _mm_unpacklo_epi64(_mm_shuffle_epi32(lo, _MM_SHUFFLE(3, 1, 3, 1)),
+                _mm_shuffle_epi32(hi, _MM_SHUFFLE(3, 1, 3, 1))); // High words of minX, minY, maxX, maxY
+            // Negative doubles flip their magnitude bits, so the order follows the value.
+            const auto keys = _mm_xor_si128(high, _mm_srli_epi32(_mm_srai_epi32(high, 31), 1));
+            return _mm_xor_si128(keys, _mm_setr_epi32(0, 0, -1, -1));
         }
     }
 
@@ -3576,7 +3585,7 @@ private:
             dst.bounds = node.bounds;
         else
         {
-            const auto lanes = floatLanes(node.bounds);
+            const auto lanes = orderedLanes(node.bounds);
             std::memcpy(dst.terms, &lanes, sizeof(dst.terms));
         }
         dst.head = node.head;
@@ -3613,21 +3622,31 @@ private:
         {
             const auto& box = mEntries.mBoxes[i];
             auto& r = records[i];
-            const auto lanes = floatLanes(box);
+            const auto lanes = orderedLanes(box);
             std::memcpy(r.gapTerms, &lanes, sizeof(r.gapTerms));
             if constexpr (std::same_as<T, float>) // double rechecks contact exactly.
                 r.threshold = mConfig.boundary == Boundary::TouchInclusive || box.minX == box.maxX || box.minY == box.maxY ? -1 : 0;
         }
         const auto terms = [](const std::uint32_t (&lanes)[4]) noexcept
-        { __m128 v; std::memcpy(&v, lanes, sizeof(v)); return v; };
+        {
+            if constexpr (std::same_as<T, float>) { __m128 v; std::memcpy(&v, lanes, sizeof(v)); return v; }
+            else { __m128i v; std::memcpy(&v, lanes, sizeof(v)); return v; }
+        };
         for (std::uint32_t i = 0; i + 1 < n && context.active(); ++i)
         {
             const auto a = scratch.mOrder[i];
             const auto& box = mEntries.mBoxes[a];
             std::uint32_t count = 0;
-            // (maxX, maxY, -minX, -minY): no lane of an overlapping box may exceed it.
+            // The source's opposing lanes: maxX, maxY, -minX, -minY (float) or
+            // key(maxX), key(maxY), ~key(minX), ~key(minY) (double).
             const auto own = terms(records[a].gapTerms);
-            const auto source = _mm_xor_ps(_mm_shuffle_ps(own, own, _MM_SHUFFLE(1, 0, 3, 2)), _mm_set1_ps(-0.0f));
+            const auto source = [&]() noexcept
+            {
+                if constexpr (std::same_as<T, float>)
+                    return _mm_xor_ps(_mm_shuffle_ps(own, own, _MM_SHUFFLE(1, 0, 3, 2)), _mm_set1_ps(-0.0f));
+                else
+                    return _mm_xor_si128(_mm_shuffle_epi32(own, _MM_SHUFFLE(1, 0, 3, 2)), _mm_set1_epi32(-1));
+            }();
             [[maybe_unused]] const std::int32_t threshold = std::same_as<T, float> ? records[a].threshold : 0;
             const auto collect = [&](const OrderedBox& other, std::uint32_t b) noexcept
             {
@@ -3639,7 +3658,7 @@ private:
                     const auto hit = _mm_or_ps(_mm_cmplt_ps(lanes, source), _mm_and_ps(_mm_cmpeq_ps(lanes, source), closed));
                     if (_mm_movemask_ps(hit) == 15) scratch.mRow[count++] = other.ordinal;
                 }
-                else if (_mm_movemask_ps(_mm_cmple_ps(lanes, source)) == 15 &&
+                else if (_mm_movemask_epi8(_mm_cmpgt_epi32(lanes, source)) == 0 &&
                     packedCrossItemOverlap(box, mEntries.mBoxes[b], mConfig.boundary))
                     scratch.mRow[count++] = other.ordinal;
             };

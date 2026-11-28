@@ -1,0 +1,6 @@
+c13e498  flags: pairs 1, status 0, flags none (exit 0)
+c13e498  trap : pairs 1, status 0, flags none (exit 0)
+ce92ef5  flags: pairs 1, status 0, flags FE_OVERFLOW FE_INEXACT (exit 1)
+ce92ef5  trap : SIGFPE before the callback (exit 136)
+fix      flags: pairs 1, status 0, flags none (exit 0)
+fix      trap : pairs 1, status 0, flags none (exit 0)
