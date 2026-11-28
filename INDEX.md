@@ -6,13 +6,16 @@ Do not include the legacy `quadtree.h` in the same translation unit.
 
 The implementation has a density-adaptive loose quadtree, a sorted bulk loader,
 pooled nodes, a direct small-set path, and persistent moved-set enumeration.
-**Performance scope.** Release performance acceptance covers all four
-coordinate types: `int32`, `int64`, `float` and `double`. In the
-[four-type release validation](https://github.com/red-9m/quadtree/blob/d5577877051a3ddd11d7452da7eb81b731b6e256/bench/results/release-ce92ef5-2026-11-28/README.md)
-of `ce92ef5`, every hard snapshot and persistent gate passes for each type,
-with no repeats and without the `int32` exceptions below. Before `ce92ef5`,
-only `int32` was accepted; see the
-[Task 09 result](https://github.com/red-9m/quadtree/blob/d5577877051a3ddd11d7452da7eb81b731b6e256/docs/plan/09-other-coordinate-types-result.md).
+**Performance scope.** `int64`, `float` and `double` are performance-accepted
+on `db0c820`: in its
+[four-type release validation](https://github.com/red-9m/quadtree/blob/547d046331eeede9fbcd1de555b1d235b4f70c9a/bench/results/release-db0c820-2026-11-28/README.md)
+they pass every hard snapshot and persistent gate. `int32` is performance-accepted
+on `c13e498`, with the existing G1 exception for very small snapshots below.
+On `db0c820` it passes every `int32` snapshot gate, but one persistent row (G8b,
+1-entry moved step at n=10⁵ vs 10³) stays open under the validation rule. Its
+`int32` code is instruction-identical to `ce92ef5`, which passed every `int32`
+gate; see the
+[acceptance status](https://github.com/red-9m/quadtree/blob/547d046331eeede9fbcd1de555b1d235b4f70c9a/docs/plan/08-final-acceptance-result.md#recheck-on-db0c820).
 
 Very small `int32` snapshots carry fixed rebuild overhead. With 0–4 entries, a
 build plus pair scan measured 10–62 ns per rebuild, 2.0–3.3× a plain all-pairs
