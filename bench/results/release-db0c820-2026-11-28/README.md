@@ -1,6 +1,9 @@
 # 08 · Four-type release validation of `db0c820` (2026-11-28)
 
-**Under the [pre-specified rule](resolution-rule.md), `int64`, `float` and `double` pass every hard gate on `db0c820`. Task 09 is accepted for them on this commit.** `int32` passes every hard snapshot gate and all but one hard persistent gate. That one row, G8b `mixed-size` n=10⁵ `small-single/moved`, stays open: pooled 3.901 [3.781–4.024], limit 4. Per the rule, the `int32` release acceptance does not extend to `db0c820` and stays on `c13e498`, pending an owner decision ([below](#open-int32-row)).
+**All four coordinate types are performance-accepted on `db0c820`.**
+- **`int64`, `float`, `double`:** every hard gate passes under the [pre-specified rule](resolution-rule.md). Task 09 is accepted for them on this commit.
+- **`int32`:** passes every hard snapshot gate and all but one hard persistent gate. That one row, G8b `mixed-size` n=10⁵ `small-single/moved`, stayed open under the rule: pooled 3.901 [3.781–4.024], limit 4.
+- **Owner decision (2026-11-28):** accept `int32` on `db0c820` on this evidence ([below](#owner-decision)). The rule's verdicts stay as recorded.
 
 `db0c820` is `ce92ef5` plus the [fix for ordered `double` queries raising floating-point exceptions](../double-ordered-fp-flags-2026-11-28/README.md). Every `int32` `Index` function in the benchmark binary is instruction-identical between the two. The [`ce92ef5` validation](../release-ce92ef5-2026-11-28/README.md) passed this G8b row at 3.324 [3.163–3.494], and `c13e498` at 3.365.
 
@@ -79,8 +82,17 @@ Final status: [gate-rows.csv](data/gate-rows.csv), [snapshot](data/final-snapsho
 
 Per [resolution-rule.md](resolution-rule.md):
 - **`int64`, `float`, `double`:** every hard snapshot gate (G1 16, G2 20, G3, G4, G6, G9 15) and every applicable hard persistent gate passes, with no exception. **Task 09 is accepted for all three on `db0c820`.**
-- **`int32`:** every hard snapshot gate passes, including all 15 G9 rows. One hard persistent row (G8b above) is still open after the rule's repeats. **The `int32` release acceptance does not extend to `db0c820` under this rule. It stays on `c13e498`; `ce92ef5` also passed every `int32` gate, and its `int32` code is instruction-identical to `db0c820`'s.** Extending it needs an owner decision: accept on the evidence above, or rerun under a new pre-specified rule.
+- **`int32`:** every hard snapshot gate passes, including all 15 G9 rows. One hard persistent row (G8b above) is still open after the rule's repeats. **The `int32` release acceptance does not extend to `db0c820` under this rule. It stays on `c13e498`; `ce92ef5` also passed every `int32` gate, and its `int32` code is instruction-identical to `db0c820`'s.** Extending it needed an owner decision; see [Owner decision](#owner-decision).
 - **All types:** G0 and G6 pass. Calibration is 99.0%. CTest 22/22, full fuzz 20/20, hosted Portability 9/9 on the exact SHA.
+
+## Owner decision
+
+**2026-11-28: accept `int32` on `db0c820` on this evidence.** The rule's verdict for G8b `mixed-size` n=10⁵ (`open`, pooled 3.901 [3.781–4.024]) is not changed or re-run. The decision rests on three points:
+- every other `int32` hard gate passes, including all 15 G9 rows;
+- every `int32` `Index` function is instruction-identical to `ce92ef5`, which passed this row at 3.324 [3.163–3.494] in its full matrix;
+- the [post-hoc diagnostic](#open-int32-row) gives the same 3.8–4.0 for the accepted `c13e498` binary in the repeat-process shape.
+
+**The `int32` release acceptance extends to `db0c820`. All four coordinate types are performance-accepted on `db0c820`.**
 
 ## Reproduction
 

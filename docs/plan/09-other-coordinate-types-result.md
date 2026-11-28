@@ -2,7 +2,7 @@
 
 **Accepted (2026-11-28) on `db0c820`.** `int64`, `float` and `double` are performance-accepted. On the [four-type release validation](../../bench/results/release-db0c820-2026-11-28/README.md), each passes G1 16/16, G2 20/20, G9 15/15, G3, G4, G6 and every applicable persistent hard gate. No exceptions were used, under a [rule committed before the run](../../bench/results/release-db0c820-2026-11-28/resolution-rule.md). The frozen limits are unchanged, and no exception extends beyond `int32`.
 
-`ce92ef5` first passed the same validation. Its ordered `double` path then turned out to [raise floating-point exceptions](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md) on valid input, so acceptance moved to the fix, `db0c820`. On `db0c820`, one `int32` persistent row is open under the rule; see the [08 result](08-final-acceptance-result.md#recheck-on-db0c820).
+`ce92ef5` first passed the same validation. Its ordered `double` path then turned out to [raise floating-point exceptions](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md) on valid input, so acceptance moved to the fix, `db0c820`. On the same run, `int32` was accepted by owner decision on one open persistent row; see the [08 result](08-final-acceptance-result.md#recheck-on-db0c820).
 
 History:
 - First closed as is on `d52dbe1` (owner, 2026-11-22), then reopened the same day.

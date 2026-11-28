@@ -2,9 +2,9 @@
 
 **`int32` release accepted (2026-11-21)** on release candidate `a72bc80`: runtime/benchmark code built from `64675e6`, identical code, benchmark `.text` `97d8835e…`. Scope per [the brief](08-final-acceptance.md): performance sign-off covered `int32` only, with `int64`, `float` and `double` under [Task 09](09-other-coordinate-types.md).
 
-**Current status (2026-11-28):**
-- **`int64`, `float`, `double`:** performance-accepted on `db0c820` ([validation](../../bench/results/release-db0c820-2026-11-28/README.md)).
-- **`int32`:** acceptance holds on `c13e498` and passed every gate on `ce92ef5`. On `db0c820`, one persistent G8b row stayed open under the rule, so extending acceptance to `db0c820` needs an owner decision ([below](#recheck-on-db0c820)).
+**Current status (2026-11-28): all four coordinate types are performance-accepted on `db0c820`** ([validation](../../bench/results/release-db0c820-2026-11-28/README.md), [recheck below](#recheck-on-db0c820)).
+- **`int64`, `float`, `double`:** every hard gate passes under the pre-specified rule.
+- **`int32`:** one persistent G8b row stayed open under the rule; the owner accepted `int32` on `db0c820` on the recorded evidence.
 - **`ce92ef5`:** passed every gate for all four types, but its ordered `double` path [raised floating-point exceptions](../../bench/results/double-ordered-fp-flags-2026-11-28/README.md). `db0c820` fixes that.
 
 ## Exit criteria
@@ -69,12 +69,14 @@
   - A post-hoc diagnostic, not used by the rule, ran the repeats' arguments on the `c13e498` and `ce92ef5` binaries. They give the same 3.8–4.0 in that process shape (the full matrices gave 3.32–3.37 there).
 - **Other checks:** G0 and G6 pass. Calibration 99.0%. CTest 22/22, full fuzz 20/20, hosted [Portability #27](https://github.com/red-9m/quadtree/actions/runs/46138155025) 9/9.
 
-**`int64`, `float` and `double` are performance-accepted on `db0c820` (Task 09).** Under the rule, the `int32` acceptance stays on `c13e498` (and `ce92ef5`). Extending it to `db0c820` is an owner decision: accept on this evidence, or rerun under a new pre-specified rule.
+**`int64`, `float` and `double` are performance-accepted on `db0c820` (Task 09).** Under the rule, the `int32` G8b row stays open as measured.
+
+**Owner decision (2026-11-28): `int32` is accepted on `db0c820` on this evidence.** Every other `int32` hard gate passes, and the `int32` code is instruction-identical to `ce92ef5`, which passed the row. The diagnostic shows the repeat-process value also on `c13e498`. **The `int32` acceptance holds on `db0c820`.**
 
 ## Evidence
 
 - [Four-type release run](../../bench/results/release-acceptance-2026-11-21/README.md): the baseline for Task 09.
 - [Four-type validation of `ce92ef5`](../../bench/results/release-ce92ef5-2026-11-28/README.md), superseded for `double` by the fix.
-- [Four-type validation of `db0c820`](../../bench/results/release-db0c820-2026-11-28/README.md): Task 09 acceptance; one `int32` persistent row open.
+- [Four-type validation of `db0c820`](../../bench/results/release-db0c820-2026-11-28/README.md): the four-type acceptance run (`int32` by owner decision on one open persistent row).
 - [`int32` confirmation](../../bench/results/release-int32-2026-11-21/README.md): the sign-off run.
 - [Rejected `int32` G2 fix attempt](../../bench/results/int32-g2-planbulk-2026-11-21/README.md): the evidence behind the G2 exception.
